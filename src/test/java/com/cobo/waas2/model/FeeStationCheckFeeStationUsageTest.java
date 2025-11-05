@@ -11,6 +11,7 @@
 
 package com.cobo.waas2.model;
 
+import com.cobo.waas2.model.AutoFuelType;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -61,6 +62,14 @@ public class FeeStationCheckFeeStationUsageTest {
     }
 
     /**
+     * Test the property 'feeTokenId'
+     */
+    @Test
+    public void feeTokenIdTest() {
+        // TODO: test feeTokenId
+    }
+
+    /**
      * Test the property 'estimatedFeeAmount'
      */
     @Test
@@ -82,6 +91,14 @@ public class FeeStationCheckFeeStationUsageTest {
     @Test
     public void fromWalletIdTest() {
         // TODO: test fromWalletId
+    }
+
+    /**
+     * Test the property 'autoFuel'
+     */
+    @Test
+    public void autoFuelTest() {
+        // TODO: test autoFuel
     }
 
 }

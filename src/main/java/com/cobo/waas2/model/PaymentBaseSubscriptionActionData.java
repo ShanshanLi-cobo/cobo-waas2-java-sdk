@@ -119,7 +119,7 @@ public class PaymentBaseSubscriptionActionData {
    * The signature for transaction. charge action is not required.
    * @return signature
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getSignature() {
     return signature;
   }
@@ -138,7 +138,7 @@ public class PaymentBaseSubscriptionActionData {
    * The signature deadline for transaction. charge action is not required.
    * @return deadline
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public Integer getDeadline() {
     return deadline;
   }
@@ -254,6 +254,8 @@ public class PaymentBaseSubscriptionActionData {
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("action_type");
     openapiRequiredFields.add("subscription_id");
+    openapiRequiredFields.add("signature");
+    openapiRequiredFields.add("deadline");
   }
 
  /**
@@ -281,7 +283,7 @@ public class PaymentBaseSubscriptionActionData {
       if (!jsonObj.get("subscription_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `subscription_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("subscription_id").toString()));
       }
-      if ((jsonObj.get("signature") != null && !jsonObj.get("signature").isJsonNull()) && !jsonObj.get("signature").isJsonPrimitive()) {
+      if (!jsonObj.get("signature").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `signature` to be a primitive type in the JSON string but got `%s`", jsonObj.get("signature").toString()));
       }
   }

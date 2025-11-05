@@ -13,6 +13,7 @@ package com.cobo.waas2.model;
 
 import com.cobo.waas2.model.TokenizationAddressPermission;
 import com.cobo.waas2.model.TokenizationStatus;
+import com.cobo.waas2.model.TokenizationTokenInfo;
 import com.cobo.waas2.model.TokenizationTokenStandard;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -129,11 +130,27 @@ public class TokenizationTokenDetailInfoTest {
     }
 
     /**
+     * Test the property 'archived'
+     */
+    @Test
+    public void archivedTest() {
+        // TODO: test archived
+    }
+
+    /**
      * Test the property 'permissions'
      */
     @Test
     public void permissionsTest() {
         // TODO: test permissions
+    }
+
+    /**
+     * Test the property 'underlyingToken'
+     */
+    @Test
+    public void underlyingTokenTest() {
+        // TODO: test underlyingToken
     }
 
 }

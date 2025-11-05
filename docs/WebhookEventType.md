@@ -71,6 +71,10 @@
 
 * `PAYMENT_ADDRESS_UPDATED` (value: `"payment.address.updated"`)
 
+* `PAYMENT_SUBSCRIPTION_STATUS_UPDATED` (value: `"payment.subscription.status.updated"`)
+
+* `PAYMENT_CHARGE_STATUS_UPDATED` (value: `"payment.charge.status.updated"`)
+
 * `COMPLIANCE_DISPOSITION_STATUS_UPDATED` (value: `"compliance.disposition.status.updated"`)
 
 * `COMPLIANCE_KYT_SCREENINGS_STATUS_UPDATED` (value: `"compliance.kyt.screenings.status.updated"`)

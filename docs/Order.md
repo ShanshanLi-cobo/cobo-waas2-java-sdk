@@ -26,6 +26,7 @@
 |**updatedTimestamp** | **Integer** | The updated time of the order, represented as a UNIX timestamp in seconds. |  [optional] |
 |**transactions** | [**List&lt;PaymentTransaction&gt;**](PaymentTransaction.md) | An array of transactions associated with this pay-in order. Each transaction represents a separate blockchain operation related to the settlement process. |  [optional] |
 |**settlementStatus** | **SettleStatus** |  |  [optional] |
+|**amountTolerance** | **String** | Allowed amount deviation. |  [optional] |
 
 
 

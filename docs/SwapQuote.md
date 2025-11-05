@@ -16,7 +16,7 @@
 |**feeAmount** | **String** | The amount of tokens for the service fee. |  |
 |**minReceiveAmount** | **String** | The minimum amount of tokens to receive if the pay amount is specified. |  [optional] |
 |**maxPayAmount** | **String** | The maximum amount of tokens to pay if the receive amount is specified. |  [optional] |
-|**quoteExpiredTimestamp** | **Integer** | The time when the quote will expire, in Unix timestamp format, measured in milliseconds. |  |
+|**quoteExpiredTimestamp** | **Long** | The time when the quote will expire, in Unix timestamp format, measured in milliseconds. |  |
 
 
 

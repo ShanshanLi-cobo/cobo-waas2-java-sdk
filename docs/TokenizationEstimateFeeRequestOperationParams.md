@@ -16,11 +16,11 @@
 |**tokenId** | **String** | The ID of the token. |  |
 |**burns** | [**List&lt;TokenizationBurnTokenParamsBurnsInner&gt;**](TokenizationBurnTokenParamsBurnsInner.md) | Details for each token burn, including amount and address to burn from. |  |
 |**action** | **TokenizationPermissionAction** |  |  |
-|**addresses** | [**List&lt;TokenizationUpdateBlocklistAddressesParamsAddressesInner&gt;**](TokenizationUpdateBlocklistAddressesParamsAddressesInner.md) | A list of addresses to manage. For &#39;add&#39; operations, notes can be provided. For &#39;remove&#39; operations, notes are ignored. |  |
+|**addresses** | [**List&lt;TokenizationUpdateAddressPermissions&gt;**](TokenizationUpdateAddressPermissions.md) |  |  |
 |**activation** | **Boolean** | Whether to activate the allowlist feature for the token. |  |
 |**data** | [**TokenizationContractCallParamsData**](TokenizationContractCallParamsData.md) |  |  [optional] |
-|**address** | **String** | The address to manage permissions for. |  |
-|**permissions** | **List&lt;TokenizationTokenPermissionType&gt;** | The list of permissions to operate on. |  |
+|**address** | **String** | The address to manage permissions for. |  [optional] |
+|**permissions** | **List&lt;TokenizationTokenPermissionType&gt;** | The list of permissions to operate on. |  [optional] |
 
 
 

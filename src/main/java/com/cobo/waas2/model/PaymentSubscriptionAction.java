@@ -20,7 +20,9 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -81,6 +83,10 @@ public class PaymentSubscriptionAction {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   private PaymentSubscriptionActionData data;
+
+  public static final String SERIALIZED_NAME_TRANSACTION_IDS = "transaction_ids";
+  @SerializedName(SERIALIZED_NAME_TRANSACTION_IDS)
+  private List<String> transactionIds = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -230,6 +236,33 @@ public class PaymentSubscriptionAction {
   }
 
 
+  public PaymentSubscriptionAction transactionIds(List<String> transactionIds) {
+    this.transactionIds = transactionIds;
+    return this;
+  }
+
+  public PaymentSubscriptionAction addTransactionIdsItem(String transactionIdsItem) {
+    if (this.transactionIds == null) {
+      this.transactionIds = new ArrayList<>();
+    }
+    this.transactionIds.add(transactionIdsItem);
+    return this;
+  }
+
+   /**
+   * Get transactionIds
+   * @return transactionIds
+  **/
+  @javax.annotation.Nullable
+  public List<String> getTransactionIds() {
+    return transactionIds;
+  }
+
+  public void setTransactionIds(List<String> transactionIds) {
+    this.transactionIds = transactionIds;
+  }
+
+
   public PaymentSubscriptionAction status(PaymentSubscriptionActionStatus status) {
     this.status = status;
     return this;
@@ -348,6 +381,7 @@ public class PaymentSubscriptionAction {
         Objects.equals(this.merchantId, paymentSubscriptionAction.merchantId) &&
         Objects.equals(this.merchantAddress, paymentSubscriptionAction.merchantAddress) &&
         Objects.equals(this.data, paymentSubscriptionAction.data) &&
+        Objects.equals(this.transactionIds, paymentSubscriptionAction.transactionIds) &&
         Objects.equals(this.status, paymentSubscriptionAction.status) &&
         Objects.equals(this.createdTimestamp, paymentSubscriptionAction.createdTimestamp) &&
         Objects.equals(this.updatedTimestamp, paymentSubscriptionAction.updatedTimestamp)&&
@@ -356,7 +390,7 @@ public class PaymentSubscriptionAction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(requestId, actionId, planId, subscriptionId, merchantId, merchantAddress, data, status, createdTimestamp, updatedTimestamp, additionalProperties);
+    return Objects.hash(requestId, actionId, planId, subscriptionId, merchantId, merchantAddress, data, transactionIds, status, createdTimestamp, updatedTimestamp, additionalProperties);
   }
 
   @Override
@@ -370,6 +404,7 @@ public class PaymentSubscriptionAction {
     sb.append("    merchantId: ").append(toIndentedString(merchantId)).append("\n");
     sb.append("    merchantAddress: ").append(toIndentedString(merchantAddress)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    transactionIds: ").append(toIndentedString(transactionIds)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    createdTimestamp: ").append(toIndentedString(createdTimestamp)).append("\n");
     sb.append("    updatedTimestamp: ").append(toIndentedString(updatedTimestamp)).append("\n");
@@ -403,6 +438,7 @@ public class PaymentSubscriptionAction {
     openapiFields.add("merchant_id");
     openapiFields.add("merchant_address");
     openapiFields.add("data");
+    openapiFields.add("transaction_ids");
     openapiFields.add("status");
     openapiFields.add("created_timestamp");
     openapiFields.add("updated_timestamp");
@@ -459,6 +495,10 @@ public class PaymentSubscriptionAction {
       }
       // validate the required field `data`
       PaymentSubscriptionActionData.validateJsonElement(jsonObj.get("data"));
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("transaction_ids") != null && !jsonObj.get("transaction_ids").isJsonNull() && !jsonObj.get("transaction_ids").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `transaction_ids` to be an array in the JSON string but got `%s`", jsonObj.get("transaction_ids").toString()));
+      }
       // validate the required field `status`
       PaymentSubscriptionActionStatus.validateJsonElement(jsonObj.get("status"));
   }

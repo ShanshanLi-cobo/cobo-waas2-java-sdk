@@ -13,7 +13,7 @@
 |**merchantAddress** | **String** | The merchant address in cobo. |  |
 |**userAddress** | **String** | The user address in subscription. |  |
 |**tokenId** | **String** | The token_id in subscription. |  |
-|**amount** | **String** | The amount in subscription. |  |
+|**chargeAmount** | **String** | The charge amount in subscription. |  [optional] |
 |**startTime** | **Integer** | The subscription start timestamp. |  |
 |**expirationTime** | **Integer** | The subscription expired timestamp. |  |
 |**chargesMade** | **Integer** | The subscription charge times. |  |

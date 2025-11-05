@@ -87,6 +87,10 @@ public class ComplianceKytScreeningsUpdateEventData {
     
     PAYMENTADDRESSUPDATE("PaymentAddressUpdate"),
     
+    PAYMENTSUBSCRIPTIONUPDATE("PaymentSubscriptionUpdate"),
+    
+    PAYMENTCHARGEUPDATE("PaymentChargeUpdate"),
+    
     BALANCEUPDATEINFO("BalanceUpdateInfo"),
     
     SUSPENDEDTOKEN("SuspendedToken"),

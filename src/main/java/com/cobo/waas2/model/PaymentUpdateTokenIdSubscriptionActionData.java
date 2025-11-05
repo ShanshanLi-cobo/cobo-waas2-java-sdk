@@ -53,14 +53,6 @@ import com.cobo.waas2.JSON;
     comments = "Generator version: 7.6.0"
 )
 public class PaymentUpdateTokenIdSubscriptionActionData {
-  public static final String SERIALIZED_NAME_TOKEN_ID = "token_id";
-  @SerializedName(SERIALIZED_NAME_TOKEN_ID)
-  private String tokenId;
-
-  public static final String SERIALIZED_NAME_DISCOUNT = "discount";
-  @SerializedName(SERIALIZED_NAME_DISCOUNT)
-  private String discount;
-
   public static final String SERIALIZED_NAME_ACTION_TYPE = "action_type";
   @SerializedName(SERIALIZED_NAME_ACTION_TYPE)
   private PaymentSubscriptionActionType actionType;
@@ -68,6 +60,10 @@ public class PaymentUpdateTokenIdSubscriptionActionData {
   public static final String SERIALIZED_NAME_SUBSCRIPTION_ID = "subscription_id";
   @SerializedName(SERIALIZED_NAME_SUBSCRIPTION_ID)
   private String subscriptionId;
+
+  public static final String SERIALIZED_NAME_TOKEN_ID = "token_id";
+  @SerializedName(SERIALIZED_NAME_TOKEN_ID)
+  private String tokenId;
 
   public static final String SERIALIZED_NAME_SIGNATURE = "signature";
   @SerializedName(SERIALIZED_NAME_SIGNATURE)
@@ -79,44 +75,6 @@ public class PaymentUpdateTokenIdSubscriptionActionData {
 
   public PaymentUpdateTokenIdSubscriptionActionData() {
   }
-
-  public PaymentUpdateTokenIdSubscriptionActionData tokenId(String tokenId) {
-    this.tokenId = tokenId;
-    return this;
-  }
-
-   /**
-   * The ID of the cryptocurrency you want to subscription. Supported values:  - USDC: &#x60;ETH_USDC&#x60;, &#x60;ARBITRUM_USDCOIN&#x60;, &#x60;BASE_USDC&#x60;, &#x60;MATIC_USDC2&#x60;, &#x60;BSC_USDC&#x60; - USDT: &#x60;ETH_USDT&#x60;, &#x60;ARBITRUM_USDT&#x60;, &#x60;BASE_USDT&#x60;, &#x60;MATIC_USDT&#x60;, &#x60;BSC_USDT&#x60; 
-   * @return tokenId
-  **/
-  @javax.annotation.Nonnull
-  public String getTokenId() {
-    return tokenId;
-  }
-
-  public void setTokenId(String tokenId) {
-    this.tokenId = tokenId;
-  }
-
-
-  public PaymentUpdateTokenIdSubscriptionActionData discount(String discount) {
-    this.discount = discount;
-    return this;
-  }
-
-   /**
-   * the discount rate, Represented as a string percentage (e.g., \&quot;0.1\&quot; means 10%).
-   * @return discount
-  **/
-  @javax.annotation.Nullable
-  public String getDiscount() {
-    return discount;
-  }
-
-  public void setDiscount(String discount) {
-    this.discount = discount;
-  }
-
 
   public PaymentUpdateTokenIdSubscriptionActionData actionType(PaymentSubscriptionActionType actionType) {
     this.actionType = actionType;
@@ -156,6 +114,25 @@ public class PaymentUpdateTokenIdSubscriptionActionData {
   }
 
 
+  public PaymentUpdateTokenIdSubscriptionActionData tokenId(String tokenId) {
+    this.tokenId = tokenId;
+    return this;
+  }
+
+   /**
+   * The ID of the cryptocurrency you want to subscription. Supported values:  - USDC: &#x60;ETH_USDC&#x60;, &#x60;ARBITRUM_USDCOIN&#x60;, &#x60;BASE_USDC&#x60;, &#x60;MATIC_USDC2&#x60;, &#x60;BSC_USDC&#x60; - USDT: &#x60;ETH_USDT&#x60;, &#x60;ARBITRUM_USDT&#x60;, &#x60;BASE_USDT&#x60;, &#x60;MATIC_USDT&#x60;, &#x60;BSC_USDT&#x60; 
+   * @return tokenId
+  **/
+  @javax.annotation.Nonnull
+  public String getTokenId() {
+    return tokenId;
+  }
+
+  public void setTokenId(String tokenId) {
+    this.tokenId = tokenId;
+  }
+
+
   public PaymentUpdateTokenIdSubscriptionActionData signature(String signature) {
     this.signature = signature;
     return this;
@@ -165,7 +142,7 @@ public class PaymentUpdateTokenIdSubscriptionActionData {
    * The signature for transaction. charge action is not required.
    * @return signature
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getSignature() {
     return signature;
   }
@@ -184,7 +161,7 @@ public class PaymentUpdateTokenIdSubscriptionActionData {
    * The signature deadline for transaction. charge action is not required.
    * @return deadline
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public Integer getDeadline() {
     return deadline;
   }
@@ -248,10 +225,9 @@ public class PaymentUpdateTokenIdSubscriptionActionData {
       return false;
     }
     PaymentUpdateTokenIdSubscriptionActionData paymentUpdateTokenIdSubscriptionActionData = (PaymentUpdateTokenIdSubscriptionActionData) o;
-    return Objects.equals(this.tokenId, paymentUpdateTokenIdSubscriptionActionData.tokenId) &&
-        Objects.equals(this.discount, paymentUpdateTokenIdSubscriptionActionData.discount) &&
-        Objects.equals(this.actionType, paymentUpdateTokenIdSubscriptionActionData.actionType) &&
+    return Objects.equals(this.actionType, paymentUpdateTokenIdSubscriptionActionData.actionType) &&
         Objects.equals(this.subscriptionId, paymentUpdateTokenIdSubscriptionActionData.subscriptionId) &&
+        Objects.equals(this.tokenId, paymentUpdateTokenIdSubscriptionActionData.tokenId) &&
         Objects.equals(this.signature, paymentUpdateTokenIdSubscriptionActionData.signature) &&
         Objects.equals(this.deadline, paymentUpdateTokenIdSubscriptionActionData.deadline)&&
         Objects.equals(this.additionalProperties, paymentUpdateTokenIdSubscriptionActionData.additionalProperties);
@@ -259,17 +235,16 @@ public class PaymentUpdateTokenIdSubscriptionActionData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(tokenId, discount, actionType, subscriptionId, signature, deadline, additionalProperties);
+    return Objects.hash(actionType, subscriptionId, tokenId, signature, deadline, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PaymentUpdateTokenIdSubscriptionActionData {\n");
-    sb.append("    tokenId: ").append(toIndentedString(tokenId)).append("\n");
-    sb.append("    discount: ").append(toIndentedString(discount)).append("\n");
     sb.append("    actionType: ").append(toIndentedString(actionType)).append("\n");
     sb.append("    subscriptionId: ").append(toIndentedString(subscriptionId)).append("\n");
+    sb.append("    tokenId: ").append(toIndentedString(tokenId)).append("\n");
     sb.append("    signature: ").append(toIndentedString(signature)).append("\n");
     sb.append("    deadline: ").append(toIndentedString(deadline)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -297,14 +272,17 @@ public class PaymentUpdateTokenIdSubscriptionActionData {
     openapiFields = new HashSet<String>();
     openapiFields.add("action_type");
     openapiFields.add("subscription_id");
+    openapiFields.add("token_id");
     openapiFields.add("signature");
     openapiFields.add("deadline");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("token_id");
     openapiRequiredFields.add("action_type");
     openapiRequiredFields.add("subscription_id");
+    openapiRequiredFields.add("token_id");
+    openapiRequiredFields.add("signature");
+    openapiRequiredFields.add("deadline");
   }
 
  /**
@@ -327,18 +305,15 @@ public class PaymentUpdateTokenIdSubscriptionActionData {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("token_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `token_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("token_id").toString()));
-      }
-      if ((jsonObj.get("discount") != null && !jsonObj.get("discount").isJsonNull()) && !jsonObj.get("discount").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `discount` to be a primitive type in the JSON string but got `%s`", jsonObj.get("discount").toString()));
-      }
       // validate the required field `action_type`
       PaymentSubscriptionActionType.validateJsonElement(jsonObj.get("action_type"));
       if (!jsonObj.get("subscription_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `subscription_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("subscription_id").toString()));
       }
-      if ((jsonObj.get("signature") != null && !jsonObj.get("signature").isJsonNull()) && !jsonObj.get("signature").isJsonPrimitive()) {
+      if (!jsonObj.get("token_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `token_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("token_id").toString()));
+      }
+      if (!jsonObj.get("signature").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `signature` to be a primitive type in the JSON string but got `%s`", jsonObj.get("signature").toString()));
       }
   }

@@ -99,6 +99,10 @@ public class PaymentTransactionEventData {
     
     PAYMENTADDRESSUPDATE("PaymentAddressUpdate"),
     
+    PAYMENTSUBSCRIPTIONUPDATE("PaymentSubscriptionUpdate"),
+    
+    PAYMENTCHARGEUPDATE("PaymentChargeUpdate"),
+    
     BALANCEUPDATEINFO("BalanceUpdateInfo"),
     
     SUSPENDEDTOKEN("SuspendedToken"),
@@ -301,6 +305,10 @@ public class PaymentTransactionEventData {
   public static final String SERIALIZED_NAME_SUBSCRIPTION_ID = "subscription_id";
   @SerializedName(SERIALIZED_NAME_SUBSCRIPTION_ID)
   private String subscriptionId;
+
+  public static final String SERIALIZED_NAME_ACTION_ID = "action_id";
+  @SerializedName(SERIALIZED_NAME_ACTION_ID)
+  private String actionId;
 
   public PaymentTransactionEventData() {
   }
@@ -1050,6 +1058,25 @@ public class PaymentTransactionEventData {
     this.subscriptionId = subscriptionId;
   }
 
+
+  public PaymentTransactionEventData actionId(String actionId) {
+    this.actionId = actionId;
+    return this;
+  }
+
+   /**
+   * A unique identifier assigned by Cobo to track and identify subscription action.
+   * @return actionId
+  **/
+  @javax.annotation.Nullable
+  public String getActionId() {
+    return actionId;
+  }
+
+  public void setActionId(String actionId) {
+    this.actionId = actionId;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -1142,13 +1169,14 @@ public class PaymentTransactionEventData {
         Objects.equals(this.pspOrderCode, paymentTransactionEventData.pspOrderCode) &&
         Objects.equals(this.payerId, paymentTransactionEventData.payerId) &&
         Objects.equals(this.customPayerId, paymentTransactionEventData.customPayerId) &&
-        Objects.equals(this.subscriptionId, paymentTransactionEventData.subscriptionId)&&
+        Objects.equals(this.subscriptionId, paymentTransactionEventData.subscriptionId) &&
+        Objects.equals(this.actionId, paymentTransactionEventData.actionId)&&
         Objects.equals(this.additionalProperties, paymentTransactionEventData.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(dataType, transactionId, coboId, requestId, walletId, type, status, subStatus, failedReason, chainId, tokenId, assetId, source, destination, result, fee, initiator, initiatorType, confirmedNum, confirmingThreshold, transactionHash, blockInfo, rawTxInfo, replacement, category, description, isLoop, coboCategory, extra, fuelingInfo, createdTimestamp, updatedTimestamp, acquiringType, orderId, pspOrderCode, payerId, customPayerId, subscriptionId, additionalProperties);
+    return Objects.hash(dataType, transactionId, coboId, requestId, walletId, type, status, subStatus, failedReason, chainId, tokenId, assetId, source, destination, result, fee, initiator, initiatorType, confirmedNum, confirmingThreshold, transactionHash, blockInfo, rawTxInfo, replacement, category, description, isLoop, coboCategory, extra, fuelingInfo, createdTimestamp, updatedTimestamp, acquiringType, orderId, pspOrderCode, payerId, customPayerId, subscriptionId, actionId, additionalProperties);
   }
 
   @Override
@@ -1193,6 +1221,7 @@ public class PaymentTransactionEventData {
     sb.append("    payerId: ").append(toIndentedString(payerId)).append("\n");
     sb.append("    customPayerId: ").append(toIndentedString(customPayerId)).append("\n");
     sb.append("    subscriptionId: ").append(toIndentedString(subscriptionId)).append("\n");
+    sb.append("    actionId: ").append(toIndentedString(actionId)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -1254,6 +1283,7 @@ public class PaymentTransactionEventData {
     openapiFields.add("payer_id");
     openapiFields.add("custom_payer_id");
     openapiFields.add("subscription_id");
+    openapiFields.add("action_id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -1395,6 +1425,9 @@ public class PaymentTransactionEventData {
       }
       if ((jsonObj.get("subscription_id") != null && !jsonObj.get("subscription_id").isJsonNull()) && !jsonObj.get("subscription_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `subscription_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("subscription_id").toString()));
+      }
+      if ((jsonObj.get("action_id") != null && !jsonObj.get("action_id").isJsonNull()) && !jsonObj.get("action_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `action_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("action_id").toString()));
       }
   }
 

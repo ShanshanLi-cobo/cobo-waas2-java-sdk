@@ -355,4 +355,12 @@ public class PaymentTransactionEventDataTest {
         // TODO: test subscriptionId
     }
 
+    /**
+     * Test the property 'actionId'
+     */
+    @Test
+    public void actionIdTest() {
+        // TODO: test actionId
+    }
+
 }

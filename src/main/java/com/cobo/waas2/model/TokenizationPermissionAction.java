@@ -22,7 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * The permission action to perform: - &#x60;add&#x60;: Grant permissions to specified addresses - &#x60;remove&#x60;: Revoke permissions from specified addresses - &#x60;set&#x60;: Set permissions for specified addresses exclusively  Supported actions by chain: - **EVM**: add, remove - **Solana**: set 
+ * The permission action to perform: - &#x60;add&#x60;: Grant permissions to specified addresses - &#x60;remove&#x60;: Revoke permissions from specified addresses - &#x60;set&#x60;: Set permissions for specified addresses exclusively  Supported actions by chain: - **EVM**: add, remove - **Solana Authority**: set - **Solana Wrapper**: add, remove 
  */
 @JsonAdapter(TokenizationPermissionAction.Adapter.class)
 public enum TokenizationPermissionAction {

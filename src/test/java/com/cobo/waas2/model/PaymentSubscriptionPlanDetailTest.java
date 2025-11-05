@@ -108,4 +108,20 @@ public class PaymentSubscriptionPlanDetailTest {
         // TODO: test currency
     }
 
+    /**
+     * Test the property 'chargeAmount'
+     */
+    @Test
+    public void chargeAmountTest() {
+        // TODO: test chargeAmount
+    }
+
+    /**
+     * Test the property 'contractAddress'
+     */
+    @Test
+    public void contractAddressTest() {
+        // TODO: test contractAddress
+    }
+
 }

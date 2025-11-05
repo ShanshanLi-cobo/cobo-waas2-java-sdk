@@ -84,6 +84,10 @@ public class SuspendedTokenEventData {
     
     PAYMENTADDRESSUPDATE("PaymentAddressUpdate"),
     
+    PAYMENTSUBSCRIPTIONUPDATE("PaymentSubscriptionUpdate"),
+    
+    PAYMENTCHARGEUPDATE("PaymentChargeUpdate"),
+    
     BALANCEUPDATEINFO("BalanceUpdateInfo"),
     
     SUSPENDEDTOKEN("SuspendedToken"),
