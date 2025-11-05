@@ -65,9 +65,9 @@ public class PaymentCreateSubscriptionActionData {
   @SerializedName(SERIALIZED_NAME_TOKEN_ID)
   private String tokenId;
 
-  public static final String SERIALIZED_NAME_DISCOUNT = "discount";
-  @SerializedName(SERIALIZED_NAME_DISCOUNT)
-  private String discount;
+  public static final String SERIALIZED_NAME_CHARGE_AMOUNT = "charge_amount";
+  @SerializedName(SERIALIZED_NAME_CHARGE_AMOUNT)
+  private String chargeAmount;
 
   public PaymentCreateSubscriptionActionData() {
   }
@@ -129,22 +129,22 @@ public class PaymentCreateSubscriptionActionData {
   }
 
 
-  public PaymentCreateSubscriptionActionData discount(String discount) {
-    this.discount = discount;
+  public PaymentCreateSubscriptionActionData chargeAmount(String chargeAmount) {
+    this.chargeAmount = chargeAmount;
     return this;
   }
 
    /**
-   * the discount rate, Represented as a string percentage (e.g., \&quot;0.1\&quot; means 10%).
-   * @return discount
+   * Get chargeAmount
+   * @return chargeAmount
   **/
-  @javax.annotation.Nullable
-  public String getDiscount() {
-    return discount;
+  @javax.annotation.Nonnull
+  public String getChargeAmount() {
+    return chargeAmount;
   }
 
-  public void setDiscount(String discount) {
-    this.discount = discount;
+  public void setChargeAmount(String chargeAmount) {
+    this.chargeAmount = chargeAmount;
   }
 
   /**
@@ -205,13 +205,13 @@ public class PaymentCreateSubscriptionActionData {
     return Objects.equals(this.actionType, paymentCreateSubscriptionActionData.actionType) &&
         Objects.equals(this.userAddress, paymentCreateSubscriptionActionData.userAddress) &&
         Objects.equals(this.tokenId, paymentCreateSubscriptionActionData.tokenId) &&
-        Objects.equals(this.discount, paymentCreateSubscriptionActionData.discount)&&
+        Objects.equals(this.chargeAmount, paymentCreateSubscriptionActionData.chargeAmount)&&
         Objects.equals(this.additionalProperties, paymentCreateSubscriptionActionData.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(actionType, userAddress, tokenId, discount, additionalProperties);
+    return Objects.hash(actionType, userAddress, tokenId, chargeAmount, additionalProperties);
   }
 
   @Override
@@ -221,7 +221,7 @@ public class PaymentCreateSubscriptionActionData {
     sb.append("    actionType: ").append(toIndentedString(actionType)).append("\n");
     sb.append("    userAddress: ").append(toIndentedString(userAddress)).append("\n");
     sb.append("    tokenId: ").append(toIndentedString(tokenId)).append("\n");
-    sb.append("    discount: ").append(toIndentedString(discount)).append("\n");
+    sb.append("    chargeAmount: ").append(toIndentedString(chargeAmount)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -248,13 +248,14 @@ public class PaymentCreateSubscriptionActionData {
     openapiFields.add("action_type");
     openapiFields.add("user_address");
     openapiFields.add("token_id");
-    openapiFields.add("discount");
+    openapiFields.add("charge_amount");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("action_type");
     openapiRequiredFields.add("user_address");
     openapiRequiredFields.add("token_id");
+    openapiRequiredFields.add("charge_amount");
   }
 
  /**
@@ -285,8 +286,8 @@ public class PaymentCreateSubscriptionActionData {
       if (!jsonObj.get("token_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `token_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("token_id").toString()));
       }
-      if ((jsonObj.get("discount") != null && !jsonObj.get("discount").isJsonNull()) && !jsonObj.get("discount").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `discount` to be a primitive type in the JSON string but got `%s`", jsonObj.get("discount").toString()));
+      if (!jsonObj.get("charge_amount").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `charge_amount` to be a primitive type in the JSON string but got `%s`", jsonObj.get("charge_amount").toString()));
       }
   }
 

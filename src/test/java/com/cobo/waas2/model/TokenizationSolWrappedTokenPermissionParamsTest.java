@@ -53,4 +53,20 @@ public class TokenizationSolWrappedTokenPermissionParamsTest {
         // TODO: test pauser
     }
 
+    /**
+     * Test the property 'freezer'
+     */
+    @Test
+    public void freezerTest() {
+        // TODO: test freezer
+    }
+
+    /**
+     * Test the property 'updater'
+     */
+    @Test
+    public void updaterTest() {
+        // TODO: test updater
+    }
+
 }

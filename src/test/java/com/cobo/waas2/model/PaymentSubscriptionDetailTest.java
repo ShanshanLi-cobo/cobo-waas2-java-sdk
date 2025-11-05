@@ -90,11 +90,11 @@ public class PaymentSubscriptionDetailTest {
     }
 
     /**
-     * Test the property 'amount'
+     * Test the property 'chargeAmount'
      */
     @Test
-    public void amountTest() {
-        // TODO: test amount
+    public void chargeAmountTest() {
+        // TODO: test chargeAmount
     }
 
     /**
@@ -167,6 +167,22 @@ public class PaymentSubscriptionDetailTest {
     @Test
     public void updatedTimestampTest() {
         // TODO: test updatedTimestamp
+    }
+
+    /**
+     * Test the property 'actions'
+     */
+    @Test
+    public void actionsTest() {
+        // TODO: test actions
+    }
+
+    /**
+     * Test the property 'transactions'
+     */
+    @Test
+    public void transactionsTest() {
+        // TODO: test transactions
     }
 
 }

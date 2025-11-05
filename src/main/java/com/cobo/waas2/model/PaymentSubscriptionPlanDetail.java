@@ -53,10 +53,6 @@ import com.cobo.waas2.JSON;
     comments = "Generator version: 7.6.0"
 )
 public class PaymentSubscriptionPlanDetail {
-  public static final String SERIALIZED_NAME_BLOCKCHAIN_PLAN_ID = "blockchain_plan_id";
-  @SerializedName(SERIALIZED_NAME_BLOCKCHAIN_PLAN_ID)
-  private String blockchainPlanId;
-
   public static final String SERIALIZED_NAME_PLAN_ID = "plan_id";
   @SerializedName(SERIALIZED_NAME_PLAN_ID)
   private String planId;
@@ -93,27 +89,16 @@ public class PaymentSubscriptionPlanDetail {
   @SerializedName(SERIALIZED_NAME_CURRENCY)
   private String currency;
 
+  public static final String SERIALIZED_NAME_CHARGE_AMOUNT = "charge_amount";
+  @SerializedName(SERIALIZED_NAME_CHARGE_AMOUNT)
+  private String chargeAmount;
+
+  public static final String SERIALIZED_NAME_CONTRACT_ADDRESS = "contract_address";
+  @SerializedName(SERIALIZED_NAME_CONTRACT_ADDRESS)
+  private String contractAddress;
+
   public PaymentSubscriptionPlanDetail() {
   }
-
-  public PaymentSubscriptionPlanDetail blockchainPlanId(String blockchainPlanId) {
-    this.blockchainPlanId = blockchainPlanId;
-    return this;
-  }
-
-   /**
-   * The subscription plan id in blockchain.
-   * @return blockchainPlanId
-  **/
-  @javax.annotation.Nullable
-  public String getBlockchainPlanId() {
-    return blockchainPlanId;
-  }
-
-  public void setBlockchainPlanId(String blockchainPlanId) {
-    this.blockchainPlanId = blockchainPlanId;
-  }
-
 
   public PaymentSubscriptionPlanDetail planId(String planId) {
     this.planId = planId;
@@ -285,6 +270,44 @@ public class PaymentSubscriptionPlanDetail {
     this.currency = currency;
   }
 
+
+  public PaymentSubscriptionPlanDetail chargeAmount(String chargeAmount) {
+    this.chargeAmount = chargeAmount;
+    return this;
+  }
+
+   /**
+   * The subscription plan crypto amount with input token_id. 
+   * @return chargeAmount
+  **/
+  @javax.annotation.Nullable
+  public String getChargeAmount() {
+    return chargeAmount;
+  }
+
+  public void setChargeAmount(String chargeAmount) {
+    this.chargeAmount = chargeAmount;
+  }
+
+
+  public PaymentSubscriptionPlanDetail contractAddress(String contractAddress) {
+    this.contractAddress = contractAddress;
+    return this;
+  }
+
+   /**
+   * The subscription contract address in cobo.
+   * @return contractAddress
+  **/
+  @javax.annotation.Nullable
+  public String getContractAddress() {
+    return contractAddress;
+  }
+
+  public void setContractAddress(String contractAddress) {
+    this.contractAddress = contractAddress;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -340,8 +363,7 @@ public class PaymentSubscriptionPlanDetail {
       return false;
     }
     PaymentSubscriptionPlanDetail paymentSubscriptionPlanDetail = (PaymentSubscriptionPlanDetail) o;
-    return Objects.equals(this.blockchainPlanId, paymentSubscriptionPlanDetail.blockchainPlanId) &&
-        Objects.equals(this.planId, paymentSubscriptionPlanDetail.planId) &&
+    return Objects.equals(this.planId, paymentSubscriptionPlanDetail.planId) &&
         Objects.equals(this.developerPlanId, paymentSubscriptionPlanDetail.developerPlanId) &&
         Objects.equals(this.periodType, paymentSubscriptionPlanDetail.periodType) &&
         Objects.equals(this.periods, paymentSubscriptionPlanDetail.periods) &&
@@ -349,20 +371,21 @@ public class PaymentSubscriptionPlanDetail {
         Objects.equals(this.trialPeriod, paymentSubscriptionPlanDetail.trialPeriod) &&
         Objects.equals(this.amount, paymentSubscriptionPlanDetail.amount) &&
         Objects.equals(this.tokenId, paymentSubscriptionPlanDetail.tokenId) &&
-        Objects.equals(this.currency, paymentSubscriptionPlanDetail.currency)&&
+        Objects.equals(this.currency, paymentSubscriptionPlanDetail.currency) &&
+        Objects.equals(this.chargeAmount, paymentSubscriptionPlanDetail.chargeAmount) &&
+        Objects.equals(this.contractAddress, paymentSubscriptionPlanDetail.contractAddress)&&
         Objects.equals(this.additionalProperties, paymentSubscriptionPlanDetail.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(blockchainPlanId, planId, developerPlanId, periodType, periods, interval, trialPeriod, amount, tokenId, currency, additionalProperties);
+    return Objects.hash(planId, developerPlanId, periodType, periods, interval, trialPeriod, amount, tokenId, currency, chargeAmount, contractAddress, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PaymentSubscriptionPlanDetail {\n");
-    sb.append("    blockchainPlanId: ").append(toIndentedString(blockchainPlanId)).append("\n");
     sb.append("    planId: ").append(toIndentedString(planId)).append("\n");
     sb.append("    developerPlanId: ").append(toIndentedString(developerPlanId)).append("\n");
     sb.append("    periodType: ").append(toIndentedString(periodType)).append("\n");
@@ -372,6 +395,8 @@ public class PaymentSubscriptionPlanDetail {
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("    tokenId: ").append(toIndentedString(tokenId)).append("\n");
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
+    sb.append("    chargeAmount: ").append(toIndentedString(chargeAmount)).append("\n");
+    sb.append("    contractAddress: ").append(toIndentedString(contractAddress)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -404,6 +429,8 @@ public class PaymentSubscriptionPlanDetail {
     openapiFields.add("amount");
     openapiFields.add("token_id");
     openapiFields.add("currency");
+    openapiFields.add("charge_amount");
+    openapiFields.add("contract_address");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -435,9 +462,6 @@ public class PaymentSubscriptionPlanDetail {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("blockchain_plan_id") != null && !jsonObj.get("blockchain_plan_id").isJsonNull()) && !jsonObj.get("blockchain_plan_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `blockchain_plan_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("blockchain_plan_id").toString()));
-      }
       if (!jsonObj.get("plan_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `plan_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("plan_id").toString()));
       }
@@ -454,6 +478,12 @@ public class PaymentSubscriptionPlanDetail {
       }
       if ((jsonObj.get("currency") != null && !jsonObj.get("currency").isJsonNull()) && !jsonObj.get("currency").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currency").toString()));
+      }
+      if ((jsonObj.get("charge_amount") != null && !jsonObj.get("charge_amount").isJsonNull()) && !jsonObj.get("charge_amount").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `charge_amount` to be a primitive type in the JSON string but got `%s`", jsonObj.get("charge_amount").toString()));
+      }
+      if ((jsonObj.get("contract_address") != null && !jsonObj.get("contract_address").isJsonNull()) && !jsonObj.get("contract_address").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `contract_address` to be a primitive type in the JSON string but got `%s`", jsonObj.get("contract_address").toString()));
       }
   }
 

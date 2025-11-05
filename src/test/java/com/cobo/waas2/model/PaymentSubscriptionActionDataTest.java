@@ -12,8 +12,11 @@
 package com.cobo.waas2.model;
 
 import com.cobo.waas2.model.PaymentBaseSubscriptionActionData;
+import com.cobo.waas2.model.PaymentChargeSubscriptionActionData;
 import com.cobo.waas2.model.PaymentCreateSubscriptionActionData;
+import com.cobo.waas2.model.PaymentDeveloperSubscriptionActionData;
 import com.cobo.waas2.model.PaymentExtendPeriodSubscriptionActionData;
+import com.cobo.waas2.model.PaymentSubscribeAndChargeSubscriptionActionData;
 import com.cobo.waas2.model.PaymentSubscriptionActionType;
 import com.cobo.waas2.model.PaymentUpdateAmountSubscriptionActionData;
 import com.cobo.waas2.model.PaymentUpdateTokenIdSubscriptionActionData;
@@ -66,11 +69,11 @@ public class PaymentSubscriptionActionDataTest {
     }
 
     /**
-     * Test the property 'discount'
+     * Test the property 'chargeAmount'
      */
     @Test
-    public void discountTest() {
-        // TODO: test discount
+    public void chargeAmountTest() {
+        // TODO: test chargeAmount
     }
 
     /**

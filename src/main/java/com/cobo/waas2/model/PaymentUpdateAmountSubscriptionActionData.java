@@ -53,10 +53,6 @@ import com.cobo.waas2.JSON;
     comments = "Generator version: 7.6.0"
 )
 public class PaymentUpdateAmountSubscriptionActionData {
-  public static final String SERIALIZED_NAME_NEW_PLAN_ID = "new_plan_id";
-  @SerializedName(SERIALIZED_NAME_NEW_PLAN_ID)
-  private String newPlanId;
-
   public static final String SERIALIZED_NAME_ACTION_TYPE = "action_type";
   @SerializedName(SERIALIZED_NAME_ACTION_TYPE)
   private PaymentSubscriptionActionType actionType;
@@ -64,6 +60,14 @@ public class PaymentUpdateAmountSubscriptionActionData {
   public static final String SERIALIZED_NAME_SUBSCRIPTION_ID = "subscription_id";
   @SerializedName(SERIALIZED_NAME_SUBSCRIPTION_ID)
   private String subscriptionId;
+
+  public static final String SERIALIZED_NAME_NEW_PLAN_ID = "new_plan_id";
+  @SerializedName(SERIALIZED_NAME_NEW_PLAN_ID)
+  private String newPlanId;
+
+  public static final String SERIALIZED_NAME_CHARGE_AMOUNT = "charge_amount";
+  @SerializedName(SERIALIZED_NAME_CHARGE_AMOUNT)
+  private String chargeAmount;
 
   public static final String SERIALIZED_NAME_SIGNATURE = "signature";
   @SerializedName(SERIALIZED_NAME_SIGNATURE)
@@ -75,25 +79,6 @@ public class PaymentUpdateAmountSubscriptionActionData {
 
   public PaymentUpdateAmountSubscriptionActionData() {
   }
-
-  public PaymentUpdateAmountSubscriptionActionData newPlanId(String newPlanId) {
-    this.newPlanId = newPlanId;
-    return this;
-  }
-
-   /**
-   * The new plan id in cobo.
-   * @return newPlanId
-  **/
-  @javax.annotation.Nonnull
-  public String getNewPlanId() {
-    return newPlanId;
-  }
-
-  public void setNewPlanId(String newPlanId) {
-    this.newPlanId = newPlanId;
-  }
-
 
   public PaymentUpdateAmountSubscriptionActionData actionType(PaymentSubscriptionActionType actionType) {
     this.actionType = actionType;
@@ -133,6 +118,44 @@ public class PaymentUpdateAmountSubscriptionActionData {
   }
 
 
+  public PaymentUpdateAmountSubscriptionActionData newPlanId(String newPlanId) {
+    this.newPlanId = newPlanId;
+    return this;
+  }
+
+   /**
+   * The new plan id in cobo.
+   * @return newPlanId
+  **/
+  @javax.annotation.Nonnull
+  public String getNewPlanId() {
+    return newPlanId;
+  }
+
+  public void setNewPlanId(String newPlanId) {
+    this.newPlanId = newPlanId;
+  }
+
+
+  public PaymentUpdateAmountSubscriptionActionData chargeAmount(String chargeAmount) {
+    this.chargeAmount = chargeAmount;
+    return this;
+  }
+
+   /**
+   * The subscription plan crypto amount with input token_id. 
+   * @return chargeAmount
+  **/
+  @javax.annotation.Nonnull
+  public String getChargeAmount() {
+    return chargeAmount;
+  }
+
+  public void setChargeAmount(String chargeAmount) {
+    this.chargeAmount = chargeAmount;
+  }
+
+
   public PaymentUpdateAmountSubscriptionActionData signature(String signature) {
     this.signature = signature;
     return this;
@@ -142,7 +165,7 @@ public class PaymentUpdateAmountSubscriptionActionData {
    * The signature for transaction. charge action is not required.
    * @return signature
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getSignature() {
     return signature;
   }
@@ -161,7 +184,7 @@ public class PaymentUpdateAmountSubscriptionActionData {
    * The signature deadline for transaction. charge action is not required.
    * @return deadline
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public Integer getDeadline() {
     return deadline;
   }
@@ -225,9 +248,10 @@ public class PaymentUpdateAmountSubscriptionActionData {
       return false;
     }
     PaymentUpdateAmountSubscriptionActionData paymentUpdateAmountSubscriptionActionData = (PaymentUpdateAmountSubscriptionActionData) o;
-    return Objects.equals(this.newPlanId, paymentUpdateAmountSubscriptionActionData.newPlanId) &&
-        Objects.equals(this.actionType, paymentUpdateAmountSubscriptionActionData.actionType) &&
+    return Objects.equals(this.actionType, paymentUpdateAmountSubscriptionActionData.actionType) &&
         Objects.equals(this.subscriptionId, paymentUpdateAmountSubscriptionActionData.subscriptionId) &&
+        Objects.equals(this.newPlanId, paymentUpdateAmountSubscriptionActionData.newPlanId) &&
+        Objects.equals(this.chargeAmount, paymentUpdateAmountSubscriptionActionData.chargeAmount) &&
         Objects.equals(this.signature, paymentUpdateAmountSubscriptionActionData.signature) &&
         Objects.equals(this.deadline, paymentUpdateAmountSubscriptionActionData.deadline)&&
         Objects.equals(this.additionalProperties, paymentUpdateAmountSubscriptionActionData.additionalProperties);
@@ -235,16 +259,17 @@ public class PaymentUpdateAmountSubscriptionActionData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(newPlanId, actionType, subscriptionId, signature, deadline, additionalProperties);
+    return Objects.hash(actionType, subscriptionId, newPlanId, chargeAmount, signature, deadline, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PaymentUpdateAmountSubscriptionActionData {\n");
-    sb.append("    newPlanId: ").append(toIndentedString(newPlanId)).append("\n");
     sb.append("    actionType: ").append(toIndentedString(actionType)).append("\n");
     sb.append("    subscriptionId: ").append(toIndentedString(subscriptionId)).append("\n");
+    sb.append("    newPlanId: ").append(toIndentedString(newPlanId)).append("\n");
+    sb.append("    chargeAmount: ").append(toIndentedString(chargeAmount)).append("\n");
     sb.append("    signature: ").append(toIndentedString(signature)).append("\n");
     sb.append("    deadline: ").append(toIndentedString(deadline)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -272,14 +297,19 @@ public class PaymentUpdateAmountSubscriptionActionData {
     openapiFields = new HashSet<String>();
     openapiFields.add("action_type");
     openapiFields.add("subscription_id");
+    openapiFields.add("new_plan_id");
+    openapiFields.add("charge_amount");
     openapiFields.add("signature");
     openapiFields.add("deadline");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("new_plan_id");
     openapiRequiredFields.add("action_type");
     openapiRequiredFields.add("subscription_id");
+    openapiRequiredFields.add("new_plan_id");
+    openapiRequiredFields.add("charge_amount");
+    openapiRequiredFields.add("signature");
+    openapiRequiredFields.add("deadline");
   }
 
  /**
@@ -302,15 +332,18 @@ public class PaymentUpdateAmountSubscriptionActionData {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("new_plan_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `new_plan_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("new_plan_id").toString()));
-      }
       // validate the required field `action_type`
       PaymentSubscriptionActionType.validateJsonElement(jsonObj.get("action_type"));
       if (!jsonObj.get("subscription_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `subscription_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("subscription_id").toString()));
       }
-      if ((jsonObj.get("signature") != null && !jsonObj.get("signature").isJsonNull()) && !jsonObj.get("signature").isJsonPrimitive()) {
+      if (!jsonObj.get("new_plan_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `new_plan_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("new_plan_id").toString()));
+      }
+      if (!jsonObj.get("charge_amount").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `charge_amount` to be a primitive type in the JSON string but got `%s`", jsonObj.get("charge_amount").toString()));
+      }
+      if (!jsonObj.get("signature").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `signature` to be a primitive type in the JSON string but got `%s`", jsonObj.get("signature").toString()));
       }
   }

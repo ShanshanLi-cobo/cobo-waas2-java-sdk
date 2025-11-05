@@ -11,5 +11,7 @@
 
 * `STELLAR_CONTRACT` (value: `"STELLAR_Contract"`)
 
+* `TRON_CONTRACT` (value: `"TRON_Contract"`)
+
 
 

@@ -12,6 +12,7 @@
 package com.cobo.waas2.model;
 
 import java.util.Objects;
+import com.cobo.waas2.model.AutoFuelType;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -65,6 +66,10 @@ public class FeeStationCheckFeeStationUsage {
   @SerializedName(SERIALIZED_NAME_TOKEN_ID)
   private String tokenId;
 
+  public static final String SERIALIZED_NAME_FEE_TOKEN_ID = "fee_token_id";
+  @SerializedName(SERIALIZED_NAME_FEE_TOKEN_ID)
+  private String feeTokenId;
+
   public static final String SERIALIZED_NAME_ESTIMATED_FEE_AMOUNT = "estimated_fee_amount";
   @SerializedName(SERIALIZED_NAME_ESTIMATED_FEE_AMOUNT)
   private String estimatedFeeAmount;
@@ -76,6 +81,10 @@ public class FeeStationCheckFeeStationUsage {
   public static final String SERIALIZED_NAME_FROM_WALLET_ID = "from_wallet_id";
   @SerializedName(SERIALIZED_NAME_FROM_WALLET_ID)
   private UUID fromWalletId;
+
+  public static final String SERIALIZED_NAME_AUTO_FUEL = "auto_fuel";
+  @SerializedName(SERIALIZED_NAME_AUTO_FUEL)
+  private AutoFuelType autoFuel;
 
   public FeeStationCheckFeeStationUsage() {
   }
@@ -105,10 +114,10 @@ public class FeeStationCheckFeeStationUsage {
   }
 
    /**
-   * The amount of tokens to be transferred in this request.
+   * Applicable to transfer requests only. The amount of tokens to be transferred in this request.
    * @return amount
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getAmount() {
     return amount;
   }
@@ -124,16 +133,35 @@ public class FeeStationCheckFeeStationUsage {
   }
 
    /**
-   * The token ID of the transferred token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-tokens).
+   * Applicable to transfer requests only. The token ID of the asset to be transferred.   You can retrieve available token IDs by calling   [List enabled tokens](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-tokens). 
    * @return tokenId
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getTokenId() {
     return tokenId;
   }
 
   public void setTokenId(String tokenId) {
     this.tokenId = tokenId;
+  }
+
+
+  public FeeStationCheckFeeStationUsage feeTokenId(String feeTokenId) {
+    this.feeTokenId = feeTokenId;
+    return this;
+  }
+
+   /**
+   * The token ID used to pay the gas fee for the main transaction. You can retrieve available token IDs by calling [List enabled tokens](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-tokens).
+   * @return feeTokenId
+  **/
+  @javax.annotation.Nullable
+  public String getFeeTokenId() {
+    return feeTokenId;
+  }
+
+  public void setFeeTokenId(String feeTokenId) {
+    this.feeTokenId = feeTokenId;
   }
 
 
@@ -191,6 +219,25 @@ public class FeeStationCheckFeeStationUsage {
 
   public void setFromWalletId(UUID fromWalletId) {
     this.fromWalletId = fromWalletId;
+  }
+
+
+  public FeeStationCheckFeeStationUsage autoFuel(AutoFuelType autoFuel) {
+    this.autoFuel = autoFuel;
+    return this;
+  }
+
+   /**
+   * Get autoFuel
+   * @return autoFuel
+  **/
+  @javax.annotation.Nullable
+  public AutoFuelType getAutoFuel() {
+    return autoFuel;
+  }
+
+  public void setAutoFuel(AutoFuelType autoFuel) {
+    this.autoFuel = autoFuel;
   }
 
   /**
@@ -251,15 +298,17 @@ public class FeeStationCheckFeeStationUsage {
     return Objects.equals(this.requestId, feeStationCheckFeeStationUsage.requestId) &&
         Objects.equals(this.amount, feeStationCheckFeeStationUsage.amount) &&
         Objects.equals(this.tokenId, feeStationCheckFeeStationUsage.tokenId) &&
+        Objects.equals(this.feeTokenId, feeStationCheckFeeStationUsage.feeTokenId) &&
         Objects.equals(this.estimatedFeeAmount, feeStationCheckFeeStationUsage.estimatedFeeAmount) &&
         Objects.equals(this.fromAddress, feeStationCheckFeeStationUsage.fromAddress) &&
-        Objects.equals(this.fromWalletId, feeStationCheckFeeStationUsage.fromWalletId)&&
+        Objects.equals(this.fromWalletId, feeStationCheckFeeStationUsage.fromWalletId) &&
+        Objects.equals(this.autoFuel, feeStationCheckFeeStationUsage.autoFuel)&&
         Objects.equals(this.additionalProperties, feeStationCheckFeeStationUsage.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(requestId, amount, tokenId, estimatedFeeAmount, fromAddress, fromWalletId, additionalProperties);
+    return Objects.hash(requestId, amount, tokenId, feeTokenId, estimatedFeeAmount, fromAddress, fromWalletId, autoFuel, additionalProperties);
   }
 
   @Override
@@ -269,9 +318,11 @@ public class FeeStationCheckFeeStationUsage {
     sb.append("    requestId: ").append(toIndentedString(requestId)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("    tokenId: ").append(toIndentedString(tokenId)).append("\n");
+    sb.append("    feeTokenId: ").append(toIndentedString(feeTokenId)).append("\n");
     sb.append("    estimatedFeeAmount: ").append(toIndentedString(estimatedFeeAmount)).append("\n");
     sb.append("    fromAddress: ").append(toIndentedString(fromAddress)).append("\n");
     sb.append("    fromWalletId: ").append(toIndentedString(fromWalletId)).append("\n");
+    sb.append("    autoFuel: ").append(toIndentedString(autoFuel)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -298,15 +349,15 @@ public class FeeStationCheckFeeStationUsage {
     openapiFields.add("request_id");
     openapiFields.add("amount");
     openapiFields.add("token_id");
+    openapiFields.add("fee_token_id");
     openapiFields.add("estimated_fee_amount");
     openapiFields.add("from_address");
     openapiFields.add("from_wallet_id");
+    openapiFields.add("auto_fuel");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("request_id");
-    openapiRequiredFields.add("amount");
-    openapiRequiredFields.add("token_id");
     openapiRequiredFields.add("estimated_fee_amount");
     openapiRequiredFields.add("from_address");
     openapiRequiredFields.add("from_wallet_id");
@@ -335,11 +386,14 @@ public class FeeStationCheckFeeStationUsage {
       if (!jsonObj.get("request_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `request_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("request_id").toString()));
       }
-      if (!jsonObj.get("amount").isJsonPrimitive()) {
+      if ((jsonObj.get("amount") != null && !jsonObj.get("amount").isJsonNull()) && !jsonObj.get("amount").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `amount` to be a primitive type in the JSON string but got `%s`", jsonObj.get("amount").toString()));
       }
-      if (!jsonObj.get("token_id").isJsonPrimitive()) {
+      if ((jsonObj.get("token_id") != null && !jsonObj.get("token_id").isJsonNull()) && !jsonObj.get("token_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `token_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("token_id").toString()));
+      }
+      if ((jsonObj.get("fee_token_id") != null && !jsonObj.get("fee_token_id").isJsonNull()) && !jsonObj.get("fee_token_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `fee_token_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fee_token_id").toString()));
       }
       if (!jsonObj.get("estimated_fee_amount").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `estimated_fee_amount` to be a primitive type in the JSON string but got `%s`", jsonObj.get("estimated_fee_amount").toString()));
@@ -349,6 +403,10 @@ public class FeeStationCheckFeeStationUsage {
       }
       if (!jsonObj.get("from_wallet_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `from_wallet_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("from_wallet_id").toString()));
+      }
+      // validate the optional field `auto_fuel`
+      if (jsonObj.get("auto_fuel") != null && !jsonObj.get("auto_fuel").isJsonNull()) {
+        AutoFuelType.validateJsonElement(jsonObj.get("auto_fuel"));
       }
   }
 

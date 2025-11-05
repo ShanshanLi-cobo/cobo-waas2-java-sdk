@@ -122,11 +122,11 @@ public class SwapActivityDetail {
 
   public static final String SERIALIZED_NAME_CREATED_TIMESTAMP = "created_timestamp";
   @SerializedName(SERIALIZED_NAME_CREATED_TIMESTAMP)
-  private Integer createdTimestamp;
+  private Long createdTimestamp;
 
   public static final String SERIALIZED_NAME_UPDATED_TIMESTAMP = "updated_timestamp";
   @SerializedName(SERIALIZED_NAME_UPDATED_TIMESTAMP)
-  private Integer updatedTimestamp;
+  private Long updatedTimestamp;
 
   public static final String SERIALIZED_NAME_NETWORK_FEE = "network_fee";
   @SerializedName(SERIALIZED_NAME_NETWORK_FEE)
@@ -421,7 +421,7 @@ public class SwapActivityDetail {
   }
 
 
-  public SwapActivityDetail createdTimestamp(Integer createdTimestamp) {
+  public SwapActivityDetail createdTimestamp(Long createdTimestamp) {
     this.createdTimestamp = createdTimestamp;
     return this;
   }
@@ -431,16 +431,16 @@ public class SwapActivityDetail {
    * @return createdTimestamp
   **/
   @javax.annotation.Nullable
-  public Integer getCreatedTimestamp() {
+  public Long getCreatedTimestamp() {
     return createdTimestamp;
   }
 
-  public void setCreatedTimestamp(Integer createdTimestamp) {
+  public void setCreatedTimestamp(Long createdTimestamp) {
     this.createdTimestamp = createdTimestamp;
   }
 
 
-  public SwapActivityDetail updatedTimestamp(Integer updatedTimestamp) {
+  public SwapActivityDetail updatedTimestamp(Long updatedTimestamp) {
     this.updatedTimestamp = updatedTimestamp;
     return this;
   }
@@ -450,11 +450,11 @@ public class SwapActivityDetail {
    * @return updatedTimestamp
   **/
   @javax.annotation.Nullable
-  public Integer getUpdatedTimestamp() {
+  public Long getUpdatedTimestamp() {
     return updatedTimestamp;
   }
 
-  public void setUpdatedTimestamp(Integer updatedTimestamp) {
+  public void setUpdatedTimestamp(Long updatedTimestamp) {
     this.updatedTimestamp = updatedTimestamp;
   }
 

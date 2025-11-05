@@ -15,6 +15,7 @@ import com.cobo.waas2.model.TokenizationOperationType;
 import com.cobo.waas2.model.TokenizationPermissionAction;
 import com.cobo.waas2.model.TokenizationTokenOperationSource;
 import com.cobo.waas2.model.TokenizationTokenPermissionType;
+import com.cobo.waas2.model.TokenizationUpdateAddressPermissions;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -71,6 +72,14 @@ public class TokenizationUpdatePermissionsEstimateFeeParamsTest {
     @Test
     public void permissionsTest() {
         // TODO: test permissions
+    }
+
+    /**
+     * Test the property 'addresses'
+     */
+    @Test
+    public void addressesTest() {
+        // TODO: test addresses
     }
 
     /**

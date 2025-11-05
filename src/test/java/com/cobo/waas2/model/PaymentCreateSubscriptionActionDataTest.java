@@ -61,11 +61,11 @@ public class PaymentCreateSubscriptionActionDataTest {
     }
 
     /**
-     * Test the property 'discount'
+     * Test the property 'chargeAmount'
      */
     @Test
-    public void discountTest() {
-        // TODO: test discount
+    public void chargeAmountTest() {
+        // TODO: test chargeAmount
     }
 
 }

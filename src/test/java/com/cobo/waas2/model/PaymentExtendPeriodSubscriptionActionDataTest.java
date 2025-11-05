@@ -68,4 +68,12 @@ public class PaymentExtendPeriodSubscriptionActionDataTest {
         // TODO: test deadline
     }
 
+    /**
+     * Test the property 'periods'
+     */
+    @Test
+    public void periodsTest() {
+        // TODO: test periods
+    }
+
 }

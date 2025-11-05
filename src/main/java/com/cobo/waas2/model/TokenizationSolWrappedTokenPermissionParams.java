@@ -60,7 +60,15 @@ public class TokenizationSolWrappedTokenPermissionParams {
 
   public static final String SERIALIZED_NAME_PAUSER = "pauser";
   @SerializedName(SERIALIZED_NAME_PAUSER)
-  private List<String> pauser = new ArrayList<>();
+  private String pauser;
+
+  public static final String SERIALIZED_NAME_FREEZER = "freezer";
+  @SerializedName(SERIALIZED_NAME_FREEZER)
+  private String freezer;
+
+  public static final String SERIALIZED_NAME_UPDATER = "updater";
+  @SerializedName(SERIALIZED_NAME_UPDATER)
+  private String updater;
 
   public TokenizationSolWrappedTokenPermissionParams() {
   }
@@ -92,30 +100,60 @@ public class TokenizationSolWrappedTokenPermissionParams {
   }
 
 
-  public TokenizationSolWrappedTokenPermissionParams pauser(List<String> pauser) {
+  public TokenizationSolWrappedTokenPermissionParams pauser(String pauser) {
     this.pauser = pauser;
-    return this;
-  }
-
-  public TokenizationSolWrappedTokenPermissionParams addPauserItem(String pauserItem) {
-    if (this.pauser == null) {
-      this.pauser = new ArrayList<>();
-    }
-    this.pauser.add(pauserItem);
     return this;
   }
 
    /**
-   * List of Solana wallet addresses that can pause/unpause the contract. Multiple addresses can be assigned this role.
+   * Solana wallet address that acts as a pauser authority for the token. This authority can pause token transfers.
    * @return pauser
   **/
   @javax.annotation.Nullable
-  public List<String> getPauser() {
+  public String getPauser() {
     return pauser;
   }
 
-  public void setPauser(List<String> pauser) {
+  public void setPauser(String pauser) {
     this.pauser = pauser;
+  }
+
+
+  public TokenizationSolWrappedTokenPermissionParams freezer(String freezer) {
+    this.freezer = freezer;
+    return this;
+  }
+
+   /**
+   * Solana wallet address that acts as a freezer authority for the token. This authority can freeze token accounts.
+   * @return freezer
+  **/
+  @javax.annotation.Nullable
+  public String getFreezer() {
+    return freezer;
+  }
+
+  public void setFreezer(String freezer) {
+    this.freezer = freezer;
+  }
+
+
+  public TokenizationSolWrappedTokenPermissionParams updater(String updater) {
+    this.updater = updater;
+    return this;
+  }
+
+   /**
+   * Solana wallet address that acts as an updater authority for the token. This authority can update token metadata.
+   * @return updater
+  **/
+  @javax.annotation.Nullable
+  public String getUpdater() {
+    return updater;
+  }
+
+  public void setUpdater(String updater) {
+    this.updater = updater;
   }
 
   /**
@@ -174,13 +212,15 @@ public class TokenizationSolWrappedTokenPermissionParams {
     }
     TokenizationSolWrappedTokenPermissionParams tokenizationSolWrappedTokenPermissionParams = (TokenizationSolWrappedTokenPermissionParams) o;
     return Objects.equals(this.wrapper, tokenizationSolWrappedTokenPermissionParams.wrapper) &&
-        Objects.equals(this.pauser, tokenizationSolWrappedTokenPermissionParams.pauser)&&
+        Objects.equals(this.pauser, tokenizationSolWrappedTokenPermissionParams.pauser) &&
+        Objects.equals(this.freezer, tokenizationSolWrappedTokenPermissionParams.freezer) &&
+        Objects.equals(this.updater, tokenizationSolWrappedTokenPermissionParams.updater)&&
         Objects.equals(this.additionalProperties, tokenizationSolWrappedTokenPermissionParams.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(wrapper, pauser, additionalProperties);
+    return Objects.hash(wrapper, pauser, freezer, updater, additionalProperties);
   }
 
   @Override
@@ -189,6 +229,8 @@ public class TokenizationSolWrappedTokenPermissionParams {
     sb.append("class TokenizationSolWrappedTokenPermissionParams {\n");
     sb.append("    wrapper: ").append(toIndentedString(wrapper)).append("\n");
     sb.append("    pauser: ").append(toIndentedString(pauser)).append("\n");
+    sb.append("    freezer: ").append(toIndentedString(freezer)).append("\n");
+    sb.append("    updater: ").append(toIndentedString(updater)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -214,6 +256,8 @@ public class TokenizationSolWrappedTokenPermissionParams {
     openapiFields = new HashSet<String>();
     openapiFields.add("wrapper");
     openapiFields.add("pauser");
+    openapiFields.add("freezer");
+    openapiFields.add("updater");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -236,9 +280,14 @@ public class TokenizationSolWrappedTokenPermissionParams {
       if (jsonObj.get("wrapper") != null && !jsonObj.get("wrapper").isJsonNull() && !jsonObj.get("wrapper").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `wrapper` to be an array in the JSON string but got `%s`", jsonObj.get("wrapper").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("pauser") != null && !jsonObj.get("pauser").isJsonNull() && !jsonObj.get("pauser").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `pauser` to be an array in the JSON string but got `%s`", jsonObj.get("pauser").toString()));
+      if ((jsonObj.get("pauser") != null && !jsonObj.get("pauser").isJsonNull()) && !jsonObj.get("pauser").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `pauser` to be a primitive type in the JSON string but got `%s`", jsonObj.get("pauser").toString()));
+      }
+      if ((jsonObj.get("freezer") != null && !jsonObj.get("freezer").isJsonNull()) && !jsonObj.get("freezer").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `freezer` to be a primitive type in the JSON string but got `%s`", jsonObj.get("freezer").toString()));
+      }
+      if ((jsonObj.get("updater") != null && !jsonObj.get("updater").isJsonNull()) && !jsonObj.get("updater").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `updater` to be a primitive type in the JSON string but got `%s`", jsonObj.get("updater").toString()));
       }
   }
 

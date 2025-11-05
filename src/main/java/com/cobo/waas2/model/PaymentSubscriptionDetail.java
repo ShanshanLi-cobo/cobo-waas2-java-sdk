@@ -58,14 +58,6 @@ import com.cobo.waas2.JSON;
     comments = "Generator version: 7.6.0"
 )
 public class PaymentSubscriptionDetail {
-  public static final String SERIALIZED_NAME_ACTIONS = "actions";
-  @SerializedName(SERIALIZED_NAME_ACTIONS)
-  private List<PaymentSubscriptionAction> actions = new ArrayList<>();
-
-  public static final String SERIALIZED_NAME_TRANSACTIONS = "transactions";
-  @SerializedName(SERIALIZED_NAME_TRANSACTIONS)
-  private List<Transaction> transactions = new ArrayList<>();
-
   public static final String SERIALIZED_NAME_PLAN_ID = "plan_id";
   @SerializedName(SERIALIZED_NAME_PLAN_ID)
   private String planId;
@@ -90,9 +82,9 @@ public class PaymentSubscriptionDetail {
   @SerializedName(SERIALIZED_NAME_TOKEN_ID)
   private String tokenId;
 
-  public static final String SERIALIZED_NAME_AMOUNT = "amount";
-  @SerializedName(SERIALIZED_NAME_AMOUNT)
-  private String amount;
+  public static final String SERIALIZED_NAME_CHARGE_AMOUNT = "charge_amount";
+  @SerializedName(SERIALIZED_NAME_CHARGE_AMOUNT)
+  private String chargeAmount;
 
   public static final String SERIALIZED_NAME_START_TIME = "start_time";
   @SerializedName(SERIALIZED_NAME_START_TIME)
@@ -130,62 +122,16 @@ public class PaymentSubscriptionDetail {
   @SerializedName(SERIALIZED_NAME_UPDATED_TIMESTAMP)
   private Integer updatedTimestamp;
 
+  public static final String SERIALIZED_NAME_ACTIONS = "actions";
+  @SerializedName(SERIALIZED_NAME_ACTIONS)
+  private List<PaymentSubscriptionAction> actions = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_TRANSACTIONS = "transactions";
+  @SerializedName(SERIALIZED_NAME_TRANSACTIONS)
+  private List<Transaction> transactions = new ArrayList<>();
+
   public PaymentSubscriptionDetail() {
   }
-
-  public PaymentSubscriptionDetail actions(List<PaymentSubscriptionAction> actions) {
-    this.actions = actions;
-    return this;
-  }
-
-  public PaymentSubscriptionDetail addActionsItem(PaymentSubscriptionAction actionsItem) {
-    if (this.actions == null) {
-      this.actions = new ArrayList<>();
-    }
-    this.actions.add(actionsItem);
-    return this;
-  }
-
-   /**
-   * An array of subscription actions.
-   * @return actions
-  **/
-  @javax.annotation.Nullable
-  public List<PaymentSubscriptionAction> getActions() {
-    return actions;
-  }
-
-  public void setActions(List<PaymentSubscriptionAction> actions) {
-    this.actions = actions;
-  }
-
-
-  public PaymentSubscriptionDetail transactions(List<Transaction> transactions) {
-    this.transactions = transactions;
-    return this;
-  }
-
-  public PaymentSubscriptionDetail addTransactionsItem(Transaction transactionsItem) {
-    if (this.transactions == null) {
-      this.transactions = new ArrayList<>();
-    }
-    this.transactions.add(transactionsItem);
-    return this;
-  }
-
-   /**
-   * An array of subscription transactions.
-   * @return transactions
-  **/
-  @javax.annotation.Nullable
-  public List<Transaction> getTransactions() {
-    return transactions;
-  }
-
-  public void setTransactions(List<Transaction> transactions) {
-    this.transactions = transactions;
-  }
-
 
   public PaymentSubscriptionDetail planId(String planId) {
     this.planId = planId;
@@ -301,22 +247,22 @@ public class PaymentSubscriptionDetail {
   }
 
 
-  public PaymentSubscriptionDetail amount(String amount) {
-    this.amount = amount;
+  public PaymentSubscriptionDetail chargeAmount(String chargeAmount) {
+    this.chargeAmount = chargeAmount;
     return this;
   }
 
    /**
-   * The amount in subscription.
-   * @return amount
+   * The charge amount in subscription.
+   * @return chargeAmount
   **/
-  @javax.annotation.Nonnull
-  public String getAmount() {
-    return amount;
+  @javax.annotation.Nullable
+  public String getChargeAmount() {
+    return chargeAmount;
   }
 
-  public void setAmount(String amount) {
-    this.amount = amount;
+  public void setChargeAmount(String chargeAmount) {
+    this.chargeAmount = chargeAmount;
   }
 
 
@@ -490,6 +436,60 @@ public class PaymentSubscriptionDetail {
     this.updatedTimestamp = updatedTimestamp;
   }
 
+
+  public PaymentSubscriptionDetail actions(List<PaymentSubscriptionAction> actions) {
+    this.actions = actions;
+    return this;
+  }
+
+  public PaymentSubscriptionDetail addActionsItem(PaymentSubscriptionAction actionsItem) {
+    if (this.actions == null) {
+      this.actions = new ArrayList<>();
+    }
+    this.actions.add(actionsItem);
+    return this;
+  }
+
+   /**
+   * An array of subscription actions.
+   * @return actions
+  **/
+  @javax.annotation.Nullable
+  public List<PaymentSubscriptionAction> getActions() {
+    return actions;
+  }
+
+  public void setActions(List<PaymentSubscriptionAction> actions) {
+    this.actions = actions;
+  }
+
+
+  public PaymentSubscriptionDetail transactions(List<Transaction> transactions) {
+    this.transactions = transactions;
+    return this;
+  }
+
+  public PaymentSubscriptionDetail addTransactionsItem(Transaction transactionsItem) {
+    if (this.transactions == null) {
+      this.transactions = new ArrayList<>();
+    }
+    this.transactions.add(transactionsItem);
+    return this;
+  }
+
+   /**
+   * An array of subscription transactions.
+   * @return transactions
+  **/
+  @javax.annotation.Nullable
+  public List<Transaction> getTransactions() {
+    return transactions;
+  }
+
+  public void setTransactions(List<Transaction> transactions) {
+    this.transactions = transactions;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -545,15 +545,13 @@ public class PaymentSubscriptionDetail {
       return false;
     }
     PaymentSubscriptionDetail paymentSubscriptionDetail = (PaymentSubscriptionDetail) o;
-    return Objects.equals(this.actions, paymentSubscriptionDetail.actions) &&
-        Objects.equals(this.transactions, paymentSubscriptionDetail.transactions) &&
-        Objects.equals(this.planId, paymentSubscriptionDetail.planId) &&
+    return Objects.equals(this.planId, paymentSubscriptionDetail.planId) &&
         Objects.equals(this.subscriptionId, paymentSubscriptionDetail.subscriptionId) &&
         Objects.equals(this.merchantId, paymentSubscriptionDetail.merchantId) &&
         Objects.equals(this.merchantAddress, paymentSubscriptionDetail.merchantAddress) &&
         Objects.equals(this.userAddress, paymentSubscriptionDetail.userAddress) &&
         Objects.equals(this.tokenId, paymentSubscriptionDetail.tokenId) &&
-        Objects.equals(this.amount, paymentSubscriptionDetail.amount) &&
+        Objects.equals(this.chargeAmount, paymentSubscriptionDetail.chargeAmount) &&
         Objects.equals(this.startTime, paymentSubscriptionDetail.startTime) &&
         Objects.equals(this.expirationTime, paymentSubscriptionDetail.expirationTime) &&
         Objects.equals(this.chargesMade, paymentSubscriptionDetail.chargesMade) &&
@@ -562,28 +560,28 @@ public class PaymentSubscriptionDetail {
         Objects.equals(this.interval, paymentSubscriptionDetail.interval) &&
         Objects.equals(this.status, paymentSubscriptionDetail.status) &&
         Objects.equals(this.createdTimestamp, paymentSubscriptionDetail.createdTimestamp) &&
-        Objects.equals(this.updatedTimestamp, paymentSubscriptionDetail.updatedTimestamp)&&
+        Objects.equals(this.updatedTimestamp, paymentSubscriptionDetail.updatedTimestamp) &&
+        Objects.equals(this.actions, paymentSubscriptionDetail.actions) &&
+        Objects.equals(this.transactions, paymentSubscriptionDetail.transactions)&&
         Objects.equals(this.additionalProperties, paymentSubscriptionDetail.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(actions, transactions, planId, subscriptionId, merchantId, merchantAddress, userAddress, tokenId, amount, startTime, expirationTime, chargesMade, periodType, periods, interval, status, createdTimestamp, updatedTimestamp, additionalProperties);
+    return Objects.hash(planId, subscriptionId, merchantId, merchantAddress, userAddress, tokenId, chargeAmount, startTime, expirationTime, chargesMade, periodType, periods, interval, status, createdTimestamp, updatedTimestamp, actions, transactions, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PaymentSubscriptionDetail {\n");
-    sb.append("    actions: ").append(toIndentedString(actions)).append("\n");
-    sb.append("    transactions: ").append(toIndentedString(transactions)).append("\n");
     sb.append("    planId: ").append(toIndentedString(planId)).append("\n");
     sb.append("    subscriptionId: ").append(toIndentedString(subscriptionId)).append("\n");
     sb.append("    merchantId: ").append(toIndentedString(merchantId)).append("\n");
     sb.append("    merchantAddress: ").append(toIndentedString(merchantAddress)).append("\n");
     sb.append("    userAddress: ").append(toIndentedString(userAddress)).append("\n");
     sb.append("    tokenId: ").append(toIndentedString(tokenId)).append("\n");
-    sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
+    sb.append("    chargeAmount: ").append(toIndentedString(chargeAmount)).append("\n");
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    expirationTime: ").append(toIndentedString(expirationTime)).append("\n");
     sb.append("    chargesMade: ").append(toIndentedString(chargesMade)).append("\n");
@@ -593,6 +591,8 @@ public class PaymentSubscriptionDetail {
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    createdTimestamp: ").append(toIndentedString(createdTimestamp)).append("\n");
     sb.append("    updatedTimestamp: ").append(toIndentedString(updatedTimestamp)).append("\n");
+    sb.append("    actions: ").append(toIndentedString(actions)).append("\n");
+    sb.append("    transactions: ").append(toIndentedString(transactions)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -622,7 +622,7 @@ public class PaymentSubscriptionDetail {
     openapiFields.add("merchant_address");
     openapiFields.add("user_address");
     openapiFields.add("token_id");
-    openapiFields.add("amount");
+    openapiFields.add("charge_amount");
     openapiFields.add("start_time");
     openapiFields.add("expiration_time");
     openapiFields.add("charges_made");
@@ -632,6 +632,8 @@ public class PaymentSubscriptionDetail {
     openapiFields.add("status");
     openapiFields.add("created_timestamp");
     openapiFields.add("updated_timestamp");
+    openapiFields.add("actions");
+    openapiFields.add("transactions");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -641,7 +643,6 @@ public class PaymentSubscriptionDetail {
     openapiRequiredFields.add("merchant_address");
     openapiRequiredFields.add("user_address");
     openapiRequiredFields.add("token_id");
-    openapiRequiredFields.add("amount");
     openapiRequiredFields.add("start_time");
     openapiRequiredFields.add("expiration_time");
     openapiRequiredFields.add("charges_made");
@@ -673,6 +674,31 @@ public class PaymentSubscriptionDetail {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if (!jsonObj.get("plan_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `plan_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("plan_id").toString()));
+      }
+      if (!jsonObj.get("subscription_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `subscription_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("subscription_id").toString()));
+      }
+      if (!jsonObj.get("merchant_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `merchant_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("merchant_id").toString()));
+      }
+      if (!jsonObj.get("merchant_address").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `merchant_address` to be a primitive type in the JSON string but got `%s`", jsonObj.get("merchant_address").toString()));
+      }
+      if (!jsonObj.get("user_address").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `user_address` to be a primitive type in the JSON string but got `%s`", jsonObj.get("user_address").toString()));
+      }
+      if (!jsonObj.get("token_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `token_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("token_id").toString()));
+      }
+      if ((jsonObj.get("charge_amount") != null && !jsonObj.get("charge_amount").isJsonNull()) && !jsonObj.get("charge_amount").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `charge_amount` to be a primitive type in the JSON string but got `%s`", jsonObj.get("charge_amount").toString()));
+      }
+      // validate the required field `period_type`
+      PaymentSubscriptionPeriodType.validateJsonElement(jsonObj.get("period_type"));
+      // validate the required field `status`
+      PaymentSubscriptionStatus.validateJsonElement(jsonObj.get("status"));
       if (jsonObj.get("actions") != null && !jsonObj.get("actions").isJsonNull()) {
         JsonArray jsonArrayactions = jsonObj.getAsJsonArray("actions");
         if (jsonArrayactions != null) {
@@ -701,31 +727,6 @@ public class PaymentSubscriptionDetail {
           };
         }
       }
-      if (!jsonObj.get("plan_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `plan_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("plan_id").toString()));
-      }
-      if (!jsonObj.get("subscription_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `subscription_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("subscription_id").toString()));
-      }
-      if (!jsonObj.get("merchant_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `merchant_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("merchant_id").toString()));
-      }
-      if (!jsonObj.get("merchant_address").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `merchant_address` to be a primitive type in the JSON string but got `%s`", jsonObj.get("merchant_address").toString()));
-      }
-      if (!jsonObj.get("user_address").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `user_address` to be a primitive type in the JSON string but got `%s`", jsonObj.get("user_address").toString()));
-      }
-      if (!jsonObj.get("token_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `token_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("token_id").toString()));
-      }
-      if (!jsonObj.get("amount").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `amount` to be a primitive type in the JSON string but got `%s`", jsonObj.get("amount").toString()));
-      }
-      // validate the required field `period_type`
-      PaymentSubscriptionPeriodType.validateJsonElement(jsonObj.get("period_type"));
-      // validate the required field `status`
-      PaymentSubscriptionStatus.validateJsonElement(jsonObj.get("status"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
