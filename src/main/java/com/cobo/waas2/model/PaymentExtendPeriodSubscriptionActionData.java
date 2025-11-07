@@ -53,10 +53,6 @@ import com.cobo.waas2.JSON;
     comments = "Generator version: 7.6.0"
 )
 public class PaymentExtendPeriodSubscriptionActionData {
-  public static final String SERIALIZED_NAME_PERIODS = "periods";
-  @SerializedName(SERIALIZED_NAME_PERIODS)
-  private Integer periods;
-
   public static final String SERIALIZED_NAME_ACTION_TYPE = "action_type";
   @SerializedName(SERIALIZED_NAME_ACTION_TYPE)
   private PaymentSubscriptionActionType actionType;
@@ -69,27 +65,16 @@ public class PaymentExtendPeriodSubscriptionActionData {
   @SerializedName(SERIALIZED_NAME_SIGNATURE)
   private String signature;
 
+  public static final String SERIALIZED_NAME_DEADLINE = "deadline";
+  @SerializedName(SERIALIZED_NAME_DEADLINE)
+  private Integer deadline;
+
+  public static final String SERIALIZED_NAME_PERIODS = "periods";
+  @SerializedName(SERIALIZED_NAME_PERIODS)
+  private Integer periods;
+
   public PaymentExtendPeriodSubscriptionActionData() {
   }
-
-  public PaymentExtendPeriodSubscriptionActionData periods(Integer periods) {
-    this.periods = periods;
-    return this;
-  }
-
-   /**
-   * The periods needed updated.
-   * @return periods
-  **/
-  @javax.annotation.Nullable
-  public Integer getPeriods() {
-    return periods;
-  }
-
-  public void setPeriods(Integer periods) {
-    this.periods = periods;
-  }
-
 
   public PaymentExtendPeriodSubscriptionActionData actionType(PaymentSubscriptionActionType actionType) {
     this.actionType = actionType;
@@ -135,7 +120,7 @@ public class PaymentExtendPeriodSubscriptionActionData {
   }
 
    /**
-   * The signature for transaction.
+   * The signature for transaction. charge action is not required.
    * @return signature
   **/
   @javax.annotation.Nonnull
@@ -145,6 +130,44 @@ public class PaymentExtendPeriodSubscriptionActionData {
 
   public void setSignature(String signature) {
     this.signature = signature;
+  }
+
+
+  public PaymentExtendPeriodSubscriptionActionData deadline(Integer deadline) {
+    this.deadline = deadline;
+    return this;
+  }
+
+   /**
+   * The signature deadline for transaction. charge action is not required.
+   * @return deadline
+  **/
+  @javax.annotation.Nonnull
+  public Integer getDeadline() {
+    return deadline;
+  }
+
+  public void setDeadline(Integer deadline) {
+    this.deadline = deadline;
+  }
+
+
+  public PaymentExtendPeriodSubscriptionActionData periods(Integer periods) {
+    this.periods = periods;
+    return this;
+  }
+
+   /**
+   * The periods needed updated.
+   * @return periods
+  **/
+  @javax.annotation.Nonnull
+  public Integer getPeriods() {
+    return periods;
+  }
+
+  public void setPeriods(Integer periods) {
+    this.periods = periods;
   }
 
   /**
@@ -202,26 +225,28 @@ public class PaymentExtendPeriodSubscriptionActionData {
       return false;
     }
     PaymentExtendPeriodSubscriptionActionData paymentExtendPeriodSubscriptionActionData = (PaymentExtendPeriodSubscriptionActionData) o;
-    return Objects.equals(this.periods, paymentExtendPeriodSubscriptionActionData.periods) &&
-        Objects.equals(this.actionType, paymentExtendPeriodSubscriptionActionData.actionType) &&
+    return Objects.equals(this.actionType, paymentExtendPeriodSubscriptionActionData.actionType) &&
         Objects.equals(this.subscriptionId, paymentExtendPeriodSubscriptionActionData.subscriptionId) &&
-        Objects.equals(this.signature, paymentExtendPeriodSubscriptionActionData.signature)&&
+        Objects.equals(this.signature, paymentExtendPeriodSubscriptionActionData.signature) &&
+        Objects.equals(this.deadline, paymentExtendPeriodSubscriptionActionData.deadline) &&
+        Objects.equals(this.periods, paymentExtendPeriodSubscriptionActionData.periods)&&
         Objects.equals(this.additionalProperties, paymentExtendPeriodSubscriptionActionData.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(periods, actionType, subscriptionId, signature, additionalProperties);
+    return Objects.hash(actionType, subscriptionId, signature, deadline, periods, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PaymentExtendPeriodSubscriptionActionData {\n");
-    sb.append("    periods: ").append(toIndentedString(periods)).append("\n");
     sb.append("    actionType: ").append(toIndentedString(actionType)).append("\n");
     sb.append("    subscriptionId: ").append(toIndentedString(subscriptionId)).append("\n");
     sb.append("    signature: ").append(toIndentedString(signature)).append("\n");
+    sb.append("    deadline: ").append(toIndentedString(deadline)).append("\n");
+    sb.append("    periods: ").append(toIndentedString(periods)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -248,12 +273,16 @@ public class PaymentExtendPeriodSubscriptionActionData {
     openapiFields.add("action_type");
     openapiFields.add("subscription_id");
     openapiFields.add("signature");
+    openapiFields.add("deadline");
+    openapiFields.add("periods");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("action_type");
     openapiRequiredFields.add("subscription_id");
     openapiRequiredFields.add("signature");
+    openapiRequiredFields.add("deadline");
+    openapiRequiredFields.add("periods");
   }
 
  /**

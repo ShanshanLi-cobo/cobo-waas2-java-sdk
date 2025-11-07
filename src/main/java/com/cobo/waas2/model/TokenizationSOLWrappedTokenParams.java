@@ -66,13 +66,17 @@ public class TokenizationSOLWrappedTokenParams {
   @SerializedName(SERIALIZED_NAME_SYMBOL)
   private String symbol;
 
-  public static final String SERIALIZED_NAME_PERMISSIONS = "permissions";
-  @SerializedName(SERIALIZED_NAME_PERMISSIONS)
-  private TokenizationSolWrappedTokenPermissionParams permissions;
-
   public static final String SERIALIZED_NAME_UNDERLYING_TOKEN = "underlying_token";
   @SerializedName(SERIALIZED_NAME_UNDERLYING_TOKEN)
   private String underlyingToken;
+
+  public static final String SERIALIZED_NAME_TOKEN_ACCESS_ACTIVATED = "token_access_activated";
+  @SerializedName(SERIALIZED_NAME_TOKEN_ACCESS_ACTIVATED)
+  private Boolean tokenAccessActivated = false;
+
+  public static final String SERIALIZED_NAME_PERMISSIONS = "permissions";
+  @SerializedName(SERIALIZED_NAME_PERMISSIONS)
+  private TokenizationSolWrappedTokenPermissionParams permissions;
 
   public TokenizationSOLWrappedTokenParams() {
   }
@@ -134,25 +138,6 @@ public class TokenizationSOLWrappedTokenParams {
   }
 
 
-  public TokenizationSOLWrappedTokenParams permissions(TokenizationSolWrappedTokenPermissionParams permissions) {
-    this.permissions = permissions;
-    return this;
-  }
-
-   /**
-   * Get permissions
-   * @return permissions
-  **/
-  @javax.annotation.Nullable
-  public TokenizationSolWrappedTokenPermissionParams getPermissions() {
-    return permissions;
-  }
-
-  public void setPermissions(TokenizationSolWrappedTokenPermissionParams permissions) {
-    this.permissions = permissions;
-  }
-
-
   public TokenizationSOLWrappedTokenParams underlyingToken(String underlyingToken) {
     this.underlyingToken = underlyingToken;
     return this;
@@ -169,6 +154,44 @@ public class TokenizationSOLWrappedTokenParams {
 
   public void setUnderlyingToken(String underlyingToken) {
     this.underlyingToken = underlyingToken;
+  }
+
+
+  public TokenizationSOLWrappedTokenParams tokenAccessActivated(Boolean tokenAccessActivated) {
+    this.tokenAccessActivated = tokenAccessActivated;
+    return this;
+  }
+
+   /**
+   * Whether the allowlist feature is activated for the token. When activated, only addresses in the allowlist can perform token operations.
+   * @return tokenAccessActivated
+  **/
+  @javax.annotation.Nullable
+  public Boolean getTokenAccessActivated() {
+    return tokenAccessActivated;
+  }
+
+  public void setTokenAccessActivated(Boolean tokenAccessActivated) {
+    this.tokenAccessActivated = tokenAccessActivated;
+  }
+
+
+  public TokenizationSOLWrappedTokenParams permissions(TokenizationSolWrappedTokenPermissionParams permissions) {
+    this.permissions = permissions;
+    return this;
+  }
+
+   /**
+   * Get permissions
+   * @return permissions
+  **/
+  @javax.annotation.Nullable
+  public TokenizationSolWrappedTokenPermissionParams getPermissions() {
+    return permissions;
+  }
+
+  public void setPermissions(TokenizationSolWrappedTokenPermissionParams permissions) {
+    this.permissions = permissions;
   }
 
   /**
@@ -229,14 +252,15 @@ public class TokenizationSOLWrappedTokenParams {
     return Objects.equals(this.standard, tokenizationSOLWrappedTokenParams.standard) &&
         Objects.equals(this.name, tokenizationSOLWrappedTokenParams.name) &&
         Objects.equals(this.symbol, tokenizationSOLWrappedTokenParams.symbol) &&
-        Objects.equals(this.permissions, tokenizationSOLWrappedTokenParams.permissions) &&
-        Objects.equals(this.underlyingToken, tokenizationSOLWrappedTokenParams.underlyingToken)&&
+        Objects.equals(this.underlyingToken, tokenizationSOLWrappedTokenParams.underlyingToken) &&
+        Objects.equals(this.tokenAccessActivated, tokenizationSOLWrappedTokenParams.tokenAccessActivated) &&
+        Objects.equals(this.permissions, tokenizationSOLWrappedTokenParams.permissions)&&
         Objects.equals(this.additionalProperties, tokenizationSOLWrappedTokenParams.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(standard, name, symbol, permissions, underlyingToken, additionalProperties);
+    return Objects.hash(standard, name, symbol, underlyingToken, tokenAccessActivated, permissions, additionalProperties);
   }
 
   @Override
@@ -246,8 +270,9 @@ public class TokenizationSOLWrappedTokenParams {
     sb.append("    standard: ").append(toIndentedString(standard)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    symbol: ").append(toIndentedString(symbol)).append("\n");
-    sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
     sb.append("    underlyingToken: ").append(toIndentedString(underlyingToken)).append("\n");
+    sb.append("    tokenAccessActivated: ").append(toIndentedString(tokenAccessActivated)).append("\n");
+    sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -274,8 +299,9 @@ public class TokenizationSOLWrappedTokenParams {
     openapiFields.add("standard");
     openapiFields.add("name");
     openapiFields.add("symbol");
-    openapiFields.add("permissions");
     openapiFields.add("underlying_token");
+    openapiFields.add("token_access_activated");
+    openapiFields.add("permissions");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -313,12 +339,12 @@ public class TokenizationSOLWrappedTokenParams {
       if (!jsonObj.get("symbol").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `symbol` to be a primitive type in the JSON string but got `%s`", jsonObj.get("symbol").toString()));
       }
+      if (!jsonObj.get("underlying_token").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `underlying_token` to be a primitive type in the JSON string but got `%s`", jsonObj.get("underlying_token").toString()));
+      }
       // validate the optional field `permissions`
       if (jsonObj.get("permissions") != null && !jsonObj.get("permissions").isJsonNull()) {
         TokenizationSolWrappedTokenPermissionParams.validateJsonElement(jsonObj.get("permissions"));
-      }
-      if (!jsonObj.get("underlying_token").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `underlying_token` to be a primitive type in the JSON string but got `%s`", jsonObj.get("underlying_token").toString()));
       }
   }
 

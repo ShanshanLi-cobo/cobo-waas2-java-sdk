@@ -61,17 +61,13 @@ public class PaymentCreateSubscriptionActionData {
   @SerializedName(SERIALIZED_NAME_USER_ADDRESS)
   private String userAddress;
 
-  public static final String SERIALIZED_NAME_AMOUNT = "amount";
-  @SerializedName(SERIALIZED_NAME_AMOUNT)
-  private String amount;
-
   public static final String SERIALIZED_NAME_TOKEN_ID = "token_id";
   @SerializedName(SERIALIZED_NAME_TOKEN_ID)
   private String tokenId;
 
-  public static final String SERIALIZED_NAME_DISCOUNT_RATE = "discount_rate";
-  @SerializedName(SERIALIZED_NAME_DISCOUNT_RATE)
-  private Integer discountRate;
+  public static final String SERIALIZED_NAME_CHARGE_AMOUNT = "charge_amount";
+  @SerializedName(SERIALIZED_NAME_CHARGE_AMOUNT)
+  private String chargeAmount;
 
   public PaymentCreateSubscriptionActionData() {
   }
@@ -114,25 +110,6 @@ public class PaymentCreateSubscriptionActionData {
   }
 
 
-  public PaymentCreateSubscriptionActionData amount(String amount) {
-    this.amount = amount;
-    return this;
-  }
-
-   /**
-   * The subscription crypto amount. 
-   * @return amount
-  **/
-  @javax.annotation.Nonnull
-  public String getAmount() {
-    return amount;
-  }
-
-  public void setAmount(String amount) {
-    this.amount = amount;
-  }
-
-
   public PaymentCreateSubscriptionActionData tokenId(String tokenId) {
     this.tokenId = tokenId;
     return this;
@@ -152,22 +129,22 @@ public class PaymentCreateSubscriptionActionData {
   }
 
 
-  public PaymentCreateSubscriptionActionData discountRate(Integer discountRate) {
-    this.discountRate = discountRate;
+  public PaymentCreateSubscriptionActionData chargeAmount(String chargeAmount) {
+    this.chargeAmount = chargeAmount;
     return this;
   }
 
    /**
-   * the discount rate, discount_rate/10000
-   * @return discountRate
+   * Get chargeAmount
+   * @return chargeAmount
   **/
-  @javax.annotation.Nullable
-  public Integer getDiscountRate() {
-    return discountRate;
+  @javax.annotation.Nonnull
+  public String getChargeAmount() {
+    return chargeAmount;
   }
 
-  public void setDiscountRate(Integer discountRate) {
-    this.discountRate = discountRate;
+  public void setChargeAmount(String chargeAmount) {
+    this.chargeAmount = chargeAmount;
   }
 
   /**
@@ -227,15 +204,14 @@ public class PaymentCreateSubscriptionActionData {
     PaymentCreateSubscriptionActionData paymentCreateSubscriptionActionData = (PaymentCreateSubscriptionActionData) o;
     return Objects.equals(this.actionType, paymentCreateSubscriptionActionData.actionType) &&
         Objects.equals(this.userAddress, paymentCreateSubscriptionActionData.userAddress) &&
-        Objects.equals(this.amount, paymentCreateSubscriptionActionData.amount) &&
         Objects.equals(this.tokenId, paymentCreateSubscriptionActionData.tokenId) &&
-        Objects.equals(this.discountRate, paymentCreateSubscriptionActionData.discountRate)&&
+        Objects.equals(this.chargeAmount, paymentCreateSubscriptionActionData.chargeAmount)&&
         Objects.equals(this.additionalProperties, paymentCreateSubscriptionActionData.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(actionType, userAddress, amount, tokenId, discountRate, additionalProperties);
+    return Objects.hash(actionType, userAddress, tokenId, chargeAmount, additionalProperties);
   }
 
   @Override
@@ -244,9 +220,8 @@ public class PaymentCreateSubscriptionActionData {
     sb.append("class PaymentCreateSubscriptionActionData {\n");
     sb.append("    actionType: ").append(toIndentedString(actionType)).append("\n");
     sb.append("    userAddress: ").append(toIndentedString(userAddress)).append("\n");
-    sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("    tokenId: ").append(toIndentedString(tokenId)).append("\n");
-    sb.append("    discountRate: ").append(toIndentedString(discountRate)).append("\n");
+    sb.append("    chargeAmount: ").append(toIndentedString(chargeAmount)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -272,16 +247,15 @@ public class PaymentCreateSubscriptionActionData {
     openapiFields = new HashSet<String>();
     openapiFields.add("action_type");
     openapiFields.add("user_address");
-    openapiFields.add("amount");
     openapiFields.add("token_id");
-    openapiFields.add("discount_rate");
+    openapiFields.add("charge_amount");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("action_type");
     openapiRequiredFields.add("user_address");
-    openapiRequiredFields.add("amount");
     openapiRequiredFields.add("token_id");
+    openapiRequiredFields.add("charge_amount");
   }
 
  /**
@@ -309,11 +283,11 @@ public class PaymentCreateSubscriptionActionData {
       if (!jsonObj.get("user_address").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `user_address` to be a primitive type in the JSON string but got `%s`", jsonObj.get("user_address").toString()));
       }
-      if (!jsonObj.get("amount").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `amount` to be a primitive type in the JSON string but got `%s`", jsonObj.get("amount").toString()));
-      }
       if (!jsonObj.get("token_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `token_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("token_id").toString()));
+      }
+      if (!jsonObj.get("charge_amount").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `charge_amount` to be a primitive type in the JSON string but got `%s`", jsonObj.get("charge_amount").toString()));
       }
   }
 

@@ -86,6 +86,10 @@ public class TSSRequestWebhookEventData {
     
     PAYMENTADDRESSUPDATE("PaymentAddressUpdate"),
     
+    PAYMENTSUBSCRIPTIONUPDATE("PaymentSubscriptionUpdate"),
+    
+    PAYMENTCHARGEUPDATE("PaymentChargeUpdate"),
+    
     BALANCEUPDATEINFO("BalanceUpdateInfo"),
     
     SUSPENDEDTOKEN("SuspendedToken"),

@@ -90,7 +90,7 @@ public class SwapQuote {
 
   public static final String SERIALIZED_NAME_QUOTE_EXPIRED_TIMESTAMP = "quote_expired_timestamp";
   @SerializedName(SERIALIZED_NAME_QUOTE_EXPIRED_TIMESTAMP)
-  private Integer quoteExpiredTimestamp;
+  private Long quoteExpiredTimestamp;
 
   public SwapQuote() {
   }
@@ -266,7 +266,7 @@ public class SwapQuote {
   }
 
 
-  public SwapQuote quoteExpiredTimestamp(Integer quoteExpiredTimestamp) {
+  public SwapQuote quoteExpiredTimestamp(Long quoteExpiredTimestamp) {
     this.quoteExpiredTimestamp = quoteExpiredTimestamp;
     return this;
   }
@@ -276,11 +276,11 @@ public class SwapQuote {
    * @return quoteExpiredTimestamp
   **/
   @javax.annotation.Nonnull
-  public Integer getQuoteExpiredTimestamp() {
+  public Long getQuoteExpiredTimestamp() {
     return quoteExpiredTimestamp;
   }
 
-  public void setQuoteExpiredTimestamp(Integer quoteExpiredTimestamp) {
+  public void setQuoteExpiredTimestamp(Long quoteExpiredTimestamp) {
     this.quoteExpiredTimestamp = quoteExpiredTimestamp;
   }
 

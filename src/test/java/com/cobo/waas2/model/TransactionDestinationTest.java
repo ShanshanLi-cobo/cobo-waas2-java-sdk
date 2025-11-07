@@ -36,6 +36,7 @@ import com.cobo.waas2.model.TransactionTransferToAddressDestination;
 import com.cobo.waas2.model.TransactionTransferToAddressDestinationAccountOutput;
 import com.cobo.waas2.model.TransactionTransferToAddressDestinationUtxoOutputsInner;
 import com.cobo.waas2.model.TransactionTransferToWalletDestination;
+import com.cobo.waas2.model.TransactionTronContractDestination;
 import com.cobo.waas2.model.WalletSubtype;
 import com.cobo.waas2.model.WalletType;
 import com.google.gson.TypeAdapter;

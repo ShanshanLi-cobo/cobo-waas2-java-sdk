@@ -125,4 +125,12 @@ public class TokenizationTokenInfoTest {
         // TODO: test holdings
     }
 
+    /**
+     * Test the property 'archived'
+     */
+    @Test
+    public void archivedTest() {
+        // TODO: test archived
+    }
+
 }

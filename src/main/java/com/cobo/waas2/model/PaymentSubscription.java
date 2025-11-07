@@ -78,9 +78,9 @@ public class PaymentSubscription {
   @SerializedName(SERIALIZED_NAME_TOKEN_ID)
   private String tokenId;
 
-  public static final String SERIALIZED_NAME_AMOUNT = "amount";
-  @SerializedName(SERIALIZED_NAME_AMOUNT)
-  private String amount;
+  public static final String SERIALIZED_NAME_CHARGE_AMOUNT = "charge_amount";
+  @SerializedName(SERIALIZED_NAME_CHARGE_AMOUNT)
+  private String chargeAmount;
 
   public static final String SERIALIZED_NAME_START_TIME = "start_time";
   @SerializedName(SERIALIZED_NAME_START_TIME)
@@ -235,22 +235,22 @@ public class PaymentSubscription {
   }
 
 
-  public PaymentSubscription amount(String amount) {
-    this.amount = amount;
+  public PaymentSubscription chargeAmount(String chargeAmount) {
+    this.chargeAmount = chargeAmount;
     return this;
   }
 
    /**
-   * The amount in subscription.
-   * @return amount
+   * The charge amount in subscription.
+   * @return chargeAmount
   **/
-  @javax.annotation.Nonnull
-  public String getAmount() {
-    return amount;
+  @javax.annotation.Nullable
+  public String getChargeAmount() {
+    return chargeAmount;
   }
 
-  public void setAmount(String amount) {
-    this.amount = amount;
+  public void setChargeAmount(String chargeAmount) {
+    this.chargeAmount = chargeAmount;
   }
 
 
@@ -485,7 +485,7 @@ public class PaymentSubscription {
         Objects.equals(this.merchantAddress, paymentSubscription.merchantAddress) &&
         Objects.equals(this.userAddress, paymentSubscription.userAddress) &&
         Objects.equals(this.tokenId, paymentSubscription.tokenId) &&
-        Objects.equals(this.amount, paymentSubscription.amount) &&
+        Objects.equals(this.chargeAmount, paymentSubscription.chargeAmount) &&
         Objects.equals(this.startTime, paymentSubscription.startTime) &&
         Objects.equals(this.expirationTime, paymentSubscription.expirationTime) &&
         Objects.equals(this.chargesMade, paymentSubscription.chargesMade) &&
@@ -500,7 +500,7 @@ public class PaymentSubscription {
 
   @Override
   public int hashCode() {
-    return Objects.hash(planId, subscriptionId, merchantId, merchantAddress, userAddress, tokenId, amount, startTime, expirationTime, chargesMade, periodType, periods, interval, status, createdTimestamp, updatedTimestamp, additionalProperties);
+    return Objects.hash(planId, subscriptionId, merchantId, merchantAddress, userAddress, tokenId, chargeAmount, startTime, expirationTime, chargesMade, periodType, periods, interval, status, createdTimestamp, updatedTimestamp, additionalProperties);
   }
 
   @Override
@@ -513,7 +513,7 @@ public class PaymentSubscription {
     sb.append("    merchantAddress: ").append(toIndentedString(merchantAddress)).append("\n");
     sb.append("    userAddress: ").append(toIndentedString(userAddress)).append("\n");
     sb.append("    tokenId: ").append(toIndentedString(tokenId)).append("\n");
-    sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
+    sb.append("    chargeAmount: ").append(toIndentedString(chargeAmount)).append("\n");
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    expirationTime: ").append(toIndentedString(expirationTime)).append("\n");
     sb.append("    chargesMade: ").append(toIndentedString(chargesMade)).append("\n");
@@ -552,7 +552,7 @@ public class PaymentSubscription {
     openapiFields.add("merchant_address");
     openapiFields.add("user_address");
     openapiFields.add("token_id");
-    openapiFields.add("amount");
+    openapiFields.add("charge_amount");
     openapiFields.add("start_time");
     openapiFields.add("expiration_time");
     openapiFields.add("charges_made");
@@ -571,7 +571,6 @@ public class PaymentSubscription {
     openapiRequiredFields.add("merchant_address");
     openapiRequiredFields.add("user_address");
     openapiRequiredFields.add("token_id");
-    openapiRequiredFields.add("amount");
     openapiRequiredFields.add("start_time");
     openapiRequiredFields.add("expiration_time");
     openapiRequiredFields.add("charges_made");
@@ -621,8 +620,8 @@ public class PaymentSubscription {
       if (!jsonObj.get("token_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `token_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("token_id").toString()));
       }
-      if (!jsonObj.get("amount").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `amount` to be a primitive type in the JSON string but got `%s`", jsonObj.get("amount").toString()));
+      if ((jsonObj.get("charge_amount") != null && !jsonObj.get("charge_amount").isJsonNull()) && !jsonObj.get("charge_amount").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `charge_amount` to be a primitive type in the JSON string but got `%s`", jsonObj.get("charge_amount").toString()));
       }
       // validate the required field `period_type`
       PaymentSubscriptionPeriodType.validateJsonElement(jsonObj.get("period_type"));

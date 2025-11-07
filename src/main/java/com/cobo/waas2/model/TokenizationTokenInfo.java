@@ -98,6 +98,10 @@ public class TokenizationTokenInfo {
   @SerializedName(SERIALIZED_NAME_HOLDINGS)
   private String holdings;
 
+  public static final String SERIALIZED_NAME_ARCHIVED = "archived";
+  @SerializedName(SERIALIZED_NAME_ARCHIVED)
+  private Boolean archived;
+
   public TokenizationTokenInfo() {
   }
 
@@ -309,6 +313,25 @@ public class TokenizationTokenInfo {
     this.holdings = holdings;
   }
 
+
+  public TokenizationTokenInfo archived(Boolean archived) {
+    this.archived = archived;
+    return this;
+  }
+
+   /**
+   * Whether the token is archived. If archived, no operations can be initiated on this token.
+   * @return archived
+  **/
+  @javax.annotation.Nonnull
+  public Boolean getArchived() {
+    return archived;
+  }
+
+  public void setArchived(Boolean archived) {
+    this.archived = archived;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -374,13 +397,14 @@ public class TokenizationTokenInfo {
         Objects.equals(this.tokenAccessActivated, tokenizationTokenInfo.tokenAccessActivated) &&
         Objects.equals(this.status, tokenizationTokenInfo.status) &&
         Objects.equals(this.totalSupply, tokenizationTokenInfo.totalSupply) &&
-        Objects.equals(this.holdings, tokenizationTokenInfo.holdings)&&
+        Objects.equals(this.holdings, tokenizationTokenInfo.holdings) &&
+        Objects.equals(this.archived, tokenizationTokenInfo.archived)&&
         Objects.equals(this.additionalProperties, tokenizationTokenInfo.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(tokenId, chainId, tokenAddress, tokenName, tokenSymbol, tokenStandard, decimals, tokenAccessActivated, status, totalSupply, holdings, additionalProperties);
+    return Objects.hash(tokenId, chainId, tokenAddress, tokenName, tokenSymbol, tokenStandard, decimals, tokenAccessActivated, status, totalSupply, holdings, archived, additionalProperties);
   }
 
   @Override
@@ -398,6 +422,7 @@ public class TokenizationTokenInfo {
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    totalSupply: ").append(toIndentedString(totalSupply)).append("\n");
     sb.append("    holdings: ").append(toIndentedString(holdings)).append("\n");
+    sb.append("    archived: ").append(toIndentedString(archived)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -432,6 +457,7 @@ public class TokenizationTokenInfo {
     openapiFields.add("status");
     openapiFields.add("total_supply");
     openapiFields.add("holdings");
+    openapiFields.add("archived");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -441,6 +467,7 @@ public class TokenizationTokenInfo {
     openapiRequiredFields.add("token_standard");
     openapiRequiredFields.add("decimals");
     openapiRequiredFields.add("status");
+    openapiRequiredFields.add("archived");
   }
 
  /**
