@@ -62,19 +62,27 @@ public class TokenizationSOLWrappedTokenParamsTest {
     }
 
     /**
-     * Test the property 'permissions'
-     */
-    @Test
-    public void permissionsTest() {
-        // TODO: test permissions
-    }
-
-    /**
      * Test the property 'underlyingToken'
      */
     @Test
     public void underlyingTokenTest() {
         // TODO: test underlyingToken
+    }
+
+    /**
+     * Test the property 'tokenAccessActivated'
+     */
+    @Test
+    public void tokenAccessActivatedTest() {
+        // TODO: test tokenAccessActivated
+    }
+
+    /**
+     * Test the property 'permissions'
+     */
+    @Test
+    public void permissionsTest() {
+        // TODO: test permissions
     }
 
 }

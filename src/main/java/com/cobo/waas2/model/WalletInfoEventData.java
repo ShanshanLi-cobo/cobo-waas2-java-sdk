@@ -84,6 +84,10 @@ public class WalletInfoEventData {
     
     PAYMENTADDRESSUPDATE("PaymentAddressUpdate"),
     
+    PAYMENTSUBSCRIPTIONUPDATE("PaymentSubscriptionUpdate"),
+    
+    PAYMENTCHARGEUPDATE("PaymentChargeUpdate"),
+    
     BALANCEUPDATEINFO("BalanceUpdateInfo"),
     
     SUSPENDEDTOKEN("SuspendedToken"),

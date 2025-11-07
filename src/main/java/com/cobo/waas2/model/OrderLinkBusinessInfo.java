@@ -65,7 +65,7 @@ public class OrderLinkBusinessInfo {
 
   public static final String SERIALIZED_NAME_CURRENCY = "currency";
   @SerializedName(SERIALIZED_NAME_CURRENCY)
-  private String currency = "";
+  private String currency;
 
   public static final String SERIALIZED_NAME_FEE_AMOUNT = "fee_amount";
   @SerializedName(SERIALIZED_NAME_FEE_AMOUNT)
@@ -94,6 +94,10 @@ public class OrderLinkBusinessInfo {
   public static final String SERIALIZED_NAME_USE_DEDICATED_ADDRESS = "use_dedicated_address";
   @SerializedName(SERIALIZED_NAME_USE_DEDICATED_ADDRESS)
   private Boolean useDedicatedAddress;
+
+  public static final String SERIALIZED_NAME_AMOUNT_TOLERANCE = "amount_tolerance";
+  @SerializedName(SERIALIZED_NAME_AMOUNT_TOLERANCE)
+  private String amountTolerance;
 
   public OrderLinkBusinessInfo() {
   }
@@ -158,10 +162,10 @@ public class OrderLinkBusinessInfo {
   }
 
    /**
-   * The fiat currency for the base order amount and the developer fee. Currently, only &#x60;USD&#x60; is supported.  If left empty, both &#x60;order_amount&#x60; and &#x60;fee_amount&#x60; will be denominated in the cryptocurrency specified by &#x60;token_id&#x60; 
+   * The currency for the base order amount and the developer fee. Currently, only &#x60;USD&#x60;/&#x60;USDT&#x60;/&#x60;USDC&#x60; are supported. 
    * @return currency
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getCurrency() {
     return currency;
   }
@@ -303,6 +307,25 @@ public class OrderLinkBusinessInfo {
     this.useDedicatedAddress = useDedicatedAddress;
   }
 
+
+  public OrderLinkBusinessInfo amountTolerance(String amountTolerance) {
+    this.amountTolerance = amountTolerance;
+    return this;
+  }
+
+   /**
+   * Allowed amount deviation, precision to 1 decimal place.
+   * @return amountTolerance
+  **/
+  @javax.annotation.Nullable
+  public String getAmountTolerance() {
+    return amountTolerance;
+  }
+
+  public void setAmountTolerance(String amountTolerance) {
+    this.amountTolerance = amountTolerance;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -367,13 +390,14 @@ public class OrderLinkBusinessInfo {
         Objects.equals(this.merchantOrderCode, orderLinkBusinessInfo.merchantOrderCode) &&
         Objects.equals(this.pspOrderCode, orderLinkBusinessInfo.pspOrderCode) &&
         Objects.equals(this.expiredIn, orderLinkBusinessInfo.expiredIn) &&
-        Objects.equals(this.useDedicatedAddress, orderLinkBusinessInfo.useDedicatedAddress)&&
+        Objects.equals(this.useDedicatedAddress, orderLinkBusinessInfo.useDedicatedAddress) &&
+        Objects.equals(this.amountTolerance, orderLinkBusinessInfo.amountTolerance)&&
         Objects.equals(this.additionalProperties, orderLinkBusinessInfo.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(tokenIds, customExchangeRates, currency, feeAmount, merchantId, orderAmount, merchantOrderCode, pspOrderCode, expiredIn, useDedicatedAddress, additionalProperties);
+    return Objects.hash(tokenIds, customExchangeRates, currency, feeAmount, merchantId, orderAmount, merchantOrderCode, pspOrderCode, expiredIn, useDedicatedAddress, amountTolerance, additionalProperties);
   }
 
   @Override
@@ -390,6 +414,7 @@ public class OrderLinkBusinessInfo {
     sb.append("    pspOrderCode: ").append(toIndentedString(pspOrderCode)).append("\n");
     sb.append("    expiredIn: ").append(toIndentedString(expiredIn)).append("\n");
     sb.append("    useDedicatedAddress: ").append(toIndentedString(useDedicatedAddress)).append("\n");
+    sb.append("    amountTolerance: ").append(toIndentedString(amountTolerance)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -423,10 +448,12 @@ public class OrderLinkBusinessInfo {
     openapiFields.add("psp_order_code");
     openapiFields.add("expired_in");
     openapiFields.add("use_dedicated_address");
+    openapiFields.add("amount_tolerance");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("token_ids");
+    openapiRequiredFields.add("currency");
     openapiRequiredFields.add("fee_amount");
     openapiRequiredFields.add("merchant_id");
     openapiRequiredFields.add("order_amount");
@@ -473,7 +500,7 @@ public class OrderLinkBusinessInfo {
           };
         }
       }
-      if ((jsonObj.get("currency") != null && !jsonObj.get("currency").isJsonNull()) && !jsonObj.get("currency").isJsonPrimitive()) {
+      if (!jsonObj.get("currency").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currency").toString()));
       }
       if (!jsonObj.get("fee_amount").isJsonPrimitive()) {
@@ -490,6 +517,9 @@ public class OrderLinkBusinessInfo {
       }
       if (!jsonObj.get("psp_order_code").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `psp_order_code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("psp_order_code").toString()));
+      }
+      if ((jsonObj.get("amount_tolerance") != null && !jsonObj.get("amount_tolerance").isJsonNull()) && !jsonObj.get("amount_tolerance").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `amount_tolerance` to be a primitive type in the JSON string but got `%s`", jsonObj.get("amount_tolerance").toString()));
       }
   }
 

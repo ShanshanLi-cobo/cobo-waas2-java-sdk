@@ -118,4 +118,12 @@ public class OrderLinkBusinessInfoTest {
         // TODO: test useDedicatedAddress
     }
 
+    /**
+     * Test the property 'amountTolerance'
+     */
+    @Test
+    public void amountToleranceTest() {
+        // TODO: test amountTolerance
+    }
+
 }

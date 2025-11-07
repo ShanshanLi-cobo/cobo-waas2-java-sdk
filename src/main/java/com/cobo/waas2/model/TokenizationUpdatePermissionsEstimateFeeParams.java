@@ -16,6 +16,7 @@ import com.cobo.waas2.model.TokenizationOperationType;
 import com.cobo.waas2.model.TokenizationPermissionAction;
 import com.cobo.waas2.model.TokenizationTokenOperationSource;
 import com.cobo.waas2.model.TokenizationTokenPermissionType;
+import com.cobo.waas2.model.TokenizationUpdateAddressPermissions;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -74,6 +75,10 @@ public class TokenizationUpdatePermissionsEstimateFeeParams {
   @SerializedName(SERIALIZED_NAME_PERMISSIONS)
   private List<TokenizationTokenPermissionType> permissions = new ArrayList<>();
 
+  public static final String SERIALIZED_NAME_ADDRESSES = "addresses";
+  @SerializedName(SERIALIZED_NAME_ADDRESSES)
+  private List<TokenizationUpdateAddressPermissions> addresses = new ArrayList<>();
+
   public static final String SERIALIZED_NAME_OPERATION_TYPE = "operation_type";
   @SerializedName(SERIALIZED_NAME_OPERATION_TYPE)
   private TokenizationOperationType operationType;
@@ -117,7 +122,7 @@ public class TokenizationUpdatePermissionsEstimateFeeParams {
    * Get action
    * @return action
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public TokenizationPermissionAction getAction() {
     return action;
   }
@@ -136,7 +141,7 @@ public class TokenizationUpdatePermissionsEstimateFeeParams {
    * The address to manage permissions for.
    * @return address
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getAddress() {
     return address;
   }
@@ -163,13 +168,40 @@ public class TokenizationUpdatePermissionsEstimateFeeParams {
    * The list of permissions to operate on.
    * @return permissions
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public List<TokenizationTokenPermissionType> getPermissions() {
     return permissions;
   }
 
   public void setPermissions(List<TokenizationTokenPermissionType> permissions) {
     this.permissions = permissions;
+  }
+
+
+  public TokenizationUpdatePermissionsEstimateFeeParams addresses(List<TokenizationUpdateAddressPermissions> addresses) {
+    this.addresses = addresses;
+    return this;
+  }
+
+  public TokenizationUpdatePermissionsEstimateFeeParams addAddressesItem(TokenizationUpdateAddressPermissions addressesItem) {
+    if (this.addresses == null) {
+      this.addresses = new ArrayList<>();
+    }
+    this.addresses.add(addressesItem);
+    return this;
+  }
+
+   /**
+   * Get addresses
+   * @return addresses
+  **/
+  @javax.annotation.Nullable
+  public List<TokenizationUpdateAddressPermissions> getAddresses() {
+    return addresses;
+  }
+
+  public void setAddresses(List<TokenizationUpdateAddressPermissions> addresses) {
+    this.addresses = addresses;
   }
 
 
@@ -288,6 +320,7 @@ public class TokenizationUpdatePermissionsEstimateFeeParams {
         Objects.equals(this.action, tokenizationUpdatePermissionsEstimateFeeParams.action) &&
         Objects.equals(this.address, tokenizationUpdatePermissionsEstimateFeeParams.address) &&
         Objects.equals(this.permissions, tokenizationUpdatePermissionsEstimateFeeParams.permissions) &&
+        Objects.equals(this.addresses, tokenizationUpdatePermissionsEstimateFeeParams.addresses) &&
         Objects.equals(this.operationType, tokenizationUpdatePermissionsEstimateFeeParams.operationType) &&
         Objects.equals(this.tokenId, tokenizationUpdatePermissionsEstimateFeeParams.tokenId) &&
         Objects.equals(this.requestId, tokenizationUpdatePermissionsEstimateFeeParams.requestId)&&
@@ -296,7 +329,7 @@ public class TokenizationUpdatePermissionsEstimateFeeParams {
 
   @Override
   public int hashCode() {
-    return Objects.hash(source, action, address, permissions, operationType, tokenId, requestId, additionalProperties);
+    return Objects.hash(source, action, address, permissions, addresses, operationType, tokenId, requestId, additionalProperties);
   }
 
   @Override
@@ -307,6 +340,7 @@ public class TokenizationUpdatePermissionsEstimateFeeParams {
     sb.append("    action: ").append(toIndentedString(action)).append("\n");
     sb.append("    address: ").append(toIndentedString(address)).append("\n");
     sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
+    sb.append("    addresses: ").append(toIndentedString(addresses)).append("\n");
     sb.append("    operationType: ").append(toIndentedString(operationType)).append("\n");
     sb.append("    tokenId: ").append(toIndentedString(tokenId)).append("\n");
     sb.append("    requestId: ").append(toIndentedString(requestId)).append("\n");
@@ -337,6 +371,7 @@ public class TokenizationUpdatePermissionsEstimateFeeParams {
     openapiFields.add("action");
     openapiFields.add("address");
     openapiFields.add("permissions");
+    openapiFields.add("addresses");
     openapiFields.add("operation_type");
     openapiFields.add("token_id");
     openapiFields.add("request_id");
@@ -344,9 +379,6 @@ public class TokenizationUpdatePermissionsEstimateFeeParams {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("source");
-    openapiRequiredFields.add("action");
-    openapiRequiredFields.add("address");
-    openapiRequiredFields.add("permissions");
     openapiRequiredFields.add("operation_type");
     openapiRequiredFields.add("token_id");
   }
@@ -373,16 +405,30 @@ public class TokenizationUpdatePermissionsEstimateFeeParams {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the required field `source`
       TokenizationTokenOperationSource.validateJsonElement(jsonObj.get("source"));
-      // validate the required field `action`
-      TokenizationPermissionAction.validateJsonElement(jsonObj.get("action"));
-      if (!jsonObj.get("address").isJsonPrimitive()) {
+      // validate the optional field `action`
+      if (jsonObj.get("action") != null && !jsonObj.get("action").isJsonNull()) {
+        TokenizationPermissionAction.validateJsonElement(jsonObj.get("action"));
+      }
+      if ((jsonObj.get("address") != null && !jsonObj.get("address").isJsonNull()) && !jsonObj.get("address").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `address` to be a primitive type in the JSON string but got `%s`", jsonObj.get("address").toString()));
       }
-      // ensure the required json array is present
-      if (jsonObj.get("permissions") == null) {
-        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("permissions").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("permissions") != null && !jsonObj.get("permissions").isJsonNull() && !jsonObj.get("permissions").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `permissions` to be an array in the JSON string but got `%s`", jsonObj.get("permissions").toString()));
+      }
+      if (jsonObj.get("addresses") != null && !jsonObj.get("addresses").isJsonNull()) {
+        JsonArray jsonArrayaddresses = jsonObj.getAsJsonArray("addresses");
+        if (jsonArrayaddresses != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("addresses").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `addresses` to be an array in the JSON string but got `%s`", jsonObj.get("addresses").toString()));
+          }
+
+          // validate the optional field `addresses` (array)
+          for (int i = 0; i < jsonArrayaddresses.size(); i++) {
+            TokenizationUpdateAddressPermissions.validateJsonElement(jsonArrayaddresses.get(i));
+          };
+        }
       }
       // validate the required field `operation_type`
       TokenizationOperationType.validateJsonElement(jsonObj.get("operation_type"));

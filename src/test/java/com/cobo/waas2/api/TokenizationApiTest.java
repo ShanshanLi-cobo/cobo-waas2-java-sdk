@@ -22,6 +22,7 @@ import com.cobo.waas2.model.TokenizationActivityInfo;
 import com.cobo.waas2.model.TokenizationActivityStatus;
 import com.cobo.waas2.model.TokenizationAllowlistActivationRequest;
 import com.cobo.waas2.model.TokenizationAllowlistAddressesResponse;
+import com.cobo.waas2.model.TokenizationArchiveTokenRequest;
 import com.cobo.waas2.model.TokenizationBurnTokenRequest;
 import com.cobo.waas2.model.TokenizationContractCallRequest;
 import com.cobo.waas2.model.TokenizationEstimateFeeRequest;
@@ -38,6 +39,7 @@ import com.cobo.waas2.model.TokenizationPauseTokenRequest;
 import com.cobo.waas2.model.TokenizationStatus;
 import com.cobo.waas2.model.TokenizationTokenDetailInfo;
 import com.cobo.waas2.model.TokenizationTokenStandard;
+import com.cobo.waas2.model.TokenizationUnarchiveTokenRequest;
 import com.cobo.waas2.model.TokenizationUnpauseTokenRequest;
 import com.cobo.waas2.model.TokenizationUpdateAllowlistAddressesRequest;
 import com.cobo.waas2.model.TokenizationUpdateBlocklistAddressesRequest;
@@ -65,9 +67,24 @@ public class TokenizationApiTest {
     private final TokenizationApi api = new TokenizationApi();
 
     /**
+     * Archive token
+     *
+     * This operation marks the token as archived. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void archiveTokenizationTest() throws ApiException {
+        String tokenId = null;
+        TokenizationArchiveTokenRequest tokenizationArchiveTokenRequest = null;
+        TokenizationTokenDetailInfo response = api.archiveTokenization(tokenId, tokenizationArchiveTokenRequest);
+        // TODO: test validations
+    }
+
+    /**
      * Burn tokens
      *
-     * This operation burns tokens from a specified address. Creates a burn transaction that will decrease the token supply.  **Note**: This operation is not supported for CoboERC20Wrapper tokens. 
+     * This operation burns tokens from a specified address. Creates a burn transaction that will decrease the token supply.  **Note**: This operation is not supported for CoboERC20Wrapper and SOLWrapper tokens. 
      *
      * @throws ApiException if the Api call fails
      */
@@ -270,17 +287,18 @@ public class TokenizationApiTest {
      */
     @Test
     public void listTokenizationSupportedChainsTest() throws ApiException {
+        TokenizationTokenStandard tokenStandard = null;
         Integer limit = null;
         String after = null;
         String before = null;
-        TokenizationListEnabledChainsResponse response = api.listTokenizationSupportedChains(limit, after, before);
+        TokenizationListEnabledChainsResponse response = api.listTokenizationSupportedChains(tokenStandard, limit, after, before);
         // TODO: test validations
     }
 
     /**
      * Mint tokens
      *
-     * This operation mints new tokens to a specified address. Creates a mint transaction that will increase the token supply.  **Note**: This operation is not supported for CoboERC20Wrapper tokens. 
+     * This operation mints new tokens to a specified address. Creates a mint transaction that will increase the token supply.  **Note**: This operation is not supported for CoboERC20Wrapper and SOLWrapper tokens. 
      *
      * @throws ApiException if the Api call fails
      */
@@ -319,6 +337,21 @@ public class TokenizationApiTest {
         String tokenId = null;
         TokenizationContractCallRequest tokenizationContractCallRequest = null;
         TokenizationOperationResponse response = api.tokenizationContractCall(tokenId, tokenizationContractCallRequest);
+        // TODO: test validations
+    }
+
+    /**
+     * Unarchive token
+     *
+     * This operation removes the archived flag from the token. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void unarchiveTokenizationTest() throws ApiException {
+        String tokenId = null;
+        TokenizationUnarchiveTokenRequest tokenizationUnarchiveTokenRequest = null;
+        TokenizationTokenDetailInfo response = api.unarchiveTokenization(tokenId, tokenizationUnarchiveTokenRequest);
         // TODO: test validations
     }
 
@@ -385,7 +418,7 @@ public class TokenizationApiTest {
     /**
      * Update permissions of the token
      *
-     * This operation updates permissions for tokenization contracts.  **For Ethereum-based tokens:** Use &#x60;add&#x60; to grant permissions or &#x60;remove&#x60; to revoke permissions. Multiple permissions can be assigned to the same address.  **For Solana tokens:** Use &#x60;set&#x60; to define the complete list of permissions for an address. This replaces any existing permissions. 
+     * This operation updates permissions for tokenization contracts. 
      *
      * @throws ApiException if the Api call fails
      */

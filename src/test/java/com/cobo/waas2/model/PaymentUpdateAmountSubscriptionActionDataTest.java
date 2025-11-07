@@ -53,11 +53,35 @@ public class PaymentUpdateAmountSubscriptionActionDataTest {
     }
 
     /**
+     * Test the property 'newPlanId'
+     */
+    @Test
+    public void newPlanIdTest() {
+        // TODO: test newPlanId
+    }
+
+    /**
+     * Test the property 'chargeAmount'
+     */
+    @Test
+    public void chargeAmountTest() {
+        // TODO: test chargeAmount
+    }
+
+    /**
      * Test the property 'signature'
      */
     @Test
     public void signatureTest() {
         // TODO: test signature
+    }
+
+    /**
+     * Test the property 'deadline'
+     */
+    @Test
+    public void deadlineTest() {
+        // TODO: test deadline
     }
 
 }

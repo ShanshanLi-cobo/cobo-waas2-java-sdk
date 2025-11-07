@@ -77,6 +77,14 @@ public class PaymentSubscriptionPlanDetailTest {
     }
 
     /**
+     * Test the property 'trialPeriod'
+     */
+    @Test
+    public void trialPeriodTest() {
+        // TODO: test trialPeriod
+    }
+
+    /**
      * Test the property 'amount'
      */
     @Test
@@ -98,6 +106,22 @@ public class PaymentSubscriptionPlanDetailTest {
     @Test
     public void currencyTest() {
         // TODO: test currency
+    }
+
+    /**
+     * Test the property 'chargeAmount'
+     */
+    @Test
+    public void chargeAmountTest() {
+        // TODO: test chargeAmount
+    }
+
+    /**
+     * Test the property 'contractAddress'
+     */
+    @Test
+    public void contractAddressTest() {
+        // TODO: test contractAddress
     }
 
 }

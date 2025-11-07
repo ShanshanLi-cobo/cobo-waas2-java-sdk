@@ -14,6 +14,7 @@ package com.cobo.waas2.model;
 import java.util.Objects;
 import com.cobo.waas2.model.TokenizationAddressPermission;
 import com.cobo.waas2.model.TokenizationStatus;
+import com.cobo.waas2.model.TokenizationTokenInfo;
 import com.cobo.waas2.model.TokenizationTokenStandard;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -101,9 +102,17 @@ public class TokenizationTokenDetailInfo {
   @SerializedName(SERIALIZED_NAME_HOLDINGS)
   private String holdings;
 
+  public static final String SERIALIZED_NAME_ARCHIVED = "archived";
+  @SerializedName(SERIALIZED_NAME_ARCHIVED)
+  private Boolean archived;
+
   public static final String SERIALIZED_NAME_PERMISSIONS = "permissions";
   @SerializedName(SERIALIZED_NAME_PERMISSIONS)
   private List<TokenizationAddressPermission> permissions = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_UNDERLYING_TOKEN = "underlying_token";
+  @SerializedName(SERIALIZED_NAME_UNDERLYING_TOKEN)
+  private TokenizationTokenInfo underlyingToken;
 
   public TokenizationTokenDetailInfo() {
   }
@@ -317,6 +326,25 @@ public class TokenizationTokenDetailInfo {
   }
 
 
+  public TokenizationTokenDetailInfo archived(Boolean archived) {
+    this.archived = archived;
+    return this;
+  }
+
+   /**
+   * Whether the token is archived. If archived, no operations can be initiated on this token.
+   * @return archived
+  **/
+  @javax.annotation.Nonnull
+  public Boolean getArchived() {
+    return archived;
+  }
+
+  public void setArchived(Boolean archived) {
+    this.archived = archived;
+  }
+
+
   public TokenizationTokenDetailInfo permissions(List<TokenizationAddressPermission> permissions) {
     this.permissions = permissions;
     return this;
@@ -341,6 +369,25 @@ public class TokenizationTokenDetailInfo {
 
   public void setPermissions(List<TokenizationAddressPermission> permissions) {
     this.permissions = permissions;
+  }
+
+
+  public TokenizationTokenDetailInfo underlyingToken(TokenizationTokenInfo underlyingToken) {
+    this.underlyingToken = underlyingToken;
+    return this;
+  }
+
+   /**
+   * Get underlyingToken
+   * @return underlyingToken
+  **/
+  @javax.annotation.Nullable
+  public TokenizationTokenInfo getUnderlyingToken() {
+    return underlyingToken;
+  }
+
+  public void setUnderlyingToken(TokenizationTokenInfo underlyingToken) {
+    this.underlyingToken = underlyingToken;
   }
 
   /**
@@ -409,13 +456,15 @@ public class TokenizationTokenDetailInfo {
         Objects.equals(this.status, tokenizationTokenDetailInfo.status) &&
         Objects.equals(this.totalSupply, tokenizationTokenDetailInfo.totalSupply) &&
         Objects.equals(this.holdings, tokenizationTokenDetailInfo.holdings) &&
-        Objects.equals(this.permissions, tokenizationTokenDetailInfo.permissions)&&
+        Objects.equals(this.archived, tokenizationTokenDetailInfo.archived) &&
+        Objects.equals(this.permissions, tokenizationTokenDetailInfo.permissions) &&
+        Objects.equals(this.underlyingToken, tokenizationTokenDetailInfo.underlyingToken)&&
         Objects.equals(this.additionalProperties, tokenizationTokenDetailInfo.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(tokenId, chainId, tokenAddress, tokenName, tokenSymbol, tokenStandard, decimals, tokenAccessActivated, status, totalSupply, holdings, permissions, additionalProperties);
+    return Objects.hash(tokenId, chainId, tokenAddress, tokenName, tokenSymbol, tokenStandard, decimals, tokenAccessActivated, status, totalSupply, holdings, archived, permissions, underlyingToken, additionalProperties);
   }
 
   @Override
@@ -433,7 +482,9 @@ public class TokenizationTokenDetailInfo {
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    totalSupply: ").append(toIndentedString(totalSupply)).append("\n");
     sb.append("    holdings: ").append(toIndentedString(holdings)).append("\n");
+    sb.append("    archived: ").append(toIndentedString(archived)).append("\n");
     sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
+    sb.append("    underlyingToken: ").append(toIndentedString(underlyingToken)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -468,7 +519,9 @@ public class TokenizationTokenDetailInfo {
     openapiFields.add("status");
     openapiFields.add("total_supply");
     openapiFields.add("holdings");
+    openapiFields.add("archived");
     openapiFields.add("permissions");
+    openapiFields.add("underlying_token");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -478,6 +531,7 @@ public class TokenizationTokenDetailInfo {
     openapiRequiredFields.add("token_standard");
     openapiRequiredFields.add("decimals");
     openapiRequiredFields.add("status");
+    openapiRequiredFields.add("archived");
   }
 
  /**
@@ -538,6 +592,10 @@ public class TokenizationTokenDetailInfo {
             TokenizationAddressPermission.validateJsonElement(jsonArraypermissions.get(i));
           };
         }
+      }
+      // validate the optional field `underlying_token`
+      if (jsonObj.get("underlying_token") != null && !jsonObj.get("underlying_token").isJsonNull()) {
+        TokenizationTokenInfo.validateJsonElement(jsonObj.get("underlying_token"));
       }
   }
 
