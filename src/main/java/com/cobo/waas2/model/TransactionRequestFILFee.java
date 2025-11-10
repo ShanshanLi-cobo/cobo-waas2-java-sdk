@@ -48,7 +48,7 @@ import com.cobo.waas2.JSON;
 /**
  * The preset properties to limit transaction fee.  For more information about the FIL fee model, see [Fee models](https://www.cobo.com/developers/v2/guides/transactions/estimate-fees#fee-models).  You can specify the gas fee cap, gas premium, and gas limit to control fee behavior and prioritization.  Switch between the tabs to display the properties for different transaction fee models. 
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -85,7 +85,7 @@ public class TransactionRequestFILFee {
    * An optional tip you can include to prioritize your transaction. The gas premium incentivizes miners to include your transaction sooner than those offering only the base fee.
    * @return gasPremium
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getGasPremium() {
     return gasPremium;
   }
@@ -104,7 +104,7 @@ public class TransactionRequestFILFee {
    * The maximum gas price you are willing to pay per unit of gas.
    * @return gasFeeCap
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getGasFeeCap() {
     return gasFeeCap;
   }
@@ -123,7 +123,7 @@ public class TransactionRequestFILFee {
    * The maximum amount of gas your transaction is allowed to consume.
    * @return gasLimit
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getGasLimit() {
     return gasLimit;
   }
@@ -142,7 +142,7 @@ public class TransactionRequestFILFee {
    * Get feeType
    * @return feeType
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public FeeType getFeeType() {
     return feeType;
   }
@@ -161,7 +161,7 @@ public class TransactionRequestFILFee {
    * The token used to pay the transaction fee.
    * @return tokenId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getTokenId() {
     return tokenId;
   }

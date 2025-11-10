@@ -51,7 +51,7 @@ import com.cobo.waas2.JSON;
 /**
  * QueryGuardPubkey200Response
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -80,7 +80,7 @@ public class QueryGuardPubkey200Response {
    * The Cobo Guard&#39;s public key.
    * @return pubkey
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getPubkey() {
     return pubkey;
   }
@@ -99,7 +99,7 @@ public class QueryGuardPubkey200Response {
    * Get status
    * @return status
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public GuardPubkeyStatus getStatus() {
     return status;
   }
@@ -126,7 +126,7 @@ public class QueryGuardPubkey200Response {
    * Get addresses
    * @return addresses
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public List<QueryGuardPubkey200ResponseAddressesInner> getAddresses() {
     return addresses;
   }

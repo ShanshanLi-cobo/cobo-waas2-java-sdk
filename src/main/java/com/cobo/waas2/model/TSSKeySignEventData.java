@@ -52,7 +52,7 @@ import com.cobo.waas2.JSON;
 /**
  * TSSKeySignEventData
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -101,7 +101,7 @@ public class TSSKeySignEventData {
    * Get dataType
    * @return dataType
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public TSSEventDataType getDataType() {
     return dataType;
   }
@@ -120,7 +120,7 @@ public class TSSKeySignEventData {
    * The request ID.
    * @return requestId
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getRequestId() {
     return requestId;
   }
@@ -139,7 +139,7 @@ public class TSSKeySignEventData {
    * Get requestType
    * @return requestType
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public TSSRequestTypeEenum getRequestType() {
     return requestType;
   }
@@ -158,7 +158,7 @@ public class TSSKeySignEventData {
    * Get requestStatus
    * @return requestStatus
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public TSSStatus getRequestStatus() {
     return requestStatus;
   }
@@ -177,7 +177,7 @@ public class TSSKeySignEventData {
    * The extra info.
    * @return extraInfo
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getExtraInfo() {
     return extraInfo;
   }
@@ -196,7 +196,7 @@ public class TSSKeySignEventData {
    * The failed reason.
    * @return failedReason
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getFailedReason() {
     return failedReason;
   }
@@ -215,7 +215,7 @@ public class TSSKeySignEventData {
    * Get requestDetail
    * @return requestDetail
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public TSSKeySignRequest getRequestDetail() {
     return requestDetail;
   }
@@ -234,7 +234,7 @@ public class TSSKeySignEventData {
    * Get result
    * @return result
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public TSSSignatures getResult() {
     return result;
   }

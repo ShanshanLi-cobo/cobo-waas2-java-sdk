@@ -47,7 +47,7 @@ import com.cobo.waas2.JSON;
 /**
  * DeleteWalletById201Response
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -68,7 +68,7 @@ public class DeleteWalletById201Response {
    * Whether the request to delete the wallet has been successfully submitted. - &#x60;true&#x60;: The request to delete the wallet has been successfully submitted. - &#x60;false&#x60;: The request to delete the wallet has not been submitted. 
    * @return submitted
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public Boolean getSubmitted() {
     return submitted;
   }

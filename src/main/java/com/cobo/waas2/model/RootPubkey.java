@@ -48,7 +48,7 @@ import com.cobo.waas2.JSON;
 /**
  * The data for MPC Root Extended Public Key information.
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -73,7 +73,7 @@ public class RootPubkey {
    * The vault&#39;s [root extended public key](https://www.cobo.com/developers/v2/guides/mpc-wallets/get-started-ocw#root-extended-public-keys).
    * @return rootPubkey
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getRootPubkey() {
     return rootPubkey;
   }
@@ -92,7 +92,7 @@ public class RootPubkey {
    * Get curve
    * @return curve
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public CurveType getCurve() {
     return curve;
   }

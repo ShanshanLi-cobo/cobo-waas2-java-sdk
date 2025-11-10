@@ -48,7 +48,7 @@ import com.cobo.waas2.JSON;
 /**
  * The information about transaction timeline, which lists all statuses that the transaction passes through with timestamps indicating when each status is completed.
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -77,7 +77,7 @@ public class TransactionTimeline {
    * Get status
    * @return status
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public TransactionStatus getStatus() {
     return status;
   }
@@ -96,7 +96,7 @@ public class TransactionTimeline {
    * Whether the transaction status is completed:   - &#x60;true&#x60;: The transaction status is completed.   - &#x60;false&#x60;: The transaction is currently in the status. 
    * @return finished
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public Boolean getFinished() {
     return finished;
   }
@@ -115,7 +115,7 @@ public class TransactionTimeline {
    * The time when the transaction status is completed in Unix timestamp format, measured in milliseconds.
    * @return finishedTimestamp
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public Long getFinishedTimestamp() {
     return finishedTimestamp;
   }

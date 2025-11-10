@@ -50,7 +50,7 @@ import com.cobo.waas2.JSON;
 /**
  * The basic information of a wallet.
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -91,7 +91,7 @@ public class CustodialWalletInfo {
    * The wallet ID.
    * @return walletId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public UUID getWalletId() {
     return walletId;
   }
@@ -110,7 +110,7 @@ public class CustodialWalletInfo {
    * Get walletType
    * @return walletType
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public WalletType getWalletType() {
     return walletType;
   }
@@ -129,7 +129,7 @@ public class CustodialWalletInfo {
    * Get walletSubtype
    * @return walletSubtype
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public WalletSubtype getWalletSubtype() {
     return walletSubtype;
   }
@@ -148,7 +148,7 @@ public class CustodialWalletInfo {
    * The wallet name.
    * @return name
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getName() {
     return name;
   }
@@ -167,7 +167,7 @@ public class CustodialWalletInfo {
    * The ID of the owning organization.
    * @return orgId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getOrgId() {
     return orgId;
   }
@@ -186,7 +186,7 @@ public class CustodialWalletInfo {
    * Enable the auto sweep feature for the wallet
    * @return enableAutoSweep
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public Boolean getEnableAutoSweep() {
     return enableAutoSweep;
   }

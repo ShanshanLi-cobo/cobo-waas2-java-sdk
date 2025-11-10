@@ -54,7 +54,7 @@ import com.cobo.waas2.JSON;
 /**
  * TokenizationActivityInfo
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -111,7 +111,7 @@ public class TokenizationActivityInfo {
    * The ID of the activity.
    * @return activityId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public UUID getActivityId() {
     return activityId;
   }
@@ -130,7 +130,7 @@ public class TokenizationActivityInfo {
    * The token ID.
    * @return tokenId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getTokenId() {
     return tokenId;
   }
@@ -149,7 +149,7 @@ public class TokenizationActivityInfo {
    * Get type
    * @return type
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public TokenizationOperationType getType() {
     return type;
   }
@@ -168,7 +168,7 @@ public class TokenizationActivityInfo {
    * Get status
    * @return status
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public TokenizationActivityStatus getStatus() {
     return status;
   }
@@ -187,7 +187,7 @@ public class TokenizationActivityInfo {
    * Get source
    * @return source
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public TokenizationTokenOperationSource getSource() {
     return source;
   }
@@ -206,7 +206,7 @@ public class TokenizationActivityInfo {
    * The initiator of the activity.
    * @return initiator
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getInitiator() {
     return initiator;
   }
@@ -225,7 +225,7 @@ public class TokenizationActivityInfo {
    * Get initiatorType
    * @return initiatorType
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public TransactionInitiatorType getInitiatorType() {
     return initiatorType;
   }
@@ -252,7 +252,7 @@ public class TokenizationActivityInfo {
    * The IDs of the corresponding transactions of the activity.
    * @return transactionIds
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public List<String> getTransactionIds() {
     return transactionIds;
   }
@@ -271,7 +271,7 @@ public class TokenizationActivityInfo {
    * The creation timestamp of the activity in milliseconds since the Unix epoch.
    * @return createdTimestamp
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public Long getCreatedTimestamp() {
     return createdTimestamp;
   }
@@ -290,7 +290,7 @@ public class TokenizationActivityInfo {
    * The last update timestamp of the activity in milliseconds since the Unix epoch.
    * @return updatedTimestamp
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public Long getUpdatedTimestamp() {
     return updatedTimestamp;
   }

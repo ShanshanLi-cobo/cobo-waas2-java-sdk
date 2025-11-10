@@ -51,7 +51,7 @@ import com.cobo.waas2.JSON;
 /**
  * The information of an approval request.
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -88,7 +88,7 @@ public class ApprovalRequest {
    * The system-generated unique ID of the approval request.
    * @return approvalId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getApprovalId() {
     return approvalId;
   }
@@ -107,7 +107,7 @@ public class ApprovalRequest {
    * An identifier provided by you when requesting the approval.
    * @return requestId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getRequestId() {
     return requestId;
   }
@@ -134,7 +134,7 @@ public class ApprovalRequest {
    * Get fields
    * @return fields
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public List<AppWorkflowField> getFields() {
     return fields;
   }
@@ -153,7 +153,7 @@ public class ApprovalRequest {
    * Get status
    * @return status
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public ApprovalStatus getStatus() {
     return status;
   }
@@ -172,7 +172,7 @@ public class ApprovalRequest {
    * The time when the approval was initiated, in Unix timestamp format, measured in milliseconds.
    * @return initiatedTimestamp
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public Long getInitiatedTimestamp() {
     return initiatedTimestamp;
   }

@@ -14,7 +14,7 @@ package com.cobo.waas2.auth;
 /**
  * OAuth flows that are supported by this client
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )

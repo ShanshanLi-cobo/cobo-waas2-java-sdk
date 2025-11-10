@@ -50,7 +50,7 @@ import com.cobo.waas2.JSON;
 /**
  * ListTransactionApprovalDetails200Response
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -79,7 +79,7 @@ public class ListTransactionApprovalDetails200Response {
    * Get data
    * @return data
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public List<TransactionApprovalDetail> getData() {
     return data;
   }

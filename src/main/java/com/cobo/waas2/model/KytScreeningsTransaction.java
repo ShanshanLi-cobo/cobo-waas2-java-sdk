@@ -51,7 +51,7 @@ import com.cobo.waas2.JSON;
 /**
  * KYT screening status information including the transaction’s review status and fund status.
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -84,7 +84,7 @@ public class KytScreeningsTransaction {
    * The UUID of the transaction that was screened.
    * @return transactionId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public UUID getTransactionId() {
     return transactionId;
   }
@@ -103,7 +103,7 @@ public class KytScreeningsTransaction {
    * Get transactionType
    * @return transactionType
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public KytScreeningsTransactionType getTransactionType() {
     return transactionType;
   }
@@ -122,7 +122,7 @@ public class KytScreeningsTransaction {
    * Get reviewStatus
    * @return reviewStatus
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public ReviewStatusType getReviewStatus() {
     return reviewStatus;
   }
@@ -141,7 +141,7 @@ public class KytScreeningsTransaction {
    * Get fundsStatus
    * @return fundsStatus
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public FundsStatusType getFundsStatus() {
     return fundsStatus;
   }

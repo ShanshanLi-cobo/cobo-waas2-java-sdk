@@ -48,7 +48,7 @@ import com.cobo.waas2.JSON;
 /**
  * LinkDisplayInfo
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -73,7 +73,7 @@ public class LinkDisplayInfo {
    * The brand name to display to end users during the payment process. 
    * @return developerName
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getDeveloperName() {
     return developerName;
   }
@@ -92,7 +92,7 @@ public class LinkDisplayInfo {
    * The URL of your logo image to display to end users during the payment process. 
    * @return logo
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public URI getLogo() {
     return logo;
   }

@@ -47,7 +47,7 @@ import com.cobo.waas2.JSON;
 /**
  * RefreshPermissionTokenRequest
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -68,7 +68,7 @@ public class RefreshPermissionTokenRequest {
    * The Refresh Token of the current Access Token.
    * @return refreshToken
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getRefreshToken() {
     return refreshToken;
   }

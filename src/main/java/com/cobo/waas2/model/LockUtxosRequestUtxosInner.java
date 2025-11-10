@@ -47,7 +47,7 @@ import com.cobo.waas2.JSON;
 /**
  * LockUtxosRequestUtxosInner
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -76,7 +76,7 @@ public class LockUtxosRequestUtxosInner {
    * The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-tokens).
    * @return tokenId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getTokenId() {
     return tokenId;
   }
@@ -95,7 +95,7 @@ public class LockUtxosRequestUtxosInner {
    * The transaction hash.
    * @return txHash
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getTxHash() {
     return txHash;
   }
@@ -114,7 +114,7 @@ public class LockUtxosRequestUtxosInner {
    * The output index of the UTXO.
    * @return voutN
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public Integer getVoutN() {
     return voutN;
   }

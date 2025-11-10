@@ -50,7 +50,7 @@ import com.cobo.waas2.JSON;
 /**
  * The disposition information about a transaction.
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -91,7 +91,7 @@ public class DispositionEventData {
    * The transaction ID.
    * @return transactionId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public UUID getTransactionId() {
     return transactionId;
   }
@@ -110,7 +110,7 @@ public class DispositionEventData {
    * Get dispositionType
    * @return dispositionType
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public DispositionType getDispositionType() {
     return dispositionType;
   }
@@ -129,7 +129,7 @@ public class DispositionEventData {
    * Get dispositionStatus
    * @return dispositionStatus
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public DispositionStatus getDispositionStatus() {
     return dispositionStatus;
   }
@@ -148,7 +148,7 @@ public class DispositionEventData {
    * The blockchain address to receive the refunded/isolated funds.
    * @return destinationAddress
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getDestinationAddress() {
     return destinationAddress;
   }
@@ -167,7 +167,7 @@ public class DispositionEventData {
    * The amount to be refunded/isolated from the original transaction, specified as a numeric string. This value cannot exceed the total amount of the original transaction. 
    * @return dispositionAmount
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getDispositionAmount() {
     return dispositionAmount;
   }
@@ -186,7 +186,7 @@ public class DispositionEventData {
    * The time when the disposition was updated, in Unix timestamp format, measured in milliseconds.
    * @return updatedTimestamp
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public Long getUpdatedTimestamp() {
     return updatedTimestamp;
   }

@@ -53,7 +53,7 @@ import com.cobo.waas2.JSON;
 /**
  * CreateSafeWalletParams
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -114,7 +114,7 @@ public class CreateSafeWalletParams {
    * The wallet name.
    * @return name
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getName() {
     return name;
   }
@@ -133,7 +133,7 @@ public class CreateSafeWalletParams {
    * Get walletType
    * @return walletType
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public WalletType getWalletType() {
     return walletType;
   }
@@ -152,7 +152,7 @@ public class CreateSafeWalletParams {
    * Get walletSubtype
    * @return walletSubtype
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public WalletSubtype getWalletSubtype() {
     return walletSubtype;
   }
@@ -171,7 +171,7 @@ public class CreateSafeWalletParams {
    * Enable the auto-sweep feature for the wallet. This parameter only applies to MPC Wallets and Web3 Wallets.
    * @return enableAutoSweep
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public Boolean getEnableAutoSweep() {
     return enableAutoSweep;
   }
@@ -190,7 +190,7 @@ public class CreateSafeWalletParams {
    * The ID of the chain that the wallet operates on.
    * @return chainId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getChainId() {
     return chainId;
   }
@@ -209,7 +209,7 @@ public class CreateSafeWalletParams {
    * Get smartContractWalletType
    * @return smartContractWalletType
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public SmartContractWalletType getSmartContractWalletType() {
     return smartContractWalletType;
   }
@@ -228,7 +228,7 @@ public class CreateSafeWalletParams {
    * The address of the Smart Contract Wallet. If this is not provided, Cobo will create a new Safe{Wallet} and set up Cobo Safe for you. In that case, the &#x60;threshold&#x60; and &#x60;signers&#x60; properties are required.
    * @return safeAddress
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getSafeAddress() {
     return safeAddress;
   }
@@ -255,7 +255,7 @@ public class CreateSafeWalletParams {
    * The signers of the Smart Contract Wallet. This property is required when creating a new Safe{Wallet}.
    * @return signers
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public List<String> getSigners() {
     return signers;
   }
@@ -275,7 +275,7 @@ public class CreateSafeWalletParams {
    * minimum: 1
    * @return threshold
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public Integer getThreshold() {
     return threshold;
   }
@@ -294,7 +294,7 @@ public class CreateSafeWalletParams {
    * The address of Cobo Safe. If you are importing an existing Safe{Wallet}, Cobo Safe must have been created and enabled.
    * @return coboSafeAddress
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getCoboSafeAddress() {
     return coboSafeAddress;
   }
@@ -313,7 +313,7 @@ public class CreateSafeWalletParams {
    * Get initiator
    * @return initiator
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public SmartContractInitiator getInitiator() {
     return initiator;
   }

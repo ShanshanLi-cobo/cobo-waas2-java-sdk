@@ -51,7 +51,7 @@ import com.cobo.waas2.JSON;
 /**
  * TSSKeySignRequest
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -108,7 +108,7 @@ public class TSSKeySignRequest {
    * The TSS key share group ID.
    * @return groupId
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getGroupId() {
     return groupId;
   }
@@ -127,7 +127,7 @@ public class TSSKeySignRequest {
    * The The old TSS key share group&#39;s root extended public key.
    * @return rootPubKey
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getRootPubKey() {
     return rootPubKey;
   }
@@ -154,7 +154,7 @@ public class TSSKeySignRequest {
    * Get usedNodeIds
    * @return usedNodeIds
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public List<String> getUsedNodeIds() {
     return usedNodeIds;
   }
@@ -181,7 +181,7 @@ public class TSSKeySignRequest {
    * Get bip32PathList
    * @return bip32PathList
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public List<String> getBip32PathList() {
     return bip32PathList;
   }
@@ -208,7 +208,7 @@ public class TSSKeySignRequest {
    * Get msgHashList
    * @return msgHashList
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public List<String> getMsgHashList() {
     return msgHashList;
   }
@@ -235,7 +235,7 @@ public class TSSKeySignRequest {
    * Get tweakList
    * @return tweakList
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public List<String> getTweakList() {
     return tweakList;
   }
@@ -254,7 +254,7 @@ public class TSSKeySignRequest {
    * Get signatureType
    * @return signatureType
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public TSSSignatureType getSignatureType() {
     return signatureType;
   }
@@ -273,7 +273,7 @@ public class TSSKeySignRequest {
    * Get tssProtocol
    * @return tssProtocol
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public TSSProtocol getTssProtocol() {
     return tssProtocol;
   }
@@ -292,7 +292,7 @@ public class TSSKeySignRequest {
    * The task ID.
    * @return taskId
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getTaskId() {
     return taskId;
   }
@@ -311,7 +311,7 @@ public class TSSKeySignRequest {
    * The business task ID. This field contains the transaction ID.
    * @return bizTaskId
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getBizTaskId() {
     return bizTaskId;
   }

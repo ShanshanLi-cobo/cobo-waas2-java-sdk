@@ -49,7 +49,7 @@ import com.cobo.waas2.JSON;
 /**
  * The extra information for Babylon transaction parameters.
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -94,7 +94,7 @@ public class TransactionBabylonTxParameters {
    * Get extraType
    * @return extraType
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public TransactionExtraType getExtraType() {
     return extraType;
   }
@@ -113,7 +113,7 @@ public class TransactionBabylonTxParameters {
    * The original staking amount.
    * @return stakeAmount
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getStakeAmount() {
     return stakeAmount;
   }
@@ -132,7 +132,7 @@ public class TransactionBabylonTxParameters {
    * The public key of the finality provider.
    * @return finalityProviderPublicKey
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getFinalityProviderPublicKey() {
     return finalityProviderPublicKey;
   }
@@ -151,7 +151,7 @@ public class TransactionBabylonTxParameters {
    * The number of blocks that need to be processed before the locked tokens are unlocked and become accessible.
    * @return stakeBlockTime
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public Long getStakeBlockTime() {
     return stakeBlockTime;
   }
@@ -170,7 +170,7 @@ public class TransactionBabylonTxParameters {
    * The version of Babylon global parameters.
    * @return paramVersion
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public Long getParamVersion() {
     return paramVersion;
   }
@@ -189,7 +189,7 @@ public class TransactionBabylonTxParameters {
    * Get withdrawFromType
    * @return withdrawFromType
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public ActivityType getWithdrawFromType() {
     return withdrawFromType;
   }
@@ -208,7 +208,7 @@ public class TransactionBabylonTxParameters {
    * Get slashFromType
    * @return slashFromType
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public ActivityType getSlashFromType() {
     return slashFromType;
   }

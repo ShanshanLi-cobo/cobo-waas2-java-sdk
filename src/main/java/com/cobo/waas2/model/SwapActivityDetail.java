@@ -59,7 +59,7 @@ import com.cobo.waas2.JSON;
 /**
  * SwapActivityDetail
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -164,7 +164,7 @@ public class SwapActivityDetail {
    * The unique identifier of the swap activity.
    * @return activityId
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public UUID getActivityId() {
     return activityId;
   }
@@ -183,7 +183,7 @@ public class SwapActivityDetail {
    * Get swapType
    * @return swapType
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public SwapType getSwapType() {
     return swapType;
   }
@@ -202,7 +202,7 @@ public class SwapActivityDetail {
    * Get status
    * @return status
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public SwapActivityStatus getStatus() {
     return status;
   }
@@ -221,7 +221,7 @@ public class SwapActivityDetail {
    * The request ID of the swap transaction.
    * @return requestId
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getRequestId() {
     return requestId;
   }
@@ -240,7 +240,7 @@ public class SwapActivityDetail {
    * The ID of the wallet used to pay.
    * @return walletId
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public UUID getWalletId() {
     return walletId;
   }
@@ -259,7 +259,7 @@ public class SwapActivityDetail {
    * The ID of the token to pay.
    * @return payTokenId
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getPayTokenId() {
     return payTokenId;
   }
@@ -278,7 +278,7 @@ public class SwapActivityDetail {
    * The ID of the token to receive.
    * @return receiveTokenId
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getReceiveTokenId() {
     return receiveTokenId;
   }
@@ -297,7 +297,7 @@ public class SwapActivityDetail {
    * The amount of the token to pay.
    * @return payAmount
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getPayAmount() {
     return payAmount;
   }
@@ -316,7 +316,7 @@ public class SwapActivityDetail {
    * The amount of the token to receive.
    * @return receiveAmount
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getReceiveAmount() {
     return receiveAmount;
   }
@@ -335,7 +335,7 @@ public class SwapActivityDetail {
    * The ID of the token used for paying the service fee.
    * @return feeTokenId
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getFeeTokenId() {
     return feeTokenId;
   }
@@ -354,7 +354,7 @@ public class SwapActivityDetail {
    * The amount of the service fee.
    * @return feeAmount
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getFeeAmount() {
     return feeAmount;
   }
@@ -373,7 +373,7 @@ public class SwapActivityDetail {
    * The initiator of the swap activity.
    * @return initiator
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getInitiator() {
     return initiator;
   }
@@ -392,7 +392,7 @@ public class SwapActivityDetail {
    * Get initiatorType
    * @return initiatorType
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public TransactionInitiatorType getInitiatorType() {
     return initiatorType;
   }
@@ -411,7 +411,7 @@ public class SwapActivityDetail {
    * The description of the swap activity.
    * @return description
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getDescription() {
     return description;
   }
@@ -430,7 +430,7 @@ public class SwapActivityDetail {
    * The time when the swap activity was created, in Unix timestamp format, measured in milliseconds.
    * @return createdTimestamp
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public Integer getCreatedTimestamp() {
     return createdTimestamp;
   }
@@ -449,7 +449,7 @@ public class SwapActivityDetail {
    * The time when the swap activity was last updated, in Unix timestamp format, measured in milliseconds.
    * @return updatedTimestamp
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public Integer getUpdatedTimestamp() {
     return updatedTimestamp;
   }
@@ -468,7 +468,7 @@ public class SwapActivityDetail {
    * Get networkFee
    * @return networkFee
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public TransactionRequestFee getNetworkFee() {
     return networkFee;
   }
@@ -487,7 +487,7 @@ public class SwapActivityDetail {
    * The address of an MPC Wallet or Web3 Wallet that receives the swapped or bridged assets.
    * @return destinationAddress
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getDestinationAddress() {
     return destinationAddress;
   }
@@ -514,7 +514,7 @@ public class SwapActivityDetail {
    * Get timeline
    * @return timeline
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public List<SwapActivityTimeline> getTimeline() {
     return timeline;
   }
@@ -541,7 +541,7 @@ public class SwapActivityDetail {
    * Get approvers
    * @return approvers
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public List<SwapActivityApprovers> getApprovers() {
     return approvers;
   }
@@ -568,7 +568,7 @@ public class SwapActivityDetail {
    * Get signers
    * @return signers
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public List<SwapActivitySigners> getSigners() {
     return signers;
   }
@@ -587,7 +587,7 @@ public class SwapActivityDetail {
    * Get receivingTransaction
    * @return receivingTransaction
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public SwapReceivingTransaction getReceivingTransaction() {
     return receivingTransaction;
   }

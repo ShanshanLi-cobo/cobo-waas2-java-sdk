@@ -47,7 +47,7 @@ import com.cobo.waas2.JSON;
 /**
  * The timeline of the swap activity.
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -76,7 +76,7 @@ public class SwapActivityTimeline {
    * The action in the swap activity. Possible values include:   - &#x60;Submitted&#x60;: The swap request has been submitted.   - &#x60;Pending Authorization&#x60;: The swap request is pending authorization.   - &#x60;Bridge {Token}&#x60;: The token is being bridged to the destination chain.   - &#x60;Swap {Token}&#x60;: The token is being exchanged to the destination token.   - &#x60;Cobo Confirmation&#x60;: The swap result is pending Cobo&#39;s final confirmation. 
    * @return action
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getAction() {
     return action;
   }
@@ -95,7 +95,7 @@ public class SwapActivityTimeline {
    * The status of the action. Possible values include:   - &#x60;Success&#x60;: The action completed successfully.   - &#x60;Processing&#x60;: The action is being processed.   - &#x60;Failed&#x60;: The action failed. 
    * @return status
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getStatus() {
     return status;
   }
@@ -114,7 +114,7 @@ public class SwapActivityTimeline {
    * The time when the action occurred, in Unix timestamp format, measured in milliseconds.  
    * @return timestamp
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public Integer getTimestamp() {
     return timestamp;
   }

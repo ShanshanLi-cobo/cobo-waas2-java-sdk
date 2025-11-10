@@ -47,7 +47,7 @@ import com.cobo.waas2.JSON;
 /**
  * The information of an organization. To learn more about organizations, see [Introduction to Organization](https://manuals.cobo.com/en/portal/organization/introduction). 
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -80,7 +80,7 @@ public class OrgInfo {
    * The organization ID.
    * @return orgId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getOrgId() {
     return orgId;
   }
@@ -99,7 +99,7 @@ public class OrgInfo {
    * An internal business ID assigned by Cobo. Used mainly by Cobo&#39;s customer support to locate the organization.
    * @return bizOrgId
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public Integer getBizOrgId() {
     return bizOrgId;
   }
@@ -118,7 +118,7 @@ public class OrgInfo {
    * The organization name.
    * @return name
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getName() {
     return name;
   }
@@ -137,7 +137,7 @@ public class OrgInfo {
    * The organization&#39;s creation time in Unix timestamp format, measured in milliseconds.
    * @return createdTimestamp
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public Long getCreatedTimestamp() {
     return createdTimestamp;
   }

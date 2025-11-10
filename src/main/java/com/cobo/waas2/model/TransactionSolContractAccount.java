@@ -47,7 +47,7 @@ import com.cobo.waas2.JSON;
 /**
  * sol contract instruction account
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -76,7 +76,7 @@ public class TransactionSolContractAccount {
    * account address. If the account is signer, pubkey needs to match the from_address parameter. 
    * @return pubkey
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getPubkey() {
     return pubkey;
   }
@@ -95,7 +95,7 @@ public class TransactionSolContractAccount {
    * boolean value indicating whether the account can sign transactions. 
    * @return isSigner
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public Boolean getIsSigner() {
     return isSigner;
   }
@@ -114,7 +114,7 @@ public class TransactionSolContractAccount {
    * boolean value indicating whether the account can be modified. 
    * @return isWritable
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public Boolean getIsWritable() {
     return isWritable;
   }

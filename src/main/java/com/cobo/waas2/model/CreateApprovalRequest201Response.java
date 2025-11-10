@@ -48,7 +48,7 @@ import com.cobo.waas2.JSON;
 /**
  * CreateApprovalRequest201Response
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -69,7 +69,7 @@ public class CreateApprovalRequest201Response {
    * The system-generated unique ID of the approval request. You can use this ID to query the approval request status or revoke the request.
    * @return approvalId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public UUID getApprovalId() {
     return approvalId;
   }

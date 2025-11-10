@@ -47,7 +47,7 @@ import com.cobo.waas2.JSON;
 /**
  * EstimatedEvmEip1559FeeSlow
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -80,7 +80,7 @@ public class EstimatedEvmEip1559FeeSlow {
    * The maximum gas fee per gas unit used on the chain, in wei.
    * @return maxFeePerGas
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getMaxFeePerGas() {
     return maxFeePerGas;
   }
@@ -99,7 +99,7 @@ public class EstimatedEvmEip1559FeeSlow {
    * The maximum priority fee per gas unit used, in wei. The maximum priority fee represents the highest amount of miner tips that you are willing to pay for your transaction.
    * @return maxPriorityFeePerGas
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getMaxPriorityFeePerGas() {
     return maxPriorityFeePerGas;
   }
@@ -118,7 +118,7 @@ public class EstimatedEvmEip1559FeeSlow {
    * The gas limit. It represents the maximum number of gas units that you are willing to pay for the execution of a transaction or Ethereum Virtual Machine (EVM) operation. The gas unit cost of each operation varies.
    * @return gasLimit
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getGasLimit() {
     return gasLimit;
   }
@@ -137,7 +137,7 @@ public class EstimatedEvmEip1559FeeSlow {
    * The estimated fee required for submitting the transaction data to L1 (Layer 1), measured in wei.
    * @return reservedFee
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getReservedFee() {
     return reservedFee;
   }

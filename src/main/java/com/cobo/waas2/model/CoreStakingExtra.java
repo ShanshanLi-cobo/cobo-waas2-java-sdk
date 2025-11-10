@@ -48,7 +48,7 @@ import com.cobo.waas2.JSON;
 /**
  * CoreStakingExtra
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -89,7 +89,7 @@ public class CoreStakingExtra {
    * Get poolType
    * @return poolType
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public StakingPoolType getPoolType() {
     return poolType;
   }
@@ -108,7 +108,7 @@ public class CoreStakingExtra {
    * The Proof-of-Stake (PoS) chain.
    * @return posChain
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getPosChain() {
     return posChain;
   }
@@ -127,7 +127,7 @@ public class CoreStakingExtra {
    * The staker&#39;s Bitcoin address.
    * @return stakerAddress
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getStakerAddress() {
     return stakerAddress;
   }
@@ -146,7 +146,7 @@ public class CoreStakingExtra {
    * The validator&#39;s EVM address.
    * @return validatorAddress
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getValidatorAddress() {
     return validatorAddress;
   }
@@ -165,7 +165,7 @@ public class CoreStakingExtra {
    * The EVM address to receive staking rewards.
    * @return rewardAddress
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getRewardAddress() {
     return rewardAddress;
   }
@@ -184,7 +184,7 @@ public class CoreStakingExtra {
    * The Unix timestamp (in seconds) when the staking position will be unlocked and available for withdrawal.
    * @return timelock
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public Integer getTimelock() {
     return timelock;
   }

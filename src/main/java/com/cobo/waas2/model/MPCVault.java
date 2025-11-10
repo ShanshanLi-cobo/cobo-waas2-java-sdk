@@ -51,7 +51,7 @@ import com.cobo.waas2.JSON;
 /**
  * The data for vault information.
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -92,7 +92,7 @@ public class MPCVault {
    * The vault ID.
    * @return vaultId
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getVaultId() {
     return vaultId;
   }
@@ -111,7 +111,7 @@ public class MPCVault {
    * The project ID.
    * @return projectId
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getProjectId() {
     return projectId;
   }
@@ -130,7 +130,7 @@ public class MPCVault {
    * The vault name.
    * @return name
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getName() {
     return name;
   }
@@ -149,7 +149,7 @@ public class MPCVault {
    * Get type
    * @return type
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public MPCVaultType getType() {
     return type;
   }
@@ -176,7 +176,7 @@ public class MPCVault {
    * Get rootPubkeys
    * @return rootPubkeys
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public List<RootPubkey> getRootPubkeys() {
     return rootPubkeys;
   }
@@ -195,7 +195,7 @@ public class MPCVault {
    * The vault&#39;s creation time in Unix timestamp format, measured in milliseconds.
    * @return createdTimestamp
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public Long getCreatedTimestamp() {
     return createdTimestamp;
   }

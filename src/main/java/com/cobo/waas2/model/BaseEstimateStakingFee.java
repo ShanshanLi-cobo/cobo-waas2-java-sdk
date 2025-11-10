@@ -48,7 +48,7 @@ import com.cobo.waas2.JSON;
 /**
  * BaseEstimateStakingFee
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -69,7 +69,7 @@ public class BaseEstimateStakingFee {
    * Get activityType
    * @return activityType
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public ActivityType getActivityType() {
     return activityType;
   }

@@ -47,7 +47,7 @@ import com.cobo.waas2.JSON;
 /**
  * The response schema for retrieving the allowlist activation status.
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -68,7 +68,7 @@ public class GetTokenizationAllowlistActivation200Response {
    * Indicates whether the allowlist feature is activated for the token.
    * @return activated
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public Boolean getActivated() {
     return activated;
   }

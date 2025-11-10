@@ -50,7 +50,7 @@ import com.cobo.waas2.JSON;
 /**
  * The response for a disposition query request.
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -83,7 +83,7 @@ public class DispositionQueryResponse {
    * The UUID of the transaction that the disposition applies to.
    * @return transactionId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public UUID getTransactionId() {
     return transactionId;
   }
@@ -102,7 +102,7 @@ public class DispositionQueryResponse {
    * Get dispositionType
    * @return dispositionType
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public DispositionType getDispositionType() {
     return dispositionType;
   }
@@ -121,7 +121,7 @@ public class DispositionQueryResponse {
    * Get dispositionStatus
    * @return dispositionStatus
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public DispositionStatus getDispositionStatus() {
     return dispositionStatus;
   }
@@ -140,7 +140,7 @@ public class DispositionQueryResponse {
    * The UUID of the generated disposition transaction (if available).
    * @return dispositionTransactionId
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public UUID getDispositionTransactionId() {
     return dispositionTransactionId;
   }

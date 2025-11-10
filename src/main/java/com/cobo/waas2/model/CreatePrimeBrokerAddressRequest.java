@@ -50,7 +50,7 @@ import com.cobo.waas2.JSON;
 /**
  * CreatePrimeBrokerAddressRequest
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -79,7 +79,7 @@ public class CreatePrimeBrokerAddressRequest {
    * Get addresses
    * @return addresses
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public List<QueryGuardPubkey200ResponseAddressesInner> getAddresses() {
     return addresses;
   }

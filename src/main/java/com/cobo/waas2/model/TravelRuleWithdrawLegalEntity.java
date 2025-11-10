@@ -49,7 +49,7 @@ import com.cobo.waas2.JSON;
 /**
  * The required information of a legal entity.
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -82,7 +82,7 @@ public class TravelRuleWithdrawLegalEntity {
    * Get selectedEntityType
    * @return selectedEntityType
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public SelectedEntityType getSelectedEntityType() {
     return selectedEntityType;
   }
@@ -101,7 +101,7 @@ public class TravelRuleWithdrawLegalEntity {
    * The legal name of the entity.
    * @return legalName
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getLegalName() {
     return legalName;
   }
@@ -120,7 +120,7 @@ public class TravelRuleWithdrawLegalEntity {
    * The date of incorporation of the entity.
    * @return dateOfIncorporation
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public LocalDate getDateOfIncorporation() {
     return dateOfIncorporation;
   }
@@ -139,7 +139,7 @@ public class TravelRuleWithdrawLegalEntity {
    * The place of incorporation of the entity.
    * @return placeOfIncorporation
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getPlaceOfIncorporation() {
     return placeOfIncorporation;
   }

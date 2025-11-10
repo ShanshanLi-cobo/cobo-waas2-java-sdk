@@ -52,7 +52,7 @@ import com.cobo.waas2.JSON;
 /**
  * The information about the transaction destination type &#x60;SOL_Contract&#x60;. Refer to [Transaction sources and destinations](https://www.cobo.com/developers/v2/guides/transactions/sources-and-destinations) for a detailed introduction about the supported sources and destinations for each transaction type.  Switch between the tabs to display the properties for different transaction destinations. 
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -81,7 +81,7 @@ public class TransactionSolContractDestination {
    * Get destinationType
    * @return destinationType
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public TransactionDestinationType getDestinationType() {
     return destinationType;
   }
@@ -108,7 +108,7 @@ public class TransactionSolContractDestination {
    * Get instructions
    * @return instructions
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public List<TransactionSolContractInstruction> getInstructions() {
     return instructions;
   }
@@ -135,7 +135,7 @@ public class TransactionSolContractDestination {
    * Get addressLookupTableAccounts
    * @return addressLookupTableAccounts
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public List<TransactionSolContractAddressLookupTableAccount> getAddressLookupTableAccounts() {
     return addressLookupTableAccounts;
   }

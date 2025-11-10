@@ -47,7 +47,7 @@ import com.cobo.waas2.JSON;
 /**
  * DeleteGuardPubkey201Response
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -68,7 +68,7 @@ public class DeleteGuardPubkey201Response {
    * The deleted Cobo Guard binding statement ID.
    * @return statementId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getStatementId() {
     return statementId;
   }

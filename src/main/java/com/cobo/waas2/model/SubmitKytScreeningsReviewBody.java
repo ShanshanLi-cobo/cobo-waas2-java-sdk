@@ -49,7 +49,7 @@ import com.cobo.waas2.JSON;
 /**
  * Submission of a manual KYT review result.
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -74,7 +74,7 @@ public class SubmitKytScreeningsReviewBody {
    * The UUID of the transaction that requires a manual KYT review.
    * @return transactionId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public UUID getTransactionId() {
     return transactionId;
   }
@@ -93,7 +93,7 @@ public class SubmitKytScreeningsReviewBody {
    * Get result
    * @return result
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public KytScreeningsReviewType getResult() {
     return result;
   }

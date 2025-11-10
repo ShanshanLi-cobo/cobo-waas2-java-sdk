@@ -48,7 +48,7 @@ import com.cobo.waas2.JSON;
 /**
  * TokenizationTokenInfo
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -105,7 +105,7 @@ public class TokenizationTokenInfo {
    * The unique token identifier.
    * @return tokenId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getTokenId() {
     return tokenId;
   }
@@ -124,7 +124,7 @@ public class TokenizationTokenInfo {
    * The chain ID of the tokenization contract.
    * @return chainId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getChainId() {
     return chainId;
   }
@@ -143,7 +143,7 @@ public class TokenizationTokenInfo {
    * The address of the token contract.
    * @return tokenAddress
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getTokenAddress() {
     return tokenAddress;
   }
@@ -162,7 +162,7 @@ public class TokenizationTokenInfo {
    * The name of the token.
    * @return tokenName
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getTokenName() {
     return tokenName;
   }
@@ -181,7 +181,7 @@ public class TokenizationTokenInfo {
    * The unique token symbol.
    * @return tokenSymbol
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getTokenSymbol() {
     return tokenSymbol;
   }
@@ -200,7 +200,7 @@ public class TokenizationTokenInfo {
    * The number of decimals of the token.
    * @return decimals
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public Integer getDecimals() {
     return decimals;
   }
@@ -219,7 +219,7 @@ public class TokenizationTokenInfo {
    * Whether the allowlist feature is activated for the token.
    * @return tokenAccessActivated
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public Boolean getTokenAccessActivated() {
     return tokenAccessActivated;
   }
@@ -238,7 +238,7 @@ public class TokenizationTokenInfo {
    * Get status
    * @return status
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public TokenizationStatus getStatus() {
     return status;
   }
@@ -257,7 +257,7 @@ public class TokenizationTokenInfo {
    * The total supply of the token.
    * @return totalSupply
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getTotalSupply() {
     return totalSupply;
   }
@@ -276,7 +276,7 @@ public class TokenizationTokenInfo {
    * The amount of tokens held by the organization.
    * @return holdings
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getHoldings() {
     return holdings;
   }

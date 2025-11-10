@@ -50,7 +50,7 @@ import com.cobo.waas2.JSON;
 /**
  * sol contract instruction
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -87,7 +87,7 @@ public class TransactionSolContractInstruction {
    * Get accounts
    * @return accounts
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public List<TransactionSolContractAccount> getAccounts() {
     return accounts;
   }
@@ -106,7 +106,7 @@ public class TransactionSolContractInstruction {
    * data used for calling Solana contract.. 
    * @return data
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getData() {
     return data;
   }
@@ -125,7 +125,7 @@ public class TransactionSolContractInstruction {
    * contract address. when calling a Solana contract, the to_address parameter needs to match the program_id parameter. If multiple contracts are being called, then the to_address parameter should match the program_id parameter of the first instruction. 
    * @return programId
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getProgramId() {
     return programId;
   }

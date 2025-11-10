@@ -49,7 +49,7 @@ import com.cobo.waas2.JSON;
 /**
  * The estimated transaction fee for UTXO-based chains.  For more details about the UTXO fee model, see [Fee models](https://www.cobo.com/developers/v2/guides/transactions/estimate-fees#fee-models). 
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -86,7 +86,7 @@ public class EstimatedUtxoFee {
    * Get feeType
    * @return feeType
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public FeeType getFeeType() {
     return feeType;
   }
@@ -105,7 +105,7 @@ public class EstimatedUtxoFee {
    * The token used to pay the transaction fee.
    * @return tokenId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getTokenId() {
     return tokenId;
   }
@@ -124,7 +124,7 @@ public class EstimatedUtxoFee {
    * Get slow
    * @return slow
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public EstimatedUtxoFeeSlow getSlow() {
     return slow;
   }
@@ -143,7 +143,7 @@ public class EstimatedUtxoFee {
    * Get recommended
    * @return recommended
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public EstimatedUtxoFeeSlow getRecommended() {
     return recommended;
   }
@@ -162,7 +162,7 @@ public class EstimatedUtxoFee {
    * Get fast
    * @return fast
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public EstimatedUtxoFeeSlow getFast() {
     return fast;
   }

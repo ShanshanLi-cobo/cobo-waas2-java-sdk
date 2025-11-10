@@ -49,7 +49,7 @@ import com.cobo.waas2.JSON;
 /**
  * CreateMpcWalletParams
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -86,7 +86,7 @@ public class CreateMpcWalletParams {
    * The wallet name.
    * @return name
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getName() {
     return name;
   }
@@ -105,7 +105,7 @@ public class CreateMpcWalletParams {
    * Get walletType
    * @return walletType
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public WalletType getWalletType() {
     return walletType;
   }
@@ -124,7 +124,7 @@ public class CreateMpcWalletParams {
    * Get walletSubtype
    * @return walletSubtype
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public WalletSubtype getWalletSubtype() {
     return walletSubtype;
   }
@@ -143,7 +143,7 @@ public class CreateMpcWalletParams {
    * Enable the auto-sweep feature for the wallet. This parameter only applies to MPC Wallets and Web3 Wallets.
    * @return enableAutoSweep
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public Boolean getEnableAutoSweep() {
     return enableAutoSweep;
   }
@@ -162,7 +162,7 @@ public class CreateMpcWalletParams {
    * The ID of the owning vault. You can call [List all vaults](https://www.cobo.com/developers/v2/api-references/wallets--mpc-wallets/list-all-vaults) to retrieve all vault IDs under your organization.
    * @return vaultId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getVaultId() {
     return vaultId;
   }

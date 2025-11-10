@@ -50,7 +50,7 @@ import com.cobo.waas2.JSON;
 /**
  * The information about the supported exchange.
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -75,7 +75,7 @@ public class ListExchanges200ResponseInner {
    * Get exchangeId
    * @return exchangeId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public ExchangeId getExchangeId() {
     return exchangeId;
   }
@@ -102,7 +102,7 @@ public class ListExchanges200ResponseInner {
    * The supported trading account types of this exchange.
    * @return supportedTradingAccountTypes
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public List<String> getSupportedTradingAccountTypes() {
     return supportedTradingAccountTypes;
   }

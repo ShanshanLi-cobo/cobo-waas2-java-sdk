@@ -49,7 +49,7 @@ import com.cobo.waas2.JSON;
 /**
  * The information about the transaction destination type &#x60;STELLAR_Contract&#x60;. Refer to [Transaction sources and destinations](https://www.cobo.com/developers/v2/guides/transactions/sources-and-destinations) for a detailed introduction about the supported sources and destinations for each transaction type.
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -74,7 +74,7 @@ public class TransactionStellarDestination {
    * Get destinationType
    * @return destinationType
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public TransactionDestinationType getDestinationType() {
     return destinationType;
   }
@@ -93,7 +93,7 @@ public class TransactionStellarDestination {
    * Get contractParam
    * @return contractParam
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public TransactionStellarContractParam getContractParam() {
     return contractParam;
   }

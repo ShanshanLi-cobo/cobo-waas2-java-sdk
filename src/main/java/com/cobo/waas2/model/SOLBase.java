@@ -47,7 +47,7 @@ import com.cobo.waas2.JSON;
 /**
  * SOLBase
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -72,7 +72,7 @@ public class SOLBase {
    * A fixed fee charged per signature. The default is 5,000 lamports per signature.
    * @return baseFee
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getBaseFee() {
     return baseFee;
   }
@@ -91,7 +91,7 @@ public class SOLBase {
    * The rent fee charged by the network to store non–rent-exempt accounts on-chain. It is deducted periodically until the account maintains the minimum balance required for rent exemption.
    * @return rentAmount
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getRentAmount() {
     return rentAmount;
   }

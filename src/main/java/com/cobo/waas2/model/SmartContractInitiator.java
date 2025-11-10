@@ -48,7 +48,7 @@ import com.cobo.waas2.JSON;
 /**
  * The information about the initiator.
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -73,7 +73,7 @@ public class SmartContractInitiator {
    * The initiator&#39;s wallet ID.
    * @return walletId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public UUID getWalletId() {
     return walletId;
   }
@@ -92,7 +92,7 @@ public class SmartContractInitiator {
    * The initiator&#39;s wallet address. 
    * @return address
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getAddress() {
     return address;
   }

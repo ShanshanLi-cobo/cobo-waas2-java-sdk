@@ -48,7 +48,7 @@ import com.cobo.waas2.JSON;
 /**
  * BabylonStakingActivityDetailExtra
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -81,7 +81,7 @@ public class BabylonStakingActivityDetailExtra {
    * Get poolType
    * @return poolType
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public StakingPoolType getPoolType() {
     return poolType;
   }
@@ -100,7 +100,7 @@ public class BabylonStakingActivityDetailExtra {
    * The public key of the finality provider.
    * @return finalityProviderPublicKey
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getFinalityProviderPublicKey() {
     return finalityProviderPublicKey;
   }
@@ -119,7 +119,7 @@ public class BabylonStakingActivityDetailExtra {
    * The number of blocks that need to be processed before the locked tokens are unlocked and become accessible.
    * @return stakeBlockTime
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public Long getStakeBlockTime() {
     return stakeBlockTime;
   }
@@ -138,7 +138,7 @@ public class BabylonStakingActivityDetailExtra {
    * Whether to automatically broadcast the transaction.  - &#x60;true&#x60;: Automatically broadcast the transaction. - &#x60;false&#x60;: The transaction will not be submitted to the blockchain automatically. You can call [Broadcast signed transactions](https://www.cobo.com/developers/v2/api-references/transactions/broadcast-signed-transactions) to broadcast the transaction to the blockchain, or retrieve the signed raw transaction data &#x60;raw_tx&#x60; by calling [Get transaction information](https://www.cobo.com/developers/v2/api-references/transactions/get-transaction-information) and broadcast it yourself. 
    * @return autoBroadcast
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public Boolean getAutoBroadcast() {
     return autoBroadcast;
   }

@@ -49,7 +49,7 @@ import com.cobo.waas2.JSON;
 /**
  * The information about the contract call.
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -74,7 +74,7 @@ public class TokenizationContractCallParams {
    * Get source
    * @return source
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public TokenizationTokenOperationSource getSource() {
     return source;
   }
@@ -93,7 +93,7 @@ public class TokenizationContractCallParams {
    * Get data
    * @return data
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public TokenizationContractCallParamsData getData() {
     return data;
   }

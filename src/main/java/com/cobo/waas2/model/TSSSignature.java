@@ -47,7 +47,7 @@ import com.cobo.waas2.JSON;
 /**
  * TSSSignature
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -84,7 +84,7 @@ public class TSSSignature {
    * The BIP32 path.
    * @return bip32Path
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getBip32Path() {
     return bip32Path;
   }
@@ -103,7 +103,7 @@ public class TSSSignature {
    * The message hash.
    * @return msgHash
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getMsgHash() {
     return msgHash;
   }
@@ -122,7 +122,7 @@ public class TSSSignature {
    * The tweak.
    * @return tweak
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getTweak() {
     return tweak;
   }
@@ -141,7 +141,7 @@ public class TSSSignature {
    * The signature.
    * @return signature
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getSignature() {
     return signature;
   }
@@ -160,7 +160,7 @@ public class TSSSignature {
    * The signature recovery.
    * @return signatureRecovery
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getSignatureRecovery() {
     return signatureRecovery;
   }

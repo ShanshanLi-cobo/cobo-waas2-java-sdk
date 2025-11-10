@@ -49,7 +49,7 @@ import com.cobo.waas2.JSON;
 /**
  * The details of aBabylon Phase-2 registration.
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -102,7 +102,7 @@ public class BabylonStakingRegistration {
    * The registration ID, a unique identifier for tracking the staking registration.
    * @return id
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getId() {
     return id;
   }
@@ -121,7 +121,7 @@ public class BabylonStakingRegistration {
    * The ID of the Phase-1 BTC staking position.
    * @return stakingId
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getStakingId() {
     return stakingId;
   }
@@ -140,7 +140,7 @@ public class BabylonStakingRegistration {
    * Get babylonAddress
    * @return babylonAddress
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public StakingSource getBabylonAddress() {
     return babylonAddress;
   }
@@ -159,7 +159,7 @@ public class BabylonStakingRegistration {
    * Get btcAddress
    * @return btcAddress
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public StakingSource getBtcAddress() {
     return btcAddress;
   }
@@ -178,7 +178,7 @@ public class BabylonStakingRegistration {
    * Get status
    * @return status
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public BabylonRegistrationRequestStatus getStatus() {
     return status;
   }
@@ -197,7 +197,7 @@ public class BabylonStakingRegistration {
    * The amount of BTC that is staked.
    * @return stakedAmount
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getStakedAmount() {
     return stakedAmount;
   }
@@ -216,7 +216,7 @@ public class BabylonStakingRegistration {
    * The error message if the Babylon Phase-2 registration request failed.
    * @return errorMessage
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getErrorMessage() {
     return errorMessage;
   }
@@ -235,7 +235,7 @@ public class BabylonStakingRegistration {
    * The time when the registration was created, in Unix timestamp format, measured in milliseconds.
    * @return createdTimestamp
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public Long getCreatedTimestamp() {
     return createdTimestamp;
   }
@@ -254,7 +254,7 @@ public class BabylonStakingRegistration {
    * The time when the registration was updated, in Unix timestamp format, measured in milliseconds.
    * @return updatedTimestamp
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public Long getUpdatedTimestamp() {
     return updatedTimestamp;
   }

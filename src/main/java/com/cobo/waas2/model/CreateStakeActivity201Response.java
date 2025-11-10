@@ -47,7 +47,7 @@ import com.cobo.waas2.JSON;
 /**
  * CreateStakeActivity201Response
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -72,7 +72,7 @@ public class CreateStakeActivity201Response {
    * The activity ID.
    * @return activityId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getActivityId() {
     return activityId;
   }
@@ -91,7 +91,7 @@ public class CreateStakeActivity201Response {
    * The ID of the staking position.
    * @return stakingId
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getStakingId() {
     return stakingId;
   }

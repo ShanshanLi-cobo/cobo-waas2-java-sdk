@@ -50,7 +50,7 @@ import com.cobo.waas2.JSON;
 /**
  * The information about the transaction source type &#x60;Safe{Wallet}&#x60;. Refer to [Transaction sources and destinations](https://www.cobo.com/developers/v2/guides/transactions/sources-and-destinations) for a detailed introduction about the supported sources and destinations for each transaction type.  Switch between the tabs to display the properties for different transaction sources. 
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -83,7 +83,7 @@ public class SafeContractCallSource {
    * Get sourceType
    * @return sourceType
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public ContractCallSourceType getSourceType() {
     return sourceType;
   }
@@ -102,7 +102,7 @@ public class SafeContractCallSource {
    * The wallet ID.
    * @return walletId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public UUID getWalletId() {
     return walletId;
   }
@@ -121,7 +121,7 @@ public class SafeContractCallSource {
    * The wallet address.
    * @return address
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getAddress() {
     return address;
   }
@@ -140,7 +140,7 @@ public class SafeContractCallSource {
    * Get delegate
    * @return delegate
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public CoboSafeDelegate getDelegate() {
     return delegate;
   }

@@ -50,7 +50,7 @@ import com.cobo.waas2.JSON;
 /**
  * The information about a approval request.
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -87,7 +87,7 @@ public class RequestApproval {
    * The unique ID of the approval workflow.
    * @return operationId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getOperationId() {
     return operationId;
   }
@@ -106,7 +106,7 @@ public class RequestApproval {
    * An identifier provided by you to track this request.
    * @return requestId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getRequestId() {
     return requestId;
   }
@@ -125,7 +125,7 @@ public class RequestApproval {
    * The email of the user who requested the approval.
    * @return initiatorEmail
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getInitiatorEmail() {
     return initiatorEmail;
   }
@@ -152,7 +152,7 @@ public class RequestApproval {
    * Get fields
    * @return fields
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public List<AppWorkflowField> getFields() {
     return fields;
   }
@@ -171,7 +171,7 @@ public class RequestApproval {
    * The template of a Cobo Guard message. Please connect [help@cobo.com](mailto:help@cobo.com) to get the template content.
    * @return guardTemplate
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getGuardTemplate() {
     return guardTemplate;
   }

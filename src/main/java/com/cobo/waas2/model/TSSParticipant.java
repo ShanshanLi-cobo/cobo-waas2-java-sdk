@@ -47,7 +47,7 @@ import com.cobo.waas2.JSON;
 /**
  * TSSParticipant
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -76,7 +76,7 @@ public class TSSParticipant {
    * The node ID.
    * @return nodeId
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getNodeId() {
     return nodeId;
   }
@@ -95,7 +95,7 @@ public class TSSParticipant {
    * The share ID.
    * @return shareId
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getShareId() {
     return shareId;
   }
@@ -114,7 +114,7 @@ public class TSSParticipant {
    * The share public key.
    * @return sharePublicKey
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getSharePublicKey() {
     return sharePublicKey;
   }

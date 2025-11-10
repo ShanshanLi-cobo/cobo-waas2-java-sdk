@@ -51,7 +51,7 @@ import com.cobo.waas2.JSON;
 /**
  * CreateStakeActivityRequest
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -96,7 +96,7 @@ public class CreateStakeActivityRequest {
    * The request ID that is used to track a request. The request ID is provided by you and must be unique within your organization.
    * @return requestId
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getRequestId() {
     return requestId;
   }
@@ -115,7 +115,7 @@ public class CreateStakeActivityRequest {
    * Get source
    * @return source
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public StakingSource getSource() {
     return source;
   }
@@ -134,7 +134,7 @@ public class CreateStakeActivityRequest {
    * Get poolId
    * @return poolId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public StakingPoolId getPoolId() {
     return poolId;
   }
@@ -153,7 +153,7 @@ public class CreateStakeActivityRequest {
    * The amount to stake.
    * @return amount
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getAmount() {
     return amount;
   }
@@ -172,7 +172,7 @@ public class CreateStakeActivityRequest {
    * Get fee
    * @return fee
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public TransactionRequestFee getFee() {
     return fee;
   }
@@ -191,7 +191,7 @@ public class CreateStakeActivityRequest {
    * Get extra
    * @return extra
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public CreateStakeActivityExtra getExtra() {
     return extra;
   }
@@ -210,7 +210,7 @@ public class CreateStakeActivityRequest {
    * The initiator of the staking activity. If you do not specify this property, the WaaS service will automatically designate the API key as the initiator.
    * @return appInitiator
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getAppInitiator() {
     return appInitiator;
   }

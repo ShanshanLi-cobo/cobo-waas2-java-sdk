@@ -48,7 +48,7 @@ import com.cobo.waas2.JSON;
 /**
  * The data for the TSS key share group.
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -77,7 +77,7 @@ public class TSSGroups {
    * The TSS key share group ID.
    * @return tssKeyShareGroupId
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getTssKeyShareGroupId() {
     return tssKeyShareGroupId;
   }
@@ -96,7 +96,7 @@ public class TSSGroups {
    * Get curve
    * @return curve
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public CurveType getCurve() {
     return curve;
   }
@@ -115,7 +115,7 @@ public class TSSGroups {
    * The vault&#39;s [root extended public key](https://www.cobo.com/developers/v2/guides/mpc-wallets/get-started-ocw#root-extended-public-keys).
    * @return rootPubkey
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getRootPubkey() {
     return rootPubkey;
   }

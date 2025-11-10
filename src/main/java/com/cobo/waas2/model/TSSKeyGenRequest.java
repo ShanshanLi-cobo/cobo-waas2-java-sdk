@@ -50,7 +50,7 @@ import com.cobo.waas2.JSON;
 /**
  * TSSKeyGenRequest
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -87,7 +87,7 @@ public class TSSKeyGenRequest {
    * The number of key share holders required to approve each operation in TSS key share group.
    * @return threshold
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public Integer getThreshold() {
     return threshold;
   }
@@ -114,7 +114,7 @@ public class TSSKeyGenRequest {
    * Get nodeIds
    * @return nodeIds
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public List<String> getNodeIds() {
     return nodeIds;
   }
@@ -133,7 +133,7 @@ public class TSSKeyGenRequest {
    * Get curve
    * @return curve
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public TSSCurve getCurve() {
     return curve;
   }
@@ -152,7 +152,7 @@ public class TSSKeyGenRequest {
    * The task ID.
    * @return taskId
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getTaskId() {
     return taskId;
   }
@@ -171,7 +171,7 @@ public class TSSKeyGenRequest {
    * The business task ID. This field contains the TSS request ID.
    * @return bizTaskId
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getBizTaskId() {
     return bizTaskId;
   }

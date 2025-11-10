@@ -50,7 +50,7 @@ import com.cobo.waas2.JSON;
 /**
  * MpcMessageSignSource
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -83,7 +83,7 @@ public class MpcMessageSignSource {
    * Get sourceType
    * @return sourceType
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public MessageSignSourceType getSourceType() {
     return sourceType;
   }
@@ -102,7 +102,7 @@ public class MpcMessageSignSource {
    * The wallet ID.
    * @return walletId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public UUID getWalletId() {
     return walletId;
   }
@@ -121,7 +121,7 @@ public class MpcMessageSignSource {
    * The wallet address.
    * @return address
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getAddress() {
     return address;
   }
@@ -140,7 +140,7 @@ public class MpcMessageSignSource {
    * Get mpcUsedKeyShareHolderGroup
    * @return mpcUsedKeyShareHolderGroup
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public MpcSigningGroup getMpcUsedKeyShareHolderGroup() {
     return mpcUsedKeyShareHolderGroup;
   }

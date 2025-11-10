@@ -49,7 +49,7 @@ import com.cobo.waas2.JSON;
 /**
  * TokenizationSOLTokenParams
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -90,7 +90,7 @@ public class TokenizationSOLTokenParams {
    * Get standard
    * @return standard
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public TokenizationTokenStandard getStandard() {
     return standard;
   }
@@ -109,7 +109,7 @@ public class TokenizationSOLTokenParams {
    * The name of the token.
    * @return name
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getName() {
     return name;
   }
@@ -128,7 +128,7 @@ public class TokenizationSOLTokenParams {
    * The symbol of the token.
    * @return symbol
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getSymbol() {
     return symbol;
   }
@@ -149,7 +149,7 @@ public class TokenizationSOLTokenParams {
    * maximum: 18
    * @return decimals
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public Integer getDecimals() {
     return decimals;
   }
@@ -168,7 +168,7 @@ public class TokenizationSOLTokenParams {
    * Whether the allowlist feature is activated for the token. When activated, only addresses in the allowlist can perform token operations.
    * @return tokenAccessActivated
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public Boolean getTokenAccessActivated() {
     return tokenAccessActivated;
   }
@@ -187,7 +187,7 @@ public class TokenizationSOLTokenParams {
    * Get permissions
    * @return permissions
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public TokenizationSolTokenPermissionParams getPermissions() {
     return permissions;
   }

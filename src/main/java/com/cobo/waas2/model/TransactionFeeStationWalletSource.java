@@ -49,7 +49,7 @@ import com.cobo.waas2.JSON;
 /**
  * The information about the transaction source.
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -74,7 +74,7 @@ public class TransactionFeeStationWalletSource {
    * Get sourceType
    * @return sourceType
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public TransactionSourceType getSourceType() {
     return sourceType;
   }
@@ -93,7 +93,7 @@ public class TransactionFeeStationWalletSource {
    * The Wallet ID.
    * @return walletId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public UUID getWalletId() {
     return walletId;
   }

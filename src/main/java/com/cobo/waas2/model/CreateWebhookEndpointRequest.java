@@ -50,7 +50,7 @@ import com.cobo.waas2.JSON;
 /**
  * CreateWebhookEndpointRequest
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -79,7 +79,7 @@ public class CreateWebhookEndpointRequest {
    * The webhook endpoint URL.
    * @return url
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getUrl() {
     return url;
   }
@@ -106,7 +106,7 @@ public class CreateWebhookEndpointRequest {
    * The event types you want to subscribe to for this webhook endpoint. You can call [Get webhook event types](https://www.cobo.com/developers/v2/api-references/developers--webhooks/get-webhook-event-types) to retrieve all available event types. 
    * @return subscribedEvents
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public List<WebhookEventType> getSubscribedEvents() {
     return subscribedEvents;
   }
@@ -125,7 +125,7 @@ public class CreateWebhookEndpointRequest {
    * The description of the webhook endpoint.
    * @return description
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getDescription() {
     return description;
   }

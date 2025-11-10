@@ -48,7 +48,7 @@ import com.cobo.waas2.JSON;
 /**
  * PaymentTransaction
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -101,7 +101,7 @@ public class PaymentTransaction {
    * The transaction ID.
    * @return txId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getTxId() {
     return txId;
   }
@@ -120,7 +120,7 @@ public class PaymentTransaction {
    * The transaction hash.
    * @return txHash
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getTxHash() {
     return txHash;
   }
@@ -139,7 +139,7 @@ public class PaymentTransaction {
    * The ID of the cryptocurrency.
    * @return tokenId
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getTokenId() {
     return tokenId;
   }
@@ -158,7 +158,7 @@ public class PaymentTransaction {
    * The source address of the transaction.
    * @return fromAddress
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getFromAddress() {
     return fromAddress;
   }
@@ -177,7 +177,7 @@ public class PaymentTransaction {
    * The destination address of the transaction.
    * @return toAddress
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getToAddress() {
     return toAddress;
   }
@@ -196,7 +196,7 @@ public class PaymentTransaction {
    * The amount of cryptocurrency transferred, as a decimal string.
    * @return amount
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getAmount() {
     return amount;
   }
@@ -215,7 +215,7 @@ public class PaymentTransaction {
    * Get status
    * @return status
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public TransactionStatus getStatus() {
     return status;
   }
@@ -234,7 +234,7 @@ public class PaymentTransaction {
    * The time when the transaction was created, in Unix timestamp format, measured in milliseconds.
    * @return createdTimestamp
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public Long getCreatedTimestamp() {
     return createdTimestamp;
   }
@@ -253,7 +253,7 @@ public class PaymentTransaction {
    * The time when the transaction was updated, in Unix timestamp format, measured in milliseconds.
    * @return updatedTimestamp
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public Long getUpdatedTimestamp() {
     return updatedTimestamp;
   }

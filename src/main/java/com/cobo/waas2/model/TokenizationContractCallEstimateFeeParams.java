@@ -50,7 +50,7 @@ import com.cobo.waas2.JSON;
 /**
  * TokenizationContractCallEstimateFeeParams
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -87,7 +87,7 @@ public class TokenizationContractCallEstimateFeeParams {
    * Get source
    * @return source
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public TokenizationTokenOperationSource getSource() {
     return source;
   }
@@ -106,7 +106,7 @@ public class TokenizationContractCallEstimateFeeParams {
    * Get data
    * @return data
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public TokenizationContractCallParamsData getData() {
     return data;
   }
@@ -125,7 +125,7 @@ public class TokenizationContractCallEstimateFeeParams {
    * Get operationType
    * @return operationType
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public TokenizationOperationType getOperationType() {
     return operationType;
   }
@@ -144,7 +144,7 @@ public class TokenizationContractCallEstimateFeeParams {
    * The ID of the token.
    * @return tokenId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getTokenId() {
     return tokenId;
   }
@@ -163,7 +163,7 @@ public class TokenizationContractCallEstimateFeeParams {
    * The request ID that is used to track a transaction request. The request ID is provided by you and must be unique within your organization.
    * @return requestId
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getRequestId() {
     return requestId;
   }
