@@ -42,8 +42,6 @@ public enum TransactionDestinationType {
   
   COSMOS_CONTRACT("COSMOS_Contract"),
   
-  TRON_CONTRACT("TRON_Contract"),
-  
   EVM_EIP_191_SIGNATURE("EVM_EIP_191_Signature"),
   
   EVM_EIP_712_SIGNATURE("EVM_EIP_712_Signature"),

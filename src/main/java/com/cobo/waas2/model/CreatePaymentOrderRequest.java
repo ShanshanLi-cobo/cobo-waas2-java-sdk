@@ -82,7 +82,7 @@ public class CreatePaymentOrderRequest {
 
   public static final String SERIALIZED_NAME_EXPIRED_IN = "expired_in";
   @SerializedName(SERIALIZED_NAME_EXPIRED_IN)
-  private Integer expiredIn;
+  private Integer expiredIn = 1800;
 
   public static final String SERIALIZED_NAME_USE_DEDICATED_ADDRESS = "use_dedicated_address";
   @SerializedName(SERIALIZED_NAME_USE_DEDICATED_ADDRESS)
@@ -124,7 +124,7 @@ public class CreatePaymentOrderRequest {
   }
 
    /**
-   * The ID of the cryptocurrency used for payment. Supported values:    - USDC: &#x60;ETH_USDC&#x60;, &#x60;ARBITRUM_USDC&#x60;, &#x60;SOL_USDC&#x60;, &#x60;BASE_USDC&#x60;, &#x60;MATIC_USDC&#x60;, &#x60;BSC_USDC&#x60;   - USDT: &#x60;TRON_USDT&#x60;, &#x60;ETH_USDT&#x60;, &#x60;ARBITRUM_USDT&#x60;, &#x60;SOL_USDT&#x60;, &#x60;BASE_USDT&#x60;, &#x60;MATIC_USDT&#x60;, &#x60;BSC_USDT&#x60; 
+   * The ID of the cryptocurrency used for payment. Supported values:    - USDC: &#x60;ETH_USDC&#x60;, &#x60;ARBITRUM_USDCOIN&#x60;, &#x60;SOL_USDC&#x60;, &#x60;BASE_USDC&#x60;, &#x60;MATIC_USDC2&#x60;, &#x60;BSC_USDC&#x60;   - USDT: &#x60;TRON_USDT&#x60;, &#x60;ETH_USDT&#x60;, &#x60;ARBITRUM_USDT&#x60;, &#x60;SOL_USDT&#x60;, &#x60;BASE_USDT&#x60;, &#x60;MATIC_USDT&#x60;, &#x60;BSC_USDT&#x60; 
    * @return tokenId
   **/
   @javax.annotation.Nonnull
@@ -143,7 +143,7 @@ public class CreatePaymentOrderRequest {
   }
 
    /**
-   * The fiat currency of the order.
+   * The fiat currency for the base order amount and the developer fee. Currently, only &#x60;USD&#x60; is supported.  If left empty, both &#x60;order_amount&#x60; and &#x60;fee_amount&#x60; will be denominated in the cryptocurrency specified by &#x60;token_id&#x60; 
    * @return currency
   **/
   @javax.annotation.Nullable
@@ -162,7 +162,7 @@ public class CreatePaymentOrderRequest {
   }
 
    /**
-   * The base amount of the order in fiat currency, excluding the developer fee (specified in &#x60;fee_amount&#x60;). Values must be greater than &#x60;0&#x60; and contain two decimal places.
+   *  The base amount of the order, excluding the developer fee (specified in &#x60;fee_amount&#x60;), in the currency specified by &#x60;currency&#x60;. If &#x60;currency&#x60; is not specified, the amount is in the cryptocurrency specified by &#x60;token_id&#x60;.   Values must be greater than &#x60;0&#x60; and contain two decimal places.  
    * @return orderAmount
   **/
   @javax.annotation.Nonnull
@@ -181,7 +181,7 @@ public class CreatePaymentOrderRequest {
   }
 
    /**
-   * The developer fee for the order in fiat currency. It is added to the base amount (&#x60;order_amount&#x60;) to determine the final charge. For example, if order_amount is \&quot;100.00\&quot; and fee_amount is \&quot;2.00\&quot;, the customer will be charged \&quot;102.00\&quot; in total, with \&quot;100.00\&quot; being settled to the merchant and \&quot;2.00\&quot; settled to the developer. Values must be greater than 0 and contain two decimal places.
+   *  The developer fee for the order, in the currency specified by &#x60;currency&#x60;. If &#x60;currency&#x60; is not specified, the fee is in the cryptocurrency specified by &#x60;token_id&#x60;.  If you are a merchant directly serving payers, set this field to &#x60;0&#x60;. Developer fees are only relevant for platforms like payment service providers (PSPs) that charge fees to their downstream merchants.  The developer fee is added to the base amount (&#x60;order_amount&#x60;) to determine the final charge. For example: - Base amount (&#x60;order_amount&#x60;): \&quot;100.00\&quot; - Developer fee (&#x60;fee_amount&#x60;): \&quot;2.00\&quot;  - Total charged to customer: \&quot;102.00\&quot;  Values can contain up to two decimal places. 
    * @return feeAmount
   **/
   @javax.annotation.Nonnull
@@ -200,7 +200,7 @@ public class CreatePaymentOrderRequest {
   }
 
    /**
-   * A unique reference code assigned by the merchant to identify this order in their system.
+   * A unique reference code assigned by the merchant to identify this order in their system. The code should have a maximum length of 128 characters.
    * @return merchantOrderCode
   **/
   @javax.annotation.Nullable
@@ -219,7 +219,7 @@ public class CreatePaymentOrderRequest {
   }
 
    /**
-   * A unique reference code assigned by the developer to identify this order in their system.
+   * A unique reference code assigned by you as a developer to identify this order in your system. This code must be unique across all orders in your system. The code should have a maximum length of 128 characters. 
    * @return pspOrderCode
   **/
   @javax.annotation.Nonnull
@@ -238,7 +238,7 @@ public class CreatePaymentOrderRequest {
   }
 
    /**
-   * The pay-in order will expire after approximately a certain number of seconds: - The order status becomes final and cannot be changed - The &#x60;received_token_amount&#x60; field will no longer be updated - Funds received after expiration will be categorized as late payments and can only be settled from the developer balance. - A late payment will trigger a &#x60;transactionLate&#x60; webhook event. 
+   * The number of seconds until the pay-in order expires, counted from when the request is sent. For example, if set to &#x60;1800&#x60;, the order will expire in 30 minutes. Must be greater than zero and cannot exceed 3 hours (10800 seconds). After expiration:  - The order status becomes final and cannot be changed - The &#x60;received_token_amount&#x60; field will no longer be updated - Funds received after expiration will be categorized as late payments and can only be settled from the developer balance. - A late payment will trigger a &#x60;transactionLate&#x60; webhook event. 
    * @return expiredIn
   **/
   @javax.annotation.Nullable
@@ -257,7 +257,7 @@ public class CreatePaymentOrderRequest {
   }
 
    /**
-   * Indicates whether to allocate a dedicated address for this order.  If false, a shared address from the address pool will be used. 
+   * This field has been deprecated. 
    * @return useDedicatedAddress
   **/
   @javax.annotation.Nullable
@@ -276,7 +276,7 @@ public class CreatePaymentOrderRequest {
   }
 
    /**
-   * A custom exchange rate specified by the merchant.   - Only effective when &#x60;currency&#x60; is &#x60;\&quot;USD\&quot;&#x60;.   - Expressed as the amount of USD per 1 unit of the specified cryptocurrency.   - If not provided, the system will use the default internal rate.   Example: If the cryptocurrency is USDT and &#x60;custom_exchange_rate&#x60; &#x3D; &#x60;\&quot;0.99\&quot;&#x60;, it means 1 USDT &#x3D; 0.99 USD. 
+   *  A custom exchange rate that defines how much fiat currency equals 1 unit of cryptocurrency. If not provided, the system&#39;s default exchange rate will be used.  For example, if the fiat currency is USD and the cryptocurrency is USDT, setting &#x60;custom_exchange_rate&#x60; to &#x60;\&quot;0.99\&quot;&#x60; means that 1 USDT will be valued at 0.99 USD. 
    * @return customExchangeRate
   **/
   @javax.annotation.Nullable
@@ -295,7 +295,7 @@ public class CreatePaymentOrderRequest {
   }
 
    /**
-   * Allowed amount deviation, precision to 1 decimal place.
+   * The maximum allowed deviation from the payable amount in the case of underpayment, specified as a positive value with up to one decimal place. If you provide more than one decimal place, an error will occur.  When the actual received amount is within this deviation (inclusive) of the payable amount, the order status will be set to &#x60;Completed&#x60; rather than &#x60;Underpaid&#x60;. 
    * @return amountTolerance
   **/
   @javax.annotation.Nullable

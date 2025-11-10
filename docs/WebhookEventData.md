@@ -7,17 +7,17 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**dataType** | [**DataTypeEnum**](#DataTypeEnum) |  The data type of the event. - &#x60;Transaction&#x60;: The transaction event data. - &#x60;TSSRequest&#x60;: The TSS request event data. - &#x60;Addresses&#x60;: The addresses event data. - &#x60;WalletInfo&#x60;: The wallet information event data. - &#x60;MPCVault&#x60;: The MPC vault event data. - &#x60;Chains&#x60;: The enabled chain event data. - &#x60;Tokens&#x60;: The enabled token event data. - &#x60;TokenListing&#x60;: The token listing event data.        - &#x60;PaymentOrder&#x60;: The payment order event data. - &#x60;PaymentRefund&#x60;: The payment refund event data. - &#x60;PaymentSettlement&#x60;: The payment settlement event data. - &#x60;PaymentTransaction&#x60;: The payment transaction event data. - &#x60;PaymentAddressUpdate&#x60;: The payment address update event data. - &#x60;BalanceUpdateInfo&#x60;: The balance update event data. - &#x60;SuspendedToken&#x60;: The suspended token event data. - &#x60;ComplianceDisposition&#x60;: The compliance disposition event data. - &#x60;ComplianceKytScreenings&#x60;: The compliance KYT screenings event data. |  |
+|**dataType** | [**DataTypeEnum**](#DataTypeEnum) |  The data type of the event. - &#x60;Transaction&#x60;: The transaction event data. - &#x60;TSSRequest&#x60;: The TSS request event data. - &#x60;Addresses&#x60;: The addresses event data. - &#x60;WalletInfo&#x60;: The wallet information event data. - &#x60;MPCVault&#x60;: The MPC vault event data. - &#x60;Chains&#x60;: The enabled chain event data. - &#x60;Tokens&#x60;: The enabled token event data. - &#x60;TokenListing&#x60;: The token listing event data.        - &#x60;PaymentOrder&#x60;: The payment order event data. - &#x60;PaymentRefund&#x60;: The payment refund event data. - &#x60;PaymentSettlement&#x60;: The payment settlement event data. - &#x60;PaymentTransaction&#x60;: The payment transaction event data. - &#x60;PaymentAddressUpdate&#x60;: The top-up address update event data. - &#x60;BalanceUpdateInfo&#x60;: The balance update event data. - &#x60;SuspendedToken&#x60;: The token suspension event data. - &#x60;ComplianceDisposition&#x60;: The compliance disposition event data. - &#x60;ComplianceKytScreenings&#x60;: The compliance KYT screenings event data. |  |
 |**transactionId** | **UUID** | The transaction ID. |  |
 |**coboId** | **String** | The Cobo ID, which can be used to track a transaction. |  [optional] |
-|**requestId** | **String** | The action request id. |  |
+|**requestId** | **String** | The request ID that is used to track a transaction request. The request ID is provided by you and must be unique within your organization. |  |
 |**walletId** | **String** | For deposit transactions, this property represents the wallet ID of the transaction destination. For transactions of other types, this property represents the wallet ID of the transaction source. |  |
 |**type** | **TransactionType** |  |  [optional] |
-|**status** | **PaymentSubscriptionStatus** |  |  |
+|**status** | **TransactionStatus** |  |  |
 |**subStatus** | **TransactionSubStatus** |  |  [optional] |
 |**failedReason** | **String** | (This property is applicable to approval failures and signature failures only) The reason why the transaction failed. |  [optional] |
 |**chainId** | **String** | The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-chains). |  |
-|**tokenId** | **String** | The token_id in subscription. |  |
+|**tokenId** | **String** | The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-tokens). |  |
 |**assetId** | **String** | (This concept applies to Exchange Wallets only) The asset ID. An asset ID is the unique identifier of the asset held within your linked exchange account. |  [optional] |
 |**source** | [**TransactionSource**](TransactionSource.md) |  |  |
 |**destination** | [**TransactionDestination**](TransactionDestination.md) |  |  |
@@ -35,10 +35,10 @@
 |**description** | **String** | The description for your transaction. |  [optional] |
 |**isLoop** | **Boolean** | Whether the transaction was executed as a [Cobo Loop](https://manuals.cobo.com/en/portal/custodial-wallets/cobo-loop) transfer. - &#x60;true&#x60;: The transaction was executed as a Cobo Loop transfer. - &#x60;false&#x60;: The transaction was not executed as a Cobo Loop transfer.  |  [optional] |
 |**coboCategory** | **List&lt;String&gt;** | The transaction category defined by Cobo. Possible values include:  - &#x60;AutoSweep&#x60;: An auto-sweep transaction. - &#x60;AutoFueling&#x60;: A transaction where Fee Station pays transaction fees to an address within your wallet. - &#x60;AutoFuelingRefund&#x60;: A refund for an auto-fueling transaction. - &#x60;SafeTxMessage&#x60;: A message signing transaction to authorize a Smart Contract Wallet (Safe\\{Wallet\\}) transaction. - &#x60;BillPayment&#x60;: A transaction to pay Cobo bills through Fee Station. - &#x60;BillRefund&#x60;: A refund for a previously made bill payment. - &#x60;CommissionFeeCharge&#x60;: A transaction to charge commission fees via Fee Station. - &#x60;CommissionFeeRefund&#x60;: A refund of previously charged commission fees.  |  [optional] |
-|**extra** | **List&lt;String&gt;** | The transaction extra information. |  [optional] |
+|**extra** | **List&lt;String&gt;** | A list of JSON-encoded strings containing structured, business-specific extra information for the transaction. Each item corresponds to a specific data type, indicated by the &#x60;extra_type&#x60; field in the JSON object (for example, \&quot;BabylonBusinessInfo\&quot;, \&quot;BtcAddressInfo\&quot;).  |  [optional] |
 |**fuelingInfo** | [**TransactionFuelingInfo**](TransactionFuelingInfo.md) |  |  [optional] |
-|**createdTimestamp** | **Integer** | The created time of the subscription, represented as a UNIX timestamp in seconds. |  |
-|**updatedTimestamp** | **Long** | The time when the kyt screening was updated, in Unix timestamp format, measured in milliseconds. |  |
+|**createdTimestamp** | **Long** | The time when the transaction was created, in Unix timestamp format, measured in milliseconds. |  |
+|**updatedTimestamp** | **Long** | The time when the KYT screening information was updated, in Unix timestamp format, measured in milliseconds. |  |
 |**tssRequestId** | **String** | The TSS request ID. |  [optional] |
 |**sourceKeyShareHolderGroup** | [**SourceGroup**](SourceGroup.md) |  |  [optional] |
 |**targetKeyShareHolderGroupId** | **String** | The target key share holder group ID. |  [optional] |
@@ -52,20 +52,20 @@
 |**walletType** | **WalletType** |  |  |
 |**walletSubtypes** | **List&lt;WalletSubtype&gt;** |  |  [optional] |
 |**tokens** | [**List&lt;TokenInfo&gt;**](TokenInfo.md) | The enabled tokens. |  |
-|**contractAddress** | **String** | Contract address of the token |  |
+|**contractAddress** | **String** | The token&#39;s contract address on the specified blockchain. |  |
 |**walletSubtype** | **WalletSubtype** |  |  |
 |**token** | [**TokenInfo**](TokenInfo.md) |  |  [optional] |
-|**feedback** | **String** | Feedback provided by the admin for rejected requests |  [optional] |
+|**feedback** | **String** | The feedback provided by Cobo when a token listing request is rejected. |  [optional] |
 |**address** | **String** | The wallet address. |  |
 |**walletUuid** | **UUID** | The wallet ID. |  |
 |**balance** | [**Balance**](Balance.md) |  |  |
 |**tokenIds** | **String** | A list of token IDs, separated by comma. |  |
 |**operationType** | **SuspendedTokenOperationType** |  |  |
-|**orderId** | **String** | Unique identifier of a single order |  |
-|**merchantId** | **String** | The merchant id in cobo. |  |
+|**orderId** | **String** | The pay-in order ID. |  |
+|**merchantId** | **String** | The merchant ID. |  [optional] |
 |**payableAmount** | **String** | The cryptocurrency amount to be paid for this order. |  |
 |**receiveAddress** | **String** | The recipient wallet address to be used for the payment transaction. |  |
-|**currency** | **String** | The fiat currency for the settlement request. |  |
+|**currency** | **String** | The fiat currency for the off-ramp. |  |
 |**orderAmount** | **String** | The base amount of the order in fiat currency, excluding the developer fee (specified in &#x60;fee_amount&#x60;). |  |
 |**feeAmount** | **String** | The developer fee for the order in fiat currency. It is added to the base amount (&#x60;order_amount&#x60;) to determine the final charge. |  |
 |**exchangeRate** | **String** | The exchange rate between a currency pair. Expressed as the amount of fiat currency per one unit of cryptocurrency. For example, if the cryptocurrency is USDT and the fiat currency is USD, a rate of \&quot;0.99\&quot; means 1 USDT &#x3D; 0.99 USD. |  |
@@ -75,45 +75,31 @@
 |**receivedTokenAmount** | **String** | The total cryptocurrency amount received for this order. Updates until the expiration time. Precision matches the token standard (e.g., 6 decimals for USDT). |  |
 |**transactions** | [**List&lt;PaymentTransaction&gt;**](PaymentTransaction.md) | An array of transactions associated with this refund order. Each transaction represents a separate blockchain operation related to the refund process. |  [optional] |
 |**settlementStatus** | **SettleStatus** |  |  [optional] |
-|**amountTolerance** | **String** | Allowed amount deviation. |  [optional] |
+|**amountTolerance** | **String** | The maximum allowed deviation from the payable amount in the case of underpayment, specified as a positive value with up to one decimal place. If you provide more than one decimal place, an error will occur.  When the actual received amount is within this deviation (inclusive) of the payable amount, the order status will be set to &#x60;Completed&#x60; rather than &#x60;Underpaid&#x60;.  |  [optional] |
 |**refundId** | **String** | The refund order ID. |  |
 |**amount** | **String** | The amount in cryptocurrency to be returned for this refund order. |  |
 |**toAddress** | **String** | The recipient&#39;s wallet address where the refund will be sent. |  |
 |**refundType** | **RefundType** |  |  [optional] |
-|**chargeMerchantFee** | **Boolean** | Whether to charge developer fee to the merchant.  - &#x60;true&#x60;: The fee amount (specified in &#x60;merchant_fee_amount&#x60;) will be deducted from the merchant&#39;s balance and added to the developer&#39;s balance - &#x60;false&#x60;: The merchant is not charged any developer fee.  |  [optional] |
-|**merchantFeeAmount** | **String** | The developer fee amount to charge the merchant, denominated in the cryptocurrency specified by &#x60;merchant_fee_token_id&#x60;. |  [optional] |
-|**merchantFeeTokenId** | **String** | The ID of the cryptocurrency used for the developer fee. |  [optional] |
+|**chargeMerchantFee** | **Boolean** | Whether to charge developer fee to the merchant for the refund.    - &#x60;true&#x60;: The fee amount (specified in &#x60;merchant_fee_amount&#x60;) will be deducted from the merchant&#39;s balance and added to the developer&#39;s balance    - &#x60;false&#x60;: The merchant is not charged any developer fee.  |  [optional] |
+|**merchantFeeAmount** | **String** | The developer fee amount to charge the merchant, denominated in the cryptocurrency specified by &#x60;merchant_fee_token_id&#x60;. This is only applicable if &#x60;charge_merchant_fee&#x60; is set to &#x60;true&#x60;. |  [optional] |
+|**merchantFeeTokenId** | **String** | The ID of the cryptocurrency used for the developer fee. This is only applicable if &#x60;charge_merchant_fee&#x60; is set to true. |  [optional] |
 |**commissionFee** | [**CommissionFee**](CommissionFee.md) |  |  [optional] |
 |**settlementRequestId** | **String** | The settlement request ID generated by Cobo. |  |
 |**settlements** | [**List&lt;SettlementDetail&gt;**](SettlementDetail.md) |  |  |
 |**acquiringType** | **AcquiringType** |  |  |
 |**payoutChannel** | **PayoutChannel** |  |  [optional] |
 |**settlementType** | **SettlementType** |  |  [optional] |
-|**receivedAmountFiat** | **String** | The received fiat amount of this settlement request.  |  [optional] |
+|**receivedAmountFiat** | **String** | The estimated amount of the fiat currency to receive after off-ramping. This amount is subject to change due to bank transfer fees. |  [optional] |
 |**bankAccount** | [**BankAccount**](BankAccount.md) |  |  [optional] |
-|**payerId** | **String** | Unique payer identifier on the Cobo side, auto-generated by the system.  |  |
-|**customPayerId** | **String** | Unique user identifier on the merchant side, used to assign a dedicated deposit address.  |  |
-|**subscriptionId** | **String** | The subscription id in cobo. |  |
-|**actionId** | **String** | The action id. |  |
-|**chain** | **String** | Blockchain network identifier, e.g., &#39;ETH&#39; for Ethereum, &#39;TRON&#39; for Tron.  |  |
-|**previousAddress** | **String** | The previous deposit address that was assigned before update.  |  |
-|**updatedAddress** | **String** | The new updated deposit address assigned to the user.  |  |
-|**planId** | **String** | The plan id in cobo. |  |
-|**merchantAddress** | **String** | The merchant address in cobo. |  |
-|**data** | [**PaymentSubscriptionActionData**](PaymentSubscriptionActionData.md) |  |  |
-|**transactionIds** | **List&lt;String&gt;** |  |  [optional] |
-|**userAddress** | **String** | The user address in subscription. |  |
-|**chargeAmount** | **String** | The charge amount in subscription. |  [optional] |
-|**startTime** | **Integer** | The subscription start timestamp. |  |
-|**expirationTime** | **Integer** | The subscription expired timestamp. |  |
-|**chargesMade** | **Integer** | The subscription charge times. |  |
-|**periodType** | **PaymentSubscriptionPeriodType** |  |  |
-|**periods** | **Integer** |  |  |
-|**interval** | **Integer** | The subscription charge interval. |  |
+|**payerId** | **String** | A unique identifier assigned by Cobo to track and identify individual payers. |  |
+|**customPayerId** | **String** | A unique identifier assigned by the developer to track and identify individual payers in their system. |  |
+|**chain** | **String** | The chain ID. |  |
+|**previousAddress** | **String** | The previous top-up address that was assigned to the payer. |  |
+|**updatedAddress** | **String** | The new top-up address that has been assigned to the payer. |  |
 |**dispositionType** | **DispositionType** |  |  |
 |**dispositionStatus** | **DispositionStatus** |  |  |
-|**destinationAddress** | **String** | The blockchain address where the refund/isolated funds will be sent. |  [optional] |
-|**dispositionAmount** | **String** | The amount to be refund/isolated from the original transaction, specified as a numeric string. This value cannot exceed the total amount of the original transaction.  |  [optional] |
+|**destinationAddress** | **String** | The blockchain address to receive the refunded/isolated funds. |  [optional] |
+|**dispositionAmount** | **String** | The amount to be refunded/isolated from the original transaction, specified as a numeric string. This value cannot exceed the total amount of the original transaction.  |  [optional] |
 |**transactionType** | **KytScreeningsTransactionType** |  |  |
 |**reviewStatus** | **ReviewStatusType** |  |  |
 |**fundsStatus** | **FundsStatusType** |  |  |
@@ -137,8 +123,6 @@
 | PAYMENTSETTLEMENT | &quot;PaymentSettlement&quot; |
 | PAYMENTTRANSACTION | &quot;PaymentTransaction&quot; |
 | PAYMENTADDRESSUPDATE | &quot;PaymentAddressUpdate&quot; |
-| PAYMENTSUBSCRIPTIONUPDATE | &quot;PaymentSubscriptionUpdate&quot; |
-| PAYMENTCHARGEUPDATE | &quot;PaymentChargeUpdate&quot; |
 | BALANCEUPDATEINFO | &quot;BalanceUpdateInfo&quot; |
 | SUSPENDEDTOKEN | &quot;SuspendedToken&quot; |
 | COMPLIANCEDISPOSITION | &quot;ComplianceDisposition&quot; |

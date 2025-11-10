@@ -113,7 +113,7 @@ public class MerchantBalance {
   }
 
    /**
-   * The ID of the cryptocurrency.
+   * The token ID, which is a unique identifier that specifies both the blockchain network and cryptocurrency token in the format &#x60;{CHAIN}_{TOKEN}&#x60;.
    * @return tokenId
   **/
   @javax.annotation.Nonnull
@@ -151,7 +151,7 @@ public class MerchantBalance {
   }
 
    /**
-   * The merchant total received amount.
+   * The total amount of the token that has been received by the merchant.
    * @return totalReceivedAmount
   **/
   @javax.annotation.Nullable
@@ -170,7 +170,7 @@ public class MerchantBalance {
   }
 
    /**
-   * The merchant settled amount.
+   * The total amount of the token that has been paid out from the merchant&#39;s balance.
    * @return settledAmount
   **/
   @javax.annotation.Nullable
@@ -189,7 +189,7 @@ public class MerchantBalance {
   }
 
    /**
-   * The merchant total refunded amount.
+   * The total amount of the token that has been refunded from the merchant&#39;s balance.
    * @return refundedAmount
   **/
   @javax.annotation.Nullable
@@ -208,7 +208,7 @@ public class MerchantBalance {
   }
 
    /**
-   * The merchant total balance.
+   *  The total balance of the token available for payout or refund for the merchant.  &#x60;total_balance&#x60; &#x3D; &#x60;total_received_amount&#x60; - &#x60;settled_amount&#x60; - &#x60;refunded_amount&#x60;  For more information, please refer to [Funds allocation and balances](https://www.cobo.com/developers/v2/payments/amounts-and-balances) 
    * @return totalBalance
   **/
   @javax.annotation.Nullable
@@ -227,7 +227,7 @@ public class MerchantBalance {
   }
 
    /**
-   * The merchant available balance.
+   * This field has been deprecated.
    * @return availableBalance
   **/
   @javax.annotation.Nullable

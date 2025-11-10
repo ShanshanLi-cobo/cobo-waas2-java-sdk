@@ -122,11 +122,11 @@ public class SwapActivityDetail {
 
   public static final String SERIALIZED_NAME_CREATED_TIMESTAMP = "created_timestamp";
   @SerializedName(SERIALIZED_NAME_CREATED_TIMESTAMP)
-  private Long createdTimestamp;
+  private Integer createdTimestamp;
 
   public static final String SERIALIZED_NAME_UPDATED_TIMESTAMP = "updated_timestamp";
   @SerializedName(SERIALIZED_NAME_UPDATED_TIMESTAMP)
-  private Long updatedTimestamp;
+  private Integer updatedTimestamp;
 
   public static final String SERIALIZED_NAME_NETWORK_FEE = "network_fee";
   @SerializedName(SERIALIZED_NAME_NETWORK_FEE)
@@ -218,7 +218,7 @@ public class SwapActivityDetail {
   }
 
    /**
-   * The request id of the swap activity.
+   * The request ID of the swap transaction.
    * @return requestId
   **/
   @javax.annotation.Nullable
@@ -237,7 +237,7 @@ public class SwapActivityDetail {
   }
 
    /**
-   * The unique identifier of the wallet.
+   * The ID of the wallet used to pay.
    * @return walletId
   **/
   @javax.annotation.Nullable
@@ -256,7 +256,7 @@ public class SwapActivityDetail {
   }
 
    /**
-   * The token ID to pay.
+   * The ID of the token to pay.
    * @return payTokenId
   **/
   @javax.annotation.Nullable
@@ -275,7 +275,7 @@ public class SwapActivityDetail {
   }
 
    /**
-   * The token ID to receive.
+   * The ID of the token to receive.
    * @return receiveTokenId
   **/
   @javax.annotation.Nullable
@@ -294,7 +294,7 @@ public class SwapActivityDetail {
   }
 
    /**
-   * The amount of tokens to bridge.
+   * The amount of the token to pay.
    * @return payAmount
   **/
   @javax.annotation.Nullable
@@ -313,7 +313,7 @@ public class SwapActivityDetail {
   }
 
    /**
-   * The amount of tokens to receive.
+   * The amount of the token to receive.
    * @return receiveAmount
   **/
   @javax.annotation.Nullable
@@ -332,7 +332,7 @@ public class SwapActivityDetail {
   }
 
    /**
-   * The fee token ID.
+   * The ID of the token used for paying the service fee.
    * @return feeTokenId
   **/
   @javax.annotation.Nullable
@@ -351,7 +351,7 @@ public class SwapActivityDetail {
   }
 
    /**
-   * The amount of fee.
+   * The amount of the service fee.
    * @return feeAmount
   **/
   @javax.annotation.Nullable
@@ -421,7 +421,7 @@ public class SwapActivityDetail {
   }
 
 
-  public SwapActivityDetail createdTimestamp(Long createdTimestamp) {
+  public SwapActivityDetail createdTimestamp(Integer createdTimestamp) {
     this.createdTimestamp = createdTimestamp;
     return this;
   }
@@ -431,16 +431,16 @@ public class SwapActivityDetail {
    * @return createdTimestamp
   **/
   @javax.annotation.Nullable
-  public Long getCreatedTimestamp() {
+  public Integer getCreatedTimestamp() {
     return createdTimestamp;
   }
 
-  public void setCreatedTimestamp(Long createdTimestamp) {
+  public void setCreatedTimestamp(Integer createdTimestamp) {
     this.createdTimestamp = createdTimestamp;
   }
 
 
-  public SwapActivityDetail updatedTimestamp(Long updatedTimestamp) {
+  public SwapActivityDetail updatedTimestamp(Integer updatedTimestamp) {
     this.updatedTimestamp = updatedTimestamp;
     return this;
   }
@@ -450,11 +450,11 @@ public class SwapActivityDetail {
    * @return updatedTimestamp
   **/
   @javax.annotation.Nullable
-  public Long getUpdatedTimestamp() {
+  public Integer getUpdatedTimestamp() {
     return updatedTimestamp;
   }
 
-  public void setUpdatedTimestamp(Long updatedTimestamp) {
+  public void setUpdatedTimestamp(Integer updatedTimestamp) {
     this.updatedTimestamp = updatedTimestamp;
   }
 
@@ -484,7 +484,7 @@ public class SwapActivityDetail {
   }
 
    /**
-   * the destination address of web3/mpc wallets.
+   * The address of an MPC Wallet or Web3 Wallet that receives the swapped or bridged assets.
    * @return destinationAddress
   **/
   @javax.annotation.Nullable

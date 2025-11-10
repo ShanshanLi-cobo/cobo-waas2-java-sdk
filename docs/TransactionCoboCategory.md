@@ -69,15 +69,5 @@
 
 * `STELLARCHANGETRUST` (value: `"StellarChangeTrust"`)
 
-* `TOKENIZATION` (value: `"Tokenization"`)
-
-* `TOKENIZATIONGASSPONSOR` (value: `"TokenizationGasSponsor"`)
-
-* `TOKENSWAP` (value: `"TokenSwap"`)
-
-* `NONCEACCOUNTSIGN` (value: `"NonceAccountSign"`)
-
-* `FEEPAYERSIGN` (value: `"FeePayerSign"`)
-
 
 

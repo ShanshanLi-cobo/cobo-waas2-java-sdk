@@ -4,8 +4,8 @@ All URIs are relative to *https://api.dev.cobo.com/v2*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**checkFeeStationUsage**](FeeStationApi.md#checkFeeStationUsage) | **POST** /fee_station/check_fee_station_usage | fee station pre check |
-| [**estimateFeeStationFee**](FeeStationApi.md#estimateFeeStationFee) | **POST** /fee_station/transactions/estimate_fee | Estimate transaction fee |
+| [**checkFeeStationUsage**](FeeStationApi.md#checkFeeStationUsage) | **POST** /fee_station/check_fee_station_usage | Check Fee Station usage |
+| [**estimateFeeStationFee**](FeeStationApi.md#estimateFeeStationFee) | **POST** /fee_station/transactions/estimate_fee | Estimate fee for Fee Station transaction |
 | [**getFeeStationTransactionById**](FeeStationApi.md#getFeeStationTransactionById) | **GET** /fee_station/transactions/{transaction_id} | Get Fee Station transaction information |
 | [**listFeeStationAddresses**](FeeStationApi.md#listFeeStationAddresses) | **GET** /fee_station/addresses | List Fee Station addresses |
 | [**listFeeStationTransactions**](FeeStationApi.md#listFeeStationTransactions) | **GET** /fee_station/transactions | List all Fee Station transactions |
@@ -16,9 +16,9 @@ All URIs are relative to *https://api.dev.cobo.com/v2*
 # **checkFeeStationUsage**
 > FeeStationCheckFeeStationUsageResponse checkFeeStationUsage(feeStationCheckFeeStationUsage)
 
-fee station pre check
+Check Fee Station usage
 
-This operation evaluates the fee station usage for the current transaction.   It determines whether the fee station needs to be applied, checks if the available fee station balance is sufficient,   and returns a detailed breakdown of the amounts involved, including any portion that must be covered by the user or sponsored in USDT (U).. 
+This operation evaluates Fee Station usage for the current transaction.   It determines whether Fee station can be used, checks if the Fee Station balance is sufficient, and returns a breakdown of the amounts involved, including any portion that must be covered by the user or sponsored in USDT (U). 
 
 ### Example
 ```java
@@ -58,7 +58,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **feeStationCheckFeeStationUsage** | [**FeeStationCheckFeeStationUsage**](FeeStationCheckFeeStationUsage.md)| The information about a fee station pre transfer. | [optional] |
+| **feeStationCheckFeeStationUsage** | [**FeeStationCheckFeeStationUsage**](FeeStationCheckFeeStationUsage.md)| The information for evaluating Fee Station usage. | [optional] |
 
 ### Return type
 
@@ -84,9 +84,9 @@ public class Example {
 # **estimateFeeStationFee**
 > EstimatedFixedFee estimateFeeStationFee(feeStationTransfer)
 
-Estimate transaction fee
+Estimate fee for Fee Station transaction
 
-&lt;Note&gt;This operation is **deprecated**. Please use the enhanced version [Check Fee Station usage](https://www.cobo.com/developers/v2/api-references/feestation/check-fee-station-usage) instead.&lt;/Note&gt;   This operation estimates the transaction fee of a token transfer based on the fee model that the chain uses, considering factors such as network congestion and transaction complexity.  You need to specify the transaction information, including destination address, token ID.  The response can contain different properties based on the transaction fee model used by the chain. For the legacy, EIP-1559, and UTXO fee models, Cobo also supports three different transaction speed levels: slow, recommended, and fast. For more information about estimating transaction fees, refer to [Estimate transaction fee](https://www.cobo.com/developers/v2/guides/transactions/estimate-fees). 
+This operation estimates the gas fee required for a top-up transaction sent by [Fee Station](https://manuals.cobo.com/en/portal/fee-station/introduction) to provide gas to the sender of the original transaction.  You need to provide the token ID and transfer amount.  For more information about transaction fee models and how fees are calculated, refer to [Estimate transaction fee](https://www.cobo.com/developers/v2/guides/transactions/estimate-fees). 
 
 ### Example
 ```java
@@ -126,7 +126,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **feeStationTransfer** | [**FeeStationTransfer**](FeeStationTransfer.md)| The information about a token transfer. | [optional] |
+| **feeStationTransfer** | [**FeeStationTransfer**](FeeStationTransfer.md)| The information about a Fee Station top-up transaction. | [optional] |
 
 ### Return type
 
@@ -154,7 +154,7 @@ public class Example {
 
 Get Fee Station transaction information
 
-This operation retrieves detailed information about a specified Fee Station transaction, such as the transaction status, source address, destination address, and timestamp. 
+This operation retrieves detailed information about a specified Fee Station transaction record, such as the transaction status, source address, destination address, and timestamp. 
 
 ### Example
 ```java
@@ -222,7 +222,7 @@ public class Example {
 
 List Fee Station addresses
 
-This operation retrieves a list of addresses within your Fee Station. 
+This operation retrieves a list of deposit addresses of your Fee Station, including the chain ID, address, and additional information. You can filter the result by chain ID and address. 
 
 ### Example
 ```java
@@ -269,8 +269,8 @@ public class Example {
 | **chainIds** | **String**| A list of chain IDs, separated by comma. The chain ID is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-chains). | [optional] |
 | **addresses** | **String**| A list of wallet addresses, separated by comma. For addresses requiring a memo, append the memo after the address using the &#39;|&#39; separator (e.g., \&quot;address|memo\&quot;). | [optional] |
 | **limit** | **Integer**| The maximum number of objects to return. For most operations, the value range is [1, 50]. | [optional] [default to 10] |
-| **before** | **String**| This parameter specifies an object ID as a starting point for pagination, retrieving data before the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C.  If you set &#x60;before&#x60; to the ID of Object C (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object A.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned. - If you set it to &#x60;infinity&#x60;, the last page of data is returned.  | [optional] |
-| **after** | **String**| This parameter specifies an object ID as a starting point for pagination, retrieving data after the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C. If you set &#x60;after&#x60; to the ID of Object A (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object C.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned.  | [optional] |
+| **before** | **String**| A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response.  | [optional] |
+| **after** | **String**| A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response.  | [optional] |
 
 ### Return type
 
@@ -361,11 +361,11 @@ public class Example {
 | **chainIds** | **String**| A list of chain IDs, separated by comma. The chain ID is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-chains). | [optional] |
 | **tokenIds** | **String**| A list of token IDs, separated by comma. The token ID is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-tokens). | [optional] |
 | **assetIds** | **String**| (This concept applies to Exchange Wallets only) A list of asset IDs, separated by comma. An asset ID is the unique identifier of the asset held within your linked exchange account. | [optional] |
-| **minCreatedTimestamp** | **Long**| The time when the transaction was created, in Unix timestamp format, measured in milliseconds. You can use this parameter to filter transactions created on or after the specified time. | [optional] |
-| **maxCreatedTimestamp** | **Long**| The time when the transaction was created, in Unix timestamp format, measured in milliseconds. You can use this parameter to filter transactions created on or before the specified time. | [optional] |
+| **minCreatedTimestamp** | **Long**| The time when the transaction was created, in Unix timestamp format, measured in milliseconds. You can use this parameter to filter transactions created on or after the specified time.  If not provided, the default value is 90 days before the current time. This default value is subject to change.  | [optional] |
+| **maxCreatedTimestamp** | **Long**| The time when the transaction was created, in Unix timestamp format, measured in milliseconds. You can use this parameter to filter transactions created on or before the specified time.  If not provided, the default value is the current time. This default value is subject to change.  | [optional] |
 | **limit** | **Integer**| The maximum number of objects to return. For most operations, the value range is [1, 50]. | [optional] [default to 10] |
-| **before** | **String**| This parameter specifies an object ID as a starting point for pagination, retrieving data before the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C.  If you set &#x60;before&#x60; to the ID of Object C (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object A.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned. - If you set it to &#x60;infinity&#x60;, the last page of data is returned.  | [optional] |
-| **after** | **String**| This parameter specifies an object ID as a starting point for pagination, retrieving data after the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C. If you set &#x60;after&#x60; to the ID of Object A (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object C.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned.  | [optional] |
+| **before** | **String**| A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response.  | [optional] |
+| **after** | **String**| A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response.  | [optional] |
 | **direction** | **String**| The sort direction. Possible values include:   - &#x60;ASC&#x60;: Sort the results in ascending order.   - &#x60;DESC&#x60;: Sort the results in descending order.  | [optional] [default to ASC] [enum: ASC, DESC] |
 
 ### Return type
@@ -439,8 +439,8 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **tokenIds** | **String**| A list of token IDs, separated by comma. The token ID is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-tokens). | [optional] |
 | **limit** | **Integer**| The maximum number of objects to return. For most operations, the value range is [1, 50]. | [optional] [default to 10] |
-| **before** | **String**| This parameter specifies an object ID as a starting point for pagination, retrieving data before the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C.  If you set &#x60;before&#x60; to the ID of Object C (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object A.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned. - If you set it to &#x60;infinity&#x60;, the last page of data is returned.  | [optional] |
-| **after** | **String**| This parameter specifies an object ID as a starting point for pagination, retrieving data after the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C. If you set &#x60;after&#x60; to the ID of Object A (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object C.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned.  | [optional] |
+| **before** | **String**| A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response.  | [optional] |
+| **after** | **String**| A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response.  | [optional] |
 
 ### Return type
 

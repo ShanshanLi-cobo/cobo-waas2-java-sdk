@@ -199,7 +199,7 @@ public class SettlementDetail {
   }
 
    /**
-   * The Merchant ID associated with this settlement.
+   * The ID of the merchant associated with this settlement.
    * @return merchantId
   **/
   @javax.annotation.Nullable
@@ -218,7 +218,7 @@ public class SettlementDetail {
   }
 
    /**
-   * The settlement amount.  - If &#x60;token_id&#x60; is specified, this represents the settlement amount in the specified cryptocurrency.  - If &#x60;token_id&#x60; is not specified, this represents the settlement amount in the specified fiat currency. 
+   * The settlement amount. - If &#x60;payout_channel&#x60; is set to &#x60;Crypto&#x60;, this represents the settlement amount in the specified cryptocurrency. - If &#x60;payout_channel&#x60; is set to &#x60;OffRamp&#x60;, this represents the settlement amount in the specified fiat currency. 
    * @return amount
   **/
   @javax.annotation.Nullable
@@ -237,7 +237,7 @@ public class SettlementDetail {
   }
 
    /**
-   * The settled amount of this settlement detail.  - If &#x60;token_id&#x60; is specified, this represents the actual settled amount in the specified cryptocurrency.  - If &#x60;token_id&#x60; is not specified, this represents the actual settled amount in the specified fiat currency. 
+   * The settled amount of this settlement detail.  - If &#x60;payout_channel&#x60; is set to &#x60;Crypto&#x60;, this represents the actual settled amount in the specified cryptocurrency.  - If &#x60;payout_channel&#x60; is set to &#x60;OffRamp&#x60;, this represents the actual settled amount in the specified fiat currency. 
    * @return settledAmount
   **/
   @javax.annotation.Nullable
@@ -321,7 +321,7 @@ public class SettlementDetail {
   }
 
    /**
-   * The created time of the settlement, represented as a UNIX timestamp in seconds.
+   * The creation time of the settlement, represented as a UNIX timestamp in seconds.
    * @return createdTimestamp
   **/
   @javax.annotation.Nullable
@@ -340,7 +340,7 @@ public class SettlementDetail {
   }
 
    /**
-   * The updated time of the settlement, represented as a UNIX timestamp in seconds.
+   * The last update time of the settlement, represented as a UNIX timestamp in seconds.
    * @return updatedTimestamp
   **/
   @javax.annotation.Nullable
@@ -359,7 +359,7 @@ public class SettlementDetail {
   }
 
    /**
-   * Unique identifier for the pre-approved crypto address, used to reference the address securely in requests.
+   * The ID of the crypto address used for crypto payouts.
    * @return cryptoAddressId
   **/
   @javax.annotation.Nullable
@@ -443,7 +443,7 @@ public class SettlementDetail {
   }
 
    /**
-   * A list of unique order IDs to be included in this settlement.  - This field is only applicable when &#x60;settlement_type&#x60; is set to &#x60;Merchant&#x60;. - If provided, the settlement will only apply to the specified orders. - The settlement &#x60;amount&#x60; must exactly match the total eligible amount from these orders. - This ensures consistency between the declared amount and the actual order-level data being settled. 
+   * A list of unique order IDs to be included in this settlement.  - This field is only applicable when &#x60;settlement_type&#x60; is set to &#x60;Merchant&#x60;. - If provided, the settlement will only apply to the specified orders. 
    * @return orderIds
   **/
   @javax.annotation.Nullable

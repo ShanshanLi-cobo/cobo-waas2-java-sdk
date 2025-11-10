@@ -12,15 +12,12 @@
 |**tokenAddress** | **String** | The address of the token contract. |  [optional] |
 |**tokenName** | **String** | The name of the token. |  [optional] |
 |**tokenSymbol** | **String** | The unique token symbol. |  |
-|**tokenStandard** | **TokenizationTokenStandard** |  |  |
 |**decimals** | **Integer** | The number of decimals of the token. |  |
 |**tokenAccessActivated** | **Boolean** | Whether the allowlist feature is activated for the token. |  [optional] |
 |**status** | **TokenizationStatus** |  |  |
 |**totalSupply** | **String** | The total supply of the token. |  [optional] |
 |**holdings** | **String** | The amount of tokens held by the organization. |  [optional] |
-|**archived** | **Boolean** | Whether the token is archived. If archived, no operations can be initiated on this token. |  |
 |**permissions** | [**List&lt;TokenizationAddressPermission&gt;**](TokenizationAddressPermission.md) | List of execution addresses and their permissions. |  [optional] |
-|**underlyingToken** | [**TokenizationTokenInfo**](TokenizationTokenInfo.md) |  |  [optional] |
 
 
 

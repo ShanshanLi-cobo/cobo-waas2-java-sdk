@@ -13,15 +13,12 @@ package com.cobo.waas2.model;
 
 import java.util.Objects;
 import com.cobo.waas2.model.ContractCallDestinationType;
-import com.cobo.waas2.model.CosmosContractCallDestination;
-import com.cobo.waas2.model.CosmosContractCallMessage;
 import com.cobo.waas2.model.EvmContractCallDestination;
 import com.cobo.waas2.model.SolContractCallAddressLookupTableAccount;
 import com.cobo.waas2.model.SolContractCallDestination;
 import com.cobo.waas2.model.SolContractCallInstruction;
 import com.cobo.waas2.model.StellarContractCallContractParam;
 import com.cobo.waas2.model.StellarContractCallDestination;
-import com.cobo.waas2.model.TronContractCallDestination;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -84,9 +81,7 @@ public class ContractCallDestination extends AbstractOpenApiSchema {
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
             final TypeAdapter<EvmContractCallDestination> adapterEvmContractCallDestination = gson.getDelegateAdapter(this, TypeToken.get(EvmContractCallDestination.class));
             final TypeAdapter<SolContractCallDestination> adapterSolContractCallDestination = gson.getDelegateAdapter(this, TypeToken.get(SolContractCallDestination.class));
-            final TypeAdapter<CosmosContractCallDestination> adapterCosmosContractCallDestination = gson.getDelegateAdapter(this, TypeToken.get(CosmosContractCallDestination.class));
             final TypeAdapter<StellarContractCallDestination> adapterStellarContractCallDestination = gson.getDelegateAdapter(this, TypeToken.get(StellarContractCallDestination.class));
-            final TypeAdapter<TronContractCallDestination> adapterTronContractCallDestination = gson.getDelegateAdapter(this, TypeToken.get(TronContractCallDestination.class));
 
             return (TypeAdapter<T>) new TypeAdapter<ContractCallDestination>() {
                 @Override
@@ -108,25 +103,13 @@ public class ContractCallDestination extends AbstractOpenApiSchema {
                         elementAdapter.write(out, element);
                         return;
                     }
-                    // check if the actual instance is of the type `CosmosContractCallDestination`
-                    if (value.getActualInstance() instanceof CosmosContractCallDestination) {
-                        JsonElement element = adapterCosmosContractCallDestination.toJsonTree((CosmosContractCallDestination)value.getActualInstance());
-                        elementAdapter.write(out, element);
-                        return;
-                    }
                     // check if the actual instance is of the type `StellarContractCallDestination`
                     if (value.getActualInstance() instanceof StellarContractCallDestination) {
                         JsonElement element = adapterStellarContractCallDestination.toJsonTree((StellarContractCallDestination)value.getActualInstance());
                         elementAdapter.write(out, element);
                         return;
                     }
-                    // check if the actual instance is of the type `TronContractCallDestination`
-                    if (value.getActualInstance() instanceof TronContractCallDestination) {
-                        JsonElement element = adapterTronContractCallDestination.toJsonTree((TronContractCallDestination)value.getActualInstance());
-                        elementAdapter.write(out, element);
-                        return;
-                    }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: CosmosContractCallDestination, EvmContractCallDestination, SolContractCallDestination, StellarContractCallDestination, TronContractCallDestination");
+                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: EvmContractCallDestination, SolContractCallDestination, StellarContractCallDestination");
                 }
 
                 @Override
@@ -143,10 +126,6 @@ public class ContractCallDestination extends AbstractOpenApiSchema {
                     } else  {
                         // look up the discriminator value in the field `destination_type`
                         switch (jsonObject.get("destination_type").getAsString()) {
-                            case "Cosmos_Contract":
-                                deserialized = adapterCosmosContractCallDestination.fromJsonTree(jsonObject);
-                                newContractCallDestination.setActualInstance(deserialized);
-                                return newContractCallDestination;
                             case "EVM_Contract":
                                 deserialized = adapterEvmContractCallDestination.fromJsonTree(jsonObject);
                                 newContractCallDestination.setActualInstance(deserialized);
@@ -157,14 +136,6 @@ public class ContractCallDestination extends AbstractOpenApiSchema {
                                 return newContractCallDestination;
                             case "STELLAR_Contract":
                                 deserialized = adapterStellarContractCallDestination.fromJsonTree(jsonObject);
-                                newContractCallDestination.setActualInstance(deserialized);
-                                return newContractCallDestination;
-                            case "TRON_Contract":
-                                deserialized = adapterTronContractCallDestination.fromJsonTree(jsonObject);
-                                newContractCallDestination.setActualInstance(deserialized);
-                                return newContractCallDestination;
-                            case "CosmosContractCallDestination":
-                                deserialized = adapterCosmosContractCallDestination.fromJsonTree(jsonObject);
                                 newContractCallDestination.setActualInstance(deserialized);
                                 return newContractCallDestination;
                             case "EvmContractCallDestination":
@@ -179,12 +150,8 @@ public class ContractCallDestination extends AbstractOpenApiSchema {
                                 deserialized = adapterStellarContractCallDestination.fromJsonTree(jsonObject);
                                 newContractCallDestination.setActualInstance(deserialized);
                                 return newContractCallDestination;
-                            case "TronContractCallDestination":
-                                deserialized = adapterTronContractCallDestination.fromJsonTree(jsonObject);
-                                newContractCallDestination.setActualInstance(deserialized);
-                                return newContractCallDestination;
                             default:
-                                log.log(Level.WARNING, String.format("Failed to lookup discriminator value `%s` for ContractCallDestination. Possible values: Cosmos_Contract EVM_Contract SOL_Contract STELLAR_Contract TRON_Contract CosmosContractCallDestination EvmContractCallDestination SolContractCallDestination StellarContractCallDestination TronContractCallDestination", jsonObject.get("destination_type").getAsString()));
+                                log.log(Level.WARNING, String.format("Failed to lookup discriminator value `%s` for ContractCallDestination. Possible values: EVM_Contract SOL_Contract STELLAR_Contract EvmContractCallDestination SolContractCallDestination StellarContractCallDestination", jsonObject.get("destination_type").getAsString()));
                         }
                     }
 
@@ -216,18 +183,6 @@ public class ContractCallDestination extends AbstractOpenApiSchema {
                         errorMessages.add(String.format("Deserialization for SolContractCallDestination failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'SolContractCallDestination'", e);
                     }
-                    // deserialize CosmosContractCallDestination
-                    try {
-                        // validate the JSON object to see if any exception is thrown
-                        CosmosContractCallDestination.validateJsonElement(jsonElement);
-                        actualAdapter = adapterCosmosContractCallDestination;
-                        match++;
-                        log.log(Level.FINER, "Input data matches schema 'CosmosContractCallDestination'");
-                    } catch (Exception e) {
-                        // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CosmosContractCallDestination failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'CosmosContractCallDestination'", e);
-                    }
                     // deserialize StellarContractCallDestination
                     try {
                         // validate the JSON object to see if any exception is thrown
@@ -239,18 +194,6 @@ public class ContractCallDestination extends AbstractOpenApiSchema {
                         // deserialization failed, continue
                         errorMessages.add(String.format("Deserialization for StellarContractCallDestination failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'StellarContractCallDestination'", e);
-                    }
-                    // deserialize TronContractCallDestination
-                    try {
-                        // validate the JSON object to see if any exception is thrown
-                        TronContractCallDestination.validateJsonElement(jsonElement);
-                        actualAdapter = adapterTronContractCallDestination;
-                        match++;
-                        log.log(Level.FINER, "Input data matches schema 'TronContractCallDestination'");
-                    } catch (Exception e) {
-                        // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for TronContractCallDestination failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'TronContractCallDestination'", e);
                     }
 
                     if (match == 1) {
@@ -272,11 +215,6 @@ public class ContractCallDestination extends AbstractOpenApiSchema {
         super("oneOf", Boolean.FALSE);
     }
 
-    public ContractCallDestination(CosmosContractCallDestination o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
     public ContractCallDestination(EvmContractCallDestination o) {
         super("oneOf", Boolean.FALSE);
         setActualInstance(o);
@@ -292,17 +230,10 @@ public class ContractCallDestination extends AbstractOpenApiSchema {
         setActualInstance(o);
     }
 
-    public ContractCallDestination(TronContractCallDestination o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
     static {
         schemas.put("EvmContractCallDestination", EvmContractCallDestination.class);
         schemas.put("SolContractCallDestination", SolContractCallDestination.class);
-        schemas.put("CosmosContractCallDestination", CosmosContractCallDestination.class);
         schemas.put("StellarContractCallDestination", StellarContractCallDestination.class);
-        schemas.put("TronContractCallDestination", TronContractCallDestination.class);
     }
 
     @Override
@@ -313,7 +244,7 @@ public class ContractCallDestination extends AbstractOpenApiSchema {
     /**
      * Set the instance that matches the oneOf child schema, check
      * the instance parameter is valid against the oneOf child schemas:
-     * CosmosContractCallDestination, EvmContractCallDestination, SolContractCallDestination, StellarContractCallDestination, TronContractCallDestination
+     * EvmContractCallDestination, SolContractCallDestination, StellarContractCallDestination
      *
      * It could be an instance of the 'oneOf' schemas.
      */
@@ -329,29 +260,19 @@ public class ContractCallDestination extends AbstractOpenApiSchema {
             return;
         }
 
-        if (instance instanceof CosmosContractCallDestination) {
-            super.setActualInstance(instance);
-            return;
-        }
-
         if (instance instanceof StellarContractCallDestination) {
             super.setActualInstance(instance);
             return;
         }
 
-        if (instance instanceof TronContractCallDestination) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        throw new RuntimeException("Invalid instance type. Must be CosmosContractCallDestination, EvmContractCallDestination, SolContractCallDestination, StellarContractCallDestination, TronContractCallDestination");
+        throw new RuntimeException("Invalid instance type. Must be EvmContractCallDestination, SolContractCallDestination, StellarContractCallDestination");
     }
 
     /**
      * Get the actual instance, which can be the following:
-     * CosmosContractCallDestination, EvmContractCallDestination, SolContractCallDestination, StellarContractCallDestination, TronContractCallDestination
+     * EvmContractCallDestination, SolContractCallDestination, StellarContractCallDestination
      *
-     * @return The actual instance (CosmosContractCallDestination, EvmContractCallDestination, SolContractCallDestination, StellarContractCallDestination, TronContractCallDestination)
+     * @return The actual instance (EvmContractCallDestination, SolContractCallDestination, StellarContractCallDestination)
      */
     @SuppressWarnings("unchecked")
     @Override
@@ -380,16 +301,6 @@ public class ContractCallDestination extends AbstractOpenApiSchema {
         return (SolContractCallDestination)super.getActualInstance();
     }
     /**
-     * Get the actual instance of `CosmosContractCallDestination`. If the actual instance is not `CosmosContractCallDestination`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `CosmosContractCallDestination`
-     * @throws ClassCastException if the instance is not `CosmosContractCallDestination`
-     */
-    public CosmosContractCallDestination getCosmosContractCallDestination() throws ClassCastException {
-        return (CosmosContractCallDestination)super.getActualInstance();
-    }
-    /**
      * Get the actual instance of `StellarContractCallDestination`. If the actual instance is not `StellarContractCallDestination`,
      * the ClassCastException will be thrown.
      *
@@ -398,16 +309,6 @@ public class ContractCallDestination extends AbstractOpenApiSchema {
      */
     public StellarContractCallDestination getStellarContractCallDestination() throws ClassCastException {
         return (StellarContractCallDestination)super.getActualInstance();
-    }
-    /**
-     * Get the actual instance of `TronContractCallDestination`. If the actual instance is not `TronContractCallDestination`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `TronContractCallDestination`
-     * @throws ClassCastException if the instance is not `TronContractCallDestination`
-     */
-    public TronContractCallDestination getTronContractCallDestination() throws ClassCastException {
-        return (TronContractCallDestination)super.getActualInstance();
     }
 
     /**
@@ -436,14 +337,6 @@ public class ContractCallDestination extends AbstractOpenApiSchema {
             errorMessages.add(String.format("Deserialization for SolContractCallDestination failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
-        // validate the json string with CosmosContractCallDestination
-        try {
-            CosmosContractCallDestination.validateJsonElement(jsonElement);
-            validCount++;
-        } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CosmosContractCallDestination failed with `%s`.", e.getMessage()));
-            // continue to the next one
-        }
         // validate the json string with StellarContractCallDestination
         try {
             StellarContractCallDestination.validateJsonElement(jsonElement);
@@ -452,16 +345,8 @@ public class ContractCallDestination extends AbstractOpenApiSchema {
             errorMessages.add(String.format("Deserialization for StellarContractCallDestination failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
-        // validate the json string with TronContractCallDestination
-        try {
-            TronContractCallDestination.validateJsonElement(jsonElement);
-            validCount++;
-        } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for TronContractCallDestination failed with `%s`.", e.getMessage()));
-            // continue to the next one
-        }
         if (validCount != 1) {
-            // throw new IOException(String.format("The JSON string is invalid for ContractCallDestination with oneOf schemas: CosmosContractCallDestination, EvmContractCallDestination, SolContractCallDestination, StellarContractCallDestination, TronContractCallDestination. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            // throw new IOException(String.format("The JSON string is invalid for ContractCallDestination with oneOf schemas: EvmContractCallDestination, SolContractCallDestination, StellarContractCallDestination. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 

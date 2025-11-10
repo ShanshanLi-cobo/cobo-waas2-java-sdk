@@ -46,9 +46,9 @@ public class FeeStationApiTest {
     private final FeeStationApi api = new FeeStationApi();
 
     /**
-     * fee station pre check
+     * Check Fee Station usage
      *
-     * This operation evaluates the fee station usage for the current transaction.   It determines whether the fee station needs to be applied, checks if the available fee station balance is sufficient,   and returns a detailed breakdown of the amounts involved, including any portion that must be covered by the user or sponsored in USDT (U).. 
+     * This operation evaluates Fee Station usage for the current transaction.   It determines whether Fee station can be used, checks if the Fee Station balance is sufficient, and returns a breakdown of the amounts involved, including any portion that must be covered by the user or sponsored in USDT (U). 
      *
      * @throws ApiException if the Api call fails
      */
@@ -60,9 +60,9 @@ public class FeeStationApiTest {
     }
 
     /**
-     * Estimate transaction fee
+     * Estimate fee for Fee Station transaction
      *
-     * &lt;Note&gt;This operation is **deprecated**. Please use the enhanced version [Check Fee Station usage](https://www.cobo.com/developers/v2/api-references/feestation/check-fee-station-usage) instead.&lt;/Note&gt;   This operation estimates the transaction fee of a token transfer based on the fee model that the chain uses, considering factors such as network congestion and transaction complexity.  You need to specify the transaction information, including destination address, token ID.  The response can contain different properties based on the transaction fee model used by the chain. For the legacy, EIP-1559, and UTXO fee models, Cobo also supports three different transaction speed levels: slow, recommended, and fast. For more information about estimating transaction fees, refer to [Estimate transaction fee](https://www.cobo.com/developers/v2/guides/transactions/estimate-fees). 
+     * This operation estimates the gas fee required for a top-up transaction sent by [Fee Station](https://manuals.cobo.com/en/portal/fee-station/introduction) to provide gas to the sender of the original transaction.  You need to provide the token ID and transfer amount.  For more information about transaction fee models and how fees are calculated, refer to [Estimate transaction fee](https://www.cobo.com/developers/v2/guides/transactions/estimate-fees). 
      *
      * @throws ApiException if the Api call fails
      */
@@ -76,7 +76,7 @@ public class FeeStationApiTest {
     /**
      * Get Fee Station transaction information
      *
-     * This operation retrieves detailed information about a specified Fee Station transaction, such as the transaction status, source address, destination address, and timestamp. 
+     * This operation retrieves detailed information about a specified Fee Station transaction record, such as the transaction status, source address, destination address, and timestamp. 
      *
      * @throws ApiException if the Api call fails
      */
@@ -90,7 +90,7 @@ public class FeeStationApiTest {
     /**
      * List Fee Station addresses
      *
-     * This operation retrieves a list of addresses within your Fee Station. 
+     * This operation retrieves a list of deposit addresses of your Fee Station, including the chain ID, address, and additional information. You can filter the result by chain ID and address. 
      *
      * @throws ApiException if the Api call fails
      */

@@ -12,7 +12,6 @@
 package com.cobo.waas2.model;
 
 import com.cobo.waas2.model.TokenizationStatus;
-import com.cobo.waas2.model.TokenizationTokenStandard;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -78,14 +77,6 @@ public class TokenizationTokenInfoTest {
     }
 
     /**
-     * Test the property 'tokenStandard'
-     */
-    @Test
-    public void tokenStandardTest() {
-        // TODO: test tokenStandard
-    }
-
-    /**
      * Test the property 'decimals'
      */
     @Test
@@ -123,14 +114,6 @@ public class TokenizationTokenInfoTest {
     @Test
     public void holdingsTest() {
         // TODO: test holdings
-    }
-
-    /**
-     * Test the property 'archived'
-     */
-    @Test
-    public void archivedTest() {
-        // TODO: test archived
     }
 
 }

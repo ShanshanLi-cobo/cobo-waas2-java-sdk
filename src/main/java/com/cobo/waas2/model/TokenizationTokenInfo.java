@@ -13,7 +13,6 @@ package com.cobo.waas2.model;
 
 import java.util.Objects;
 import com.cobo.waas2.model.TokenizationStatus;
-import com.cobo.waas2.model.TokenizationTokenStandard;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -74,10 +73,6 @@ public class TokenizationTokenInfo {
   @SerializedName(SERIALIZED_NAME_TOKEN_SYMBOL)
   private String tokenSymbol;
 
-  public static final String SERIALIZED_NAME_TOKEN_STANDARD = "token_standard";
-  @SerializedName(SERIALIZED_NAME_TOKEN_STANDARD)
-  private TokenizationTokenStandard tokenStandard;
-
   public static final String SERIALIZED_NAME_DECIMALS = "decimals";
   @SerializedName(SERIALIZED_NAME_DECIMALS)
   private Integer decimals;
@@ -97,10 +92,6 @@ public class TokenizationTokenInfo {
   public static final String SERIALIZED_NAME_HOLDINGS = "holdings";
   @SerializedName(SERIALIZED_NAME_HOLDINGS)
   private String holdings;
-
-  public static final String SERIALIZED_NAME_ARCHIVED = "archived";
-  @SerializedName(SERIALIZED_NAME_ARCHIVED)
-  private Boolean archived;
 
   public TokenizationTokenInfo() {
   }
@@ -200,25 +191,6 @@ public class TokenizationTokenInfo {
   }
 
 
-  public TokenizationTokenInfo tokenStandard(TokenizationTokenStandard tokenStandard) {
-    this.tokenStandard = tokenStandard;
-    return this;
-  }
-
-   /**
-   * Get tokenStandard
-   * @return tokenStandard
-  **/
-  @javax.annotation.Nonnull
-  public TokenizationTokenStandard getTokenStandard() {
-    return tokenStandard;
-  }
-
-  public void setTokenStandard(TokenizationTokenStandard tokenStandard) {
-    this.tokenStandard = tokenStandard;
-  }
-
-
   public TokenizationTokenInfo decimals(Integer decimals) {
     this.decimals = decimals;
     return this;
@@ -313,25 +285,6 @@ public class TokenizationTokenInfo {
     this.holdings = holdings;
   }
 
-
-  public TokenizationTokenInfo archived(Boolean archived) {
-    this.archived = archived;
-    return this;
-  }
-
-   /**
-   * Whether the token is archived. If archived, no operations can be initiated on this token.
-   * @return archived
-  **/
-  @javax.annotation.Nonnull
-  public Boolean getArchived() {
-    return archived;
-  }
-
-  public void setArchived(Boolean archived) {
-    this.archived = archived;
-  }
-
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -392,19 +345,17 @@ public class TokenizationTokenInfo {
         Objects.equals(this.tokenAddress, tokenizationTokenInfo.tokenAddress) &&
         Objects.equals(this.tokenName, tokenizationTokenInfo.tokenName) &&
         Objects.equals(this.tokenSymbol, tokenizationTokenInfo.tokenSymbol) &&
-        Objects.equals(this.tokenStandard, tokenizationTokenInfo.tokenStandard) &&
         Objects.equals(this.decimals, tokenizationTokenInfo.decimals) &&
         Objects.equals(this.tokenAccessActivated, tokenizationTokenInfo.tokenAccessActivated) &&
         Objects.equals(this.status, tokenizationTokenInfo.status) &&
         Objects.equals(this.totalSupply, tokenizationTokenInfo.totalSupply) &&
-        Objects.equals(this.holdings, tokenizationTokenInfo.holdings) &&
-        Objects.equals(this.archived, tokenizationTokenInfo.archived)&&
+        Objects.equals(this.holdings, tokenizationTokenInfo.holdings)&&
         Objects.equals(this.additionalProperties, tokenizationTokenInfo.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(tokenId, chainId, tokenAddress, tokenName, tokenSymbol, tokenStandard, decimals, tokenAccessActivated, status, totalSupply, holdings, archived, additionalProperties);
+    return Objects.hash(tokenId, chainId, tokenAddress, tokenName, tokenSymbol, decimals, tokenAccessActivated, status, totalSupply, holdings, additionalProperties);
   }
 
   @Override
@@ -416,13 +367,11 @@ public class TokenizationTokenInfo {
     sb.append("    tokenAddress: ").append(toIndentedString(tokenAddress)).append("\n");
     sb.append("    tokenName: ").append(toIndentedString(tokenName)).append("\n");
     sb.append("    tokenSymbol: ").append(toIndentedString(tokenSymbol)).append("\n");
-    sb.append("    tokenStandard: ").append(toIndentedString(tokenStandard)).append("\n");
     sb.append("    decimals: ").append(toIndentedString(decimals)).append("\n");
     sb.append("    tokenAccessActivated: ").append(toIndentedString(tokenAccessActivated)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    totalSupply: ").append(toIndentedString(totalSupply)).append("\n");
     sb.append("    holdings: ").append(toIndentedString(holdings)).append("\n");
-    sb.append("    archived: ").append(toIndentedString(archived)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -451,23 +400,19 @@ public class TokenizationTokenInfo {
     openapiFields.add("token_address");
     openapiFields.add("token_name");
     openapiFields.add("token_symbol");
-    openapiFields.add("token_standard");
     openapiFields.add("decimals");
     openapiFields.add("token_access_activated");
     openapiFields.add("status");
     openapiFields.add("total_supply");
     openapiFields.add("holdings");
-    openapiFields.add("archived");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("token_id");
     openapiRequiredFields.add("chain_id");
     openapiRequiredFields.add("token_symbol");
-    openapiRequiredFields.add("token_standard");
     openapiRequiredFields.add("decimals");
     openapiRequiredFields.add("status");
-    openapiRequiredFields.add("archived");
   }
 
  /**
@@ -505,8 +450,6 @@ public class TokenizationTokenInfo {
       if (!jsonObj.get("token_symbol").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `token_symbol` to be a primitive type in the JSON string but got `%s`", jsonObj.get("token_symbol").toString()));
       }
-      // validate the required field `token_standard`
-      TokenizationTokenStandard.validateJsonElement(jsonObj.get("token_standard"));
       // validate the required field `status`
       TokenizationStatus.validateJsonElement(jsonObj.get("status"));
       if ((jsonObj.get("total_supply") != null && !jsonObj.get("total_supply").isJsonNull()) && !jsonObj.get("total_supply").isJsonPrimitive()) {

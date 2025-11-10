@@ -63,6 +63,8 @@
 
 * `PAYMENT_TRANSACTION_HELD` (value: `"payment.transaction.held"`)
 
+* `PAYMENT_TRANSACTION_FAILED` (value: `"payment.transaction.failed"`)
+
 * `PAYMENT_STATUS_UPDATED` (value: `"payment.status.updated"`)
 
 * `PAYMENT_REFUND_STATUS_UPDATED` (value: `"payment.refund.status.updated"`)
@@ -70,10 +72,6 @@
 * `PAYMENT_SETTLEMENT_STATUS_UPDATED` (value: `"payment.settlement.status.updated"`)
 
 * `PAYMENT_ADDRESS_UPDATED` (value: `"payment.address.updated"`)
-
-* `PAYMENT_SUBSCRIPTION_STATUS_UPDATED` (value: `"payment.subscription.status.updated"`)
-
-* `PAYMENT_CHARGE_STATUS_UPDATED` (value: `"payment.charge.status.updated"`)
 
 * `COMPLIANCE_DISPOSITION_STATUS_UPDATED` (value: `"compliance.disposition.status.updated"`)
 

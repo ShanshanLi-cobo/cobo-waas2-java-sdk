@@ -47,9 +47,9 @@ public class SwapsApiTest {
     private final SwapsApi api = new SwapsApi();
 
     /**
-     * Create Swap Activity
+     * Create swap activity
      *
-     * This operation to create a swap activity. 
+     * This operation creates a swap activity. A swap activity can be either a bridge (cross-chain transfer) or an exchange (token-to-token swap on the same chain). 
      *
      * @throws ApiException if the Api call fails
      */
@@ -61,9 +61,9 @@ public class SwapsApiTest {
     }
 
     /**
-     * Estimate Swap Fee
+     * Estimate swap fee
      *
-     * This operation to estimate the fee of a swap activity. 
+     * This operation estimates the network fee of a swap activity. You can use this operation to estimate the network fee before initiating swap activities from MPC Wallets or Web3 Wallets.  It requires a valid &#x60;wallet_id&#x60; and &#x60;quote_id&#x60;, so you need to [get a swap quote](https://www.cobo.com/developers/v2/api-references/swaps/get-swap-quote) first. 
      *
      * @throws ApiException if the Api call fails
      */
@@ -75,9 +75,9 @@ public class SwapsApiTest {
     }
 
     /**
-     * Get Swap Activity Details
+     * Get swap activity
      *
-     * This operation retrieves the details of a swap activity. 
+     * This operation retrieves detailed information about a specified swap activity. 
      *
      * @throws ApiException if the Api call fails
      */
@@ -89,9 +89,9 @@ public class SwapsApiTest {
     }
 
     /**
-     * Get Current Swap Rate
+     * Get swap quote
      *
-     * This operation retrieves the current market exchange rate and estimated amount for swapping between two tokens. Either pay_amount or receive_amount must be provided. 
+     * This operation retrieves the current market exchange rate and estimated service fee. You need to provide &#x60;wallet_id&#x60;, &#x60;pay_token_id&#x60;, and &#x60;receive_token_id&#x60;, along with either &#x60;pay_amount&#x60; or &#x60;receive_amount&#x60;. 
      *
      * @throws ApiException if the Api call fails
      */
@@ -107,9 +107,9 @@ public class SwapsApiTest {
     }
 
     /**
-     * List Swap Activities
+     * List swap activities
      *
-     * This operation retrieves a list of swap activities. 
+     * This operation retrieves a list of swap activities. You can filter the results by swap type, status, initiator, and time range. 
      *
      * @throws ApiException if the Api call fails
      */
@@ -130,9 +130,9 @@ public class SwapsApiTest {
     }
 
     /**
-     * List Enabled Tokens
+     * List enabled tokens for swap
      *
-     * This operation retrieves all enabled tokens for swaps.   
+     * This operation retrieves a list of tokens that are enabled for the swap feature. You can filter the results by swap type, asset ID, and chain ID. 
      *
      * @throws ApiException if the Api call fails
      */

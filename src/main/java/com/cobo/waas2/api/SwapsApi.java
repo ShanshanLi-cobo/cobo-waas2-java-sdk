@@ -71,7 +71,7 @@ public class SwapsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The swap activity details have been successfully retrieved. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The swap activity details successfully retrieved. </td><td>  -  </td></tr>
         <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
@@ -120,15 +120,15 @@ public class SwapsApi {
     }
 
     /**
-     * Create Swap Activity
-     * This operation to create a swap activity. 
+     * Create swap activity
+     * This operation creates a swap activity. A swap activity can be either a bridge (cross-chain transfer) or an exchange (token-to-token swap on the same chain). 
      * @param createSwapActivityRequest The request body for creating a swap activity. (required)
      * @return SwapActivityDetail
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The swap activity details have been successfully retrieved. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The swap activity details successfully retrieved. </td><td>  -  </td></tr>
         <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
@@ -139,15 +139,15 @@ public class SwapsApi {
     }
 
     /**
-     * Create Swap Activity
-     * This operation to create a swap activity. 
+     * Create swap activity
+     * This operation creates a swap activity. A swap activity can be either a bridge (cross-chain transfer) or an exchange (token-to-token swap on the same chain). 
      * @param createSwapActivityRequest The request body for creating a swap activity. (required)
      * @return ApiResponse&lt;SwapActivityDetail&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The swap activity details have been successfully retrieved. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The swap activity details successfully retrieved. </td><td>  -  </td></tr>
         <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
@@ -159,8 +159,8 @@ public class SwapsApi {
     }
 
     /**
-     * Create Swap Activity (asynchronously)
-     * This operation to create a swap activity. 
+     * Create swap activity (asynchronously)
+     * This operation creates a swap activity. A swap activity can be either a bridge (cross-chain transfer) or an exchange (token-to-token swap on the same chain). 
      * @param createSwapActivityRequest The request body for creating a swap activity. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -168,7 +168,7 @@ public class SwapsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The swap activity details have been successfully retrieved. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The swap activity details successfully retrieved. </td><td>  -  </td></tr>
         <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
@@ -182,14 +182,14 @@ public class SwapsApi {
     }
     /**
      * Build call for estimateSwapFee
-     * @param swapEstimateFee The request body for estimating the fee of a swap activity. (required)
+     * @param swapEstimateFee The request body for estimating the network fee of a swap activity. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Successfully retrieved the estimated fee for swap activity. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The estimated service fee for swap activity successfully retrieved. </td><td>  -  </td></tr>
         <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
@@ -238,15 +238,15 @@ public class SwapsApi {
     }
 
     /**
-     * Estimate Swap Fee
-     * This operation to estimate the fee of a swap activity. 
-     * @param swapEstimateFee The request body for estimating the fee of a swap activity. (required)
+     * Estimate swap fee
+     * This operation estimates the network fee of a swap activity. You can use this operation to estimate the network fee before initiating swap activities from MPC Wallets or Web3 Wallets.  It requires a valid &#x60;wallet_id&#x60; and &#x60;quote_id&#x60;, so you need to [get a swap quote](https://www.cobo.com/developers/v2/api-references/swaps/get-swap-quote) first. 
+     * @param swapEstimateFee The request body for estimating the network fee of a swap activity. (required)
      * @return EstimatedFee
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Successfully retrieved the estimated fee for swap activity. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The estimated service fee for swap activity successfully retrieved. </td><td>  -  </td></tr>
         <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
@@ -257,15 +257,15 @@ public class SwapsApi {
     }
 
     /**
-     * Estimate Swap Fee
-     * This operation to estimate the fee of a swap activity. 
-     * @param swapEstimateFee The request body for estimating the fee of a swap activity. (required)
+     * Estimate swap fee
+     * This operation estimates the network fee of a swap activity. You can use this operation to estimate the network fee before initiating swap activities from MPC Wallets or Web3 Wallets.  It requires a valid &#x60;wallet_id&#x60; and &#x60;quote_id&#x60;, so you need to [get a swap quote](https://www.cobo.com/developers/v2/api-references/swaps/get-swap-quote) first. 
+     * @param swapEstimateFee The request body for estimating the network fee of a swap activity. (required)
      * @return ApiResponse&lt;EstimatedFee&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Successfully retrieved the estimated fee for swap activity. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The estimated service fee for swap activity successfully retrieved. </td><td>  -  </td></tr>
         <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
@@ -277,16 +277,16 @@ public class SwapsApi {
     }
 
     /**
-     * Estimate Swap Fee (asynchronously)
-     * This operation to estimate the fee of a swap activity. 
-     * @param swapEstimateFee The request body for estimating the fee of a swap activity. (required)
+     * Estimate swap fee (asynchronously)
+     * This operation estimates the network fee of a swap activity. You can use this operation to estimate the network fee before initiating swap activities from MPC Wallets or Web3 Wallets.  It requires a valid &#x60;wallet_id&#x60; and &#x60;quote_id&#x60;, so you need to [get a swap quote](https://www.cobo.com/developers/v2/api-references/swaps/get-swap-quote) first. 
+     * @param swapEstimateFee The request body for estimating the network fee of a swap activity. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Successfully retrieved the estimated fee for swap activity. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The estimated service fee for swap activity successfully retrieved. </td><td>  -  </td></tr>
         <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
@@ -300,14 +300,14 @@ public class SwapsApi {
     }
     /**
      * Build call for getSwapActivity
-     * @param activityId The unique id of the activity. (required)
+     * @param activityId The unique identifier of the swap activity. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The swap activity details have been successfully retrieved. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The swap activity details successfully retrieved. </td><td>  -  </td></tr>
         <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
@@ -356,15 +356,15 @@ public class SwapsApi {
     }
 
     /**
-     * Get Swap Activity Details
-     * This operation retrieves the details of a swap activity. 
-     * @param activityId The unique id of the activity. (required)
+     * Get swap activity
+     * This operation retrieves detailed information about a specified swap activity. 
+     * @param activityId The unique identifier of the swap activity. (required)
      * @return SwapActivityDetail
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The swap activity details have been successfully retrieved. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The swap activity details successfully retrieved. </td><td>  -  </td></tr>
         <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
@@ -375,15 +375,15 @@ public class SwapsApi {
     }
 
     /**
-     * Get Swap Activity Details
-     * This operation retrieves the details of a swap activity. 
-     * @param activityId The unique id of the activity. (required)
+     * Get swap activity
+     * This operation retrieves detailed information about a specified swap activity. 
+     * @param activityId The unique identifier of the swap activity. (required)
      * @return ApiResponse&lt;SwapActivityDetail&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The swap activity details have been successfully retrieved. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The swap activity details successfully retrieved. </td><td>  -  </td></tr>
         <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
@@ -395,16 +395,16 @@ public class SwapsApi {
     }
 
     /**
-     * Get Swap Activity Details (asynchronously)
-     * This operation retrieves the details of a swap activity. 
-     * @param activityId The unique id of the activity. (required)
+     * Get swap activity (asynchronously)
+     * This operation retrieves detailed information about a specified swap activity. 
+     * @param activityId The unique identifier of the swap activity. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The swap activity details have been successfully retrieved. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The swap activity details successfully retrieved. </td><td>  -  </td></tr>
         <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
@@ -419,17 +419,17 @@ public class SwapsApi {
     /**
      * Build call for getSwapQuote
      * @param walletId The wallet ID. (required)
-     * @param payTokenId Unique id of the token to pay. (required)
-     * @param receiveTokenId Unique id of the token to receive. (required)
-     * @param payAmount The amount of pay token. (optional)
-     * @param receiveAmount The amount of token to receive. (optional)
+     * @param payTokenId The ID of the token to pay. (required)
+     * @param receiveTokenId The ID of the token to receive. (required)
+     * @param payAmount The amount of the token to pay. (optional)
+     * @param receiveAmount The amount of the token to receive. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The swap quote has been successfully retrieved. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The swap quote successfully retrieved. </td><td>  -  </td></tr>
         <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
@@ -507,19 +507,19 @@ public class SwapsApi {
     }
 
     /**
-     * Get Current Swap Rate
-     * This operation retrieves the current market exchange rate and estimated amount for swapping between two tokens. Either pay_amount or receive_amount must be provided. 
+     * Get swap quote
+     * This operation retrieves the current market exchange rate and estimated service fee. You need to provide &#x60;wallet_id&#x60;, &#x60;pay_token_id&#x60;, and &#x60;receive_token_id&#x60;, along with either &#x60;pay_amount&#x60; or &#x60;receive_amount&#x60;. 
      * @param walletId The wallet ID. (required)
-     * @param payTokenId Unique id of the token to pay. (required)
-     * @param receiveTokenId Unique id of the token to receive. (required)
-     * @param payAmount The amount of pay token. (optional)
-     * @param receiveAmount The amount of token to receive. (optional)
+     * @param payTokenId The ID of the token to pay. (required)
+     * @param receiveTokenId The ID of the token to receive. (required)
+     * @param payAmount The amount of the token to pay. (optional)
+     * @param receiveAmount The amount of the token to receive. (optional)
      * @return SwapQuote
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The swap quote has been successfully retrieved. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The swap quote successfully retrieved. </td><td>  -  </td></tr>
         <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
@@ -530,19 +530,19 @@ public class SwapsApi {
     }
 
     /**
-     * Get Current Swap Rate
-     * This operation retrieves the current market exchange rate and estimated amount for swapping between two tokens. Either pay_amount or receive_amount must be provided. 
+     * Get swap quote
+     * This operation retrieves the current market exchange rate and estimated service fee. You need to provide &#x60;wallet_id&#x60;, &#x60;pay_token_id&#x60;, and &#x60;receive_token_id&#x60;, along with either &#x60;pay_amount&#x60; or &#x60;receive_amount&#x60;. 
      * @param walletId The wallet ID. (required)
-     * @param payTokenId Unique id of the token to pay. (required)
-     * @param receiveTokenId Unique id of the token to receive. (required)
-     * @param payAmount The amount of pay token. (optional)
-     * @param receiveAmount The amount of token to receive. (optional)
+     * @param payTokenId The ID of the token to pay. (required)
+     * @param receiveTokenId The ID of the token to receive. (required)
+     * @param payAmount The amount of the token to pay. (optional)
+     * @param receiveAmount The amount of the token to receive. (optional)
      * @return ApiResponse&lt;SwapQuote&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The swap quote has been successfully retrieved. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The swap quote successfully retrieved. </td><td>  -  </td></tr>
         <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
@@ -554,20 +554,20 @@ public class SwapsApi {
     }
 
     /**
-     * Get Current Swap Rate (asynchronously)
-     * This operation retrieves the current market exchange rate and estimated amount for swapping between two tokens. Either pay_amount or receive_amount must be provided. 
+     * Get swap quote (asynchronously)
+     * This operation retrieves the current market exchange rate and estimated service fee. You need to provide &#x60;wallet_id&#x60;, &#x60;pay_token_id&#x60;, and &#x60;receive_token_id&#x60;, along with either &#x60;pay_amount&#x60; or &#x60;receive_amount&#x60;. 
      * @param walletId The wallet ID. (required)
-     * @param payTokenId Unique id of the token to pay. (required)
-     * @param receiveTokenId Unique id of the token to receive. (required)
-     * @param payAmount The amount of pay token. (optional)
-     * @param receiveAmount The amount of token to receive. (optional)
+     * @param payTokenId The ID of the token to pay. (required)
+     * @param receiveTokenId The ID of the token to receive. (required)
+     * @param payAmount The amount of the token to pay. (optional)
+     * @param receiveAmount The amount of the token to receive. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The swap quote has been successfully retrieved. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The swap quote successfully retrieved. </td><td>  -  </td></tr>
         <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
@@ -583,12 +583,12 @@ public class SwapsApi {
      * Build call for listSwapActivities
      * @param type  (optional)
      * @param status  (optional)
-     * @param minUpdatedTimestamp The start time of the query. All staking activities updated after the specified time will be retrieved. The time is in Unix timestamp format, measured in milliseconds. (optional)
-     * @param maxUpdatedTimestamp The end time of the query. All staking activities updated before the specified time will be retrieved. The time is in Unix timestamp format, measured in milliseconds. (optional)
-     * @param initiator The activity initiator, which is your API key by default. You can also specify the initiator when creating the activity. (optional)
+     * @param minUpdatedTimestamp The start time of the query. All swap activities updated after the specified time will be retrieved. The time is in Unix timestamp format, measured in milliseconds. (optional)
+     * @param maxUpdatedTimestamp The end time of the query. All swap activities updated before the specified time will be retrieved. The time is in Unix timestamp format, measured in milliseconds. (optional)
+     * @param initiator The initiator of the swap activity. It is optional when creating the activity and defaults to your API key if not specified. (optional)
      * @param limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (optional, default to 10)
-     * @param before This parameter specifies an object ID as a starting point for pagination, retrieving data before the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C.  If you set &#x60;before&#x60; to the ID of Object C (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object A.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned. - If you set it to &#x60;infinity&#x60;, the last page of data is returned.  (optional)
-     * @param after This parameter specifies an object ID as a starting point for pagination, retrieving data after the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C. If you set &#x60;after&#x60; to the ID of Object A (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object C.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned.  (optional)
+     * @param before A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response.  (optional)
+     * @param after A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response.  (optional)
      * @param sortBy The field to sort the results by.   Possible values include: - &#x60;created_timestamp&#x60;: Sort by the time when the data was created. - &#x60;updated_timestamp&#x60;: Sort by the time when the data was last updated.  (optional)
      * @param direction The sort direction. Possible values include:   - &#x60;ASC&#x60;: Sort the results in ascending order.   - &#x60;DESC&#x60;: Sort the results in descending order.  (optional, default to ASC)
      * @param _callback Callback for upload/download progress
@@ -597,7 +597,7 @@ public class SwapsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A list of swap activities have been successfully retrieved. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> A list of swap activities successfully retrieved. </td><td>  -  </td></tr>
         <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
@@ -680,16 +680,16 @@ public class SwapsApi {
     }
 
     /**
-     * List Swap Activities
-     * This operation retrieves a list of swap activities. 
+     * List swap activities
+     * This operation retrieves a list of swap activities. You can filter the results by swap type, status, initiator, and time range. 
      * @param type  (optional)
      * @param status  (optional)
-     * @param minUpdatedTimestamp The start time of the query. All staking activities updated after the specified time will be retrieved. The time is in Unix timestamp format, measured in milliseconds. (optional)
-     * @param maxUpdatedTimestamp The end time of the query. All staking activities updated before the specified time will be retrieved. The time is in Unix timestamp format, measured in milliseconds. (optional)
-     * @param initiator The activity initiator, which is your API key by default. You can also specify the initiator when creating the activity. (optional)
+     * @param minUpdatedTimestamp The start time of the query. All swap activities updated after the specified time will be retrieved. The time is in Unix timestamp format, measured in milliseconds. (optional)
+     * @param maxUpdatedTimestamp The end time of the query. All swap activities updated before the specified time will be retrieved. The time is in Unix timestamp format, measured in milliseconds. (optional)
+     * @param initiator The initiator of the swap activity. It is optional when creating the activity and defaults to your API key if not specified. (optional)
      * @param limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (optional, default to 10)
-     * @param before This parameter specifies an object ID as a starting point for pagination, retrieving data before the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C.  If you set &#x60;before&#x60; to the ID of Object C (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object A.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned. - If you set it to &#x60;infinity&#x60;, the last page of data is returned.  (optional)
-     * @param after This parameter specifies an object ID as a starting point for pagination, retrieving data after the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C. If you set &#x60;after&#x60; to the ID of Object A (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object C.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned.  (optional)
+     * @param before A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response.  (optional)
+     * @param after A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response.  (optional)
      * @param sortBy The field to sort the results by.   Possible values include: - &#x60;created_timestamp&#x60;: Sort by the time when the data was created. - &#x60;updated_timestamp&#x60;: Sort by the time when the data was last updated.  (optional)
      * @param direction The sort direction. Possible values include:   - &#x60;ASC&#x60;: Sort the results in ascending order.   - &#x60;DESC&#x60;: Sort the results in descending order.  (optional, default to ASC)
      * @return ListSwapActivities200Response
@@ -697,7 +697,7 @@ public class SwapsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A list of swap activities have been successfully retrieved. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> A list of swap activities successfully retrieved. </td><td>  -  </td></tr>
         <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
@@ -708,16 +708,16 @@ public class SwapsApi {
     }
 
     /**
-     * List Swap Activities
-     * This operation retrieves a list of swap activities. 
+     * List swap activities
+     * This operation retrieves a list of swap activities. You can filter the results by swap type, status, initiator, and time range. 
      * @param type  (optional)
      * @param status  (optional)
-     * @param minUpdatedTimestamp The start time of the query. All staking activities updated after the specified time will be retrieved. The time is in Unix timestamp format, measured in milliseconds. (optional)
-     * @param maxUpdatedTimestamp The end time of the query. All staking activities updated before the specified time will be retrieved. The time is in Unix timestamp format, measured in milliseconds. (optional)
-     * @param initiator The activity initiator, which is your API key by default. You can also specify the initiator when creating the activity. (optional)
+     * @param minUpdatedTimestamp The start time of the query. All swap activities updated after the specified time will be retrieved. The time is in Unix timestamp format, measured in milliseconds. (optional)
+     * @param maxUpdatedTimestamp The end time of the query. All swap activities updated before the specified time will be retrieved. The time is in Unix timestamp format, measured in milliseconds. (optional)
+     * @param initiator The initiator of the swap activity. It is optional when creating the activity and defaults to your API key if not specified. (optional)
      * @param limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (optional, default to 10)
-     * @param before This parameter specifies an object ID as a starting point for pagination, retrieving data before the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C.  If you set &#x60;before&#x60; to the ID of Object C (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object A.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned. - If you set it to &#x60;infinity&#x60;, the last page of data is returned.  (optional)
-     * @param after This parameter specifies an object ID as a starting point for pagination, retrieving data after the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C. If you set &#x60;after&#x60; to the ID of Object A (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object C.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned.  (optional)
+     * @param before A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response.  (optional)
+     * @param after A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response.  (optional)
      * @param sortBy The field to sort the results by.   Possible values include: - &#x60;created_timestamp&#x60;: Sort by the time when the data was created. - &#x60;updated_timestamp&#x60;: Sort by the time when the data was last updated.  (optional)
      * @param direction The sort direction. Possible values include:   - &#x60;ASC&#x60;: Sort the results in ascending order.   - &#x60;DESC&#x60;: Sort the results in descending order.  (optional, default to ASC)
      * @return ApiResponse&lt;ListSwapActivities200Response&gt;
@@ -725,7 +725,7 @@ public class SwapsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A list of swap activities have been successfully retrieved. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> A list of swap activities successfully retrieved. </td><td>  -  </td></tr>
         <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
@@ -737,16 +737,16 @@ public class SwapsApi {
     }
 
     /**
-     * List Swap Activities (asynchronously)
-     * This operation retrieves a list of swap activities. 
+     * List swap activities (asynchronously)
+     * This operation retrieves a list of swap activities. You can filter the results by swap type, status, initiator, and time range. 
      * @param type  (optional)
      * @param status  (optional)
-     * @param minUpdatedTimestamp The start time of the query. All staking activities updated after the specified time will be retrieved. The time is in Unix timestamp format, measured in milliseconds. (optional)
-     * @param maxUpdatedTimestamp The end time of the query. All staking activities updated before the specified time will be retrieved. The time is in Unix timestamp format, measured in milliseconds. (optional)
-     * @param initiator The activity initiator, which is your API key by default. You can also specify the initiator when creating the activity. (optional)
+     * @param minUpdatedTimestamp The start time of the query. All swap activities updated after the specified time will be retrieved. The time is in Unix timestamp format, measured in milliseconds. (optional)
+     * @param maxUpdatedTimestamp The end time of the query. All swap activities updated before the specified time will be retrieved. The time is in Unix timestamp format, measured in milliseconds. (optional)
+     * @param initiator The initiator of the swap activity. It is optional when creating the activity and defaults to your API key if not specified. (optional)
      * @param limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (optional, default to 10)
-     * @param before This parameter specifies an object ID as a starting point for pagination, retrieving data before the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C.  If you set &#x60;before&#x60; to the ID of Object C (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object A.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned. - If you set it to &#x60;infinity&#x60;, the last page of data is returned.  (optional)
-     * @param after This parameter specifies an object ID as a starting point for pagination, retrieving data after the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C. If you set &#x60;after&#x60; to the ID of Object A (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object C.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned.  (optional)
+     * @param before A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response.  (optional)
+     * @param after A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response.  (optional)
      * @param sortBy The field to sort the results by.   Possible values include: - &#x60;created_timestamp&#x60;: Sort by the time when the data was created. - &#x60;updated_timestamp&#x60;: Sort by the time when the data was last updated.  (optional)
      * @param direction The sort direction. Possible values include:   - &#x60;ASC&#x60;: Sort the results in ascending order.   - &#x60;DESC&#x60;: Sort the results in descending order.  (optional, default to ASC)
      * @param _callback The callback to be executed when the API call finishes
@@ -755,7 +755,7 @@ public class SwapsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A list of swap activities have been successfully retrieved. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> A list of swap activities successfully retrieved. </td><td>  -  </td></tr>
         <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
@@ -773,15 +773,15 @@ public class SwapsApi {
      * @param assetId (This concept applies to Exchange Wallets only) The asset ID. An asset ID is the unique identifier of the asset held within your linked exchange account. (optional)
      * @param chainId The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-chains). (optional)
      * @param limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (optional, default to 10)
-     * @param before This parameter specifies an object ID as a starting point for pagination, retrieving data before the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C.  If you set &#x60;before&#x60; to the ID of Object C (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object A.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned. - If you set it to &#x60;infinity&#x60;, the last page of data is returned.  (optional)
-     * @param after This parameter specifies an object ID as a starting point for pagination, retrieving data after the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C. If you set &#x60;after&#x60; to the ID of Object A (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object C.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned.  (optional)
+     * @param before A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response.  (optional)
+     * @param after A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response.  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A list of enabled tokens have been successfully retrieved. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> A list of enabled tokens successfully retrieved. </td><td>  -  </td></tr>
         <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
@@ -848,20 +848,20 @@ public class SwapsApi {
     }
 
     /**
-     * List Enabled Tokens
-     * This operation retrieves all enabled tokens for swaps.   
+     * List enabled tokens for swap
+     * This operation retrieves a list of tokens that are enabled for the swap feature. You can filter the results by swap type, asset ID, and chain ID. 
      * @param type  (optional)
      * @param assetId (This concept applies to Exchange Wallets only) The asset ID. An asset ID is the unique identifier of the asset held within your linked exchange account. (optional)
      * @param chainId The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-chains). (optional)
      * @param limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (optional, default to 10)
-     * @param before This parameter specifies an object ID as a starting point for pagination, retrieving data before the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C.  If you set &#x60;before&#x60; to the ID of Object C (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object A.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned. - If you set it to &#x60;infinity&#x60;, the last page of data is returned.  (optional)
-     * @param after This parameter specifies an object ID as a starting point for pagination, retrieving data after the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C. If you set &#x60;after&#x60; to the ID of Object A (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object C.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned.  (optional)
+     * @param before A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response.  (optional)
+     * @param after A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response.  (optional)
      * @return ListSwapEnabledTokens200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A list of enabled tokens have been successfully retrieved. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> A list of enabled tokens successfully retrieved. </td><td>  -  </td></tr>
         <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
@@ -872,20 +872,20 @@ public class SwapsApi {
     }
 
     /**
-     * List Enabled Tokens
-     * This operation retrieves all enabled tokens for swaps.   
+     * List enabled tokens for swap
+     * This operation retrieves a list of tokens that are enabled for the swap feature. You can filter the results by swap type, asset ID, and chain ID. 
      * @param type  (optional)
      * @param assetId (This concept applies to Exchange Wallets only) The asset ID. An asset ID is the unique identifier of the asset held within your linked exchange account. (optional)
      * @param chainId The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-chains). (optional)
      * @param limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (optional, default to 10)
-     * @param before This parameter specifies an object ID as a starting point for pagination, retrieving data before the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C.  If you set &#x60;before&#x60; to the ID of Object C (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object A.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned. - If you set it to &#x60;infinity&#x60;, the last page of data is returned.  (optional)
-     * @param after This parameter specifies an object ID as a starting point for pagination, retrieving data after the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C. If you set &#x60;after&#x60; to the ID of Object A (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object C.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned.  (optional)
+     * @param before A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response.  (optional)
+     * @param after A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response.  (optional)
      * @return ApiResponse&lt;ListSwapEnabledTokens200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A list of enabled tokens have been successfully retrieved. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> A list of enabled tokens successfully retrieved. </td><td>  -  </td></tr>
         <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
@@ -897,21 +897,21 @@ public class SwapsApi {
     }
 
     /**
-     * List Enabled Tokens (asynchronously)
-     * This operation retrieves all enabled tokens for swaps.   
+     * List enabled tokens for swap (asynchronously)
+     * This operation retrieves a list of tokens that are enabled for the swap feature. You can filter the results by swap type, asset ID, and chain ID. 
      * @param type  (optional)
      * @param assetId (This concept applies to Exchange Wallets only) The asset ID. An asset ID is the unique identifier of the asset held within your linked exchange account. (optional)
      * @param chainId The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-chains). (optional)
      * @param limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (optional, default to 10)
-     * @param before This parameter specifies an object ID as a starting point for pagination, retrieving data before the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C.  If you set &#x60;before&#x60; to the ID of Object C (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object A.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned. - If you set it to &#x60;infinity&#x60;, the last page of data is returned.  (optional)
-     * @param after This parameter specifies an object ID as a starting point for pagination, retrieving data after the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C. If you set &#x60;after&#x60; to the ID of Object A (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object C.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned.  (optional)
+     * @param before A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response.  (optional)
+     * @param after A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response.  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A list of enabled tokens have been successfully retrieved. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> A list of enabled tokens successfully retrieved. </td><td>  -  </td></tr>
         <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>

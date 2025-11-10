@@ -47,7 +47,7 @@ public class ComplianceApiTest {
     private final ComplianceApi api = new ComplianceApi();
 
     /**
-     * Query disposition status
+     * Get disposition status
      *
      * This operation retrieves the current status of a disposition request for a specific transaction.  You can use this endpoint to check the status of any disposition operation (Refund, Isolate, or Unfreeze)  that has been initiated for a transaction. The response includes the disposition type, current status,  and the disposition transaction ID if applicable.  &lt;Note&gt;Use this endpoint to monitor the progress of disposition operations and verify their completion.&lt;/Note&gt; 
      *
@@ -61,9 +61,9 @@ public class ComplianceApiTest {
     }
 
     /**
-     * Retrieve KYT screening status
+     * Get KYT screening status
      *
-     * This operation retrieves the current KYT (Know Your Transaction) screening status and compliance information for a specific transaction.  Use this endpoint to monitor the real-time screening status, review decisions, and funds disposition status for transactions that have been processed through the KYT compliance system. The response includes detailed screening results, risk assessment outcomes, and current funds status.  &lt;Note&gt;This endpoint provides comprehensive compliance monitoring capabilities to help maintain AML (Anti-Money Laundering) regulatory compliance and audit trail requirements.&lt;/Note&gt; 
+     * This operation retrieves the current KYT (Know Your Transaction) screening status, including review status and fund disposition status, for a specific transaction.  Use this endpoint to monitor the real-time screening progress for transactions processed through the KYT compliance system.  &lt;Note&gt;This endpoint provides comprehensive compliance monitoring capabilities to help maintain AML (Anti-Money Laundering) regulatory compliance and audit trail requirements.&lt;/Note&gt; 
      *
      * @throws ApiException if the Api call fails
      */
@@ -75,9 +75,9 @@ public class ComplianceApiTest {
     }
 
     /**
-     * Create fund isolate disposition
+     * Isolate funds
      *
-     * This operation creates an isolate disposition request for a specific transaction.  The isolated funds will be sent to a designated isolation address for compliance purposes.  You need to specify the transaction ID to be isolated and the destination address.  Optional parameters include custom categories for tracking purposes.  &lt;Note&gt;The isolate process will initiate a withdrawal transaction from the compliance-managed address to the specified isolation address.&lt;/Note&gt; 
+     * This operation creates a request to isolate funds for a specific transaction. The funds will be sent to a designated isolation address for compliance purposes.  You need to specify the transaction ID to be isolated and the destination address.  Optional parameters include custom categories for tracking purposes.  &lt;Note&gt;The isolation will initiate a withdrawal transaction from the compliance-managed address to the specified isolation address.&lt;/Note&gt; 
      *
      * @throws ApiException if the Api call fails
      */
@@ -89,9 +89,9 @@ public class ComplianceApiTest {
     }
 
     /**
-     * Create fund refund disposition
+     * Refund funds
      *
-     * This operation creates a refund disposition request for a specific transaction.  The refunded funds will be sent to the specified destination address.  You need to specify the transaction ID to be refunded and the destination address.  Optional parameters include custom categories for tracking purposes.  &lt;Note&gt;The refund process will initiate a withdrawal transaction from the compliance-managed address to the specified destination.&lt;/Note&gt; 
+     * This operation creates a request to refund funds for a specific transaction. The funds will be sent to the specified destination address.  You need to specify the transaction ID to be refunded and the destination address.  Optional parameters include custom categories for tracking purposes.  &lt;Note&gt;The refund will initiate a withdrawal transaction from the compliance-managed address to the specified destination.&lt;/Note&gt; 
      *
      * @throws ApiException if the Api call fails
      */
@@ -105,7 +105,7 @@ public class ComplianceApiTest {
     /**
      * Submit KYT manual review result
      *
-     * This operation submits manual review results for KYT (Know Your Transaction) screening cases that require human intervention and analysis.  Use this endpoint when transactions flagged for manual review have been analyzed by compliance officers and require submission of review outcomes with detailed comments and justifications. This endpoint is specifically designed for submitting comprehensive manual review findings rather than automated screening decisions.  &lt;Note&gt;Submitting manual review results will update the KYT screening status and initiate appropriate compliance workflow actions based on the review outcome.&lt;/Note&gt; 
+     * This operation submits a manual review result for a KYT (Know Your Transaction) screening case that requires human analysis.  Use this endpoint when transactions flagged for manual review have been analyzed by compliance officers and require submission of review outcomes with detailed comments and justifications.  This endpoint is specifically designed for submitting comprehensive manual review findings rather than automated screening decisions.  &lt;Note&gt;Submitting a manual review result will update the KYT screening status and initiate appropriate compliance workflow actions based on the review outcome.&lt;/Note&gt; 
      *
      * @throws ApiException if the Api call fails
      */
@@ -119,7 +119,7 @@ public class ComplianceApiTest {
     /**
      * Submit KYT screening decision
      *
-     * This operation submits the final KYT (Know Your Transaction) screening decision for a specific transaction based on external compliance review results.  Use this endpoint to provide screening decisions (Approve, ApproveWithAlert, Reject, or ManualReview) after completing the external KYT screening process. The submitted decision will be recorded for compliance audit purposes and regulatory reporting requirements.  &lt;Note&gt;Submitting a screening decision will update the transaction&#39;s KYT status and may automatically trigger downstream compliance workflows or notifications based on the decision type.&lt;/Note&gt; 
+     * This operation submits a KYT (Know Your Transaction) screening decision for a specific transaction based on an external compliance review.  Use this endpoint to provide a screening decision (Approval, ApprovalWithAlert, Rejection, or ManualReview) after completing the external KYT screening process.  The submitted decision will be recorded for compliance audit purposes and regulatory reporting requirements.  &lt;Note&gt;Submitting a screening decision will update the transaction&#39;s KYT status and may automatically trigger downstream compliance workflows or notifications depending on the decision type.&lt;/Note&gt; 
      *
      * @throws ApiException if the Api call fails
      */
@@ -133,7 +133,7 @@ public class ComplianceApiTest {
     /**
      * Unfreeze frozen funds
      *
-     * This operation creates an unfreeze request for a previously frozen transaction.  The unfreeze operation will release the frozen funds back to their original state.  You only need to specify the transaction ID to be unfrozen. Once unfrozen, the funds  will be available for normal operations.  &lt;Note&gt;The unfreeze process will release the compliance hold on the transaction, allowing it to proceed normally.&lt;/Note&gt; 
+     * This operation creates a request to unfreeze funds for a previously frozen transaction. It releases the frozen funds back to their original state.  You only need to specify the transaction ID to be unfrozen. Once unfrozen, the funds will be available for normal operations.  &lt;Note&gt;The unfreeze process will release the compliance hold on the transaction, allowing it to proceed normally.&lt;/Note&gt; 
      *
      * @throws ApiException if the Api call fails
      */
