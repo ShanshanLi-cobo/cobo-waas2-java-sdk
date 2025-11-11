@@ -48,7 +48,7 @@ import com.cobo.waas2.JSON;
 /**
  * Information about the sweep-to address.
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -77,7 +77,7 @@ public class SweepToAddress {
    * The wallet address.
    * @return address
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getAddress() {
     return address;
   }
@@ -96,7 +96,7 @@ public class SweepToAddress {
    * The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-chains).
    * @return chainId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getChainId() {
     return chainId;
   }
@@ -115,7 +115,7 @@ public class SweepToAddress {
    * Get status
    * @return status
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public SweepToAddressStatus getStatus() {
     return status;
   }

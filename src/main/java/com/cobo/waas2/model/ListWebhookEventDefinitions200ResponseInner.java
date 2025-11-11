@@ -48,7 +48,7 @@ import com.cobo.waas2.JSON;
 /**
  * ListWebhookEventDefinitions200ResponseInner
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -73,7 +73,7 @@ public class ListWebhookEventDefinitions200ResponseInner {
    * Get eventType
    * @return eventType
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public WebhookEventType getEventType() {
     return eventType;
   }
@@ -92,7 +92,7 @@ public class ListWebhookEventDefinitions200ResponseInner {
    * The description of the webhook event type.
    * @return description
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getDescription() {
     return description;
   }

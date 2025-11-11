@@ -47,7 +47,7 @@ import com.cobo.waas2.JSON;
 /**
  * OrderLinkBusinessInfoCustomExchangeRatesInner
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -72,7 +72,7 @@ public class OrderLinkBusinessInfoCustomExchangeRatesInner {
    * The token ID.
    * @return tokenId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getTokenId() {
     return tokenId;
   }
@@ -91,7 +91,7 @@ public class OrderLinkBusinessInfoCustomExchangeRatesInner {
    * The exchange rate to use for this token.
    * @return exchangeRate
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getExchangeRate() {
     return exchangeRate;
   }

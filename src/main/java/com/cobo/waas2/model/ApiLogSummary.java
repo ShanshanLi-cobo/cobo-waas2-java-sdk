@@ -47,7 +47,7 @@ import com.cobo.waas2.JSON;
 /**
  * The information about an API log.
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -84,7 +84,7 @@ public class ApiLogSummary {
    * A unique identifier for the API log, used for tracking.
    * @return logId
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getLogId() {
     return logId;
   }
@@ -103,7 +103,7 @@ public class ApiLogSummary {
    * The HTTP method used for the API request.
    * @return apiMethod
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getApiMethod() {
     return apiMethod;
   }
@@ -122,7 +122,7 @@ public class ApiLogSummary {
    * The endpoint of the API request.
    * @return apiEndpoint
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getApiEndpoint() {
     return apiEndpoint;
   }
@@ -141,7 +141,7 @@ public class ApiLogSummary {
    * The time when the API request was created, in Unix timestamp format, measured in milliseconds.
    * @return requestTimestamp
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public Long getRequestTimestamp() {
     return requestTimestamp;
   }
@@ -160,7 +160,7 @@ public class ApiLogSummary {
    * The HTTP status code returned by the API request.
    * @return statusCode
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public Integer getStatusCode() {
     return statusCode;
   }

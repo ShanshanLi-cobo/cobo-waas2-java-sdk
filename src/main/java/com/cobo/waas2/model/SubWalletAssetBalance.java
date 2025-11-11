@@ -48,7 +48,7 @@ import com.cobo.waas2.JSON;
 /**
  * The information about the asset balance of a trading account.
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -77,7 +77,7 @@ public class SubWalletAssetBalance {
    * The trading account type.
    * @return tradingAccountType
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getTradingAccountType() {
     return tradingAccountType;
   }
@@ -96,7 +96,7 @@ public class SubWalletAssetBalance {
    * The asset ID. An asset ID is the unique identifier of the asset held within your linked exchange account.
    * @return assetId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getAssetId() {
     return assetId;
   }
@@ -115,7 +115,7 @@ public class SubWalletAssetBalance {
    * Get balance
    * @return balance
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public Balance getBalance() {
     return balance;
   }

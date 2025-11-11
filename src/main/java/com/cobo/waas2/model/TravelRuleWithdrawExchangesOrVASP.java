@@ -49,7 +49,7 @@ import com.cobo.waas2.JSON;
 /**
  * Required information when withdrawing tokens to an exchange or other virtual asset service providers (VASP).
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -82,7 +82,7 @@ public class TravelRuleWithdrawExchangesOrVASP {
    * Get destinationWalletType
    * @return destinationWalletType
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public DestinationWalletType getDestinationWalletType() {
     return destinationWalletType;
   }
@@ -101,7 +101,7 @@ public class TravelRuleWithdrawExchangesOrVASP {
    * The vendor code of the exchange or virtual asset service provider (VASP).
    * @return vendorCode
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getVendorCode() {
     return vendorCode;
   }
@@ -120,7 +120,7 @@ public class TravelRuleWithdrawExchangesOrVASP {
    * The unique identifier of the VASP.
    * @return vendorVaspId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getVendorVaspId() {
     return vendorVaspId;
   }
@@ -139,7 +139,7 @@ public class TravelRuleWithdrawExchangesOrVASP {
    * Get entityInfo
    * @return entityInfo
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public TravelRuleWithdrawExchangesOrVASPEntityInfo getEntityInfo() {
     return entityInfo;
   }

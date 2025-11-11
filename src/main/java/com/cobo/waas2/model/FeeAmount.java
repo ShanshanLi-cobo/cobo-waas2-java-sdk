@@ -47,7 +47,7 @@ import com.cobo.waas2.JSON;
 /**
  * The transaction fee.
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -68,7 +68,7 @@ public class FeeAmount {
    * The transaction fee that you need to pay for the transaction.
    * @return feeAmount
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getFeeAmount() {
     return feeAmount;
   }

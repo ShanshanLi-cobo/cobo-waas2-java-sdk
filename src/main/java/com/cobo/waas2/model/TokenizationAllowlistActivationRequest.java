@@ -49,7 +49,7 @@ import com.cobo.waas2.JSON;
 /**
  * TokenizationAllowlistActivationRequest
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -86,7 +86,7 @@ public class TokenizationAllowlistActivationRequest {
    * Get source
    * @return source
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public TokenizationTokenOperationSource getSource() {
     return source;
   }
@@ -105,7 +105,7 @@ public class TokenizationAllowlistActivationRequest {
    * Whether to activate the allowlist feature for the token.
    * @return activation
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public Boolean getActivation() {
     return activation;
   }
@@ -124,7 +124,7 @@ public class TokenizationAllowlistActivationRequest {
    * The initiator of the tokenization activity. If you do not specify this property, the WaaS service will automatically designate the API key as the initiator.
    * @return appInitiator
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getAppInitiator() {
     return appInitiator;
   }
@@ -143,7 +143,7 @@ public class TokenizationAllowlistActivationRequest {
    * Get fee
    * @return fee
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public TransactionRequestFee getFee() {
     return fee;
   }
@@ -162,7 +162,7 @@ public class TokenizationAllowlistActivationRequest {
    * The request ID that is used to track a transaction request. The request ID is provided by you and must be unique within your organization.
    * @return requestId
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getRequestId() {
     return requestId;
   }

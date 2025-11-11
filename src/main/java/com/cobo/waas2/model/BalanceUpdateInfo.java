@@ -49,7 +49,7 @@ import com.cobo.waas2.JSON;
 /**
  * The balance information.
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -86,7 +86,7 @@ public class BalanceUpdateInfo {
    * The token ID, which is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-tokens).
    * @return tokenId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getTokenId() {
     return tokenId;
   }
@@ -105,7 +105,7 @@ public class BalanceUpdateInfo {
    * The wallet address.
    * @return address
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getAddress() {
     return address;
   }
@@ -124,7 +124,7 @@ public class BalanceUpdateInfo {
    * The wallet ID.
    * @return walletUuid
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public UUID getWalletUuid() {
     return walletUuid;
   }
@@ -143,7 +143,7 @@ public class BalanceUpdateInfo {
    * The time when the balance updated, in Unix timestamp format, measured in milliseconds. 
    * @return updatedTimestamp
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public Long getUpdatedTimestamp() {
     return updatedTimestamp;
   }
@@ -162,7 +162,7 @@ public class BalanceUpdateInfo {
    * Get balance
    * @return balance
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public Balance getBalance() {
     return balance;
   }

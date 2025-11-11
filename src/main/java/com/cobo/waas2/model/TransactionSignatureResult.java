@@ -48,7 +48,7 @@ import com.cobo.waas2.JSON;
 /**
  * The result of a message signing transaction.
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -73,7 +73,7 @@ public class TransactionSignatureResult {
    * Get resultType
    * @return resultType
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public TransactionResultType getResultType() {
     return resultType;
   }
@@ -92,7 +92,7 @@ public class TransactionSignatureResult {
    * The raw data of the signature.
    * @return signature
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getSignature() {
     return signature;
   }

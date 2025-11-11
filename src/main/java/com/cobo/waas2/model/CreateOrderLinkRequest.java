@@ -49,7 +49,7 @@ import com.cobo.waas2.JSON;
 /**
  * CreateOrderLinkRequest
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -74,7 +74,7 @@ public class CreateOrderLinkRequest {
    * Get businessInfo
    * @return businessInfo
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public OrderLinkBusinessInfo getBusinessInfo() {
     return businessInfo;
   }
@@ -93,7 +93,7 @@ public class CreateOrderLinkRequest {
    * Get displayInfo
    * @return displayInfo
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public LinkDisplayInfo getDisplayInfo() {
     return displayInfo;
   }

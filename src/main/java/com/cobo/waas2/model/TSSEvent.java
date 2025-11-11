@@ -50,7 +50,7 @@ import com.cobo.waas2.JSON;
 /**
  * The TSS Node event payload.
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -87,7 +87,7 @@ public class TSSEvent {
    * The event ID.
    * @return eventId
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public UUID getEventId() {
     return eventId;
   }
@@ -106,7 +106,7 @@ public class TSSEvent {
    * The time when the event occurred, in Unix timestamp format, measured in milliseconds.
    * @return createdTimestamp
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public Long getCreatedTimestamp() {
     return createdTimestamp;
   }
@@ -125,7 +125,7 @@ public class TSSEvent {
    * The event publisher&#39;s TSS Node ID.
    * @return nodeId
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getNodeId() {
     return nodeId;
   }
@@ -144,7 +144,7 @@ public class TSSEvent {
    * Get eventType
    * @return eventType
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public TSSEventType getEventType() {
     return eventType;
   }
@@ -163,7 +163,7 @@ public class TSSEvent {
    * Get data
    * @return data
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public TSSEventData getData() {
     return data;
   }

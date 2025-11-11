@@ -52,7 +52,7 @@ import com.cobo.waas2.JSON;
 /**
  * GraphQLResponse
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -85,7 +85,7 @@ public class GraphQLResponse {
    * The response data for the GraphQL operation.
    * @return data
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public Map<String, Object> getData() {
     return data;
   }
@@ -112,7 +112,7 @@ public class GraphQLResponse {
    * Any errors that occurred during the GraphQL operation.
    * @return errors
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public List<GraphQLError> getErrors() {
     return errors;
   }

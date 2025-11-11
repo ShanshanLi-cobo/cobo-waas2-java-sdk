@@ -48,7 +48,7 @@ import com.cobo.waas2.JSON;
 /**
  * TokenizationEstimateFeeRequest
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -69,7 +69,7 @@ public class TokenizationEstimateFeeRequest {
    * Get operationParams
    * @return operationParams
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public TokenizationEstimateFeeRequestOperationParams getOperationParams() {
     return operationParams;
   }

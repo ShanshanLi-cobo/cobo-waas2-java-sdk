@@ -47,7 +47,7 @@ import com.cobo.waas2.JSON;
 /**
  * The data for project information.
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -88,7 +88,7 @@ public class MPCProject {
    * The project ID.
    * @return projectId
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getProjectId() {
     return projectId;
   }
@@ -107,7 +107,7 @@ public class MPCProject {
    * The [organization](https://manuals.cobo.com/en/portal/organization/introduction) ID.
    * @return orgId
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getOrgId() {
     return orgId;
   }
@@ -126,7 +126,7 @@ public class MPCProject {
    * The project name.
    * @return name
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getName() {
     return name;
   }
@@ -145,7 +145,7 @@ public class MPCProject {
    * The number of key share holders in the project.
    * @return participants
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public Integer getParticipants() {
     return participants;
   }
@@ -164,7 +164,7 @@ public class MPCProject {
    * The number of key share holders required to sign an operation in the project.
    * @return threshold
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public Integer getThreshold() {
     return threshold;
   }
@@ -183,7 +183,7 @@ public class MPCProject {
    * The project&#39;s creation time in Unix timestamp format, measured in milliseconds.
    * @return createdTimestamp
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public Long getCreatedTimestamp() {
     return createdTimestamp;
   }

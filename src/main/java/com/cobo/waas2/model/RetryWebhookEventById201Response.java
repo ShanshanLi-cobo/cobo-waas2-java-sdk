@@ -47,7 +47,7 @@ import com.cobo.waas2.JSON;
 /**
  * RetryWebhookEventById201Response
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -68,7 +68,7 @@ public class RetryWebhookEventById201Response {
    * Whether the retry request has been successfully sent.
    * @return retried
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public Boolean getRetried() {
     return retried;
   }

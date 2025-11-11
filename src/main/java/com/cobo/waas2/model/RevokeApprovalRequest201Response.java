@@ -49,7 +49,7 @@ import com.cobo.waas2.JSON;
 /**
  * RevokeApprovalRequest201Response
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -74,7 +74,7 @@ public class RevokeApprovalRequest201Response {
    * The system-generated unique ID of the approval request.
    * @return approvalId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public UUID getApprovalId() {
     return approvalId;
   }
@@ -93,7 +93,7 @@ public class RevokeApprovalRequest201Response {
    * Get status
    * @return status
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public ApprovalStatus getStatus() {
     return status;
   }

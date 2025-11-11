@@ -47,7 +47,7 @@ import com.cobo.waas2.JSON;
 /**
  * LockUtxos201Response
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -68,7 +68,7 @@ public class LockUtxos201Response {
    * Whether the locking or unlocking operation has been successfully executed. - &#x60;true&#x60;: The operation has been successfully executed. - &#x60;false&#x60;: The operation has not been executed. 
    * @return executed
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public Boolean getExecuted() {
     return executed;
   }

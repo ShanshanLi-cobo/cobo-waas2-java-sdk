@@ -53,7 +53,7 @@ import com.cobo.waas2.JSON;
 /**
  * TokenizationUpdateAllowlistAddressesEstimateFeeParams
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -94,7 +94,7 @@ public class TokenizationUpdateAllowlistAddressesEstimateFeeParams {
    * Get action
    * @return action
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public TokenizationUpdateAddressAction getAction() {
     return action;
   }
@@ -113,7 +113,7 @@ public class TokenizationUpdateAllowlistAddressesEstimateFeeParams {
    * Get source
    * @return source
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public TokenizationTokenOperationSource getSource() {
     return source;
   }
@@ -140,7 +140,7 @@ public class TokenizationUpdateAllowlistAddressesEstimateFeeParams {
    * A list of addresses to manage. For &#39;add&#39; operations, notes can be provided. For &#39;remove&#39; operations, notes are ignored.
    * @return addresses
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public List<TokenizationUpdateAllowlistAddressesParamsAddressesInner> getAddresses() {
     return addresses;
   }
@@ -159,7 +159,7 @@ public class TokenizationUpdateAllowlistAddressesEstimateFeeParams {
    * Get operationType
    * @return operationType
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public TokenizationOperationType getOperationType() {
     return operationType;
   }
@@ -178,7 +178,7 @@ public class TokenizationUpdateAllowlistAddressesEstimateFeeParams {
    * The ID of the token.
    * @return tokenId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getTokenId() {
     return tokenId;
   }
@@ -197,7 +197,7 @@ public class TokenizationUpdateAllowlistAddressesEstimateFeeParams {
    * The request ID that is used to track a transaction request. The request ID is provided by you and must be unique within your organization.
    * @return requestId
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getRequestId() {
     return requestId;
   }

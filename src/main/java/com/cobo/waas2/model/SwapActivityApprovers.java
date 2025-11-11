@@ -48,7 +48,7 @@ import com.cobo.waas2.JSON;
 /**
  * The approver information of the swap activity.
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -73,7 +73,7 @@ public class SwapActivityApprovers {
    * The approver name of the swap activity. 
    * @return name
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getName() {
     return name;
   }
@@ -92,7 +92,7 @@ public class SwapActivityApprovers {
    * Get status
    * @return status
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public SwapApproversStatus getStatus() {
     return status;
   }

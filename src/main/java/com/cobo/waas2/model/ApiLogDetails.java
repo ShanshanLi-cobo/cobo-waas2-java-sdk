@@ -47,7 +47,7 @@ import com.cobo.waas2.JSON;
 /**
  * The information about an API log.
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -104,7 +104,7 @@ public class ApiLogDetails {
    * A unique identifier for the API log, used for tracking.
    * @return logId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getLogId() {
     return logId;
   }
@@ -123,7 +123,7 @@ public class ApiLogDetails {
    * The HTTP method used for the API request.
    * @return apiMethod
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getApiMethod() {
     return apiMethod;
   }
@@ -142,7 +142,7 @@ public class ApiLogDetails {
    * The endpoint of the API request.
    * @return apiEndpoint
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getApiEndpoint() {
     return apiEndpoint;
   }
@@ -161,7 +161,7 @@ public class ApiLogDetails {
    * The HTTP status code returned by the API request.
    * @return statusCode
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public Integer getStatusCode() {
     return statusCode;
   }
@@ -180,7 +180,7 @@ public class ApiLogDetails {
    * The client&#39;s IP address that made the API request.
    * @return ipAddress
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getIpAddress() {
     return ipAddress;
   }
@@ -199,7 +199,7 @@ public class ApiLogDetails {
    * The time when the API request was created, in Unix timestamp format, measured in milliseconds.
    * @return requestTimestamp
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public Long getRequestTimestamp() {
     return requestTimestamp;
   }
@@ -218,7 +218,7 @@ public class ApiLogDetails {
    * The API key used to call the API. For more details, refer to [API key](https://www.cobo.com/developers/v2/guides/overview/cobo-auth#api-key).
    * @return apiKey
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getApiKey() {
     return apiKey;
   }
@@ -237,7 +237,7 @@ public class ApiLogDetails {
    * The response body of the API request.
    * @return responseBody
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getResponseBody() {
     return responseBody;
   }
@@ -256,7 +256,7 @@ public class ApiLogDetails {
    * The query parameters of the API request.
    * @return queryParams
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getQueryParams() {
     return queryParams;
   }
@@ -275,7 +275,7 @@ public class ApiLogDetails {
    * The request body of the API request.
    * @return requestBody
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getRequestBody() {
     return requestBody;
   }

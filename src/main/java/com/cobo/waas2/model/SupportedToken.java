@@ -48,7 +48,7 @@ import com.cobo.waas2.JSON;
 /**
  * SupportedToken
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -105,7 +105,7 @@ public class SupportedToken {
    * Unique identifier of the token
    * @return tokenId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getTokenId() {
     return tokenId;
   }
@@ -124,7 +124,7 @@ public class SupportedToken {
    * Full name of the token
    * @return name
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getName() {
     return name;
   }
@@ -143,7 +143,7 @@ public class SupportedToken {
    * Symbol representation of the token
    * @return symbol
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getSymbol() {
     return symbol;
   }
@@ -162,7 +162,7 @@ public class SupportedToken {
    * Number of decimal places for the token
    * @return decimal
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public Integer getDecimal() {
     return decimal;
   }
@@ -181,7 +181,7 @@ public class SupportedToken {
    * Contract address of the token (may be null for native coins)
    * @return tokenAddress
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getTokenAddress() {
     return tokenAddress;
   }
@@ -200,7 +200,7 @@ public class SupportedToken {
    * Identifier of the blockchain where the token exists
    * @return chainId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getChainId() {
     return chainId;
   }
@@ -219,7 +219,7 @@ public class SupportedToken {
    * Symbol of the underlying blockchain
    * @return chainSymbol
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getChainSymbol() {
     return chainSymbol;
   }
@@ -238,7 +238,7 @@ public class SupportedToken {
    * URL to the blockchain&#39;s icon image
    * @return chainIconUrl
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getChainIconUrl() {
     return chainIconUrl;
   }
@@ -257,7 +257,7 @@ public class SupportedToken {
    * URL to the token&#39;s icon image
    * @return tokenIconUrl
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getTokenIconUrl() {
     return tokenIconUrl;
   }
@@ -276,7 +276,7 @@ public class SupportedToken {
    * Whether the token is supported by the off-ramp service.
    * @return canOffRamp
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public Boolean getCanOffRamp() {
     return canOffRamp;
   }

@@ -47,7 +47,7 @@ import com.cobo.waas2.JSON;
 /**
  * SwapQuote
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -104,7 +104,7 @@ public class SwapQuote {
    * The unique identifier of the swap quote.
    * @return quoteId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getQuoteId() {
     return quoteId;
   }
@@ -123,7 +123,7 @@ public class SwapQuote {
    * The ID of the token to pay.
    * @return payTokenId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getPayTokenId() {
     return payTokenId;
   }
@@ -142,7 +142,7 @@ public class SwapQuote {
    * The amount of the token to pay.
    * @return payAmount
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getPayAmount() {
     return payAmount;
   }
@@ -161,7 +161,7 @@ public class SwapQuote {
    * The ID of the token to receive.
    * @return receiveTokenId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getReceiveTokenId() {
     return receiveTokenId;
   }
@@ -180,7 +180,7 @@ public class SwapQuote {
    * The amount of the token to receive.
    * @return receiveAmount
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getReceiveAmount() {
     return receiveAmount;
   }
@@ -199,7 +199,7 @@ public class SwapQuote {
    * The ID of the token for the service fee.
    * @return feeTokenId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getFeeTokenId() {
     return feeTokenId;
   }
@@ -218,7 +218,7 @@ public class SwapQuote {
    * The amount of the token for the service fee.
    * @return feeAmount
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getFeeAmount() {
     return feeAmount;
   }
@@ -237,7 +237,7 @@ public class SwapQuote {
    * The minimum amount of the token to receive if &#x60;pay_amount&#x60; is specified.
    * @return minReceiveAmount
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getMinReceiveAmount() {
     return minReceiveAmount;
   }
@@ -256,7 +256,7 @@ public class SwapQuote {
    * The maximum amount of the token to pay if &#x60;receive_amount&#x60; is specified.
    * @return maxPayAmount
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getMaxPayAmount() {
     return maxPayAmount;
   }
@@ -275,7 +275,7 @@ public class SwapQuote {
    * The time when the swap quote expires, in Unix timestamp format, measured in milliseconds.
    * @return quoteExpiredTimestamp
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public Integer getQuoteExpiredTimestamp() {
     return quoteExpiredTimestamp;
   }

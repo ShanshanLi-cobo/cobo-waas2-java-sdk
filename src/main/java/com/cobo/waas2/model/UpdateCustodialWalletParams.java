@@ -48,7 +48,7 @@ import com.cobo.waas2.JSON;
 /**
  * The information of Custodial Wallets.
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -77,7 +77,7 @@ public class UpdateCustodialWalletParams {
    * Get walletType
    * @return walletType
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public WalletType getWalletType() {
     return walletType;
   }
@@ -96,7 +96,7 @@ public class UpdateCustodialWalletParams {
    * The wallet name.
    * @return name
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getName() {
     return name;
   }
@@ -115,7 +115,7 @@ public class UpdateCustodialWalletParams {
    * Enable the auto sweep feature for the wallet
    * @return enableAutoSweep
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public Boolean getEnableAutoSweep() {
     return enableAutoSweep;
   }

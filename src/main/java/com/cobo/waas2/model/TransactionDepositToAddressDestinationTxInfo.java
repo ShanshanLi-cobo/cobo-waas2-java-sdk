@@ -47,7 +47,7 @@ import com.cobo.waas2.JSON;
 /**
  * TransactionDepositToAddressDestinationTxInfo
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -68,7 +68,7 @@ public class TransactionDepositToAddressDestinationTxInfo {
    * The output index of the UTXO.
    * @return voutN
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public Integer getVoutN() {
     return voutN;
   }

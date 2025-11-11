@@ -49,7 +49,7 @@ import com.cobo.waas2.JSON;
 /**
  * The transaction fee rate based on the legacy fee model.
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -86,7 +86,7 @@ public class EvmLegacyFeeRate {
    * Get feeType
    * @return feeType
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public FeeType getFeeType() {
     return feeType;
   }
@@ -105,7 +105,7 @@ public class EvmLegacyFeeRate {
    * The token used to pay the transaction fee.
    * @return tokenId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getTokenId() {
     return tokenId;
   }
@@ -124,7 +124,7 @@ public class EvmLegacyFeeRate {
    * Get slow
    * @return slow
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public EvmLegacyFeeBasePrice getSlow() {
     return slow;
   }
@@ -143,7 +143,7 @@ public class EvmLegacyFeeRate {
    * Get recommended
    * @return recommended
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public EvmLegacyFeeBasePrice getRecommended() {
     return recommended;
   }
@@ -162,7 +162,7 @@ public class EvmLegacyFeeRate {
    * Get fast
    * @return fast
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public EvmLegacyFeeBasePrice getFast() {
     return fast;
   }

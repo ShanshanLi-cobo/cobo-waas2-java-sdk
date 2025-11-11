@@ -48,7 +48,7 @@ import com.cobo.waas2.JSON;
 /**
  * MerchantBalance
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -97,7 +97,7 @@ public class MerchantBalance {
    * The merchant ID.
    * @return merchantId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getMerchantId() {
     return merchantId;
   }
@@ -116,7 +116,7 @@ public class MerchantBalance {
    * The token ID, which is a unique identifier that specifies both the blockchain network and cryptocurrency token in the format &#x60;{CHAIN}_{TOKEN}&#x60;.
    * @return tokenId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getTokenId() {
     return tokenId;
   }
@@ -135,7 +135,7 @@ public class MerchantBalance {
    * Get acquiringType
    * @return acquiringType
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public AcquiringType getAcquiringType() {
     return acquiringType;
   }
@@ -154,7 +154,7 @@ public class MerchantBalance {
    * The total amount of the token that has been received by the merchant.
    * @return totalReceivedAmount
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getTotalReceivedAmount() {
     return totalReceivedAmount;
   }
@@ -173,7 +173,7 @@ public class MerchantBalance {
    * The total amount of the token that has been paid out from the merchant&#39;s balance.
    * @return settledAmount
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getSettledAmount() {
     return settledAmount;
   }
@@ -192,7 +192,7 @@ public class MerchantBalance {
    * The total amount of the token that has been refunded from the merchant&#39;s balance.
    * @return refundedAmount
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getRefundedAmount() {
     return refundedAmount;
   }
@@ -211,7 +211,7 @@ public class MerchantBalance {
    *  The total balance of the token available for payout or refund for the merchant.  &#x60;total_balance&#x60; &#x3D; &#x60;total_received_amount&#x60; - &#x60;settled_amount&#x60; - &#x60;refunded_amount&#x60;  For more information, please refer to [Funds allocation and balances](https://www.cobo.com/developers/v2/payments/amounts-and-balances) 
    * @return totalBalance
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getTotalBalance() {
     return totalBalance;
   }
@@ -230,7 +230,7 @@ public class MerchantBalance {
    * This field has been deprecated.
    * @return availableBalance
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getAvailableBalance() {
     return availableBalance;
   }

@@ -52,7 +52,7 @@ import com.cobo.waas2.JSON;
 /**
  * Information about the transaction destination type &#x60;DepositToWallet&#x60;. Refer to [Transaction sources and destinations](https://www.cobo.com/developers/v2/guides/transactions/sources-and-destinations) for a detailed introduction about the supported sources and destinations for each transaction type.  Switch between the tabs to display the properties for different transaction destinations. 
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -97,7 +97,7 @@ public class TransactionDepositToWalletDestination {
    * Get destinationType
    * @return destinationType
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public TransactionDestinationType getDestinationType() {
     return destinationType;
   }
@@ -116,7 +116,7 @@ public class TransactionDepositToWalletDestination {
    * The wallet ID.
    * @return walletId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public UUID getWalletId() {
     return walletId;
   }
@@ -135,7 +135,7 @@ public class TransactionDepositToWalletDestination {
    * Get walletType
    * @return walletType
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public WalletType getWalletType() {
     return walletType;
   }
@@ -154,7 +154,7 @@ public class TransactionDepositToWalletDestination {
    * Get walletSubtype
    * @return walletSubtype
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public WalletSubtype getWalletSubtype() {
     return walletSubtype;
   }
@@ -173,7 +173,7 @@ public class TransactionDepositToWalletDestination {
    * The trading account type.
    * @return tradingAccountType
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getTradingAccountType() {
     return tradingAccountType;
   }
@@ -192,7 +192,7 @@ public class TransactionDepositToWalletDestination {
    * Get exchangeId
    * @return exchangeId
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public ExchangeId getExchangeId() {
     return exchangeId;
   }
@@ -211,7 +211,7 @@ public class TransactionDepositToWalletDestination {
    * The transfer amount. For example, if you trade 1.5 BTC, then the value is &#x60;1.5&#x60;. 
    * @return amount
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getAmount() {
     return amount;
   }

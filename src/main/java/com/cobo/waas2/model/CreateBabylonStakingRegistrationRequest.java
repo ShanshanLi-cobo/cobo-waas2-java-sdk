@@ -48,7 +48,7 @@ import com.cobo.waas2.JSON;
 /**
  * CreateBabylonStakingRegistrationRequest
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -73,7 +73,7 @@ public class CreateBabylonStakingRegistrationRequest {
    * The ID of the Phase-1 BTC staking position.
    * @return stakingId
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getStakingId() {
     return stakingId;
   }
@@ -92,7 +92,7 @@ public class CreateBabylonStakingRegistrationRequest {
    * Get babylonAddress
    * @return babylonAddress
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public StakingSource getBabylonAddress() {
     return babylonAddress;
   }

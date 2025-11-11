@@ -48,7 +48,7 @@ import com.cobo.waas2.JSON;
 /**
  * PaymentWalletBalance
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -89,7 +89,7 @@ public class PaymentWalletBalance {
    * The unique identifier of the wallet.
    * @return walletId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public UUID getWalletId() {
     return walletId;
   }
@@ -108,7 +108,7 @@ public class PaymentWalletBalance {
    * The token ID, which is a unique identifier that specifies both the blockchain network and cryptocurrency token in the format &#x60;{CHAIN}_{TOKEN}&#x60;.
    * @return tokenId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getTokenId() {
     return tokenId;
   }
@@ -127,7 +127,7 @@ public class PaymentWalletBalance {
    * The total amount of the token on the sweep-to address of the payment wallet.
    * @return sweptBalance
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getSweptBalance() {
     return sweptBalance;
   }
@@ -146,7 +146,7 @@ public class PaymentWalletBalance {
    * The balance available for settlement or refund, in the specified cryptocurrency.
    * @return availableBalance
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getAvailableBalance() {
     return availableBalance;
   }
@@ -165,7 +165,7 @@ public class PaymentWalletBalance {
    * The total balance of the token for the payment wallet.
    * @return totalBalance
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getTotalBalance() {
     return totalBalance;
   }
@@ -184,7 +184,7 @@ public class PaymentWalletBalance {
    * The total amount of funds that exceed the sweep threshold across all receiving addresses in the payment wallet. When the balance on a receiving address exceeds the sweep threshold, those funds become eligible for automatic sweeping and are included in this balance.
    * @return aboveSweepThresholdBalance
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getAboveSweepThresholdBalance() {
     return aboveSweepThresholdBalance;
   }

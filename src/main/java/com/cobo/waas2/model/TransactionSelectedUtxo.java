@@ -47,7 +47,7 @@ import com.cobo.waas2.JSON;
 /**
  * The selected UTXO information.
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -88,7 +88,7 @@ public class TransactionSelectedUtxo {
    * The transaction hash of the UTXO.
    * @return txHash
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getTxHash() {
     return txHash;
   }
@@ -107,7 +107,7 @@ public class TransactionSelectedUtxo {
    * The output index of the UTXO.
    * @return voutN
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public Integer getVoutN() {
     return voutN;
   }
@@ -126,7 +126,7 @@ public class TransactionSelectedUtxo {
    * The address of the UTXO.
    * @return address
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getAddress() {
     return address;
   }
@@ -145,7 +145,7 @@ public class TransactionSelectedUtxo {
    * The value of the UTXO.
    * @return value
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getValue() {
     return value;
   }
@@ -164,7 +164,7 @@ public class TransactionSelectedUtxo {
    * The redeem script used in P2SH and P2WSH transactions.
    * @return redeemScript
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getRedeemScript() {
     return redeemScript;
   }
@@ -183,7 +183,7 @@ public class TransactionSelectedUtxo {
    * The revealed script used for Taproot script-path spend transaction.
    * @return revealedScript
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getRevealedScript() {
     return revealedScript;
   }

@@ -48,7 +48,7 @@ import com.cobo.waas2.JSON;
 /**
  * SettlementInfo
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -113,7 +113,7 @@ public class SettlementInfo {
    * The merchant ID. For developer balance, this field will be empty.
    * @return merchantId
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getMerchantId() {
     return merchantId;
   }
@@ -132,7 +132,7 @@ public class SettlementInfo {
    * The ID of the cryptocurrency.
    * @return tokenId
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getTokenId() {
     return tokenId;
   }
@@ -151,7 +151,7 @@ public class SettlementInfo {
    * This field has been deprecated.
    * @return availableAmount
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getAvailableAmount() {
     return availableAmount;
   }
@@ -170,7 +170,7 @@ public class SettlementInfo {
    * This field has been deprecated.
    * @return availableCurrencyBalance
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getAvailableCurrencyBalance() {
     return availableCurrencyBalance;
   }
@@ -189,7 +189,7 @@ public class SettlementInfo {
    * This field has been deprecated.
    * @return pendingAmount
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getPendingAmount() {
     return pendingAmount;
   }
@@ -208,7 +208,7 @@ public class SettlementInfo {
    * This field has been deprecated.
    * @return pendingCurrencyBalance
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getPendingCurrencyBalance() {
     return pendingCurrencyBalance;
   }
@@ -227,7 +227,7 @@ public class SettlementInfo {
    * The amount already settled, in the specified cryptocurrency.
    * @return settledAmount
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getSettledAmount() {
     return settledAmount;
   }
@@ -246,7 +246,7 @@ public class SettlementInfo {
    * This field has been deprecated.
    * @return availableBalance
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getAvailableBalance() {
     return availableBalance;
   }
@@ -265,7 +265,7 @@ public class SettlementInfo {
    * The total balance in the specified cryptocurrency.
    * @return totalBalance
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getTotalBalance() {
     return totalBalance;
   }
@@ -284,7 +284,7 @@ public class SettlementInfo {
    * Get acquiringType
    * @return acquiringType
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public AcquiringType getAcquiringType() {
     return acquiringType;
   }
@@ -303,7 +303,7 @@ public class SettlementInfo {
    * The creation time of the settlement, represented as a UNIX timestamp in seconds.
    * @return createdTimestamp
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public Integer getCreatedTimestamp() {
     return createdTimestamp;
   }
@@ -322,7 +322,7 @@ public class SettlementInfo {
    * The last update time of the settlement, represented as a UNIX timestamp in seconds.
    * @return updatedTimestamp
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public Integer getUpdatedTimestamp() {
     return updatedTimestamp;
   }

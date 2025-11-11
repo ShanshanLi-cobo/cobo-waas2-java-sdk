@@ -47,7 +47,7 @@ import com.cobo.waas2.JSON;
 /**
  * TSSKeyShareSignDetail
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -72,7 +72,7 @@ public class TSSKeyShareSignDetail {
    * The TSS key share group ID.
    * @return groupId
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getGroupId() {
     return groupId;
   }
@@ -91,7 +91,7 @@ public class TSSKeyShareSignDetail {
    * The message to sign by key share.
    * @return message
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getMessage() {
     return message;
   }

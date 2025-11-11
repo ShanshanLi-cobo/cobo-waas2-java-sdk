@@ -50,7 +50,7 @@ import com.cobo.waas2.JSON;
 /**
  * LockUtxosRequest
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -79,7 +79,7 @@ public class LockUtxosRequest {
    * Get utxos
    * @return utxos
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public List<LockUtxosRequestUtxosInner> getUtxos() {
     return utxos;
   }

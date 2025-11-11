@@ -47,7 +47,7 @@ import com.cobo.waas2.JSON;
 /**
  * FeeGasLimit
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -68,7 +68,7 @@ public class FeeGasLimit {
    * The gas limit. It represents the maximum number of gas units that you are willing to pay for the execution of a transaction or Ethereum Virtual Machine (EVM) operation. The gas unit cost of each operation varies.
    * @return gasLimit
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getGasLimit() {
     return gasLimit;
   }

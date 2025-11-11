@@ -47,7 +47,7 @@ import com.cobo.waas2.JSON;
 /**
  * MaxFeeAmount
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -68,7 +68,7 @@ public class MaxFeeAmount {
    * The maximum fee that you are willing to pay for the transaction. Provide the value without applying precision. The transaction will fail if the transaction fee exceeds the maximum fee.
    * @return maxFeeAmount
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getMaxFeeAmount() {
     return maxFeeAmount;
   }

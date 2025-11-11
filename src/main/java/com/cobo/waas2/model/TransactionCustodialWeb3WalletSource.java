@@ -52,7 +52,7 @@ import com.cobo.waas2.JSON;
 /**
  * Information about the transaction source type &#x60;Web3&#x60;. Refer to [Transaction sources and destinations](/v2/guides/transactions/sources-and-destinations) for a detailed introduction about the supported sources and destinations for each transaction type.  Switch between the tabs to display the properties for different transaction sources. 
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -89,7 +89,7 @@ public class TransactionCustodialWeb3WalletSource {
    * Get sourceType
    * @return sourceType
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public TransactionSourceType getSourceType() {
     return sourceType;
   }
@@ -108,7 +108,7 @@ public class TransactionCustodialWeb3WalletSource {
    * The wallet ID.
    * @return walletId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public UUID getWalletId() {
     return walletId;
   }
@@ -127,7 +127,7 @@ public class TransactionCustodialWeb3WalletSource {
    * The wallet address.
    * @return address
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getAddress() {
     return address;
   }
@@ -154,7 +154,7 @@ public class TransactionCustodialWeb3WalletSource {
    * Get includedUtxos
    * @return includedUtxos
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public List<TransactionUtxo> getIncludedUtxos() {
     return includedUtxos;
   }
@@ -181,7 +181,7 @@ public class TransactionCustodialWeb3WalletSource {
    * Get excludedUtxos
    * @return excludedUtxos
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public List<TransactionUtxo> getExcludedUtxos() {
     return excludedUtxos;
   }

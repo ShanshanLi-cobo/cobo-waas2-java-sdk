@@ -50,7 +50,7 @@ import com.cobo.waas2.JSON;
 /**
  * CreateAddressRequest
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -87,7 +87,7 @@ public class CreateAddressRequest {
    * The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-chains).
    * @return chainId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getChainId() {
     return chainId;
   }
@@ -108,7 +108,7 @@ public class CreateAddressRequest {
    * maximum: 50
    * @return count
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public Integer getCount() {
     return count;
   }
@@ -135,7 +135,7 @@ public class CreateAddressRequest {
    * A list of script tree hashes used to generate a tweaked Taproot address. This property is required only if you want to generate tweaked Taproot addresses.
    * @return taprootScriptTreeHashes
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public List<String> getTaprootScriptTreeHashes() {
     return taprootScriptTreeHashes;
   }
@@ -154,7 +154,7 @@ public class CreateAddressRequest {
    * The original Taproot address to be tweaked. This property is required only if you want to generate tweaked Taproot addresses.
    * @return taprootInternalAddress
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getTaprootInternalAddress() {
     return taprootInternalAddress;
   }
@@ -173,7 +173,7 @@ public class CreateAddressRequest {
    * Get encoding
    * @return encoding
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public AddressEncoding getEncoding() {
     return encoding;
   }

@@ -49,7 +49,7 @@ import com.cobo.waas2.JSON;
 /**
  * The request body for a GraphQL query or mutation.
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -78,7 +78,7 @@ public class GraphQLRequest {
    * The GraphQL query or mutation as a string.
    * @return query
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getQuery() {
     return query;
   }
@@ -105,7 +105,7 @@ public class GraphQLRequest {
    * Variables to use in the GraphQL operation. Can include dynamic values required for the query or mutation.
    * @return variables
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public Map<String, Object> getVariables() {
     return variables;
   }
@@ -124,7 +124,7 @@ public class GraphQLRequest {
    * The operation name in case of multiple operations in the same query or mutation.
    * @return operationName
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getOperationName() {
     return operationName;
   }

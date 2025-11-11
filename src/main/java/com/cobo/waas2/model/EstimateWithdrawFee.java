@@ -49,7 +49,7 @@ import com.cobo.waas2.JSON;
 /**
  * EstimateWithdrawFee
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -86,7 +86,7 @@ public class EstimateWithdrawFee {
    * Get activityType
    * @return activityType
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public ActivityType getActivityType() {
     return activityType;
   }
@@ -105,7 +105,7 @@ public class EstimateWithdrawFee {
    * The request ID that is used to track a request. The request ID is provided by you and must be unique within your organization.
    * @return requestId
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getRequestId() {
     return requestId;
   }
@@ -124,7 +124,7 @@ public class EstimateWithdrawFee {
    * The ID of the corresponding staking position.
    * @return stakingId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getStakingId() {
     return stakingId;
   }
@@ -143,7 +143,7 @@ public class EstimateWithdrawFee {
    * The amount to withdraw.
    * @return amount
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getAmount() {
     return amount;
   }
@@ -162,7 +162,7 @@ public class EstimateWithdrawFee {
    * Get fee
    * @return fee
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public TransactionRequestFee getFee() {
     return fee;
   }

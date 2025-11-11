@@ -47,7 +47,7 @@ import com.cobo.waas2.JSON;
 /**
  * Approval template details.
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -76,7 +76,7 @@ public class ApprovalTemplate {
    * Business key used to identify the type of approval template.
    * @return businessKey
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getBusinessKey() {
     return businessKey;
   }
@@ -95,7 +95,7 @@ public class ApprovalTemplate {
    * Text content defined in the approval template used to generate approval messages shown to users
    * @return templateText
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getTemplateText() {
     return templateText;
   }
@@ -114,7 +114,7 @@ public class ApprovalTemplate {
    * Version of the approval template.
    * @return templateVersion
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getTemplateVersion() {
     return templateVersion;
   }

@@ -49,7 +49,7 @@ import com.cobo.waas2.JSON;
 /**
  * The response for a disposition request.
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -74,7 +74,7 @@ public class DispositionResponse {
    * The UUID of the transaction being processed for disposition.
    * @return transactionId
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public UUID getTransactionId() {
     return transactionId;
   }
@@ -93,7 +93,7 @@ public class DispositionResponse {
    * Get status
    * @return status
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public DispositionStatus getStatus() {
     return status;
   }

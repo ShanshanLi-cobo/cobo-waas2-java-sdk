@@ -52,7 +52,7 @@ import com.cobo.waas2.JSON;
 /**
  * TSSSignatures
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -89,7 +89,7 @@ public class TSSSignatures {
    * Get signatures
    * @return signatures
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public List<TSSSignature> getSignatures() {
     return signatures;
   }
@@ -108,7 +108,7 @@ public class TSSSignatures {
    * Get signatureType
    * @return signatureType
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public TSSSignatureType getSignatureType() {
     return signatureType;
   }
@@ -127,7 +127,7 @@ public class TSSSignatures {
    * Get tssProtocol
    * @return tssProtocol
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public TSSProtocol getTssProtocol() {
     return tssProtocol;
   }

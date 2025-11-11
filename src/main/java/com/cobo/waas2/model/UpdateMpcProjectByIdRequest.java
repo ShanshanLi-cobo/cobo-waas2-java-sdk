@@ -47,7 +47,7 @@ import com.cobo.waas2.JSON;
 /**
  * UpdateMpcProjectByIdRequest
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -68,7 +68,7 @@ public class UpdateMpcProjectByIdRequest {
    * The project&#39;s new name.
    * @return name
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getName() {
     return name;
   }

@@ -47,7 +47,7 @@ import com.cobo.waas2.JSON;
 /**
  * The information about the transaction block.
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -76,7 +76,7 @@ public class TransactionBlockInfo {
    * The block number.
    * @return blockNumber
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public Long getBlockNumber() {
     return blockNumber;
   }
@@ -95,7 +95,7 @@ public class TransactionBlockInfo {
    * The time when the block was created, in Unix timestamp format, measured in milliseconds.
    * @return blockTimestamp
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public Long getBlockTimestamp() {
     return blockTimestamp;
   }
@@ -114,7 +114,7 @@ public class TransactionBlockInfo {
    * The block hash.
    * @return blockHash
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getBlockHash() {
     return blockHash;
   }

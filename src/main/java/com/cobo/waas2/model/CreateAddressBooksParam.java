@@ -50,7 +50,7 @@ import com.cobo.waas2.JSON;
 /**
  * The request body to add addresses in batches to your Address Book.
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -79,7 +79,7 @@ public class CreateAddressBooksParam {
    * Get addressBooks
    * @return addressBooks
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public List<CreateAddressBookParam> getAddressBooks() {
     return addressBooks;
   }

@@ -47,7 +47,7 @@ import com.cobo.waas2.JSON;
 /**
  * TokenizationAllowlistAddressNote
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -76,7 +76,7 @@ public class TokenizationAllowlistAddressNote {
    * The address on the allowlist.
    * @return address
   **/
-  @jakarta.annotation.Nonnull
+  @javax.annotation.Nonnull
   public String getAddress() {
     return address;
   }
@@ -95,7 +95,7 @@ public class TokenizationAllowlistAddressNote {
    * The note for the address on the allowlist.
    * @return note
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getNote() {
     return note;
   }
@@ -114,7 +114,7 @@ public class TokenizationAllowlistAddressNote {
    * The time when the address was added to the allowlist, in Unix timestamp format, measured in milliseconds.
    * @return createdTimestamp
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public Long getCreatedTimestamp() {
     return createdTimestamp;
   }

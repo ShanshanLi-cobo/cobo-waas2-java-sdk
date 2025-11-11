@@ -49,7 +49,7 @@ import com.cobo.waas2.JSON;
 /**
  * EthStakingExtraAllOfBeaconValidators
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -90,7 +90,7 @@ public class EthStakingExtraAllOfBeaconValidators {
    * The public key of the validator.
    * @return pubkey
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getPubkey() {
     return pubkey;
   }
@@ -109,7 +109,7 @@ public class EthStakingExtraAllOfBeaconValidators {
    * Get status
    * @return status
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public AmountStatus getStatus() {
     return status;
   }
@@ -128,7 +128,7 @@ public class EthStakingExtraAllOfBeaconValidators {
    * The annual percentage yield (APY) of the validator.
    * @return apy
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public BigDecimal getApy() {
     return apy;
   }
@@ -147,7 +147,7 @@ public class EthStakingExtraAllOfBeaconValidators {
    * The staked amount.
    * @return stakedAmount
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getStakedAmount() {
     return stakedAmount;
   }
@@ -166,7 +166,7 @@ public class EthStakingExtraAllOfBeaconValidators {
    * The rewards received.
    * @return rewardsReceived
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public String getRewardsReceived() {
     return rewardsReceived;
   }
@@ -185,7 +185,7 @@ public class EthStakingExtraAllOfBeaconValidators {
    * The time when the validator&#39;s status was last updated, in Unix timestamp format and measured in milliseconds.
    * @return updatedTimestamp
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public Long getUpdatedTimestamp() {
     return updatedTimestamp;
   }

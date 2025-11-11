@@ -51,7 +51,7 @@ import com.cobo.waas2.JSON;
 /**
  * ListBabylonStakingRegistrations200Response
  */
-@jakarta.annotation.Generated(
+@javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
@@ -84,7 +84,7 @@ public class ListBabylonStakingRegistrations200Response {
    * Get data
    * @return data
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public List<BabylonStakingRegistration> getData() {
     return data;
   }
@@ -103,7 +103,7 @@ public class ListBabylonStakingRegistrations200Response {
    * Get pagination
    * @return pagination
   **/
-  @jakarta.annotation.Nullable
+  @javax.annotation.Nullable
   public Pagination getPagination() {
     return pagination;
   }
