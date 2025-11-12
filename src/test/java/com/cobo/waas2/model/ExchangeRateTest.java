@@ -22,17 +22,17 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
- * Model tests for GetExchangeRate200Response
+ * Model tests for ExchangeRate
  */
-public class GetExchangeRate200ResponseTest {
-    private final GetExchangeRate200Response model = new GetExchangeRate200Response();
+public class ExchangeRateTest {
+    private final ExchangeRate model = new ExchangeRate();
 
     /**
-     * Model tests for GetExchangeRate200Response
+     * Model tests for ExchangeRate
      */
     @Test
-    public void testGetExchangeRate200Response() {
-        // TODO: test GetExchangeRate200Response
+    public void testExchangeRate() {
+        // TODO: test ExchangeRate
     }
 
     /**

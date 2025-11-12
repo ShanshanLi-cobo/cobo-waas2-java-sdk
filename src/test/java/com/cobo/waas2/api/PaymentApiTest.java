@@ -43,9 +43,10 @@ import com.cobo.waas2.model.DestinationBankAccount;
 import com.cobo.waas2.model.DestinationDetail;
 import com.cobo.waas2.model.EnableDestinationWhitelistRequest;
 import com.cobo.waas2.model.ErrorResponse;
+import com.cobo.waas2.model.ExchangeRate;
 import com.cobo.waas2.model.ForcedSweep;
 import com.cobo.waas2.model.ForcedSweepRequest;
-import com.cobo.waas2.model.GetExchangeRate200Response;
+import com.cobo.waas2.model.GetDestinationBankAccountDetailById200Response;
 import com.cobo.waas2.model.GetRefunds200Response;
 import com.cobo.waas2.model.GetSettlementInfoByIds200Response;
 import com.cobo.waas2.model.Link;
@@ -113,6 +114,21 @@ public class PaymentApiTest {
         defaultClient.setPrivKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
     }
     private final PaymentApi api = new PaymentApi();
+
+    /**
+     * Batch get exchange rates
+     *
+     * This operation retrieves the current exchange rates between a specified currency and a list of token IDs. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void batchGetExchangeRatesTest() throws ApiException {
+        String tokenIds = null;
+        String currencies = null;
+        List<ExchangeRate> response = api.batchGetExchangeRates(tokenIds, currencies);
+        // TODO: test validations
+    }
 
     /**
      * Cancel refund order
@@ -474,7 +490,7 @@ public class PaymentApiTest {
     @Test
     public void getDestinationBankAccountDetailByIdTest() throws ApiException {
         UUID bankAccountId = null;
-        DestinationBankAccount response = api.getDestinationBankAccountDetailById(bankAccountId);
+        GetDestinationBankAccountDetailById200Response response = api.getDestinationBankAccountDetailById(bankAccountId);
         // TODO: test validations
     }
 
@@ -503,7 +519,7 @@ public class PaymentApiTest {
     public void getExchangeRateTest() throws ApiException {
         String tokenId = null;
         String currency = null;
-        GetExchangeRate200Response response = api.getExchangeRate(tokenId, currency);
+        ExchangeRate response = api.getExchangeRate(tokenId, currency);
         // TODO: test validations
     }
 
@@ -761,9 +777,9 @@ public class PaymentApiTest {
     @Test
     public void listMerchantBalancesTest() throws ApiException {
         String tokenId = null;
-        AcquiringType acquiringType = null;
         String merchantIds = null;
-        ListMerchantBalances200Response response = api.listMerchantBalances(tokenId, acquiringType, merchantIds);
+        AcquiringType acquiringType = null;
+        ListMerchantBalances200Response response = api.listMerchantBalances(tokenId, merchantIds, acquiringType);
         // TODO: test validations
     }
 

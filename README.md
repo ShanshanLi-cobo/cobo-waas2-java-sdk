@@ -51,7 +51,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.cobo.waas2</groupId>
   <artifactId>cobo-waas2</artifactId>
-  <version>1.25.0</version>
+  <version>1.26.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -67,7 +67,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "com.cobo.waas2:cobo-waas2:1.25.0"
+     implementation "com.cobo.waas2:cobo-waas2:1.26.0"
   }
 ```
 
@@ -95,7 +95,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/cobo-waas2-1.25.0.jar`
+* `target/cobo-waas2-1.26.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -247,6 +247,7 @@ Class | Method | HTTP request | Description
 *OAuthApi* | [**refreshPermissionToken**](docs/OAuthApi.md#refreshPermissionToken) | **POST** /oauth/permission_token/refresh | Refresh Permission Access Token by Permission Refresh Token
 *OAuthApi* | [**refreshToken**](docs/OAuthApi.md#refreshToken) | **POST** /oauth/token | Refresh Org Access Token
 *OrganizationsApi* | [**getOrgInfo**](docs/OrganizationsApi.md#getOrgInfo) | **GET** /organizations/info | Get organization information
+*PaymentApi* | [**batchGetExchangeRates**](docs/PaymentApi.md#batchGetExchangeRates) | **GET** /payments/exchange_rates | Batch get exchange rates
 *PaymentApi* | [**cancelRefundById**](docs/PaymentApi.md#cancelRefundById) | **PUT** /payments/refunds/{refund_id}/cancel | Cancel refund order
 *PaymentApi* | [**createBankAccount**](docs/PaymentApi.md#createBankAccount) | **POST** /payments/bank_accounts | Create bank account
 *PaymentApi* | [**createCounterparty**](docs/PaymentApi.md#createCounterparty) | **POST** /payments/counterparty | Create counterparty
@@ -623,6 +624,7 @@ Class | Method | HTTP request | Description
  - [Destination](docs/Destination.md)
  - [DestinationBankAccount](docs/DestinationBankAccount.md)
  - [DestinationDetail](docs/DestinationDetail.md)
+ - [DestinationType](docs/DestinationType.md)
  - [DestinationWalletType](docs/DestinationWalletType.md)
  - [DispositionEventData](docs/DispositionEventData.md)
  - [DispositionQueryResponse](docs/DispositionQueryResponse.md)
@@ -670,6 +672,7 @@ Class | Method | HTTP request | Description
  - [ExchangeId](docs/ExchangeId.md)
  - [ExchangePermissionToken201Response](docs/ExchangePermissionToken201Response.md)
  - [ExchangePermissionTokenRequest](docs/ExchangePermissionTokenRequest.md)
+ - [ExchangeRate](docs/ExchangeRate.md)
  - [ExchangeTransferDestination](docs/ExchangeTransferDestination.md)
  - [ExchangeTransferSource](docs/ExchangeTransferSource.md)
  - [ExchangeWalletInfo](docs/ExchangeWalletInfo.md)
@@ -694,7 +697,7 @@ Class | Method | HTTP request | Description
  - [ForcedSweepStatus](docs/ForcedSweepStatus.md)
  - [FundsStatusType](docs/FundsStatusType.md)
  - [GetApiKeyInfo200Response](docs/GetApiKeyInfo200Response.md)
- - [GetExchangeRate200Response](docs/GetExchangeRate200Response.md)
+ - [GetDestinationBankAccountDetailById200Response](docs/GetDestinationBankAccountDetailById200Response.md)
  - [GetMaxTransferableValueWithFeeModelRequest](docs/GetMaxTransferableValueWithFeeModelRequest.md)
  - [GetRefunds200Response](docs/GetRefunds200Response.md)
  - [GetSettlementInfoByIds200Response](docs/GetSettlementInfoByIds200Response.md)

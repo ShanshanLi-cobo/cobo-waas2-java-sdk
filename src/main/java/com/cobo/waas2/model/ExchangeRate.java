@@ -45,13 +45,13 @@ import java.util.Set;
 import com.cobo.waas2.JSON;
 
 /**
- * GetExchangeRate200Response
+ * ExchangeRate
  */
 @javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
-public class GetExchangeRate200Response {
+public class ExchangeRate {
   public static final String SERIALIZED_NAME_TOKEN_ID = "token_id";
   @SerializedName(SERIALIZED_NAME_TOKEN_ID)
   private String tokenId;
@@ -64,10 +64,10 @@ public class GetExchangeRate200Response {
   @SerializedName(SERIALIZED_NAME_RATE)
   private String rate;
 
-  public GetExchangeRate200Response() {
+  public ExchangeRate() {
   }
 
-  public GetExchangeRate200Response tokenId(String tokenId) {
+  public ExchangeRate tokenId(String tokenId) {
     this.tokenId = tokenId;
     return this;
   }
@@ -86,7 +86,7 @@ public class GetExchangeRate200Response {
   }
 
 
-  public GetExchangeRate200Response currency(String currency) {
+  public ExchangeRate currency(String currency) {
     this.currency = currency;
     return this;
   }
@@ -105,7 +105,7 @@ public class GetExchangeRate200Response {
   }
 
 
-  public GetExchangeRate200Response rate(String rate) {
+  public ExchangeRate rate(String rate) {
     this.rate = rate;
     return this;
   }
@@ -136,9 +136,9 @@ public class GetExchangeRate200Response {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the GetExchangeRate200Response instance itself
+   * @return the ExchangeRate instance itself
    */
-  public GetExchangeRate200Response putAdditionalProperty(String key, Object value) {
+  public ExchangeRate putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -177,11 +177,11 @@ public class GetExchangeRate200Response {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    GetExchangeRate200Response getExchangeRate200Response = (GetExchangeRate200Response) o;
-    return Objects.equals(this.tokenId, getExchangeRate200Response.tokenId) &&
-        Objects.equals(this.currency, getExchangeRate200Response.currency) &&
-        Objects.equals(this.rate, getExchangeRate200Response.rate)&&
-        Objects.equals(this.additionalProperties, getExchangeRate200Response.additionalProperties);
+    ExchangeRate exchangeRate = (ExchangeRate) o;
+    return Objects.equals(this.tokenId, exchangeRate.tokenId) &&
+        Objects.equals(this.currency, exchangeRate.currency) &&
+        Objects.equals(this.rate, exchangeRate.rate)&&
+        Objects.equals(this.additionalProperties, exchangeRate.additionalProperties);
   }
 
   @Override
@@ -192,7 +192,7 @@ public class GetExchangeRate200Response {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class GetExchangeRate200Response {\n");
+    sb.append("class ExchangeRate {\n");
     sb.append("    tokenId: ").append(toIndentedString(tokenId)).append("\n");
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    rate: ").append(toIndentedString(rate)).append("\n");
@@ -234,17 +234,17 @@ public class GetExchangeRate200Response {
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to GetExchangeRate200Response
+  * @throws IOException if the JSON Element is invalid with respect to ExchangeRate
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!GetExchangeRate200Response.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in GetExchangeRate200Response is not found in the empty JSON string", GetExchangeRate200Response.openapiRequiredFields.toString()));
+        if (!ExchangeRate.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ExchangeRate is not found in the empty JSON string", ExchangeRate.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : GetExchangeRate200Response.openapiRequiredFields) {
+      for (String requiredField : ExchangeRate.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
@@ -265,16 +265,16 @@ public class GetExchangeRate200Response {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!GetExchangeRate200Response.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'GetExchangeRate200Response' and its subtypes
+       if (!ExchangeRate.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ExchangeRate' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<GetExchangeRate200Response> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(GetExchangeRate200Response.class));
+       final TypeAdapter<ExchangeRate> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ExchangeRate.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<GetExchangeRate200Response>() {
+       return (TypeAdapter<T>) new TypeAdapter<ExchangeRate>() {
            @Override
-           public void write(JsonWriter out, GetExchangeRate200Response value) throws IOException {
+           public void write(JsonWriter out, ExchangeRate value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -304,12 +304,12 @@ public class GetExchangeRate200Response {
            }
 
            @Override
-           public GetExchangeRate200Response read(JsonReader in) throws IOException {
+           public ExchangeRate read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             GetExchangeRate200Response instance = thisAdapter.fromJsonTree(jsonObj);
+             ExchangeRate instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -336,18 +336,18 @@ public class GetExchangeRate200Response {
   }
 
  /**
-  * Create an instance of GetExchangeRate200Response given an JSON string
+  * Create an instance of ExchangeRate given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of GetExchangeRate200Response
-  * @throws IOException if the JSON string is invalid with respect to GetExchangeRate200Response
+  * @return An instance of ExchangeRate
+  * @throws IOException if the JSON string is invalid with respect to ExchangeRate
   */
-  public static GetExchangeRate200Response fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, GetExchangeRate200Response.class);
+  public static ExchangeRate fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ExchangeRate.class);
   }
 
  /**
-  * Convert an instance of GetExchangeRate200Response to an JSON string
+  * Convert an instance of ExchangeRate to an JSON string
   *
   * @return JSON string
   */

@@ -187,6 +187,7 @@ docs/DeleteWalletById201Response.md
 docs/Destination.md
 docs/DestinationBankAccount.md
 docs/DestinationDetail.md
+docs/DestinationType.md
 docs/DestinationWalletType.md
 docs/DevelopersApi.md
 docs/DevelopersWebhooksApi.md
@@ -236,6 +237,7 @@ docs/EvmLegacyFeeRate.md
 docs/ExchangeId.md
 docs/ExchangePermissionToken201Response.md
 docs/ExchangePermissionTokenRequest.md
+docs/ExchangeRate.md
 docs/ExchangeTransferDestination.md
 docs/ExchangeTransferSource.md
 docs/ExchangeWalletInfo.md
@@ -261,7 +263,7 @@ docs/ForcedSweepRequest.md
 docs/ForcedSweepStatus.md
 docs/FundsStatusType.md
 docs/GetApiKeyInfo200Response.md
-docs/GetExchangeRate200Response.md
+docs/GetDestinationBankAccountDetailById200Response.md
 docs/GetMaxTransferableValueWithFeeModelRequest.md
 docs/GetRefunds200Response.md
 docs/GetSettlementInfoByIds200Response.md
@@ -1041,6 +1043,7 @@ src/main/java/com/cobo/waas2/model/DeleteWalletById201Response.java
 src/main/java/com/cobo/waas2/model/Destination.java
 src/main/java/com/cobo/waas2/model/DestinationBankAccount.java
 src/main/java/com/cobo/waas2/model/DestinationDetail.java
+src/main/java/com/cobo/waas2/model/DestinationType.java
 src/main/java/com/cobo/waas2/model/DestinationWalletType.java
 src/main/java/com/cobo/waas2/model/DispositionEventData.java
 src/main/java/com/cobo/waas2/model/DispositionQueryResponse.java
@@ -1088,6 +1091,7 @@ src/main/java/com/cobo/waas2/model/EvmLegacyFeeRate.java
 src/main/java/com/cobo/waas2/model/ExchangeId.java
 src/main/java/com/cobo/waas2/model/ExchangePermissionToken201Response.java
 src/main/java/com/cobo/waas2/model/ExchangePermissionTokenRequest.java
+src/main/java/com/cobo/waas2/model/ExchangeRate.java
 src/main/java/com/cobo/waas2/model/ExchangeTransferDestination.java
 src/main/java/com/cobo/waas2/model/ExchangeTransferSource.java
 src/main/java/com/cobo/waas2/model/ExchangeWalletInfo.java
@@ -1112,7 +1116,7 @@ src/main/java/com/cobo/waas2/model/ForcedSweepRequest.java
 src/main/java/com/cobo/waas2/model/ForcedSweepStatus.java
 src/main/java/com/cobo/waas2/model/FundsStatusType.java
 src/main/java/com/cobo/waas2/model/GetApiKeyInfo200Response.java
-src/main/java/com/cobo/waas2/model/GetExchangeRate200Response.java
+src/main/java/com/cobo/waas2/model/GetDestinationBankAccountDetailById200Response.java
 src/main/java/com/cobo/waas2/model/GetMaxTransferableValueWithFeeModelRequest.java
 src/main/java/com/cobo/waas2/model/GetRefunds200Response.java
 src/main/java/com/cobo/waas2/model/GetSettlementInfoByIds200Response.java
@@ -1838,6 +1842,7 @@ src/test/java/com/cobo/waas2/model/DeleteWalletById201ResponseTest.java
 src/test/java/com/cobo/waas2/model/DestinationBankAccountTest.java
 src/test/java/com/cobo/waas2/model/DestinationDetailTest.java
 src/test/java/com/cobo/waas2/model/DestinationTest.java
+src/test/java/com/cobo/waas2/model/DestinationTypeTest.java
 src/test/java/com/cobo/waas2/model/DestinationWalletTypeTest.java
 src/test/java/com/cobo/waas2/model/DispositionEventDataTest.java
 src/test/java/com/cobo/waas2/model/DispositionQueryResponseTest.java
@@ -1885,6 +1890,7 @@ src/test/java/com/cobo/waas2/model/EvmLegacyFeeRateTest.java
 src/test/java/com/cobo/waas2/model/ExchangeIdTest.java
 src/test/java/com/cobo/waas2/model/ExchangePermissionToken201ResponseTest.java
 src/test/java/com/cobo/waas2/model/ExchangePermissionTokenRequestTest.java
+src/test/java/com/cobo/waas2/model/ExchangeRateTest.java
 src/test/java/com/cobo/waas2/model/ExchangeTransferDestinationTest.java
 src/test/java/com/cobo/waas2/model/ExchangeTransferSourceTest.java
 src/test/java/com/cobo/waas2/model/ExchangeWalletInfoTest.java
@@ -1909,7 +1915,7 @@ src/test/java/com/cobo/waas2/model/ForcedSweepStatusTest.java
 src/test/java/com/cobo/waas2/model/ForcedSweepTest.java
 src/test/java/com/cobo/waas2/model/FundsStatusTypeTest.java
 src/test/java/com/cobo/waas2/model/GetApiKeyInfo200ResponseTest.java
-src/test/java/com/cobo/waas2/model/GetExchangeRate200ResponseTest.java
+src/test/java/com/cobo/waas2/model/GetDestinationBankAccountDetailById200ResponseTest.java
 src/test/java/com/cobo/waas2/model/GetMaxTransferableValueWithFeeModelRequestTest.java
 src/test/java/com/cobo/waas2/model/GetRefunds200ResponseTest.java
 src/test/java/com/cobo/waas2/model/GetSettlementInfoByIds200ResponseTest.java

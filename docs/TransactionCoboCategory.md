@@ -79,5 +79,9 @@
 
 * `FEEPAYERSIGN` (value: `"FeePayerSign"`)
 
+* `GASFEESPONSOR` (value: `"GasFeeSponsor"`)
+
+* `GASFEESPONSORREFUND` (value: `"GasFeeSponsorRefund"`)
+
 
 

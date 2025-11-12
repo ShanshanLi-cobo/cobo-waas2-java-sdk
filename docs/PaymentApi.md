@@ -4,6 +4,7 @@ All URIs are relative to *https://api.dev.cobo.com/v2*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**batchGetExchangeRates**](PaymentApi.md#batchGetExchangeRates) | **GET** /payments/exchange_rates | Batch get exchange rates |
 | [**cancelRefundById**](PaymentApi.md#cancelRefundById) | **PUT** /payments/refunds/{refund_id}/cancel | Cancel refund order |
 | [**createBankAccount**](PaymentApi.md#createBankAccount) | **POST** /payments/bank_accounts | Create bank account |
 | [**createCounterparty**](PaymentApi.md#createCounterparty) | **POST** /payments/counterparty | Create counterparty |
@@ -71,6 +72,76 @@ All URIs are relative to *https://api.dev.cobo.com/v2*
 | [**updateRefundById**](PaymentApi.md#updateRefundById) | **PUT** /payments/refunds/{refund_id} | Update refund order information |
 | [**updateTopUpAddress**](PaymentApi.md#updateTopUpAddress) | **PUT** /payments/topup/address | Update top-up address |
 
+
+<a id="batchGetExchangeRates"></a>
+# **batchGetExchangeRates**
+> List&lt;ExchangeRate&gt; batchGetExchangeRates(tokenIds, currencies)
+
+Batch get exchange rates
+
+This operation retrieves the current exchange rates between a specified currency and a list of token IDs. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.PaymentApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    PaymentApi apiInstance = new PaymentApi();
+    String tokenIds = "ETH_USDT,ETH_USDC,BTC_USDT";
+    String currencies = "USD";
+    try {
+      List<ExchangeRate> result = apiInstance.batchGetExchangeRates(tokenIds, currencies);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PaymentApi#batchGetExchangeRates");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **tokenIds** | **String**| A list of token IDs, separated by comma. The token ID is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-tokens).  | |
+| **currencies** | **String**| List of the fiat currencies, separated by comma. Currently, only &#x60;USD&#x60; is supported.  | |
+
+### Return type
+
+[**List&lt;ExchangeRate&gt;**](ExchangeRate.md)
+
+### Authorization
+
+[CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The request was successful. |  -  |
+| **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **5XX** | Internal server error. |  -  |
 
 <a id="cancelRefundById"></a>
 # **cancelRefundById**
@@ -1780,7 +1851,7 @@ public class Example {
 
 <a id="getDestinationBankAccountDetailById"></a>
 # **getDestinationBankAccountDetailById**
-> DestinationBankAccount getDestinationBankAccountDetailById(bankAccountId)
+> GetDestinationBankAccountDetailById200Response getDestinationBankAccountDetailById(bankAccountId)
 
 Get destination bank account information
 
@@ -1807,7 +1878,7 @@ public class Example {
     PaymentApi apiInstance = new PaymentApi();
     UUID bankAccountId = UUID.fromString("f47ac10b-58cc-4372-a567-0e02b2c3d479");
     try {
-      DestinationBankAccount result = apiInstance.getDestinationBankAccountDetailById(bankAccountId);
+      GetDestinationBankAccountDetailById200Response result = apiInstance.getDestinationBankAccountDetailById(bankAccountId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PaymentApi#getDestinationBankAccountDetailById");
@@ -1828,7 +1899,7 @@ public class Example {
 
 ### Return type
 
-[**DestinationBankAccount**](DestinationBankAccount.md)
+[**GetDestinationBankAccountDetailById200Response**](GetDestinationBankAccountDetailById200Response.md)
 
 ### Authorization
 
@@ -1916,7 +1987,7 @@ public class Example {
 
 <a id="getExchangeRate"></a>
 # **getExchangeRate**
-> GetExchangeRate200Response getExchangeRate(tokenId, currency)
+> ExchangeRate getExchangeRate(tokenId, currency)
 
 Get exchange rate
 
@@ -1944,7 +2015,7 @@ public class Example {
     String tokenId = "ETH_USDT";
     String currency = "USD";
     try {
-      GetExchangeRate200Response result = apiInstance.getExchangeRate(tokenId, currency);
+      ExchangeRate result = apiInstance.getExchangeRate(tokenId, currency);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PaymentApi#getExchangeRate");
@@ -1966,7 +2037,7 @@ public class Example {
 
 ### Return type
 
-[**GetExchangeRate200Response**](GetExchangeRate200Response.md)
+[**ExchangeRate**](ExchangeRate.md)
 
 ### Authorization
 
@@ -3112,7 +3183,7 @@ public class Example {
 
 <a id="listMerchantBalances"></a>
 # **listMerchantBalances**
-> ListMerchantBalances200Response listMerchantBalances(tokenId, acquiringType, merchantIds)
+> ListMerchantBalances200Response listMerchantBalances(tokenId, merchantIds, acquiringType)
 
 List merchant balances
 
@@ -3138,10 +3209,10 @@ public class Example {
     defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
     PaymentApi apiInstance = new PaymentApi();
     String tokenId = "ETH_USDT";
-    AcquiringType acquiringType = AcquiringType.fromValue("Order");
     String merchantIds = "M1001,M1002,M1003";
+    AcquiringType acquiringType = AcquiringType.fromValue("Order");
     try {
-      ListMerchantBalances200Response result = apiInstance.listMerchantBalances(tokenId, acquiringType, merchantIds);
+      ListMerchantBalances200Response result = apiInstance.listMerchantBalances(tokenId, merchantIds, acquiringType);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PaymentApi#listMerchantBalances");
@@ -3159,8 +3230,8 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **tokenId** | **String**| The token ID, which identifies the cryptocurrency. Supported values:    - USDC: &#x60;ETH_USDC&#x60;, &#x60;ARBITRUM_USDC&#x60;, &#x60;SOL_USDC&#x60;, &#x60;BASE_USDC&#x60;, &#x60;MATIC_USDC&#x60;, &#x60;BSC_USDC&#x60;   - USDT: &#x60;TRON_USDT&#x60;, &#x60;ETH_USDT&#x60;, &#x60;ARBITRUM_USDT&#x60;, &#x60;SOL_USDT&#x60;, &#x60;BASE_USDT&#x60;, &#x60;MATIC_USDT&#x60;, &#x60;BSC_USDT&#x60;  | |
-| **acquiringType** | [**AcquiringType**](.md)| AcquiringType defines the acquisition logic used in the payment flow: - &#x60;Order&#x60;: Each order is created with a specific amount and associated payment request. Funds are settled on a per-order basis. - &#x60;TopUp&#x60;: Recharge-style flow where funds are topped up to a payer balance or account. Useful for flexible or usage-based payment models.  | [enum: Order, TopUp, Subscription] |
 | **merchantIds** | **String**| A list of merchant IDs to query. | [optional] |
+| **acquiringType** | [**AcquiringType**](.md)| AcquiringType defines the acquisition logic used in the payment flow: - &#x60;Order&#x60;: Each order is created with a specific amount and associated payment request. Funds are settled on a per-order basis. - &#x60;TopUp&#x60;: Recharge-style flow where funds are topped up to a payer balance or account. Useful for flexible or usage-based payment models.  | [optional] [enum: Order, TopUp, Subscription] |
 
 ### Return type
 

@@ -54,9 +54,10 @@ import com.cobo.waas2.model.DestinationBankAccount;
 import com.cobo.waas2.model.DestinationDetail;
 import com.cobo.waas2.model.EnableDestinationWhitelistRequest;
 import com.cobo.waas2.model.ErrorResponse;
+import com.cobo.waas2.model.ExchangeRate;
 import com.cobo.waas2.model.ForcedSweep;
 import com.cobo.waas2.model.ForcedSweepRequest;
-import com.cobo.waas2.model.GetExchangeRate200Response;
+import com.cobo.waas2.model.GetDestinationBankAccountDetailById200Response;
 import com.cobo.waas2.model.GetRefunds200Response;
 import com.cobo.waas2.model.GetSettlementInfoByIds200Response;
 import com.cobo.waas2.model.Link;
@@ -130,6 +131,140 @@ public class PaymentApi {
         this.localVarApiClient = apiClient;
     }
 
+    /**
+     * Build call for batchGetExchangeRates
+     * @param tokenIds A list of token IDs, separated by comma. The token ID is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-tokens).  (required)
+     * @param currencies List of the fiat currencies, separated by comma. Currently, only &#x60;USD&#x60; is supported.  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call batchGetExchangeRatesCall(String tokenIds, String currencies, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/payments/exchange_rates";
+
+        List<Pair> localVarQueryParams = new ArrayList<>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<>();
+        Map<String, String> localVarHeaderParams = new HashMap<>();
+        Map<String, String> localVarCookieParams = new HashMap<>();
+        Map<String, Object> localVarFormParams = new HashMap<>();
+
+        if (tokenIds != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token_ids", tokenIds));
+        }
+
+        if (currencies != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("currencies", currencies));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(null, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call batchGetExchangeRatesValidateBeforeCall(String tokenIds, String currencies, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'tokenIds' is set
+        if (tokenIds == null) {
+            throw new ApiException("Missing the required parameter 'tokenIds' when calling batchGetExchangeRates(Async)");
+        }
+
+        // verify the required parameter 'currencies' is set
+        if (currencies == null) {
+            throw new ApiException("Missing the required parameter 'currencies' when calling batchGetExchangeRates(Async)");
+        }
+
+        return batchGetExchangeRatesCall(tokenIds, currencies, _callback);
+
+    }
+
+    /**
+     * Batch get exchange rates
+     * This operation retrieves the current exchange rates between a specified currency and a list of token IDs. 
+     * @param tokenIds A list of token IDs, separated by comma. The token ID is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-tokens).  (required)
+     * @param currencies List of the fiat currencies, separated by comma. Currently, only &#x60;USD&#x60; is supported.  (required)
+     * @return List&lt;ExchangeRate&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public List<ExchangeRate> batchGetExchangeRates(String tokenIds, String currencies) throws ApiException {
+        ApiResponse<List<ExchangeRate>> localVarResp = batchGetExchangeRatesWithHttpInfo(tokenIds, currencies);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Batch get exchange rates
+     * This operation retrieves the current exchange rates between a specified currency and a list of token IDs. 
+     * @param tokenIds A list of token IDs, separated by comma. The token ID is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-tokens).  (required)
+     * @param currencies List of the fiat currencies, separated by comma. Currently, only &#x60;USD&#x60; is supported.  (required)
+     * @return ApiResponse&lt;List&lt;ExchangeRate&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<List<ExchangeRate>> batchGetExchangeRatesWithHttpInfo(String tokenIds, String currencies) throws ApiException {
+        okhttp3.Call localVarCall = batchGetExchangeRatesValidateBeforeCall(tokenIds, currencies, null);
+        Type localVarReturnType = new TypeToken<List<ExchangeRate>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Batch get exchange rates (asynchronously)
+     * This operation retrieves the current exchange rates between a specified currency and a list of token IDs. 
+     * @param tokenIds A list of token IDs, separated by comma. The token ID is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-tokens).  (required)
+     * @param currencies List of the fiat currencies, separated by comma. Currently, only &#x60;USD&#x60; is supported.  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call batchGetExchangeRatesAsync(String tokenIds, String currencies, final ApiCallback<List<ExchangeRate>> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = batchGetExchangeRatesValidateBeforeCall(tokenIds, currencies, _callback);
+        Type localVarReturnType = new TypeToken<List<ExchangeRate>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
     /**
      * Build call for cancelRefundById
      * @param refundId The refund order ID. (required)
@@ -3080,7 +3215,7 @@ public class PaymentApi {
      * Get destination bank account information
      * This operation retrieves the detailed information about a specified destination bank account. 
      * @param bankAccountId The bank account ID. (required)
-     * @return DestinationBankAccount
+     * @return GetDestinationBankAccountDetailById200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -3090,8 +3225,8 @@ public class PaymentApi {
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public DestinationBankAccount getDestinationBankAccountDetailById(UUID bankAccountId) throws ApiException {
-        ApiResponse<DestinationBankAccount> localVarResp = getDestinationBankAccountDetailByIdWithHttpInfo(bankAccountId);
+    public GetDestinationBankAccountDetailById200Response getDestinationBankAccountDetailById(UUID bankAccountId) throws ApiException {
+        ApiResponse<GetDestinationBankAccountDetailById200Response> localVarResp = getDestinationBankAccountDetailByIdWithHttpInfo(bankAccountId);
         return localVarResp.getData();
     }
 
@@ -3099,7 +3234,7 @@ public class PaymentApi {
      * Get destination bank account information
      * This operation retrieves the detailed information about a specified destination bank account. 
      * @param bankAccountId The bank account ID. (required)
-     * @return ApiResponse&lt;DestinationBankAccount&gt;
+     * @return ApiResponse&lt;GetDestinationBankAccountDetailById200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -3109,9 +3244,9 @@ public class PaymentApi {
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DestinationBankAccount> getDestinationBankAccountDetailByIdWithHttpInfo(UUID bankAccountId) throws ApiException {
+    public ApiResponse<GetDestinationBankAccountDetailById200Response> getDestinationBankAccountDetailByIdWithHttpInfo(UUID bankAccountId) throws ApiException {
         okhttp3.Call localVarCall = getDestinationBankAccountDetailByIdValidateBeforeCall(bankAccountId, null);
-        Type localVarReturnType = new TypeToken<DestinationBankAccount>(){}.getType();
+        Type localVarReturnType = new TypeToken<GetDestinationBankAccountDetailById200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -3130,10 +3265,10 @@ public class PaymentApi {
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getDestinationBankAccountDetailByIdAsync(UUID bankAccountId, final ApiCallback<DestinationBankAccount> _callback) throws ApiException {
+    public okhttp3.Call getDestinationBankAccountDetailByIdAsync(UUID bankAccountId, final ApiCallback<GetDestinationBankAccountDetailById200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getDestinationBankAccountDetailByIdValidateBeforeCall(bankAccountId, _callback);
-        Type localVarReturnType = new TypeToken<DestinationBankAccount>(){}.getType();
+        Type localVarReturnType = new TypeToken<GetDestinationBankAccountDetailById200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -3324,7 +3459,7 @@ public class PaymentApi {
      * This operation retrieves the current exchange rate between a specified currency pair. 
      * @param tokenId The token ID, which identifies the cryptocurrency. Supported values:    - USDC: &#x60;ETH_USDC&#x60;, &#x60;ARBITRUM_USDC&#x60;, &#x60;SOL_USDC&#x60;, &#x60;BASE_USDC&#x60;, &#x60;MATIC_USDC&#x60;, &#x60;BSC_USDC&#x60;   - USDT: &#x60;TRON_USDT&#x60;, &#x60;ETH_USDT&#x60;, &#x60;ARBITRUM_USDT&#x60;, &#x60;SOL_USDT&#x60;, &#x60;BASE_USDT&#x60;, &#x60;MATIC_USDT&#x60;, &#x60;BSC_USDT&#x60;  (required)
      * @param currency The fiat currency. Currently, only &#x60;USD&#x60; is supported. (required)
-     * @return GetExchangeRate200Response
+     * @return ExchangeRate
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -3334,8 +3469,8 @@ public class PaymentApi {
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public GetExchangeRate200Response getExchangeRate(String tokenId, String currency) throws ApiException {
-        ApiResponse<GetExchangeRate200Response> localVarResp = getExchangeRateWithHttpInfo(tokenId, currency);
+    public ExchangeRate getExchangeRate(String tokenId, String currency) throws ApiException {
+        ApiResponse<ExchangeRate> localVarResp = getExchangeRateWithHttpInfo(tokenId, currency);
         return localVarResp.getData();
     }
 
@@ -3344,7 +3479,7 @@ public class PaymentApi {
      * This operation retrieves the current exchange rate between a specified currency pair. 
      * @param tokenId The token ID, which identifies the cryptocurrency. Supported values:    - USDC: &#x60;ETH_USDC&#x60;, &#x60;ARBITRUM_USDC&#x60;, &#x60;SOL_USDC&#x60;, &#x60;BASE_USDC&#x60;, &#x60;MATIC_USDC&#x60;, &#x60;BSC_USDC&#x60;   - USDT: &#x60;TRON_USDT&#x60;, &#x60;ETH_USDT&#x60;, &#x60;ARBITRUM_USDT&#x60;, &#x60;SOL_USDT&#x60;, &#x60;BASE_USDT&#x60;, &#x60;MATIC_USDT&#x60;, &#x60;BSC_USDT&#x60;  (required)
      * @param currency The fiat currency. Currently, only &#x60;USD&#x60; is supported. (required)
-     * @return ApiResponse&lt;GetExchangeRate200Response&gt;
+     * @return ApiResponse&lt;ExchangeRate&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -3354,9 +3489,9 @@ public class PaymentApi {
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetExchangeRate200Response> getExchangeRateWithHttpInfo(String tokenId, String currency) throws ApiException {
+    public ApiResponse<ExchangeRate> getExchangeRateWithHttpInfo(String tokenId, String currency) throws ApiException {
         okhttp3.Call localVarCall = getExchangeRateValidateBeforeCall(tokenId, currency, null);
-        Type localVarReturnType = new TypeToken<GetExchangeRate200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<ExchangeRate>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -3376,10 +3511,10 @@ public class PaymentApi {
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getExchangeRateAsync(String tokenId, String currency, final ApiCallback<GetExchangeRate200Response> _callback) throws ApiException {
+    public okhttp3.Call getExchangeRateAsync(String tokenId, String currency, final ApiCallback<ExchangeRate> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getExchangeRateValidateBeforeCall(tokenId, currency, _callback);
-        Type localVarReturnType = new TypeToken<GetExchangeRate200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<ExchangeRate>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -5444,8 +5579,8 @@ public class PaymentApi {
     /**
      * Build call for listMerchantBalances
      * @param tokenId The token ID, which identifies the cryptocurrency. Supported values:    - USDC: &#x60;ETH_USDC&#x60;, &#x60;ARBITRUM_USDC&#x60;, &#x60;SOL_USDC&#x60;, &#x60;BASE_USDC&#x60;, &#x60;MATIC_USDC&#x60;, &#x60;BSC_USDC&#x60;   - USDT: &#x60;TRON_USDT&#x60;, &#x60;ETH_USDT&#x60;, &#x60;ARBITRUM_USDT&#x60;, &#x60;SOL_USDT&#x60;, &#x60;BASE_USDT&#x60;, &#x60;MATIC_USDT&#x60;, &#x60;BSC_USDT&#x60;  (required)
-     * @param acquiringType AcquiringType defines the acquisition logic used in the payment flow: - &#x60;Order&#x60;: Each order is created with a specific amount and associated payment request. Funds are settled on a per-order basis. - &#x60;TopUp&#x60;: Recharge-style flow where funds are topped up to a payer balance or account. Useful for flexible or usage-based payment models.  (required)
      * @param merchantIds A list of merchant IDs to query. (optional)
+     * @param acquiringType AcquiringType defines the acquisition logic used in the payment flow: - &#x60;Order&#x60;: Each order is created with a specific amount and associated payment request. Funds are settled on a per-order basis. - &#x60;TopUp&#x60;: Recharge-style flow where funds are topped up to a payer balance or account. Useful for flexible or usage-based payment models.  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -5457,7 +5592,7 @@ public class PaymentApi {
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listMerchantBalancesCall(String tokenId, AcquiringType acquiringType, String merchantIds, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listMerchantBalancesCall(String tokenId, String merchantIds, AcquiringType acquiringType, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -5501,18 +5636,13 @@ public class PaymentApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listMerchantBalancesValidateBeforeCall(String tokenId, AcquiringType acquiringType, String merchantIds, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listMerchantBalancesValidateBeforeCall(String tokenId, String merchantIds, AcquiringType acquiringType, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'tokenId' is set
         if (tokenId == null) {
             throw new ApiException("Missing the required parameter 'tokenId' when calling listMerchantBalances(Async)");
         }
 
-        // verify the required parameter 'acquiringType' is set
-        if (acquiringType == null) {
-            throw new ApiException("Missing the required parameter 'acquiringType' when calling listMerchantBalances(Async)");
-        }
-
-        return listMerchantBalancesCall(tokenId, acquiringType, merchantIds, _callback);
+        return listMerchantBalancesCall(tokenId, merchantIds, acquiringType, _callback);
 
     }
 
@@ -5520,8 +5650,8 @@ public class PaymentApi {
      * List merchant balances
      * This operation retrieves the information of merchant balances. 
      * @param tokenId The token ID, which identifies the cryptocurrency. Supported values:    - USDC: &#x60;ETH_USDC&#x60;, &#x60;ARBITRUM_USDC&#x60;, &#x60;SOL_USDC&#x60;, &#x60;BASE_USDC&#x60;, &#x60;MATIC_USDC&#x60;, &#x60;BSC_USDC&#x60;   - USDT: &#x60;TRON_USDT&#x60;, &#x60;ETH_USDT&#x60;, &#x60;ARBITRUM_USDT&#x60;, &#x60;SOL_USDT&#x60;, &#x60;BASE_USDT&#x60;, &#x60;MATIC_USDT&#x60;, &#x60;BSC_USDT&#x60;  (required)
-     * @param acquiringType AcquiringType defines the acquisition logic used in the payment flow: - &#x60;Order&#x60;: Each order is created with a specific amount and associated payment request. Funds are settled on a per-order basis. - &#x60;TopUp&#x60;: Recharge-style flow where funds are topped up to a payer balance or account. Useful for flexible or usage-based payment models.  (required)
      * @param merchantIds A list of merchant IDs to query. (optional)
+     * @param acquiringType AcquiringType defines the acquisition logic used in the payment flow: - &#x60;Order&#x60;: Each order is created with a specific amount and associated payment request. Funds are settled on a per-order basis. - &#x60;TopUp&#x60;: Recharge-style flow where funds are topped up to a payer balance or account. Useful for flexible or usage-based payment models.  (optional)
      * @return ListMerchantBalances200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -5532,8 +5662,8 @@ public class PaymentApi {
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public ListMerchantBalances200Response listMerchantBalances(String tokenId, AcquiringType acquiringType, String merchantIds) throws ApiException {
-        ApiResponse<ListMerchantBalances200Response> localVarResp = listMerchantBalancesWithHttpInfo(tokenId, acquiringType, merchantIds);
+    public ListMerchantBalances200Response listMerchantBalances(String tokenId, String merchantIds, AcquiringType acquiringType) throws ApiException {
+        ApiResponse<ListMerchantBalances200Response> localVarResp = listMerchantBalancesWithHttpInfo(tokenId, merchantIds, acquiringType);
         return localVarResp.getData();
     }
 
@@ -5541,8 +5671,8 @@ public class PaymentApi {
      * List merchant balances
      * This operation retrieves the information of merchant balances. 
      * @param tokenId The token ID, which identifies the cryptocurrency. Supported values:    - USDC: &#x60;ETH_USDC&#x60;, &#x60;ARBITRUM_USDC&#x60;, &#x60;SOL_USDC&#x60;, &#x60;BASE_USDC&#x60;, &#x60;MATIC_USDC&#x60;, &#x60;BSC_USDC&#x60;   - USDT: &#x60;TRON_USDT&#x60;, &#x60;ETH_USDT&#x60;, &#x60;ARBITRUM_USDT&#x60;, &#x60;SOL_USDT&#x60;, &#x60;BASE_USDT&#x60;, &#x60;MATIC_USDT&#x60;, &#x60;BSC_USDT&#x60;  (required)
-     * @param acquiringType AcquiringType defines the acquisition logic used in the payment flow: - &#x60;Order&#x60;: Each order is created with a specific amount and associated payment request. Funds are settled on a per-order basis. - &#x60;TopUp&#x60;: Recharge-style flow where funds are topped up to a payer balance or account. Useful for flexible or usage-based payment models.  (required)
      * @param merchantIds A list of merchant IDs to query. (optional)
+     * @param acquiringType AcquiringType defines the acquisition logic used in the payment flow: - &#x60;Order&#x60;: Each order is created with a specific amount and associated payment request. Funds are settled on a per-order basis. - &#x60;TopUp&#x60;: Recharge-style flow where funds are topped up to a payer balance or account. Useful for flexible or usage-based payment models.  (optional)
      * @return ApiResponse&lt;ListMerchantBalances200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -5553,8 +5683,8 @@ public class PaymentApi {
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ListMerchantBalances200Response> listMerchantBalancesWithHttpInfo(String tokenId, AcquiringType acquiringType, String merchantIds) throws ApiException {
-        okhttp3.Call localVarCall = listMerchantBalancesValidateBeforeCall(tokenId, acquiringType, merchantIds, null);
+    public ApiResponse<ListMerchantBalances200Response> listMerchantBalancesWithHttpInfo(String tokenId, String merchantIds, AcquiringType acquiringType) throws ApiException {
+        okhttp3.Call localVarCall = listMerchantBalancesValidateBeforeCall(tokenId, merchantIds, acquiringType, null);
         Type localVarReturnType = new TypeToken<ListMerchantBalances200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -5563,8 +5693,8 @@ public class PaymentApi {
      * List merchant balances (asynchronously)
      * This operation retrieves the information of merchant balances. 
      * @param tokenId The token ID, which identifies the cryptocurrency. Supported values:    - USDC: &#x60;ETH_USDC&#x60;, &#x60;ARBITRUM_USDC&#x60;, &#x60;SOL_USDC&#x60;, &#x60;BASE_USDC&#x60;, &#x60;MATIC_USDC&#x60;, &#x60;BSC_USDC&#x60;   - USDT: &#x60;TRON_USDT&#x60;, &#x60;ETH_USDT&#x60;, &#x60;ARBITRUM_USDT&#x60;, &#x60;SOL_USDT&#x60;, &#x60;BASE_USDT&#x60;, &#x60;MATIC_USDT&#x60;, &#x60;BSC_USDT&#x60;  (required)
-     * @param acquiringType AcquiringType defines the acquisition logic used in the payment flow: - &#x60;Order&#x60;: Each order is created with a specific amount and associated payment request. Funds are settled on a per-order basis. - &#x60;TopUp&#x60;: Recharge-style flow where funds are topped up to a payer balance or account. Useful for flexible or usage-based payment models.  (required)
      * @param merchantIds A list of merchant IDs to query. (optional)
+     * @param acquiringType AcquiringType defines the acquisition logic used in the payment flow: - &#x60;Order&#x60;: Each order is created with a specific amount and associated payment request. Funds are settled on a per-order basis. - &#x60;TopUp&#x60;: Recharge-style flow where funds are topped up to a payer balance or account. Useful for flexible or usage-based payment models.  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -5576,9 +5706,9 @@ public class PaymentApi {
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listMerchantBalancesAsync(String tokenId, AcquiringType acquiringType, String merchantIds, final ApiCallback<ListMerchantBalances200Response> _callback) throws ApiException {
+    public okhttp3.Call listMerchantBalancesAsync(String tokenId, String merchantIds, AcquiringType acquiringType, final ApiCallback<ListMerchantBalances200Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listMerchantBalancesValidateBeforeCall(tokenId, acquiringType, merchantIds, _callback);
+        okhttp3.Call localVarCall = listMerchantBalancesValidateBeforeCall(tokenId, merchantIds, acquiringType, _callback);
         Type localVarReturnType = new TypeToken<ListMerchantBalances200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

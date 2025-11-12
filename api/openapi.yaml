@@ -10300,7 +10300,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/get_exchange_rate_200_response'
+                $ref: '#/components/schemas/ExchangeRate'
           description: The request was successful.
         "4XX":
           content:
@@ -10316,6 +10316,59 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
           description: Internal server error.
       summary: Get exchange rate
+      tags:
+      - Payment
+      x-accepts:
+      - application/json
+  /payments/exchange_rates:
+    get:
+      description: |
+        This operation retrieves the current exchange rates between a specified currency and a list of token IDs.
+      operationId: batch_get_exchange_rates
+      parameters:
+      - description: |
+          A list of token IDs, separated by comma. The token ID is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-tokens).
+        explode: true
+        in: query
+        name: token_ids
+        required: true
+        schema:
+          example: "ETH_USDT,ETH_USDC,BTC_USDT"
+          type: string
+        style: form
+      - description: |
+          List of the fiat currencies, separated by comma. Currently, only `USD` is supported.
+        explode: true
+        in: query
+        name: currencies
+        required: true
+        schema:
+          example: USD
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ExchangeRate'
+                type: array
+          description: The request was successful.
+        "4XX":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request. Your request contains malformed syntax or invalid
+            parameters.
+        "5XX":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error.
+      summary: Batch get exchange rates
       tags:
       - Payment
       x-accepts:
@@ -11273,7 +11326,7 @@ paths:
         explode: true
         in: query
         name: acquiring_type
-        required: true
+        required: false
         schema:
           $ref: '#/components/schemas/AcquiringType'
         style: form
@@ -12848,7 +12901,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DestinationBankAccount'
+                $ref: '#/components/schemas/get_destination_bank_account_detail_by_id_200_response'
           description: The request was successful.
         "4XX":
           content:
@@ -18637,7 +18690,15 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/get_exchange_rate_200_response'
+            $ref: '#/components/schemas/ExchangeRate'
+      description: The request was successful.
+    batchGetExchangeRatesResponse:
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '#/components/schemas/ExchangeRate'
+            type: array
       description: The request was successful.
     getSettlementInfoResponse:
       content:
@@ -18882,6 +18943,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/DestinationBankAccount'
+      description: The request was successful.
+    destinationBankAccountDetailResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/get_destination_bank_account_detail_by_id_200_response'
       description: The request was successful.
     enableDestinationWhitelistResponse:
       content:
@@ -23600,9 +23667,10 @@ components:
         \ Smart Contract Wallet (Safe\\{Wallet\\}) transaction.\n  - `BillPayment`:\
         \ A transaction to pay Cobo bills through Fee Station.\n  - `BillRefund`:\
         \ A refund for a previously made bill payment.\n  - `CommissionFeeCharge`:\
-        \ A transaction to charge commission fees via Fee Station.\n  - `CommissionFeeRefund`:\
-        \ A refund of previously charged commission fees.\n  - `StakingBabylonBtcDelegation`:\
-        \ A transaction for delegating BTC in Babylon staking.\n  - `StakingBabylonBtcSignBabylon`:\
+        \ A transaction for commission-fee users that charges the commission fee incurred\
+        \ from various services.\n  - `CommissionFeeRefund`: A refund of previously\
+        \ charged commission fees.\n  - `StakingBabylonBtcDelegation`: A transaction\
+        \ for delegating BTC in Babylon staking.\n  - `StakingBabylonBtcSignBabylon`:\
         \ A transaction for signing Babylon operations with BTC.\n  - `StakingBabylonClaim`:\
         \ A transaction for claiming rewards from Babylon staking.\n  - `StakingBabylonSlashing`:\
         \ A transaction related to slashing penalties in Babylon staking.\n  - `StakingBabylonStake`:\
@@ -23631,7 +23699,9 @@ components:
         \ and replay-safe transaction execution on the Solana network.  \n  - `FeePayerSign`:\
         \ A transaction where a **designated Solana fee payer account** covers the\
         \ transaction fees, separating the fee payment from the main signer or source\
-        \ account.\n"
+        \ account.\n  - `GasFeeSponsor`: A transaction where Fee Station pays the\
+        \ on-chain gas fee in USD stablecoin.\n  - `GasFeeSponsorRefund`: A transaction\
+        \ that refunds gas fees previously sponsored and paid by Fee Station.\n"
       enum:
       - AutoFueling
       - AutoFuelingRefund
@@ -23670,6 +23740,8 @@ components:
       - TokenSwap
       - NonceAccountSign
       - FeePayerSign
+      - GasFeeSponsor
+      - GasFeeSponsorRefund
       example: AutoSweep
       type: string
     SafeTxExtraData:
@@ -29091,7 +29163,6 @@ components:
         quote_id:
           description: The unique identifier of the quote.
           example: 123e4567-e89b-12d3-a456-426614174001
-          format: uuid
           type: string
         fee_type:
           $ref: '#/components/schemas/FeeType'
@@ -31202,6 +31273,7 @@ components:
       example:
         settled_amount: "1.23"
         total_balance: "1.23"
+        locked_balance: "1.23"
         token_id: ETH_USDT
         total_received_amount: "1.23"
         merchant_id: "1"
@@ -31239,6 +31311,10 @@ components:
           description: The merchant available balance.
           example: "1.23"
           type: string
+        locked_balance:
+          description: The merchant locked balance.
+          example: "1.23"
+          type: string
       required:
       - acquiring_type
       - merchant_id
@@ -31248,6 +31324,7 @@ components:
       example:
         settled_amount: "1.23"
         total_balance: "1.23"
+        locked_balance: "1.23"
         developer_fee_amount: "1.23"
         token_id: ETH_USDT
         available_balance: "1.23"
@@ -31275,6 +31352,10 @@ components:
           type: string
         available_balance:
           description: The psp available balance.
+          example: "1.23"
+          type: string
+        locked_balance:
+          description: The psp locked balance.
           example: "1.23"
           type: string
       required:
@@ -32916,7 +32997,7 @@ components:
           format: uuid
           type: string
         destination_type:
-          $ref: '#/components/schemas/CounterpartyType'
+          $ref: '#/components/schemas/DestinationType'
         destination_name:
           description: The destination name.
           example: Destination A
@@ -32953,6 +33034,16 @@ components:
       - destination_type
       - updated_timestamp
       type: object
+    DestinationType:
+      description: |
+        DestinationType defines the type of the destination:
+        - `Individual`: The destination is an individual.
+        - `Organization`: The destination is an organization.
+      enum:
+      - Individual
+      - Organization
+      example: Individual
+      type: string
     CreateDestinationBankAccount:
       properties:
         account_alias:
@@ -33242,7 +33333,7 @@ components:
           format: uuid
           type: string
         destination_type:
-          $ref: '#/components/schemas/CounterpartyType'
+          $ref: '#/components/schemas/DestinationType'
         destination_name:
           description: The destination name.
           example: Destination A
@@ -33304,6 +33395,32 @@ components:
       - Deleted
       example: Pending
       type: string
+    ExchangeRate:
+      example:
+        token_id: ETH_USDT
+        rate: "1.00"
+        currency: USD
+      properties:
+        token_id:
+          description: "The token ID, which identifies the cryptocurrency."
+          example: ETH_USDT
+          type: string
+        currency:
+          description: The fiat currency.
+          example: USD
+          type: string
+        rate:
+          description: "The current exchange rate between the specified currency pair.\
+            \ Expressed as the amount of fiat currency per one unit of cryptocurrency.\
+            \ For example, if the cryptocurrency is USDT and the fiat currency is\
+            \ USD, a rate of \"0.99\" means 1 USDT = 0.99 USD."
+          example: "1.00"
+          type: string
+      required:
+      - currency
+      - rate
+      - token_id
+      type: object
     DispositionStatus:
       description: The status of a disposition operation.
       enum:
@@ -35880,22 +35997,12 @@ components:
       properties:
         source:
           $ref: '#/components/schemas/TokenizationTokenOperationSource'
-        action:
-          $ref: '#/components/schemas/TokenizationPermissionAction'
-        address:
-          description: The address to manage permissions for.
-          example: 0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045
-          type: string
-        permissions:
-          description: The list of permissions to operate on.
-          items:
-            $ref: '#/components/schemas/TokenizationTokenPermissionType'
-          type: array
         addresses:
           items:
             $ref: '#/components/schemas/TokenizationUpdateAddressPermissions'
           type: array
       required:
+      - addresses
       - source
       type: object
     TokenizationUpdatePermissionsRequest:
@@ -35925,16 +36032,11 @@ components:
           - MintTokens
           - MintTokens
           action: add
-        address: 0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045
         app_initiator: steve@example.com
-        permissions:
-        - MintTokens
-        - MintTokens
         fee:
           max_fee_amount: "0.1"
           token_id: TRON
           fee_type: EVM_EIP_1559
-        action: add
         source:
           wallet_id: f47ac10b-58cc-4372-a567-0e02b2c3d479
           address: 0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045
@@ -39936,7 +40038,6 @@ components:
         quote_id:
           description: The unique identifier of the quote.
           example: 123e4567-e89b-12d3-a456-426614174001
-          format: uuid
           type: string
         app_initiator:
           description: "The initiator of the app activity. If you do not specify this\
@@ -40483,32 +40584,6 @@ components:
           type: boolean
       required:
       - expired
-      type: object
-    get_exchange_rate_200_response:
-      example:
-        token_id: ETH_USDT
-        rate: "1.00"
-        currency: USD
-      properties:
-        token_id:
-          description: "The token ID, which identifies the cryptocurrency."
-          example: ETH_USDT
-          type: string
-        currency:
-          description: The fiat currency.
-          example: USD
-          type: string
-        rate:
-          description: "The current exchange rate between the specified currency pair.\
-            \ Expressed as the amount of fiat currency per one unit of cryptocurrency.\
-            \ For example, if the cryptocurrency is USDT and the fiat currency is\
-            \ USD, a rate of \"0.99\" means 1 USDT = 0.99 USD."
-          example: "1.00"
-          type: string
-      required:
-      - currency
-      - rate
-      - token_id
       type: object
     get_settlement_info_by_ids_200_response:
       example:
@@ -41196,6 +41271,7 @@ components:
         data:
         - settled_amount: "1.23"
           total_balance: "1.23"
+          locked_balance: "1.23"
           token_id: ETH_USDT
           total_received_amount: "1.23"
           merchant_id: "1"
@@ -41204,6 +41280,7 @@ components:
           refunded_amount: "1.23"
         - settled_amount: "1.23"
           total_balance: "1.23"
+          locked_balance: "1.23"
           token_id: ETH_USDT
           total_received_amount: "1.23"
           merchant_id: "1"
@@ -41651,7 +41728,7 @@ components:
           example: Destination A
           type: string
         destination_type:
-          $ref: '#/components/schemas/CounterpartyType'
+          $ref: '#/components/schemas/DestinationType'
         wallet_addresses:
           description: The wallet addresses of the destination.
           items:
@@ -41667,15 +41744,15 @@ components:
           example: M1001
           type: string
         country:
-          description: "The country of the counterparty, in ISO 3166-1 alpha-3 format."
+          description: "The country of the destination, in ISO 3166-1 alpha-3 format."
           example: USA
           type: string
         email:
-          description: The email of the counterparty.
+          description: The email of the destination.
           example: counterparty@example.com
           type: string
         contact_address:
-          description: The contact address of the counterparty.
+          description: The contact address of the destination.
           example: "123 Main St, Anytown, USA"
           type: string
       required:
@@ -41689,21 +41766,21 @@ components:
           example: Destination A
           type: string
         destination_type:
-          $ref: '#/components/schemas/CounterpartyType'
+          $ref: '#/components/schemas/DestinationType'
         merchant_id:
           description: The ID of the merchant linked to the destination.
           example: M1001
           type: string
         country:
-          description: "The country of the counterparty, in ISO 3166-1 alpha-3 format."
+          description: "The country of the destination, in ISO 3166-1 alpha-3 format."
           example: USA
           type: string
         email:
-          description: The email of the counterparty.
-          example: counterparty@example.com
+          description: The email of the destination.
+          example: destination@example.com
           type: string
         contact_address:
-          description: The contact address of the counterparty.
+          description: The contact address of the destination.
           example: "123 Main St, Anytown, USA"
           type: string
       required:
@@ -41779,6 +41856,135 @@ components:
       - beneficiary_name
       - currency
       - destination_id
+      - swift_code
+      type: object
+    get_destination_bank_account_detail_by_id_200_response:
+      example:
+        bank_account_id: 123e4567-e89b-12d3-a456-426614174003
+        account_number: "4111111111111111"
+        destination_country: USA
+        beneficiary_address: "123 Main St, Anytown, USA"
+        swift_code: BOFAUS33
+        destination_id: 123e4567-e89b-12d3-a456-426614174003
+        bank_address: "456 Bank Ave, Cityville, USA"
+        destination_name: Destination A
+        created_timestamp: 1744689600
+        destination_merchant_id: M1001
+        beneficiary_name: John Doe
+        destination_type: Individual
+        destination_email: destination@example.com
+        intermediary_bank_info:
+          bank_name: Intermediary Bank
+          bank_address: "456 Bank Ave, Cityville, USA"
+          bank_swift_code: BOFAUS33
+        updated_timestamp: 1744689600
+        destination_contact_address: "123 Main St, Anytown, USA"
+        bank_account_status: Pending
+        bank_name: ABC Bank
+        iban_code: "12345678901234567890"
+        currency: USD
+        further_credit: further credit sample
+        account_alias: Main Payout Account
+      properties:
+        destination_id:
+          description: The destination ID.
+          example: 123e4567-e89b-12d3-a456-426614174003
+          format: uuid
+          type: string
+        destination_name:
+          description: The name of the destination.
+          example: Destination A
+          type: string
+        destination_type:
+          $ref: '#/components/schemas/DestinationType'
+        destination_email:
+          description: The email of the destination.
+          example: destination@example.com
+          type: string
+        destination_country:
+          description: "The country of the destination, in ISO 3166-1 alpha-3 format."
+          example: USA
+          type: string
+        destination_contact_address:
+          description: The contact address of the destination.
+          example: "123 Main St, Anytown, USA"
+          type: string
+        destination_merchant_id:
+          description: The ID of the merchant linked to the destination.
+          example: M1001
+          type: string
+        bank_account_id:
+          description: The destination bank account ID.
+          example: 123e4567-e89b-12d3-a456-426614174003
+          format: uuid
+          type: string
+        account_alias:
+          description: The alias of the bank account.
+          example: Main Payout Account
+          type: string
+        account_number:
+          description: The bank account number.
+          example: "4111111111111111"
+          type: string
+        swift_code:
+          description: The SWIFT or BIC code of the bank.
+          example: BOFAUS33
+          type: string
+        currency:
+          description: The currency of the bank account.
+          example: USD
+          type: string
+        beneficiary_name:
+          description: The name of the account holder.
+          example: John Doe
+          type: string
+        beneficiary_address:
+          description: The address of the account holder.
+          example: "123 Main St, Anytown, USA"
+          type: string
+        bank_name:
+          description: The name of the bank.
+          example: ABC Bank
+          type: string
+        bank_address:
+          description: The address of the bank.
+          example: "456 Bank Ave, Cityville, USA"
+          type: string
+        iban_code:
+          description: The IBAN code of the bank account.
+          example: "12345678901234567890"
+          type: string
+        further_credit:
+          description: The further credit of the bank account.
+          example: further credit sample
+          type: string
+        intermediary_bank_info:
+          $ref: '#/components/schemas/IntermediaryBankInfo'
+        bank_account_status:
+          $ref: '#/components/schemas/BankAccountStatus'
+        created_timestamp:
+          description: "The created time of the bank account, represented as a UNIX\
+            \ timestamp in seconds."
+          example: 1744689600
+          type: integer
+        updated_timestamp:
+          description: "The updated time of the bank account, represented as a UNIX\
+            \ timestamp in seconds."
+          example: 1744689600
+          type: integer
+      required:
+      - account_alias
+      - account_number
+      - bank_account_id
+      - bank_account_status
+      - bank_address
+      - bank_name
+      - beneficiary_address
+      - beneficiary_name
+      - currency
+      - destination_id
+      - destination_name
+      - destination_type
       - swift_code
       type: object
     delete_destination_bank_account_200_response:

@@ -12,9 +12,9 @@
 package com.cobo.waas2.model;
 
 import java.util.Objects;
-import com.cobo.waas2.model.CounterpartyType;
 import com.cobo.waas2.model.CreateDestinationBankAccount;
 import com.cobo.waas2.model.CreateWalletAddress;
+import com.cobo.waas2.model.DestinationType;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -63,7 +63,7 @@ public class CreateDestinationRequest {
 
   public static final String SERIALIZED_NAME_DESTINATION_TYPE = "destination_type";
   @SerializedName(SERIALIZED_NAME_DESTINATION_TYPE)
-  private CounterpartyType destinationType;
+  private DestinationType destinationType;
 
   public static final String SERIALIZED_NAME_WALLET_ADDRESSES = "wallet_addresses";
   @SerializedName(SERIALIZED_NAME_WALLET_ADDRESSES)
@@ -111,7 +111,7 @@ public class CreateDestinationRequest {
   }
 
 
-  public CreateDestinationRequest destinationType(CounterpartyType destinationType) {
+  public CreateDestinationRequest destinationType(DestinationType destinationType) {
     this.destinationType = destinationType;
     return this;
   }
@@ -121,11 +121,11 @@ public class CreateDestinationRequest {
    * @return destinationType
   **/
   @javax.annotation.Nonnull
-  public CounterpartyType getDestinationType() {
+  public DestinationType getDestinationType() {
     return destinationType;
   }
 
-  public void setDestinationType(CounterpartyType destinationType) {
+  public void setDestinationType(DestinationType destinationType) {
     this.destinationType = destinationType;
   }
 
@@ -209,7 +209,7 @@ public class CreateDestinationRequest {
   }
 
    /**
-   * The country of the counterparty, in ISO 3166-1 alpha-3 format.
+   * The country of the destination, in ISO 3166-1 alpha-3 format.
    * @return country
   **/
   @javax.annotation.Nullable
@@ -228,7 +228,7 @@ public class CreateDestinationRequest {
   }
 
    /**
-   * The email of the counterparty.
+   * The email of the destination.
    * @return email
   **/
   @javax.annotation.Nullable
@@ -247,7 +247,7 @@ public class CreateDestinationRequest {
   }
 
    /**
-   * The contact address of the counterparty.
+   * The contact address of the destination.
    * @return contactAddress
   **/
   @javax.annotation.Nullable
@@ -404,7 +404,7 @@ public class CreateDestinationRequest {
         throw new IllegalArgumentException(String.format("Expected the field `destination_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("destination_name").toString()));
       }
       // validate the required field `destination_type`
-      CounterpartyType.validateJsonElement(jsonObj.get("destination_type"));
+      DestinationType.validateJsonElement(jsonObj.get("destination_type"));
       if (jsonObj.get("wallet_addresses") != null && !jsonObj.get("wallet_addresses").isJsonNull()) {
         JsonArray jsonArraywalletAddresses = jsonObj.getAsJsonArray("wallet_addresses");
         if (jsonArraywalletAddresses != null) {

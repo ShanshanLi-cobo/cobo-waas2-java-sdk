@@ -15,12 +15,10 @@
 |**mints** | [**List&lt;TokenizationMintTokenParamsMintsInner&gt;**](TokenizationMintTokenParamsMintsInner.md) | Details for each token mint, including amount and address to mint to. |  |
 |**tokenId** | **String** | The ID of the token. |  |
 |**burns** | [**List&lt;TokenizationBurnTokenParamsBurnsInner&gt;**](TokenizationBurnTokenParamsBurnsInner.md) | Details for each token burn, including amount and address to burn from. |  |
-|**action** | **TokenizationPermissionAction** |  |  |
+|**action** | **TokenizationUpdateAddressAction** |  |  |
 |**addresses** | [**List&lt;TokenizationUpdateAddressPermissions&gt;**](TokenizationUpdateAddressPermissions.md) |  |  |
 |**activation** | **Boolean** | Whether to activate the allowlist feature for the token. |  |
 |**data** | [**TokenizationContractCallParamsData**](TokenizationContractCallParamsData.md) |  |  [optional] |
-|**address** | **String** | The address to manage permissions for. |  [optional] |
-|**permissions** | **List&lt;TokenizationTokenPermissionType&gt;** | The list of permissions to operate on. |  [optional] |
 
 
 

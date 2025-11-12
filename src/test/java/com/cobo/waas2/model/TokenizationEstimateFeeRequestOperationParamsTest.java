@@ -21,11 +21,10 @@ import com.cobo.waas2.model.TokenizationMintEstimateFeeParams;
 import com.cobo.waas2.model.TokenizationMintTokenParamsMintsInner;
 import com.cobo.waas2.model.TokenizationOperationType;
 import com.cobo.waas2.model.TokenizationPauseEstimateFeeParams;
-import com.cobo.waas2.model.TokenizationPermissionAction;
 import com.cobo.waas2.model.TokenizationToggleAllowlistEstimateFeeParams;
 import com.cobo.waas2.model.TokenizationTokenOperationSource;
-import com.cobo.waas2.model.TokenizationTokenPermissionType;
 import com.cobo.waas2.model.TokenizationUnpauseEstimateFeeParams;
+import com.cobo.waas2.model.TokenizationUpdateAddressAction;
 import com.cobo.waas2.model.TokenizationUpdateAddressPermissions;
 import com.cobo.waas2.model.TokenizationUpdateAllowlistAddressesEstimateFeeParams;
 import com.cobo.waas2.model.TokenizationUpdateBlocklistAddressesEstimateFeeParams;
@@ -150,22 +149,6 @@ public class TokenizationEstimateFeeRequestOperationParamsTest {
     @Test
     public void dataTest() {
         // TODO: test data
-    }
-
-    /**
-     * Test the property 'address'
-     */
-    @Test
-    public void addressTest() {
-        // TODO: test address
-    }
-
-    /**
-     * Test the property 'permissions'
-     */
-    @Test
-    public void permissionsTest() {
-        // TODO: test permissions
     }
 
 }

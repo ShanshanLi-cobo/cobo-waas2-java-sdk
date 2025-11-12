@@ -85,6 +85,10 @@ public class MerchantBalance {
   @SerializedName(SERIALIZED_NAME_AVAILABLE_BALANCE)
   private String availableBalance;
 
+  public static final String SERIALIZED_NAME_LOCKED_BALANCE = "locked_balance";
+  @SerializedName(SERIALIZED_NAME_LOCKED_BALANCE)
+  private String lockedBalance;
+
   public MerchantBalance() {
   }
 
@@ -239,6 +243,25 @@ public class MerchantBalance {
     this.availableBalance = availableBalance;
   }
 
+
+  public MerchantBalance lockedBalance(String lockedBalance) {
+    this.lockedBalance = lockedBalance;
+    return this;
+  }
+
+   /**
+   * The merchant locked balance.
+   * @return lockedBalance
+  **/
+  @javax.annotation.Nullable
+  public String getLockedBalance() {
+    return lockedBalance;
+  }
+
+  public void setLockedBalance(String lockedBalance) {
+    this.lockedBalance = lockedBalance;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -301,13 +324,14 @@ public class MerchantBalance {
         Objects.equals(this.settledAmount, merchantBalance.settledAmount) &&
         Objects.equals(this.refundedAmount, merchantBalance.refundedAmount) &&
         Objects.equals(this.totalBalance, merchantBalance.totalBalance) &&
-        Objects.equals(this.availableBalance, merchantBalance.availableBalance)&&
+        Objects.equals(this.availableBalance, merchantBalance.availableBalance) &&
+        Objects.equals(this.lockedBalance, merchantBalance.lockedBalance)&&
         Objects.equals(this.additionalProperties, merchantBalance.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(merchantId, tokenId, acquiringType, totalReceivedAmount, settledAmount, refundedAmount, totalBalance, availableBalance, additionalProperties);
+    return Objects.hash(merchantId, tokenId, acquiringType, totalReceivedAmount, settledAmount, refundedAmount, totalBalance, availableBalance, lockedBalance, additionalProperties);
   }
 
   @Override
@@ -322,6 +346,7 @@ public class MerchantBalance {
     sb.append("    refundedAmount: ").append(toIndentedString(refundedAmount)).append("\n");
     sb.append("    totalBalance: ").append(toIndentedString(totalBalance)).append("\n");
     sb.append("    availableBalance: ").append(toIndentedString(availableBalance)).append("\n");
+    sb.append("    lockedBalance: ").append(toIndentedString(lockedBalance)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -353,6 +378,7 @@ public class MerchantBalance {
     openapiFields.add("refunded_amount");
     openapiFields.add("total_balance");
     openapiFields.add("available_balance");
+    openapiFields.add("locked_balance");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -403,6 +429,9 @@ public class MerchantBalance {
       }
       if ((jsonObj.get("available_balance") != null && !jsonObj.get("available_balance").isJsonNull()) && !jsonObj.get("available_balance").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `available_balance` to be a primitive type in the JSON string but got `%s`", jsonObj.get("available_balance").toString()));
+      }
+      if ((jsonObj.get("locked_balance") != null && !jsonObj.get("locked_balance").isJsonNull()) && !jsonObj.get("locked_balance").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `locked_balance` to be a primitive type in the JSON string but got `%s`", jsonObj.get("locked_balance").toString()));
       }
   }
 

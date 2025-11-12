@@ -1,6 +1,6 @@
 
 
-# GetExchangeRate200Response
+# ExchangeRate
 
 
 ## Properties
