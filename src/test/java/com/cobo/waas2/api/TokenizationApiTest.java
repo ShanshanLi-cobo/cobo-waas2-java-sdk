@@ -29,6 +29,7 @@ import com.cobo.waas2.model.TokenizationIssuedTokenRequest;
 import com.cobo.waas2.model.TokenizationListActivitiesResponse;
 import com.cobo.waas2.model.TokenizationListEnabledChainsResponse;
 import com.cobo.waas2.model.TokenizationListHoldingsResponse;
+import com.cobo.waas2.model.TokenizationListPermissionsResponse;
 import com.cobo.waas2.model.TokenizationListTokenInfoResponse;
 import com.cobo.waas2.model.TokenizationMintTokenRequest;
 import com.cobo.waas2.model.TokenizationOperationResponse;
@@ -40,6 +41,7 @@ import com.cobo.waas2.model.TokenizationTokenStandard;
 import com.cobo.waas2.model.TokenizationUnpauseTokenRequest;
 import com.cobo.waas2.model.TokenizationUpdateAllowlistAddressesRequest;
 import com.cobo.waas2.model.TokenizationUpdateBlocklistAddressesRequest;
+import com.cobo.waas2.model.TokenizationUpdatePermissionsRequest;
 import java.util.UUID;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -65,7 +67,7 @@ public class TokenizationApiTest {
     /**
      * Burn tokens
      *
-     * This operation burns tokens from a specified address. Creates a burn transaction that will decrease the token supply. 
+     * This operation burns tokens from a specified address. Creates a burn transaction that will decrease the token supply.  **Note**: This operation is not supported for CoboERC20Wrapper and SOLWrapper tokens. 
      *
      * @throws ApiException if the Api call fails
      */
@@ -241,6 +243,25 @@ public class TokenizationApiTest {
     }
 
     /**
+     * List token permissions
+     *
+     * This operation retrieves the permission settings for a tokenization contract. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void listTokenizationPermissionsTest() throws ApiException {
+        String tokenId = null;
+        String address = null;
+        Integer limit = null;
+        String after = null;
+        String before = null;
+        String direction = null;
+        TokenizationListPermissionsResponse response = api.listTokenizationPermissions(tokenId, address, limit, after, before, direction);
+        // TODO: test validations
+    }
+
+    /**
      * List supported chains for tokenization
      *
      * This operation retrieves a list of tokenization supported chains. 
@@ -249,17 +270,18 @@ public class TokenizationApiTest {
      */
     @Test
     public void listTokenizationSupportedChainsTest() throws ApiException {
+        TokenizationTokenStandard tokenStandard = null;
         Integer limit = null;
         String after = null;
         String before = null;
-        TokenizationListEnabledChainsResponse response = api.listTokenizationSupportedChains(limit, after, before);
+        TokenizationListEnabledChainsResponse response = api.listTokenizationSupportedChains(tokenStandard, limit, after, before);
         // TODO: test validations
     }
 
     /**
      * Mint tokens
      *
-     * This operation mints new tokens to a specified address. Creates a mint transaction that will increase the token supply. 
+     * This operation mints new tokens to a specified address. Creates a mint transaction that will increase the token supply.  **Note**: This operation is not supported for CoboERC20Wrapper and SOLWrapper tokens. 
      *
      * @throws ApiException if the Api call fails
      */
@@ -358,6 +380,21 @@ public class TokenizationApiTest {
         String tokenId = null;
         TokenizationUpdateBlocklistAddressesRequest tokenizationUpdateBlocklistAddressesRequest = null;
         TokenizationOperationResponse response = api.updateTokenizationBlocklistAddresses(tokenId, tokenizationUpdateBlocklistAddressesRequest);
+        // TODO: test validations
+    }
+
+    /**
+     * Update token permissions
+     *
+     * This operation updates permission settings for a tokenization contract. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void updateTokenizationPermissionsTest() throws ApiException {
+        String tokenId = null;
+        TokenizationUpdatePermissionsRequest tokenizationUpdatePermissionsRequest = null;
+        TokenizationOperationResponse response = api.updateTokenizationPermissions(tokenId, tokenizationUpdatePermissionsRequest);
         // TODO: test validations
     }
 

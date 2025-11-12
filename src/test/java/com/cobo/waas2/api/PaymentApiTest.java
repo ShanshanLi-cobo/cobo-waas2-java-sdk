@@ -20,6 +20,7 @@ import com.cobo.waas2.model.CreateCryptoAddressRequest;
 import com.cobo.waas2.model.CreateMerchantRequest;
 import com.cobo.waas2.model.CreateOrderLinkRequest;
 import com.cobo.waas2.model.CreatePaymentOrderRequest;
+import com.cobo.waas2.model.CreateRefundLinkRequest;
 import com.cobo.waas2.model.CreateRefundRequest;
 import com.cobo.waas2.model.CreateSettlementRequestRequest;
 import com.cobo.waas2.model.CryptoAddress;
@@ -173,6 +174,20 @@ public class PaymentApiTest {
     public void createRefundTest() throws ApiException {
         CreateRefundRequest createRefundRequest = null;
         Refund response = api.createRefund(createRefundRequest);
+        // TODO: test validations
+    }
+
+    /**
+     * Create refund link
+     *
+     * This operation creates a payment link for a refund. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void createRefundLinkTest() throws ApiException {
+        CreateRefundLinkRequest createRefundLinkRequest = null;
+        Link response = api.createRefundLink(createRefundLinkRequest);
         // TODO: test validations
     }
 
@@ -616,7 +631,7 @@ public class PaymentApiTest {
     /**
      * Update top-up address
      *
-     * This operation updates the dedicated top-up address assigned to a specific payer under a merchant on a specified chain. 
+     * This operation updates the dedicated top-up address assigned to a specific payer under a merchant on a specified chain.  &lt;Note&gt;   You can update the top-up address for a given payer a maximum of 10 times. If you exceed this limit, the API request will return an error. &lt;/Note&gt; 
      *
      * @throws ApiException if the Api call fails
      */

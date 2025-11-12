@@ -31,6 +31,7 @@ import com.cobo.waas2.model.CreateCryptoAddressRequest;
 import com.cobo.waas2.model.CreateMerchantRequest;
 import com.cobo.waas2.model.CreateOrderLinkRequest;
 import com.cobo.waas2.model.CreatePaymentOrderRequest;
+import com.cobo.waas2.model.CreateRefundLinkRequest;
 import com.cobo.waas2.model.CreateRefundRequest;
 import com.cobo.waas2.model.CreateSettlementRequestRequest;
 import com.cobo.waas2.model.CryptoAddress;
@@ -887,6 +888,119 @@ public class PaymentApi {
 
         okhttp3.Call localVarCall = createRefundValidateBeforeCall(createRefundRequest, _callback);
         Type localVarReturnType = new TypeToken<Refund>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createRefundLink
+     * @param createRefundLinkRequest The request body to create a payment link for a refund. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Order link created successfully. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createRefundLinkCall(CreateRefundLinkRequest createRefundLinkRequest, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = createRefundLinkRequest;
+
+        // create path and map variables
+        String localVarPath = "/payments/links/refunds";
+
+        List<Pair> localVarQueryParams = new ArrayList<>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<>();
+        Map<String, String> localVarHeaderParams = new HashMap<>();
+        Map<String, String> localVarCookieParams = new HashMap<>();
+        Map<String, Object> localVarFormParams = new HashMap<>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(null, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createRefundLinkValidateBeforeCall(CreateRefundLinkRequest createRefundLinkRequest, final ApiCallback _callback) throws ApiException {
+        return createRefundLinkCall(createRefundLinkRequest, _callback);
+
+    }
+
+    /**
+     * Create refund link
+     * This operation creates a payment link for a refund. 
+     * @param createRefundLinkRequest The request body to create a payment link for a refund. (optional)
+     * @return Link
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Order link created successfully. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public Link createRefundLink(CreateRefundLinkRequest createRefundLinkRequest) throws ApiException {
+        ApiResponse<Link> localVarResp = createRefundLinkWithHttpInfo(createRefundLinkRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Create refund link
+     * This operation creates a payment link for a refund. 
+     * @param createRefundLinkRequest The request body to create a payment link for a refund. (optional)
+     * @return ApiResponse&lt;Link&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Order link created successfully. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Link> createRefundLinkWithHttpInfo(CreateRefundLinkRequest createRefundLinkRequest) throws ApiException {
+        okhttp3.Call localVarCall = createRefundLinkValidateBeforeCall(createRefundLinkRequest, null);
+        Type localVarReturnType = new TypeToken<Link>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Create refund link (asynchronously)
+     * This operation creates a payment link for a refund. 
+     * @param createRefundLinkRequest The request body to create a payment link for a refund. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Order link created successfully. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createRefundLinkAsync(CreateRefundLinkRequest createRefundLinkRequest, final ApiCallback<Link> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createRefundLinkValidateBeforeCall(createRefundLinkRequest, _callback);
+        Type localVarReturnType = new TypeToken<Link>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -4598,7 +4712,7 @@ public class PaymentApi {
 
     /**
      * Update top-up address
-     * This operation updates the dedicated top-up address assigned to a specific payer under a merchant on a specified chain. 
+     * This operation updates the dedicated top-up address assigned to a specific payer under a merchant on a specified chain.  &lt;Note&gt;   You can update the top-up address for a given payer a maximum of 10 times. If you exceed this limit, the API request will return an error. &lt;/Note&gt; 
      * @param updateTopUpAddress The request body to update top-up address. (optional)
      * @return TopUpAddress
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4617,7 +4731,7 @@ public class PaymentApi {
 
     /**
      * Update top-up address
-     * This operation updates the dedicated top-up address assigned to a specific payer under a merchant on a specified chain. 
+     * This operation updates the dedicated top-up address assigned to a specific payer under a merchant on a specified chain.  &lt;Note&gt;   You can update the top-up address for a given payer a maximum of 10 times. If you exceed this limit, the API request will return an error. &lt;/Note&gt; 
      * @param updateTopUpAddress The request body to update top-up address. (optional)
      * @return ApiResponse&lt;TopUpAddress&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4637,7 +4751,7 @@ public class PaymentApi {
 
     /**
      * Update top-up address (asynchronously)
-     * This operation updates the dedicated top-up address assigned to a specific payer under a merchant on a specified chain. 
+     * This operation updates the dedicated top-up address assigned to a specific payer under a merchant on a specified chain.  &lt;Note&gt;   You can update the top-up address for a given payer a maximum of 10 times. If you exceed this limit, the API request will return an error. &lt;/Note&gt; 
      * @param updateTopUpAddress The request body to update top-up address. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

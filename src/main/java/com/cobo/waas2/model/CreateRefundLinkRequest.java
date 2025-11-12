@@ -12,16 +12,15 @@
 package com.cobo.waas2.model;
 
 import java.util.Objects;
-import com.cobo.waas2.model.TokenizationTokenPermission;
+import com.cobo.waas2.model.LinkDisplayInfo;
+import com.cobo.waas2.model.RefundLinkBusinessInfo;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -48,67 +47,59 @@ import java.util.Set;
 import com.cobo.waas2.JSON;
 
 /**
- * TokenizationTokenPermissionsResponse
+ * CreateRefundLinkRequest
  */
 @javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
-public class TokenizationTokenPermissionsResponse {
-  public static final String SERIALIZED_NAME_PERMISSIONS = "permissions";
-  @SerializedName(SERIALIZED_NAME_PERMISSIONS)
-  private List<TokenizationTokenPermission> permissions = new ArrayList<>();
+public class CreateRefundLinkRequest {
+  public static final String SERIALIZED_NAME_BUSINESS_INFO = "business_info";
+  @SerializedName(SERIALIZED_NAME_BUSINESS_INFO)
+  private RefundLinkBusinessInfo businessInfo;
 
-  public static final String SERIALIZED_NAME_TOTAL_COUNT = "total_count";
-  @SerializedName(SERIALIZED_NAME_TOTAL_COUNT)
-  private Integer totalCount;
+  public static final String SERIALIZED_NAME_DISPLAY_INFO = "display_info";
+  @SerializedName(SERIALIZED_NAME_DISPLAY_INFO)
+  private LinkDisplayInfo displayInfo;
 
-  public TokenizationTokenPermissionsResponse() {
+  public CreateRefundLinkRequest() {
   }
 
-  public TokenizationTokenPermissionsResponse permissions(List<TokenizationTokenPermission> permissions) {
-    this.permissions = permissions;
-    return this;
-  }
-
-  public TokenizationTokenPermissionsResponse addPermissionsItem(TokenizationTokenPermission permissionsItem) {
-    if (this.permissions == null) {
-      this.permissions = new ArrayList<>();
-    }
-    this.permissions.add(permissionsItem);
+  public CreateRefundLinkRequest businessInfo(RefundLinkBusinessInfo businessInfo) {
+    this.businessInfo = businessInfo;
     return this;
   }
 
    /**
-   * List of available token permissions.
-   * @return permissions
+   * Get businessInfo
+   * @return businessInfo
   **/
   @javax.annotation.Nonnull
-  public List<TokenizationTokenPermission> getPermissions() {
-    return permissions;
+  public RefundLinkBusinessInfo getBusinessInfo() {
+    return businessInfo;
   }
 
-  public void setPermissions(List<TokenizationTokenPermission> permissions) {
-    this.permissions = permissions;
+  public void setBusinessInfo(RefundLinkBusinessInfo businessInfo) {
+    this.businessInfo = businessInfo;
   }
 
 
-  public TokenizationTokenPermissionsResponse totalCount(Integer totalCount) {
-    this.totalCount = totalCount;
+  public CreateRefundLinkRequest displayInfo(LinkDisplayInfo displayInfo) {
+    this.displayInfo = displayInfo;
     return this;
   }
 
    /**
-   * Total number of permissions.
-   * @return totalCount
+   * Get displayInfo
+   * @return displayInfo
   **/
-  @javax.annotation.Nonnull
-  public Integer getTotalCount() {
-    return totalCount;
+  @javax.annotation.Nullable
+  public LinkDisplayInfo getDisplayInfo() {
+    return displayInfo;
   }
 
-  public void setTotalCount(Integer totalCount) {
-    this.totalCount = totalCount;
+  public void setDisplayInfo(LinkDisplayInfo displayInfo) {
+    this.displayInfo = displayInfo;
   }
 
   /**
@@ -124,9 +115,9 @@ public class TokenizationTokenPermissionsResponse {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the TokenizationTokenPermissionsResponse instance itself
+   * @return the CreateRefundLinkRequest instance itself
    */
-  public TokenizationTokenPermissionsResponse putAdditionalProperty(String key, Object value) {
+  public CreateRefundLinkRequest putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -165,23 +156,23 @@ public class TokenizationTokenPermissionsResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    TokenizationTokenPermissionsResponse tokenizationTokenPermissionsResponse = (TokenizationTokenPermissionsResponse) o;
-    return Objects.equals(this.permissions, tokenizationTokenPermissionsResponse.permissions) &&
-        Objects.equals(this.totalCount, tokenizationTokenPermissionsResponse.totalCount)&&
-        Objects.equals(this.additionalProperties, tokenizationTokenPermissionsResponse.additionalProperties);
+    CreateRefundLinkRequest createRefundLinkRequest = (CreateRefundLinkRequest) o;
+    return Objects.equals(this.businessInfo, createRefundLinkRequest.businessInfo) &&
+        Objects.equals(this.displayInfo, createRefundLinkRequest.displayInfo)&&
+        Objects.equals(this.additionalProperties, createRefundLinkRequest.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(permissions, totalCount, additionalProperties);
+    return Objects.hash(businessInfo, displayInfo, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class TokenizationTokenPermissionsResponse {\n");
-    sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
-    sb.append("    totalCount: ").append(toIndentedString(totalCount)).append("\n");
+    sb.append("class CreateRefundLinkRequest {\n");
+    sb.append("    businessInfo: ").append(toIndentedString(businessInfo)).append("\n");
+    sb.append("    displayInfo: ").append(toIndentedString(displayInfo)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -205,61 +196,56 @@ public class TokenizationTokenPermissionsResponse {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("permissions");
-    openapiFields.add("total_count");
+    openapiFields.add("business_info");
+    openapiFields.add("display_info");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("permissions");
-    openapiRequiredFields.add("total_count");
+    openapiRequiredFields.add("business_info");
   }
 
  /**
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to TokenizationTokenPermissionsResponse
+  * @throws IOException if the JSON Element is invalid with respect to CreateRefundLinkRequest
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!TokenizationTokenPermissionsResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in TokenizationTokenPermissionsResponse is not found in the empty JSON string", TokenizationTokenPermissionsResponse.openapiRequiredFields.toString()));
+        if (!CreateRefundLinkRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in CreateRefundLinkRequest is not found in the empty JSON string", CreateRefundLinkRequest.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : TokenizationTokenPermissionsResponse.openapiRequiredFields) {
+      for (String requiredField : CreateRefundLinkRequest.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // ensure the json data is an array
-      if (!jsonObj.get("permissions").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `permissions` to be an array in the JSON string but got `%s`", jsonObj.get("permissions").toString()));
+      // validate the required field `business_info`
+      RefundLinkBusinessInfo.validateJsonElement(jsonObj.get("business_info"));
+      // validate the optional field `display_info`
+      if (jsonObj.get("display_info") != null && !jsonObj.get("display_info").isJsonNull()) {
+        LinkDisplayInfo.validateJsonElement(jsonObj.get("display_info"));
       }
-
-      JsonArray jsonArraypermissions = jsonObj.getAsJsonArray("permissions");
-      // validate the required field `permissions` (array)
-      for (int i = 0; i < jsonArraypermissions.size(); i++) {
-        TokenizationTokenPermission.validateJsonElement(jsonArraypermissions.get(i));
-      };
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!TokenizationTokenPermissionsResponse.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'TokenizationTokenPermissionsResponse' and its subtypes
+       if (!CreateRefundLinkRequest.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CreateRefundLinkRequest' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<TokenizationTokenPermissionsResponse> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(TokenizationTokenPermissionsResponse.class));
+       final TypeAdapter<CreateRefundLinkRequest> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CreateRefundLinkRequest.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<TokenizationTokenPermissionsResponse>() {
+       return (TypeAdapter<T>) new TypeAdapter<CreateRefundLinkRequest>() {
            @Override
-           public void write(JsonWriter out, TokenizationTokenPermissionsResponse value) throws IOException {
+           public void write(JsonWriter out, CreateRefundLinkRequest value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -289,12 +275,12 @@ public class TokenizationTokenPermissionsResponse {
            }
 
            @Override
-           public TokenizationTokenPermissionsResponse read(JsonReader in) throws IOException {
+           public CreateRefundLinkRequest read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             TokenizationTokenPermissionsResponse instance = thisAdapter.fromJsonTree(jsonObj);
+             CreateRefundLinkRequest instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -321,18 +307,18 @@ public class TokenizationTokenPermissionsResponse {
   }
 
  /**
-  * Create an instance of TokenizationTokenPermissionsResponse given an JSON string
+  * Create an instance of CreateRefundLinkRequest given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of TokenizationTokenPermissionsResponse
-  * @throws IOException if the JSON string is invalid with respect to TokenizationTokenPermissionsResponse
+  * @return An instance of CreateRefundLinkRequest
+  * @throws IOException if the JSON string is invalid with respect to CreateRefundLinkRequest
   */
-  public static TokenizationTokenPermissionsResponse fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, TokenizationTokenPermissionsResponse.class);
+  public static CreateRefundLinkRequest fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, CreateRefundLinkRequest.class);
   }
 
  /**
-  * Convert an instance of TokenizationTokenPermissionsResponse to an JSON string
+  * Convert an instance of CreateRefundLinkRequest to an JSON string
   *
   * @return JSON string
   */

@@ -51,7 +51,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.cobo.waas2</groupId>
   <artifactId>cobo-waas2</artifactId>
-  <version>1.25.0</version>
+  <version>1.26.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -67,7 +67,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "com.cobo.waas2:cobo-waas2:1.25.0"
+     implementation "com.cobo.waas2:cobo-waas2:1.26.0"
   }
 ```
 
@@ -95,7 +95,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/cobo-waas2-1.25.0.jar`
+* `target/cobo-waas2-1.26.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -236,7 +236,7 @@ Class | Method | HTTP request | Description
 *DevelopersWebhooksApi* | [**triggerTestWebhookEvent**](docs/DevelopersWebhooksApi.md#triggerTestWebhookEvent) | **POST** /webhooks/events/trigger | Trigger test event
 *DevelopersWebhooksApi* | [**updateWebhookEndpointById**](docs/DevelopersWebhooksApi.md#updateWebhookEndpointById) | **PUT** /webhooks/endpoints/{endpoint_id} | Update webhook endpoint
 *FeeStationApi* | [**checkFeeStationUsage**](docs/FeeStationApi.md#checkFeeStationUsage) | **POST** /fee_station/check_fee_station_usage | Check Fee Station usage
-*FeeStationApi* | [**estimateFeeStationFee**](docs/FeeStationApi.md#estimateFeeStationFee) | **POST** /fee_station/transactions/estimate_fee | Estimate fee for Fee Station transaction
+*FeeStationApi* | [**estimateFeeStationFee**](docs/FeeStationApi.md#estimateFeeStationFee) | **POST** /fee_station/transactions/estimate_fee | Estimate transaction fee
 *FeeStationApi* | [**getFeeStationTransactionById**](docs/FeeStationApi.md#getFeeStationTransactionById) | **GET** /fee_station/transactions/{transaction_id} | Get Fee Station transaction information
 *FeeStationApi* | [**listFeeStationAddresses**](docs/FeeStationApi.md#listFeeStationAddresses) | **GET** /fee_station/addresses | List Fee Station addresses
 *FeeStationApi* | [**listFeeStationTransactions**](docs/FeeStationApi.md#listFeeStationTransactions) | **GET** /fee_station/transactions | List all Fee Station transactions
@@ -253,6 +253,7 @@ Class | Method | HTTP request | Description
 *PaymentApi* | [**createOrderLink**](docs/PaymentApi.md#createOrderLink) | **POST** /payments/links/orders | Create order link
 *PaymentApi* | [**createPaymentOrder**](docs/PaymentApi.md#createPaymentOrder) | **POST** /payments/orders | Create pay-in order
 *PaymentApi* | [**createRefund**](docs/PaymentApi.md#createRefund) | **POST** /payments/refunds | Create refund order
+*PaymentApi* | [**createRefundLink**](docs/PaymentApi.md#createRefundLink) | **POST** /payments/links/refunds | Create refund link
 *PaymentApi* | [**createSettlementRequest**](docs/PaymentApi.md#createSettlementRequest) | **POST** /payments/settlement_requests | Create settlement request
 *PaymentApi* | [**deleteCryptoAddress**](docs/PaymentApi.md#deleteCryptoAddress) | **POST** /payments/crypto_addresses/{crypto_address_id}/delete | Delete crypto address
 *PaymentApi* | [**getExchangeRate**](docs/PaymentApi.md#getExchangeRate) | **GET** /payments/exchange_rates/{token_id}/{currency} | Get exchange rate
@@ -325,6 +326,7 @@ Class | Method | HTTP request | Description
 *TokenizationApi* | [**listTokenizationAllowlistAddresses**](docs/TokenizationApi.md#listTokenizationAllowlistAddresses) | **GET** /tokenization/tokens/{token_id}/allowlist/addresses | List addresses on allowlist
 *TokenizationApi* | [**listTokenizationBlocklistAddresses**](docs/TokenizationApi.md#listTokenizationBlocklistAddresses) | **GET** /tokenization/tokens/{token_id}/blocklist/addresses | List addresses on blocklist
 *TokenizationApi* | [**listTokenizationHoldings**](docs/TokenizationApi.md#listTokenizationHoldings) | **GET** /tokenization/tokens/{token_id}/holdings | Get token holdings information
+*TokenizationApi* | [**listTokenizationPermissions**](docs/TokenizationApi.md#listTokenizationPermissions) | **GET** /tokenization/tokens/{token_id}/permissions | List token permissions
 *TokenizationApi* | [**listTokenizationSupportedChains**](docs/TokenizationApi.md#listTokenizationSupportedChains) | **GET** /tokenization/enabled_chains | List supported chains for tokenization
 *TokenizationApi* | [**mintTokenization**](docs/TokenizationApi.md#mintTokenization) | **POST** /tokenization/tokens/{token_id}/mint | Mint tokens
 *TokenizationApi* | [**pauseTokenization**](docs/TokenizationApi.md#pauseTokenization) | **POST** /tokenization/tokens/{token_id}/pause | Pause token contract
@@ -333,6 +335,7 @@ Class | Method | HTTP request | Description
 *TokenizationApi* | [**updateTokenizationAllowlistActivation**](docs/TokenizationApi.md#updateTokenizationAllowlistActivation) | **POST** /tokenization/tokens/{token_id}/allowlist/activation | Activate or deactivate allowlist
 *TokenizationApi* | [**updateTokenizationAllowlistAddresses**](docs/TokenizationApi.md#updateTokenizationAllowlistAddresses) | **POST** /tokenization/tokens/{token_id}/allowlist/addresses | Update addresses on allowlist
 *TokenizationApi* | [**updateTokenizationBlocklistAddresses**](docs/TokenizationApi.md#updateTokenizationBlocklistAddresses) | **POST** /tokenization/tokens/{token_id}/blocklist/addresses | Update addresses on blocklist
+*TokenizationApi* | [**updateTokenizationPermissions**](docs/TokenizationApi.md#updateTokenizationPermissions) | **POST** /tokenization/tokens/{token_id}/permissions | Update token permissions
 *TransactionsApi* | [**broadcastSignedTransactions**](docs/TransactionsApi.md#broadcastSignedTransactions) | **POST** /transactions/broadcast | Broadcast signed transactions
 *TransactionsApi* | [**cancelTransactionById**](docs/TransactionsApi.md#cancelTransactionById) | **POST** /transactions/{transaction_id}/cancel | Cancel transaction
 *TransactionsApi* | [**checkLoopTransfers**](docs/TransactionsApi.md#checkLoopTransfers) | **GET** /transactions/check_loop_transfers | Check Cobo Loop transfers
@@ -529,6 +532,7 @@ Class | Method | HTTP request | Description
  - [CreatePaymentOrderRequest](docs/CreatePaymentOrderRequest.md)
  - [CreatePrimeBrokerAddress201Response](docs/CreatePrimeBrokerAddress201Response.md)
  - [CreatePrimeBrokerAddressRequest](docs/CreatePrimeBrokerAddressRequest.md)
+ - [CreateRefundLinkRequest](docs/CreateRefundLinkRequest.md)
  - [CreateRefundRequest](docs/CreateRefundRequest.md)
  - [CreateSafeWalletParams](docs/CreateSafeWalletParams.md)
  - [CreateSettlement](docs/CreateSettlement.md)
@@ -625,6 +629,7 @@ Class | Method | HTTP request | Description
  - [FeeStationCheckFeeStationUsageResponse](docs/FeeStationCheckFeeStationUsageResponse.md)
  - [FeeStationDestination](docs/FeeStationDestination.md)
  - [FeeStationGasStationType](docs/FeeStationGasStationType.md)
+ - [FeeStationSponsorTransactionDescription](docs/FeeStationSponsorTransactionDescription.md)
  - [FeeStationTransactionType](docs/FeeStationTransactionType.md)
  - [FeeStationTransfer](docs/FeeStationTransfer.md)
  - [FeeType](docs/FeeType.md)
@@ -779,6 +784,7 @@ Class | Method | HTTP request | Description
  - [RefreshTokenRequest](docs/RefreshTokenRequest.md)
  - [Refund](docs/Refund.md)
  - [RefundDisposition](docs/RefundDisposition.md)
+ - [RefundLinkBusinessInfo](docs/RefundLinkBusinessInfo.md)
  - [RefundStatus](docs/RefundStatus.md)
  - [RefundType](docs/RefundType.md)
  - [ReplaceType](docs/ReplaceType.md)
@@ -921,6 +927,9 @@ Class | Method | HTTP request | Description
  - [TokenizationContractCallRequest](docs/TokenizationContractCallRequest.md)
  - [TokenizationContractCallType](docs/TokenizationContractCallType.md)
  - [TokenizationERC20TokenParams](docs/TokenizationERC20TokenParams.md)
+ - [TokenizationERC20TokenPermissionParams](docs/TokenizationERC20TokenPermissionParams.md)
+ - [TokenizationERC20WrappedTokenParams](docs/TokenizationERC20WrappedTokenParams.md)
+ - [TokenizationERC20WrappedTokenPermissionParams](docs/TokenizationERC20WrappedTokenPermissionParams.md)
  - [TokenizationEstimateFeeRequest](docs/TokenizationEstimateFeeRequest.md)
  - [TokenizationEstimateFeeRequestOperationParams](docs/TokenizationEstimateFeeRequestOperationParams.md)
  - [TokenizationEvmContractCallParams](docs/TokenizationEvmContractCallParams.md)
@@ -932,6 +941,8 @@ Class | Method | HTTP request | Description
  - [TokenizationListActivitiesResponse](docs/TokenizationListActivitiesResponse.md)
  - [TokenizationListEnabledChainsResponse](docs/TokenizationListEnabledChainsResponse.md)
  - [TokenizationListHoldingsResponse](docs/TokenizationListHoldingsResponse.md)
+ - [TokenizationListPermissionsResponse](docs/TokenizationListPermissionsResponse.md)
+ - [TokenizationListPermissionsResponseDataInner](docs/TokenizationListPermissionsResponseDataInner.md)
  - [TokenizationListTokenInfoResponse](docs/TokenizationListTokenInfoResponse.md)
  - [TokenizationMintEstimateFeeParams](docs/TokenizationMintEstimateFeeParams.md)
  - [TokenizationMintTokenParams](docs/TokenizationMintTokenParams.md)
@@ -944,23 +955,25 @@ Class | Method | HTTP request | Description
  - [TokenizationPauseEstimateFeeParams](docs/TokenizationPauseEstimateFeeParams.md)
  - [TokenizationPauseTokenParams](docs/TokenizationPauseTokenParams.md)
  - [TokenizationPauseTokenRequest](docs/TokenizationPauseTokenRequest.md)
+ - [TokenizationPermissionAction](docs/TokenizationPermissionAction.md)
  - [TokenizationSOLTokenParams](docs/TokenizationSOLTokenParams.md)
+ - [TokenizationSOLWrappedTokenParams](docs/TokenizationSOLWrappedTokenParams.md)
  - [TokenizationSolContractCallParams](docs/TokenizationSolContractCallParams.md)
  - [TokenizationSolTokenPermissionParams](docs/TokenizationSolTokenPermissionParams.md)
+ - [TokenizationSolWrappedTokenPermissionParams](docs/TokenizationSolWrappedTokenPermissionParams.md)
  - [TokenizationStatus](docs/TokenizationStatus.md)
  - [TokenizationToggleAllowlistEstimateFeeParams](docs/TokenizationToggleAllowlistEstimateFeeParams.md)
  - [TokenizationTokenDetailInfo](docs/TokenizationTokenDetailInfo.md)
  - [TokenizationTokenInfo](docs/TokenizationTokenInfo.md)
  - [TokenizationTokenOperationSource](docs/TokenizationTokenOperationSource.md)
  - [TokenizationTokenPermission](docs/TokenizationTokenPermission.md)
- - [TokenizationTokenPermissionParams](docs/TokenizationTokenPermissionParams.md)
  - [TokenizationTokenPermissionType](docs/TokenizationTokenPermissionType.md)
- - [TokenizationTokenPermissionsResponse](docs/TokenizationTokenPermissionsResponse.md)
  - [TokenizationTokenStandard](docs/TokenizationTokenStandard.md)
  - [TokenizationUnpauseEstimateFeeParams](docs/TokenizationUnpauseEstimateFeeParams.md)
  - [TokenizationUnpauseTokenParams](docs/TokenizationUnpauseTokenParams.md)
  - [TokenizationUnpauseTokenRequest](docs/TokenizationUnpauseTokenRequest.md)
  - [TokenizationUpdateAddressAction](docs/TokenizationUpdateAddressAction.md)
+ - [TokenizationUpdateAddressPermissions](docs/TokenizationUpdateAddressPermissions.md)
  - [TokenizationUpdateAllowlistAddressesEstimateFeeParams](docs/TokenizationUpdateAllowlistAddressesEstimateFeeParams.md)
  - [TokenizationUpdateAllowlistAddressesParams](docs/TokenizationUpdateAllowlistAddressesParams.md)
  - [TokenizationUpdateAllowlistAddressesParamsAddressesInner](docs/TokenizationUpdateAllowlistAddressesParamsAddressesInner.md)
@@ -969,6 +982,9 @@ Class | Method | HTTP request | Description
  - [TokenizationUpdateBlocklistAddressesParams](docs/TokenizationUpdateBlocklistAddressesParams.md)
  - [TokenizationUpdateBlocklistAddressesParamsAddressesInner](docs/TokenizationUpdateBlocklistAddressesParamsAddressesInner.md)
  - [TokenizationUpdateBlocklistAddressesRequest](docs/TokenizationUpdateBlocklistAddressesRequest.md)
+ - [TokenizationUpdatePermissionsEstimateFeeParams](docs/TokenizationUpdatePermissionsEstimateFeeParams.md)
+ - [TokenizationUpdatePermissionsParams](docs/TokenizationUpdatePermissionsParams.md)
+ - [TokenizationUpdatePermissionsRequest](docs/TokenizationUpdatePermissionsRequest.md)
  - [TokenizationWeb3OperationSource](docs/TokenizationWeb3OperationSource.md)
  - [TokensEventData](docs/TokensEventData.md)
  - [TopUpAddress](docs/TopUpAddress.md)
