@@ -12,12 +12,15 @@
 package com.cobo.waas2.model;
 
 import com.cobo.waas2.model.ContractCallDestinationType;
+import com.cobo.waas2.model.CosmosContractCallDestination;
+import com.cobo.waas2.model.CosmosContractCallMessage;
 import com.cobo.waas2.model.EvmContractCallDestination;
 import com.cobo.waas2.model.SolContractCallAddressLookupTableAccount;
 import com.cobo.waas2.model.SolContractCallDestination;
 import com.cobo.waas2.model.SolContractCallInstruction;
 import com.cobo.waas2.model.StellarContractCallContractParam;
 import com.cobo.waas2.model.StellarContractCallDestination;
+import com.cobo.waas2.model.TronContractCallDestination;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -90,6 +93,14 @@ public class ContractCallDestinationTest {
     @Test
     public void addressLookupTableAccountsTest() {
         // TODO: test addressLookupTableAccounts
+    }
+
+    /**
+     * Test the property 'cosmosMessages'
+     */
+    @Test
+    public void cosmosMessagesTest() {
+        // TODO: test cosmosMessages
     }
 
     /**

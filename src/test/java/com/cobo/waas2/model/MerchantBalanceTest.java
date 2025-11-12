@@ -100,4 +100,12 @@ public class MerchantBalanceTest {
         // TODO: test availableBalance
     }
 
+    /**
+     * Test the property 'lockedBalance'
+     */
+    @Test
+    public void lockedBalanceTest() {
+        // TODO: test lockedBalance
+    }
+
 }

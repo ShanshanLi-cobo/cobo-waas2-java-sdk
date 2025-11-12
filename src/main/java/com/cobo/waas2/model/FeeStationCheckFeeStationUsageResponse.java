@@ -46,7 +46,7 @@ import java.util.Set;
 import com.cobo.waas2.JSON;
 
 /**
- * The Fee Station usage evaluation result for the transfer request.
+ * The fee station evaluation result for the transfer request.
  */
 @javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
@@ -56,6 +56,10 @@ public class FeeStationCheckFeeStationUsageResponse {
   public static final String SERIALIZED_NAME_TOKEN_ID = "token_id";
   @SerializedName(SERIALIZED_NAME_TOKEN_ID)
   private String tokenId;
+
+  public static final String SERIALIZED_NAME_BALANCE = "balance";
+  @SerializedName(SERIALIZED_NAME_BALANCE)
+  private String balance;
 
   public static final String SERIALIZED_NAME_GAS_STATION_TYPE = "gas_station_type";
   @SerializedName(SERIALIZED_NAME_GAS_STATION_TYPE)
@@ -69,10 +73,6 @@ public class FeeStationCheckFeeStationUsageResponse {
   @SerializedName(SERIALIZED_NAME_IS_BALANCE_SUFFICIENT)
   private Boolean isBalanceSufficient;
 
-  public static final String SERIALIZED_NAME_BALANCE = "balance";
-  @SerializedName(SERIALIZED_NAME_BALANCE)
-  private String balance;
-
   public static final String SERIALIZED_NAME_TOTAL_FEE_AMOUNT = "total_fee_amount";
   @SerializedName(SERIALIZED_NAME_TOTAL_FEE_AMOUNT)
   private String totalFeeAmount;
@@ -84,6 +84,10 @@ public class FeeStationCheckFeeStationUsageResponse {
   public static final String SERIALIZED_NAME_SPONSORED_FEE_AMOUNT = "sponsored_fee_amount";
   @SerializedName(SERIALIZED_NAME_SPONSORED_FEE_AMOUNT)
   private String sponsoredFeeAmount;
+
+  public static final String SERIALIZED_NAME_SPONSORED_TOKEN_ID = "sponsored_token_id";
+  @SerializedName(SERIALIZED_NAME_SPONSORED_TOKEN_ID)
+  private String sponsoredTokenId;
 
   public FeeStationCheckFeeStationUsageResponse() {
   }
@@ -104,6 +108,25 @@ public class FeeStationCheckFeeStationUsageResponse {
 
   public void setTokenId(String tokenId) {
     this.tokenId = tokenId;
+  }
+
+
+  public FeeStationCheckFeeStationUsageResponse balance(String balance) {
+    this.balance = balance;
+    return this;
+  }
+
+   /**
+   * The current token balance available in the fee station.
+   * @return balance
+  **/
+  @javax.annotation.Nonnull
+  public String getBalance() {
+    return balance;
+  }
+
+  public void setBalance(String balance) {
+    this.balance = balance;
   }
 
 
@@ -132,7 +155,7 @@ public class FeeStationCheckFeeStationUsageResponse {
   }
 
    /**
-   * Indicates whether Fee Station is applied for this transfer request.
+   * Indicates whether the fee station is applied for this transfer request.
    * @return isFeeStationApplicable
   **/
   @javax.annotation.Nonnull
@@ -151,7 +174,7 @@ public class FeeStationCheckFeeStationUsageResponse {
   }
 
    /**
-   * If Fee Station is used, indicates whether its balance is sufficient to cover the required gas fee.
+   * If the fee station is used, indicates whether its balance is sufficient to cover the required gas fee.
    * @return isBalanceSufficient
   **/
   @javax.annotation.Nonnull
@@ -161,25 +184,6 @@ public class FeeStationCheckFeeStationUsageResponse {
 
   public void setIsBalanceSufficient(Boolean isBalanceSufficient) {
     this.isBalanceSufficient = isBalanceSufficient;
-  }
-
-
-  public FeeStationCheckFeeStationUsageResponse balance(String balance) {
-    this.balance = balance;
-    return this;
-  }
-
-   /**
-   * The current token balance available in Fee Station.
-   * @return balance
-  **/
-  @javax.annotation.Nonnull
-  public String getBalance() {
-    return balance;
-  }
-
-  public void setBalance(String balance) {
-    this.balance = balance;
   }
 
 
@@ -208,7 +212,7 @@ public class FeeStationCheckFeeStationUsageResponse {
   }
 
    /**
-   * Indicates whether USDT (U) sponsorship is applied when Fee Station balance is insufficient.
+   * Indicates whether USDT (U) sponsorship is applied when the fee station balance is insufficient.
    * @return isSponsorApplicable
   **/
   @javax.annotation.Nonnull
@@ -237,6 +241,25 @@ public class FeeStationCheckFeeStationUsageResponse {
 
   public void setSponsoredFeeAmount(String sponsoredFeeAmount) {
     this.sponsoredFeeAmount = sponsoredFeeAmount;
+  }
+
+
+  public FeeStationCheckFeeStationUsageResponse sponsoredTokenId(String sponsoredTokenId) {
+    this.sponsoredTokenId = sponsoredTokenId;
+    return this;
+  }
+
+   /**
+   * The token ID used to sponsor the gas fee.
+   * @return sponsoredTokenId
+  **/
+  @javax.annotation.Nullable
+  public String getSponsoredTokenId() {
+    return sponsoredTokenId;
+  }
+
+  public void setSponsoredTokenId(String sponsoredTokenId) {
+    this.sponsoredTokenId = sponsoredTokenId;
   }
 
   /**
@@ -295,19 +318,20 @@ public class FeeStationCheckFeeStationUsageResponse {
     }
     FeeStationCheckFeeStationUsageResponse feeStationCheckFeeStationUsageResponse = (FeeStationCheckFeeStationUsageResponse) o;
     return Objects.equals(this.tokenId, feeStationCheckFeeStationUsageResponse.tokenId) &&
+        Objects.equals(this.balance, feeStationCheckFeeStationUsageResponse.balance) &&
         Objects.equals(this.gasStationType, feeStationCheckFeeStationUsageResponse.gasStationType) &&
         Objects.equals(this.isFeeStationApplicable, feeStationCheckFeeStationUsageResponse.isFeeStationApplicable) &&
         Objects.equals(this.isBalanceSufficient, feeStationCheckFeeStationUsageResponse.isBalanceSufficient) &&
-        Objects.equals(this.balance, feeStationCheckFeeStationUsageResponse.balance) &&
         Objects.equals(this.totalFeeAmount, feeStationCheckFeeStationUsageResponse.totalFeeAmount) &&
         Objects.equals(this.isSponsorApplicable, feeStationCheckFeeStationUsageResponse.isSponsorApplicable) &&
-        Objects.equals(this.sponsoredFeeAmount, feeStationCheckFeeStationUsageResponse.sponsoredFeeAmount)&&
+        Objects.equals(this.sponsoredFeeAmount, feeStationCheckFeeStationUsageResponse.sponsoredFeeAmount) &&
+        Objects.equals(this.sponsoredTokenId, feeStationCheckFeeStationUsageResponse.sponsoredTokenId)&&
         Objects.equals(this.additionalProperties, feeStationCheckFeeStationUsageResponse.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(tokenId, gasStationType, isFeeStationApplicable, isBalanceSufficient, balance, totalFeeAmount, isSponsorApplicable, sponsoredFeeAmount, additionalProperties);
+    return Objects.hash(tokenId, balance, gasStationType, isFeeStationApplicable, isBalanceSufficient, totalFeeAmount, isSponsorApplicable, sponsoredFeeAmount, sponsoredTokenId, additionalProperties);
   }
 
   @Override
@@ -315,13 +339,14 @@ public class FeeStationCheckFeeStationUsageResponse {
     StringBuilder sb = new StringBuilder();
     sb.append("class FeeStationCheckFeeStationUsageResponse {\n");
     sb.append("    tokenId: ").append(toIndentedString(tokenId)).append("\n");
+    sb.append("    balance: ").append(toIndentedString(balance)).append("\n");
     sb.append("    gasStationType: ").append(toIndentedString(gasStationType)).append("\n");
     sb.append("    isFeeStationApplicable: ").append(toIndentedString(isFeeStationApplicable)).append("\n");
     sb.append("    isBalanceSufficient: ").append(toIndentedString(isBalanceSufficient)).append("\n");
-    sb.append("    balance: ").append(toIndentedString(balance)).append("\n");
     sb.append("    totalFeeAmount: ").append(toIndentedString(totalFeeAmount)).append("\n");
     sb.append("    isSponsorApplicable: ").append(toIndentedString(isSponsorApplicable)).append("\n");
     sb.append("    sponsoredFeeAmount: ").append(toIndentedString(sponsoredFeeAmount)).append("\n");
+    sb.append("    sponsoredTokenId: ").append(toIndentedString(sponsoredTokenId)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -346,21 +371,22 @@ public class FeeStationCheckFeeStationUsageResponse {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("token_id");
+    openapiFields.add("balance");
     openapiFields.add("gas_station_type");
     openapiFields.add("is_fee_station_applicable");
     openapiFields.add("is_balance_sufficient");
-    openapiFields.add("balance");
     openapiFields.add("total_fee_amount");
     openapiFields.add("is_sponsor_applicable");
     openapiFields.add("sponsored_fee_amount");
+    openapiFields.add("sponsored_token_id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("token_id");
+    openapiRequiredFields.add("balance");
     openapiRequiredFields.add("gas_station_type");
     openapiRequiredFields.add("is_fee_station_applicable");
     openapiRequiredFields.add("is_balance_sufficient");
-    openapiRequiredFields.add("balance");
     openapiRequiredFields.add("total_fee_amount");
     openapiRequiredFields.add("is_sponsor_applicable");
     openapiRequiredFields.add("sponsored_fee_amount");
@@ -389,16 +415,19 @@ public class FeeStationCheckFeeStationUsageResponse {
       if (!jsonObj.get("token_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `token_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("token_id").toString()));
       }
-      // validate the required field `gas_station_type`
-      FeeStationGasStationType.validateJsonElement(jsonObj.get("gas_station_type"));
       if (!jsonObj.get("balance").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `balance` to be a primitive type in the JSON string but got `%s`", jsonObj.get("balance").toString()));
       }
+      // validate the required field `gas_station_type`
+      FeeStationGasStationType.validateJsonElement(jsonObj.get("gas_station_type"));
       if (!jsonObj.get("total_fee_amount").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `total_fee_amount` to be a primitive type in the JSON string but got `%s`", jsonObj.get("total_fee_amount").toString()));
       }
       if (!jsonObj.get("sponsored_fee_amount").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `sponsored_fee_amount` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sponsored_fee_amount").toString()));
+      }
+      if ((jsonObj.get("sponsored_token_id") != null && !jsonObj.get("sponsored_token_id").isJsonNull()) && !jsonObj.get("sponsored_token_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `sponsored_token_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sponsored_token_id").toString()));
       }
   }
 

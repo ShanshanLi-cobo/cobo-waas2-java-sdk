@@ -76,6 +76,10 @@ public class PspBalance {
   @SerializedName(SERIALIZED_NAME_AVAILABLE_BALANCE)
   private String availableBalance;
 
+  public static final String SERIALIZED_NAME_LOCKED_BALANCE = "locked_balance";
+  @SerializedName(SERIALIZED_NAME_LOCKED_BALANCE)
+  private String lockedBalance;
+
   public PspBalance() {
   }
 
@@ -85,7 +89,7 @@ public class PspBalance {
   }
 
    /**
-   * The token ID, which is a unique identifier that specifies both the blockchain network and cryptocurrency token in the format &#x60;{CHAIN}_{TOKEN}&#x60;.
+   * The ID of the cryptocurrency.
    * @return tokenId
   **/
   @javax.annotation.Nonnull
@@ -104,7 +108,7 @@ public class PspBalance {
   }
 
    /**
-   * The total amount of the token that has been received as developer fee.
+   * The psp developer fee amount.
    * @return developerFeeAmount
   **/
   @javax.annotation.Nullable
@@ -123,7 +127,7 @@ public class PspBalance {
   }
 
    /**
-   * The total amount of the token that has been paid out from the developer&#39;s balance.
+   * The psp settled amount.
    * @return settledAmount
   **/
   @javax.annotation.Nullable
@@ -142,7 +146,7 @@ public class PspBalance {
   }
 
    /**
-   * The total amount of the token that has been refunded from the developer&#39;s balance.
+   * The psp total refunded amount.
    * @return refundedAmount
   **/
   @javax.annotation.Nullable
@@ -161,7 +165,7 @@ public class PspBalance {
   }
 
    /**
-   *  The total balance of the token available for payout or refund for the developer.  &#x60;total_balance&#x60; &#x3D; &#x60;developer_fee_amount&#x60; - &#x60;settled_amount&#x60; - &#x60;refunded_amount&#x60;  For more information, please refer to [Funds allocation and balances](https://www.cobo.com/developers/v2/payments/amounts-and-balances) 
+   * The psp total balance.
    * @return totalBalance
   **/
   @javax.annotation.Nullable
@@ -180,7 +184,7 @@ public class PspBalance {
   }
 
    /**
-   * This field has been deprecated.
+   * The psp available balance.
    * @return availableBalance
   **/
   @javax.annotation.Nullable
@@ -190,6 +194,25 @@ public class PspBalance {
 
   public void setAvailableBalance(String availableBalance) {
     this.availableBalance = availableBalance;
+  }
+
+
+  public PspBalance lockedBalance(String lockedBalance) {
+    this.lockedBalance = lockedBalance;
+    return this;
+  }
+
+   /**
+   * The psp locked balance.
+   * @return lockedBalance
+  **/
+  @javax.annotation.Nullable
+  public String getLockedBalance() {
+    return lockedBalance;
+  }
+
+  public void setLockedBalance(String lockedBalance) {
+    this.lockedBalance = lockedBalance;
   }
 
   /**
@@ -252,13 +275,14 @@ public class PspBalance {
         Objects.equals(this.settledAmount, pspBalance.settledAmount) &&
         Objects.equals(this.refundedAmount, pspBalance.refundedAmount) &&
         Objects.equals(this.totalBalance, pspBalance.totalBalance) &&
-        Objects.equals(this.availableBalance, pspBalance.availableBalance)&&
+        Objects.equals(this.availableBalance, pspBalance.availableBalance) &&
+        Objects.equals(this.lockedBalance, pspBalance.lockedBalance)&&
         Objects.equals(this.additionalProperties, pspBalance.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(tokenId, developerFeeAmount, settledAmount, refundedAmount, totalBalance, availableBalance, additionalProperties);
+    return Objects.hash(tokenId, developerFeeAmount, settledAmount, refundedAmount, totalBalance, availableBalance, lockedBalance, additionalProperties);
   }
 
   @Override
@@ -271,6 +295,7 @@ public class PspBalance {
     sb.append("    refundedAmount: ").append(toIndentedString(refundedAmount)).append("\n");
     sb.append("    totalBalance: ").append(toIndentedString(totalBalance)).append("\n");
     sb.append("    availableBalance: ").append(toIndentedString(availableBalance)).append("\n");
+    sb.append("    lockedBalance: ").append(toIndentedString(lockedBalance)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -300,6 +325,7 @@ public class PspBalance {
     openapiFields.add("refunded_amount");
     openapiFields.add("total_balance");
     openapiFields.add("available_balance");
+    openapiFields.add("locked_balance");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -343,6 +369,9 @@ public class PspBalance {
       }
       if ((jsonObj.get("available_balance") != null && !jsonObj.get("available_balance").isJsonNull()) && !jsonObj.get("available_balance").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `available_balance` to be a primitive type in the JSON string but got `%s`", jsonObj.get("available_balance").toString()));
+      }
+      if ((jsonObj.get("locked_balance") != null && !jsonObj.get("locked_balance").isJsonNull()) && !jsonObj.get("locked_balance").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `locked_balance` to be a primitive type in the JSON string but got `%s`", jsonObj.get("locked_balance").toString()));
       }
   }
 

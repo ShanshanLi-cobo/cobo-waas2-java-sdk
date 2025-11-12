@@ -76,7 +76,7 @@ public class PaymentEstimateFee201Response {
   }
 
    /**
-   * A list of estimated fees for the requested operations.
+   * Get data
    * @return data
   **/
   @javax.annotation.Nullable

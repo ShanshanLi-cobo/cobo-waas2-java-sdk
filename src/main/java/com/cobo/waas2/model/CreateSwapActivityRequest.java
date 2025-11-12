@@ -20,7 +20,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.UUID;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -64,7 +63,7 @@ public class CreateSwapActivityRequest {
 
   public static final String SERIALIZED_NAME_QUOTE_ID = "quote_id";
   @SerializedName(SERIALIZED_NAME_QUOTE_ID)
-  private UUID quoteId;
+  private String quoteId;
 
   public static final String SERIALIZED_NAME_APP_INITIATOR = "app_initiator";
   @SerializedName(SERIALIZED_NAME_APP_INITIATOR)
@@ -91,7 +90,7 @@ public class CreateSwapActivityRequest {
   }
 
    /**
-   * The ID of the wallet used to pay.
+   * The unique identifier of the wallet to pay.
    * @return walletId
   **/
   @javax.annotation.Nonnull
@@ -110,7 +109,7 @@ public class CreateSwapActivityRequest {
   }
 
    /**
-   * The address of the wallet used to pay.
+   * The wallet address, required when the wallet is not a custodial wallet.
    * @return address
   **/
   @javax.annotation.Nullable
@@ -123,21 +122,21 @@ public class CreateSwapActivityRequest {
   }
 
 
-  public CreateSwapActivityRequest quoteId(UUID quoteId) {
+  public CreateSwapActivityRequest quoteId(String quoteId) {
     this.quoteId = quoteId;
     return this;
   }
 
    /**
-   * The unique identifier of the swap quote.
+   * The unique identifier of the quote.
    * @return quoteId
   **/
   @javax.annotation.Nonnull
-  public UUID getQuoteId() {
+  public String getQuoteId() {
     return quoteId;
   }
 
-  public void setQuoteId(UUID quoteId) {
+  public void setQuoteId(String quoteId) {
     this.quoteId = quoteId;
   }
 
@@ -148,7 +147,7 @@ public class CreateSwapActivityRequest {
   }
 
    /**
-   * The initiator of the swap activity. It is optional and defaults to your API key if not specified.
+   * The initiator of the app activity. If you do not specify this property, the WaaS service will automatically designate the API key as the initiator.
    * @return appInitiator
   **/
   @javax.annotation.Nullable
@@ -167,7 +166,7 @@ public class CreateSwapActivityRequest {
   }
 
    /**
-   * The request ID of the swap activity.
+   * The request id of the swap activity.
    * @return requestId
   **/
   @javax.annotation.Nullable
@@ -186,7 +185,7 @@ public class CreateSwapActivityRequest {
   }
 
    /**
-   * The destination address of the swap activity. This property is required only when the swap type is &#x60;Bridge&#x60; and the wallet is not a Custodial Wallet (Asset Wallet).
+   * The address of the receiver.
    * @return receiverAddress
   **/
   @javax.annotation.Nullable

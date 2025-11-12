@@ -11,5 +11,7 @@
 
 * `USEPORTALPREFERENCE` (value: `"UsePortalPreference"`)
 
+* `DISABLEAUTOFUEL` (value: `"DisableAutoFuel"`)
+
 
 

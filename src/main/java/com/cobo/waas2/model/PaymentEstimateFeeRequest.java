@@ -100,7 +100,7 @@ public class PaymentEstimateFeeRequest {
   }
 
    /**
-   * A list of token IDs and amounts for which fees will be calculated.
+   * Get estimateFees
    * @return estimateFees
   **/
   @javax.annotation.Nonnull

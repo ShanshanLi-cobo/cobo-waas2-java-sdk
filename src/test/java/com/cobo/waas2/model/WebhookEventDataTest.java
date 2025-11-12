@@ -28,9 +28,14 @@ import com.cobo.waas2.model.FundsStatusType;
 import com.cobo.waas2.model.KytScreeningsTransactionType;
 import com.cobo.waas2.model.MPCVaultEventData;
 import com.cobo.waas2.model.PaymentAddressUpdateEventData;
+import com.cobo.waas2.model.PaymentChargeUpdateEventData;
 import com.cobo.waas2.model.PaymentOrderEventData;
 import com.cobo.waas2.model.PaymentRefundEventData;
 import com.cobo.waas2.model.PaymentSettlementEvent;
+import com.cobo.waas2.model.PaymentSubscriptionActionData;
+import com.cobo.waas2.model.PaymentSubscriptionPeriodType;
+import com.cobo.waas2.model.PaymentSubscriptionStatus;
+import com.cobo.waas2.model.PaymentSubscriptionUpdateEventData;
 import com.cobo.waas2.model.PaymentTransaction;
 import com.cobo.waas2.model.PaymentTransactionEventData;
 import com.cobo.waas2.model.PayoutChannel;
@@ -56,7 +61,6 @@ import com.cobo.waas2.model.TransactionRawTxInfo;
 import com.cobo.waas2.model.TransactionReplacement;
 import com.cobo.waas2.model.TransactionResult;
 import com.cobo.waas2.model.TransactionSource;
-import com.cobo.waas2.model.TransactionStatus;
 import com.cobo.waas2.model.TransactionSubStatus;
 import com.cobo.waas2.model.TransactionType;
 import com.cobo.waas2.model.TransactionWebhookEventData;
@@ -780,6 +784,22 @@ public class WebhookEventDataTest {
     }
 
     /**
+     * Test the property 'subscriptionId'
+     */
+    @Test
+    public void subscriptionIdTest() {
+        // TODO: test subscriptionId
+    }
+
+    /**
+     * Test the property 'actionId'
+     */
+    @Test
+    public void actionIdTest() {
+        // TODO: test actionId
+    }
+
+    /**
      * Test the property 'chain'
      */
     @Test
@@ -801,6 +821,102 @@ public class WebhookEventDataTest {
     @Test
     public void updatedAddressTest() {
         // TODO: test updatedAddress
+    }
+
+    /**
+     * Test the property 'planId'
+     */
+    @Test
+    public void planIdTest() {
+        // TODO: test planId
+    }
+
+    /**
+     * Test the property 'merchantAddress'
+     */
+    @Test
+    public void merchantAddressTest() {
+        // TODO: test merchantAddress
+    }
+
+    /**
+     * Test the property 'data'
+     */
+    @Test
+    public void dataTest() {
+        // TODO: test data
+    }
+
+    /**
+     * Test the property 'transactionIds'
+     */
+    @Test
+    public void transactionIdsTest() {
+        // TODO: test transactionIds
+    }
+
+    /**
+     * Test the property 'userAddress'
+     */
+    @Test
+    public void userAddressTest() {
+        // TODO: test userAddress
+    }
+
+    /**
+     * Test the property 'chargeAmount'
+     */
+    @Test
+    public void chargeAmountTest() {
+        // TODO: test chargeAmount
+    }
+
+    /**
+     * Test the property 'startTime'
+     */
+    @Test
+    public void startTimeTest() {
+        // TODO: test startTime
+    }
+
+    /**
+     * Test the property 'expirationTime'
+     */
+    @Test
+    public void expirationTimeTest() {
+        // TODO: test expirationTime
+    }
+
+    /**
+     * Test the property 'chargesMade'
+     */
+    @Test
+    public void chargesMadeTest() {
+        // TODO: test chargesMade
+    }
+
+    /**
+     * Test the property 'periodType'
+     */
+    @Test
+    public void periodTypeTest() {
+        // TODO: test periodType
+    }
+
+    /**
+     * Test the property 'periods'
+     */
+    @Test
+    public void periodsTest() {
+        // TODO: test periods
+    }
+
+    /**
+     * Test the property 'interval'
+     */
+    @Test
+    public void intervalTest() {
+        // TODO: test interval
     }
 
     /**

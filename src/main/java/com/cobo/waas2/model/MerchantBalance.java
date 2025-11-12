@@ -85,6 +85,10 @@ public class MerchantBalance {
   @SerializedName(SERIALIZED_NAME_AVAILABLE_BALANCE)
   private String availableBalance;
 
+  public static final String SERIALIZED_NAME_LOCKED_BALANCE = "locked_balance";
+  @SerializedName(SERIALIZED_NAME_LOCKED_BALANCE)
+  private String lockedBalance;
+
   public MerchantBalance() {
   }
 
@@ -113,7 +117,7 @@ public class MerchantBalance {
   }
 
    /**
-   * The token ID, which is a unique identifier that specifies both the blockchain network and cryptocurrency token in the format &#x60;{CHAIN}_{TOKEN}&#x60;.
+   * The ID of the cryptocurrency.
    * @return tokenId
   **/
   @javax.annotation.Nonnull
@@ -151,7 +155,7 @@ public class MerchantBalance {
   }
 
    /**
-   * The total amount of the token that has been received by the merchant.
+   * The merchant total received amount.
    * @return totalReceivedAmount
   **/
   @javax.annotation.Nullable
@@ -170,7 +174,7 @@ public class MerchantBalance {
   }
 
    /**
-   * The total amount of the token that has been paid out from the merchant&#39;s balance.
+   * The merchant settled amount.
    * @return settledAmount
   **/
   @javax.annotation.Nullable
@@ -189,7 +193,7 @@ public class MerchantBalance {
   }
 
    /**
-   * The total amount of the token that has been refunded from the merchant&#39;s balance.
+   * The merchant total refunded amount.
    * @return refundedAmount
   **/
   @javax.annotation.Nullable
@@ -208,7 +212,7 @@ public class MerchantBalance {
   }
 
    /**
-   *  The total balance of the token available for payout or refund for the merchant.  &#x60;total_balance&#x60; &#x3D; &#x60;total_received_amount&#x60; - &#x60;settled_amount&#x60; - &#x60;refunded_amount&#x60;  For more information, please refer to [Funds allocation and balances](https://www.cobo.com/developers/v2/payments/amounts-and-balances) 
+   * The merchant total balance.
    * @return totalBalance
   **/
   @javax.annotation.Nullable
@@ -227,7 +231,7 @@ public class MerchantBalance {
   }
 
    /**
-   * This field has been deprecated.
+   * The merchant available balance.
    * @return availableBalance
   **/
   @javax.annotation.Nullable
@@ -237,6 +241,25 @@ public class MerchantBalance {
 
   public void setAvailableBalance(String availableBalance) {
     this.availableBalance = availableBalance;
+  }
+
+
+  public MerchantBalance lockedBalance(String lockedBalance) {
+    this.lockedBalance = lockedBalance;
+    return this;
+  }
+
+   /**
+   * The merchant locked balance.
+   * @return lockedBalance
+  **/
+  @javax.annotation.Nullable
+  public String getLockedBalance() {
+    return lockedBalance;
+  }
+
+  public void setLockedBalance(String lockedBalance) {
+    this.lockedBalance = lockedBalance;
   }
 
   /**
@@ -301,13 +324,14 @@ public class MerchantBalance {
         Objects.equals(this.settledAmount, merchantBalance.settledAmount) &&
         Objects.equals(this.refundedAmount, merchantBalance.refundedAmount) &&
         Objects.equals(this.totalBalance, merchantBalance.totalBalance) &&
-        Objects.equals(this.availableBalance, merchantBalance.availableBalance)&&
+        Objects.equals(this.availableBalance, merchantBalance.availableBalance) &&
+        Objects.equals(this.lockedBalance, merchantBalance.lockedBalance)&&
         Objects.equals(this.additionalProperties, merchantBalance.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(merchantId, tokenId, acquiringType, totalReceivedAmount, settledAmount, refundedAmount, totalBalance, availableBalance, additionalProperties);
+    return Objects.hash(merchantId, tokenId, acquiringType, totalReceivedAmount, settledAmount, refundedAmount, totalBalance, availableBalance, lockedBalance, additionalProperties);
   }
 
   @Override
@@ -322,6 +346,7 @@ public class MerchantBalance {
     sb.append("    refundedAmount: ").append(toIndentedString(refundedAmount)).append("\n");
     sb.append("    totalBalance: ").append(toIndentedString(totalBalance)).append("\n");
     sb.append("    availableBalance: ").append(toIndentedString(availableBalance)).append("\n");
+    sb.append("    lockedBalance: ").append(toIndentedString(lockedBalance)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -353,6 +378,7 @@ public class MerchantBalance {
     openapiFields.add("refunded_amount");
     openapiFields.add("total_balance");
     openapiFields.add("available_balance");
+    openapiFields.add("locked_balance");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -403,6 +429,9 @@ public class MerchantBalance {
       }
       if ((jsonObj.get("available_balance") != null && !jsonObj.get("available_balance").isJsonNull()) && !jsonObj.get("available_balance").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `available_balance` to be a primitive type in the JSON string but got `%s`", jsonObj.get("available_balance").toString()));
+      }
+      if ((jsonObj.get("locked_balance") != null && !jsonObj.get("locked_balance").isJsonNull()) && !jsonObj.get("locked_balance").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `locked_balance` to be a primitive type in the JSON string but got `%s`", jsonObj.get("locked_balance").toString()));
       }
   }
 

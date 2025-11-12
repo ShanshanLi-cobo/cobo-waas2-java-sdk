@@ -20,7 +20,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.UUID;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -64,7 +63,7 @@ public class SwapEstimateFee {
 
   public static final String SERIALIZED_NAME_QUOTE_ID = "quote_id";
   @SerializedName(SERIALIZED_NAME_QUOTE_ID)
-  private UUID quoteId;
+  private String quoteId;
 
   public static final String SERIALIZED_NAME_FEE_TYPE = "fee_type";
   @SerializedName(SERIALIZED_NAME_FEE_TYPE)
@@ -79,7 +78,7 @@ public class SwapEstimateFee {
   }
 
    /**
-   * The ID of the wallet to pay.
+   * The unique identifier of the wallet to pay.
    * @return walletId
   **/
   @javax.annotation.Nonnull
@@ -98,7 +97,7 @@ public class SwapEstimateFee {
   }
 
    /**
-   * The wallet address. This property is required when the wallet to pay is not a Custodial Wallet (Asset Wallet).
+   * The wallet address, required when the wallet is not a custodial wallet.
    * @return address
   **/
   @javax.annotation.Nullable
@@ -111,21 +110,21 @@ public class SwapEstimateFee {
   }
 
 
-  public SwapEstimateFee quoteId(UUID quoteId) {
+  public SwapEstimateFee quoteId(String quoteId) {
     this.quoteId = quoteId;
     return this;
   }
 
    /**
-   * The ID of the swap quote.
+   * The unique identifier of the quote.
    * @return quoteId
   **/
   @javax.annotation.Nonnull
-  public UUID getQuoteId() {
+  public String getQuoteId() {
     return quoteId;
   }
 
-  public void setQuoteId(UUID quoteId) {
+  public void setQuoteId(String quoteId) {
     this.quoteId = quoteId;
   }
 
