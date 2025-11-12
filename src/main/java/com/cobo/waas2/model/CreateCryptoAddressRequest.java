@@ -111,7 +111,7 @@ public class CreateCryptoAddressRequest {
   }
 
    /**
-   * A label to help identify the address&#39;s purpose.
+   * A label to help identify the address&#39;s purpose. Can contain up to 128 characters.
    * @return label
   **/
   @javax.annotation.Nullable

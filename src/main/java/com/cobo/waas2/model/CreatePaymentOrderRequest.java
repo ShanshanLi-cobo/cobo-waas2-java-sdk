@@ -105,7 +105,7 @@ public class CreatePaymentOrderRequest {
   }
 
    /**
-   * The merchant ID.
+   * The merchant ID. This ID is assigned by Cobo when you create the merchant.
    * @return merchantId
   **/
   @javax.annotation.Nonnull
@@ -143,7 +143,7 @@ public class CreatePaymentOrderRequest {
   }
 
    /**
-   * The fiat currency for the base order amount and the developer fee. Currently, only &#x60;USD&#x60; is supported.  If left empty, both &#x60;order_amount&#x60; and &#x60;fee_amount&#x60; will be denominated in the cryptocurrency specified by &#x60;token_id&#x60; 
+   * The fiat currency for the base order amount and the developer fee. If left empty, both &#x60;order_amount&#x60; and &#x60;fee_amount&#x60; will be denominated in the cryptocurrency specified by &#x60;token_id&#x60;  Currently, only &#x60;USD&#x60; is supported. 
    * @return currency
   **/
   @javax.annotation.Nullable
@@ -162,7 +162,7 @@ public class CreatePaymentOrderRequest {
   }
 
    /**
-   *  The base amount of the order, excluding the developer fee (specified in &#x60;fee_amount&#x60;), in the currency specified by &#x60;currency&#x60;. If &#x60;currency&#x60; is not specified, the amount is in the cryptocurrency specified by &#x60;token_id&#x60;.   Values must be greater than &#x60;0&#x60; and contain two decimal places.  
+   *  The base amount of the order, excluding the developer fee (specified in &#x60;fee_amount&#x60;). The denomination of the amount depends on if &#x60;currency&#x60; is specified: - If &#x60;currency&#x60; is specified, the amount is in the currency specified by &#x60;currency&#x60;, e.g. \&quot;USD\&quot;. - If &#x60;currency&#x60; is not specified, the amount is in the cryptocurrency specified by &#x60;token_id&#x60;, e.g. \&quot;ETH_USDT\&quot;.   Values must be greater than &#x60;0&#x60; and contain two decimal places.  
    * @return orderAmount
   **/
   @javax.annotation.Nonnull
@@ -181,7 +181,7 @@ public class CreatePaymentOrderRequest {
   }
 
    /**
-   *  The developer fee for the order, in the currency specified by &#x60;currency&#x60;. If &#x60;currency&#x60; is not specified, the fee is in the cryptocurrency specified by &#x60;token_id&#x60;.  If you are a merchant directly serving payers, set this field to &#x60;0&#x60;. Developer fees are only relevant for platforms like payment service providers (PSPs) that charge fees to their downstream merchants.  The developer fee is added to the base amount (&#x60;order_amount&#x60;) to determine the final charge. For example: - Base amount (&#x60;order_amount&#x60;): \&quot;100.00\&quot; - Developer fee (&#x60;fee_amount&#x60;): \&quot;2.00\&quot;  - Total charged to customer: \&quot;102.00\&quot;  Values can contain up to two decimal places. 
+   *  The developer fee for the order.  - **When to set:**     If you are a merchant serving payers directly, set this field to &#x60;0&#x60;.     Developer fees are only relevant for platforms like payment service providers (PSPs) that charge fees to their downstream merchants.   For details, see [Funds allocation and balances](https://www.cobo.com/developers/v2/payments/amounts-and-balances).  - **Denomination:**     The denomination of &#x60;fee_amount&#x60; depends on the presence of &#x60;currency&#x60;:       - If &#x60;currency&#x60; is set, the amount is denominated in that currency (e.g., \&quot;USD\&quot;).       - If &#x60;currency&#x60; is not set, the amount is denominated in the cryptocurrency specified by &#x60;token_id&#x60; (e.g., \&quot;ETH_USDT\&quot;).  - **Calculation:**     The developer fee is added to the base order amount (&#x60;order_amount&#x60;) to determine the final amount charged to the customer.     For example:       - Base amount (&#x60;order_amount&#x60;): \&quot;100.00\&quot;       - Developer fee (&#x60;fee_amount&#x60;): \&quot;2.00\&quot;       - **Total charged:** \&quot;102.00\&quot;  - **Formatting:**     The value can contain up to two decimal places. 
    * @return feeAmount
   **/
   @javax.annotation.Nonnull

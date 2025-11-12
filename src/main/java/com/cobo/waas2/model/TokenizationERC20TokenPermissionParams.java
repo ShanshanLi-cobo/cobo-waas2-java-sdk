@@ -53,7 +53,7 @@ import com.cobo.waas2.JSON;
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
-public class TokenizationTokenPermissionParams {
+public class TokenizationERC20TokenPermissionParams {
   public static final String SERIALIZED_NAME_ADMIN = "admin";
   @SerializedName(SERIALIZED_NAME_ADMIN)
   private List<String> admin = new ArrayList<>();
@@ -82,15 +82,15 @@ public class TokenizationTokenPermissionParams {
   @SerializedName(SERIALIZED_NAME_UPGRADER)
   private List<String> upgrader = new ArrayList<>();
 
-  public TokenizationTokenPermissionParams() {
+  public TokenizationERC20TokenPermissionParams() {
   }
 
-  public TokenizationTokenPermissionParams admin(List<String> admin) {
+  public TokenizationERC20TokenPermissionParams admin(List<String> admin) {
     this.admin = admin;
     return this;
   }
 
-  public TokenizationTokenPermissionParams addAdminItem(String adminItem) {
+  public TokenizationERC20TokenPermissionParams addAdminItem(String adminItem) {
     if (this.admin == null) {
       this.admin = new ArrayList<>();
     }
@@ -112,12 +112,12 @@ public class TokenizationTokenPermissionParams {
   }
 
 
-  public TokenizationTokenPermissionParams minter(List<String> minter) {
+  public TokenizationERC20TokenPermissionParams minter(List<String> minter) {
     this.minter = minter;
     return this;
   }
 
-  public TokenizationTokenPermissionParams addMinterItem(String minterItem) {
+  public TokenizationERC20TokenPermissionParams addMinterItem(String minterItem) {
     if (this.minter == null) {
       this.minter = new ArrayList<>();
     }
@@ -139,12 +139,12 @@ public class TokenizationTokenPermissionParams {
   }
 
 
-  public TokenizationTokenPermissionParams burner(List<String> burner) {
+  public TokenizationERC20TokenPermissionParams burner(List<String> burner) {
     this.burner = burner;
     return this;
   }
 
-  public TokenizationTokenPermissionParams addBurnerItem(String burnerItem) {
+  public TokenizationERC20TokenPermissionParams addBurnerItem(String burnerItem) {
     if (this.burner == null) {
       this.burner = new ArrayList<>();
     }
@@ -166,12 +166,12 @@ public class TokenizationTokenPermissionParams {
   }
 
 
-  public TokenizationTokenPermissionParams manager(List<String> manager) {
+  public TokenizationERC20TokenPermissionParams manager(List<String> manager) {
     this.manager = manager;
     return this;
   }
 
-  public TokenizationTokenPermissionParams addManagerItem(String managerItem) {
+  public TokenizationERC20TokenPermissionParams addManagerItem(String managerItem) {
     if (this.manager == null) {
       this.manager = new ArrayList<>();
     }
@@ -193,12 +193,12 @@ public class TokenizationTokenPermissionParams {
   }
 
 
-  public TokenizationTokenPermissionParams pauser(List<String> pauser) {
+  public TokenizationERC20TokenPermissionParams pauser(List<String> pauser) {
     this.pauser = pauser;
     return this;
   }
 
-  public TokenizationTokenPermissionParams addPauserItem(String pauserItem) {
+  public TokenizationERC20TokenPermissionParams addPauserItem(String pauserItem) {
     if (this.pauser == null) {
       this.pauser = new ArrayList<>();
     }
@@ -220,12 +220,12 @@ public class TokenizationTokenPermissionParams {
   }
 
 
-  public TokenizationTokenPermissionParams salvager(List<String> salvager) {
+  public TokenizationERC20TokenPermissionParams salvager(List<String> salvager) {
     this.salvager = salvager;
     return this;
   }
 
-  public TokenizationTokenPermissionParams addSalvagerItem(String salvagerItem) {
+  public TokenizationERC20TokenPermissionParams addSalvagerItem(String salvagerItem) {
     if (this.salvager == null) {
       this.salvager = new ArrayList<>();
     }
@@ -247,12 +247,12 @@ public class TokenizationTokenPermissionParams {
   }
 
 
-  public TokenizationTokenPermissionParams upgrader(List<String> upgrader) {
+  public TokenizationERC20TokenPermissionParams upgrader(List<String> upgrader) {
     this.upgrader = upgrader;
     return this;
   }
 
-  public TokenizationTokenPermissionParams addUpgraderItem(String upgraderItem) {
+  public TokenizationERC20TokenPermissionParams addUpgraderItem(String upgraderItem) {
     if (this.upgrader == null) {
       this.upgrader = new ArrayList<>();
     }
@@ -286,9 +286,9 @@ public class TokenizationTokenPermissionParams {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the TokenizationTokenPermissionParams instance itself
+   * @return the TokenizationERC20TokenPermissionParams instance itself
    */
-  public TokenizationTokenPermissionParams putAdditionalProperty(String key, Object value) {
+  public TokenizationERC20TokenPermissionParams putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -327,15 +327,15 @@ public class TokenizationTokenPermissionParams {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    TokenizationTokenPermissionParams tokenizationTokenPermissionParams = (TokenizationTokenPermissionParams) o;
-    return Objects.equals(this.admin, tokenizationTokenPermissionParams.admin) &&
-        Objects.equals(this.minter, tokenizationTokenPermissionParams.minter) &&
-        Objects.equals(this.burner, tokenizationTokenPermissionParams.burner) &&
-        Objects.equals(this.manager, tokenizationTokenPermissionParams.manager) &&
-        Objects.equals(this.pauser, tokenizationTokenPermissionParams.pauser) &&
-        Objects.equals(this.salvager, tokenizationTokenPermissionParams.salvager) &&
-        Objects.equals(this.upgrader, tokenizationTokenPermissionParams.upgrader)&&
-        Objects.equals(this.additionalProperties, tokenizationTokenPermissionParams.additionalProperties);
+    TokenizationERC20TokenPermissionParams tokenizationERC20TokenPermissionParams = (TokenizationERC20TokenPermissionParams) o;
+    return Objects.equals(this.admin, tokenizationERC20TokenPermissionParams.admin) &&
+        Objects.equals(this.minter, tokenizationERC20TokenPermissionParams.minter) &&
+        Objects.equals(this.burner, tokenizationERC20TokenPermissionParams.burner) &&
+        Objects.equals(this.manager, tokenizationERC20TokenPermissionParams.manager) &&
+        Objects.equals(this.pauser, tokenizationERC20TokenPermissionParams.pauser) &&
+        Objects.equals(this.salvager, tokenizationERC20TokenPermissionParams.salvager) &&
+        Objects.equals(this.upgrader, tokenizationERC20TokenPermissionParams.upgrader)&&
+        Objects.equals(this.additionalProperties, tokenizationERC20TokenPermissionParams.additionalProperties);
   }
 
   @Override
@@ -346,7 +346,7 @@ public class TokenizationTokenPermissionParams {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class TokenizationTokenPermissionParams {\n");
+    sb.append("class TokenizationERC20TokenPermissionParams {\n");
     sb.append("    admin: ").append(toIndentedString(admin)).append("\n");
     sb.append("    minter: ").append(toIndentedString(minter)).append("\n");
     sb.append("    burner: ").append(toIndentedString(burner)).append("\n");
@@ -393,12 +393,12 @@ public class TokenizationTokenPermissionParams {
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to TokenizationTokenPermissionParams
+  * @throws IOException if the JSON Element is invalid with respect to TokenizationERC20TokenPermissionParams
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!TokenizationTokenPermissionParams.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in TokenizationTokenPermissionParams is not found in the empty JSON string", TokenizationTokenPermissionParams.openapiRequiredFields.toString()));
+        if (!TokenizationERC20TokenPermissionParams.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in TokenizationERC20TokenPermissionParams is not found in the empty JSON string", TokenizationERC20TokenPermissionParams.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -436,16 +436,16 @@ public class TokenizationTokenPermissionParams {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!TokenizationTokenPermissionParams.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'TokenizationTokenPermissionParams' and its subtypes
+       if (!TokenizationERC20TokenPermissionParams.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'TokenizationERC20TokenPermissionParams' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<TokenizationTokenPermissionParams> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(TokenizationTokenPermissionParams.class));
+       final TypeAdapter<TokenizationERC20TokenPermissionParams> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(TokenizationERC20TokenPermissionParams.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<TokenizationTokenPermissionParams>() {
+       return (TypeAdapter<T>) new TypeAdapter<TokenizationERC20TokenPermissionParams>() {
            @Override
-           public void write(JsonWriter out, TokenizationTokenPermissionParams value) throws IOException {
+           public void write(JsonWriter out, TokenizationERC20TokenPermissionParams value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -475,12 +475,12 @@ public class TokenizationTokenPermissionParams {
            }
 
            @Override
-           public TokenizationTokenPermissionParams read(JsonReader in) throws IOException {
+           public TokenizationERC20TokenPermissionParams read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             TokenizationTokenPermissionParams instance = thisAdapter.fromJsonTree(jsonObj);
+             TokenizationERC20TokenPermissionParams instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -507,18 +507,18 @@ public class TokenizationTokenPermissionParams {
   }
 
  /**
-  * Create an instance of TokenizationTokenPermissionParams given an JSON string
+  * Create an instance of TokenizationERC20TokenPermissionParams given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of TokenizationTokenPermissionParams
-  * @throws IOException if the JSON string is invalid with respect to TokenizationTokenPermissionParams
+  * @return An instance of TokenizationERC20TokenPermissionParams
+  * @throws IOException if the JSON string is invalid with respect to TokenizationERC20TokenPermissionParams
   */
-  public static TokenizationTokenPermissionParams fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, TokenizationTokenPermissionParams.class);
+  public static TokenizationERC20TokenPermissionParams fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, TokenizationERC20TokenPermissionParams.class);
   }
 
  /**
-  * Convert an instance of TokenizationTokenPermissionParams to an JSON string
+  * Convert an instance of TokenizationERC20TokenPermissionParams to an JSON string
   *
   * @return JSON string
   */

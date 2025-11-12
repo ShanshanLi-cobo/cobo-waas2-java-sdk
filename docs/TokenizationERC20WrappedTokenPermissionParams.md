@@ -1,6 +1,6 @@
 
 
-# TokenizationTokenPermissionParams
+# TokenizationERC20WrappedTokenPermissionParams
 
 Role-based permission settings for token contract. If not provided, all permissions will be granted to the issuing wallet by default.
 
@@ -10,7 +10,7 @@ Role-based permission settings for token contract. If not provided, all permissi
 |------------ | ------------- | ------------- | -------------|
 |**admin** | **List&lt;String&gt;** | List of addresses for the admin role. |  [optional] |
 |**minter** | **List&lt;String&gt;** | List of addresses for the minter role. |  [optional] |
-|**burner** | **List&lt;String&gt;** | List of addresses for the burner role. |  [optional] |
+|**wrapper** | **List&lt;String&gt;** | List of addresses for the wrapper role. |  [optional] |
 |**manager** | **List&lt;String&gt;** | List of addresses for the manager role. |  [optional] |
 |**pauser** | **List&lt;String&gt;** | List of addresses for the pauser role. |  [optional] |
 |**salvager** | **List&lt;String&gt;** | List of addresses for the salvager role. |  [optional] |

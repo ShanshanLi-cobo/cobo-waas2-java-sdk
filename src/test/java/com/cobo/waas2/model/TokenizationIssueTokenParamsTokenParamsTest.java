@@ -12,8 +12,10 @@
 package com.cobo.waas2.model;
 
 import com.cobo.waas2.model.TokenizationERC20TokenParams;
+import com.cobo.waas2.model.TokenizationERC20WrappedTokenParams;
 import com.cobo.waas2.model.TokenizationSOLTokenParams;
-import com.cobo.waas2.model.TokenizationSolTokenPermissionParams;
+import com.cobo.waas2.model.TokenizationSOLWrappedTokenParams;
+import com.cobo.waas2.model.TokenizationSolWrappedTokenPermissionParams;
 import com.cobo.waas2.model.TokenizationTokenStandard;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -85,6 +87,14 @@ public class TokenizationIssueTokenParamsTokenParamsTest {
     @Test
     public void permissionsTest() {
         // TODO: test permissions
+    }
+
+    /**
+     * Test the property 'underlyingToken'
+     */
+    @Test
+    public void underlyingTokenTest() {
+        // TODO: test underlyingToken
     }
 
 }

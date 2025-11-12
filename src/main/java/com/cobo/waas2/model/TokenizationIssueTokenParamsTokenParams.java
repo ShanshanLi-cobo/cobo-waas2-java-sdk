@@ -13,8 +13,10 @@ package com.cobo.waas2.model;
 
 import java.util.Objects;
 import com.cobo.waas2.model.TokenizationERC20TokenParams;
+import com.cobo.waas2.model.TokenizationERC20WrappedTokenParams;
 import com.cobo.waas2.model.TokenizationSOLTokenParams;
-import com.cobo.waas2.model.TokenizationSolTokenPermissionParams;
+import com.cobo.waas2.model.TokenizationSOLWrappedTokenParams;
+import com.cobo.waas2.model.TokenizationSolWrappedTokenPermissionParams;
 import com.cobo.waas2.model.TokenizationTokenStandard;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -75,7 +77,9 @@ public class TokenizationIssueTokenParamsTokenParams extends AbstractOpenApiSche
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
             final TypeAdapter<TokenizationERC20TokenParams> adapterTokenizationERC20TokenParams = gson.getDelegateAdapter(this, TypeToken.get(TokenizationERC20TokenParams.class));
+            final TypeAdapter<TokenizationERC20WrappedTokenParams> adapterTokenizationERC20WrappedTokenParams = gson.getDelegateAdapter(this, TypeToken.get(TokenizationERC20WrappedTokenParams.class));
             final TypeAdapter<TokenizationSOLTokenParams> adapterTokenizationSOLTokenParams = gson.getDelegateAdapter(this, TypeToken.get(TokenizationSOLTokenParams.class));
+            final TypeAdapter<TokenizationSOLWrappedTokenParams> adapterTokenizationSOLWrappedTokenParams = gson.getDelegateAdapter(this, TypeToken.get(TokenizationSOLWrappedTokenParams.class));
 
             return (TypeAdapter<T>) new TypeAdapter<TokenizationIssueTokenParamsTokenParams>() {
                 @Override
@@ -91,13 +95,25 @@ public class TokenizationIssueTokenParamsTokenParams extends AbstractOpenApiSche
                         elementAdapter.write(out, element);
                         return;
                     }
+                    // check if the actual instance is of the type `TokenizationERC20WrappedTokenParams`
+                    if (value.getActualInstance() instanceof TokenizationERC20WrappedTokenParams) {
+                        JsonElement element = adapterTokenizationERC20WrappedTokenParams.toJsonTree((TokenizationERC20WrappedTokenParams)value.getActualInstance());
+                        elementAdapter.write(out, element);
+                        return;
+                    }
                     // check if the actual instance is of the type `TokenizationSOLTokenParams`
                     if (value.getActualInstance() instanceof TokenizationSOLTokenParams) {
                         JsonElement element = adapterTokenizationSOLTokenParams.toJsonTree((TokenizationSOLTokenParams)value.getActualInstance());
                         elementAdapter.write(out, element);
                         return;
                     }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: TokenizationERC20TokenParams, TokenizationSOLTokenParams");
+                    // check if the actual instance is of the type `TokenizationSOLWrappedTokenParams`
+                    if (value.getActualInstance() instanceof TokenizationSOLWrappedTokenParams) {
+                        JsonElement element = adapterTokenizationSOLWrappedTokenParams.toJsonTree((TokenizationSOLWrappedTokenParams)value.getActualInstance());
+                        elementAdapter.write(out, element);
+                        return;
+                    }
+                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: TokenizationERC20TokenParams, TokenizationERC20WrappedTokenParams, TokenizationSOLTokenParams, TokenizationSOLWrappedTokenParams");
                 }
 
                 @Override
@@ -118,6 +134,14 @@ public class TokenizationIssueTokenParamsTokenParams extends AbstractOpenApiSche
                                 deserialized = adapterTokenizationERC20TokenParams.fromJsonTree(jsonObject);
                                 newTokenizationIssueTokenParamsTokenParams.setActualInstance(deserialized);
                                 return newTokenizationIssueTokenParamsTokenParams;
+                            case "ERC20Wrapper":
+                                deserialized = adapterTokenizationERC20WrappedTokenParams.fromJsonTree(jsonObject);
+                                newTokenizationIssueTokenParamsTokenParams.setActualInstance(deserialized);
+                                return newTokenizationIssueTokenParamsTokenParams;
+                            case "SOLWrapper":
+                                deserialized = adapterTokenizationSOLWrappedTokenParams.fromJsonTree(jsonObject);
+                                newTokenizationIssueTokenParamsTokenParams.setActualInstance(deserialized);
+                                return newTokenizationIssueTokenParamsTokenParams;
                             case "SPLToken2022":
                                 deserialized = adapterTokenizationSOLTokenParams.fromJsonTree(jsonObject);
                                 newTokenizationIssueTokenParamsTokenParams.setActualInstance(deserialized);
@@ -126,12 +150,20 @@ public class TokenizationIssueTokenParamsTokenParams extends AbstractOpenApiSche
                                 deserialized = adapterTokenizationERC20TokenParams.fromJsonTree(jsonObject);
                                 newTokenizationIssueTokenParamsTokenParams.setActualInstance(deserialized);
                                 return newTokenizationIssueTokenParamsTokenParams;
+                            case "TokenizationERC20WrappedTokenParams":
+                                deserialized = adapterTokenizationERC20WrappedTokenParams.fromJsonTree(jsonObject);
+                                newTokenizationIssueTokenParamsTokenParams.setActualInstance(deserialized);
+                                return newTokenizationIssueTokenParamsTokenParams;
                             case "TokenizationSOLTokenParams":
                                 deserialized = adapterTokenizationSOLTokenParams.fromJsonTree(jsonObject);
                                 newTokenizationIssueTokenParamsTokenParams.setActualInstance(deserialized);
                                 return newTokenizationIssueTokenParamsTokenParams;
+                            case "TokenizationSOLWrappedTokenParams":
+                                deserialized = adapterTokenizationSOLWrappedTokenParams.fromJsonTree(jsonObject);
+                                newTokenizationIssueTokenParamsTokenParams.setActualInstance(deserialized);
+                                return newTokenizationIssueTokenParamsTokenParams;
                             default:
-                                log.log(Level.WARNING, String.format("Failed to lookup discriminator value `%s` for TokenizationIssueTokenParamsTokenParams. Possible values: ERC20 SPLToken2022 TokenizationERC20TokenParams TokenizationSOLTokenParams", jsonObject.get("standard").getAsString()));
+                                log.log(Level.WARNING, String.format("Failed to lookup discriminator value `%s` for TokenizationIssueTokenParamsTokenParams. Possible values: ERC20 ERC20Wrapper SOLWrapper SPLToken2022 TokenizationERC20TokenParams TokenizationERC20WrappedTokenParams TokenizationSOLTokenParams TokenizationSOLWrappedTokenParams", jsonObject.get("standard").getAsString()));
                         }
                     }
 
@@ -151,6 +183,18 @@ public class TokenizationIssueTokenParamsTokenParams extends AbstractOpenApiSche
                         errorMessages.add(String.format("Deserialization for TokenizationERC20TokenParams failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'TokenizationERC20TokenParams'", e);
                     }
+                    // deserialize TokenizationERC20WrappedTokenParams
+                    try {
+                        // validate the JSON object to see if any exception is thrown
+                        TokenizationERC20WrappedTokenParams.validateJsonElement(jsonElement);
+                        actualAdapter = adapterTokenizationERC20WrappedTokenParams;
+                        match++;
+                        log.log(Level.FINER, "Input data matches schema 'TokenizationERC20WrappedTokenParams'");
+                    } catch (Exception e) {
+                        // deserialization failed, continue
+                        errorMessages.add(String.format("Deserialization for TokenizationERC20WrappedTokenParams failed with `%s`.", e.getMessage()));
+                        log.log(Level.FINER, "Input data does not match schema 'TokenizationERC20WrappedTokenParams'", e);
+                    }
                     // deserialize TokenizationSOLTokenParams
                     try {
                         // validate the JSON object to see if any exception is thrown
@@ -162,6 +206,18 @@ public class TokenizationIssueTokenParamsTokenParams extends AbstractOpenApiSche
                         // deserialization failed, continue
                         errorMessages.add(String.format("Deserialization for TokenizationSOLTokenParams failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'TokenizationSOLTokenParams'", e);
+                    }
+                    // deserialize TokenizationSOLWrappedTokenParams
+                    try {
+                        // validate the JSON object to see if any exception is thrown
+                        TokenizationSOLWrappedTokenParams.validateJsonElement(jsonElement);
+                        actualAdapter = adapterTokenizationSOLWrappedTokenParams;
+                        match++;
+                        log.log(Level.FINER, "Input data matches schema 'TokenizationSOLWrappedTokenParams'");
+                    } catch (Exception e) {
+                        // deserialization failed, continue
+                        errorMessages.add(String.format("Deserialization for TokenizationSOLWrappedTokenParams failed with `%s`.", e.getMessage()));
+                        log.log(Level.FINER, "Input data does not match schema 'TokenizationSOLWrappedTokenParams'", e);
                     }
 
                     if (match == 1) {
@@ -188,14 +244,26 @@ public class TokenizationIssueTokenParamsTokenParams extends AbstractOpenApiSche
         setActualInstance(o);
     }
 
+    public TokenizationIssueTokenParamsTokenParams(TokenizationERC20WrappedTokenParams o) {
+        super("oneOf", Boolean.FALSE);
+        setActualInstance(o);
+    }
+
     public TokenizationIssueTokenParamsTokenParams(TokenizationSOLTokenParams o) {
+        super("oneOf", Boolean.FALSE);
+        setActualInstance(o);
+    }
+
+    public TokenizationIssueTokenParamsTokenParams(TokenizationSOLWrappedTokenParams o) {
         super("oneOf", Boolean.FALSE);
         setActualInstance(o);
     }
 
     static {
         schemas.put("TokenizationERC20TokenParams", TokenizationERC20TokenParams.class);
+        schemas.put("TokenizationERC20WrappedTokenParams", TokenizationERC20WrappedTokenParams.class);
         schemas.put("TokenizationSOLTokenParams", TokenizationSOLTokenParams.class);
+        schemas.put("TokenizationSOLWrappedTokenParams", TokenizationSOLWrappedTokenParams.class);
     }
 
     @Override
@@ -206,7 +274,7 @@ public class TokenizationIssueTokenParamsTokenParams extends AbstractOpenApiSche
     /**
      * Set the instance that matches the oneOf child schema, check
      * the instance parameter is valid against the oneOf child schemas:
-     * TokenizationERC20TokenParams, TokenizationSOLTokenParams
+     * TokenizationERC20TokenParams, TokenizationERC20WrappedTokenParams, TokenizationSOLTokenParams, TokenizationSOLWrappedTokenParams
      *
      * It could be an instance of the 'oneOf' schemas.
      */
@@ -217,19 +285,29 @@ public class TokenizationIssueTokenParamsTokenParams extends AbstractOpenApiSche
             return;
         }
 
+        if (instance instanceof TokenizationERC20WrappedTokenParams) {
+            super.setActualInstance(instance);
+            return;
+        }
+
         if (instance instanceof TokenizationSOLTokenParams) {
             super.setActualInstance(instance);
             return;
         }
 
-        throw new RuntimeException("Invalid instance type. Must be TokenizationERC20TokenParams, TokenizationSOLTokenParams");
+        if (instance instanceof TokenizationSOLWrappedTokenParams) {
+            super.setActualInstance(instance);
+            return;
+        }
+
+        throw new RuntimeException("Invalid instance type. Must be TokenizationERC20TokenParams, TokenizationERC20WrappedTokenParams, TokenizationSOLTokenParams, TokenizationSOLWrappedTokenParams");
     }
 
     /**
      * Get the actual instance, which can be the following:
-     * TokenizationERC20TokenParams, TokenizationSOLTokenParams
+     * TokenizationERC20TokenParams, TokenizationERC20WrappedTokenParams, TokenizationSOLTokenParams, TokenizationSOLWrappedTokenParams
      *
-     * @return The actual instance (TokenizationERC20TokenParams, TokenizationSOLTokenParams)
+     * @return The actual instance (TokenizationERC20TokenParams, TokenizationERC20WrappedTokenParams, TokenizationSOLTokenParams, TokenizationSOLWrappedTokenParams)
      */
     @SuppressWarnings("unchecked")
     @Override
@@ -248,6 +326,16 @@ public class TokenizationIssueTokenParamsTokenParams extends AbstractOpenApiSche
         return (TokenizationERC20TokenParams)super.getActualInstance();
     }
     /**
+     * Get the actual instance of `TokenizationERC20WrappedTokenParams`. If the actual instance is not `TokenizationERC20WrappedTokenParams`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `TokenizationERC20WrappedTokenParams`
+     * @throws ClassCastException if the instance is not `TokenizationERC20WrappedTokenParams`
+     */
+    public TokenizationERC20WrappedTokenParams getTokenizationERC20WrappedTokenParams() throws ClassCastException {
+        return (TokenizationERC20WrappedTokenParams)super.getActualInstance();
+    }
+    /**
      * Get the actual instance of `TokenizationSOLTokenParams`. If the actual instance is not `TokenizationSOLTokenParams`,
      * the ClassCastException will be thrown.
      *
@@ -256,6 +344,16 @@ public class TokenizationIssueTokenParamsTokenParams extends AbstractOpenApiSche
      */
     public TokenizationSOLTokenParams getTokenizationSOLTokenParams() throws ClassCastException {
         return (TokenizationSOLTokenParams)super.getActualInstance();
+    }
+    /**
+     * Get the actual instance of `TokenizationSOLWrappedTokenParams`. If the actual instance is not `TokenizationSOLWrappedTokenParams`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `TokenizationSOLWrappedTokenParams`
+     * @throws ClassCastException if the instance is not `TokenizationSOLWrappedTokenParams`
+     */
+    public TokenizationSOLWrappedTokenParams getTokenizationSOLWrappedTokenParams() throws ClassCastException {
+        return (TokenizationSOLWrappedTokenParams)super.getActualInstance();
     }
 
     /**
@@ -276,6 +374,14 @@ public class TokenizationIssueTokenParamsTokenParams extends AbstractOpenApiSche
             errorMessages.add(String.format("Deserialization for TokenizationERC20TokenParams failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
+        // validate the json string with TokenizationERC20WrappedTokenParams
+        try {
+            TokenizationERC20WrappedTokenParams.validateJsonElement(jsonElement);
+            validCount++;
+        } catch (Exception e) {
+            errorMessages.add(String.format("Deserialization for TokenizationERC20WrappedTokenParams failed with `%s`.", e.getMessage()));
+            // continue to the next one
+        }
         // validate the json string with TokenizationSOLTokenParams
         try {
             TokenizationSOLTokenParams.validateJsonElement(jsonElement);
@@ -284,8 +390,16 @@ public class TokenizationIssueTokenParamsTokenParams extends AbstractOpenApiSche
             errorMessages.add(String.format("Deserialization for TokenizationSOLTokenParams failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
+        // validate the json string with TokenizationSOLWrappedTokenParams
+        try {
+            TokenizationSOLWrappedTokenParams.validateJsonElement(jsonElement);
+            validCount++;
+        } catch (Exception e) {
+            errorMessages.add(String.format("Deserialization for TokenizationSOLWrappedTokenParams failed with `%s`.", e.getMessage()));
+            // continue to the next one
+        }
         if (validCount != 1) {
-            // throw new IOException(String.format("The JSON string is invalid for TokenizationIssueTokenParamsTokenParams with oneOf schemas: TokenizationERC20TokenParams, TokenizationSOLTokenParams. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            // throw new IOException(String.format("The JSON string is invalid for TokenizationIssueTokenParamsTokenParams with oneOf schemas: TokenizationERC20TokenParams, TokenizationERC20WrappedTokenParams, TokenizationSOLTokenParams, TokenizationSOLWrappedTokenParams. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 

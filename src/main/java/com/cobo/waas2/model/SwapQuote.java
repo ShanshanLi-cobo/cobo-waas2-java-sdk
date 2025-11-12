@@ -90,7 +90,7 @@ public class SwapQuote {
 
   public static final String SERIALIZED_NAME_QUOTE_EXPIRED_TIMESTAMP = "quote_expired_timestamp";
   @SerializedName(SERIALIZED_NAME_QUOTE_EXPIRED_TIMESTAMP)
-  private Integer quoteExpiredTimestamp;
+  private Long quoteExpiredTimestamp;
 
   public SwapQuote() {
   }
@@ -101,7 +101,7 @@ public class SwapQuote {
   }
 
    /**
-   * The unique identifier of the swap quote.
+   * The unique id of quote.
    * @return quoteId
   **/
   @javax.annotation.Nonnull
@@ -120,7 +120,7 @@ public class SwapQuote {
   }
 
    /**
-   * The ID of the token to pay.
+   * The token ID to pay.
    * @return payTokenId
   **/
   @javax.annotation.Nonnull
@@ -139,7 +139,7 @@ public class SwapQuote {
   }
 
    /**
-   * The amount of the token to pay.
+   * The amount of tokens to pay.
    * @return payAmount
   **/
   @javax.annotation.Nonnull
@@ -158,7 +158,7 @@ public class SwapQuote {
   }
 
    /**
-   * The ID of the token to receive.
+   * The token ID to receive.
    * @return receiveTokenId
   **/
   @javax.annotation.Nonnull
@@ -177,7 +177,7 @@ public class SwapQuote {
   }
 
    /**
-   * The amount of the token to receive.
+   * The amount of tokens to receive.
    * @return receiveAmount
   **/
   @javax.annotation.Nonnull
@@ -196,7 +196,7 @@ public class SwapQuote {
   }
 
    /**
-   * The ID of the token for the service fee.
+   * The token ID for the service fee.
    * @return feeTokenId
   **/
   @javax.annotation.Nonnull
@@ -215,7 +215,7 @@ public class SwapQuote {
   }
 
    /**
-   * The amount of the token for the service fee.
+   * The amount of tokens for the service fee.
    * @return feeAmount
   **/
   @javax.annotation.Nonnull
@@ -234,7 +234,7 @@ public class SwapQuote {
   }
 
    /**
-   * The minimum amount of the token to receive if &#x60;pay_amount&#x60; is specified.
+   * The minimum amount of tokens to receive if the pay amount is specified.
    * @return minReceiveAmount
   **/
   @javax.annotation.Nullable
@@ -253,7 +253,7 @@ public class SwapQuote {
   }
 
    /**
-   * The maximum amount of the token to pay if &#x60;receive_amount&#x60; is specified.
+   * The maximum amount of tokens to pay if the receive amount is specified.
    * @return maxPayAmount
   **/
   @javax.annotation.Nullable
@@ -266,21 +266,21 @@ public class SwapQuote {
   }
 
 
-  public SwapQuote quoteExpiredTimestamp(Integer quoteExpiredTimestamp) {
+  public SwapQuote quoteExpiredTimestamp(Long quoteExpiredTimestamp) {
     this.quoteExpiredTimestamp = quoteExpiredTimestamp;
     return this;
   }
 
    /**
-   * The time when the swap quote expires, in Unix timestamp format, measured in milliseconds.
+   * The time when the quote will expire, in Unix timestamp format, measured in milliseconds.
    * @return quoteExpiredTimestamp
   **/
   @javax.annotation.Nonnull
-  public Integer getQuoteExpiredTimestamp() {
+  public Long getQuoteExpiredTimestamp() {
     return quoteExpiredTimestamp;
   }
 
-  public void setQuoteExpiredTimestamp(Integer quoteExpiredTimestamp) {
+  public void setQuoteExpiredTimestamp(Long quoteExpiredTimestamp) {
     this.quoteExpiredTimestamp = quoteExpiredTimestamp;
   }
 

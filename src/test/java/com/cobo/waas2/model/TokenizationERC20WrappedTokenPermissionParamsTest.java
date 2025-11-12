@@ -24,17 +24,17 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
- * Model tests for TokenizationTokenPermissionParams
+ * Model tests for TokenizationERC20WrappedTokenPermissionParams
  */
-public class TokenizationTokenPermissionParamsTest {
-    private final TokenizationTokenPermissionParams model = new TokenizationTokenPermissionParams();
+public class TokenizationERC20WrappedTokenPermissionParamsTest {
+    private final TokenizationERC20WrappedTokenPermissionParams model = new TokenizationERC20WrappedTokenPermissionParams();
 
     /**
-     * Model tests for TokenizationTokenPermissionParams
+     * Model tests for TokenizationERC20WrappedTokenPermissionParams
      */
     @Test
-    public void testTokenizationTokenPermissionParams() {
-        // TODO: test TokenizationTokenPermissionParams
+    public void testTokenizationERC20WrappedTokenPermissionParams() {
+        // TODO: test TokenizationERC20WrappedTokenPermissionParams
     }
 
     /**
@@ -54,11 +54,11 @@ public class TokenizationTokenPermissionParamsTest {
     }
 
     /**
-     * Test the property 'burner'
+     * Test the property 'wrapper'
      */
     @Test
-    public void burnerTest() {
-        // TODO: test burner
+    public void wrapperTest() {
+        // TODO: test wrapper
     }
 
     /**

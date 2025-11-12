@@ -62,7 +62,7 @@ public class SwapActivityTimeline {
 
   public static final String SERIALIZED_NAME_TIMESTAMP = "timestamp";
   @SerializedName(SERIALIZED_NAME_TIMESTAMP)
-  private Integer timestamp;
+  private Long timestamp;
 
   public SwapActivityTimeline() {
   }
@@ -105,7 +105,7 @@ public class SwapActivityTimeline {
   }
 
 
-  public SwapActivityTimeline timestamp(Integer timestamp) {
+  public SwapActivityTimeline timestamp(Long timestamp) {
     this.timestamp = timestamp;
     return this;
   }
@@ -115,11 +115,11 @@ public class SwapActivityTimeline {
    * @return timestamp
   **/
   @javax.annotation.Nullable
-  public Integer getTimestamp() {
+  public Long getTimestamp() {
     return timestamp;
   }
 
-  public void setTimestamp(Integer timestamp) {
+  public void setTimestamp(Long timestamp) {
     this.timestamp = timestamp;
   }
 

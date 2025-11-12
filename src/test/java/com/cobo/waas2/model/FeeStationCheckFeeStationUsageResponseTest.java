@@ -45,6 +45,14 @@ public class FeeStationCheckFeeStationUsageResponseTest {
     }
 
     /**
+     * Test the property 'balance'
+     */
+    @Test
+    public void balanceTest() {
+        // TODO: test balance
+    }
+
+    /**
      * Test the property 'gasStationType'
      */
     @Test
@@ -69,14 +77,6 @@ public class FeeStationCheckFeeStationUsageResponseTest {
     }
 
     /**
-     * Test the property 'balance'
-     */
-    @Test
-    public void balanceTest() {
-        // TODO: test balance
-    }
-
-    /**
      * Test the property 'totalFeeAmount'
      */
     @Test
@@ -98,6 +98,14 @@ public class FeeStationCheckFeeStationUsageResponseTest {
     @Test
     public void sponsoredFeeAmountTest() {
         // TODO: test sponsoredFeeAmount
+    }
+
+    /**
+     * Test the property 'sponsoredTokenId'
+     */
+    @Test
+    public void sponsoredTokenIdTest() {
+        // TODO: test sponsoredTokenId
     }
 
 }
