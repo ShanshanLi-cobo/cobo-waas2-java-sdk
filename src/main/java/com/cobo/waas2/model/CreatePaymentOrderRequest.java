@@ -162,7 +162,7 @@ public class CreatePaymentOrderRequest {
   }
 
    /**
-   *  The base amount of the order, excluding the developer fee (specified in &#x60;fee_amount&#x60;). The denomination of the amount depends on if &#x60;currency&#x60; is specified: - If &#x60;currency&#x60; is specified, the amount is in the currency specified by &#x60;currency&#x60;, e.g. \&quot;USD\&quot;. - If &#x60;currency&#x60; is not specified, the amount is in the cryptocurrency specified by &#x60;token_id&#x60;, e.g. \&quot;ETH_USDT\&quot;.   Values must be greater than &#x60;0&#x60; and contain two decimal places.  
+   *  The base amount of the order, excluding the developer fee (specified in &#x60;fee_amount&#x60;). The denomination of the amount depends on if &#x60;currency&#x60; is specified: - If &#x60;currency&#x60; is specified, the amount is in the currency specified by &#x60;currency&#x60;, e.g. \&quot;USD\&quot;. - If &#x60;currency&#x60; is not specified, the amount is in the cryptocurrency specified by &#x60;token_id&#x60;, e.g. \&quot;ETH_USDT\&quot;.   Values must be greater than &#x60;0&#x60; and contain two decimal places. 
    * @return orderAmount
   **/
   @javax.annotation.Nonnull

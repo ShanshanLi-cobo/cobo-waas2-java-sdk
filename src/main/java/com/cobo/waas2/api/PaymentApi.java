@@ -27,7 +27,16 @@ import java.io.IOException;
 
 import com.cobo.waas2.model.AcquiringType;
 import com.cobo.waas2.model.BankAccount;
+import com.cobo.waas2.model.BankAccountStatus;
+import com.cobo.waas2.model.Counterparty;
+import com.cobo.waas2.model.CounterpartyDetail;
+import com.cobo.waas2.model.CounterpartyType;
+import com.cobo.waas2.model.CreateCounterpartyRequest;
+import com.cobo.waas2.model.CreateCounterpartyWalletAddressRequest;
 import com.cobo.waas2.model.CreateCryptoAddressRequest;
+import com.cobo.waas2.model.CreateDestinationBankAccountRequest;
+import com.cobo.waas2.model.CreateDestinationRequest;
+import com.cobo.waas2.model.CreateDestinationWalletAddressRequest;
 import com.cobo.waas2.model.CreateMerchantRequest;
 import com.cobo.waas2.model.CreateOrderLinkRequest;
 import com.cobo.waas2.model.CreatePaymentOrderRequest;
@@ -35,14 +44,31 @@ import com.cobo.waas2.model.CreateRefundLinkRequest;
 import com.cobo.waas2.model.CreateRefundRequest;
 import com.cobo.waas2.model.CreateSettlementRequestRequest;
 import com.cobo.waas2.model.CryptoAddress;
+import com.cobo.waas2.model.DeleteCounterparty200Response;
+import com.cobo.waas2.model.DeleteCounterpartyWalletAddress200Response;
 import com.cobo.waas2.model.DeleteCryptoAddress201Response;
+import com.cobo.waas2.model.DeleteDestination200Response;
+import com.cobo.waas2.model.DeleteDestinationBankAccount200Response;
+import com.cobo.waas2.model.DeleteDestinationWalletAddress200Response;
+import com.cobo.waas2.model.Destination;
+import com.cobo.waas2.model.DestinationBankAccount;
+import com.cobo.waas2.model.DestinationBankAccountDetail;
+import com.cobo.waas2.model.DestinationDetail;
+import com.cobo.waas2.model.DestinationType;
+import com.cobo.waas2.model.EnableDestinationWhitelistRequest;
 import com.cobo.waas2.model.ErrorResponse;
+import com.cobo.waas2.model.ExchangeRate;
 import com.cobo.waas2.model.ForcedSweep;
 import com.cobo.waas2.model.ForcedSweepRequest;
 import com.cobo.waas2.model.GetExchangeRate200Response;
 import com.cobo.waas2.model.GetRefunds200Response;
 import com.cobo.waas2.model.GetSettlementInfoByIds200Response;
 import com.cobo.waas2.model.Link;
+import com.cobo.waas2.model.ListCounterparties200Response;
+import com.cobo.waas2.model.ListCounterpartyWalletAddress200Response;
+import com.cobo.waas2.model.ListDestinationBankAccounts200Response;
+import com.cobo.waas2.model.ListDestinationWalletAddresses200Response;
+import com.cobo.waas2.model.ListDestinations200Response;
 import com.cobo.waas2.model.ListForcedSweepRequests200Response;
 import com.cobo.waas2.model.ListMerchantBalances200Response;
 import com.cobo.waas2.model.ListMerchants200Response;
@@ -57,17 +83,21 @@ import com.cobo.waas2.model.Order;
 import com.cobo.waas2.model.PaymentEstimateFee201Response;
 import com.cobo.waas2.model.PaymentEstimateFeeRequest;
 import com.cobo.waas2.model.PspBalance;
-import com.cobo.waas2.model.ReceivedAmountPerAddress;
+import com.cobo.waas2.model.QueryDestinationWhitelistEnabled200Response;
 import com.cobo.waas2.model.Refund;
 import com.cobo.waas2.model.Settlement;
 import com.cobo.waas2.model.SupportedToken;
 import com.cobo.waas2.model.TopUpAddress;
 import java.util.UUID;
 import com.cobo.waas2.model.UpdateBankAccountByIdRequest;
+import com.cobo.waas2.model.UpdateCounterpartyByIdRequest;
+import com.cobo.waas2.model.UpdateDestinationBankAccount;
+import com.cobo.waas2.model.UpdateDestinationByIdRequest;
 import com.cobo.waas2.model.UpdateMerchantByIdRequest;
 import com.cobo.waas2.model.UpdatePaymentOrderRequest;
 import com.cobo.waas2.model.UpdateRefundByIdRequest;
 import com.cobo.waas2.model.UpdateTopUpAddress;
+import com.cobo.waas2.model.WalletAddress;
 import com.cobo.waas2.model.WalletSetup;
 
 import java.lang.reflect.Type;
@@ -95,6 +125,140 @@ public class PaymentApi {
         this.localVarApiClient = apiClient;
     }
 
+    /**
+     * Build call for batchGetExchangeRates
+     * @param tokenIds A list of token IDs, separated by comma. The token ID is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-tokens).  (required)
+     * @param currencies List of the fiat currencies, separated by comma. Currently, only &#x60;USD&#x60; is supported.  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call batchGetExchangeRatesCall(String tokenIds, String currencies, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/payments/exchange_rates";
+
+        List<Pair> localVarQueryParams = new ArrayList<>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<>();
+        Map<String, String> localVarHeaderParams = new HashMap<>();
+        Map<String, String> localVarCookieParams = new HashMap<>();
+        Map<String, Object> localVarFormParams = new HashMap<>();
+
+        if (tokenIds != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token_ids", tokenIds));
+        }
+
+        if (currencies != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("currencies", currencies));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(null, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call batchGetExchangeRatesValidateBeforeCall(String tokenIds, String currencies, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'tokenIds' is set
+        if (tokenIds == null) {
+            throw new ApiException("Missing the required parameter 'tokenIds' when calling batchGetExchangeRates(Async)");
+        }
+
+        // verify the required parameter 'currencies' is set
+        if (currencies == null) {
+            throw new ApiException("Missing the required parameter 'currencies' when calling batchGetExchangeRates(Async)");
+        }
+
+        return batchGetExchangeRatesCall(tokenIds, currencies, _callback);
+
+    }
+
+    /**
+     * Batch get exchange rates
+     * This operation retrieves the current exchange rates between a specified currency and a list of token IDs. 
+     * @param tokenIds A list of token IDs, separated by comma. The token ID is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-tokens).  (required)
+     * @param currencies List of the fiat currencies, separated by comma. Currently, only &#x60;USD&#x60; is supported.  (required)
+     * @return List&lt;ExchangeRate&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public List<ExchangeRate> batchGetExchangeRates(String tokenIds, String currencies) throws ApiException {
+        ApiResponse<List<ExchangeRate>> localVarResp = batchGetExchangeRatesWithHttpInfo(tokenIds, currencies);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Batch get exchange rates
+     * This operation retrieves the current exchange rates between a specified currency and a list of token IDs. 
+     * @param tokenIds A list of token IDs, separated by comma. The token ID is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-tokens).  (required)
+     * @param currencies List of the fiat currencies, separated by comma. Currently, only &#x60;USD&#x60; is supported.  (required)
+     * @return ApiResponse&lt;List&lt;ExchangeRate&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<List<ExchangeRate>> batchGetExchangeRatesWithHttpInfo(String tokenIds, String currencies) throws ApiException {
+        okhttp3.Call localVarCall = batchGetExchangeRatesValidateBeforeCall(tokenIds, currencies, null);
+        Type localVarReturnType = new TypeToken<List<ExchangeRate>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Batch get exchange rates (asynchronously)
+     * This operation retrieves the current exchange rates between a specified currency and a list of token IDs. 
+     * @param tokenIds A list of token IDs, separated by comma. The token ID is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-tokens).  (required)
+     * @param currencies List of the fiat currencies, separated by comma. Currently, only &#x60;USD&#x60; is supported.  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call batchGetExchangeRatesAsync(String tokenIds, String currencies, final ApiCallback<List<ExchangeRate>> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = batchGetExchangeRatesValidateBeforeCall(tokenIds, currencies, _callback);
+        Type localVarReturnType = new TypeToken<List<ExchangeRate>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
     /**
      * Build call for cancelRefundById
      * @param refundId The refund order ID. (required)
@@ -214,6 +378,232 @@ public class PaymentApi {
         return localVarCall;
     }
     /**
+     * Build call for createCounterparty
+     * @param createCounterpartyRequest The request body to create a counterparty. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createCounterpartyCall(CreateCounterpartyRequest createCounterpartyRequest, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = createCounterpartyRequest;
+
+        // create path and map variables
+        String localVarPath = "/payments/counterparty";
+
+        List<Pair> localVarQueryParams = new ArrayList<>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<>();
+        Map<String, String> localVarHeaderParams = new HashMap<>();
+        Map<String, String> localVarCookieParams = new HashMap<>();
+        Map<String, Object> localVarFormParams = new HashMap<>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(null, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createCounterpartyValidateBeforeCall(CreateCounterpartyRequest createCounterpartyRequest, final ApiCallback _callback) throws ApiException {
+        return createCounterpartyCall(createCounterpartyRequest, _callback);
+
+    }
+
+    /**
+     * Create counterparty
+     * This operation creates a counterparty. 
+     * @param createCounterpartyRequest The request body to create a counterparty. (optional)
+     * @return CounterpartyDetail
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public CounterpartyDetail createCounterparty(CreateCounterpartyRequest createCounterpartyRequest) throws ApiException {
+        ApiResponse<CounterpartyDetail> localVarResp = createCounterpartyWithHttpInfo(createCounterpartyRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Create counterparty
+     * This operation creates a counterparty. 
+     * @param createCounterpartyRequest The request body to create a counterparty. (optional)
+     * @return ApiResponse&lt;CounterpartyDetail&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CounterpartyDetail> createCounterpartyWithHttpInfo(CreateCounterpartyRequest createCounterpartyRequest) throws ApiException {
+        okhttp3.Call localVarCall = createCounterpartyValidateBeforeCall(createCounterpartyRequest, null);
+        Type localVarReturnType = new TypeToken<CounterpartyDetail>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Create counterparty (asynchronously)
+     * This operation creates a counterparty. 
+     * @param createCounterpartyRequest The request body to create a counterparty. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createCounterpartyAsync(CreateCounterpartyRequest createCounterpartyRequest, final ApiCallback<CounterpartyDetail> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createCounterpartyValidateBeforeCall(createCounterpartyRequest, _callback);
+        Type localVarReturnType = new TypeToken<CounterpartyDetail>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createCounterpartyWalletAddress
+     * @param createCounterpartyWalletAddressRequest The request body to create a counterparty wallet address. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createCounterpartyWalletAddressCall(CreateCounterpartyWalletAddressRequest createCounterpartyWalletAddressRequest, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = createCounterpartyWalletAddressRequest;
+
+        // create path and map variables
+        String localVarPath = "/payments/counterparty/wallet_address";
+
+        List<Pair> localVarQueryParams = new ArrayList<>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<>();
+        Map<String, String> localVarHeaderParams = new HashMap<>();
+        Map<String, String> localVarCookieParams = new HashMap<>();
+        Map<String, Object> localVarFormParams = new HashMap<>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(null, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createCounterpartyWalletAddressValidateBeforeCall(CreateCounterpartyWalletAddressRequest createCounterpartyWalletAddressRequest, final ApiCallback _callback) throws ApiException {
+        return createCounterpartyWalletAddressCall(createCounterpartyWalletAddressRequest, _callback);
+
+    }
+
+    /**
+     * Create counterparty wallet address
+     * This operation creates a counterparty wallet address. 
+     * @param createCounterpartyWalletAddressRequest The request body to create a counterparty wallet address. (optional)
+     * @return WalletAddress
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public WalletAddress createCounterpartyWalletAddress(CreateCounterpartyWalletAddressRequest createCounterpartyWalletAddressRequest) throws ApiException {
+        ApiResponse<WalletAddress> localVarResp = createCounterpartyWalletAddressWithHttpInfo(createCounterpartyWalletAddressRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Create counterparty wallet address
+     * This operation creates a counterparty wallet address. 
+     * @param createCounterpartyWalletAddressRequest The request body to create a counterparty wallet address. (optional)
+     * @return ApiResponse&lt;WalletAddress&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<WalletAddress> createCounterpartyWalletAddressWithHttpInfo(CreateCounterpartyWalletAddressRequest createCounterpartyWalletAddressRequest) throws ApiException {
+        okhttp3.Call localVarCall = createCounterpartyWalletAddressValidateBeforeCall(createCounterpartyWalletAddressRequest, null);
+        Type localVarReturnType = new TypeToken<WalletAddress>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Create counterparty wallet address (asynchronously)
+     * This operation creates a counterparty wallet address. 
+     * @param createCounterpartyWalletAddressRequest The request body to create a counterparty wallet address. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createCounterpartyWalletAddressAsync(CreateCounterpartyWalletAddressRequest createCounterpartyWalletAddressRequest, final ApiCallback<WalletAddress> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createCounterpartyWalletAddressValidateBeforeCall(createCounterpartyWalletAddressRequest, _callback);
+        Type localVarReturnType = new TypeToken<WalletAddress>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for createCryptoAddress
      * @param createCryptoAddressRequest The request body to register a crypto address. (optional)
      * @param _callback Callback for upload/download progress
@@ -323,6 +713,345 @@ public class PaymentApi {
 
         okhttp3.Call localVarCall = createCryptoAddressValidateBeforeCall(createCryptoAddressRequest, _callback);
         Type localVarReturnType = new TypeToken<CryptoAddress>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createDestination
+     * @param createDestinationRequest The request body to create a destination. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createDestinationCall(CreateDestinationRequest createDestinationRequest, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = createDestinationRequest;
+
+        // create path and map variables
+        String localVarPath = "/payments/destination";
+
+        List<Pair> localVarQueryParams = new ArrayList<>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<>();
+        Map<String, String> localVarHeaderParams = new HashMap<>();
+        Map<String, String> localVarCookieParams = new HashMap<>();
+        Map<String, Object> localVarFormParams = new HashMap<>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(null, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createDestinationValidateBeforeCall(CreateDestinationRequest createDestinationRequest, final ApiCallback _callback) throws ApiException {
+        return createDestinationCall(createDestinationRequest, _callback);
+
+    }
+
+    /**
+     * Create destination
+     * This operation creates a destination. 
+     * @param createDestinationRequest The request body to create a destination. (optional)
+     * @return DestinationDetail
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public DestinationDetail createDestination(CreateDestinationRequest createDestinationRequest) throws ApiException {
+        ApiResponse<DestinationDetail> localVarResp = createDestinationWithHttpInfo(createDestinationRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Create destination
+     * This operation creates a destination. 
+     * @param createDestinationRequest The request body to create a destination. (optional)
+     * @return ApiResponse&lt;DestinationDetail&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<DestinationDetail> createDestinationWithHttpInfo(CreateDestinationRequest createDestinationRequest) throws ApiException {
+        okhttp3.Call localVarCall = createDestinationValidateBeforeCall(createDestinationRequest, null);
+        Type localVarReturnType = new TypeToken<DestinationDetail>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Create destination (asynchronously)
+     * This operation creates a destination. 
+     * @param createDestinationRequest The request body to create a destination. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createDestinationAsync(CreateDestinationRequest createDestinationRequest, final ApiCallback<DestinationDetail> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createDestinationValidateBeforeCall(createDestinationRequest, _callback);
+        Type localVarReturnType = new TypeToken<DestinationDetail>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createDestinationBankAccount
+     * @param createDestinationBankAccountRequest The request body to create a destination bank account. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createDestinationBankAccountCall(CreateDestinationBankAccountRequest createDestinationBankAccountRequest, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = createDestinationBankAccountRequest;
+
+        // create path and map variables
+        String localVarPath = "/payments/destination/bank_account";
+
+        List<Pair> localVarQueryParams = new ArrayList<>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<>();
+        Map<String, String> localVarHeaderParams = new HashMap<>();
+        Map<String, String> localVarCookieParams = new HashMap<>();
+        Map<String, Object> localVarFormParams = new HashMap<>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(null, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createDestinationBankAccountValidateBeforeCall(CreateDestinationBankAccountRequest createDestinationBankAccountRequest, final ApiCallback _callback) throws ApiException {
+        return createDestinationBankAccountCall(createDestinationBankAccountRequest, _callback);
+
+    }
+
+    /**
+     * Create destination bank account
+     * This operation creates a destination bank account. 
+     * @param createDestinationBankAccountRequest The request body to create a destination bank account. (optional)
+     * @return DestinationBankAccount
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public DestinationBankAccount createDestinationBankAccount(CreateDestinationBankAccountRequest createDestinationBankAccountRequest) throws ApiException {
+        ApiResponse<DestinationBankAccount> localVarResp = createDestinationBankAccountWithHttpInfo(createDestinationBankAccountRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Create destination bank account
+     * This operation creates a destination bank account. 
+     * @param createDestinationBankAccountRequest The request body to create a destination bank account. (optional)
+     * @return ApiResponse&lt;DestinationBankAccount&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<DestinationBankAccount> createDestinationBankAccountWithHttpInfo(CreateDestinationBankAccountRequest createDestinationBankAccountRequest) throws ApiException {
+        okhttp3.Call localVarCall = createDestinationBankAccountValidateBeforeCall(createDestinationBankAccountRequest, null);
+        Type localVarReturnType = new TypeToken<DestinationBankAccount>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Create destination bank account (asynchronously)
+     * This operation creates a destination bank account. 
+     * @param createDestinationBankAccountRequest The request body to create a destination bank account. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createDestinationBankAccountAsync(CreateDestinationBankAccountRequest createDestinationBankAccountRequest, final ApiCallback<DestinationBankAccount> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createDestinationBankAccountValidateBeforeCall(createDestinationBankAccountRequest, _callback);
+        Type localVarReturnType = new TypeToken<DestinationBankAccount>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createDestinationWalletAddress
+     * @param createDestinationWalletAddressRequest The request body to create a destination wallet address. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createDestinationWalletAddressCall(CreateDestinationWalletAddressRequest createDestinationWalletAddressRequest, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = createDestinationWalletAddressRequest;
+
+        // create path and map variables
+        String localVarPath = "/payments/destination/wallet_address";
+
+        List<Pair> localVarQueryParams = new ArrayList<>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<>();
+        Map<String, String> localVarHeaderParams = new HashMap<>();
+        Map<String, String> localVarCookieParams = new HashMap<>();
+        Map<String, Object> localVarFormParams = new HashMap<>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(null, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createDestinationWalletAddressValidateBeforeCall(CreateDestinationWalletAddressRequest createDestinationWalletAddressRequest, final ApiCallback _callback) throws ApiException {
+        return createDestinationWalletAddressCall(createDestinationWalletAddressRequest, _callback);
+
+    }
+
+    /**
+     * Create destination wallet address
+     * This operation creates a destination wallet address. 
+     * @param createDestinationWalletAddressRequest The request body to create a destination wallet address. (optional)
+     * @return WalletAddress
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public WalletAddress createDestinationWalletAddress(CreateDestinationWalletAddressRequest createDestinationWalletAddressRequest) throws ApiException {
+        ApiResponse<WalletAddress> localVarResp = createDestinationWalletAddressWithHttpInfo(createDestinationWalletAddressRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Create destination wallet address
+     * This operation creates a destination wallet address. 
+     * @param createDestinationWalletAddressRequest The request body to create a destination wallet address. (optional)
+     * @return ApiResponse&lt;WalletAddress&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<WalletAddress> createDestinationWalletAddressWithHttpInfo(CreateDestinationWalletAddressRequest createDestinationWalletAddressRequest) throws ApiException {
+        okhttp3.Call localVarCall = createDestinationWalletAddressValidateBeforeCall(createDestinationWalletAddressRequest, null);
+        Type localVarReturnType = new TypeToken<WalletAddress>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Create destination wallet address (asynchronously)
+     * This operation creates a destination wallet address. 
+     * @param createDestinationWalletAddressRequest The request body to create a destination wallet address. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createDestinationWalletAddressAsync(CreateDestinationWalletAddressRequest createDestinationWalletAddressRequest, final ApiCallback<WalletAddress> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createDestinationWalletAddressValidateBeforeCall(createDestinationWalletAddressRequest, _callback);
+        Type localVarReturnType = new TypeToken<WalletAddress>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -561,7 +1290,7 @@ public class PaymentApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Order link created successfully. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Link created successfully. </td><td>  -  </td></tr>
         <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
@@ -613,7 +1342,7 @@ public class PaymentApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Order link created successfully. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Link created successfully. </td><td>  -  </td></tr>
         <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
@@ -632,7 +1361,7 @@ public class PaymentApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Order link created successfully. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Link created successfully. </td><td>  -  </td></tr>
         <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
@@ -653,7 +1382,7 @@ public class PaymentApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Order link created successfully. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Link created successfully. </td><td>  -  </td></tr>
         <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
@@ -893,14 +1622,14 @@ public class PaymentApi {
     }
     /**
      * Build call for createRefundLink
-     * @param createRefundLinkRequest The request body to create a payment link for a refund. (optional)
+     * @param createRefundLinkRequest The request body to create a refund link. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Order link created successfully. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Link created successfully. </td><td>  -  </td></tr>
         <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
@@ -945,14 +1674,14 @@ public class PaymentApi {
 
     /**
      * Create refund link
-     * This operation creates a payment link for a refund. 
-     * @param createRefundLinkRequest The request body to create a payment link for a refund. (optional)
+     * This operation creates a link that points to a Cobo-hosted refund page. The user can submit their desired refund address on the page.  Once the address is submitted, Cobo will automatically create a refund order and initiate the refund process according to your configuration.  For details, see [Create refund link](https://www.cobo.com/developers/v2/payments/create-refund-link). 
+     * @param createRefundLinkRequest The request body to create a refund link. (optional)
      * @return Link
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Order link created successfully. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Link created successfully. </td><td>  -  </td></tr>
         <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
@@ -964,14 +1693,14 @@ public class PaymentApi {
 
     /**
      * Create refund link
-     * This operation creates a payment link for a refund. 
-     * @param createRefundLinkRequest The request body to create a payment link for a refund. (optional)
+     * This operation creates a link that points to a Cobo-hosted refund page. The user can submit their desired refund address on the page.  Once the address is submitted, Cobo will automatically create a refund order and initiate the refund process according to your configuration.  For details, see [Create refund link](https://www.cobo.com/developers/v2/payments/create-refund-link). 
+     * @param createRefundLinkRequest The request body to create a refund link. (optional)
      * @return ApiResponse&lt;Link&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Order link created successfully. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Link created successfully. </td><td>  -  </td></tr>
         <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
@@ -984,15 +1713,15 @@ public class PaymentApi {
 
     /**
      * Create refund link (asynchronously)
-     * This operation creates a payment link for a refund. 
-     * @param createRefundLinkRequest The request body to create a payment link for a refund. (optional)
+     * This operation creates a link that points to a Cobo-hosted refund page. The user can submit their desired refund address on the page.  Once the address is submitted, Cobo will automatically create a refund order and initiate the refund process according to your configuration.  For details, see [Create refund link](https://www.cobo.com/developers/v2/payments/create-refund-link). 
+     * @param createRefundLinkRequest The request body to create a refund link. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Order link created successfully. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Link created successfully. </td><td>  -  </td></tr>
         <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
@@ -1118,6 +1847,250 @@ public class PaymentApi {
         return localVarCall;
     }
     /**
+     * Build call for deleteCounterparty
+     * @param counterpartyId The counterparty ID. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized. Please provide valid credentials. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden. You do not have the permission to access the requested resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteCounterpartyCall(String counterpartyId, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/payments/counterparty/{counterparty_id}/delete"
+            .replace("{" + "counterparty_id" + "}", localVarApiClient.escapeString(counterpartyId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<>();
+        Map<String, String> localVarHeaderParams = new HashMap<>();
+        Map<String, String> localVarCookieParams = new HashMap<>();
+        Map<String, Object> localVarFormParams = new HashMap<>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(null, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteCounterpartyValidateBeforeCall(String counterpartyId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'counterpartyId' is set
+        if (counterpartyId == null) {
+            throw new ApiException("Missing the required parameter 'counterpartyId' when calling deleteCounterparty(Async)");
+        }
+
+        return deleteCounterpartyCall(counterpartyId, _callback);
+
+    }
+
+    /**
+     * Delete counterparty
+     * This operation deletes a counterparty. 
+     * @param counterpartyId The counterparty ID. (required)
+     * @return DeleteCounterparty200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized. Please provide valid credentials. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden. You do not have the permission to access the requested resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public DeleteCounterparty200Response deleteCounterparty(String counterpartyId) throws ApiException {
+        ApiResponse<DeleteCounterparty200Response> localVarResp = deleteCounterpartyWithHttpInfo(counterpartyId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Delete counterparty
+     * This operation deletes a counterparty. 
+     * @param counterpartyId The counterparty ID. (required)
+     * @return ApiResponse&lt;DeleteCounterparty200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized. Please provide valid credentials. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden. You do not have the permission to access the requested resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<DeleteCounterparty200Response> deleteCounterpartyWithHttpInfo(String counterpartyId) throws ApiException {
+        okhttp3.Call localVarCall = deleteCounterpartyValidateBeforeCall(counterpartyId, null);
+        Type localVarReturnType = new TypeToken<DeleteCounterparty200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Delete counterparty (asynchronously)
+     * This operation deletes a counterparty. 
+     * @param counterpartyId The counterparty ID. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized. Please provide valid credentials. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden. You do not have the permission to access the requested resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteCounterpartyAsync(String counterpartyId, final ApiCallback<DeleteCounterparty200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteCounterpartyValidateBeforeCall(counterpartyId, _callback);
+        Type localVarReturnType = new TypeToken<DeleteCounterparty200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteCounterpartyWalletAddress
+     * @param walletAddressId The wallet address ID. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized. Please provide valid credentials. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden. You do not have the permission to access the requested resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteCounterpartyWalletAddressCall(String walletAddressId, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/payments/counterparty/wallet_address/{wallet_address_id}/delete"
+            .replace("{" + "wallet_address_id" + "}", localVarApiClient.escapeString(walletAddressId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<>();
+        Map<String, String> localVarHeaderParams = new HashMap<>();
+        Map<String, String> localVarCookieParams = new HashMap<>();
+        Map<String, Object> localVarFormParams = new HashMap<>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(null, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteCounterpartyWalletAddressValidateBeforeCall(String walletAddressId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'walletAddressId' is set
+        if (walletAddressId == null) {
+            throw new ApiException("Missing the required parameter 'walletAddressId' when calling deleteCounterpartyWalletAddress(Async)");
+        }
+
+        return deleteCounterpartyWalletAddressCall(walletAddressId, _callback);
+
+    }
+
+    /**
+     * Delete counterparty wallet address
+     * This operation deletes a counterparty wallet address. 
+     * @param walletAddressId The wallet address ID. (required)
+     * @return DeleteCounterpartyWalletAddress200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized. Please provide valid credentials. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden. You do not have the permission to access the requested resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public DeleteCounterpartyWalletAddress200Response deleteCounterpartyWalletAddress(String walletAddressId) throws ApiException {
+        ApiResponse<DeleteCounterpartyWalletAddress200Response> localVarResp = deleteCounterpartyWalletAddressWithHttpInfo(walletAddressId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Delete counterparty wallet address
+     * This operation deletes a counterparty wallet address. 
+     * @param walletAddressId The wallet address ID. (required)
+     * @return ApiResponse&lt;DeleteCounterpartyWalletAddress200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized. Please provide valid credentials. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden. You do not have the permission to access the requested resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<DeleteCounterpartyWalletAddress200Response> deleteCounterpartyWalletAddressWithHttpInfo(String walletAddressId) throws ApiException {
+        okhttp3.Call localVarCall = deleteCounterpartyWalletAddressValidateBeforeCall(walletAddressId, null);
+        Type localVarReturnType = new TypeToken<DeleteCounterpartyWalletAddress200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Delete counterparty wallet address (asynchronously)
+     * This operation deletes a counterparty wallet address. 
+     * @param walletAddressId The wallet address ID. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized. Please provide valid credentials. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden. You do not have the permission to access the requested resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteCounterpartyWalletAddressAsync(String walletAddressId, final ApiCallback<DeleteCounterpartyWalletAddress200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteCounterpartyWalletAddressValidateBeforeCall(walletAddressId, _callback);
+        Type localVarReturnType = new TypeToken<DeleteCounterpartyWalletAddress200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for deleteCryptoAddress
      * @param cryptoAddressId The crypto address ID. (required)
      * @param _callback Callback for upload/download progress
@@ -1236,6 +2209,839 @@ public class PaymentApi {
 
         okhttp3.Call localVarCall = deleteCryptoAddressValidateBeforeCall(cryptoAddressId, _callback);
         Type localVarReturnType = new TypeToken<DeleteCryptoAddress201Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteDestination
+     * @param destinationId The destination ID. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized. Please provide valid credentials. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden. You do not have the permission to access the requested resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteDestinationCall(String destinationId, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/payments/destination/{destination_id}/delete"
+            .replace("{" + "destination_id" + "}", localVarApiClient.escapeString(destinationId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<>();
+        Map<String, String> localVarHeaderParams = new HashMap<>();
+        Map<String, String> localVarCookieParams = new HashMap<>();
+        Map<String, Object> localVarFormParams = new HashMap<>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(null, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteDestinationValidateBeforeCall(String destinationId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'destinationId' is set
+        if (destinationId == null) {
+            throw new ApiException("Missing the required parameter 'destinationId' when calling deleteDestination(Async)");
+        }
+
+        return deleteDestinationCall(destinationId, _callback);
+
+    }
+
+    /**
+     * Delete destination
+     * This operation deletes a destination. 
+     * @param destinationId The destination ID. (required)
+     * @return DeleteDestination200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized. Please provide valid credentials. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden. You do not have the permission to access the requested resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public DeleteDestination200Response deleteDestination(String destinationId) throws ApiException {
+        ApiResponse<DeleteDestination200Response> localVarResp = deleteDestinationWithHttpInfo(destinationId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Delete destination
+     * This operation deletes a destination. 
+     * @param destinationId The destination ID. (required)
+     * @return ApiResponse&lt;DeleteDestination200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized. Please provide valid credentials. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden. You do not have the permission to access the requested resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<DeleteDestination200Response> deleteDestinationWithHttpInfo(String destinationId) throws ApiException {
+        okhttp3.Call localVarCall = deleteDestinationValidateBeforeCall(destinationId, null);
+        Type localVarReturnType = new TypeToken<DeleteDestination200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Delete destination (asynchronously)
+     * This operation deletes a destination. 
+     * @param destinationId The destination ID. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized. Please provide valid credentials. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden. You do not have the permission to access the requested resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteDestinationAsync(String destinationId, final ApiCallback<DeleteDestination200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteDestinationValidateBeforeCall(destinationId, _callback);
+        Type localVarReturnType = new TypeToken<DeleteDestination200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteDestinationBankAccount
+     * @param bankAccountId The bank account ID. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized. Please provide valid credentials. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden. You do not have the permission to access the requested resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteDestinationBankAccountCall(UUID bankAccountId, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/payments/destination/bank_account/{bank_account_id}/delete"
+            .replace("{" + "bank_account_id" + "}", localVarApiClient.escapeString(bankAccountId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<>();
+        Map<String, String> localVarHeaderParams = new HashMap<>();
+        Map<String, String> localVarCookieParams = new HashMap<>();
+        Map<String, Object> localVarFormParams = new HashMap<>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(null, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteDestinationBankAccountValidateBeforeCall(UUID bankAccountId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'bankAccountId' is set
+        if (bankAccountId == null) {
+            throw new ApiException("Missing the required parameter 'bankAccountId' when calling deleteDestinationBankAccount(Async)");
+        }
+
+        return deleteDestinationBankAccountCall(bankAccountId, _callback);
+
+    }
+
+    /**
+     * Delete destination bank account
+     * This operation deletes a destination bank account. 
+     * @param bankAccountId The bank account ID. (required)
+     * @return DeleteDestinationBankAccount200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized. Please provide valid credentials. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden. You do not have the permission to access the requested resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public DeleteDestinationBankAccount200Response deleteDestinationBankAccount(UUID bankAccountId) throws ApiException {
+        ApiResponse<DeleteDestinationBankAccount200Response> localVarResp = deleteDestinationBankAccountWithHttpInfo(bankAccountId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Delete destination bank account
+     * This operation deletes a destination bank account. 
+     * @param bankAccountId The bank account ID. (required)
+     * @return ApiResponse&lt;DeleteDestinationBankAccount200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized. Please provide valid credentials. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden. You do not have the permission to access the requested resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<DeleteDestinationBankAccount200Response> deleteDestinationBankAccountWithHttpInfo(UUID bankAccountId) throws ApiException {
+        okhttp3.Call localVarCall = deleteDestinationBankAccountValidateBeforeCall(bankAccountId, null);
+        Type localVarReturnType = new TypeToken<DeleteDestinationBankAccount200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Delete destination bank account (asynchronously)
+     * This operation deletes a destination bank account. 
+     * @param bankAccountId The bank account ID. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized. Please provide valid credentials. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden. You do not have the permission to access the requested resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteDestinationBankAccountAsync(UUID bankAccountId, final ApiCallback<DeleteDestinationBankAccount200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteDestinationBankAccountValidateBeforeCall(bankAccountId, _callback);
+        Type localVarReturnType = new TypeToken<DeleteDestinationBankAccount200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteDestinationWalletAddress
+     * @param walletAddressId The wallet address ID. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized. Please provide valid credentials. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden. You do not have the permission to access the requested resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteDestinationWalletAddressCall(String walletAddressId, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/payments/destination/wallet_address/{wallet_address_id}/delete"
+            .replace("{" + "wallet_address_id" + "}", localVarApiClient.escapeString(walletAddressId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<>();
+        Map<String, String> localVarHeaderParams = new HashMap<>();
+        Map<String, String> localVarCookieParams = new HashMap<>();
+        Map<String, Object> localVarFormParams = new HashMap<>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(null, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteDestinationWalletAddressValidateBeforeCall(String walletAddressId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'walletAddressId' is set
+        if (walletAddressId == null) {
+            throw new ApiException("Missing the required parameter 'walletAddressId' when calling deleteDestinationWalletAddress(Async)");
+        }
+
+        return deleteDestinationWalletAddressCall(walletAddressId, _callback);
+
+    }
+
+    /**
+     * Delete destination wallet address
+     * This operation deletes a destination wallet address. 
+     * @param walletAddressId The wallet address ID. (required)
+     * @return DeleteDestinationWalletAddress200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized. Please provide valid credentials. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden. You do not have the permission to access the requested resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public DeleteDestinationWalletAddress200Response deleteDestinationWalletAddress(String walletAddressId) throws ApiException {
+        ApiResponse<DeleteDestinationWalletAddress200Response> localVarResp = deleteDestinationWalletAddressWithHttpInfo(walletAddressId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Delete destination wallet address
+     * This operation deletes a destination wallet address. 
+     * @param walletAddressId The wallet address ID. (required)
+     * @return ApiResponse&lt;DeleteDestinationWalletAddress200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized. Please provide valid credentials. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden. You do not have the permission to access the requested resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<DeleteDestinationWalletAddress200Response> deleteDestinationWalletAddressWithHttpInfo(String walletAddressId) throws ApiException {
+        okhttp3.Call localVarCall = deleteDestinationWalletAddressValidateBeforeCall(walletAddressId, null);
+        Type localVarReturnType = new TypeToken<DeleteDestinationWalletAddress200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Delete destination wallet address (asynchronously)
+     * This operation deletes a destination wallet address. 
+     * @param walletAddressId The wallet address ID. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized. Please provide valid credentials. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden. You do not have the permission to access the requested resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteDestinationWalletAddressAsync(String walletAddressId, final ApiCallback<DeleteDestinationWalletAddress200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteDestinationWalletAddressValidateBeforeCall(walletAddressId, _callback);
+        Type localVarReturnType = new TypeToken<DeleteDestinationWalletAddress200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for enableDestinationWhitelist
+     * @param enableDestinationWhitelistRequest The request body to enable or disable the destination whitelist. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call enableDestinationWhitelistCall(EnableDestinationWhitelistRequest enableDestinationWhitelistRequest, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = enableDestinationWhitelistRequest;
+
+        // create path and map variables
+        String localVarPath = "/payments/destination/enable_whitelist";
+
+        List<Pair> localVarQueryParams = new ArrayList<>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<>();
+        Map<String, String> localVarHeaderParams = new HashMap<>();
+        Map<String, String> localVarCookieParams = new HashMap<>();
+        Map<String, Object> localVarFormParams = new HashMap<>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(null, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call enableDestinationWhitelistValidateBeforeCall(EnableDestinationWhitelistRequest enableDestinationWhitelistRequest, final ApiCallback _callback) throws ApiException {
+        return enableDestinationWhitelistCall(enableDestinationWhitelistRequest, _callback);
+
+    }
+
+    /**
+     * Enable or disable destination whitelist
+     * This operation enables or disables the whitelist for a destination. 
+     * @param enableDestinationWhitelistRequest The request body to enable or disable the destination whitelist. (optional)
+     * @return QueryDestinationWhitelistEnabled200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public QueryDestinationWhitelistEnabled200Response enableDestinationWhitelist(EnableDestinationWhitelistRequest enableDestinationWhitelistRequest) throws ApiException {
+        ApiResponse<QueryDestinationWhitelistEnabled200Response> localVarResp = enableDestinationWhitelistWithHttpInfo(enableDestinationWhitelistRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Enable or disable destination whitelist
+     * This operation enables or disables the whitelist for a destination. 
+     * @param enableDestinationWhitelistRequest The request body to enable or disable the destination whitelist. (optional)
+     * @return ApiResponse&lt;QueryDestinationWhitelistEnabled200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<QueryDestinationWhitelistEnabled200Response> enableDestinationWhitelistWithHttpInfo(EnableDestinationWhitelistRequest enableDestinationWhitelistRequest) throws ApiException {
+        okhttp3.Call localVarCall = enableDestinationWhitelistValidateBeforeCall(enableDestinationWhitelistRequest, null);
+        Type localVarReturnType = new TypeToken<QueryDestinationWhitelistEnabled200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Enable or disable destination whitelist (asynchronously)
+     * This operation enables or disables the whitelist for a destination. 
+     * @param enableDestinationWhitelistRequest The request body to enable or disable the destination whitelist. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call enableDestinationWhitelistAsync(EnableDestinationWhitelistRequest enableDestinationWhitelistRequest, final ApiCallback<QueryDestinationWhitelistEnabled200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = enableDestinationWhitelistValidateBeforeCall(enableDestinationWhitelistRequest, _callback);
+        Type localVarReturnType = new TypeToken<QueryDestinationWhitelistEnabled200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getCounterpartyDetailById
+     * @param counterpartyId The counterparty ID. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getCounterpartyDetailByIdCall(String counterpartyId, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/payments/counterparty/{counterparty_id}/detail"
+            .replace("{" + "counterparty_id" + "}", localVarApiClient.escapeString(counterpartyId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<>();
+        Map<String, String> localVarHeaderParams = new HashMap<>();
+        Map<String, String> localVarCookieParams = new HashMap<>();
+        Map<String, Object> localVarFormParams = new HashMap<>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(null, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getCounterpartyDetailByIdValidateBeforeCall(String counterpartyId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'counterpartyId' is set
+        if (counterpartyId == null) {
+            throw new ApiException("Missing the required parameter 'counterpartyId' when calling getCounterpartyDetailById(Async)");
+        }
+
+        return getCounterpartyDetailByIdCall(counterpartyId, _callback);
+
+    }
+
+    /**
+     * Get counterparty information
+     * This operation retrieves the detailed information about a specified counterparty. 
+     * @param counterpartyId The counterparty ID. (required)
+     * @return CounterpartyDetail
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public CounterpartyDetail getCounterpartyDetailById(String counterpartyId) throws ApiException {
+        ApiResponse<CounterpartyDetail> localVarResp = getCounterpartyDetailByIdWithHttpInfo(counterpartyId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get counterparty information
+     * This operation retrieves the detailed information about a specified counterparty. 
+     * @param counterpartyId The counterparty ID. (required)
+     * @return ApiResponse&lt;CounterpartyDetail&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CounterpartyDetail> getCounterpartyDetailByIdWithHttpInfo(String counterpartyId) throws ApiException {
+        okhttp3.Call localVarCall = getCounterpartyDetailByIdValidateBeforeCall(counterpartyId, null);
+        Type localVarReturnType = new TypeToken<CounterpartyDetail>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get counterparty information (asynchronously)
+     * This operation retrieves the detailed information about a specified counterparty. 
+     * @param counterpartyId The counterparty ID. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getCounterpartyDetailByIdAsync(String counterpartyId, final ApiCallback<CounterpartyDetail> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getCounterpartyDetailByIdValidateBeforeCall(counterpartyId, _callback);
+        Type localVarReturnType = new TypeToken<CounterpartyDetail>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getDestinationBankAccountDetailById
+     * @param bankAccountId The bank account ID. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getDestinationBankAccountDetailByIdCall(UUID bankAccountId, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/payments/destination/bank_account/{bank_account_id}/detail"
+            .replace("{" + "bank_account_id" + "}", localVarApiClient.escapeString(bankAccountId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<>();
+        Map<String, String> localVarHeaderParams = new HashMap<>();
+        Map<String, String> localVarCookieParams = new HashMap<>();
+        Map<String, Object> localVarFormParams = new HashMap<>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(null, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getDestinationBankAccountDetailByIdValidateBeforeCall(UUID bankAccountId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'bankAccountId' is set
+        if (bankAccountId == null) {
+            throw new ApiException("Missing the required parameter 'bankAccountId' when calling getDestinationBankAccountDetailById(Async)");
+        }
+
+        return getDestinationBankAccountDetailByIdCall(bankAccountId, _callback);
+
+    }
+
+    /**
+     * Get destination bank account information
+     * This operation retrieves the detailed information about a specified destination bank account. 
+     * @param bankAccountId The bank account ID. (required)
+     * @return DestinationBankAccountDetail
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public DestinationBankAccountDetail getDestinationBankAccountDetailById(UUID bankAccountId) throws ApiException {
+        ApiResponse<DestinationBankAccountDetail> localVarResp = getDestinationBankAccountDetailByIdWithHttpInfo(bankAccountId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get destination bank account information
+     * This operation retrieves the detailed information about a specified destination bank account. 
+     * @param bankAccountId The bank account ID. (required)
+     * @return ApiResponse&lt;DestinationBankAccountDetail&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<DestinationBankAccountDetail> getDestinationBankAccountDetailByIdWithHttpInfo(UUID bankAccountId) throws ApiException {
+        okhttp3.Call localVarCall = getDestinationBankAccountDetailByIdValidateBeforeCall(bankAccountId, null);
+        Type localVarReturnType = new TypeToken<DestinationBankAccountDetail>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get destination bank account information (asynchronously)
+     * This operation retrieves the detailed information about a specified destination bank account. 
+     * @param bankAccountId The bank account ID. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getDestinationBankAccountDetailByIdAsync(UUID bankAccountId, final ApiCallback<DestinationBankAccountDetail> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getDestinationBankAccountDetailByIdValidateBeforeCall(bankAccountId, _callback);
+        Type localVarReturnType = new TypeToken<DestinationBankAccountDetail>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getDestinationDetailById
+     * @param destinationId The destination ID. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getDestinationDetailByIdCall(String destinationId, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/payments/destination/{destination_id}/detail"
+            .replace("{" + "destination_id" + "}", localVarApiClient.escapeString(destinationId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<>();
+        Map<String, String> localVarHeaderParams = new HashMap<>();
+        Map<String, String> localVarCookieParams = new HashMap<>();
+        Map<String, Object> localVarFormParams = new HashMap<>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(null, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getDestinationDetailByIdValidateBeforeCall(String destinationId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'destinationId' is set
+        if (destinationId == null) {
+            throw new ApiException("Missing the required parameter 'destinationId' when calling getDestinationDetailById(Async)");
+        }
+
+        return getDestinationDetailByIdCall(destinationId, _callback);
+
+    }
+
+    /**
+     * Get destination information
+     * This operation retrieves the detailed information about a specified destination. 
+     * @param destinationId The destination ID. (required)
+     * @return DestinationDetail
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public DestinationDetail getDestinationDetailById(String destinationId) throws ApiException {
+        ApiResponse<DestinationDetail> localVarResp = getDestinationDetailByIdWithHttpInfo(destinationId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get destination information
+     * This operation retrieves the detailed information about a specified destination. 
+     * @param destinationId The destination ID. (required)
+     * @return ApiResponse&lt;DestinationDetail&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<DestinationDetail> getDestinationDetailByIdWithHttpInfo(String destinationId) throws ApiException {
+        okhttp3.Call localVarCall = getDestinationDetailByIdValidateBeforeCall(destinationId, null);
+        Type localVarReturnType = new TypeToken<DestinationDetail>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get destination information (asynchronously)
+     * This operation retrieves the detailed information about a specified destination. 
+     * @param destinationId The destination ID. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getDestinationDetailByIdAsync(String destinationId, final ApiCallback<DestinationDetail> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getDestinationDetailByIdValidateBeforeCall(destinationId, _callback);
+        Type localVarReturnType = new TypeToken<DestinationDetail>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1364,148 +3170,6 @@ public class PaymentApi {
 
         okhttp3.Call localVarCall = getExchangeRateValidateBeforeCall(tokenId, currency, _callback);
         Type localVarReturnType = new TypeToken<GetExchangeRate200Response>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getPayerBalanceByAddress
-     * @param payerId Unique payer identifier on the Cobo side, auto-generated by the system. (required)
-     * @param tokenId The token ID, which is a unique identifier that specifies both the blockchain network and cryptocurrency token in the format &#x60;{CHAIN}_{TOKEN}&#x60;. Supported values include:   - USDC: &#x60;ETH_USDC&#x60;, &#x60;ARBITRUM_USDCOIN&#x60;, &#x60;SOL_USDC&#x60;, &#x60;BASE_USDC&#x60;, &#x60;MATIC_USDC2&#x60;, &#x60;BSC_USDC&#x60;   - USDT: &#x60;TRON_USDT&#x60;, &#x60;ETH_USDT&#x60;, &#x60;ARBITRUM_USDT&#x60;, &#x60;SOL_USDT&#x60;, &#x60;BASE_USDT&#x60;, &#x60;MATIC_USDT&#x60;, &#x60;BSC_USDT&#x60;  (required)
-     * @param merchantId The merchant ID. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
-        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getPayerBalanceByAddressCall(String payerId, String tokenId, String merchantId, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/payments/balance/payer/address";
-
-        List<Pair> localVarQueryParams = new ArrayList<>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<>();
-        Map<String, String> localVarHeaderParams = new HashMap<>();
-        Map<String, String> localVarCookieParams = new HashMap<>();
-        Map<String, Object> localVarFormParams = new HashMap<>();
-
-        if (merchantId != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("merchant_id", merchantId));
-        }
-
-        if (payerId != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("payer_id", payerId));
-        }
-
-        if (tokenId != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token_id", tokenId));
-        }
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] {};
-        return localVarApiClient.buildCall(null, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPayerBalanceByAddressValidateBeforeCall(String payerId, String tokenId, String merchantId, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'payerId' is set
-        if (payerId == null) {
-            throw new ApiException("Missing the required parameter 'payerId' when calling getPayerBalanceByAddress(Async)");
-        }
-
-        // verify the required parameter 'tokenId' is set
-        if (tokenId == null) {
-            throw new ApiException("Missing the required parameter 'tokenId' when calling getPayerBalanceByAddress(Async)");
-        }
-
-        return getPayerBalanceByAddressCall(payerId, tokenId, merchantId, _callback);
-
-    }
-
-    /**
-     * Get payer balance
-     * This operation retrieves the total amount received for a specific payer. The information is grouped by token and receiving address. 
-     * @param payerId Unique payer identifier on the Cobo side, auto-generated by the system. (required)
-     * @param tokenId The token ID, which is a unique identifier that specifies both the blockchain network and cryptocurrency token in the format &#x60;{CHAIN}_{TOKEN}&#x60;. Supported values include:   - USDC: &#x60;ETH_USDC&#x60;, &#x60;ARBITRUM_USDCOIN&#x60;, &#x60;SOL_USDC&#x60;, &#x60;BASE_USDC&#x60;, &#x60;MATIC_USDC2&#x60;, &#x60;BSC_USDC&#x60;   - USDT: &#x60;TRON_USDT&#x60;, &#x60;ETH_USDT&#x60;, &#x60;ARBITRUM_USDT&#x60;, &#x60;SOL_USDT&#x60;, &#x60;BASE_USDT&#x60;, &#x60;MATIC_USDT&#x60;, &#x60;BSC_USDT&#x60;  (required)
-     * @param merchantId The merchant ID. (optional)
-     * @return List&lt;ReceivedAmountPerAddress&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
-        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
-     </table>
-     */
-    public List<ReceivedAmountPerAddress> getPayerBalanceByAddress(String payerId, String tokenId, String merchantId) throws ApiException {
-        ApiResponse<List<ReceivedAmountPerAddress>> localVarResp = getPayerBalanceByAddressWithHttpInfo(payerId, tokenId, merchantId);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Get payer balance
-     * This operation retrieves the total amount received for a specific payer. The information is grouped by token and receiving address. 
-     * @param payerId Unique payer identifier on the Cobo side, auto-generated by the system. (required)
-     * @param tokenId The token ID, which is a unique identifier that specifies both the blockchain network and cryptocurrency token in the format &#x60;{CHAIN}_{TOKEN}&#x60;. Supported values include:   - USDC: &#x60;ETH_USDC&#x60;, &#x60;ARBITRUM_USDCOIN&#x60;, &#x60;SOL_USDC&#x60;, &#x60;BASE_USDC&#x60;, &#x60;MATIC_USDC2&#x60;, &#x60;BSC_USDC&#x60;   - USDT: &#x60;TRON_USDT&#x60;, &#x60;ETH_USDT&#x60;, &#x60;ARBITRUM_USDT&#x60;, &#x60;SOL_USDT&#x60;, &#x60;BASE_USDT&#x60;, &#x60;MATIC_USDT&#x60;, &#x60;BSC_USDT&#x60;  (required)
-     * @param merchantId The merchant ID. (optional)
-     * @return ApiResponse&lt;List&lt;ReceivedAmountPerAddress&gt;&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
-        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<List<ReceivedAmountPerAddress>> getPayerBalanceByAddressWithHttpInfo(String payerId, String tokenId, String merchantId) throws ApiException {
-        okhttp3.Call localVarCall = getPayerBalanceByAddressValidateBeforeCall(payerId, tokenId, merchantId, null);
-        Type localVarReturnType = new TypeToken<List<ReceivedAmountPerAddress>>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Get payer balance (asynchronously)
-     * This operation retrieves the total amount received for a specific payer. The information is grouped by token and receiving address. 
-     * @param payerId Unique payer identifier on the Cobo side, auto-generated by the system. (required)
-     * @param tokenId The token ID, which is a unique identifier that specifies both the blockchain network and cryptocurrency token in the format &#x60;{CHAIN}_{TOKEN}&#x60;. Supported values include:   - USDC: &#x60;ETH_USDC&#x60;, &#x60;ARBITRUM_USDCOIN&#x60;, &#x60;SOL_USDC&#x60;, &#x60;BASE_USDC&#x60;, &#x60;MATIC_USDC2&#x60;, &#x60;BSC_USDC&#x60;   - USDT: &#x60;TRON_USDT&#x60;, &#x60;ETH_USDT&#x60;, &#x60;ARBITRUM_USDT&#x60;, &#x60;SOL_USDT&#x60;, &#x60;BASE_USDT&#x60;, &#x60;MATIC_USDT&#x60;, &#x60;BSC_USDT&#x60;  (required)
-     * @param merchantId The merchant ID. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
-        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getPayerBalanceByAddressAsync(String payerId, String tokenId, String merchantId, final ApiCallback<List<ReceivedAmountPerAddress>> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getPayerBalanceByAddressValidateBeforeCall(payerId, tokenId, merchantId, _callback);
-        Type localVarReturnType = new TypeToken<List<ReceivedAmountPerAddress>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2275,7 +3939,7 @@ public class PaymentApi {
     /**
      * Build call for getTopUpAddress
      * @param tokenId The token ID, which is a unique identifier that specifies both the blockchain network and cryptocurrency token in the format &#x60;{CHAIN}_{TOKEN}&#x60;. Supported values include:   - USDC: &#x60;ETH_USDC&#x60;, &#x60;ARBITRUM_USDCOIN&#x60;, &#x60;SOL_USDC&#x60;, &#x60;BASE_USDC&#x60;, &#x60;MATIC_USDC2&#x60;, &#x60;BSC_USDC&#x60;   - USDT: &#x60;TRON_USDT&#x60;, &#x60;ETH_USDT&#x60;, &#x60;ARBITRUM_USDT&#x60;, &#x60;SOL_USDT&#x60;, &#x60;BASE_USDT&#x60;, &#x60;MATIC_USDT&#x60;, &#x60;BSC_USDT&#x60;  (required)
-     * @param customPayerId A unique identifier assigned by the developer to track and identify individual payers in their system. (required)
+     * @param customPayerId A unique identifier to track and identify individual payers in your system. (required)
      * @param merchantId The merchant ID. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2348,10 +4012,10 @@ public class PaymentApi {
     }
 
     /**
-     * Get top-up address
-     * This operation retrieves the information of the dedicated top-up address assigned to a specific payer under a merchant on a specified chain. 
+     * Create/Get top-up address
+     * This operation creates or retrieves a unique top-up address for a payer.   In the request, you need to provide the &#x60;custom_payer_id&#x60; parameter to identify the payer in your system and link them to the top-up address.  - If no address exists for the payer on the specified chain, a new address will be created and returned. - If an address already exists for the payer on the specified chain, the existing address details will be returned.  You can also provide the &#x60;merchant_id&#x60; parameter to specify the merchant to which the payer belongs. If not provided, the default merchant will be used. 
      * @param tokenId The token ID, which is a unique identifier that specifies both the blockchain network and cryptocurrency token in the format &#x60;{CHAIN}_{TOKEN}&#x60;. Supported values include:   - USDC: &#x60;ETH_USDC&#x60;, &#x60;ARBITRUM_USDCOIN&#x60;, &#x60;SOL_USDC&#x60;, &#x60;BASE_USDC&#x60;, &#x60;MATIC_USDC2&#x60;, &#x60;BSC_USDC&#x60;   - USDT: &#x60;TRON_USDT&#x60;, &#x60;ETH_USDT&#x60;, &#x60;ARBITRUM_USDT&#x60;, &#x60;SOL_USDT&#x60;, &#x60;BASE_USDT&#x60;, &#x60;MATIC_USDT&#x60;, &#x60;BSC_USDT&#x60;  (required)
-     * @param customPayerId A unique identifier assigned by the developer to track and identify individual payers in their system. (required)
+     * @param customPayerId A unique identifier to track and identify individual payers in your system. (required)
      * @param merchantId The merchant ID. (optional)
      * @return TopUpAddress
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2369,10 +4033,10 @@ public class PaymentApi {
     }
 
     /**
-     * Get top-up address
-     * This operation retrieves the information of the dedicated top-up address assigned to a specific payer under a merchant on a specified chain. 
+     * Create/Get top-up address
+     * This operation creates or retrieves a unique top-up address for a payer.   In the request, you need to provide the &#x60;custom_payer_id&#x60; parameter to identify the payer in your system and link them to the top-up address.  - If no address exists for the payer on the specified chain, a new address will be created and returned. - If an address already exists for the payer on the specified chain, the existing address details will be returned.  You can also provide the &#x60;merchant_id&#x60; parameter to specify the merchant to which the payer belongs. If not provided, the default merchant will be used. 
      * @param tokenId The token ID, which is a unique identifier that specifies both the blockchain network and cryptocurrency token in the format &#x60;{CHAIN}_{TOKEN}&#x60;. Supported values include:   - USDC: &#x60;ETH_USDC&#x60;, &#x60;ARBITRUM_USDCOIN&#x60;, &#x60;SOL_USDC&#x60;, &#x60;BASE_USDC&#x60;, &#x60;MATIC_USDC2&#x60;, &#x60;BSC_USDC&#x60;   - USDT: &#x60;TRON_USDT&#x60;, &#x60;ETH_USDT&#x60;, &#x60;ARBITRUM_USDT&#x60;, &#x60;SOL_USDT&#x60;, &#x60;BASE_USDT&#x60;, &#x60;MATIC_USDT&#x60;, &#x60;BSC_USDT&#x60;  (required)
-     * @param customPayerId A unique identifier assigned by the developer to track and identify individual payers in their system. (required)
+     * @param customPayerId A unique identifier to track and identify individual payers in your system. (required)
      * @param merchantId The merchant ID. (optional)
      * @return ApiResponse&lt;TopUpAddress&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2391,10 +4055,10 @@ public class PaymentApi {
     }
 
     /**
-     * Get top-up address (asynchronously)
-     * This operation retrieves the information of the dedicated top-up address assigned to a specific payer under a merchant on a specified chain. 
+     * Create/Get top-up address (asynchronously)
+     * This operation creates or retrieves a unique top-up address for a payer.   In the request, you need to provide the &#x60;custom_payer_id&#x60; parameter to identify the payer in your system and link them to the top-up address.  - If no address exists for the payer on the specified chain, a new address will be created and returned. - If an address already exists for the payer on the specified chain, the existing address details will be returned.  You can also provide the &#x60;merchant_id&#x60; parameter to specify the merchant to which the payer belongs. If not provided, the default merchant will be used. 
      * @param tokenId The token ID, which is a unique identifier that specifies both the blockchain network and cryptocurrency token in the format &#x60;{CHAIN}_{TOKEN}&#x60;. Supported values include:   - USDC: &#x60;ETH_USDC&#x60;, &#x60;ARBITRUM_USDCOIN&#x60;, &#x60;SOL_USDC&#x60;, &#x60;BASE_USDC&#x60;, &#x60;MATIC_USDC2&#x60;, &#x60;BSC_USDC&#x60;   - USDT: &#x60;TRON_USDT&#x60;, &#x60;ETH_USDT&#x60;, &#x60;ARBITRUM_USDT&#x60;, &#x60;SOL_USDT&#x60;, &#x60;BASE_USDT&#x60;, &#x60;MATIC_USDT&#x60;, &#x60;BSC_USDT&#x60;  (required)
-     * @param customPayerId A unique identifier assigned by the developer to track and identify individual payers in their system. (required)
+     * @param customPayerId A unique identifier to track and identify individual payers in your system. (required)
      * @param merchantId The merchant ID. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2523,6 +4187,318 @@ public class PaymentApi {
         return localVarCall;
     }
     /**
+     * Build call for listCounterparties
+     * @param limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (optional, default to 10)
+     * @param before A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response.  (optional)
+     * @param after A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response.  (optional)
+     * @param keyword A search term used for fuzzy matching of merchant names. (optional)
+     * @param counterpartyType CounterpartyType defines the type of the counterparty: - &#x60;Individual&#x60;: The counterparty is an individual. - &#x60;Organization&#x60;: The counterparty is an organization.  (optional)
+     * @param country The country of the destination, in ISO 3166-1 alpha-3 format. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listCounterpartiesCall(Integer limit, String before, String after, String keyword, CounterpartyType counterpartyType, String country, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/payments/counterparty";
+
+        List<Pair> localVarQueryParams = new ArrayList<>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<>();
+        Map<String, String> localVarHeaderParams = new HashMap<>();
+        Map<String, String> localVarCookieParams = new HashMap<>();
+        Map<String, Object> localVarFormParams = new HashMap<>();
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (before != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("before", before));
+        }
+
+        if (after != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("after", after));
+        }
+
+        if (keyword != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("keyword", keyword));
+        }
+
+        if (counterpartyType != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("counterparty_type", counterpartyType));
+        }
+
+        if (country != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("country", country));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(null, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listCounterpartiesValidateBeforeCall(Integer limit, String before, String after, String keyword, CounterpartyType counterpartyType, String country, final ApiCallback _callback) throws ApiException {
+        return listCounterpartiesCall(limit, before, after, keyword, counterpartyType, country, _callback);
+
+    }
+
+    /**
+     * List all counterparties
+     * This operation retrieves the information of all counterparties.   You can filter the results by using a keyword for fuzzy search on counterparty names. 
+     * @param limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (optional, default to 10)
+     * @param before A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response.  (optional)
+     * @param after A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response.  (optional)
+     * @param keyword A search term used for fuzzy matching of merchant names. (optional)
+     * @param counterpartyType CounterpartyType defines the type of the counterparty: - &#x60;Individual&#x60;: The counterparty is an individual. - &#x60;Organization&#x60;: The counterparty is an organization.  (optional)
+     * @param country The country of the destination, in ISO 3166-1 alpha-3 format. (optional)
+     * @return ListCounterparties200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ListCounterparties200Response listCounterparties(Integer limit, String before, String after, String keyword, CounterpartyType counterpartyType, String country) throws ApiException {
+        ApiResponse<ListCounterparties200Response> localVarResp = listCounterpartiesWithHttpInfo(limit, before, after, keyword, counterpartyType, country);
+        return localVarResp.getData();
+    }
+
+    /**
+     * List all counterparties
+     * This operation retrieves the information of all counterparties.   You can filter the results by using a keyword for fuzzy search on counterparty names. 
+     * @param limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (optional, default to 10)
+     * @param before A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response.  (optional)
+     * @param after A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response.  (optional)
+     * @param keyword A search term used for fuzzy matching of merchant names. (optional)
+     * @param counterpartyType CounterpartyType defines the type of the counterparty: - &#x60;Individual&#x60;: The counterparty is an individual. - &#x60;Organization&#x60;: The counterparty is an organization.  (optional)
+     * @param country The country of the destination, in ISO 3166-1 alpha-3 format. (optional)
+     * @return ApiResponse&lt;ListCounterparties200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ListCounterparties200Response> listCounterpartiesWithHttpInfo(Integer limit, String before, String after, String keyword, CounterpartyType counterpartyType, String country) throws ApiException {
+        okhttp3.Call localVarCall = listCounterpartiesValidateBeforeCall(limit, before, after, keyword, counterpartyType, country, null);
+        Type localVarReturnType = new TypeToken<ListCounterparties200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * List all counterparties (asynchronously)
+     * This operation retrieves the information of all counterparties.   You can filter the results by using a keyword for fuzzy search on counterparty names. 
+     * @param limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (optional, default to 10)
+     * @param before A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response.  (optional)
+     * @param after A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response.  (optional)
+     * @param keyword A search term used for fuzzy matching of merchant names. (optional)
+     * @param counterpartyType CounterpartyType defines the type of the counterparty: - &#x60;Individual&#x60;: The counterparty is an individual. - &#x60;Organization&#x60;: The counterparty is an organization.  (optional)
+     * @param country The country of the destination, in ISO 3166-1 alpha-3 format. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listCounterpartiesAsync(Integer limit, String before, String after, String keyword, CounterpartyType counterpartyType, String country, final ApiCallback<ListCounterparties200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listCounterpartiesValidateBeforeCall(limit, before, after, keyword, counterpartyType, country, _callback);
+        Type localVarReturnType = new TypeToken<ListCounterparties200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for listCounterpartyWalletAddress
+     * @param limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (optional, default to 10)
+     * @param before A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response.  (optional)
+     * @param after A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response.  (optional)
+     * @param counterpartyId The counterparty ID. (optional)
+     * @param chainIds The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-chains). (optional)
+     * @param walletAddress The wallet address. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listCounterpartyWalletAddressCall(Integer limit, String before, String after, String counterpartyId, String chainIds, String walletAddress, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/payments/counterparty/wallet_address";
+
+        List<Pair> localVarQueryParams = new ArrayList<>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<>();
+        Map<String, String> localVarHeaderParams = new HashMap<>();
+        Map<String, String> localVarCookieParams = new HashMap<>();
+        Map<String, Object> localVarFormParams = new HashMap<>();
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (before != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("before", before));
+        }
+
+        if (after != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("after", after));
+        }
+
+        if (counterpartyId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("counterparty_id", counterpartyId));
+        }
+
+        if (chainIds != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("chain_ids", chainIds));
+        }
+
+        if (walletAddress != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("wallet_address", walletAddress));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(null, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listCounterpartyWalletAddressValidateBeforeCall(Integer limit, String before, String after, String counterpartyId, String chainIds, String walletAddress, final ApiCallback _callback) throws ApiException {
+        return listCounterpartyWalletAddressCall(limit, before, after, counterpartyId, chainIds, walletAddress, _callback);
+
+    }
+
+    /**
+     * List counterparty wallet addresses
+     * This operation retrieves the information of counterparty wallet addresses. 
+     * @param limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (optional, default to 10)
+     * @param before A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response.  (optional)
+     * @param after A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response.  (optional)
+     * @param counterpartyId The counterparty ID. (optional)
+     * @param chainIds The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-chains). (optional)
+     * @param walletAddress The wallet address. (optional)
+     * @return ListCounterpartyWalletAddress200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ListCounterpartyWalletAddress200Response listCounterpartyWalletAddress(Integer limit, String before, String after, String counterpartyId, String chainIds, String walletAddress) throws ApiException {
+        ApiResponse<ListCounterpartyWalletAddress200Response> localVarResp = listCounterpartyWalletAddressWithHttpInfo(limit, before, after, counterpartyId, chainIds, walletAddress);
+        return localVarResp.getData();
+    }
+
+    /**
+     * List counterparty wallet addresses
+     * This operation retrieves the information of counterparty wallet addresses. 
+     * @param limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (optional, default to 10)
+     * @param before A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response.  (optional)
+     * @param after A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response.  (optional)
+     * @param counterpartyId The counterparty ID. (optional)
+     * @param chainIds The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-chains). (optional)
+     * @param walletAddress The wallet address. (optional)
+     * @return ApiResponse&lt;ListCounterpartyWalletAddress200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ListCounterpartyWalletAddress200Response> listCounterpartyWalletAddressWithHttpInfo(Integer limit, String before, String after, String counterpartyId, String chainIds, String walletAddress) throws ApiException {
+        okhttp3.Call localVarCall = listCounterpartyWalletAddressValidateBeforeCall(limit, before, after, counterpartyId, chainIds, walletAddress, null);
+        Type localVarReturnType = new TypeToken<ListCounterpartyWalletAddress200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * List counterparty wallet addresses (asynchronously)
+     * This operation retrieves the information of counterparty wallet addresses. 
+     * @param limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (optional, default to 10)
+     * @param before A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response.  (optional)
+     * @param after A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response.  (optional)
+     * @param counterpartyId The counterparty ID. (optional)
+     * @param chainIds The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-chains). (optional)
+     * @param walletAddress The wallet address. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listCounterpartyWalletAddressAsync(Integer limit, String before, String after, String counterpartyId, String chainIds, String walletAddress, final ApiCallback<ListCounterpartyWalletAddress200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listCounterpartyWalletAddressValidateBeforeCall(limit, before, after, counterpartyId, chainIds, walletAddress, _callback);
+        Type localVarReturnType = new TypeToken<ListCounterpartyWalletAddress200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for listCryptoAddresses
      * @param tokenId The token ID, which is a unique identifier that specifies both the blockchain network and cryptocurrency token in the format &#x60;{CHAIN}_{TOKEN}&#x60;. Supported values include:   - USDC: &#x60;ETH_USDC&#x60;, &#x60;ARBITRUM_USDCOIN&#x60;, &#x60;SOL_USDC&#x60;, &#x60;BASE_USDC&#x60;, &#x60;MATIC_USDC2&#x60;, &#x60;BSC_USDC&#x60;   - USDT: &#x60;TRON_USDT&#x60;, &#x60;ETH_USDT&#x60;, &#x60;ARBITRUM_USDT&#x60;, &#x60;SOL_USDT&#x60;, &#x60;BASE_USDT&#x60;, &#x60;MATIC_USDT&#x60;, &#x60;BSC_USDT&#x60;  (optional)
      * @param _callback Callback for upload/download progress
@@ -2635,6 +4611,482 @@ public class PaymentApi {
 
         okhttp3.Call localVarCall = listCryptoAddressesValidateBeforeCall(tokenId, _callback);
         Type localVarReturnType = new TypeToken<List<CryptoAddress>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for listDestinationBankAccounts
+     * @param limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (optional, default to 10)
+     * @param before A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response.  (optional)
+     * @param after A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response.  (optional)
+     * @param keyword A search term used for fuzzy matching of merchant names. (optional)
+     * @param destinationId The destination ID. (optional)
+     * @param bankAccountStatus BankAccountStatus defines the status of the bank account: - &#x60;Pending&#x60;: The bank account is pending verification by Cobo. - &#x60;Approved&#x60;: The bank account has been approved by Cobo. - &#x60;Rejected&#x60;: The bank account has been rejected by Cobo.  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listDestinationBankAccountsCall(Integer limit, String before, String after, String keyword, String destinationId, BankAccountStatus bankAccountStatus, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/payments/destination/bank_account";
+
+        List<Pair> localVarQueryParams = new ArrayList<>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<>();
+        Map<String, String> localVarHeaderParams = new HashMap<>();
+        Map<String, String> localVarCookieParams = new HashMap<>();
+        Map<String, Object> localVarFormParams = new HashMap<>();
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (before != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("before", before));
+        }
+
+        if (after != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("after", after));
+        }
+
+        if (keyword != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("keyword", keyword));
+        }
+
+        if (destinationId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("destination_id", destinationId));
+        }
+
+        if (bankAccountStatus != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("bank_account_status", bankAccountStatus));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(null, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listDestinationBankAccountsValidateBeforeCall(Integer limit, String before, String after, String keyword, String destinationId, BankAccountStatus bankAccountStatus, final ApiCallback _callback) throws ApiException {
+        return listDestinationBankAccountsCall(limit, before, after, keyword, destinationId, bankAccountStatus, _callback);
+
+    }
+
+    /**
+     * List destination bank accounts
+     * This operation retrieves the information of destination bank accounts. 
+     * @param limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (optional, default to 10)
+     * @param before A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response.  (optional)
+     * @param after A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response.  (optional)
+     * @param keyword A search term used for fuzzy matching of merchant names. (optional)
+     * @param destinationId The destination ID. (optional)
+     * @param bankAccountStatus BankAccountStatus defines the status of the bank account: - &#x60;Pending&#x60;: The bank account is pending verification by Cobo. - &#x60;Approved&#x60;: The bank account has been approved by Cobo. - &#x60;Rejected&#x60;: The bank account has been rejected by Cobo.  (optional)
+     * @return ListDestinationBankAccounts200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ListDestinationBankAccounts200Response listDestinationBankAccounts(Integer limit, String before, String after, String keyword, String destinationId, BankAccountStatus bankAccountStatus) throws ApiException {
+        ApiResponse<ListDestinationBankAccounts200Response> localVarResp = listDestinationBankAccountsWithHttpInfo(limit, before, after, keyword, destinationId, bankAccountStatus);
+        return localVarResp.getData();
+    }
+
+    /**
+     * List destination bank accounts
+     * This operation retrieves the information of destination bank accounts. 
+     * @param limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (optional, default to 10)
+     * @param before A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response.  (optional)
+     * @param after A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response.  (optional)
+     * @param keyword A search term used for fuzzy matching of merchant names. (optional)
+     * @param destinationId The destination ID. (optional)
+     * @param bankAccountStatus BankAccountStatus defines the status of the bank account: - &#x60;Pending&#x60;: The bank account is pending verification by Cobo. - &#x60;Approved&#x60;: The bank account has been approved by Cobo. - &#x60;Rejected&#x60;: The bank account has been rejected by Cobo.  (optional)
+     * @return ApiResponse&lt;ListDestinationBankAccounts200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ListDestinationBankAccounts200Response> listDestinationBankAccountsWithHttpInfo(Integer limit, String before, String after, String keyword, String destinationId, BankAccountStatus bankAccountStatus) throws ApiException {
+        okhttp3.Call localVarCall = listDestinationBankAccountsValidateBeforeCall(limit, before, after, keyword, destinationId, bankAccountStatus, null);
+        Type localVarReturnType = new TypeToken<ListDestinationBankAccounts200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * List destination bank accounts (asynchronously)
+     * This operation retrieves the information of destination bank accounts. 
+     * @param limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (optional, default to 10)
+     * @param before A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response.  (optional)
+     * @param after A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response.  (optional)
+     * @param keyword A search term used for fuzzy matching of merchant names. (optional)
+     * @param destinationId The destination ID. (optional)
+     * @param bankAccountStatus BankAccountStatus defines the status of the bank account: - &#x60;Pending&#x60;: The bank account is pending verification by Cobo. - &#x60;Approved&#x60;: The bank account has been approved by Cobo. - &#x60;Rejected&#x60;: The bank account has been rejected by Cobo.  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listDestinationBankAccountsAsync(Integer limit, String before, String after, String keyword, String destinationId, BankAccountStatus bankAccountStatus, final ApiCallback<ListDestinationBankAccounts200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listDestinationBankAccountsValidateBeforeCall(limit, before, after, keyword, destinationId, bankAccountStatus, _callback);
+        Type localVarReturnType = new TypeToken<ListDestinationBankAccounts200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for listDestinationWalletAddresses
+     * @param limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (optional, default to 10)
+     * @param before A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response.  (optional)
+     * @param after A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response.  (optional)
+     * @param destinationId The destination ID. (optional)
+     * @param chainIds The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-chains). (optional)
+     * @param walletAddress The wallet address. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listDestinationWalletAddressesCall(Integer limit, String before, String after, String destinationId, String chainIds, String walletAddress, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/payments/destination/wallet_address";
+
+        List<Pair> localVarQueryParams = new ArrayList<>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<>();
+        Map<String, String> localVarHeaderParams = new HashMap<>();
+        Map<String, String> localVarCookieParams = new HashMap<>();
+        Map<String, Object> localVarFormParams = new HashMap<>();
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (before != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("before", before));
+        }
+
+        if (after != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("after", after));
+        }
+
+        if (destinationId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("destination_id", destinationId));
+        }
+
+        if (chainIds != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("chain_ids", chainIds));
+        }
+
+        if (walletAddress != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("wallet_address", walletAddress));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(null, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listDestinationWalletAddressesValidateBeforeCall(Integer limit, String before, String after, String destinationId, String chainIds, String walletAddress, final ApiCallback _callback) throws ApiException {
+        return listDestinationWalletAddressesCall(limit, before, after, destinationId, chainIds, walletAddress, _callback);
+
+    }
+
+    /**
+     * List destination wallet addresses
+     * This operation retrieves the information of destination wallet addresses. 
+     * @param limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (optional, default to 10)
+     * @param before A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response.  (optional)
+     * @param after A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response.  (optional)
+     * @param destinationId The destination ID. (optional)
+     * @param chainIds The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-chains). (optional)
+     * @param walletAddress The wallet address. (optional)
+     * @return ListDestinationWalletAddresses200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ListDestinationWalletAddresses200Response listDestinationWalletAddresses(Integer limit, String before, String after, String destinationId, String chainIds, String walletAddress) throws ApiException {
+        ApiResponse<ListDestinationWalletAddresses200Response> localVarResp = listDestinationWalletAddressesWithHttpInfo(limit, before, after, destinationId, chainIds, walletAddress);
+        return localVarResp.getData();
+    }
+
+    /**
+     * List destination wallet addresses
+     * This operation retrieves the information of destination wallet addresses. 
+     * @param limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (optional, default to 10)
+     * @param before A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response.  (optional)
+     * @param after A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response.  (optional)
+     * @param destinationId The destination ID. (optional)
+     * @param chainIds The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-chains). (optional)
+     * @param walletAddress The wallet address. (optional)
+     * @return ApiResponse&lt;ListDestinationWalletAddresses200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ListDestinationWalletAddresses200Response> listDestinationWalletAddressesWithHttpInfo(Integer limit, String before, String after, String destinationId, String chainIds, String walletAddress) throws ApiException {
+        okhttp3.Call localVarCall = listDestinationWalletAddressesValidateBeforeCall(limit, before, after, destinationId, chainIds, walletAddress, null);
+        Type localVarReturnType = new TypeToken<ListDestinationWalletAddresses200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * List destination wallet addresses (asynchronously)
+     * This operation retrieves the information of destination wallet addresses. 
+     * @param limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (optional, default to 10)
+     * @param before A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response.  (optional)
+     * @param after A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response.  (optional)
+     * @param destinationId The destination ID. (optional)
+     * @param chainIds The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-chains). (optional)
+     * @param walletAddress The wallet address. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listDestinationWalletAddressesAsync(Integer limit, String before, String after, String destinationId, String chainIds, String walletAddress, final ApiCallback<ListDestinationWalletAddresses200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listDestinationWalletAddressesValidateBeforeCall(limit, before, after, destinationId, chainIds, walletAddress, _callback);
+        Type localVarReturnType = new TypeToken<ListDestinationWalletAddresses200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for listDestinations
+     * @param limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (optional, default to 10)
+     * @param before A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response.  (optional)
+     * @param after A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response.  (optional)
+     * @param keyword A search term used for fuzzy matching of merchant names. (optional)
+     * @param destinationType DestinationType defines the type of the destination: - &#x60;Individual&#x60;: The destination is an individual. - &#x60;Organization&#x60;: The destination is an organization.  (optional)
+     * @param country The country of the destination, in ISO 3166-1 alpha-3 format. (optional)
+     * @param merchantIds A list of merchant IDs to query. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listDestinationsCall(Integer limit, String before, String after, String keyword, DestinationType destinationType, String country, String merchantIds, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/payments/destination";
+
+        List<Pair> localVarQueryParams = new ArrayList<>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<>();
+        Map<String, String> localVarHeaderParams = new HashMap<>();
+        Map<String, String> localVarCookieParams = new HashMap<>();
+        Map<String, Object> localVarFormParams = new HashMap<>();
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (before != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("before", before));
+        }
+
+        if (after != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("after", after));
+        }
+
+        if (keyword != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("keyword", keyword));
+        }
+
+        if (destinationType != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("destination_type", destinationType));
+        }
+
+        if (country != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("country", country));
+        }
+
+        if (merchantIds != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("merchant_ids", merchantIds));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(null, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listDestinationsValidateBeforeCall(Integer limit, String before, String after, String keyword, DestinationType destinationType, String country, String merchantIds, final ApiCallback _callback) throws ApiException {
+        return listDestinationsCall(limit, before, after, keyword, destinationType, country, merchantIds, _callback);
+
+    }
+
+    /**
+     * List all destinations
+     * This operation retrieves the information of all destinations.   You can filter the results by using a keyword for fuzzy search on destination names. 
+     * @param limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (optional, default to 10)
+     * @param before A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response.  (optional)
+     * @param after A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response.  (optional)
+     * @param keyword A search term used for fuzzy matching of merchant names. (optional)
+     * @param destinationType DestinationType defines the type of the destination: - &#x60;Individual&#x60;: The destination is an individual. - &#x60;Organization&#x60;: The destination is an organization.  (optional)
+     * @param country The country of the destination, in ISO 3166-1 alpha-3 format. (optional)
+     * @param merchantIds A list of merchant IDs to query. (optional)
+     * @return ListDestinations200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ListDestinations200Response listDestinations(Integer limit, String before, String after, String keyword, DestinationType destinationType, String country, String merchantIds) throws ApiException {
+        ApiResponse<ListDestinations200Response> localVarResp = listDestinationsWithHttpInfo(limit, before, after, keyword, destinationType, country, merchantIds);
+        return localVarResp.getData();
+    }
+
+    /**
+     * List all destinations
+     * This operation retrieves the information of all destinations.   You can filter the results by using a keyword for fuzzy search on destination names. 
+     * @param limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (optional, default to 10)
+     * @param before A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response.  (optional)
+     * @param after A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response.  (optional)
+     * @param keyword A search term used for fuzzy matching of merchant names. (optional)
+     * @param destinationType DestinationType defines the type of the destination: - &#x60;Individual&#x60;: The destination is an individual. - &#x60;Organization&#x60;: The destination is an organization.  (optional)
+     * @param country The country of the destination, in ISO 3166-1 alpha-3 format. (optional)
+     * @param merchantIds A list of merchant IDs to query. (optional)
+     * @return ApiResponse&lt;ListDestinations200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ListDestinations200Response> listDestinationsWithHttpInfo(Integer limit, String before, String after, String keyword, DestinationType destinationType, String country, String merchantIds) throws ApiException {
+        okhttp3.Call localVarCall = listDestinationsValidateBeforeCall(limit, before, after, keyword, destinationType, country, merchantIds, null);
+        Type localVarReturnType = new TypeToken<ListDestinations200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * List all destinations (asynchronously)
+     * This operation retrieves the information of all destinations.   You can filter the results by using a keyword for fuzzy search on destination names. 
+     * @param limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (optional, default to 10)
+     * @param before A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response.  (optional)
+     * @param after A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response.  (optional)
+     * @param keyword A search term used for fuzzy matching of merchant names. (optional)
+     * @param destinationType DestinationType defines the type of the destination: - &#x60;Individual&#x60;: The destination is an individual. - &#x60;Organization&#x60;: The destination is an organization.  (optional)
+     * @param country The country of the destination, in ISO 3166-1 alpha-3 format. (optional)
+     * @param merchantIds A list of merchant IDs to query. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listDestinationsAsync(Integer limit, String before, String after, String keyword, DestinationType destinationType, String country, String merchantIds, final ApiCallback<ListDestinations200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listDestinationsValidateBeforeCall(limit, before, after, keyword, destinationType, country, merchantIds, _callback);
+        Type localVarReturnType = new TypeToken<ListDestinations200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -4167,6 +6619,114 @@ public class PaymentApi {
         return localVarCall;
     }
     /**
+     * Build call for queryDestinationWhitelistEnabled
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call queryDestinationWhitelistEnabledCall(final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/payments/destination/enable_whitelist";
+
+        List<Pair> localVarQueryParams = new ArrayList<>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<>();
+        Map<String, String> localVarHeaderParams = new HashMap<>();
+        Map<String, String> localVarCookieParams = new HashMap<>();
+        Map<String, Object> localVarFormParams = new HashMap<>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(null, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call queryDestinationWhitelistEnabledValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return queryDestinationWhitelistEnabledCall(_callback);
+
+    }
+
+    /**
+     * Query destination whitelist enabled status
+     * This operation retrieves the information of whether the destination whitelist is enabled. 
+     * @return QueryDestinationWhitelistEnabled200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public QueryDestinationWhitelistEnabled200Response queryDestinationWhitelistEnabled() throws ApiException {
+        ApiResponse<QueryDestinationWhitelistEnabled200Response> localVarResp = queryDestinationWhitelistEnabledWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Query destination whitelist enabled status
+     * This operation retrieves the information of whether the destination whitelist is enabled. 
+     * @return ApiResponse&lt;QueryDestinationWhitelistEnabled200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<QueryDestinationWhitelistEnabled200Response> queryDestinationWhitelistEnabledWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = queryDestinationWhitelistEnabledValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<QueryDestinationWhitelistEnabled200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Query destination whitelist enabled status (asynchronously)
+     * This operation retrieves the information of whether the destination whitelist is enabled. 
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call queryDestinationWhitelistEnabledAsync(final ApiCallback<QueryDestinationWhitelistEnabled200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = queryDestinationWhitelistEnabledValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<QueryDestinationWhitelistEnabled200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for updateBankAccountById
      * @param bankAccountId The bank account ID. (required)
      * @param updateBankAccountByIdRequest The request body for updating an existing bank account. (optional)
@@ -4286,6 +6846,375 @@ public class PaymentApi {
 
         okhttp3.Call localVarCall = updateBankAccountByIdValidateBeforeCall(bankAccountId, updateBankAccountByIdRequest, _callback);
         Type localVarReturnType = new TypeToken<BankAccount>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updateCounterpartyById
+     * @param counterpartyId The counterparty ID. (required)
+     * @param updateCounterpartyByIdRequest The request body to update a counterparty. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateCounterpartyByIdCall(String counterpartyId, UpdateCounterpartyByIdRequest updateCounterpartyByIdRequest, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = updateCounterpartyByIdRequest;
+
+        // create path and map variables
+        String localVarPath = "/payments/counterparty/{counterparty_id}/update"
+            .replace("{" + "counterparty_id" + "}", localVarApiClient.escapeString(counterpartyId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<>();
+        Map<String, String> localVarHeaderParams = new HashMap<>();
+        Map<String, String> localVarCookieParams = new HashMap<>();
+        Map<String, Object> localVarFormParams = new HashMap<>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(null, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateCounterpartyByIdValidateBeforeCall(String counterpartyId, UpdateCounterpartyByIdRequest updateCounterpartyByIdRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'counterpartyId' is set
+        if (counterpartyId == null) {
+            throw new ApiException("Missing the required parameter 'counterpartyId' when calling updateCounterpartyById(Async)");
+        }
+
+        return updateCounterpartyByIdCall(counterpartyId, updateCounterpartyByIdRequest, _callback);
+
+    }
+
+    /**
+     * Update counterparty
+     * This operation updates the information of a specified counterparty. 
+     * @param counterpartyId The counterparty ID. (required)
+     * @param updateCounterpartyByIdRequest The request body to update a counterparty. (optional)
+     * @return Counterparty
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public Counterparty updateCounterpartyById(String counterpartyId, UpdateCounterpartyByIdRequest updateCounterpartyByIdRequest) throws ApiException {
+        ApiResponse<Counterparty> localVarResp = updateCounterpartyByIdWithHttpInfo(counterpartyId, updateCounterpartyByIdRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Update counterparty
+     * This operation updates the information of a specified counterparty. 
+     * @param counterpartyId The counterparty ID. (required)
+     * @param updateCounterpartyByIdRequest The request body to update a counterparty. (optional)
+     * @return ApiResponse&lt;Counterparty&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Counterparty> updateCounterpartyByIdWithHttpInfo(String counterpartyId, UpdateCounterpartyByIdRequest updateCounterpartyByIdRequest) throws ApiException {
+        okhttp3.Call localVarCall = updateCounterpartyByIdValidateBeforeCall(counterpartyId, updateCounterpartyByIdRequest, null);
+        Type localVarReturnType = new TypeToken<Counterparty>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Update counterparty (asynchronously)
+     * This operation updates the information of a specified counterparty. 
+     * @param counterpartyId The counterparty ID. (required)
+     * @param updateCounterpartyByIdRequest The request body to update a counterparty. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateCounterpartyByIdAsync(String counterpartyId, UpdateCounterpartyByIdRequest updateCounterpartyByIdRequest, final ApiCallback<Counterparty> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateCounterpartyByIdValidateBeforeCall(counterpartyId, updateCounterpartyByIdRequest, _callback);
+        Type localVarReturnType = new TypeToken<Counterparty>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updateDestinationBankAccountById
+     * @param bankAccountId The bank account ID. (required)
+     * @param updateDestinationBankAccount The request body to update a destination bank account. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateDestinationBankAccountByIdCall(UUID bankAccountId, UpdateDestinationBankAccount updateDestinationBankAccount, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = updateDestinationBankAccount;
+
+        // create path and map variables
+        String localVarPath = "/payments/destination/bank_account/{bank_account_id}/update"
+            .replace("{" + "bank_account_id" + "}", localVarApiClient.escapeString(bankAccountId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<>();
+        Map<String, String> localVarHeaderParams = new HashMap<>();
+        Map<String, String> localVarCookieParams = new HashMap<>();
+        Map<String, Object> localVarFormParams = new HashMap<>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(null, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateDestinationBankAccountByIdValidateBeforeCall(UUID bankAccountId, UpdateDestinationBankAccount updateDestinationBankAccount, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'bankAccountId' is set
+        if (bankAccountId == null) {
+            throw new ApiException("Missing the required parameter 'bankAccountId' when calling updateDestinationBankAccountById(Async)");
+        }
+
+        return updateDestinationBankAccountByIdCall(bankAccountId, updateDestinationBankAccount, _callback);
+
+    }
+
+    /**
+     * Update destination bank account
+     * This operation updates the information of a specified destination bank account. 
+     * @param bankAccountId The bank account ID. (required)
+     * @param updateDestinationBankAccount The request body to update a destination bank account. (optional)
+     * @return DestinationBankAccount
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public DestinationBankAccount updateDestinationBankAccountById(UUID bankAccountId, UpdateDestinationBankAccount updateDestinationBankAccount) throws ApiException {
+        ApiResponse<DestinationBankAccount> localVarResp = updateDestinationBankAccountByIdWithHttpInfo(bankAccountId, updateDestinationBankAccount);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Update destination bank account
+     * This operation updates the information of a specified destination bank account. 
+     * @param bankAccountId The bank account ID. (required)
+     * @param updateDestinationBankAccount The request body to update a destination bank account. (optional)
+     * @return ApiResponse&lt;DestinationBankAccount&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<DestinationBankAccount> updateDestinationBankAccountByIdWithHttpInfo(UUID bankAccountId, UpdateDestinationBankAccount updateDestinationBankAccount) throws ApiException {
+        okhttp3.Call localVarCall = updateDestinationBankAccountByIdValidateBeforeCall(bankAccountId, updateDestinationBankAccount, null);
+        Type localVarReturnType = new TypeToken<DestinationBankAccount>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Update destination bank account (asynchronously)
+     * This operation updates the information of a specified destination bank account. 
+     * @param bankAccountId The bank account ID. (required)
+     * @param updateDestinationBankAccount The request body to update a destination bank account. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateDestinationBankAccountByIdAsync(UUID bankAccountId, UpdateDestinationBankAccount updateDestinationBankAccount, final ApiCallback<DestinationBankAccount> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateDestinationBankAccountByIdValidateBeforeCall(bankAccountId, updateDestinationBankAccount, _callback);
+        Type localVarReturnType = new TypeToken<DestinationBankAccount>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updateDestinationById
+     * @param destinationId The destination ID. (required)
+     * @param updateDestinationByIdRequest The request body to create a destination. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateDestinationByIdCall(String destinationId, UpdateDestinationByIdRequest updateDestinationByIdRequest, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = updateDestinationByIdRequest;
+
+        // create path and map variables
+        String localVarPath = "/payments/destination/{destination_id}/update"
+            .replace("{" + "destination_id" + "}", localVarApiClient.escapeString(destinationId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<>();
+        Map<String, String> localVarHeaderParams = new HashMap<>();
+        Map<String, String> localVarCookieParams = new HashMap<>();
+        Map<String, Object> localVarFormParams = new HashMap<>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(null, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateDestinationByIdValidateBeforeCall(String destinationId, UpdateDestinationByIdRequest updateDestinationByIdRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'destinationId' is set
+        if (destinationId == null) {
+            throw new ApiException("Missing the required parameter 'destinationId' when calling updateDestinationById(Async)");
+        }
+
+        return updateDestinationByIdCall(destinationId, updateDestinationByIdRequest, _callback);
+
+    }
+
+    /**
+     * Update destination
+     * This operation updates the information of a specified destination. 
+     * @param destinationId The destination ID. (required)
+     * @param updateDestinationByIdRequest The request body to create a destination. (optional)
+     * @return Destination
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public Destination updateDestinationById(String destinationId, UpdateDestinationByIdRequest updateDestinationByIdRequest) throws ApiException {
+        ApiResponse<Destination> localVarResp = updateDestinationByIdWithHttpInfo(destinationId, updateDestinationByIdRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Update destination
+     * This operation updates the information of a specified destination. 
+     * @param destinationId The destination ID. (required)
+     * @param updateDestinationByIdRequest The request body to create a destination. (optional)
+     * @return ApiResponse&lt;Destination&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Destination> updateDestinationByIdWithHttpInfo(String destinationId, UpdateDestinationByIdRequest updateDestinationByIdRequest) throws ApiException {
+        okhttp3.Call localVarCall = updateDestinationByIdValidateBeforeCall(destinationId, updateDestinationByIdRequest, null);
+        Type localVarReturnType = new TypeToken<Destination>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Update destination (asynchronously)
+     * This operation updates the information of a specified destination. 
+     * @param destinationId The destination ID. (required)
+     * @param updateDestinationByIdRequest The request body to create a destination. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateDestinationByIdAsync(String destinationId, UpdateDestinationByIdRequest updateDestinationByIdRequest, final ApiCallback<Destination> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateDestinationByIdValidateBeforeCall(destinationId, updateDestinationByIdRequest, _callback);
+        Type localVarReturnType = new TypeToken<Destination>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

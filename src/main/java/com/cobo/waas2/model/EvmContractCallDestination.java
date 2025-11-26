@@ -97,7 +97,7 @@ public class EvmContractCallDestination {
   }
 
    /**
-   * The destination address.
+   * The destination address.  If you are deploying a new contract on an EVM chain, set this address to &#x60;0x0000000000000000000000000000000000000000&#x60;. 
    * @return address
   **/
   @javax.annotation.Nonnull

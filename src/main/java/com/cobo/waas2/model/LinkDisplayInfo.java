@@ -70,7 +70,7 @@ public class LinkDisplayInfo {
   }
 
    /**
-   * The brand name to display to end users during the payment process. 
+   * The brand name to display to end users on the page. This helps users identify who is providing the payment service. 
    * @return developerName
   **/
   @javax.annotation.Nullable
@@ -89,7 +89,7 @@ public class LinkDisplayInfo {
   }
 
    /**
-   * The URL of your logo image to display to end users during the payment process. 
+   * The URL of the logo image to display to end users on the page. 
    * @return logo
   **/
   @javax.annotation.Nullable

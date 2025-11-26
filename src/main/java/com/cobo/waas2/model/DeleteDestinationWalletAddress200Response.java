@@ -45,59 +45,36 @@ import java.util.Set;
 import com.cobo.waas2.JSON;
 
 /**
- * The total amount of the token that has been received at a given address.
+ * DeleteDestinationWalletAddress200Response
  */
 @javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
-public class ReceivedAmountPerAddress {
-  public static final String SERIALIZED_NAME_ADDRESS = "address";
-  @SerializedName(SERIALIZED_NAME_ADDRESS)
-  private String address;
+public class DeleteDestinationWalletAddress200Response {
+  public static final String SERIALIZED_NAME_WALLET_ADDRESS_ID = "wallet_address_id";
+  @SerializedName(SERIALIZED_NAME_WALLET_ADDRESS_ID)
+  private String walletAddressId;
 
-  public static final String SERIALIZED_NAME_TOTAL_RECEIVED_AMOUNT = "total_received_amount";
-  @SerializedName(SERIALIZED_NAME_TOTAL_RECEIVED_AMOUNT)
-  private String totalReceivedAmount;
-
-  public ReceivedAmountPerAddress() {
+  public DeleteDestinationWalletAddress200Response() {
   }
 
-  public ReceivedAmountPerAddress address(String address) {
-    this.address = address;
+  public DeleteDestinationWalletAddress200Response walletAddressId(String walletAddressId) {
+    this.walletAddressId = walletAddressId;
     return this;
   }
 
    /**
-   * The receiving address.
-   * @return address
+   * The wallet address ID under the destination.
+   * @return walletAddressId
   **/
   @javax.annotation.Nonnull
-  public String getAddress() {
-    return address;
+  public String getWalletAddressId() {
+    return walletAddressId;
   }
 
-  public void setAddress(String address) {
-    this.address = address;
-  }
-
-
-  public ReceivedAmountPerAddress totalReceivedAmount(String totalReceivedAmount) {
-    this.totalReceivedAmount = totalReceivedAmount;
-    return this;
-  }
-
-   /**
-   * The total amount of the token that has been received at this address.
-   * @return totalReceivedAmount
-  **/
-  @javax.annotation.Nonnull
-  public String getTotalReceivedAmount() {
-    return totalReceivedAmount;
-  }
-
-  public void setTotalReceivedAmount(String totalReceivedAmount) {
-    this.totalReceivedAmount = totalReceivedAmount;
+  public void setWalletAddressId(String walletAddressId) {
+    this.walletAddressId = walletAddressId;
   }
 
   /**
@@ -113,9 +90,9 @@ public class ReceivedAmountPerAddress {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the ReceivedAmountPerAddress instance itself
+   * @return the DeleteDestinationWalletAddress200Response instance itself
    */
-  public ReceivedAmountPerAddress putAdditionalProperty(String key, Object value) {
+  public DeleteDestinationWalletAddress200Response putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -154,23 +131,21 @@ public class ReceivedAmountPerAddress {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ReceivedAmountPerAddress receivedAmountPerAddress = (ReceivedAmountPerAddress) o;
-    return Objects.equals(this.address, receivedAmountPerAddress.address) &&
-        Objects.equals(this.totalReceivedAmount, receivedAmountPerAddress.totalReceivedAmount)&&
-        Objects.equals(this.additionalProperties, receivedAmountPerAddress.additionalProperties);
+    DeleteDestinationWalletAddress200Response deleteDestinationWalletAddress200Response = (DeleteDestinationWalletAddress200Response) o;
+    return Objects.equals(this.walletAddressId, deleteDestinationWalletAddress200Response.walletAddressId)&&
+        Objects.equals(this.additionalProperties, deleteDestinationWalletAddress200Response.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(address, totalReceivedAmount, additionalProperties);
+    return Objects.hash(walletAddressId, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ReceivedAmountPerAddress {\n");
-    sb.append("    address: ").append(toIndentedString(address)).append("\n");
-    sb.append("    totalReceivedAmount: ").append(toIndentedString(totalReceivedAmount)).append("\n");
+    sb.append("class DeleteDestinationWalletAddress200Response {\n");
+    sb.append("    walletAddressId: ").append(toIndentedString(walletAddressId)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -194,40 +169,35 @@ public class ReceivedAmountPerAddress {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("address");
-    openapiFields.add("total_received_amount");
+    openapiFields.add("wallet_address_id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("address");
-    openapiRequiredFields.add("total_received_amount");
+    openapiRequiredFields.add("wallet_address_id");
   }
 
  /**
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to ReceivedAmountPerAddress
+  * @throws IOException if the JSON Element is invalid with respect to DeleteDestinationWalletAddress200Response
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!ReceivedAmountPerAddress.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ReceivedAmountPerAddress is not found in the empty JSON string", ReceivedAmountPerAddress.openapiRequiredFields.toString()));
+        if (!DeleteDestinationWalletAddress200Response.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in DeleteDestinationWalletAddress200Response is not found in the empty JSON string", DeleteDestinationWalletAddress200Response.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ReceivedAmountPerAddress.openapiRequiredFields) {
+      for (String requiredField : DeleteDestinationWalletAddress200Response.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("address").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `address` to be a primitive type in the JSON string but got `%s`", jsonObj.get("address").toString()));
-      }
-      if (!jsonObj.get("total_received_amount").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `total_received_amount` to be a primitive type in the JSON string but got `%s`", jsonObj.get("total_received_amount").toString()));
+      if (!jsonObj.get("wallet_address_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `wallet_address_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("wallet_address_id").toString()));
       }
   }
 
@@ -235,16 +205,16 @@ public class ReceivedAmountPerAddress {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ReceivedAmountPerAddress.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ReceivedAmountPerAddress' and its subtypes
+       if (!DeleteDestinationWalletAddress200Response.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'DeleteDestinationWalletAddress200Response' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ReceivedAmountPerAddress> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ReceivedAmountPerAddress.class));
+       final TypeAdapter<DeleteDestinationWalletAddress200Response> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(DeleteDestinationWalletAddress200Response.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ReceivedAmountPerAddress>() {
+       return (TypeAdapter<T>) new TypeAdapter<DeleteDestinationWalletAddress200Response>() {
            @Override
-           public void write(JsonWriter out, ReceivedAmountPerAddress value) throws IOException {
+           public void write(JsonWriter out, DeleteDestinationWalletAddress200Response value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -274,12 +244,12 @@ public class ReceivedAmountPerAddress {
            }
 
            @Override
-           public ReceivedAmountPerAddress read(JsonReader in) throws IOException {
+           public DeleteDestinationWalletAddress200Response read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             ReceivedAmountPerAddress instance = thisAdapter.fromJsonTree(jsonObj);
+             DeleteDestinationWalletAddress200Response instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -306,18 +276,18 @@ public class ReceivedAmountPerAddress {
   }
 
  /**
-  * Create an instance of ReceivedAmountPerAddress given an JSON string
+  * Create an instance of DeleteDestinationWalletAddress200Response given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of ReceivedAmountPerAddress
-  * @throws IOException if the JSON string is invalid with respect to ReceivedAmountPerAddress
+  * @return An instance of DeleteDestinationWalletAddress200Response
+  * @throws IOException if the JSON string is invalid with respect to DeleteDestinationWalletAddress200Response
   */
-  public static ReceivedAmountPerAddress fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ReceivedAmountPerAddress.class);
+  public static DeleteDestinationWalletAddress200Response fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, DeleteDestinationWalletAddress200Response.class);
   }
 
  /**
-  * Convert an instance of ReceivedAmountPerAddress to an JSON string
+  * Convert an instance of DeleteDestinationWalletAddress200Response to an JSON string
   *
   * @return JSON string
   */
