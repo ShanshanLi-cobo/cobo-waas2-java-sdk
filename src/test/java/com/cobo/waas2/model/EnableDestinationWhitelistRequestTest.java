@@ -22,33 +22,25 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
- * Model tests for ReceivedAmountPerAddress
+ * Model tests for EnableDestinationWhitelistRequest
  */
-public class ReceivedAmountPerAddressTest {
-    private final ReceivedAmountPerAddress model = new ReceivedAmountPerAddress();
+public class EnableDestinationWhitelistRequestTest {
+    private final EnableDestinationWhitelistRequest model = new EnableDestinationWhitelistRequest();
 
     /**
-     * Model tests for ReceivedAmountPerAddress
+     * Model tests for EnableDestinationWhitelistRequest
      */
     @Test
-    public void testReceivedAmountPerAddress() {
-        // TODO: test ReceivedAmountPerAddress
+    public void testEnableDestinationWhitelistRequest() {
+        // TODO: test EnableDestinationWhitelistRequest
     }
 
     /**
-     * Test the property 'address'
+     * Test the property 'enableDestinationWhitelist'
      */
     @Test
-    public void addressTest() {
-        // TODO: test address
-    }
-
-    /**
-     * Test the property 'totalReceivedAmount'
-     */
-    @Test
-    public void totalReceivedAmountTest() {
-        // TODO: test totalReceivedAmount
+    public void enableDestinationWhitelistTest() {
+        // TODO: test enableDestinationWhitelist
     }
 
 }

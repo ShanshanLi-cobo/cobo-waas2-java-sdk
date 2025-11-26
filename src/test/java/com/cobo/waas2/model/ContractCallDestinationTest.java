@@ -18,6 +18,7 @@ import com.cobo.waas2.model.SolContractCallDestination;
 import com.cobo.waas2.model.SolContractCallInstruction;
 import com.cobo.waas2.model.StellarContractCallContractParam;
 import com.cobo.waas2.model.StellarContractCallDestination;
+import com.cobo.waas2.model.TronContractCallDestination;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;

@@ -22,7 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * The event type. To learn the trigger condition of each event type, refer to [Webhook event types and event data](https://www.cobo.com/developers/v2/guides/webhooks-callbacks/webhook-event-type).   **Currently, you can only trigger test webhook events with the event data types &#x60;Transaction&#x60; and &#x60;TSSRequest&#x60;.** 
+ * The event type. To learn the trigger condition of each event type, refer to [Webhook event types and event data](https://www.cobo.com/developers/v2/guides/webhooks-callbacks/webhook-event-type). 
  */
 @JsonAdapter(WebhookEventType.Adapter.class)
 public enum WebhookEventType {

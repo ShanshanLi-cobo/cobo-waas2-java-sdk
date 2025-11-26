@@ -16,7 +16,16 @@ import com.cobo.waas2.ApiException;
 import com.cobo.waas2.Configuration;
 import com.cobo.waas2.model.AcquiringType;
 import com.cobo.waas2.model.BankAccount;
+import com.cobo.waas2.model.BankAccountStatus;
+import com.cobo.waas2.model.Counterparty;
+import com.cobo.waas2.model.CounterpartyDetail;
+import com.cobo.waas2.model.CounterpartyType;
+import com.cobo.waas2.model.CreateCounterpartyRequest;
+import com.cobo.waas2.model.CreateCounterpartyWalletAddressRequest;
 import com.cobo.waas2.model.CreateCryptoAddressRequest;
+import com.cobo.waas2.model.CreateDestinationBankAccountRequest;
+import com.cobo.waas2.model.CreateDestinationRequest;
+import com.cobo.waas2.model.CreateDestinationWalletAddressRequest;
 import com.cobo.waas2.model.CreateMerchantRequest;
 import com.cobo.waas2.model.CreateOrderLinkRequest;
 import com.cobo.waas2.model.CreatePaymentOrderRequest;
@@ -24,14 +33,31 @@ import com.cobo.waas2.model.CreateRefundLinkRequest;
 import com.cobo.waas2.model.CreateRefundRequest;
 import com.cobo.waas2.model.CreateSettlementRequestRequest;
 import com.cobo.waas2.model.CryptoAddress;
+import com.cobo.waas2.model.DeleteCounterparty200Response;
+import com.cobo.waas2.model.DeleteCounterpartyWalletAddress200Response;
 import com.cobo.waas2.model.DeleteCryptoAddress201Response;
+import com.cobo.waas2.model.DeleteDestination200Response;
+import com.cobo.waas2.model.DeleteDestinationBankAccount200Response;
+import com.cobo.waas2.model.DeleteDestinationWalletAddress200Response;
+import com.cobo.waas2.model.Destination;
+import com.cobo.waas2.model.DestinationBankAccount;
+import com.cobo.waas2.model.DestinationBankAccountDetail;
+import com.cobo.waas2.model.DestinationDetail;
+import com.cobo.waas2.model.DestinationType;
+import com.cobo.waas2.model.EnableDestinationWhitelistRequest;
 import com.cobo.waas2.model.ErrorResponse;
+import com.cobo.waas2.model.ExchangeRate;
 import com.cobo.waas2.model.ForcedSweep;
 import com.cobo.waas2.model.ForcedSweepRequest;
 import com.cobo.waas2.model.GetExchangeRate200Response;
 import com.cobo.waas2.model.GetRefunds200Response;
 import com.cobo.waas2.model.GetSettlementInfoByIds200Response;
 import com.cobo.waas2.model.Link;
+import com.cobo.waas2.model.ListCounterparties200Response;
+import com.cobo.waas2.model.ListCounterpartyWalletAddress200Response;
+import com.cobo.waas2.model.ListDestinationBankAccounts200Response;
+import com.cobo.waas2.model.ListDestinationWalletAddresses200Response;
+import com.cobo.waas2.model.ListDestinations200Response;
 import com.cobo.waas2.model.ListForcedSweepRequests200Response;
 import com.cobo.waas2.model.ListMerchantBalances200Response;
 import com.cobo.waas2.model.ListMerchants200Response;
@@ -46,17 +72,21 @@ import com.cobo.waas2.model.Order;
 import com.cobo.waas2.model.PaymentEstimateFee201Response;
 import com.cobo.waas2.model.PaymentEstimateFeeRequest;
 import com.cobo.waas2.model.PspBalance;
-import com.cobo.waas2.model.ReceivedAmountPerAddress;
+import com.cobo.waas2.model.QueryDestinationWhitelistEnabled200Response;
 import com.cobo.waas2.model.Refund;
 import com.cobo.waas2.model.Settlement;
 import com.cobo.waas2.model.SupportedToken;
 import com.cobo.waas2.model.TopUpAddress;
 import java.util.UUID;
 import com.cobo.waas2.model.UpdateBankAccountByIdRequest;
+import com.cobo.waas2.model.UpdateCounterpartyByIdRequest;
+import com.cobo.waas2.model.UpdateDestinationBankAccount;
+import com.cobo.waas2.model.UpdateDestinationByIdRequest;
 import com.cobo.waas2.model.UpdateMerchantByIdRequest;
 import com.cobo.waas2.model.UpdatePaymentOrderRequest;
 import com.cobo.waas2.model.UpdateRefundByIdRequest;
 import com.cobo.waas2.model.UpdateTopUpAddress;
+import com.cobo.waas2.model.WalletAddress;
 import com.cobo.waas2.model.WalletSetup;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -80,6 +110,21 @@ public class PaymentApiTest {
     private final PaymentApi api = new PaymentApi();
 
     /**
+     * Batch get exchange rates
+     *
+     * This operation retrieves the current exchange rates between a specified currency and a list of token IDs. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void batchGetExchangeRatesTest() throws ApiException {
+        String tokenIds = null;
+        String currencies = null;
+        List<ExchangeRate> response = api.batchGetExchangeRates(tokenIds, currencies);
+        // TODO: test validations
+    }
+
+    /**
      * Cancel refund order
      *
      * This operation cancels a specified refund order. You can only cancel refund orders that have not been processed yet. 
@@ -94,6 +139,34 @@ public class PaymentApiTest {
     }
 
     /**
+     * Create counterparty
+     *
+     * This operation creates a counterparty. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void createCounterpartyTest() throws ApiException {
+        CreateCounterpartyRequest createCounterpartyRequest = null;
+        CounterpartyDetail response = api.createCounterparty(createCounterpartyRequest);
+        // TODO: test validations
+    }
+
+    /**
+     * Create counterparty wallet address
+     *
+     * This operation creates a counterparty wallet address. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void createCounterpartyWalletAddressTest() throws ApiException {
+        CreateCounterpartyWalletAddressRequest createCounterpartyWalletAddressRequest = null;
+        WalletAddress response = api.createCounterpartyWalletAddress(createCounterpartyWalletAddressRequest);
+        // TODO: test validations
+    }
+
+    /**
      * Create crypto address
      *
      * This operation registers a crypto address for crypto payouts.  The registered address can later be referenced by its ID when creating settlement requests. 
@@ -104,6 +177,48 @@ public class PaymentApiTest {
     public void createCryptoAddressTest() throws ApiException {
         CreateCryptoAddressRequest createCryptoAddressRequest = null;
         CryptoAddress response = api.createCryptoAddress(createCryptoAddressRequest);
+        // TODO: test validations
+    }
+
+    /**
+     * Create destination
+     *
+     * This operation creates a destination. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void createDestinationTest() throws ApiException {
+        CreateDestinationRequest createDestinationRequest = null;
+        DestinationDetail response = api.createDestination(createDestinationRequest);
+        // TODO: test validations
+    }
+
+    /**
+     * Create destination bank account
+     *
+     * This operation creates a destination bank account. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void createDestinationBankAccountTest() throws ApiException {
+        CreateDestinationBankAccountRequest createDestinationBankAccountRequest = null;
+        DestinationBankAccount response = api.createDestinationBankAccount(createDestinationBankAccountRequest);
+        // TODO: test validations
+    }
+
+    /**
+     * Create destination wallet address
+     *
+     * This operation creates a destination wallet address. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void createDestinationWalletAddressTest() throws ApiException {
+        CreateDestinationWalletAddressRequest createDestinationWalletAddressRequest = null;
+        WalletAddress response = api.createDestinationWalletAddress(createDestinationWalletAddressRequest);
         // TODO: test validations
     }
 
@@ -180,7 +295,7 @@ public class PaymentApiTest {
     /**
      * Create refund link
      *
-     * This operation creates a payment link for a refund. 
+     * This operation creates a link that points to a Cobo-hosted refund page. The user can submit their desired refund address on the page.  Once the address is submitted, Cobo will automatically create a refund order and initiate the refund process according to your configuration.  For details, see [Create refund link](https://www.cobo.com/developers/v2/payments/create-refund-link). 
      *
      * @throws ApiException if the Api call fails
      */
@@ -206,6 +321,34 @@ public class PaymentApiTest {
     }
 
     /**
+     * Delete counterparty
+     *
+     * This operation deletes a counterparty. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void deleteCounterpartyTest() throws ApiException {
+        String counterpartyId = null;
+        DeleteCounterparty200Response response = api.deleteCounterparty(counterpartyId);
+        // TODO: test validations
+    }
+
+    /**
+     * Delete counterparty wallet address
+     *
+     * This operation deletes a counterparty wallet address. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void deleteCounterpartyWalletAddressTest() throws ApiException {
+        String walletAddressId = null;
+        DeleteCounterpartyWalletAddress200Response response = api.deleteCounterpartyWalletAddress(walletAddressId);
+        // TODO: test validations
+    }
+
+    /**
      * Delete crypto address
      *
      * This operation unregisters a crypto address from being used for crypto payouts. 
@@ -216,6 +359,104 @@ public class PaymentApiTest {
     public void deleteCryptoAddressTest() throws ApiException {
         String cryptoAddressId = null;
         DeleteCryptoAddress201Response response = api.deleteCryptoAddress(cryptoAddressId);
+        // TODO: test validations
+    }
+
+    /**
+     * Delete destination
+     *
+     * This operation deletes a destination. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void deleteDestinationTest() throws ApiException {
+        String destinationId = null;
+        DeleteDestination200Response response = api.deleteDestination(destinationId);
+        // TODO: test validations
+    }
+
+    /**
+     * Delete destination bank account
+     *
+     * This operation deletes a destination bank account. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void deleteDestinationBankAccountTest() throws ApiException {
+        UUID bankAccountId = null;
+        DeleteDestinationBankAccount200Response response = api.deleteDestinationBankAccount(bankAccountId);
+        // TODO: test validations
+    }
+
+    /**
+     * Delete destination wallet address
+     *
+     * This operation deletes a destination wallet address. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void deleteDestinationWalletAddressTest() throws ApiException {
+        String walletAddressId = null;
+        DeleteDestinationWalletAddress200Response response = api.deleteDestinationWalletAddress(walletAddressId);
+        // TODO: test validations
+    }
+
+    /**
+     * Enable or disable destination whitelist
+     *
+     * This operation enables or disables the whitelist for a destination. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void enableDestinationWhitelistTest() throws ApiException {
+        EnableDestinationWhitelistRequest enableDestinationWhitelistRequest = null;
+        QueryDestinationWhitelistEnabled200Response response = api.enableDestinationWhitelist(enableDestinationWhitelistRequest);
+        // TODO: test validations
+    }
+
+    /**
+     * Get counterparty information
+     *
+     * This operation retrieves the detailed information about a specified counterparty. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getCounterpartyDetailByIdTest() throws ApiException {
+        String counterpartyId = null;
+        CounterpartyDetail response = api.getCounterpartyDetailById(counterpartyId);
+        // TODO: test validations
+    }
+
+    /**
+     * Get destination bank account information
+     *
+     * This operation retrieves the detailed information about a specified destination bank account. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getDestinationBankAccountDetailByIdTest() throws ApiException {
+        UUID bankAccountId = null;
+        DestinationBankAccountDetail response = api.getDestinationBankAccountDetailById(bankAccountId);
+        // TODO: test validations
+    }
+
+    /**
+     * Get destination information
+     *
+     * This operation retrieves the detailed information about a specified destination. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getDestinationDetailByIdTest() throws ApiException {
+        String destinationId = null;
+        DestinationDetail response = api.getDestinationDetailById(destinationId);
         // TODO: test validations
     }
 
@@ -231,22 +472,6 @@ public class PaymentApiTest {
         String tokenId = null;
         String currency = null;
         GetExchangeRate200Response response = api.getExchangeRate(tokenId, currency);
-        // TODO: test validations
-    }
-
-    /**
-     * Get payer balance
-     *
-     * This operation retrieves the total amount received for a specific payer. The information is grouped by token and receiving address. 
-     *
-     * @throws ApiException if the Api call fails
-     */
-    @Test
-    public void getPayerBalanceByAddressTest() throws ApiException {
-        String payerId = null;
-        String tokenId = null;
-        String merchantId = null;
-        List<ReceivedAmountPerAddress> response = api.getPayerBalanceByAddress(payerId, tokenId, merchantId);
         // TODO: test validations
     }
 
@@ -342,9 +567,9 @@ public class PaymentApiTest {
     }
 
     /**
-     * Get top-up address
+     * Create/Get top-up address
      *
-     * This operation retrieves the information of the dedicated top-up address assigned to a specific payer under a merchant on a specified chain. 
+     * This operation creates or retrieves a unique top-up address for a payer.   In the request, you need to provide the &#x60;custom_payer_id&#x60; parameter to identify the payer in your system and link them to the top-up address.  - If no address exists for the payer on the specified chain, a new address will be created and returned. - If an address already exists for the payer on the specified chain, the existing address details will be returned.  You can also provide the &#x60;merchant_id&#x60; parameter to specify the merchant to which the payer belongs. If not provided, the default merchant will be used. 
      *
      * @throws ApiException if the Api call fails
      */
@@ -371,6 +596,44 @@ public class PaymentApiTest {
     }
 
     /**
+     * List all counterparties
+     *
+     * This operation retrieves the information of all counterparties.   You can filter the results by using a keyword for fuzzy search on counterparty names. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void listCounterpartiesTest() throws ApiException {
+        Integer limit = null;
+        String before = null;
+        String after = null;
+        String keyword = null;
+        CounterpartyType counterpartyType = null;
+        String country = null;
+        ListCounterparties200Response response = api.listCounterparties(limit, before, after, keyword, counterpartyType, country);
+        // TODO: test validations
+    }
+
+    /**
+     * List counterparty wallet addresses
+     *
+     * This operation retrieves the information of counterparty wallet addresses. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void listCounterpartyWalletAddressTest() throws ApiException {
+        Integer limit = null;
+        String before = null;
+        String after = null;
+        String counterpartyId = null;
+        String chainIds = null;
+        String walletAddress = null;
+        ListCounterpartyWalletAddress200Response response = api.listCounterpartyWalletAddress(limit, before, after, counterpartyId, chainIds, walletAddress);
+        // TODO: test validations
+    }
+
+    /**
      * List crypto addresses
      *
      * This operation retrieves a list of crypto addresses registered for crypto payouts.   Contact our support team at [help@cobo.com](mailto:help@cobo.com) to register a new crypto address. 
@@ -381,6 +644,64 @@ public class PaymentApiTest {
     public void listCryptoAddressesTest() throws ApiException {
         String tokenId = null;
         List<CryptoAddress> response = api.listCryptoAddresses(tokenId);
+        // TODO: test validations
+    }
+
+    /**
+     * List destination bank accounts
+     *
+     * This operation retrieves the information of destination bank accounts. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void listDestinationBankAccountsTest() throws ApiException {
+        Integer limit = null;
+        String before = null;
+        String after = null;
+        String keyword = null;
+        String destinationId = null;
+        BankAccountStatus bankAccountStatus = null;
+        ListDestinationBankAccounts200Response response = api.listDestinationBankAccounts(limit, before, after, keyword, destinationId, bankAccountStatus);
+        // TODO: test validations
+    }
+
+    /**
+     * List destination wallet addresses
+     *
+     * This operation retrieves the information of destination wallet addresses. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void listDestinationWalletAddressesTest() throws ApiException {
+        Integer limit = null;
+        String before = null;
+        String after = null;
+        String destinationId = null;
+        String chainIds = null;
+        String walletAddress = null;
+        ListDestinationWalletAddresses200Response response = api.listDestinationWalletAddresses(limit, before, after, destinationId, chainIds, walletAddress);
+        // TODO: test validations
+    }
+
+    /**
+     * List all destinations
+     *
+     * This operation retrieves the information of all destinations.   You can filter the results by using a keyword for fuzzy search on destination names. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void listDestinationsTest() throws ApiException {
+        Integer limit = null;
+        String before = null;
+        String after = null;
+        String keyword = null;
+        DestinationType destinationType = null;
+        String country = null;
+        String merchantIds = null;
+        ListDestinations200Response response = api.listDestinations(limit, before, after, keyword, destinationType, country, merchantIds);
         // TODO: test validations
     }
 
@@ -569,6 +890,19 @@ public class PaymentApiTest {
     }
 
     /**
+     * Query destination whitelist enabled status
+     *
+     * This operation retrieves the information of whether the destination whitelist is enabled. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void queryDestinationWhitelistEnabledTest() throws ApiException {
+        QueryDestinationWhitelistEnabled200Response response = api.queryDestinationWhitelistEnabled();
+        // TODO: test validations
+    }
+
+    /**
      * Update bank account
      *
      * This operation updates the information of an existing bank account. 
@@ -580,6 +914,51 @@ public class PaymentApiTest {
         UUID bankAccountId = null;
         UpdateBankAccountByIdRequest updateBankAccountByIdRequest = null;
         BankAccount response = api.updateBankAccountById(bankAccountId, updateBankAccountByIdRequest);
+        // TODO: test validations
+    }
+
+    /**
+     * Update counterparty
+     *
+     * This operation updates the information of a specified counterparty. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void updateCounterpartyByIdTest() throws ApiException {
+        String counterpartyId = null;
+        UpdateCounterpartyByIdRequest updateCounterpartyByIdRequest = null;
+        Counterparty response = api.updateCounterpartyById(counterpartyId, updateCounterpartyByIdRequest);
+        // TODO: test validations
+    }
+
+    /**
+     * Update destination bank account
+     *
+     * This operation updates the information of a specified destination bank account. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void updateDestinationBankAccountByIdTest() throws ApiException {
+        UUID bankAccountId = null;
+        UpdateDestinationBankAccount updateDestinationBankAccount = null;
+        DestinationBankAccount response = api.updateDestinationBankAccountById(bankAccountId, updateDestinationBankAccount);
+        // TODO: test validations
+    }
+
+    /**
+     * Update destination
+     *
+     * This operation updates the information of a specified destination. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void updateDestinationByIdTest() throws ApiException {
+        String destinationId = null;
+        UpdateDestinationByIdRequest updateDestinationByIdRequest = null;
+        Destination response = api.updateDestinationById(destinationId, updateDestinationByIdRequest);
         // TODO: test validations
     }
 

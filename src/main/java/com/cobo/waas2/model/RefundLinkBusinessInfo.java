@@ -82,7 +82,7 @@ public class RefundLinkBusinessInfo {
   }
 
    /**
-   * The transaction ID.
+   * The transaction ID of the original order payment or top-up.  On the refund page, the from address of this transaction will be pre-filled as the default refund address.  The refund will be processed in the same token and on the same blockchain as this transaction. 
    * @return transactionId
   **/
   @javax.annotation.Nonnull
@@ -101,7 +101,7 @@ public class RefundLinkBusinessInfo {
   }
 
    /**
-   * The amount to refund in cryptocurrency.
+   * The amount to refund, denominated in the cryptocurrency of the original payment transaction. The amount must be a positive number and can have up to two decimal places.
    * @return amount
   **/
   @javax.annotation.Nonnull
@@ -139,7 +139,7 @@ public class RefundLinkBusinessInfo {
   }
 
    /**
-   * The merchant ID, required if the refund amount source is &#x60;Merchant&#x60;.
+   * The merchant ID, required if &#x60;refund_source&#x60; is &#x60;Merchant&#x60;. The fund will be deducted from the specified merchant&#39;s balance.
    * @return merchantId
   **/
   @javax.annotation.Nullable
@@ -158,7 +158,7 @@ public class RefundLinkBusinessInfo {
   }
 
    /**
-   * The amount of the transaction fee that the merchant will bear for the refund. 
+   * The developer fee amount to charge the merchant, denominated in the cryptocurrency of the original payment transaction. This field is only valid when &#x60;refund_source&#x60; is &#x60;Merchant&#x60;. For more information, please refer to [Funds allocation and balances](https://www.cobo.com/developers/v2/payments/amounts-and-balances). Must be:   - A positive integer with up to two decimal places.   - Less than the refund amount 
    * @return feeAmount
   **/
   @javax.annotation.Nullable

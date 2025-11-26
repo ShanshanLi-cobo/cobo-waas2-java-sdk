@@ -51,7 +51,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.cobo.waas2</groupId>
   <artifactId>cobo-waas2</artifactId>
-  <version>1.26.0</version>
+  <version>1.27.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -67,7 +67,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "com.cobo.waas2:cobo-waas2:1.26.0"
+     implementation "com.cobo.waas2:cobo-waas2:1.27.0"
   }
 ```
 
@@ -95,7 +95,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/cobo-waas2-1.26.0.jar`
+* `target/cobo-waas2-1.27.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -246,8 +246,14 @@ Class | Method | HTTP request | Description
 *OAuthApi* | [**refreshPermissionToken**](docs/OAuthApi.md#refreshPermissionToken) | **POST** /oauth/permission_token/refresh | Refresh Access Token
 *OAuthApi* | [**refreshToken**](docs/OAuthApi.md#refreshToken) | **POST** /oauth/token | Refresh Org Access Token
 *OrganizationsApi* | [**getOrgInfo**](docs/OrganizationsApi.md#getOrgInfo) | **GET** /organizations/info | Get organization information
+*PaymentApi* | [**batchGetExchangeRates**](docs/PaymentApi.md#batchGetExchangeRates) | **GET** /payments/exchange_rates | Batch get exchange rates
 *PaymentApi* | [**cancelRefundById**](docs/PaymentApi.md#cancelRefundById) | **PUT** /payments/refunds/{refund_id}/cancel | Cancel refund order
+*PaymentApi* | [**createCounterparty**](docs/PaymentApi.md#createCounterparty) | **POST** /payments/counterparty | Create counterparty
+*PaymentApi* | [**createCounterpartyWalletAddress**](docs/PaymentApi.md#createCounterpartyWalletAddress) | **POST** /payments/counterparty/wallet_address | Create counterparty wallet address
 *PaymentApi* | [**createCryptoAddress**](docs/PaymentApi.md#createCryptoAddress) | **POST** /payments/crypto_addresses | Create crypto address
+*PaymentApi* | [**createDestination**](docs/PaymentApi.md#createDestination) | **POST** /payments/destination | Create destination
+*PaymentApi* | [**createDestinationBankAccount**](docs/PaymentApi.md#createDestinationBankAccount) | **POST** /payments/destination/bank_account | Create destination bank account
+*PaymentApi* | [**createDestinationWalletAddress**](docs/PaymentApi.md#createDestinationWalletAddress) | **POST** /payments/destination/wallet_address | Create destination wallet address
 *PaymentApi* | [**createForcedSweepRequest**](docs/PaymentApi.md#createForcedSweepRequest) | **POST** /payments/force_sweep_requests | Create forced sweep
 *PaymentApi* | [**createMerchant**](docs/PaymentApi.md#createMerchant) | **POST** /payments/merchants | Create merchant
 *PaymentApi* | [**createOrderLink**](docs/PaymentApi.md#createOrderLink) | **POST** /payments/links/orders | Create order link
@@ -255,18 +261,31 @@ Class | Method | HTTP request | Description
 *PaymentApi* | [**createRefund**](docs/PaymentApi.md#createRefund) | **POST** /payments/refunds | Create refund order
 *PaymentApi* | [**createRefundLink**](docs/PaymentApi.md#createRefundLink) | **POST** /payments/links/refunds | Create refund link
 *PaymentApi* | [**createSettlementRequest**](docs/PaymentApi.md#createSettlementRequest) | **POST** /payments/settlement_requests | Create settlement request
+*PaymentApi* | [**deleteCounterparty**](docs/PaymentApi.md#deleteCounterparty) | **PUT** /payments/counterparty/{counterparty_id}/delete | Delete counterparty
+*PaymentApi* | [**deleteCounterpartyWalletAddress**](docs/PaymentApi.md#deleteCounterpartyWalletAddress) | **PUT** /payments/counterparty/wallet_address/{wallet_address_id}/delete | Delete counterparty wallet address
 *PaymentApi* | [**deleteCryptoAddress**](docs/PaymentApi.md#deleteCryptoAddress) | **POST** /payments/crypto_addresses/{crypto_address_id}/delete | Delete crypto address
+*PaymentApi* | [**deleteDestination**](docs/PaymentApi.md#deleteDestination) | **PUT** /payments/destination/{destination_id}/delete | Delete destination
+*PaymentApi* | [**deleteDestinationBankAccount**](docs/PaymentApi.md#deleteDestinationBankAccount) | **PUT** /payments/destination/bank_account/{bank_account_id}/delete | Delete destination bank account
+*PaymentApi* | [**deleteDestinationWalletAddress**](docs/PaymentApi.md#deleteDestinationWalletAddress) | **PUT** /payments/destination/wallet_address/{wallet_address_id}/delete | Delete destination wallet address
+*PaymentApi* | [**enableDestinationWhitelist**](docs/PaymentApi.md#enableDestinationWhitelist) | **POST** /payments/destination/enable_whitelist | Enable or disable destination whitelist
+*PaymentApi* | [**getCounterpartyDetailById**](docs/PaymentApi.md#getCounterpartyDetailById) | **GET** /payments/counterparty/{counterparty_id}/detail | Get counterparty information
+*PaymentApi* | [**getDestinationBankAccountDetailById**](docs/PaymentApi.md#getDestinationBankAccountDetailById) | **GET** /payments/destination/bank_account/{bank_account_id}/detail | Get destination bank account information
+*PaymentApi* | [**getDestinationDetailById**](docs/PaymentApi.md#getDestinationDetailById) | **GET** /payments/destination/{destination_id}/detail | Get destination information
 *PaymentApi* | [**getExchangeRate**](docs/PaymentApi.md#getExchangeRate) | **GET** /payments/exchange_rates/{token_id}/{currency} | Get exchange rate
-*PaymentApi* | [**getPayerBalanceByAddress**](docs/PaymentApi.md#getPayerBalanceByAddress) | **GET** /payments/balance/payer/address | Get payer balance
 *PaymentApi* | [**getPaymentOrderDetailById**](docs/PaymentApi.md#getPaymentOrderDetailById) | **GET** /payments/orders/{order_id} | Get pay-in order information
 *PaymentApi* | [**getPspBalance**](docs/PaymentApi.md#getPspBalance) | **GET** /payments/balance/psp | Get developer balance
 *PaymentApi* | [**getRefundDetailById**](docs/PaymentApi.md#getRefundDetailById) | **GET** /payments/refunds/{refund_id} | Get refund order information
 *PaymentApi* | [**getRefunds**](docs/PaymentApi.md#getRefunds) | **GET** /payments/refunds | List all refund orders
 *PaymentApi* | [**getSettlementById**](docs/PaymentApi.md#getSettlementById) | **GET** /payments/settlement_requests/{settlement_request_id} | Get settlement request information
 *PaymentApi* | [**getSettlementInfoByIds**](docs/PaymentApi.md#getSettlementInfoByIds) | **GET** /payments/settlement_info | Get withdrawable balances
-*PaymentApi* | [**getTopUpAddress**](docs/PaymentApi.md#getTopUpAddress) | **GET** /payments/topup/address | Get top-up address
+*PaymentApi* | [**getTopUpAddress**](docs/PaymentApi.md#getTopUpAddress) | **GET** /payments/topup/address | Create/Get top-up address
 *PaymentApi* | [**listBankAccounts**](docs/PaymentApi.md#listBankAccounts) | **GET** /payments/bank_accounts | List all bank accounts
+*PaymentApi* | [**listCounterparties**](docs/PaymentApi.md#listCounterparties) | **GET** /payments/counterparty | List all counterparties
+*PaymentApi* | [**listCounterpartyWalletAddress**](docs/PaymentApi.md#listCounterpartyWalletAddress) | **GET** /payments/counterparty/wallet_address | List counterparty wallet addresses
 *PaymentApi* | [**listCryptoAddresses**](docs/PaymentApi.md#listCryptoAddresses) | **GET** /payments/crypto_addresses | List crypto addresses
+*PaymentApi* | [**listDestinationBankAccounts**](docs/PaymentApi.md#listDestinationBankAccounts) | **GET** /payments/destination/bank_account | List destination bank accounts
+*PaymentApi* | [**listDestinationWalletAddresses**](docs/PaymentApi.md#listDestinationWalletAddresses) | **GET** /payments/destination/wallet_address | List destination wallet addresses
+*PaymentApi* | [**listDestinations**](docs/PaymentApi.md#listDestinations) | **GET** /payments/destination | List all destinations
 *PaymentApi* | [**listForcedSweepRequests**](docs/PaymentApi.md#listForcedSweepRequests) | **GET** /payments/force_sweep_requests | List forced sweeps
 *PaymentApi* | [**listMerchantBalances**](docs/PaymentApi.md#listMerchantBalances) | **GET** /payments/balance/merchants | List merchant balances
 *PaymentApi* | [**listMerchants**](docs/PaymentApi.md#listMerchants) | **GET** /payments/merchants | List all merchants
@@ -278,7 +297,11 @@ Class | Method | HTTP request | Description
 *PaymentApi* | [**listTopUpPayerAccounts**](docs/PaymentApi.md#listTopUpPayerAccounts) | **GET** /payments/topup/payer_accounts | List top-up payer accounts
 *PaymentApi* | [**listTopUpPayers**](docs/PaymentApi.md#listTopUpPayers) | **GET** /payments/topup/payers | List payers
 *PaymentApi* | [**paymentEstimateFee**](docs/PaymentApi.md#paymentEstimateFee) | **POST** /payments/estimate_fee | Estimate fees
+*PaymentApi* | [**queryDestinationWhitelistEnabled**](docs/PaymentApi.md#queryDestinationWhitelistEnabled) | **GET** /payments/destination/enable_whitelist | Query destination whitelist enabled status
 *PaymentApi* | [**updateBankAccountById**](docs/PaymentApi.md#updateBankAccountById) | **PUT** /payments/bank_accounts/{bank_account_id} | Update bank account
+*PaymentApi* | [**updateCounterpartyById**](docs/PaymentApi.md#updateCounterpartyById) | **PUT** /payments/counterparty/{counterparty_id}/update | Update counterparty
+*PaymentApi* | [**updateDestinationBankAccountById**](docs/PaymentApi.md#updateDestinationBankAccountById) | **PUT** /payments/destination/bank_account/{bank_account_id}/update | Update destination bank account
+*PaymentApi* | [**updateDestinationById**](docs/PaymentApi.md#updateDestinationById) | **PUT** /payments/destination/{destination_id}/update | Update destination
 *PaymentApi* | [**updateMerchantById**](docs/PaymentApi.md#updateMerchantById) | **PUT** /payments/merchants/{merchant_id} | Update merchant
 *PaymentApi* | [**updatePaymentOrder**](docs/PaymentApi.md#updatePaymentOrder) | **PUT** /payments/orders/{order_id} | Update pay-in order
 *PaymentApi* | [**updateRefundById**](docs/PaymentApi.md#updateRefundById) | **PUT** /payments/refunds/{refund_id} | Update refund order
@@ -473,6 +496,7 @@ Class | Method | HTTP request | Description
  - [BalanceUpdateInfo](docs/BalanceUpdateInfo.md)
  - [BalanceUpdateInfoEventData](docs/BalanceUpdateInfoEventData.md)
  - [BankAccount](docs/BankAccount.md)
+ - [BankAccountStatus](docs/BankAccountStatus.md)
  - [BaseContractCallSource](docs/BaseContractCallSource.md)
  - [BaseEstimateStakingFee](docs/BaseEstimateStakingFee.md)
  - [BaseStakeExtra](docs/BaseStakeExtra.md)
@@ -507,6 +531,10 @@ Class | Method | HTTP request | Description
  - [CosmosAdr36MessageSignDestination](docs/CosmosAdr36MessageSignDestination.md)
  - [CosmosContractCallDestination](docs/CosmosContractCallDestination.md)
  - [CosmosContractCallMessage](docs/CosmosContractCallMessage.md)
+ - [Counterparty](docs/Counterparty.md)
+ - [CounterpartyDetail](docs/CounterpartyDetail.md)
+ - [CounterpartyType](docs/CounterpartyType.md)
+ - [CounterpartyWalletAddressDetail](docs/CounterpartyWalletAddressDetail.md)
  - [CreateAddressBookParam](docs/CreateAddressBookParam.md)
  - [CreateAddressBooks201Response](docs/CreateAddressBooks201Response.md)
  - [CreateAddressBooksParam](docs/CreateAddressBooksParam.md)
@@ -519,8 +547,14 @@ Class | Method | HTTP request | Description
  - [CreateBabylonStakingRegistrationRequest](docs/CreateBabylonStakingRegistrationRequest.md)
  - [CreateClaimActivity](docs/CreateClaimActivity.md)
  - [CreateClaimActivityRequest](docs/CreateClaimActivityRequest.md)
+ - [CreateCounterpartyRequest](docs/CreateCounterpartyRequest.md)
+ - [CreateCounterpartyWalletAddressRequest](docs/CreateCounterpartyWalletAddressRequest.md)
  - [CreateCryptoAddressRequest](docs/CreateCryptoAddressRequest.md)
  - [CreateCustodialWalletParams](docs/CreateCustodialWalletParams.md)
+ - [CreateDestinationBankAccount](docs/CreateDestinationBankAccount.md)
+ - [CreateDestinationBankAccountRequest](docs/CreateDestinationBankAccountRequest.md)
+ - [CreateDestinationRequest](docs/CreateDestinationRequest.md)
+ - [CreateDestinationWalletAddressRequest](docs/CreateDestinationWalletAddressRequest.md)
  - [CreateExchangeWalletParams](docs/CreateExchangeWalletParams.md)
  - [CreateKeyShareHolder](docs/CreateKeyShareHolder.md)
  - [CreateKeyShareHolderGroupRequest](docs/CreateKeyShareHolderGroupRequest.md)
@@ -551,6 +585,7 @@ Class | Method | HTTP request | Description
  - [CreateUnstakeActivity](docs/CreateUnstakeActivity.md)
  - [CreateUnstakeActivityExtra](docs/CreateUnstakeActivityExtra.md)
  - [CreateUnstakeActivityRequest](docs/CreateUnstakeActivityRequest.md)
+ - [CreateWalletAddress](docs/CreateWalletAddress.md)
  - [CreateWalletParams](docs/CreateWalletParams.md)
  - [CreateWebhookEndpointRequest](docs/CreateWebhookEndpointRequest.md)
  - [CreateWithdrawActivity](docs/CreateWithdrawActivity.md)
@@ -565,10 +600,21 @@ Class | Method | HTTP request | Description
  - [CustodialWeb3MessageSignSource](docs/CustodialWeb3MessageSignSource.md)
  - [CustodialWeb3TransferSource](docs/CustodialWeb3TransferSource.md)
  - [DeleteAddressBookById201Response](docs/DeleteAddressBookById201Response.md)
+ - [DeleteCounterparty200Response](docs/DeleteCounterparty200Response.md)
+ - [DeleteCounterpartyWalletAddress200Response](docs/DeleteCounterpartyWalletAddress200Response.md)
  - [DeleteCryptoAddress201Response](docs/DeleteCryptoAddress201Response.md)
+ - [DeleteDestination200Response](docs/DeleteDestination200Response.md)
+ - [DeleteDestinationBankAccount200Response](docs/DeleteDestinationBankAccount200Response.md)
+ - [DeleteDestinationWalletAddress200Response](docs/DeleteDestinationWalletAddress200Response.md)
  - [DeleteGuardPubkey201Response](docs/DeleteGuardPubkey201Response.md)
  - [DeleteKeyShareHolderGroupById201Response](docs/DeleteKeyShareHolderGroupById201Response.md)
  - [DeleteWalletById201Response](docs/DeleteWalletById201Response.md)
+ - [Destination](docs/Destination.md)
+ - [DestinationBankAccount](docs/DestinationBankAccount.md)
+ - [DestinationBankAccountDetail](docs/DestinationBankAccountDetail.md)
+ - [DestinationDetail](docs/DestinationDetail.md)
+ - [DestinationType](docs/DestinationType.md)
+ - [DestinationWalletAddressDetail](docs/DestinationWalletAddressDetail.md)
  - [DestinationWalletType](docs/DestinationWalletType.md)
  - [DispositionEventData](docs/DispositionEventData.md)
  - [DispositionQueryResponse](docs/DispositionQueryResponse.md)
@@ -578,6 +624,7 @@ Class | Method | HTTP request | Description
  - [EigenLayerLstStakeExtra](docs/EigenLayerLstStakeExtra.md)
  - [EigenLayerNativeStakeExtra](docs/EigenLayerNativeStakeExtra.md)
  - [EigenlayerValidator](docs/EigenlayerValidator.md)
+ - [EnableDestinationWhitelistRequest](docs/EnableDestinationWhitelistRequest.md)
  - [ErrorResponse](docs/ErrorResponse.md)
  - [EstimateClaimFee](docs/EstimateClaimFee.md)
  - [EstimateContractCallFeeParams](docs/EstimateContractCallFeeParams.md)
@@ -615,6 +662,7 @@ Class | Method | HTTP request | Description
  - [ExchangeId](docs/ExchangeId.md)
  - [ExchangePermissionToken201Response](docs/ExchangePermissionToken201Response.md)
  - [ExchangePermissionTokenRequest](docs/ExchangePermissionTokenRequest.md)
+ - [ExchangeRate](docs/ExchangeRate.md)
  - [ExchangeTransferDestination](docs/ExchangeTransferDestination.md)
  - [ExchangeTransferSource](docs/ExchangeTransferSource.md)
  - [ExchangeWalletInfo](docs/ExchangeWalletInfo.md)
@@ -654,6 +702,7 @@ Class | Method | HTTP request | Description
  - [GraphQLRequest](docs/GraphQLRequest.md)
  - [GraphQLResponse](docs/GraphQLResponse.md)
  - [GuardPubkeyStatus](docs/GuardPubkeyStatus.md)
+ - [IntermediaryBankInfo](docs/IntermediaryBankInfo.md)
  - [IsolateDisposition](docs/IsolateDisposition.md)
  - [KeyShareHolder](docs/KeyShareHolder.md)
  - [KeyShareHolderGroup](docs/KeyShareHolderGroup.md)
@@ -680,6 +729,11 @@ Class | Method | HTTP request | Description
  - [ListBabylonEligibleStakings200ResponseDataInner](docs/ListBabylonEligibleStakings200ResponseDataInner.md)
  - [ListBabylonStakingRegistrations200Response](docs/ListBabylonStakingRegistrations200Response.md)
  - [ListCallbackMessages200Response](docs/ListCallbackMessages200Response.md)
+ - [ListCounterparties200Response](docs/ListCounterparties200Response.md)
+ - [ListCounterpartyWalletAddress200Response](docs/ListCounterpartyWalletAddress200Response.md)
+ - [ListDestinationBankAccounts200Response](docs/ListDestinationBankAccounts200Response.md)
+ - [ListDestinationWalletAddresses200Response](docs/ListDestinationWalletAddresses200Response.md)
+ - [ListDestinations200Response](docs/ListDestinations200Response.md)
  - [ListExchanges200ResponseInner](docs/ListExchanges200ResponseInner.md)
  - [ListForcedSweepRequests200Response](docs/ListForcedSweepRequests200Response.md)
  - [ListKeyShareHolderGroups200Response](docs/ListKeyShareHolderGroups200Response.md)
@@ -774,9 +828,9 @@ Class | Method | HTTP request | Description
  - [PoolSummary](docs/PoolSummary.md)
  - [PspBalance](docs/PspBalance.md)
  - [QueryApprovalStatement200Response](docs/QueryApprovalStatement200Response.md)
+ - [QueryDestinationWhitelistEnabled200Response](docs/QueryDestinationWhitelistEnabled200Response.md)
  - [QueryGuardPubkey200Response](docs/QueryGuardPubkey200Response.md)
  - [QueryGuardPubkey200ResponseAddressesInner](docs/QueryGuardPubkey200ResponseAddressesInner.md)
- - [ReceivedAmountPerAddress](docs/ReceivedAmountPerAddress.md)
  - [RefreshAddressBalancesByToken200Response](docs/RefreshAddressBalancesByToken200Response.md)
  - [RefreshAddressBalancesByTokenRequest](docs/RefreshAddressBalancesByTokenRequest.md)
  - [RefreshPermissionTokenRequest](docs/RefreshPermissionTokenRequest.md)
@@ -1073,6 +1127,7 @@ Class | Method | HTTP request | Description
  - [TransactionTransferToAddressDestinationAccountOutput](docs/TransactionTransferToAddressDestinationAccountOutput.md)
  - [TransactionTransferToAddressDestinationUtxoOutputsInner](docs/TransactionTransferToAddressDestinationUtxoOutputsInner.md)
  - [TransactionTransferToWalletDestination](docs/TransactionTransferToWalletDestination.md)
+ - [TransactionTronContractDestination](docs/TransactionTronContractDestination.md)
  - [TransactionType](docs/TransactionType.md)
  - [TransactionUserApprovalDetail](docs/TransactionUserApprovalDetail.md)
  - [TransactionUtxo](docs/TransactionUtxo.md)
@@ -1097,11 +1152,15 @@ Class | Method | HTTP request | Description
  - [TravelRuleWithdrawRequestTravelRuleInfo](docs/TravelRuleWithdrawRequestTravelRuleInfo.md)
  - [TriggerTestWebhookEvent201Response](docs/TriggerTestWebhookEvent201Response.md)
  - [TriggerTestWebhookEventRequest](docs/TriggerTestWebhookEventRequest.md)
+ - [TronContractCallDestination](docs/TronContractCallDestination.md)
  - [UTXO](docs/UTXO.md)
  - [UnfreezeDisposition](docs/UnfreezeDisposition.md)
  - [UpdateAddressBookParam](docs/UpdateAddressBookParam.md)
  - [UpdateBankAccountByIdRequest](docs/UpdateBankAccountByIdRequest.md)
+ - [UpdateCounterpartyByIdRequest](docs/UpdateCounterpartyByIdRequest.md)
  - [UpdateCustodialWalletParams](docs/UpdateCustodialWalletParams.md)
+ - [UpdateDestinationBankAccount](docs/UpdateDestinationBankAccount.md)
+ - [UpdateDestinationByIdRequest](docs/UpdateDestinationByIdRequest.md)
  - [UpdateExchangeWalletParams](docs/UpdateExchangeWalletParams.md)
  - [UpdateGroupAction](docs/UpdateGroupAction.md)
  - [UpdateKeyShareHolderGroupByIdRequest](docs/UpdateKeyShareHolderGroupByIdRequest.md)
@@ -1118,6 +1177,7 @@ Class | Method | HTTP request | Description
  - [UtxoFeeBasePrice](docs/UtxoFeeBasePrice.md)
  - [UtxoFeeRate](docs/UtxoFeeRate.md)
  - [Vasp](docs/Vasp.md)
+ - [WalletAddress](docs/WalletAddress.md)
  - [WalletInfo](docs/WalletInfo.md)
  - [WalletInfoEventData](docs/WalletInfoEventData.md)
  - [WalletSetup](docs/WalletSetup.md)
