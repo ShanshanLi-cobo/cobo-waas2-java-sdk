@@ -226,7 +226,7 @@ public class AutoSweepApi {
 
     /**
      * Create sweep-to address
-     * This operation creates a new sweep-to address for the specified wallet. The previously sweep-to address for the same token becomes invalid once the new one is created.  Use this operation to change the sweep-to address when your setup changes, you switch networks, or the current address is compromised or tainted by suspicious funds. You can withdraw any remaining balances from the old sweep-to addresses to the new address or another designated destination.  &lt;Note&gt;Sweep-to addresses are only applicable to MPC Wallets and Web3 Wallets with the auto-sweep feature enabled.&lt;/Note&gt; 
+     * This operation creates a new sweep-to address for the specified wallet. The previously sweep-to address for the same token becomes invalid once the new one is created.  Use this operation to change the sweep-to address when your setup changes, you switch networks, or the current address is compromised or tainted by suspicious funds. You can withdraw any remaining balances from the old sweep-to addresses to the new address or another designated destination.  &lt;Note&gt;Sweep-to addresses are only applicable to MPC Wallets and Custodial Wallets (Web3 Wallets) with the auto-sweep feature enabled.&lt;/Note&gt; 
      * @param createSweepToAddress The request body to generates a new sweep-to address within a specified wallet. (optional)
      * @return SweepToAddress
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -245,7 +245,7 @@ public class AutoSweepApi {
 
     /**
      * Create sweep-to address
-     * This operation creates a new sweep-to address for the specified wallet. The previously sweep-to address for the same token becomes invalid once the new one is created.  Use this operation to change the sweep-to address when your setup changes, you switch networks, or the current address is compromised or tainted by suspicious funds. You can withdraw any remaining balances from the old sweep-to addresses to the new address or another designated destination.  &lt;Note&gt;Sweep-to addresses are only applicable to MPC Wallets and Web3 Wallets with the auto-sweep feature enabled.&lt;/Note&gt; 
+     * This operation creates a new sweep-to address for the specified wallet. The previously sweep-to address for the same token becomes invalid once the new one is created.  Use this operation to change the sweep-to address when your setup changes, you switch networks, or the current address is compromised or tainted by suspicious funds. You can withdraw any remaining balances from the old sweep-to addresses to the new address or another designated destination.  &lt;Note&gt;Sweep-to addresses are only applicable to MPC Wallets and Custodial Wallets (Web3 Wallets) with the auto-sweep feature enabled.&lt;/Note&gt; 
      * @param createSweepToAddress The request body to generates a new sweep-to address within a specified wallet. (optional)
      * @return ApiResponse&lt;SweepToAddress&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -265,7 +265,7 @@ public class AutoSweepApi {
 
     /**
      * Create sweep-to address (asynchronously)
-     * This operation creates a new sweep-to address for the specified wallet. The previously sweep-to address for the same token becomes invalid once the new one is created.  Use this operation to change the sweep-to address when your setup changes, you switch networks, or the current address is compromised or tainted by suspicious funds. You can withdraw any remaining balances from the old sweep-to addresses to the new address or another designated destination.  &lt;Note&gt;Sweep-to addresses are only applicable to MPC Wallets and Web3 Wallets with the auto-sweep feature enabled.&lt;/Note&gt; 
+     * This operation creates a new sweep-to address for the specified wallet. The previously sweep-to address for the same token becomes invalid once the new one is created.  Use this operation to change the sweep-to address when your setup changes, you switch networks, or the current address is compromised or tainted by suspicious funds. You can withdraw any remaining balances from the old sweep-to addresses to the new address or another designated destination.  &lt;Note&gt;Sweep-to addresses are only applicable to MPC Wallets and Custodial Wallets (Web3 Wallets) with the auto-sweep feature enabled.&lt;/Note&gt; 
      * @param createSweepToAddress The request body to generates a new sweep-to address within a specified wallet. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -650,7 +650,7 @@ public class AutoSweepApi {
 
     /**
      * List sweep-to addresses
-     * This operation retrieves a list of sweep-to addresses within your wallet. &lt;Note&gt;Sweep-to addresses are only applicable to MPC Wallets and Web3 Wallets with the auto-sweep feature enabled.&lt;/Note&gt; 
+     * This operation retrieves a list of sweep-to addresses within your wallet. &lt;Note&gt;Sweep-to addresses are only applicable to MPC Wallets and Custodial Wallets (Web3 Wallets) with the auto-sweep feature enabled.&lt;/Note&gt; 
      * @param walletId The wallet ID. (required)
      * @return ListWalletSweepToAddresses200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -669,7 +669,7 @@ public class AutoSweepApi {
 
     /**
      * List sweep-to addresses
-     * This operation retrieves a list of sweep-to addresses within your wallet. &lt;Note&gt;Sweep-to addresses are only applicable to MPC Wallets and Web3 Wallets with the auto-sweep feature enabled.&lt;/Note&gt; 
+     * This operation retrieves a list of sweep-to addresses within your wallet. &lt;Note&gt;Sweep-to addresses are only applicable to MPC Wallets and Custodial Wallets (Web3 Wallets) with the auto-sweep feature enabled.&lt;/Note&gt; 
      * @param walletId The wallet ID. (required)
      * @return ApiResponse&lt;ListWalletSweepToAddresses200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -689,7 +689,7 @@ public class AutoSweepApi {
 
     /**
      * List sweep-to addresses (asynchronously)
-     * This operation retrieves a list of sweep-to addresses within your wallet. &lt;Note&gt;Sweep-to addresses are only applicable to MPC Wallets and Web3 Wallets with the auto-sweep feature enabled.&lt;/Note&gt; 
+     * This operation retrieves a list of sweep-to addresses within your wallet. &lt;Note&gt;Sweep-to addresses are only applicable to MPC Wallets and Custodial Wallets (Web3 Wallets) with the auto-sweep feature enabled.&lt;/Note&gt; 
      * @param walletId The wallet ID. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

@@ -111,7 +111,7 @@ public class SwapActivityTimeline {
   }
 
    /**
-   * The time when the action occurred, in Unix timestamp format, measured in milliseconds. 
+   * The time when the action occurred, in Unix timestamp format, measured in milliseconds.  
    * @return timestamp
   **/
   @javax.annotation.Nullable

@@ -12,6 +12,8 @@
 package com.cobo.waas2.model;
 
 import com.cobo.waas2.model.ContractCallDestinationType;
+import com.cobo.waas2.model.CosmosContractCallDestination;
+import com.cobo.waas2.model.CosmosContractCallMessage;
 import com.cobo.waas2.model.EvmContractCallDestination;
 import com.cobo.waas2.model.SolContractCallAddressLookupTableAccount;
 import com.cobo.waas2.model.SolContractCallDestination;
@@ -99,6 +101,14 @@ public class ContractCallDestinationTest {
     @Test
     public void contractParamTest() {
         // TODO: test contractParam
+    }
+
+    /**
+     * Test the property 'cosmosMessages'
+     */
+    @Test
+    public void cosmosMessagesTest() {
+        // TODO: test cosmosMessages
     }
 
 }

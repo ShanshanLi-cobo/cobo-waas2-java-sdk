@@ -17,9 +17,12 @@ import com.cobo.waas2.Configuration;
 import com.cobo.waas2.model.AcquiringType;
 import com.cobo.waas2.model.BankAccount;
 import com.cobo.waas2.model.BankAccountStatus;
+import com.cobo.waas2.model.BatchAllocation;
+import com.cobo.waas2.model.BatchAllocationDetail;
 import com.cobo.waas2.model.Counterparty;
 import com.cobo.waas2.model.CounterpartyDetail;
 import com.cobo.waas2.model.CounterpartyType;
+import com.cobo.waas2.model.CreateBatchAllocationRequest;
 import com.cobo.waas2.model.CreateCounterpartyRequest;
 import com.cobo.waas2.model.CreateCounterpartyWalletAddressRequest;
 import com.cobo.waas2.model.CreateCryptoAddressRequest;
@@ -29,6 +32,7 @@ import com.cobo.waas2.model.CreateDestinationWalletAddressRequest;
 import com.cobo.waas2.model.CreateMerchantRequest;
 import com.cobo.waas2.model.CreateOrderLinkRequest;
 import com.cobo.waas2.model.CreatePaymentOrderRequest;
+import com.cobo.waas2.model.CreatePayoutRequest;
 import com.cobo.waas2.model.CreateRefundLinkRequest;
 import com.cobo.waas2.model.CreateRefundRequest;
 import com.cobo.waas2.model.CreateSettlementRequestRequest;
@@ -53,6 +57,8 @@ import com.cobo.waas2.model.GetExchangeRate200Response;
 import com.cobo.waas2.model.GetRefunds200Response;
 import com.cobo.waas2.model.GetSettlementInfoByIds200Response;
 import com.cobo.waas2.model.Link;
+import com.cobo.waas2.model.ListAllocations200Response;
+import com.cobo.waas2.model.ListBatchAllocations200Response;
 import com.cobo.waas2.model.ListCounterparties200Response;
 import com.cobo.waas2.model.ListCounterpartyWalletAddress200Response;
 import com.cobo.waas2.model.ListDestinationBankAccounts200Response;
@@ -63,14 +69,19 @@ import com.cobo.waas2.model.ListMerchantBalances200Response;
 import com.cobo.waas2.model.ListMerchants200Response;
 import com.cobo.waas2.model.ListPaymentOrders200Response;
 import com.cobo.waas2.model.ListPaymentWalletBalances200Response;
+import com.cobo.waas2.model.ListPayoutItems200Response;
+import com.cobo.waas2.model.ListPayouts200Response;
 import com.cobo.waas2.model.ListSettlementDetails200Response;
 import com.cobo.waas2.model.ListSettlementRequests200Response;
 import com.cobo.waas2.model.ListTopUpPayerAccounts200Response;
 import com.cobo.waas2.model.ListTopUpPayers200Response;
 import com.cobo.waas2.model.Merchant;
 import com.cobo.waas2.model.Order;
+import com.cobo.waas2.model.PaymentAllocationAmount;
 import com.cobo.waas2.model.PaymentEstimateFee201Response;
 import com.cobo.waas2.model.PaymentEstimateFeeRequest;
+import com.cobo.waas2.model.PaymentPayout;
+import com.cobo.waas2.model.PaymentPayoutDetail;
 import com.cobo.waas2.model.PspBalance;
 import com.cobo.waas2.model.QueryDestinationWhitelistEnabled200Response;
 import com.cobo.waas2.model.Refund;
@@ -112,7 +123,7 @@ public class PaymentApiTest {
     /**
      * Batch get exchange rates
      *
-     * This operation retrieves the current exchange rates between a specified currency and a list of token IDs. 
+     * This operation retrieves the current exchange rates between multiple fiat currencies and cryptocurrencies. 
      *
      * @throws ApiException if the Api call fails
      */
@@ -135,6 +146,20 @@ public class PaymentApiTest {
     public void cancelRefundByIdTest() throws ApiException {
         String refundId = null;
         Refund response = api.cancelRefundById(refundId);
+        // TODO: test validations
+    }
+
+    /**
+     * Create batch allocation
+     *
+     * This operation creates a batch allocation to withdraw available balances.   You can include multiple merchants and cryptocurrencies in a single batch allocation. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void createBatchAllocationTest() throws ApiException {
+        CreateBatchAllocationRequest createBatchAllocationRequest = null;
+        BatchAllocation response = api.createBatchAllocation(createBatchAllocationRequest);
         // TODO: test validations
     }
 
@@ -239,7 +264,7 @@ public class PaymentApiTest {
     /**
      * Create merchant
      *
-     * This operation creates a merchant. Upon successful creation, a merchant ID is generated and returned along with the merchant&#39;s information. For more information on merchant creation, please refer to [Preparation](https://www.cobo.com/developers/v2/payments/preparation#create-merchant). 
+     * This operation creates a merchant. Upon successful creation, a merchant ID is generated and returned along with the merchant&#39;s information. For more information on merchant creation, please refer to [Preparation](https://www.cobo.com/payments/en/guides/preparation#create-merchant). 
      *
      * @throws ApiException if the Api call fails
      */
@@ -253,7 +278,7 @@ public class PaymentApiTest {
     /**
      * Create order link
      *
-     * This operation generates a payment link for a pay-in order. The link directs users to a hosted payment page where they can complete their payment for the order. You can share the link directly with users or embed the payment page in your website or application using an iframe.  For more details, see [Payment Link](https://www.cobo.com/developers/v2/payments/payment-link). 
+     * This operation generates a payment link for a pay-in order. The link directs users to a hosted payment page where they can complete their payment for the order. You can share the link directly with users or embed the payment page in your website or application using an iframe.  For more details, see [Payment Link](https://www.cobo.com/payments/en/guides/payment-link). 
      *
      * @throws ApiException if the Api call fails
      */
@@ -279,6 +304,20 @@ public class PaymentApiTest {
     }
 
     /**
+     * Create payout
+     *
+     * This operation creates a payout to withdraw available balances.   You can include multiple merchants and cryptocurrencies in a single payout record. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void createPayoutTest() throws ApiException {
+        CreatePayoutRequest createPayoutRequest = null;
+        PaymentPayout response = api.createPayout(createPayoutRequest);
+        // TODO: test validations
+    }
+
+    /**
      * Create refund order
      *
      * This operation creates a refund order to return cryptocurrency to a specified address.   When creating a refund order, you can optionally link it to an existing pay-in order for tracking and reconciliation purposes. 
@@ -295,7 +334,7 @@ public class PaymentApiTest {
     /**
      * Create refund link
      *
-     * This operation creates a link that points to a Cobo-hosted refund page. The user can submit their desired refund address on the page.  Once the address is submitted, Cobo will automatically create a refund order and initiate the refund process according to your configuration.  For details, see [Create refund link](https://www.cobo.com/developers/v2/payments/create-refund-link). 
+     * This operation creates a link that points to a Cobo-hosted refund page. The user can submit their desired refund address on the page.  Once the address is submitted, Cobo will automatically create a refund order and initiate the refund process according to your configuration.  For details, see [Create refund link](https://www.cobo.com/payments/en/guides/create-refund-link). 
      *
      * @throws ApiException if the Api call fails
      */
@@ -419,6 +458,36 @@ public class PaymentApiTest {
     }
 
     /**
+     * Get available allocation amount
+     *
+     * This operation retrieves the information of available allocation amount. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getAvailableAllocationAmountTest() throws ApiException {
+        String tokenId = null;
+        String sourceAccount = null;
+        String destinationAccount = null;
+        PaymentAllocationAmount response = api.getAvailableAllocationAmount(tokenId, sourceAccount, destinationAccount);
+        // TODO: test validations
+    }
+
+    /**
+     * Get batch allocation by id
+     *
+     * This operation retrieves the information of a batch allocation. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getBatchAllocationByIdTest() throws ApiException {
+        String batchAllocationId = null;
+        BatchAllocationDetail response = api.getBatchAllocationById(batchAllocationId);
+        // TODO: test validations
+    }
+
+    /**
      * Get counterparty information
      *
      * This operation retrieves the detailed information about a specified counterparty. 
@@ -490,9 +559,23 @@ public class PaymentApiTest {
     }
 
     /**
+     * Get payout information
+     *
+     * This operation retrieves the information of a specific payout. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getPayoutByIdTest() throws ApiException {
+        String payoutId = null;
+        PaymentPayoutDetail response = api.getPayoutById(payoutId);
+        // TODO: test validations
+    }
+
+    /**
      * Get developer balance
      *
-     * This operation retrieves the balance information for you as the developer. The balance information is grouped by token.  For more information, please refer to [Funds allocation and balances](https://www.cobo.com/developers/v2/payments/amounts-and-balances). 
+     * This operation retrieves the balance information for you as the developer. The balance information is grouped by token.  For more information, please refer to [Funds allocation and balances](https://www.cobo.com/payments/en/guides/amounts-and-balances). 
      *
      * @throws ApiException if the Api call fails
      */
@@ -583,6 +666,26 @@ public class PaymentApiTest {
     }
 
     /**
+     * List all allocations
+     *
+     * This operation retrieves the information of all allocations. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void listAllocationsTest() throws ApiException {
+        Integer limit = null;
+        String before = null;
+        String after = null;
+        String sourceAccount = null;
+        String destinationAccount = null;
+        String tokenId = null;
+        String batchAllocationId = null;
+        ListAllocations200Response response = api.listAllocations(limit, before, after, sourceAccount, destinationAccount, tokenId, batchAllocationId);
+        // TODO: test validations
+    }
+
+    /**
      * List all bank accounts
      *
      * This operation retrieves the information of all bank accounts you have registered for payment settlement. Contact our support team at [help@cobo.com](mailto:help@cobo.com) to register a new bank account. 
@@ -592,6 +695,23 @@ public class PaymentApiTest {
     @Test
     public void listBankAccountsTest() throws ApiException {
         List<BankAccount> response = api.listBankAccounts();
+        // TODO: test validations
+    }
+
+    /**
+     * List all batch allocations
+     *
+     * This operation retrieves the information of all batch allocations. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void listBatchAllocationsTest() throws ApiException {
+        Integer limit = null;
+        String before = null;
+        String after = null;
+        String requestId = null;
+        ListBatchAllocations200Response response = api.listBatchAllocations(limit, before, after, requestId);
         // TODO: test validations
     }
 
@@ -725,16 +845,16 @@ public class PaymentApiTest {
     /**
      * List merchant balances
      *
-     *  This operation retrieves the balance information for specified merchants. The balance information is grouped by token and acquiring type. If you do not specify the &#x60;merchant_ids&#x60; parameter, the balance information for all merchants will be returned.  For more information, please refer to [Funds allocation and balances](https://www.cobo.com/developers/v2/payments/amounts-and-balances). 
+     *  This operation retrieves the balance information for specified merchants.   The balance information is grouped by token and acquiring type. If you do not specify the &#x60;merchant_ids&#x60; parameter, the balance information for all merchants will be returned.  For more information, please refer to [Funds allocation and balances](https://www.cobo.com/payments/en/guides/amounts-and-balances). 
      *
      * @throws ApiException if the Api call fails
      */
     @Test
     public void listMerchantBalancesTest() throws ApiException {
         String tokenId = null;
-        AcquiringType acquiringType = null;
         String merchantIds = null;
-        ListMerchantBalances200Response response = api.listMerchantBalances(tokenId, acquiringType, merchantIds);
+        AcquiringType acquiringType = null;
+        ListMerchantBalances200Response response = api.listMerchantBalances(tokenId, merchantIds, acquiringType);
         // TODO: test validations
     }
 
@@ -801,6 +921,41 @@ public class PaymentApiTest {
         String tokenId = null;
         String walletIds = null;
         ListPaymentWalletBalances200Response response = api.listPaymentWalletBalances(tokenId, walletIds);
+        // TODO: test validations
+    }
+
+    /**
+     * List all payout items
+     *
+     * This operation retrieves the information of all payout items. You can filter the result by merchant ID or status. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void listPayoutItemsTest() throws ApiException {
+        Integer limit = null;
+        String before = null;
+        String after = null;
+        String sourceAccount = null;
+        String statuses = null;
+        ListPayoutItems200Response response = api.listPayoutItems(limit, before, after, sourceAccount, statuses);
+        // TODO: test validations
+    }
+
+    /**
+     * List all payouts
+     *
+     * This operation retrieves the information of all payouts. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void listPayoutsTest() throws ApiException {
+        Integer limit = null;
+        String before = null;
+        String after = null;
+        String requestId = null;
+        ListPayouts200Response response = api.listPayouts(limit, before, after, requestId);
         // TODO: test validations
     }
 

@@ -6,6 +6,7 @@ All URIs are relative to *https://api.dev.cobo.com/v2*
 |------------- | ------------- | -------------|
 | [**batchGetExchangeRates**](PaymentApi.md#batchGetExchangeRates) | **GET** /payments/exchange_rates | Batch get exchange rates |
 | [**cancelRefundById**](PaymentApi.md#cancelRefundById) | **PUT** /payments/refunds/{refund_id}/cancel | Cancel refund order |
+| [**createBatchAllocation**](PaymentApi.md#createBatchAllocation) | **POST** /payments/batch_allocations | Create batch allocation |
 | [**createCounterparty**](PaymentApi.md#createCounterparty) | **POST** /payments/counterparty | Create counterparty |
 | [**createCounterpartyWalletAddress**](PaymentApi.md#createCounterpartyWalletAddress) | **POST** /payments/counterparty/wallet_address | Create counterparty wallet address |
 | [**createCryptoAddress**](PaymentApi.md#createCryptoAddress) | **POST** /payments/crypto_addresses | Create crypto address |
@@ -16,6 +17,7 @@ All URIs are relative to *https://api.dev.cobo.com/v2*
 | [**createMerchant**](PaymentApi.md#createMerchant) | **POST** /payments/merchants | Create merchant |
 | [**createOrderLink**](PaymentApi.md#createOrderLink) | **POST** /payments/links/orders | Create order link |
 | [**createPaymentOrder**](PaymentApi.md#createPaymentOrder) | **POST** /payments/orders | Create pay-in order |
+| [**createPayout**](PaymentApi.md#createPayout) | **POST** /payments/payouts | Create payout |
 | [**createRefund**](PaymentApi.md#createRefund) | **POST** /payments/refunds | Create refund order |
 | [**createRefundLink**](PaymentApi.md#createRefundLink) | **POST** /payments/links/refunds | Create refund link |
 | [**createSettlementRequest**](PaymentApi.md#createSettlementRequest) | **POST** /payments/settlement_requests | Create settlement request |
@@ -26,18 +28,23 @@ All URIs are relative to *https://api.dev.cobo.com/v2*
 | [**deleteDestinationBankAccount**](PaymentApi.md#deleteDestinationBankAccount) | **PUT** /payments/destination/bank_account/{bank_account_id}/delete | Delete destination bank account |
 | [**deleteDestinationWalletAddress**](PaymentApi.md#deleteDestinationWalletAddress) | **PUT** /payments/destination/wallet_address/{wallet_address_id}/delete | Delete destination wallet address |
 | [**enableDestinationWhitelist**](PaymentApi.md#enableDestinationWhitelist) | **POST** /payments/destination/enable_whitelist | Enable or disable destination whitelist |
+| [**getAvailableAllocationAmount**](PaymentApi.md#getAvailableAllocationAmount) | **GET** /payments/allocation_amount | Get available allocation amount |
+| [**getBatchAllocationById**](PaymentApi.md#getBatchAllocationById) | **GET** /payments/batch_allocations/{batch_allocation_id} | Get batch allocation by id |
 | [**getCounterpartyDetailById**](PaymentApi.md#getCounterpartyDetailById) | **GET** /payments/counterparty/{counterparty_id}/detail | Get counterparty information |
 | [**getDestinationBankAccountDetailById**](PaymentApi.md#getDestinationBankAccountDetailById) | **GET** /payments/destination/bank_account/{bank_account_id}/detail | Get destination bank account information |
 | [**getDestinationDetailById**](PaymentApi.md#getDestinationDetailById) | **GET** /payments/destination/{destination_id}/detail | Get destination information |
 | [**getExchangeRate**](PaymentApi.md#getExchangeRate) | **GET** /payments/exchange_rates/{token_id}/{currency} | Get exchange rate |
 | [**getPaymentOrderDetailById**](PaymentApi.md#getPaymentOrderDetailById) | **GET** /payments/orders/{order_id} | Get pay-in order information |
+| [**getPayoutById**](PaymentApi.md#getPayoutById) | **GET** /payments/payouts/{payout_id} | Get payout information |
 | [**getPspBalance**](PaymentApi.md#getPspBalance) | **GET** /payments/balance/psp | Get developer balance |
 | [**getRefundDetailById**](PaymentApi.md#getRefundDetailById) | **GET** /payments/refunds/{refund_id} | Get refund order information |
 | [**getRefunds**](PaymentApi.md#getRefunds) | **GET** /payments/refunds | List all refund orders |
 | [**getSettlementById**](PaymentApi.md#getSettlementById) | **GET** /payments/settlement_requests/{settlement_request_id} | Get settlement request information |
 | [**getSettlementInfoByIds**](PaymentApi.md#getSettlementInfoByIds) | **GET** /payments/settlement_info | Get withdrawable balances |
 | [**getTopUpAddress**](PaymentApi.md#getTopUpAddress) | **GET** /payments/topup/address | Create/Get top-up address |
+| [**listAllocations**](PaymentApi.md#listAllocations) | **GET** /payments/allocation_records | List all allocations |
 | [**listBankAccounts**](PaymentApi.md#listBankAccounts) | **GET** /payments/bank_accounts | List all bank accounts |
+| [**listBatchAllocations**](PaymentApi.md#listBatchAllocations) | **GET** /payments/batch_allocations | List all batch allocations |
 | [**listCounterparties**](PaymentApi.md#listCounterparties) | **GET** /payments/counterparty | List all counterparties |
 | [**listCounterpartyWalletAddress**](PaymentApi.md#listCounterpartyWalletAddress) | **GET** /payments/counterparty/wallet_address | List counterparty wallet addresses |
 | [**listCryptoAddresses**](PaymentApi.md#listCryptoAddresses) | **GET** /payments/crypto_addresses | List crypto addresses |
@@ -50,6 +57,8 @@ All URIs are relative to *https://api.dev.cobo.com/v2*
 | [**listPaymentOrders**](PaymentApi.md#listPaymentOrders) | **GET** /payments/orders | List all pay-in orders |
 | [**listPaymentSupportedTokens**](PaymentApi.md#listPaymentSupportedTokens) | **GET** /payments/supported_tokens | List all supported tokens |
 | [**listPaymentWalletBalances**](PaymentApi.md#listPaymentWalletBalances) | **GET** /payments/balance/payment_wallets | List payment wallet balances |
+| [**listPayoutItems**](PaymentApi.md#listPayoutItems) | **GET** /payments/payout_items | List all payout items |
+| [**listPayouts**](PaymentApi.md#listPayouts) | **GET** /payments/payouts | List all payouts |
 | [**listSettlementDetails**](PaymentApi.md#listSettlementDetails) | **GET** /payments/settlement_details | List all settlement details |
 | [**listSettlementRequests**](PaymentApi.md#listSettlementRequests) | **GET** /payments/settlement_requests | List all settlement requests |
 | [**listTopUpPayerAccounts**](PaymentApi.md#listTopUpPayerAccounts) | **GET** /payments/topup/payer_accounts | List top-up payer accounts |
@@ -72,7 +81,7 @@ All URIs are relative to *https://api.dev.cobo.com/v2*
 
 Batch get exchange rates
 
-This operation retrieves the current exchange rates between a specified currency and a list of token IDs. 
+This operation retrieves the current exchange rates between multiple fiat currencies and cryptocurrencies. 
 
 ### Example
 ```java
@@ -113,8 +122,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **tokenIds** | **String**| A list of token IDs, separated by comma. The token ID is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-tokens).  | |
-| **currencies** | **String**| List of the fiat currencies, separated by comma. Currently, only &#x60;USD&#x60; is supported.  | |
+| **tokenIds** | **String**|  A list of token IDs, separated by comma. Supported values include:          - USDC: &#x60;ETH_USDC&#x60;, &#x60;ARBITRUM_USDCOIN&#x60;, &#x60;SOL_USDC&#x60;, &#x60;BASE_USDC&#x60;, &#x60;MATIC_USDC2&#x60;, &#x60;BSC_USDC&#x60;   - USDT: &#x60;TRON_USDT&#x60;, &#x60;ETH_USDT&#x60;, &#x60;ARBITRUM_USDT&#x60;, &#x60;SOL_USDT&#x60;, &#x60;BASE_USDT&#x60;, &#x60;MATIC_USDT&#x60;, &#x60;BSC_USDT&#x60;  | |
+| **currencies** | **String**| A list of fiat currencies, separated by comma. Currently, only &#x60;USD&#x60; is supported.  | |
 
 ### Return type
 
@@ -201,6 +210,74 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The request was successful. |  -  |
+| **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **5XX** | Internal server error. |  -  |
+
+<a id="createBatchAllocation"></a>
+# **createBatchAllocation**
+> BatchAllocation createBatchAllocation(createBatchAllocationRequest)
+
+Create batch allocation
+
+This operation creates a batch allocation to withdraw available balances.   You can include multiple merchants and cryptocurrencies in a single batch allocation. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.PaymentApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    PaymentApi apiInstance = new PaymentApi();
+    CreateBatchAllocationRequest createBatchAllocationRequest = new CreateBatchAllocationRequest();
+    try {
+      BatchAllocation result = apiInstance.createBatchAllocation(createBatchAllocationRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PaymentApi#createBatchAllocation");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **createBatchAllocationRequest** | [**CreateBatchAllocationRequest**](CreateBatchAllocationRequest.md)| The request body to create a settlement request. | [optional] |
+
+### Return type
+
+[**BatchAllocation**](BatchAllocation.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | The allocation request was successfully created. |  -  |
 | **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
 | **5XX** | Internal server error. |  -  |
 
@@ -686,7 +763,7 @@ public class Example {
 
 Create merchant
 
-This operation creates a merchant. Upon successful creation, a merchant ID is generated and returned along with the merchant&#39;s information. For more information on merchant creation, please refer to [Preparation](https://www.cobo.com/developers/v2/payments/preparation#create-merchant). 
+This operation creates a merchant. Upon successful creation, a merchant ID is generated and returned along with the merchant&#39;s information. For more information on merchant creation, please refer to [Preparation](https://www.cobo.com/payments/en/guides/preparation#create-merchant). 
 
 ### Example
 ```java
@@ -754,7 +831,7 @@ public class Example {
 
 Create order link
 
-This operation generates a payment link for a pay-in order. The link directs users to a hosted payment page where they can complete their payment for the order. You can share the link directly with users or embed the payment page in your website or application using an iframe.  For more details, see [Payment Link](https://www.cobo.com/developers/v2/payments/payment-link). 
+This operation generates a payment link for a pay-in order. The link directs users to a hosted payment page where they can complete their payment for the order. You can share the link directly with users or embed the payment page in your website or application using an iframe.  For more details, see [Payment Link](https://www.cobo.com/payments/en/guides/payment-link). 
 
 ### Example
 ```java
@@ -884,6 +961,74 @@ public class Example {
 | **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
 | **5XX** | Internal server error. |  -  |
 
+<a id="createPayout"></a>
+# **createPayout**
+> PaymentPayout createPayout(createPayoutRequest)
+
+Create payout
+
+This operation creates a payout to withdraw available balances.   You can include multiple merchants and cryptocurrencies in a single payout record. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.PaymentApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    PaymentApi apiInstance = new PaymentApi();
+    CreatePayoutRequest createPayoutRequest = new CreatePayoutRequest();
+    try {
+      PaymentPayout result = apiInstance.createPayout(createPayoutRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PaymentApi#createPayout");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **createPayoutRequest** | [**CreatePayoutRequest**](CreatePayoutRequest.md)| The request body to create a payout. | [optional] |
+
+### Return type
+
+[**PaymentPayout**](PaymentPayout.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | The create payout was successfully created. |  -  |
+| **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **5XX** | Internal server error. |  -  |
+
 <a id="createRefund"></a>
 # **createRefund**
 > Refund createRefund(createRefundRequest)
@@ -958,7 +1103,7 @@ public class Example {
 
 Create refund link
 
-This operation creates a link that points to a Cobo-hosted refund page. The user can submit their desired refund address on the page.  Once the address is submitted, Cobo will automatically create a refund order and initiate the refund process according to your configuration.  For details, see [Create refund link](https://www.cobo.com/developers/v2/payments/create-refund-link). 
+This operation creates a link that points to a Cobo-hosted refund page. The user can submit their desired refund address on the page.  Once the address is submitted, Cobo will automatically create a refund order and initiate the refund process according to your configuration.  For details, see [Create refund link](https://www.cobo.com/payments/en/guides/create-refund-link). 
 
 ### Example
 ```java
@@ -1570,6 +1715,146 @@ public class Example {
 | **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
 | **5XX** | Internal server error. |  -  |
 
+<a id="getAvailableAllocationAmount"></a>
+# **getAvailableAllocationAmount**
+> PaymentAllocationAmount getAvailableAllocationAmount(tokenId, sourceAccount, destinationAccount)
+
+Get available allocation amount
+
+This operation retrieves the information of available allocation amount. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.PaymentApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    PaymentApi apiInstance = new PaymentApi();
+    String tokenId = "ETH_USDT";
+    String sourceAccount = "sourceAccount_example";
+    String destinationAccount = "destinationAccount_example";
+    try {
+      PaymentAllocationAmount result = apiInstance.getAvailableAllocationAmount(tokenId, sourceAccount, destinationAccount);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PaymentApi#getAvailableAllocationAmount");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **tokenId** | **String**| The token ID, which is a unique identifier that specifies both the blockchain network and cryptocurrency token in the format &#x60;{CHAIN}_{TOKEN}&#x60;. Supported values include:   - USDC: &#x60;ETH_USDC&#x60;, &#x60;ARBITRUM_USDCOIN&#x60;, &#x60;SOL_USDC&#x60;, &#x60;BASE_USDC&#x60;, &#x60;MATIC_USDC2&#x60;, &#x60;BSC_USDC&#x60;   - USDT: &#x60;TRON_USDT&#x60;, &#x60;ETH_USDT&#x60;, &#x60;ARBITRUM_USDT&#x60;, &#x60;SOL_USDT&#x60;, &#x60;BASE_USDT&#x60;, &#x60;MATIC_USDT&#x60;, &#x60;BSC_USDT&#x60;  | |
+| **sourceAccount** | **String**|  | |
+| **destinationAccount** | **String**|  | |
+
+### Return type
+
+[**PaymentAllocationAmount**](PaymentAllocationAmount.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The request was successful. |  -  |
+| **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **5XX** | Internal server error. |  -  |
+
+<a id="getBatchAllocationById"></a>
+# **getBatchAllocationById**
+> BatchAllocationDetail getBatchAllocationById(batchAllocationId)
+
+Get batch allocation by id
+
+This operation retrieves the information of a batch allocation. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.PaymentApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    PaymentApi apiInstance = new PaymentApi();
+    String batchAllocationId = "5b0ed293-f728-40b4-b1f6-86b88cd51384";
+    try {
+      BatchAllocationDetail result = apiInstance.getBatchAllocationById(batchAllocationId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PaymentApi#getBatchAllocationById");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **batchAllocationId** | **String**| The batch allocation ID. | |
+
+### Return type
+
+[**BatchAllocationDetail**](BatchAllocationDetail.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The details of a batch allocation detail. |  -  |
+| **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **5XX** | Internal server error. |  -  |
+
 <a id="getCounterpartyDetailById"></a>
 # **getCounterpartyDetailById**
 > CounterpartyDetail getCounterpartyDetailById(counterpartyId)
@@ -1912,13 +2197,81 @@ public class Example {
 | **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
 | **5XX** | Internal server error. |  -  |
 
+<a id="getPayoutById"></a>
+# **getPayoutById**
+> PaymentPayoutDetail getPayoutById(payoutId)
+
+Get payout information
+
+This operation retrieves the information of a specific payout. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.PaymentApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    PaymentApi apiInstance = new PaymentApi();
+    String payoutId = "aff0e1cb-15b2-4e1f-9b9d-a9133715986f";
+    try {
+      PaymentPayoutDetail result = apiInstance.getPayoutById(payoutId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PaymentApi#getPayoutById");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **payoutId** | **String**| The payout ID. | |
+
+### Return type
+
+[**PaymentPayoutDetail**](PaymentPayoutDetail.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The request was successful. |  -  |
+| **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **5XX** | Internal server error. |  -  |
+
 <a id="getPspBalance"></a>
 # **getPspBalance**
 > PspBalance getPspBalance(tokenId)
 
 Get developer balance
 
-This operation retrieves the balance information for you as the developer. The balance information is grouped by token.  For more information, please refer to [Funds allocation and balances](https://www.cobo.com/developers/v2/payments/amounts-and-balances). 
+This operation retrieves the balance information for you as the developer. The balance information is grouped by token.  For more information, please refer to [Funds allocation and balances](https://www.cobo.com/payments/en/guides/amounts-and-balances). 
 
 ### Example
 ```java
@@ -2104,7 +2457,7 @@ public class Example {
 | **after** | **String**| A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response.  | [optional] |
 | **merchantId** | **String**| The merchant ID. | [optional] |
 | **requestId** | **String**| The request ID. | [optional] |
-| **statuses** | **String**| A list of order, refund or settlement statuses. You can refer to the following operations for the possible status values:  - [Get pay-in order information](https://www.cobo.com/developers/v2/api-references/payment/get-pay-in-order-information)  - [Get refund order information](https://www.cobo.com/developers/v2/api-references/payment/get-refund-order-information)  - [List all settlement details](https://www.cobo.com/developers/v2/api-references/payment/list-all-settlement-details)  | [optional] |
+| **statuses** | **String**| A list of order, refund or settlement statuses. You can refer to the following operations for the possible status values:  - [Get pay-in order information](https://www.cobo.com/payments/en/api-references/payment/get-pay-in-order-information)  - [Get refund order information](https://www.cobo.com/payments/en/api-references/payment/get-refund-order-information)  - [List all settlement details](https://www.cobo.com/payments/en/api-references/payment/list-all-settlement-details)  | [optional] |
 
 ### Return type
 
@@ -2338,6 +2691,86 @@ public class Example {
 | **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
 | **5XX** | Internal server error. |  -  |
 
+<a id="listAllocations"></a>
+# **listAllocations**
+> ListAllocations200Response listAllocations(limit, before, after, sourceAccount, destinationAccount, tokenId, batchAllocationId)
+
+List all allocations
+
+This operation retrieves the information of all allocations. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.PaymentApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    PaymentApi apiInstance = new PaymentApi();
+    Integer limit = 10;
+    String before = "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1";
+    String after = "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk";
+    String sourceAccount = "sourceAccount_example";
+    String destinationAccount = "destinationAccount_example";
+    String tokenId = "ETH_USDT";
+    String batchAllocationId = "5b0ed293-f728-40b4-b1f6-86b88cd51384";
+    try {
+      ListAllocations200Response result = apiInstance.listAllocations(limit, before, after, sourceAccount, destinationAccount, tokenId, batchAllocationId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PaymentApi#listAllocations");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **limit** | **Integer**| The maximum number of objects to return. For most operations, the value range is [1, 50]. | [optional] [default to 10] |
+| **before** | **String**| A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response.  | [optional] |
+| **after** | **String**| A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response.  | [optional] |
+| **sourceAccount** | **String**|  | [optional] |
+| **destinationAccount** | **String**|  | [optional] |
+| **tokenId** | **String**| The token ID, which is a unique identifier that specifies both the blockchain network and cryptocurrency token in the format &#x60;{CHAIN}_{TOKEN}&#x60;. Supported values include:   - USDC: &#x60;ETH_USDC&#x60;, &#x60;ARBITRUM_USDCOIN&#x60;, &#x60;SOL_USDC&#x60;, &#x60;BASE_USDC&#x60;, &#x60;MATIC_USDC2&#x60;, &#x60;BSC_USDC&#x60;   - USDT: &#x60;TRON_USDT&#x60;, &#x60;ETH_USDT&#x60;, &#x60;ARBITRUM_USDT&#x60;, &#x60;SOL_USDT&#x60;, &#x60;BASE_USDT&#x60;, &#x60;MATIC_USDT&#x60;, &#x60;BSC_USDT&#x60;  | [optional] |
+| **batchAllocationId** | **String**| The batch allocation ID. | [optional] |
+
+### Return type
+
+[**ListAllocations200Response**](ListAllocations200Response.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The request was successful. |  -  |
+| **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **5XX** | Internal server error. |  -  |
+
 <a id="listBankAccounts"></a>
 # **listBankAccounts**
 > List&lt;BankAccount&gt; listBankAccounts()
@@ -2385,6 +2818,80 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**List&lt;BankAccount&gt;**](BankAccount.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The request was successful. |  -  |
+| **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **5XX** | Internal server error. |  -  |
+
+<a id="listBatchAllocations"></a>
+# **listBatchAllocations**
+> ListBatchAllocations200Response listBatchAllocations(limit, before, after, requestId)
+
+List all batch allocations
+
+This operation retrieves the information of all batch allocations. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.PaymentApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    PaymentApi apiInstance = new PaymentApi();
+    Integer limit = 10;
+    String before = "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1";
+    String after = "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk";
+    String requestId = "random_request_id";
+    try {
+      ListBatchAllocations200Response result = apiInstance.listBatchAllocations(limit, before, after, requestId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PaymentApi#listBatchAllocations");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **limit** | **Integer**| The maximum number of objects to return. For most operations, the value range is [1, 50]. | [optional] [default to 10] |
+| **before** | **String**| A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response.  | [optional] |
+| **after** | **String**| A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response.  | [optional] |
+| **requestId** | **String**| The request ID. | [optional] |
+
+### Return type
+
+[**ListBatchAllocations200Response**](ListBatchAllocations200Response.md)
 
 ### Authorization
 
@@ -2511,7 +3018,7 @@ public class Example {
     String before = "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1";
     String after = "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk";
     String counterpartyId = "5b0ed293-f728-40b4-b1f6-86b88cd51384";
-    String chainIds = "BTC,ETH";
+    String chainIds = "ETH";
     String walletAddress = "0x1234567890abcdef...";
     try {
       ListCounterpartyWalletAddress200Response result = apiInstance.listCounterpartyWalletAddress(limit, before, after, counterpartyId, chainIds, walletAddress);
@@ -2535,7 +3042,7 @@ public class Example {
 | **before** | **String**| A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response.  | [optional] |
 | **after** | **String**| A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response.  | [optional] |
 | **counterpartyId** | **String**| The counterparty ID. | [optional] |
-| **chainIds** | **String**| The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-chains). | [optional] |
+| **chainIds** | **String**| The chain ID, which is the unique identifier of a blockchain. | [optional] |
 | **walletAddress** | **String**| The wallet address. | [optional] |
 
 ### Return type
@@ -2735,7 +3242,7 @@ public class Example {
     String before = "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1";
     String after = "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk";
     String destinationId = "46beeab4-6a8e-476e-bc69-99b89aacbc6f";
-    String chainIds = "BTC,ETH";
+    String chainIds = "ETH";
     String walletAddress = "0x1234567890abcdef...";
     try {
       ListDestinationWalletAddresses200Response result = apiInstance.listDestinationWalletAddresses(limit, before, after, destinationId, chainIds, walletAddress);
@@ -2759,7 +3266,7 @@ public class Example {
 | **before** | **String**| A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response.  | [optional] |
 | **after** | **String**| A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response.  | [optional] |
 | **destinationId** | **String**| The destination ID. | [optional] |
-| **chainIds** | **String**| The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-chains). | [optional] |
+| **chainIds** | **String**| The chain ID, which is the unique identifier of a blockchain. | [optional] |
 | **walletAddress** | **String**| The wallet address. | [optional] |
 
 ### Return type
@@ -2938,11 +3445,11 @@ public class Example {
 
 <a id="listMerchantBalances"></a>
 # **listMerchantBalances**
-> ListMerchantBalances200Response listMerchantBalances(tokenId, acquiringType, merchantIds)
+> ListMerchantBalances200Response listMerchantBalances(tokenId, merchantIds, acquiringType)
 
 List merchant balances
 
- This operation retrieves the balance information for specified merchants. The balance information is grouped by token and acquiring type. If you do not specify the &#x60;merchant_ids&#x60; parameter, the balance information for all merchants will be returned.  For more information, please refer to [Funds allocation and balances](https://www.cobo.com/developers/v2/payments/amounts-and-balances). 
+ This operation retrieves the balance information for specified merchants.   The balance information is grouped by token and acquiring type. If you do not specify the &#x60;merchant_ids&#x60; parameter, the balance information for all merchants will be returned.  For more information, please refer to [Funds allocation and balances](https://www.cobo.com/payments/en/guides/amounts-and-balances). 
 
 ### Example
 ```java
@@ -2964,10 +3471,10 @@ public class Example {
     defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
     PaymentApi apiInstance = new PaymentApi();
     String tokenId = "ETH_USDT";
-    AcquiringType acquiringType = AcquiringType.fromValue("Order");
     String merchantIds = "M1001,M1002,M1003";
+    AcquiringType acquiringType = AcquiringType.fromValue("Order");
     try {
-      ListMerchantBalances200Response result = apiInstance.listMerchantBalances(tokenId, acquiringType, merchantIds);
+      ListMerchantBalances200Response result = apiInstance.listMerchantBalances(tokenId, merchantIds, acquiringType);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PaymentApi#listMerchantBalances");
@@ -2985,8 +3492,8 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **tokenId** | **String**| The token ID, which is a unique identifier that specifies both the blockchain network and cryptocurrency token in the format &#x60;{CHAIN}_{TOKEN}&#x60;. Supported values include:   - USDC: &#x60;ETH_USDC&#x60;, &#x60;ARBITRUM_USDCOIN&#x60;, &#x60;SOL_USDC&#x60;, &#x60;BASE_USDC&#x60;, &#x60;MATIC_USDC2&#x60;, &#x60;BSC_USDC&#x60;   - USDT: &#x60;TRON_USDT&#x60;, &#x60;ETH_USDT&#x60;, &#x60;ARBITRUM_USDT&#x60;, &#x60;SOL_USDT&#x60;, &#x60;BASE_USDT&#x60;, &#x60;MATIC_USDT&#x60;, &#x60;BSC_USDT&#x60;  | |
-| **acquiringType** | [**AcquiringType**](.md)| The payment acquisition type. - &#x60;Order&#x60;: Payers pay by fixed-amount orders. Ideal for specific purchases and one-time transactions. - &#x60;TopUp&#x60;: Account recharge flow where payers deposit funds to their dedicated top-up addresses. Ideal for flexible or usage-based payment models.  | [enum: Order, TopUp] |
 | **merchantIds** | **String**| A list of merchant IDs to query. | [optional] |
+| **acquiringType** | [**AcquiringType**](.md)|  | [optional] [enum: Order, TopUp] |
 
 ### Return type
 
@@ -3142,7 +3649,7 @@ public class Example {
 | **after** | **String**| A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response.  | [optional] |
 | **merchantId** | **String**| The merchant ID. | [optional] |
 | **pspOrderId** | **String**| A unique reference code assigned by the developer to identify this order in their system. | [optional] |
-| **statuses** | **String**| A list of order, refund or settlement statuses. You can refer to the following operations for the possible status values:  - [Get pay-in order information](https://www.cobo.com/developers/v2/api-references/payment/get-pay-in-order-information)  - [Get refund order information](https://www.cobo.com/developers/v2/api-references/payment/get-refund-order-information)  - [List all settlement details](https://www.cobo.com/developers/v2/api-references/payment/list-all-settlement-details)  | [optional] |
+| **statuses** | **String**| A list of order, refund or settlement statuses. You can refer to the following operations for the possible status values:  - [Get pay-in order information](https://www.cobo.com/payments/en/api-references/payment/get-pay-in-order-information)  - [Get refund order information](https://www.cobo.com/payments/en/api-references/payment/get-refund-order-information)  - [List all settlement details](https://www.cobo.com/payments/en/api-references/payment/list-all-settlement-details)  | [optional] |
 
 ### Return type
 
@@ -3298,6 +3805,156 @@ public class Example {
 | **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
 | **5XX** | Internal server error. |  -  |
 
+<a id="listPayoutItems"></a>
+# **listPayoutItems**
+> ListPayoutItems200Response listPayoutItems(limit, before, after, sourceAccount, statuses)
+
+List all payout items
+
+This operation retrieves the information of all payout items. You can filter the result by merchant ID or status. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.PaymentApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    PaymentApi apiInstance = new PaymentApi();
+    Integer limit = 10;
+    String before = "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1";
+    String after = "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk";
+    String sourceAccount = "sourceAccount_example";
+    String statuses = "Pending,Processing";
+    try {
+      ListPayoutItems200Response result = apiInstance.listPayoutItems(limit, before, after, sourceAccount, statuses);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PaymentApi#listPayoutItems");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **limit** | **Integer**| The maximum number of objects to return. For most operations, the value range is [1, 50]. | [optional] [default to 10] |
+| **before** | **String**| A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response.  | [optional] |
+| **after** | **String**| A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response.  | [optional] |
+| **sourceAccount** | **String**|  | [optional] |
+| **statuses** | **String**| A list of order, refund or settlement statuses. You can refer to the following operations for the possible status values:  - [Get pay-in order information](https://www.cobo.com/payments/en/api-references/payment/get-pay-in-order-information)  - [Get refund order information](https://www.cobo.com/payments/en/api-references/payment/get-refund-order-information)  - [List all settlement details](https://www.cobo.com/payments/en/api-references/payment/list-all-settlement-details)  | [optional] |
+
+### Return type
+
+[**ListPayoutItems200Response**](ListPayoutItems200Response.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The request was successful. |  -  |
+| **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **5XX** | Internal server error. |  -  |
+
+<a id="listPayouts"></a>
+# **listPayouts**
+> ListPayouts200Response listPayouts(limit, before, after, requestId)
+
+List all payouts
+
+This operation retrieves the information of all payouts. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.PaymentApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    PaymentApi apiInstance = new PaymentApi();
+    Integer limit = 10;
+    String before = "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1";
+    String after = "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk";
+    String requestId = "random_request_id";
+    try {
+      ListPayouts200Response result = apiInstance.listPayouts(limit, before, after, requestId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PaymentApi#listPayouts");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **limit** | **Integer**| The maximum number of objects to return. For most operations, the value range is [1, 50]. | [optional] [default to 10] |
+| **before** | **String**| A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response.  | [optional] |
+| **after** | **String**| A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response.  | [optional] |
+| **requestId** | **String**| The request ID. | [optional] |
+
+### Return type
+
+[**ListPayouts200Response**](ListPayouts200Response.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The request was successful. |  -  |
+| **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **5XX** | Internal server error. |  -  |
+
 <a id="listSettlementDetails"></a>
 # **listSettlementDetails**
 > ListSettlementDetails200Response listSettlementDetails(limit, before, after, merchantId, statuses)
@@ -3352,7 +4009,7 @@ public class Example {
 | **before** | **String**| A cursor indicating the position before the current page. This value is generated by Cobo and returned in the response. If you are paginating forward from the beginning, you do not need to provide it on the first request. When paginating backward (to the previous page), you should pass the before value returned from the last response.  | [optional] |
 | **after** | **String**| A cursor indicating the position after the current page. This value is generated by Cobo and returned in the response. You do not need to provide it on the first request. When paginating forward (to the next page), you should pass the after value returned from the last response.  | [optional] |
 | **merchantId** | **String**| The merchant ID. | [optional] |
-| **statuses** | **String**| A list of order, refund or settlement statuses. You can refer to the following operations for the possible status values:  - [Get pay-in order information](https://www.cobo.com/developers/v2/api-references/payment/get-pay-in-order-information)  - [Get refund order information](https://www.cobo.com/developers/v2/api-references/payment/get-refund-order-information)  - [List all settlement details](https://www.cobo.com/developers/v2/api-references/payment/list-all-settlement-details)  | [optional] |
+| **statuses** | **String**| A list of order, refund or settlement statuses. You can refer to the following operations for the possible status values:  - [Get pay-in order information](https://www.cobo.com/payments/en/api-references/payment/get-pay-in-order-information)  - [Get refund order information](https://www.cobo.com/payments/en/api-references/payment/get-refund-order-information)  - [List all settlement details](https://www.cobo.com/payments/en/api-references/payment/list-all-settlement-details)  | [optional] |
 
 ### Return type
 

@@ -1576,13 +1576,17 @@ public class ApiClient {
     }
 
     public void setPrivKey(String privKey, String keyType) {
-        httpClient = httpClient.newBuilder().addInterceptor(
+        OkHttpClient.Builder builder = httpClient.newBuilder();
+        builder.interceptors().removeIf(i -> i instanceof AuthenticationInterceptor);
+        httpClient = builder.addInterceptor(
                 new AuthenticationInterceptor(privKey, this.debugging, keyType)
         ).build();
     }
 
     public void setSigner(Signer signer) {
-        httpClient = httpClient.newBuilder().addInterceptor(
+        OkHttpClient.Builder builder = httpClient.newBuilder();
+        builder.interceptors().removeIf(i -> i instanceof AuthenticationInterceptor);
+        httpClient = builder.addInterceptor(
                 new AuthenticationInterceptor(signer, this.debugging)
         ).build();
     }

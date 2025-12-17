@@ -14,6 +14,7 @@
 |**instructions** | [**List&lt;SolContractCallInstruction&gt;**](SolContractCallInstruction.md) |  |  |
 |**addressLookupTableAccounts** | [**List&lt;SolContractCallAddressLookupTableAccount&gt;**](SolContractCallAddressLookupTableAccount.md) |  |  [optional] |
 |**contractParam** | [**StellarContractCallContractParam**](StellarContractCallContractParam.md) |  |  |
+|**cosmosMessages** | [**List&lt;CosmosContractCallMessage&gt;**](CosmosContractCallMessage.md) |  |  |
 
 
 

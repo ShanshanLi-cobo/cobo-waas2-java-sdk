@@ -203,7 +203,7 @@ public class CreateSettlementRequestRequest {
   }
 
    /**
-   *  The ID of the bank account where the funds will be deposited. You can call [List all bank accounts](https://www.cobo.com/developers/v2/api-references/payment/list-all-bank-accounts) to retrieve the IDs of registered bank accounts.  This field is only applicable for off-ramp. 
+   *  The ID of the bank account where the funds will be deposited. You can call [List all bank accounts](https://www.cobo.com/payments/en/api-references/payment/list-all-bank-accounts) to retrieve the IDs of registered bank accounts.  This field is only applicable for off-ramp. 
    * @return bankAccountId
   **/
   @javax.annotation.Nullable

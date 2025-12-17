@@ -29,6 +29,7 @@ import com.cobo.waas2.model.Activity;
 import com.cobo.waas2.model.ActivityStatus;
 import com.cobo.waas2.model.ActivityType;
 import com.cobo.waas2.model.BabylonAirdropRegistration;
+import com.cobo.waas2.model.BabylonCreateStakingExpansion;
 import com.cobo.waas2.model.BabylonStakingRegistration;
 import com.cobo.waas2.model.CreateBabylonAirdropRegistration201Response;
 import com.cobo.waas2.model.CreateBabylonAirdropRegistrationRequest;
@@ -193,15 +194,128 @@ public class StakingsApi {
         return localVarCall;
     }
     /**
-     * Build call for createBabylonStakingRegistration
-     * @param createBabylonStakingRegistrationRequest The request body to transit Babylon BTC staking to phase 2 (optional)
+     * Build call for createBabylonStakingExpansion
+     * @param babylonCreateStakingExpansion The request body to expand Babylon BTC staking to Phase-3 (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Register Babylon BTC staking for phase 2 successfully </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Successfully expanded Babylon BTC staking to Phase-3. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createBabylonStakingExpansionCall(BabylonCreateStakingExpansion babylonCreateStakingExpansion, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = babylonCreateStakingExpansion;
+
+        // create path and map variables
+        String localVarPath = "/stakings/protocols/babylon/stakings/expansions";
+
+        List<Pair> localVarQueryParams = new ArrayList<>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<>();
+        Map<String, String> localVarHeaderParams = new HashMap<>();
+        Map<String, String> localVarCookieParams = new HashMap<>();
+        Map<String, Object> localVarFormParams = new HashMap<>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(null, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createBabylonStakingExpansionValidateBeforeCall(BabylonCreateStakingExpansion babylonCreateStakingExpansion, final ApiCallback _callback) throws ApiException {
+        return createBabylonStakingExpansionCall(babylonCreateStakingExpansion, _callback);
+
+    }
+
+    /**
+     * Expand Babylon BTC staking
+     * This operation initiates a Babylon BTC staking expansion request.   Before calling this operation, please ensure the following: - The BTC staking position is active. - The finality provider public keys are valid. Each BSN chain has a unique finality provider public key at most.  The system first checks whether the provided BTC staking position is active. If active, it creates a new BTC staking position for the Phase-3 expansion.  The expansion is processed asynchronously and may take some time to complete.  For more information, refer to [Babylon&#39;s official doc](https://github.com/babylonlabs-io/babylon/tree/main/docs). 
+     * @param babylonCreateStakingExpansion The request body to expand Babylon BTC staking to Phase-3 (optional)
+     * @return Stakings
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Successfully expanded Babylon BTC staking to Phase-3. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public Stakings createBabylonStakingExpansion(BabylonCreateStakingExpansion babylonCreateStakingExpansion) throws ApiException {
+        ApiResponse<Stakings> localVarResp = createBabylonStakingExpansionWithHttpInfo(babylonCreateStakingExpansion);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Expand Babylon BTC staking
+     * This operation initiates a Babylon BTC staking expansion request.   Before calling this operation, please ensure the following: - The BTC staking position is active. - The finality provider public keys are valid. Each BSN chain has a unique finality provider public key at most.  The system first checks whether the provided BTC staking position is active. If active, it creates a new BTC staking position for the Phase-3 expansion.  The expansion is processed asynchronously and may take some time to complete.  For more information, refer to [Babylon&#39;s official doc](https://github.com/babylonlabs-io/babylon/tree/main/docs). 
+     * @param babylonCreateStakingExpansion The request body to expand Babylon BTC staking to Phase-3 (optional)
+     * @return ApiResponse&lt;Stakings&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Successfully expanded Babylon BTC staking to Phase-3. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Stakings> createBabylonStakingExpansionWithHttpInfo(BabylonCreateStakingExpansion babylonCreateStakingExpansion) throws ApiException {
+        okhttp3.Call localVarCall = createBabylonStakingExpansionValidateBeforeCall(babylonCreateStakingExpansion, null);
+        Type localVarReturnType = new TypeToken<Stakings>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Expand Babylon BTC staking (asynchronously)
+     * This operation initiates a Babylon BTC staking expansion request.   Before calling this operation, please ensure the following: - The BTC staking position is active. - The finality provider public keys are valid. Each BSN chain has a unique finality provider public key at most.  The system first checks whether the provided BTC staking position is active. If active, it creates a new BTC staking position for the Phase-3 expansion.  The expansion is processed asynchronously and may take some time to complete.  For more information, refer to [Babylon&#39;s official doc](https://github.com/babylonlabs-io/babylon/tree/main/docs). 
+     * @param babylonCreateStakingExpansion The request body to expand Babylon BTC staking to Phase-3 (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Successfully expanded Babylon BTC staking to Phase-3. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createBabylonStakingExpansionAsync(BabylonCreateStakingExpansion babylonCreateStakingExpansion, final ApiCallback<Stakings> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createBabylonStakingExpansionValidateBeforeCall(babylonCreateStakingExpansion, _callback);
+        Type localVarReturnType = new TypeToken<Stakings>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createBabylonStakingRegistration
+     * @param createBabylonStakingRegistrationRequest The request body to transit Babylon BTC staking to Phase-2 (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Register Babylon BTC staking for Phase-2 successfully </td><td>  -  </td></tr>
         <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
@@ -247,13 +361,13 @@ public class StakingsApi {
     /**
      * Register for Babylon Phase-2
      * This operation initiates a Babylon Phase-2 registration request.   Before calling this operation, please ensure the following: - The staking position is eligible for the Babylon Phase-2 and has not been registered. You can call the [List staking positions eligible for Babylon Phase-2](https://www.cobo.com/developers/v2/api-references/stakings/list-staking-positions-eligible-for-babylon-phase-2) operation to check the registration status. - The Babylon address has enough asset to pay for the registration fee. - The Babylon address must be a Babylon address in an MPC Wallet in your organization.  The system first checks whether the provided address is eligible for Phase-2. If eligible, it creates a unique registration ID, which can be used to track the status.   The registration is processed asynchronously and may take some time to complete. It is recommended that you regularly call the [Get Babylon Phase-2 registration details](https://www.cobo.com/developers/v2/api-references/stakings/get-babylon-phase-2-registration-details) operation to check the status and handle registration accordingly.  For more information, refer to [Babylon&#39;s official doc](https://github.com/babylonlabs-io/babylon/tree/main/docs). 
-     * @param createBabylonStakingRegistrationRequest The request body to transit Babylon BTC staking to phase 2 (optional)
+     * @param createBabylonStakingRegistrationRequest The request body to transit Babylon BTC staking to Phase-2 (optional)
      * @return CreateBabylonStakingRegistration201Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Register Babylon BTC staking for phase 2 successfully </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Register Babylon BTC staking for Phase-2 successfully </td><td>  -  </td></tr>
         <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
@@ -266,13 +380,13 @@ public class StakingsApi {
     /**
      * Register for Babylon Phase-2
      * This operation initiates a Babylon Phase-2 registration request.   Before calling this operation, please ensure the following: - The staking position is eligible for the Babylon Phase-2 and has not been registered. You can call the [List staking positions eligible for Babylon Phase-2](https://www.cobo.com/developers/v2/api-references/stakings/list-staking-positions-eligible-for-babylon-phase-2) operation to check the registration status. - The Babylon address has enough asset to pay for the registration fee. - The Babylon address must be a Babylon address in an MPC Wallet in your organization.  The system first checks whether the provided address is eligible for Phase-2. If eligible, it creates a unique registration ID, which can be used to track the status.   The registration is processed asynchronously and may take some time to complete. It is recommended that you regularly call the [Get Babylon Phase-2 registration details](https://www.cobo.com/developers/v2/api-references/stakings/get-babylon-phase-2-registration-details) operation to check the status and handle registration accordingly.  For more information, refer to [Babylon&#39;s official doc](https://github.com/babylonlabs-io/babylon/tree/main/docs). 
-     * @param createBabylonStakingRegistrationRequest The request body to transit Babylon BTC staking to phase 2 (optional)
+     * @param createBabylonStakingRegistrationRequest The request body to transit Babylon BTC staking to Phase-2 (optional)
      * @return ApiResponse&lt;CreateBabylonStakingRegistration201Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Register Babylon BTC staking for phase 2 successfully </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Register Babylon BTC staking for Phase-2 successfully </td><td>  -  </td></tr>
         <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
@@ -286,14 +400,14 @@ public class StakingsApi {
     /**
      * Register for Babylon Phase-2 (asynchronously)
      * This operation initiates a Babylon Phase-2 registration request.   Before calling this operation, please ensure the following: - The staking position is eligible for the Babylon Phase-2 and has not been registered. You can call the [List staking positions eligible for Babylon Phase-2](https://www.cobo.com/developers/v2/api-references/stakings/list-staking-positions-eligible-for-babylon-phase-2) operation to check the registration status. - The Babylon address has enough asset to pay for the registration fee. - The Babylon address must be a Babylon address in an MPC Wallet in your organization.  The system first checks whether the provided address is eligible for Phase-2. If eligible, it creates a unique registration ID, which can be used to track the status.   The registration is processed asynchronously and may take some time to complete. It is recommended that you regularly call the [Get Babylon Phase-2 registration details](https://www.cobo.com/developers/v2/api-references/stakings/get-babylon-phase-2-registration-details) operation to check the status and handle registration accordingly.  For more information, refer to [Babylon&#39;s official doc](https://github.com/babylonlabs-io/babylon/tree/main/docs). 
-     * @param createBabylonStakingRegistrationRequest The request body to transit Babylon BTC staking to phase 2 (optional)
+     * @param createBabylonStakingRegistrationRequest The request body to transit Babylon BTC staking to Phase-2 (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Register Babylon BTC staking for phase 2 successfully </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Register Babylon BTC staking for Phase-2 successfully </td><td>  -  </td></tr>
         <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>

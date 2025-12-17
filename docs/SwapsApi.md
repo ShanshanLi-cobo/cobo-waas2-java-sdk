@@ -86,7 +86,7 @@ public class Example {
 
 Estimate swap fee
 
-This operation estimates the network fee of a swap activity. You can use this operation to estimate the network fee before initiating swap activities from MPC Wallets or Web3 Wallets.  It requires a valid &#x60;wallet_id&#x60; and &#x60;quote_id&#x60;, so you need to [get a swap quote](https://www.cobo.com/developers/v2/api-references/swaps/get-swap-quote) first. 
+This operation estimates the network fee of a swap activity. You can use this operation to estimate the network fee before initiating swap activities from MPC Wallets or Custodial Wallets (Web3 Wallets).  It requires a valid &#x60;wallet_id&#x60; and &#x60;quote_id&#x60;, so you need to [get a swap quote](https://www.cobo.com/developers/v2/api-references/swaps/get-swap-quote) first. 
 
 ### Example
 ```java

@@ -13,5 +13,7 @@
 
 * `TRON_CONTRACT` (value: `"TRON_Contract"`)
 
+* `COSMOS_CONTRACT` (value: `"COSMOS_Contract"`)
+
 
 
