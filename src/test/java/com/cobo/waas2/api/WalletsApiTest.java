@@ -74,7 +74,7 @@ public class WalletsApiTest {
     /**
      * Batch check UTXOs
      *
-     * This operation verifies the existence and details of specified unspent transaction outputs (UTXOs) for a given wallet and token. A maximum of 100 UTXOs can be verified per request. &lt;Note&gt;This operation is applicable to MPC Wallets and Custodial Wallets (Web3 Wallets) only.&lt;/Note&gt; 
+     * This operation verifies the existence and details of specified **unspent** transaction outputs (UTXOs) for a given wallet and token. A maximum of 100 UTXOs can be verified per request.  &lt;Note&gt;This operation returns only UTXOs that are not used by any transaction. It does not return all UTXOs.&lt;/Note&gt;  &lt;Info&gt;This operation is applicable to MPC Wallets and Custodial Wallets (Web3 Wallets) only.&lt;/Info&gt; 
      *
      * @throws ApiException if the Api call fails
      */
@@ -280,7 +280,7 @@ public class WalletsApiTest {
     /**
      * List address balances by token
      *
-     * This operation retrieves a list of address balances for a specified token within a wallet.  &lt;Note&gt;This operation is applicable to MPC Wallets only.&lt;/Note&gt; 
+     * This operation retrieves a list of address balances for a specified token within a wallet.  &lt;Note&gt;This operation is applicable to MPC Wallets and Custodial Wallets (Web3 Wallets) only.&lt;/Note&gt; 
      *
      * @throws ApiException if the Api call fails
      */
@@ -395,7 +395,7 @@ public class WalletsApiTest {
     /**
      * List token balances by address
      *
-     * The operation retrieves a list of token balances for a specified address within a wallet.   &lt;Note&gt;This operation is applicable to MPC Wallets and Smart Contract Wallets only.&lt;/Note&gt; 
+     * The operation retrieves a list of token balances for a specified address within a wallet.   &lt;Note&gt;This operation is applicable to MPC Wallets, Custodial Wallets (Web3 Wallets), and Smart Contract Wallets only.&lt;/Note&gt; 
      *
      * @throws ApiException if the Api call fails
      */
@@ -449,7 +449,7 @@ public class WalletsApiTest {
     /**
      * List UTXOs
      *
-     * The operation retrieves a list of unspent transaction outputs (UTXOs) for a specified wallet and token.  &lt;Note&gt;This operation is applicable to MPC Wallets and Custodial Wallets (Web3 Wallets) only.&lt;/Note&gt; 
+     * The operation retrieves a list of **unspent** transaction outputs (UTXOs) for a specified wallet and token.  &lt;Note&gt;This operation returns only UTXOs that are not used by any transaction. It does not return all UTXOs.&lt;/Note&gt;  &lt;Info&gt;This operation is applicable to MPC Wallets and Custodial Wallets (Web3 Wallets) only.&lt;/Info&gt; 
      *
      * @throws ApiException if the Api call fails
      */
@@ -489,7 +489,7 @@ public class WalletsApiTest {
     /**
      * Lock UTXOs
      *
-     * This operation locks the UTXOs with specified transaction hashes. Locked UTXOs cannot be transferred until unlocked.  &lt;Note&gt;This operation is applicable to MPC Wallets only.&lt;/Note&gt; 
+     * This operation locks the UTXOs with specified transaction hashes. Locked UTXOs cannot be transferred until unlocked.  &lt;Note&gt;This operation is applicable to MPC Wallets and Custodial Wallets (Web3 Wallets) only.&lt;/Note&gt; 
      *
      * @throws ApiException if the Api call fails
      */
@@ -520,7 +520,7 @@ public class WalletsApiTest {
     /**
      * Unlock UTXOs
      *
-     * This operation unlocks the UTXOs with specified transaction hashes. Locked UTXOs cannot be transferred until unlocked.  &lt;Note&gt;This operation is applicable to MPC Wallets only.&lt;/Note&gt; 
+     * This operation unlocks the UTXOs with specified transaction hashes. Locked UTXOs cannot be transferred until unlocked.    &lt;Note&gt;This operation is applicable to MPC Wallets and Custodial Wallets (Web3 Wallets) only.&lt;/Note&gt; 
      *
      * @throws ApiException if the Api call fails
      */

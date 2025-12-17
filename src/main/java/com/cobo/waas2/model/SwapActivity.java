@@ -462,7 +462,7 @@ public class SwapActivity {
   }
 
    /**
-   * The address of an MPC Wallet or Web3 Wallet that receives the swapped or bridged assets.
+   * The address of an MPC Wallet or Custodial Wallet (Web3 Wallet) that receives the swapped or bridged assets.
    * @return destinationAddress
   **/
   @javax.annotation.Nullable

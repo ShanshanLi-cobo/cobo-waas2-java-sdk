@@ -69,7 +69,7 @@ public class OrderLinkBusinessInfoCustomExchangeRatesInner {
   }
 
    /**
-   * The token ID.
+   * The cryptocurrency token ID
    * @return tokenId
   **/
   @javax.annotation.Nonnull
@@ -88,7 +88,7 @@ public class OrderLinkBusinessInfoCustomExchangeRatesInner {
   }
 
    /**
-   * The exchange rate to use for this token.
+   * The fixed exchange rate to use for this token
    * @return exchangeRate
   **/
   @javax.annotation.Nonnull

@@ -239,7 +239,7 @@ public class SwapsApi {
 
     /**
      * Estimate swap fee
-     * This operation estimates the network fee of a swap activity. You can use this operation to estimate the network fee before initiating swap activities from MPC Wallets or Web3 Wallets.  It requires a valid &#x60;wallet_id&#x60; and &#x60;quote_id&#x60;, so you need to [get a swap quote](https://www.cobo.com/developers/v2/api-references/swaps/get-swap-quote) first. 
+     * This operation estimates the network fee of a swap activity. You can use this operation to estimate the network fee before initiating swap activities from MPC Wallets or Custodial Wallets (Web3 Wallets).  It requires a valid &#x60;wallet_id&#x60; and &#x60;quote_id&#x60;, so you need to [get a swap quote](https://www.cobo.com/developers/v2/api-references/swaps/get-swap-quote) first. 
      * @param swapEstimateFee The request body for estimating the network fee of a swap activity. (required)
      * @return EstimatedFee
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -258,7 +258,7 @@ public class SwapsApi {
 
     /**
      * Estimate swap fee
-     * This operation estimates the network fee of a swap activity. You can use this operation to estimate the network fee before initiating swap activities from MPC Wallets or Web3 Wallets.  It requires a valid &#x60;wallet_id&#x60; and &#x60;quote_id&#x60;, so you need to [get a swap quote](https://www.cobo.com/developers/v2/api-references/swaps/get-swap-quote) first. 
+     * This operation estimates the network fee of a swap activity. You can use this operation to estimate the network fee before initiating swap activities from MPC Wallets or Custodial Wallets (Web3 Wallets).  It requires a valid &#x60;wallet_id&#x60; and &#x60;quote_id&#x60;, so you need to [get a swap quote](https://www.cobo.com/developers/v2/api-references/swaps/get-swap-quote) first. 
      * @param swapEstimateFee The request body for estimating the network fee of a swap activity. (required)
      * @return ApiResponse&lt;EstimatedFee&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -278,7 +278,7 @@ public class SwapsApi {
 
     /**
      * Estimate swap fee (asynchronously)
-     * This operation estimates the network fee of a swap activity. You can use this operation to estimate the network fee before initiating swap activities from MPC Wallets or Web3 Wallets.  It requires a valid &#x60;wallet_id&#x60; and &#x60;quote_id&#x60;, so you need to [get a swap quote](https://www.cobo.com/developers/v2/api-references/swaps/get-swap-quote) first. 
+     * This operation estimates the network fee of a swap activity. You can use this operation to estimate the network fee before initiating swap activities from MPC Wallets or Custodial Wallets (Web3 Wallets).  It requires a valid &#x60;wallet_id&#x60; and &#x60;quote_id&#x60;, so you need to [get a swap quote](https://www.cobo.com/developers/v2/api-references/swaps/get-swap-quote) first. 
      * @param swapEstimateFee The request body for estimating the network fee of a swap activity. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
