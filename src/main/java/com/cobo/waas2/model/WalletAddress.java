@@ -12,6 +12,7 @@
 package com.cobo.waas2.model;
 
 import java.util.Objects;
+import com.cobo.waas2.model.AddressRiskLevel;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -65,6 +66,14 @@ public class WalletAddress {
   @SerializedName(SERIALIZED_NAME_CHAIN_ID)
   private String chainId;
 
+  public static final String SERIALIZED_NAME_RISK_LEVEL = "risk_level";
+  @SerializedName(SERIALIZED_NAME_RISK_LEVEL)
+  private AddressRiskLevel riskLevel;
+
+  public static final String SERIALIZED_NAME_SCREENING_TIMESTAMP = "screening_timestamp";
+  @SerializedName(SERIALIZED_NAME_SCREENING_TIMESTAMP)
+  private Integer screeningTimestamp;
+
   public static final String SERIALIZED_NAME_UPDATED_TIMESTAMP = "updated_timestamp";
   @SerializedName(SERIALIZED_NAME_UPDATED_TIMESTAMP)
   private Integer updatedTimestamp;
@@ -116,7 +125,7 @@ public class WalletAddress {
   }
 
    /**
-   * The chain ID of the cryptocurrency.
+   * The chain ID of the address.
    * @return chainId
   **/
   @javax.annotation.Nonnull
@@ -126,6 +135,44 @@ public class WalletAddress {
 
   public void setChainId(String chainId) {
     this.chainId = chainId;
+  }
+
+
+  public WalletAddress riskLevel(AddressRiskLevel riskLevel) {
+    this.riskLevel = riskLevel;
+    return this;
+  }
+
+   /**
+   * Get riskLevel
+   * @return riskLevel
+  **/
+  @javax.annotation.Nullable
+  public AddressRiskLevel getRiskLevel() {
+    return riskLevel;
+  }
+
+  public void setRiskLevel(AddressRiskLevel riskLevel) {
+    this.riskLevel = riskLevel;
+  }
+
+
+  public WalletAddress screeningTimestamp(Integer screeningTimestamp) {
+    this.screeningTimestamp = screeningTimestamp;
+    return this;
+  }
+
+   /**
+   * UNIX timestamp (in seconds) when the address was last screened for compliance.
+   * @return screeningTimestamp
+  **/
+  @javax.annotation.Nullable
+  public Integer getScreeningTimestamp() {
+    return screeningTimestamp;
+  }
+
+  public void setScreeningTimestamp(Integer screeningTimestamp) {
+    this.screeningTimestamp = screeningTimestamp;
   }
 
 
@@ -205,13 +252,15 @@ public class WalletAddress {
     return Objects.equals(this.walletAddressId, walletAddress.walletAddressId) &&
         Objects.equals(this.address, walletAddress.address) &&
         Objects.equals(this.chainId, walletAddress.chainId) &&
+        Objects.equals(this.riskLevel, walletAddress.riskLevel) &&
+        Objects.equals(this.screeningTimestamp, walletAddress.screeningTimestamp) &&
         Objects.equals(this.updatedTimestamp, walletAddress.updatedTimestamp)&&
         Objects.equals(this.additionalProperties, walletAddress.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(walletAddressId, address, chainId, updatedTimestamp, additionalProperties);
+    return Objects.hash(walletAddressId, address, chainId, riskLevel, screeningTimestamp, updatedTimestamp, additionalProperties);
   }
 
   @Override
@@ -221,6 +270,8 @@ public class WalletAddress {
     sb.append("    walletAddressId: ").append(toIndentedString(walletAddressId)).append("\n");
     sb.append("    address: ").append(toIndentedString(address)).append("\n");
     sb.append("    chainId: ").append(toIndentedString(chainId)).append("\n");
+    sb.append("    riskLevel: ").append(toIndentedString(riskLevel)).append("\n");
+    sb.append("    screeningTimestamp: ").append(toIndentedString(screeningTimestamp)).append("\n");
     sb.append("    updatedTimestamp: ").append(toIndentedString(updatedTimestamp)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -248,6 +299,8 @@ public class WalletAddress {
     openapiFields.add("wallet_address_id");
     openapiFields.add("address");
     openapiFields.add("chain_id");
+    openapiFields.add("risk_level");
+    openapiFields.add("screening_timestamp");
     openapiFields.add("updated_timestamp");
 
     // a set of required properties/fields (JSON key names)
@@ -286,6 +339,10 @@ public class WalletAddress {
       }
       if (!jsonObj.get("chain_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `chain_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("chain_id").toString()));
+      }
+      // validate the optional field `risk_level`
+      if (jsonObj.get("risk_level") != null && !jsonObj.get("risk_level").isJsonNull()) {
+        AddressRiskLevel.validateJsonElement(jsonObj.get("risk_level"));
       }
   }
 

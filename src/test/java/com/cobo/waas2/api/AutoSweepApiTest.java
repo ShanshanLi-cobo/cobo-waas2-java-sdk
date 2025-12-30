@@ -110,7 +110,7 @@ public class AutoSweepApiTest {
     /**
      * List sweep-to addresses
      *
-     * This operation retrieves a list of sweep-to addresses within your wallet. &lt;Note&gt;Sweep-to addresses are only applicable to MPC Wallets and Custodial Wallets (Web3 Wallets) with the auto-sweep feature enabled.&lt;/Note&gt; 
+     * This operation retrieves a list of sweep-to addresses within your wallet.  &lt;Note&gt;Sweep-to addresses are only applicable to MPC Wallets and Custodial Wallets (Web3 Wallets) with the auto-sweep feature enabled.&lt;/Note&gt;  &lt;Info&gt;For EVM-compatible chains (such as Ethereum and BNB Smart Chain), the same address is used across chains. As a result, when listing sweep-to addresses, only one address entry (shown under Ethereum) is returned for all EVM-compatible chains. Separate entries are not returned for each individual EVM chain.&lt;/Info&gt; 
      *
      * @throws ApiException if the Api call fails
      */

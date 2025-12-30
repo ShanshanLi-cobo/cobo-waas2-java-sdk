@@ -127,7 +127,7 @@ public class AllocationRecord {
   }
 
    /**
-   * The ID of the cryptocurrency you want to allocation. Supported values:  - USDC: &#x60;ETH_USDC&#x60;, &#x60;ARBITRUM_USDC&#x60;, &#x60;SOL_USDC&#x60;, &#x60;BASE_USDC&#x60;, &#x60;MATIC_USDC&#x60;, &#x60;BSC_USDC&#x60; - USDT: &#x60;TRON_USDT&#x60;, &#x60;ETH_USDT&#x60;, &#x60;ARBITRUM_USDT&#x60;, &#x60;SOL_USDT&#x60;, &#x60;BASE_USDT&#x60;, &#x60;MATIC_USDT&#x60;, &#x60;BSC_USDT&#x60; 
+   * The ID of the cryptocurrency to allocate. Supported values:  - USDC: &#x60;ETH_USDC&#x60;, &#x60;ARBITRUM_USDC&#x60;, &#x60;SOL_USDC&#x60;, &#x60;BASE_USDC&#x60;, &#x60;MATIC_USDC&#x60;, &#x60;BSC_USDC&#x60; - USDT: &#x60;TRON_USDT&#x60;, &#x60;ETH_USDT&#x60;, &#x60;ARBITRUM_USDT&#x60;, &#x60;SOL_USDT&#x60;, &#x60;BASE_USDT&#x60;, &#x60;MATIC_USDT&#x60;, &#x60;BSC_USDT&#x60; 
    * @return tokenId
   **/
   @javax.annotation.Nonnull
@@ -146,7 +146,7 @@ public class AllocationRecord {
   }
 
    /**
-   * The allocation amount. 
+   * The amount of the cryptocurrency to allocate. 
    * @return amount
   **/
   @javax.annotation.Nonnull
@@ -165,7 +165,7 @@ public class AllocationRecord {
   }
 
    /**
-   * Get sourceAccount
+   * The source account.
    * @return sourceAccount
   **/
   @javax.annotation.Nullable
@@ -184,7 +184,7 @@ public class AllocationRecord {
   }
 
    /**
-   * Get destinationAccount
+   * The destination account.
    * @return destinationAccount
   **/
   @javax.annotation.Nullable
@@ -203,7 +203,7 @@ public class AllocationRecord {
   }
 
    /**
-   * Get description
+   * The description of the allocation record.
    * @return description
   **/
   @javax.annotation.Nonnull

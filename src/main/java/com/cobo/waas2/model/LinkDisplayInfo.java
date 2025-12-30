@@ -112,7 +112,7 @@ public class LinkDisplayInfo {
   }
 
    /**
-   * The URL to redirect to after the operation completes.
+   * The product page URL where end users will be redirected after the payment process ends.  This URL is embedded in a \&quot;Return to Merchant\&quot; button displayed on the following result pages: - Payment success - Payment timeout - Payment rejected - Payment error 
    * @return returnUrl
   **/
   @javax.annotation.Nullable

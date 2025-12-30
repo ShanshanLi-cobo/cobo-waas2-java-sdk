@@ -252,7 +252,7 @@ public class PaymentPayout {
   }
 
    /**
-   * The initiator of this payout, usually the user&#39;s API key.
+   * The initiator of this payout, usually the API key used to create the payout.
    * @return initiator
   **/
   @javax.annotation.Nullable
@@ -271,7 +271,7 @@ public class PaymentPayout {
   }
 
    /**
-   * The fiat currency for the payout.
+   * The fiat currency you will receive from the payout.
    * @return currency
   **/
   @javax.annotation.Nullable
@@ -290,7 +290,7 @@ public class PaymentPayout {
   }
 
    /**
-   * The actual amount of this payout. 
+   * The total amount of cryptocurrency actually paid out for this payout. 
    * @return actualPayoutAmount
   **/
   @javax.annotation.Nullable

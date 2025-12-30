@@ -63,7 +63,7 @@ public class FeeStationApi {
 
     /**
      * Build call for checkFeeStationUsage
-     * @param feeStationCheckFeeStationUsage The information for evaluating Fee Station usage. (optional)
+     * @param feeStationCheckFeeStationUsage The request body for evaluating Fee Station usage. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -116,7 +116,7 @@ public class FeeStationApi {
     /**
      * Check Fee Station usage
      * This operation evaluates Fee Station usage for the current transaction.   It determines whether Fee station can be used, checks if the Fee Station balance is sufficient, and returns a breakdown of the amounts involved, including any portion that must be covered by the user or sponsored in USD stablecoin. 
-     * @param feeStationCheckFeeStationUsage The information for evaluating Fee Station usage. (optional)
+     * @param feeStationCheckFeeStationUsage The request body for evaluating Fee Station usage. (optional)
      * @return FeeStationCheckFeeStationUsageResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -135,7 +135,7 @@ public class FeeStationApi {
     /**
      * Check Fee Station usage
      * This operation evaluates Fee Station usage for the current transaction.   It determines whether Fee station can be used, checks if the Fee Station balance is sufficient, and returns a breakdown of the amounts involved, including any portion that must be covered by the user or sponsored in USD stablecoin. 
-     * @param feeStationCheckFeeStationUsage The information for evaluating Fee Station usage. (optional)
+     * @param feeStationCheckFeeStationUsage The request body for evaluating Fee Station usage. (optional)
      * @return ApiResponse&lt;FeeStationCheckFeeStationUsageResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -155,7 +155,7 @@ public class FeeStationApi {
     /**
      * Check Fee Station usage (asynchronously)
      * This operation evaluates Fee Station usage for the current transaction.   It determines whether Fee station can be used, checks if the Fee Station balance is sufficient, and returns a breakdown of the amounts involved, including any portion that must be covered by the user or sponsored in USD stablecoin. 
-     * @param feeStationCheckFeeStationUsage The information for evaluating Fee Station usage. (optional)
+     * @param feeStationCheckFeeStationUsage The request body for evaluating Fee Station usage. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

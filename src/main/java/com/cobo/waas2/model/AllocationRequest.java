@@ -81,7 +81,7 @@ public class AllocationRequest {
   }
 
    /**
-   * The ID of the cryptocurrency you want to allocation. Supported values:  - USDC: &#x60;ETH_USDC&#x60;, &#x60;ARBITRUM_USDC&#x60;, &#x60;SOL_USDC&#x60;, &#x60;BASE_USDC&#x60;, &#x60;MATIC_USDC&#x60;, &#x60;BSC_USDC&#x60; - USDT: &#x60;TRON_USDT&#x60;, &#x60;ETH_USDT&#x60;, &#x60;ARBITRUM_USDT&#x60;, &#x60;SOL_USDT&#x60;, &#x60;BASE_USDT&#x60;, &#x60;MATIC_USDT&#x60;, &#x60;BSC_USDT&#x60; 
+   * The ID of the cryptocurrency you want to allocate. Supported values:  - USDC: &#x60;ETH_USDC&#x60;, &#x60;ARBITRUM_USDC&#x60;, &#x60;SOL_USDC&#x60;, &#x60;BASE_USDC&#x60;, &#x60;MATIC_USDC&#x60;, &#x60;BSC_USDC&#x60; - USDT: &#x60;TRON_USDT&#x60;, &#x60;ETH_USDT&#x60;, &#x60;ARBITRUM_USDT&#x60;, &#x60;SOL_USDT&#x60;, &#x60;BASE_USDT&#x60;, &#x60;MATIC_USDT&#x60;, &#x60;BSC_USDT&#x60; 
    * @return tokenId
   **/
   @javax.annotation.Nonnull
@@ -100,7 +100,7 @@ public class AllocationRequest {
   }
 
    /**
-   * The allocation amount. 
+   * The amount of the cryptocurrency you want to allocate. 
    * @return amount
   **/
   @javax.annotation.Nonnull
@@ -119,7 +119,7 @@ public class AllocationRequest {
   }
 
    /**
-   * Get sourceAccount
+   * The source account.  - If the source account is a merchant account, provide the merchant&#39;s ID (e.g., \&quot;M1001\&quot;). - If the source account is the developer account, use the string &#x60;\&quot;developer\&quot;&#x60;. 
    * @return sourceAccount
   **/
   @javax.annotation.Nonnull
@@ -138,7 +138,7 @@ public class AllocationRequest {
   }
 
    /**
-   * Get destinationAccount
+   * The destination account.  - If the destination account is a merchant account, provide the merchant&#39;s ID (e.g., \&quot;M1001\&quot;). - If the destination account is the developer account, use the string &#x60;\&quot;developer\&quot;&#x60;. 
    * @return destinationAccount
   **/
   @javax.annotation.Nonnull
@@ -157,7 +157,7 @@ public class AllocationRequest {
   }
 
    /**
-   * Get description
+   * The description of the allocation request.
    * @return description
   **/
   @javax.annotation.Nonnull

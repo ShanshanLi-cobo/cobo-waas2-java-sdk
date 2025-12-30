@@ -161,7 +161,7 @@ public class PaymentPayoutItem {
   }
 
    /**
-   * The token id of the payout item.
+   * The ID of the cryptocurrency paid out.
    * @return tokenId
   **/
   @javax.annotation.Nullable
@@ -180,7 +180,7 @@ public class PaymentPayoutItem {
   }
 
    /**
-   * The ID of the blockchain network on which the payout item occurred.
+   * The ID of the blockchain network on which the payout occurred.
    * @return chainId
   **/
   @javax.annotation.Nullable
@@ -199,7 +199,7 @@ public class PaymentPayoutItem {
   }
 
    /**
-   * The payout item token_id amount. 
+   * The amount of the cryptocurrency to pay out. 
    * @return amount
   **/
   @javax.annotation.Nonnull
@@ -237,7 +237,7 @@ public class PaymentPayoutItem {
   }
 
    /**
-   * Get sourceAccount
+   * The source account from which the payout was made. - If the source account is a merchant account, provide the merchant&#39;s ID (e.g., \&quot;M1001\&quot;). - If the source account is the developer account, use the string &#x60;\&quot;developer\&quot;&#x60;. 
    * @return sourceAccount
   **/
   @javax.annotation.Nonnull
@@ -264,7 +264,7 @@ public class PaymentPayoutItem {
   }
 
    /**
-   * An array of transactions associated with this payout item request. Each transaction represents a separate blockchain operation related to the payout item process.
+   * An array of transactions associated with this payout item. Each transaction represents a separate blockchain operation related to the payout item process.
    * @return transactions
   **/
   @javax.annotation.Nullable
@@ -321,7 +321,7 @@ public class PaymentPayoutItem {
   }
 
    /**
-   * Unique identifier for the pre-approved crypto address, used to reference the address securely in requests.
+   * The ID of the crypto address used for crypto payouts.
    * @return cryptoAddressId
   **/
   @javax.annotation.Nullable

@@ -197,7 +197,7 @@ public class MerchantBalance {
   }
 
    /**
-   * The merchant payout amount.
+   * This field is reserved for future use.
    * @return payoutAmount
   **/
   @javax.annotation.Nullable
@@ -235,7 +235,7 @@ public class MerchantBalance {
   }
 
    /**
-   *  The current balance of this token available to the merchant for payouts or refunds.  &#x60;total_balance&#x60; &#x3D; &#x60;total_received_amount&#x60; - &#x60;settled_amount&#x60; - &#x60;refunded_amount&#x60;  For more information, please refer to [Funds allocation and balances](https://www.cobo.com/payments/en/guides/amounts-and-balances) 
+   *  The current balance of this token available to the merchant for payouts or refunds.  For more information, please refer to [Accounts and fund allocation](https://www.cobo.com/payments/en/guides/amounts-and-balances) 
    * @return totalBalance
   **/
   @javax.annotation.Nullable
@@ -254,7 +254,7 @@ public class MerchantBalance {
   }
 
    /**
-   * The merchant available balance.
+   * This field has been deprecated. 
    * @return availableBalance
   **/
   @javax.annotation.Nullable
@@ -273,7 +273,7 @@ public class MerchantBalance {
   }
 
    /**
-   * The merchant locked balance.
+   * This field is reserved for future use.
    * @return lockedBalance
   **/
   @javax.annotation.Nullable

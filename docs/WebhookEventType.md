@@ -81,5 +81,7 @@
 
 * `COMPLIANCE_KYT_SCREENINGS_STATUS_UPDATED` (value: `"compliance.kyt.screenings.status.updated"`)
 
+* `COMPLIANCE_KYA_SCREENINGS_STATUS_UPDATED` (value: `"compliance.kya.screenings.status.updated"`)
+
 
 

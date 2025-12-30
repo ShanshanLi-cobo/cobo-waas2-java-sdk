@@ -150,7 +150,7 @@ public class PspBalance {
   }
 
    /**
-   * The psp payout amount.
+   * This field is reserved for future use.
    * @return payoutAmount
   **/
   @javax.annotation.Nullable
@@ -188,7 +188,7 @@ public class PspBalance {
   }
 
    /**
-   *  The total balance of the token available for payout or refund for the developer.  &#x60;total_balance&#x60; &#x3D; &#x60;developer_fee_amount&#x60; - &#x60;settled_amount&#x60; - &#x60;refunded_amount&#x60;  For more information, please refer to [Funds allocation and balances](https://www.cobo.com/payments/en/guides/amounts-and-balances) 
+   *  The total balance of the token available for payout or refund for the developer.  For more information, please refer to [Accounts and fund allocation](https://www.cobo.com/payments/en/guides/amounts-and-balances) 
    * @return totalBalance
   **/
   @javax.annotation.Nullable
@@ -207,7 +207,7 @@ public class PspBalance {
   }
 
    /**
-   * The psp available balance.
+   * This field has been deprecated. 
    * @return availableBalance
   **/
   @javax.annotation.Nullable
@@ -226,7 +226,7 @@ public class PspBalance {
   }
 
    /**
-   * The psp locked balance.
+   * This field is reserved for future use.
    * @return lockedBalance
   **/
   @javax.annotation.Nullable

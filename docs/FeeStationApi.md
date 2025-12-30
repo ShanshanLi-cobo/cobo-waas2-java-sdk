@@ -58,7 +58,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **feeStationCheckFeeStationUsage** | [**FeeStationCheckFeeStationUsage**](FeeStationCheckFeeStationUsage.md)| The information for evaluating Fee Station usage. | [optional] |
+| **feeStationCheckFeeStationUsage** | [**FeeStationCheckFeeStationUsage**](FeeStationCheckFeeStationUsage.md)| The request body for evaluating Fee Station usage. | [optional] |
 
 ### Return type
 
