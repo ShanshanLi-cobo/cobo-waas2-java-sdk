@@ -22,7 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * The current status of the payout: - &#x60;Pending&#x60;: The payout has been created and is awaiting processing. - &#x60;Processing&#x60;: The payout is currently being processed, with at least one payout in progress. - &#x60;Completed&#x60;: All requested payouts have been completed. - &#x60;PartiallyCompleted&#x60;: Some requested payouts have been completed successfully, while others have failed. - &#x60;Failed&#x60;: All requested payouts have failed. 
+ * The current status of the payout: - &#x60;Pending&#x60;: The payout has been created and is awaiting processing. - &#x60;Processing&#x60;: The payout is currently being processed, with at least one payout item in progress. - &#x60;Completed&#x60;: All requested payout items have been completed. - &#x60;PartiallyCompleted&#x60;: Some requested payout items have been completed successfully, while others have failed. - &#x60;Failed&#x60;: All requested payout items have failed. 
  */
 @JsonAdapter(PaymentPayoutStatus.Adapter.class)
 public enum PaymentPayoutStatus {

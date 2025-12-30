@@ -104,7 +104,7 @@ public class ContractCallParams {
   }
 
    /**
-   * The request ID that is used to track a transaction request. The request ID is provided by you and must be unique within your organization.
+   * A client-defined unique request identifier (idempotency key) used to prevent duplicate contract call requests. It must be unique within the same organization. Requests with the same request ID will be rejected with an error.
    * @return requestId
   **/
   @javax.annotation.Nonnull

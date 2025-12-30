@@ -88,7 +88,7 @@ public class CreateWalletAddress {
   }
 
    /**
-   * The chain ID of the cryptocurrency.
+   * The chain ID of the address.
    * @return chainId
   **/
   @javax.annotation.Nonnull

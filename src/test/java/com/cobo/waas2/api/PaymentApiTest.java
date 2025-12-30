@@ -23,10 +23,14 @@ import com.cobo.waas2.model.Counterparty;
 import com.cobo.waas2.model.CounterpartyDetail;
 import com.cobo.waas2.model.CounterpartyType;
 import com.cobo.waas2.model.CreateBatchAllocationRequest;
+import com.cobo.waas2.model.CreateCounterpartyEntry201Response;
+import com.cobo.waas2.model.CreateCounterpartyEntryRequest;
 import com.cobo.waas2.model.CreateCounterpartyRequest;
 import com.cobo.waas2.model.CreateCounterpartyWalletAddressRequest;
 import com.cobo.waas2.model.CreateCryptoAddressRequest;
 import com.cobo.waas2.model.CreateDestinationBankAccountRequest;
+import com.cobo.waas2.model.CreateDestinationEntry201Response;
+import com.cobo.waas2.model.CreateDestinationEntryRequest;
 import com.cobo.waas2.model.CreateDestinationRequest;
 import com.cobo.waas2.model.CreateDestinationWalletAddressRequest;
 import com.cobo.waas2.model.CreateMerchantRequest;
@@ -35,13 +39,18 @@ import com.cobo.waas2.model.CreatePaymentOrderRequest;
 import com.cobo.waas2.model.CreatePayoutRequest;
 import com.cobo.waas2.model.CreateRefundLinkRequest;
 import com.cobo.waas2.model.CreateRefundRequest;
+import com.cobo.waas2.model.CreateReportRequest;
 import com.cobo.waas2.model.CreateSettlementRequestRequest;
 import com.cobo.waas2.model.CryptoAddress;
 import com.cobo.waas2.model.DeleteCounterparty200Response;
+import com.cobo.waas2.model.DeleteCounterpartyById200Response;
+import com.cobo.waas2.model.DeleteCounterpartyEntry200Response;
 import com.cobo.waas2.model.DeleteCounterpartyWalletAddress200Response;
 import com.cobo.waas2.model.DeleteCryptoAddress201Response;
 import com.cobo.waas2.model.DeleteDestination200Response;
 import com.cobo.waas2.model.DeleteDestinationBankAccount200Response;
+import com.cobo.waas2.model.DeleteDestinationById200Response;
+import com.cobo.waas2.model.DeleteDestinationEntry200Response;
 import com.cobo.waas2.model.DeleteDestinationWalletAddress200Response;
 import com.cobo.waas2.model.Destination;
 import com.cobo.waas2.model.DestinationBankAccount;
@@ -49,19 +58,25 @@ import com.cobo.waas2.model.DestinationBankAccountDetail;
 import com.cobo.waas2.model.DestinationDetail;
 import com.cobo.waas2.model.DestinationType;
 import com.cobo.waas2.model.EnableDestinationWhitelistRequest;
+import com.cobo.waas2.model.EntryType;
 import com.cobo.waas2.model.ErrorResponse;
 import com.cobo.waas2.model.ExchangeRate;
 import com.cobo.waas2.model.ForcedSweep;
 import com.cobo.waas2.model.ForcedSweepRequest;
+import com.cobo.waas2.model.GetCounterpartyEntry200Response;
+import com.cobo.waas2.model.GetDestinationEntry200Response;
 import com.cobo.waas2.model.GetExchangeRate200Response;
 import com.cobo.waas2.model.GetRefunds200Response;
+import com.cobo.waas2.model.GetReports200Response;
 import com.cobo.waas2.model.GetSettlementInfoByIds200Response;
 import com.cobo.waas2.model.Link;
 import com.cobo.waas2.model.ListAllocations200Response;
 import com.cobo.waas2.model.ListBatchAllocations200Response;
 import com.cobo.waas2.model.ListCounterparties200Response;
+import com.cobo.waas2.model.ListCounterpartyEntries200Response;
 import com.cobo.waas2.model.ListCounterpartyWalletAddress200Response;
 import com.cobo.waas2.model.ListDestinationBankAccounts200Response;
+import com.cobo.waas2.model.ListDestinationEntries200Response;
 import com.cobo.waas2.model.ListDestinationWalletAddresses200Response;
 import com.cobo.waas2.model.ListDestinations200Response;
 import com.cobo.waas2.model.ListForcedSweepRequests200Response;
@@ -85,14 +100,21 @@ import com.cobo.waas2.model.PaymentPayoutDetail;
 import com.cobo.waas2.model.PspBalance;
 import com.cobo.waas2.model.QueryDestinationWhitelistEnabled200Response;
 import com.cobo.waas2.model.Refund;
+import com.cobo.waas2.model.Report;
+import com.cobo.waas2.model.ReportStatus;
+import com.cobo.waas2.model.ReportType;
 import com.cobo.waas2.model.Settlement;
 import com.cobo.waas2.model.SupportedToken;
 import com.cobo.waas2.model.TopUpAddress;
 import java.util.UUID;
 import com.cobo.waas2.model.UpdateBankAccountByIdRequest;
 import com.cobo.waas2.model.UpdateCounterpartyByIdRequest;
+import com.cobo.waas2.model.UpdateCounterpartyRequest;
 import com.cobo.waas2.model.UpdateDestinationBankAccount;
 import com.cobo.waas2.model.UpdateDestinationByIdRequest;
+import com.cobo.waas2.model.UpdateDestinationEntry200Response;
+import com.cobo.waas2.model.UpdateDestinationEntryRequest;
+import com.cobo.waas2.model.UpdateDestinationRequest;
 import com.cobo.waas2.model.UpdateMerchantByIdRequest;
 import com.cobo.waas2.model.UpdatePaymentOrderRequest;
 import com.cobo.waas2.model.UpdateRefundByIdRequest;
@@ -152,7 +174,7 @@ public class PaymentApiTest {
     /**
      * Create batch allocation
      *
-     * This operation creates a batch allocation to withdraw available balances.   You can include multiple merchants and cryptocurrencies in a single batch allocation. 
+     * This operation allocates funds between multiple accounts in one batch request. 
      *
      * @throws ApiException if the Api call fails
      */
@@ -166,7 +188,7 @@ public class PaymentApiTest {
     /**
      * Create counterparty
      *
-     * This operation creates a counterparty. 
+     * This operation creates a [counterparty](https://www.cobo.com/payments/en/guides/counterparties). 
      *
      * @throws ApiException if the Api call fails
      */
@@ -174,6 +196,20 @@ public class PaymentApiTest {
     public void createCounterpartyTest() throws ApiException {
         CreateCounterpartyRequest createCounterpartyRequest = null;
         CounterpartyDetail response = api.createCounterparty(createCounterpartyRequest);
+        // TODO: test validations
+    }
+
+    /**
+     * Create counterparty entry
+     *
+     * This operation creates one or more entries for a counterparty.   A counterparty entry is a record of a counterparty&#39;s wallet address. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void createCounterpartyEntryTest() throws ApiException {
+        CreateCounterpartyEntryRequest createCounterpartyEntryRequest = null;
+        CreateCounterpartyEntry201Response response = api.createCounterpartyEntry(createCounterpartyEntryRequest);
         // TODO: test validations
     }
 
@@ -208,7 +244,7 @@ public class PaymentApiTest {
     /**
      * Create destination
      *
-     * This operation creates a destination. 
+     * This operation creates a [destination](https://www.cobo.com/payments/en/guides/destinations). 
      *
      * @throws ApiException if the Api call fails
      */
@@ -230,6 +266,20 @@ public class PaymentApiTest {
     public void createDestinationBankAccountTest() throws ApiException {
         CreateDestinationBankAccountRequest createDestinationBankAccountRequest = null;
         DestinationBankAccount response = api.createDestinationBankAccount(createDestinationBankAccountRequest);
+        // TODO: test validations
+    }
+
+    /**
+     * Create destination entry
+     *
+     * This operation creates one or more entries for a destination. A destination entry is a record of a destination&#39;s wallet addresses or bank accounts. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void createDestinationEntryTest() throws ApiException {
+        CreateDestinationEntryRequest createDestinationEntryRequest = null;
+        CreateDestinationEntry201Response response = api.createDestinationEntry(createDestinationEntryRequest);
         // TODO: test validations
     }
 
@@ -306,7 +356,7 @@ public class PaymentApiTest {
     /**
      * Create payout
      *
-     * This operation creates a payout to withdraw available balances.   You can include multiple merchants and cryptocurrencies in a single payout record. 
+     * This operation initiates a payout, distributing funds either to cryptocurrency addresses or to bank accounts as fiat currency. 
      *
      * @throws ApiException if the Api call fails
      */
@@ -346,6 +396,20 @@ public class PaymentApiTest {
     }
 
     /**
+     * Generate reports
+     *
+     *  This operation generates reports for a variety of payment activities, including pay-ins, payouts, and commission fees. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void createReportTest() throws ApiException {
+        CreateReportRequest createReportRequest = null;
+        Report response = api.createReport(createReportRequest);
+        // TODO: test validations
+    }
+
+    /**
      * Create settlement request
      *
      * This operation creates a settlement request to withdraw available balances. 
@@ -360,7 +424,7 @@ public class PaymentApiTest {
     }
 
     /**
-     * Delete counterparty
+     * Delete counterparty (Deprecated)
      *
      * This operation deletes a counterparty. 
      *
@@ -370,6 +434,36 @@ public class PaymentApiTest {
     public void deleteCounterpartyTest() throws ApiException {
         String counterpartyId = null;
         DeleteCounterparty200Response response = api.deleteCounterparty(counterpartyId);
+        // TODO: test validations
+    }
+
+    /**
+     * Delete counterparty
+     *
+     * This operation deletes a counterparty. Note that this operation will delete all entries under the counterparty. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void deleteCounterpartyByIdTest() throws ApiException {
+        String counterpartyId = null;
+        DeleteCounterpartyById200Response response = api.deleteCounterpartyById(counterpartyId);
+        // TODO: test validations
+    }
+
+    /**
+     * Delete counterparty entry
+     *
+     * This operation deletes a counterparty entry. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void deleteCounterpartyEntryTest() throws ApiException {
+        String counterpartyEntryId = null;
+        String counterpartyId = null;
+        EntryType entryType = null;
+        DeleteCounterpartyEntry200Response response = api.deleteCounterpartyEntry(counterpartyEntryId, counterpartyId, entryType);
         // TODO: test validations
     }
 
@@ -402,7 +496,7 @@ public class PaymentApiTest {
     }
 
     /**
-     * Delete destination
+     * Delete destination (Deprecated)
      *
      * This operation deletes a destination. 
      *
@@ -426,6 +520,36 @@ public class PaymentApiTest {
     public void deleteDestinationBankAccountTest() throws ApiException {
         UUID bankAccountId = null;
         DeleteDestinationBankAccount200Response response = api.deleteDestinationBankAccount(bankAccountId);
+        // TODO: test validations
+    }
+
+    /**
+     * Delete destination
+     *
+     * This operation deletes a destination. Note that this operation will delete all entries under the destination, including bank accounts and addresses. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void deleteDestinationByIdTest() throws ApiException {
+        String destinationId = null;
+        DeleteDestinationById200Response response = api.deleteDestinationById(destinationId);
+        // TODO: test validations
+    }
+
+    /**
+     * Delete destination entry
+     *
+     * This operation deletes a destination entry. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void deleteDestinationEntryTest() throws ApiException {
+        String destinationEntryId = null;
+        String destinationId = null;
+        EntryType entryType = null;
+        DeleteDestinationEntry200Response response = api.deleteDestinationEntry(destinationEntryId, destinationId, entryType);
         // TODO: test validations
     }
 
@@ -460,7 +584,7 @@ public class PaymentApiTest {
     /**
      * Get available allocation amount
      *
-     * This operation retrieves the information of available allocation amount. 
+     * This operation retrieves the available amount that can be allocated from a source account to a destination account. 
      *
      * @throws ApiException if the Api call fails
      */
@@ -474,7 +598,7 @@ public class PaymentApiTest {
     }
 
     /**
-     * Get batch allocation by id
+     * Get batch allocation information
      *
      * This operation retrieves the information of a batch allocation. 
      *
@@ -495,9 +619,52 @@ public class PaymentApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
+    public void getCounterpartyTest() throws ApiException {
+        String counterpartyId = null;
+        CounterpartyDetail response = api.getCounterparty(counterpartyId);
+        // TODO: test validations
+    }
+
+    /**
+     * Get counterparty information (Deprecated)
+     *
+     * This operation retrieves the detailed information about a specified counterparty. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
     public void getCounterpartyDetailByIdTest() throws ApiException {
         String counterpartyId = null;
         CounterpartyDetail response = api.getCounterpartyDetailById(counterpartyId);
+        // TODO: test validations
+    }
+
+    /**
+     * Get counterparty entry information
+     *
+     * This operation retrieves the detailed information about a specified counterparty entry. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getCounterpartyEntryTest() throws ApiException {
+        String counterpartyEntryId = null;
+        EntryType entryType = null;
+        GetCounterpartyEntry200Response response = api.getCounterpartyEntry(counterpartyEntryId, entryType);
+        // TODO: test validations
+    }
+
+    /**
+     * Get destination information
+     *
+     * This operation retrieves the detailed information about a specified destination. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getDestinationTest() throws ApiException {
+        String destinationId = null;
+        DestinationDetail response = api.getDestination(destinationId);
         // TODO: test validations
     }
 
@@ -516,7 +683,7 @@ public class PaymentApiTest {
     }
 
     /**
-     * Get destination information
+     * Get destination information (Deprecated)
      *
      * This operation retrieves the detailed information about a specified destination. 
      *
@@ -526,6 +693,21 @@ public class PaymentApiTest {
     public void getDestinationDetailByIdTest() throws ApiException {
         String destinationId = null;
         DestinationDetail response = api.getDestinationDetailById(destinationId);
+        // TODO: test validations
+    }
+
+    /**
+     * Get destination entry information
+     *
+     * This operation retrieves the detailed information about a specified destination entry. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getDestinationEntryTest() throws ApiException {
+        String destinationEntryId = null;
+        EntryType entryType = null;
+        GetDestinationEntry200Response response = api.getDestinationEntry(destinationEntryId, entryType);
         // TODO: test validations
     }
 
@@ -575,7 +757,7 @@ public class PaymentApiTest {
     /**
      * Get developer balance
      *
-     * This operation retrieves the balance information for you as the developer. The balance information is grouped by token.  For more information, please refer to [Funds allocation and balances](https://www.cobo.com/payments/en/guides/amounts-and-balances). 
+     * This operation retrieves the balance information for you as the developer. The balance information is grouped by token.  For more information, please refer to [Accounts and fund allocation](https://www.cobo.com/payments/en/guides/amounts-and-balances). 
      *
      * @throws ApiException if the Api call fails
      */
@@ -616,6 +798,24 @@ public class PaymentApiTest {
         String requestId = null;
         String statuses = null;
         GetRefunds200Response response = api.getRefunds(limit, before, after, merchantId, requestId, statuses);
+        // TODO: test validations
+    }
+
+    /**
+     * List all reports
+     *
+     * This operation retrieves the information of all reports. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getReportsTest() throws ApiException {
+        Integer limit = null;
+        String before = null;
+        String after = null;
+        ReportType reportType = null;
+        ReportStatus reportStatus = null;
+        GetReports200Response response = api.getReports(limit, before, after, reportType, reportStatus);
         // TODO: test validations
     }
 
@@ -666,9 +866,9 @@ public class PaymentApiTest {
     }
 
     /**
-     * List all allocations
+     * List all allocation records
      *
-     * This operation retrieves the information of all allocations. 
+     * This operation retrieves the information of all allocation records.   One allocation record corresponds to one allocation request in a batch allocation. 
      *
      * @throws ApiException if the Api call fails
      */
@@ -688,7 +888,7 @@ public class PaymentApiTest {
     /**
      * List all bank accounts
      *
-     * This operation retrieves the information of all bank accounts you have registered for payment settlement. Contact our support team at [help@cobo.com](mailto:help@cobo.com) to register a new bank account. 
+     *  &lt;Note&gt;This operation has been deprecated.&lt;/Note&gt; This operation retrieves the information of all bank accounts you have registered for payment settlement. Contact our support team at [help@cobo.com](mailto:help@cobo.com) to register a new bank account. 
      *
      * @throws ApiException if the Api call fails
      */
@@ -731,6 +931,26 @@ public class PaymentApiTest {
         CounterpartyType counterpartyType = null;
         String country = null;
         ListCounterparties200Response response = api.listCounterparties(limit, before, after, keyword, counterpartyType, country);
+        // TODO: test validations
+    }
+
+    /**
+     * List counterparty entries
+     *
+     * This operation retrieves the information of counterparty entries. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void listCounterpartyEntriesTest() throws ApiException {
+        Integer limit = null;
+        String before = null;
+        String after = null;
+        EntryType entryType = null;
+        String counterpartyId = null;
+        String chainIds = null;
+        String walletAddress = null;
+        ListCounterpartyEntries200Response response = api.listCounterpartyEntries(limit, before, after, entryType, counterpartyId, chainIds, walletAddress);
         // TODO: test validations
     }
 
@@ -783,6 +1003,28 @@ public class PaymentApiTest {
         String destinationId = null;
         BankAccountStatus bankAccountStatus = null;
         ListDestinationBankAccounts200Response response = api.listDestinationBankAccounts(limit, before, after, keyword, destinationId, bankAccountStatus);
+        // TODO: test validations
+    }
+
+    /**
+     * List destination entries
+     *
+     * This operation retrieves the information of destination entries. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void listDestinationEntriesTest() throws ApiException {
+        EntryType entryType = null;
+        Integer limit = null;
+        String before = null;
+        String after = null;
+        String destinationId = null;
+        String chainIds = null;
+        String walletAddress = null;
+        String keyword = null;
+        BankAccountStatus bankAccountStatus = null;
+        ListDestinationEntries200Response response = api.listDestinationEntries(entryType, limit, before, after, destinationId, chainIds, walletAddress, keyword, bankAccountStatus);
         // TODO: test validations
     }
 
@@ -845,7 +1087,7 @@ public class PaymentApiTest {
     /**
      * List merchant balances
      *
-     *  This operation retrieves the balance information for specified merchants.   The balance information is grouped by token and acquiring type. If you do not specify the &#x60;merchant_ids&#x60; parameter, the balance information for all merchants will be returned.  For more information, please refer to [Funds allocation and balances](https://www.cobo.com/payments/en/guides/amounts-and-balances). 
+     *  This operation retrieves the balance information for specified merchants.   The balance information is grouped by token and acquiring type. If you do not specify the &#x60;merchant_ids&#x60; parameter, the balance information for all merchants will be returned.  For more information, please refer to [Accounts and fund allocation](https://www.cobo.com/payments/en/guides/amounts-and-balances). 
      *
      * @throws ApiException if the Api call fails
      */
@@ -927,7 +1169,7 @@ public class PaymentApiTest {
     /**
      * List all payout items
      *
-     * This operation retrieves the information of all payout items. You can filter the result by merchant ID or status. 
+     * This operation retrieves the information of all payout items. You can filter the result by source account or status. 
      *
      * @throws ApiException if the Api call fails
      */
@@ -1080,10 +1322,40 @@ public class PaymentApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
+    public void updateCounterpartyTest() throws ApiException {
+        String counterpartyId = null;
+        UpdateCounterpartyRequest updateCounterpartyRequest = null;
+        Counterparty response = api.updateCounterparty(counterpartyId, updateCounterpartyRequest);
+        // TODO: test validations
+    }
+
+    /**
+     * Update counterparty (Deprecated)
+     *
+     * This operation updates the information of a specified counterparty. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
     public void updateCounterpartyByIdTest() throws ApiException {
         String counterpartyId = null;
         UpdateCounterpartyByIdRequest updateCounterpartyByIdRequest = null;
         Counterparty response = api.updateCounterpartyById(counterpartyId, updateCounterpartyByIdRequest);
+        // TODO: test validations
+    }
+
+    /**
+     * Update destination
+     *
+     * This operation updates the information of a specified destination. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void updateDestinationTest() throws ApiException {
+        String destinationId = null;
+        UpdateDestinationRequest updateDestinationRequest = null;
+        Destination response = api.updateDestination(destinationId, updateDestinationRequest);
         // TODO: test validations
     }
 
@@ -1103,7 +1375,7 @@ public class PaymentApiTest {
     }
 
     /**
-     * Update destination
+     * Update destination (Deprecated)
      *
      * This operation updates the information of a specified destination. 
      *
@@ -1114,6 +1386,21 @@ public class PaymentApiTest {
         String destinationId = null;
         UpdateDestinationByIdRequest updateDestinationByIdRequest = null;
         Destination response = api.updateDestinationById(destinationId, updateDestinationByIdRequest);
+        // TODO: test validations
+    }
+
+    /**
+     * Update destination entry
+     *
+     * This operation updates the information of a specified destination entry. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void updateDestinationEntryTest() throws ApiException {
+        String destinationEntryId = null;
+        UpdateDestinationEntryRequest updateDestinationEntryRequest = null;
+        UpdateDestinationEntry200Response response = api.updateDestinationEntry(destinationEntryId, updateDestinationEntryRequest);
         // TODO: test validations
     }
 

@@ -21,17 +21,18 @@ import com.cobo.waas2.model.ChainInfo;
 import com.cobo.waas2.model.ChainsEventData;
 import com.cobo.waas2.model.CommissionFee;
 import com.cobo.waas2.model.ComplianceDispositionUpdateEventData;
+import com.cobo.waas2.model.ComplianceKyaScreeningsUpdateEventData;
 import com.cobo.waas2.model.ComplianceKytScreeningsUpdateEventData;
 import com.cobo.waas2.model.DispositionStatus;
 import com.cobo.waas2.model.DispositionType;
 import com.cobo.waas2.model.FundsStatusType;
+import com.cobo.waas2.model.KyaScreeningStatus;
 import com.cobo.waas2.model.KytScreeningsTransactionType;
 import com.cobo.waas2.model.MPCVaultEventData;
 import com.cobo.waas2.model.PaymentAddressUpdateEventData;
 import com.cobo.waas2.model.PaymentOrderEventData;
 import com.cobo.waas2.model.PaymentPayoutEvent;
 import com.cobo.waas2.model.PaymentPayoutItemDetail;
-import com.cobo.waas2.model.PaymentPayoutStatus;
 import com.cobo.waas2.model.PaymentRefundEventData;
 import com.cobo.waas2.model.PaymentSettlementEvent;
 import com.cobo.waas2.model.PaymentTransaction;
@@ -907,6 +908,14 @@ public class WebhookEventDataTest {
     @Test
     public void fundsStatusTest() {
         // TODO: test fundsStatus
+    }
+
+    /**
+     * Test the property 'screeningId'
+     */
+    @Test
+    public void screeningIdTest() {
+        // TODO: test screeningId
     }
 
 }

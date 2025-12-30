@@ -22,7 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * The channel through which settlement funds will be transferred. Available options: - &#x60;Crypto&#x60;: Direct withdrawal to a registered crypto address. - &#x60;OffRamp&#x60;: Settle to a registered bank account. 
+ * The channel through which payouts will be processed. Available options: - &#x60;Crypto&#x60;: Direct withdrawal to a crypto address. - &#x60;OffRamp&#x60;: Settle to a registered bank account. 
  */
 @JsonAdapter(PayoutChannel.Adapter.class)
 public enum PayoutChannel {

@@ -102,7 +102,9 @@ public enum WebhookEventType {
   
   COMPLIANCE_DISPOSITION_STATUS_UPDATED("compliance.disposition.status.updated"),
   
-  COMPLIANCE_KYT_SCREENINGS_STATUS_UPDATED("compliance.kyt.screenings.status.updated");
+  COMPLIANCE_KYT_SCREENINGS_STATUS_UPDATED("compliance.kyt.screenings.status.updated"),
+  
+  COMPLIANCE_KYA_SCREENINGS_STATUS_UPDATED("compliance.kya.screenings.status.updated");
 
   private String value;
 
