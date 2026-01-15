@@ -52,6 +52,14 @@ public class TransactionSelectedUtxoTest {
     }
 
     /**
+     * Test the property 'tokenId'
+     */
+    @Test
+    public void tokenIdTest() {
+        // TODO: test tokenId
+    }
+
+    /**
      * Test the property 'address'
      */
     @Test
@@ -81,6 +89,22 @@ public class TransactionSelectedUtxoTest {
     @Test
     public void revealedScriptTest() {
         // TODO: test revealedScript
+    }
+
+    /**
+     * Test the property 'objectId'
+     */
+    @Test
+    public void objectIdTest() {
+        // TODO: test objectId
+    }
+
+    /**
+     * Test the property 'version'
+     */
+    @Test
+    public void versionTest() {
+        // TODO: test version
     }
 
 }

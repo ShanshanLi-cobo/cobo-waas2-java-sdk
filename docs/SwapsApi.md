@@ -7,6 +7,7 @@ All URIs are relative to *https://api.dev.cobo.com/v2*
 | [**createSwapActivity**](SwapsApi.md#createSwapActivity) | **POST** /swaps/swap | Create Swap Activity |
 | [**estimateSwapFee**](SwapsApi.md#estimateSwapFee) | **POST** /swaps/estimate_fee | Estimate Swap Fee |
 | [**getSwapActivity**](SwapsApi.md#getSwapActivity) | **GET** /swaps/activities/{activity_id} | Get Swap Activity Details |
+| [**getSwapLimitsAndLiquidity**](SwapsApi.md#getSwapLimitsAndLiquidity) | **GET** /swaps/limits_and_liquidity | Get Swap Limits and Liquidity |
 | [**getSwapQuote**](SwapsApi.md#getSwapQuote) | **GET** /swaps/quote | Get Current Swap Rate |
 | [**listSwapActivities**](SwapsApi.md#listSwapActivities) | **GET** /swaps/activities | List Swap Activities |
 | [**listSwapEnabledTokens**](SwapsApi.md#listSwapEnabledTokens) | **GET** /swaps/enabled_tokens | List Enabled Tokens |
@@ -216,6 +217,80 @@ public class Example {
 | **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
 | **5XX** | Internal server error. |  -  |
 
+<a id="getSwapLimitsAndLiquidity"></a>
+# **getSwapLimitsAndLiquidity**
+> SwapLimitsAndLiquidity getSwapLimitsAndLiquidity(payTokenId, receiveTokenId, walletSubtype, type)
+
+Get Swap Limits and Liquidity
+
+This operation retrieves the trading limits and available liquidity for a specific swap trading pair. The limits include minimum and maximum amounts for both pay and receive tokens, as well as the available liquidity in both pay token and USD. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.SwapsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    SwapsApi apiInstance = new SwapsApi();
+    String payTokenId = "ETH";
+    String receiveTokenId = "USDT";
+    WalletSubtype walletSubtype = WalletSubtype.fromValue("Asset");
+    SwapType type = SwapType.fromValue("Bridge");
+    try {
+      SwapLimitsAndLiquidity result = apiInstance.getSwapLimitsAndLiquidity(payTokenId, receiveTokenId, walletSubtype, type);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling SwapsApi#getSwapLimitsAndLiquidity");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **payTokenId** | **String**| Unique id of the token to pay. | |
+| **receiveTokenId** | **String**| Unique id of the token to receive. | |
+| **walletSubtype** | [**WalletSubtype**](.md)| The wallet subtype.  - &#x60;Asset&#x60;: Custodial Wallets (Asset Wallets)  - &#x60;Web3&#x60;: Custodial Wallets (Web3 Wallets)  - &#x60;Main&#x60;: Exchange Wallets (Main Account)  - &#x60;Sub&#x60;: Exchange Wallets (Sub Account)  - &#x60;Org-Controlled&#x60;: MPC Wallets (Organization-Controlled Wallets)  - &#x60;User-Controlled&#x60;: MPC Wallets (User-Controlled Wallets)  - &#x60;Safe{Wallet}&#x60;: Smart Contract Wallets (Safe{Wallet})  | [enum: Asset, Web3, Org-Controlled, User-Controlled, Safe{Wallet}, Main, Sub] |
+| **type** | [**SwapType**](.md)|  | [optional] [enum: Bridge, Exchange] |
+
+### Return type
+
+[**SwapLimitsAndLiquidity**](SwapLimitsAndLiquidity.md)
+
+### Authorization
+
+[CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The swap limits and liquidity information have been successfully retrieved. |  -  |
+| **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **5XX** | Internal server error. |  -  |
+
 <a id="getSwapQuote"></a>
 # **getSwapQuote**
 > SwapQuote getSwapQuote(walletId, payTokenId, receiveTokenId, payAmount, receiveAmount)
@@ -294,7 +369,7 @@ public class Example {
 
 <a id="listSwapActivities"></a>
 # **listSwapActivities**
-> ListSwapActivities200Response listSwapActivities(type, status, minUpdatedTimestamp, maxUpdatedTimestamp, initiator, limit, before, after, sortBy, direction)
+> ListSwapActivities200Response listSwapActivities(requestId, type, status, minUpdatedTimestamp, maxUpdatedTimestamp, initiator, limit, before, after, sortBy, direction)
 
 List Swap Activities
 
@@ -319,6 +394,7 @@ public class Example {
     // Replace `<YOUR_PRIVATE_KEY>` with your private key
     defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
     SwapsApi apiInstance = new SwapsApi();
+    String requestId = "web_send_by_user_327_1610444045047";
     SwapType type = SwapType.fromValue("Bridge");
     SwapActivityStatus status = SwapActivityStatus.fromValue("Success");
     Long minUpdatedTimestamp = 1635744000000L;
@@ -330,7 +406,7 @@ public class Example {
     String sortBy = "created_timestamp";
     String direction = "ASC";
     try {
-      ListSwapActivities200Response result = apiInstance.listSwapActivities(type, status, minUpdatedTimestamp, maxUpdatedTimestamp, initiator, limit, before, after, sortBy, direction);
+      ListSwapActivities200Response result = apiInstance.listSwapActivities(requestId, type, status, minUpdatedTimestamp, maxUpdatedTimestamp, initiator, limit, before, after, sortBy, direction);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SwapsApi#listSwapActivities");
@@ -347,6 +423,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
+| **requestId** | **String**| The request ID that is used to track a transaction request. The request ID is provided by you and must be unique within your organization. | [optional] |
 | **type** | [**SwapType**](.md)|  | [optional] [enum: Bridge, Exchange] |
 | **status** | [**SwapActivityStatus**](.md)|  | [optional] [enum: Success, Processing, Failed] |
 | **minUpdatedTimestamp** | **Long**| The start time of the query. All staking activities updated after the specified time will be retrieved. The time is in Unix timestamp format, measured in milliseconds. | [optional] |

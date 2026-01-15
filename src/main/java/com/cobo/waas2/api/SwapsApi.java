@@ -33,9 +33,11 @@ import com.cobo.waas2.model.ListSwapEnabledTokens200Response;
 import com.cobo.waas2.model.SwapActivityDetail;
 import com.cobo.waas2.model.SwapActivityStatus;
 import com.cobo.waas2.model.SwapEstimateFee;
+import com.cobo.waas2.model.SwapLimitsAndLiquidity;
 import com.cobo.waas2.model.SwapQuote;
 import com.cobo.waas2.model.SwapType;
 import java.util.UUID;
+import com.cobo.waas2.model.WalletSubtype;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -417,6 +419,161 @@ public class SwapsApi {
         return localVarCall;
     }
     /**
+     * Build call for getSwapLimitsAndLiquidity
+     * @param payTokenId Unique id of the token to pay. (required)
+     * @param receiveTokenId Unique id of the token to receive. (required)
+     * @param walletSubtype The wallet subtype.  - &#x60;Asset&#x60;: Custodial Wallets (Asset Wallets)  - &#x60;Web3&#x60;: Custodial Wallets (Web3 Wallets)  - &#x60;Main&#x60;: Exchange Wallets (Main Account)  - &#x60;Sub&#x60;: Exchange Wallets (Sub Account)  - &#x60;Org-Controlled&#x60;: MPC Wallets (Organization-Controlled Wallets)  - &#x60;User-Controlled&#x60;: MPC Wallets (User-Controlled Wallets)  - &#x60;Safe{Wallet}&#x60;: Smart Contract Wallets (Safe{Wallet})  (required)
+     * @param type  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The swap limits and liquidity information have been successfully retrieved. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSwapLimitsAndLiquidityCall(String payTokenId, String receiveTokenId, WalletSubtype walletSubtype, SwapType type, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/swaps/limits_and_liquidity";
+
+        List<Pair> localVarQueryParams = new ArrayList<>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<>();
+        Map<String, String> localVarHeaderParams = new HashMap<>();
+        Map<String, String> localVarCookieParams = new HashMap<>();
+        Map<String, Object> localVarFormParams = new HashMap<>();
+
+        if (payTokenId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("pay_token_id", payTokenId));
+        }
+
+        if (receiveTokenId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("receive_token_id", receiveTokenId));
+        }
+
+        if (walletSubtype != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("wallet_subtype", walletSubtype));
+        }
+
+        if (type != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("type", type));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(null, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getSwapLimitsAndLiquidityValidateBeforeCall(String payTokenId, String receiveTokenId, WalletSubtype walletSubtype, SwapType type, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'payTokenId' is set
+        if (payTokenId == null) {
+            throw new ApiException("Missing the required parameter 'payTokenId' when calling getSwapLimitsAndLiquidity(Async)");
+        }
+
+        // verify the required parameter 'receiveTokenId' is set
+        if (receiveTokenId == null) {
+            throw new ApiException("Missing the required parameter 'receiveTokenId' when calling getSwapLimitsAndLiquidity(Async)");
+        }
+
+        // verify the required parameter 'walletSubtype' is set
+        if (walletSubtype == null) {
+            throw new ApiException("Missing the required parameter 'walletSubtype' when calling getSwapLimitsAndLiquidity(Async)");
+        }
+
+        return getSwapLimitsAndLiquidityCall(payTokenId, receiveTokenId, walletSubtype, type, _callback);
+
+    }
+
+    /**
+     * Get Swap Limits and Liquidity
+     * This operation retrieves the trading limits and available liquidity for a specific swap trading pair. The limits include minimum and maximum amounts for both pay and receive tokens, as well as the available liquidity in both pay token and USD. 
+     * @param payTokenId Unique id of the token to pay. (required)
+     * @param receiveTokenId Unique id of the token to receive. (required)
+     * @param walletSubtype The wallet subtype.  - &#x60;Asset&#x60;: Custodial Wallets (Asset Wallets)  - &#x60;Web3&#x60;: Custodial Wallets (Web3 Wallets)  - &#x60;Main&#x60;: Exchange Wallets (Main Account)  - &#x60;Sub&#x60;: Exchange Wallets (Sub Account)  - &#x60;Org-Controlled&#x60;: MPC Wallets (Organization-Controlled Wallets)  - &#x60;User-Controlled&#x60;: MPC Wallets (User-Controlled Wallets)  - &#x60;Safe{Wallet}&#x60;: Smart Contract Wallets (Safe{Wallet})  (required)
+     * @param type  (optional)
+     * @return SwapLimitsAndLiquidity
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The swap limits and liquidity information have been successfully retrieved. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public SwapLimitsAndLiquidity getSwapLimitsAndLiquidity(String payTokenId, String receiveTokenId, WalletSubtype walletSubtype, SwapType type) throws ApiException {
+        ApiResponse<SwapLimitsAndLiquidity> localVarResp = getSwapLimitsAndLiquidityWithHttpInfo(payTokenId, receiveTokenId, walletSubtype, type);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get Swap Limits and Liquidity
+     * This operation retrieves the trading limits and available liquidity for a specific swap trading pair. The limits include minimum and maximum amounts for both pay and receive tokens, as well as the available liquidity in both pay token and USD. 
+     * @param payTokenId Unique id of the token to pay. (required)
+     * @param receiveTokenId Unique id of the token to receive. (required)
+     * @param walletSubtype The wallet subtype.  - &#x60;Asset&#x60;: Custodial Wallets (Asset Wallets)  - &#x60;Web3&#x60;: Custodial Wallets (Web3 Wallets)  - &#x60;Main&#x60;: Exchange Wallets (Main Account)  - &#x60;Sub&#x60;: Exchange Wallets (Sub Account)  - &#x60;Org-Controlled&#x60;: MPC Wallets (Organization-Controlled Wallets)  - &#x60;User-Controlled&#x60;: MPC Wallets (User-Controlled Wallets)  - &#x60;Safe{Wallet}&#x60;: Smart Contract Wallets (Safe{Wallet})  (required)
+     * @param type  (optional)
+     * @return ApiResponse&lt;SwapLimitsAndLiquidity&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The swap limits and liquidity information have been successfully retrieved. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<SwapLimitsAndLiquidity> getSwapLimitsAndLiquidityWithHttpInfo(String payTokenId, String receiveTokenId, WalletSubtype walletSubtype, SwapType type) throws ApiException {
+        okhttp3.Call localVarCall = getSwapLimitsAndLiquidityValidateBeforeCall(payTokenId, receiveTokenId, walletSubtype, type, null);
+        Type localVarReturnType = new TypeToken<SwapLimitsAndLiquidity>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get Swap Limits and Liquidity (asynchronously)
+     * This operation retrieves the trading limits and available liquidity for a specific swap trading pair. The limits include minimum and maximum amounts for both pay and receive tokens, as well as the available liquidity in both pay token and USD. 
+     * @param payTokenId Unique id of the token to pay. (required)
+     * @param receiveTokenId Unique id of the token to receive. (required)
+     * @param walletSubtype The wallet subtype.  - &#x60;Asset&#x60;: Custodial Wallets (Asset Wallets)  - &#x60;Web3&#x60;: Custodial Wallets (Web3 Wallets)  - &#x60;Main&#x60;: Exchange Wallets (Main Account)  - &#x60;Sub&#x60;: Exchange Wallets (Sub Account)  - &#x60;Org-Controlled&#x60;: MPC Wallets (Organization-Controlled Wallets)  - &#x60;User-Controlled&#x60;: MPC Wallets (User-Controlled Wallets)  - &#x60;Safe{Wallet}&#x60;: Smart Contract Wallets (Safe{Wallet})  (required)
+     * @param type  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The swap limits and liquidity information have been successfully retrieved. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSwapLimitsAndLiquidityAsync(String payTokenId, String receiveTokenId, WalletSubtype walletSubtype, SwapType type, final ApiCallback<SwapLimitsAndLiquidity> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getSwapLimitsAndLiquidityValidateBeforeCall(payTokenId, receiveTokenId, walletSubtype, type, _callback);
+        Type localVarReturnType = new TypeToken<SwapLimitsAndLiquidity>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getSwapQuote
      * @param walletId The wallet ID. (required)
      * @param payTokenId Unique id of the token to pay. (required)
@@ -581,6 +738,7 @@ public class SwapsApi {
     }
     /**
      * Build call for listSwapActivities
+     * @param requestId The request ID that is used to track a transaction request. The request ID is provided by you and must be unique within your organization. (optional)
      * @param type  (optional)
      * @param status  (optional)
      * @param minUpdatedTimestamp The start time of the query. All staking activities updated after the specified time will be retrieved. The time is in Unix timestamp format, measured in milliseconds. (optional)
@@ -602,7 +760,7 @@ public class SwapsApi {
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listSwapActivitiesCall(SwapType type, SwapActivityStatus status, Long minUpdatedTimestamp, Long maxUpdatedTimestamp, String initiator, Integer limit, String before, String after, String sortBy, String direction, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listSwapActivitiesCall(String requestId, SwapType type, SwapActivityStatus status, Long minUpdatedTimestamp, Long maxUpdatedTimestamp, String initiator, Integer limit, String before, String after, String sortBy, String direction, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -613,6 +771,10 @@ public class SwapsApi {
         Map<String, String> localVarHeaderParams = new HashMap<>();
         Map<String, String> localVarCookieParams = new HashMap<>();
         Map<String, Object> localVarFormParams = new HashMap<>();
+
+        if (requestId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("request_id", requestId));
+        }
 
         if (type != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("type", type));
@@ -674,14 +836,15 @@ public class SwapsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listSwapActivitiesValidateBeforeCall(SwapType type, SwapActivityStatus status, Long minUpdatedTimestamp, Long maxUpdatedTimestamp, String initiator, Integer limit, String before, String after, String sortBy, String direction, final ApiCallback _callback) throws ApiException {
-        return listSwapActivitiesCall(type, status, minUpdatedTimestamp, maxUpdatedTimestamp, initiator, limit, before, after, sortBy, direction, _callback);
+    private okhttp3.Call listSwapActivitiesValidateBeforeCall(String requestId, SwapType type, SwapActivityStatus status, Long minUpdatedTimestamp, Long maxUpdatedTimestamp, String initiator, Integer limit, String before, String after, String sortBy, String direction, final ApiCallback _callback) throws ApiException {
+        return listSwapActivitiesCall(requestId, type, status, minUpdatedTimestamp, maxUpdatedTimestamp, initiator, limit, before, after, sortBy, direction, _callback);
 
     }
 
     /**
      * List Swap Activities
      * This operation retrieves a list of swap activities. 
+     * @param requestId The request ID that is used to track a transaction request. The request ID is provided by you and must be unique within your organization. (optional)
      * @param type  (optional)
      * @param status  (optional)
      * @param minUpdatedTimestamp The start time of the query. All staking activities updated after the specified time will be retrieved. The time is in Unix timestamp format, measured in milliseconds. (optional)
@@ -702,14 +865,15 @@ public class SwapsApi {
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public ListSwapActivities200Response listSwapActivities(SwapType type, SwapActivityStatus status, Long minUpdatedTimestamp, Long maxUpdatedTimestamp, String initiator, Integer limit, String before, String after, String sortBy, String direction) throws ApiException {
-        ApiResponse<ListSwapActivities200Response> localVarResp = listSwapActivitiesWithHttpInfo(type, status, minUpdatedTimestamp, maxUpdatedTimestamp, initiator, limit, before, after, sortBy, direction);
+    public ListSwapActivities200Response listSwapActivities(String requestId, SwapType type, SwapActivityStatus status, Long minUpdatedTimestamp, Long maxUpdatedTimestamp, String initiator, Integer limit, String before, String after, String sortBy, String direction) throws ApiException {
+        ApiResponse<ListSwapActivities200Response> localVarResp = listSwapActivitiesWithHttpInfo(requestId, type, status, minUpdatedTimestamp, maxUpdatedTimestamp, initiator, limit, before, after, sortBy, direction);
         return localVarResp.getData();
     }
 
     /**
      * List Swap Activities
      * This operation retrieves a list of swap activities. 
+     * @param requestId The request ID that is used to track a transaction request. The request ID is provided by you and must be unique within your organization. (optional)
      * @param type  (optional)
      * @param status  (optional)
      * @param minUpdatedTimestamp The start time of the query. All staking activities updated after the specified time will be retrieved. The time is in Unix timestamp format, measured in milliseconds. (optional)
@@ -730,8 +894,8 @@ public class SwapsApi {
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ListSwapActivities200Response> listSwapActivitiesWithHttpInfo(SwapType type, SwapActivityStatus status, Long minUpdatedTimestamp, Long maxUpdatedTimestamp, String initiator, Integer limit, String before, String after, String sortBy, String direction) throws ApiException {
-        okhttp3.Call localVarCall = listSwapActivitiesValidateBeforeCall(type, status, minUpdatedTimestamp, maxUpdatedTimestamp, initiator, limit, before, after, sortBy, direction, null);
+    public ApiResponse<ListSwapActivities200Response> listSwapActivitiesWithHttpInfo(String requestId, SwapType type, SwapActivityStatus status, Long minUpdatedTimestamp, Long maxUpdatedTimestamp, String initiator, Integer limit, String before, String after, String sortBy, String direction) throws ApiException {
+        okhttp3.Call localVarCall = listSwapActivitiesValidateBeforeCall(requestId, type, status, minUpdatedTimestamp, maxUpdatedTimestamp, initiator, limit, before, after, sortBy, direction, null);
         Type localVarReturnType = new TypeToken<ListSwapActivities200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -739,6 +903,7 @@ public class SwapsApi {
     /**
      * List Swap Activities (asynchronously)
      * This operation retrieves a list of swap activities. 
+     * @param requestId The request ID that is used to track a transaction request. The request ID is provided by you and must be unique within your organization. (optional)
      * @param type  (optional)
      * @param status  (optional)
      * @param minUpdatedTimestamp The start time of the query. All staking activities updated after the specified time will be retrieved. The time is in Unix timestamp format, measured in milliseconds. (optional)
@@ -760,9 +925,9 @@ public class SwapsApi {
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listSwapActivitiesAsync(SwapType type, SwapActivityStatus status, Long minUpdatedTimestamp, Long maxUpdatedTimestamp, String initiator, Integer limit, String before, String after, String sortBy, String direction, final ApiCallback<ListSwapActivities200Response> _callback) throws ApiException {
+    public okhttp3.Call listSwapActivitiesAsync(String requestId, SwapType type, SwapActivityStatus status, Long minUpdatedTimestamp, Long maxUpdatedTimestamp, String initiator, Integer limit, String before, String after, String sortBy, String direction, final ApiCallback<ListSwapActivities200Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listSwapActivitiesValidateBeforeCall(type, status, minUpdatedTimestamp, maxUpdatedTimestamp, initiator, limit, before, after, sortBy, direction, _callback);
+        okhttp3.Call localVarCall = listSwapActivitiesValidateBeforeCall(requestId, type, status, minUpdatedTimestamp, maxUpdatedTimestamp, initiator, limit, before, after, sortBy, direction, _callback);
         Type localVarReturnType = new TypeToken<ListSwapActivities200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

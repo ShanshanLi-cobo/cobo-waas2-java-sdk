@@ -4,48 +4,77 @@ All URIs are relative to *https://api.dev.cobo.com/v2*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**batchGetExchangeRates**](PaymentApi.md#batchGetExchangeRates) | **GET** /payments/exchange_rates | Batch get exchange rates |
 | [**cancelRefundById**](PaymentApi.md#cancelRefundById) | **PUT** /payments/refunds/{refund_id}/cancel | Cancel refund order |
 | [**createBankAccount**](PaymentApi.md#createBankAccount) | **POST** /payments/bank_accounts | Create bank account |
+| [**createBatchAllocation**](PaymentApi.md#createBatchAllocation) | **POST** /payments/batch_allocations | Create batch allocation |
+| [**createBulkSend**](PaymentApi.md#createBulkSend) | **POST** /payments/bulk_sends | Create bulk send |
 | [**createCounterparty**](PaymentApi.md#createCounterparty) | **POST** /payments/counterparty | Create counterparty |
+| [**createCounterpartyEntry**](PaymentApi.md#createCounterpartyEntry) | **POST** /payments/counterparty_entry | Create counterparty entry |
 | [**createCounterpartyWalletAddress**](PaymentApi.md#createCounterpartyWalletAddress) | **POST** /payments/counterparty/wallet_address | Create counterparty wallet address |
 | [**createCryptoAddress**](PaymentApi.md#createCryptoAddress) | **POST** /payments/crypto_addresses | Create crypto address |
 | [**createDestination**](PaymentApi.md#createDestination) | **POST** /payments/destination | Create destination |
 | [**createDestinationBankAccount**](PaymentApi.md#createDestinationBankAccount) | **POST** /payments/destination/bank_account | Create destination bank account |
+| [**createDestinationEntry**](PaymentApi.md#createDestinationEntry) | **POST** /payments/destination_entry | Create destination entry |
 | [**createDestinationWalletAddress**](PaymentApi.md#createDestinationWalletAddress) | **POST** /payments/destination/wallet_address | Create destination wallet address |
 | [**createForcedSweepRequest**](PaymentApi.md#createForcedSweepRequest) | **POST** /payments/force_sweep_requests | Create force sweep request |
 | [**createMerchant**](PaymentApi.md#createMerchant) | **POST** /payments/merchants | Create merchant |
 | [**createOrderLink**](PaymentApi.md#createOrderLink) | **POST** /payments/links/orders | Create order link |
 | [**createPaymentOrder**](PaymentApi.md#createPaymentOrder) | **POST** /payments/orders | Create pay-in order |
+| [**createPayout**](PaymentApi.md#createPayout) | **POST** /payments/payouts | Create payout |
 | [**createRefund**](PaymentApi.md#createRefund) | **POST** /payments/refunds | Create refund order |
 | [**createRefundLink**](PaymentApi.md#createRefundLink) | **POST** /payments/links/refunds | Create refund link |
+| [**createReport**](PaymentApi.md#createReport) | **POST** /payments/reports | Create report |
 | [**createSettlementRequest**](PaymentApi.md#createSettlementRequest) | **POST** /payments/settlement_requests | Create settlement request |
 | [**createSubscriptionAction**](PaymentApi.md#createSubscriptionAction) | **POST** /payments/subscription_actions | Create a subscription action |
 | [**createSubscriptionPlan**](PaymentApi.md#createSubscriptionPlan) | **POST** /payments/subscription_plans | Create subscription plan |
+| [**createTopUpAddresses**](PaymentApi.md#createTopUpAddresses) | **POST** /payments/topup/address | Batch create top-up addresses |
 | [**deleteCounterparty**](PaymentApi.md#deleteCounterparty) | **PUT** /payments/counterparty/{counterparty_id}/delete | Delete counterparty |
+| [**deleteCounterpartyById**](PaymentApi.md#deleteCounterpartyById) | **DELETE** /payments/counterparty/{counterparty_id} | Delete counterparty |
+| [**deleteCounterpartyEntry**](PaymentApi.md#deleteCounterpartyEntry) | **DELETE** /payments/counterparty_entry/{counterparty_entry_id} | Delete counterparty entry |
 | [**deleteCounterpartyWalletAddress**](PaymentApi.md#deleteCounterpartyWalletAddress) | **PUT** /payments/counterparty/wallet_address/{wallet_address_id}/delete | Delete counterparty wallet address |
 | [**deleteCryptoAddress**](PaymentApi.md#deleteCryptoAddress) | **POST** /payments/crypto_addresses/{crypto_address_id}/delete | Delete crypto address |
 | [**deleteDestination**](PaymentApi.md#deleteDestination) | **PUT** /payments/destination/{destination_id}/delete | Delete destination |
 | [**deleteDestinationBankAccount**](PaymentApi.md#deleteDestinationBankAccount) | **PUT** /payments/destination/bank_account/{bank_account_id}/delete | Delete destination bank account |
+| [**deleteDestinationById**](PaymentApi.md#deleteDestinationById) | **DELETE** /payments/destination/{destination_id} | Delete destination |
+| [**deleteDestinationEntry**](PaymentApi.md#deleteDestinationEntry) | **DELETE** /payments/destination_entry/{destination_entry_id} | Delete destination entry |
 | [**deleteDestinationWalletAddress**](PaymentApi.md#deleteDestinationWalletAddress) | **PUT** /payments/destination/wallet_address/{wallet_address_id}/delete | Delete destination wallet address |
 | [**enableDestinationWhitelist**](PaymentApi.md#enableDestinationWhitelist) | **POST** /payments/destination/enable_whitelist | Enable or disable destination whitelist |
+| [**getAvailableAllocationAmount**](PaymentApi.md#getAvailableAllocationAmount) | **GET** /payments/allocation_amount | Get available allocation amount |
+| [**getBatchAllocationById**](PaymentApi.md#getBatchAllocationById) | **GET** /payments/batch_allocations/{batch_allocation_id} | Get batch allocation by id |
+| [**getBulkSendById**](PaymentApi.md#getBulkSendById) | **GET** /payments/bulk_sends/{bulk_send_id} | Get bulk send information |
+| [**getCounterparty**](PaymentApi.md#getCounterparty) | **GET** /payments/counterparty/{counterparty_id} | Get counterparty information |
 | [**getCounterpartyDetailById**](PaymentApi.md#getCounterpartyDetailById) | **GET** /payments/counterparty/{counterparty_id}/detail | Get counterparty information |
+| [**getCounterpartyEntry**](PaymentApi.md#getCounterpartyEntry) | **GET** /payments/counterparty_entry/{counterparty_entry_id} | Get counterparty entry information |
+| [**getDestination**](PaymentApi.md#getDestination) | **GET** /payments/destination/{destination_id} | Get destination information |
 | [**getDestinationBankAccountDetailById**](PaymentApi.md#getDestinationBankAccountDetailById) | **GET** /payments/destination/bank_account/{bank_account_id}/detail | Get destination bank account information |
 | [**getDestinationDetailById**](PaymentApi.md#getDestinationDetailById) | **GET** /payments/destination/{destination_id}/detail | Get destination information |
+| [**getDestinationEntry**](PaymentApi.md#getDestinationEntry) | **GET** /payments/destination_entry/{destination_entry_id} | Get destination entry information |
 | [**getExchangeRate**](PaymentApi.md#getExchangeRate) | **GET** /payments/exchange_rates/{token_id}/{currency} | Get exchange rate |
-| [**getPayerBalanceByAddress**](PaymentApi.md#getPayerBalanceByAddress) | **GET** /payments/balance/payer/address | Get payer balance by address |
 | [**getPaymentOrderDetailById**](PaymentApi.md#getPaymentOrderDetailById) | **GET** /payments/orders/{order_id} | Get pay-in order information |
+| [**getPayoutById**](PaymentApi.md#getPayoutById) | **GET** /payments/payouts/{payout_id} | Get payout information |
 | [**getPspBalance**](PaymentApi.md#getPspBalance) | **GET** /payments/balance/psp | Get psp balance |
 | [**getRefundDetailById**](PaymentApi.md#getRefundDetailById) | **GET** /payments/refunds/{refund_id} | Get refund order information |
 | [**getRefunds**](PaymentApi.md#getRefunds) | **GET** /payments/refunds | List all refund orders |
+| [**getReports**](PaymentApi.md#getReports) | **GET** /payments/reports | List all reports |
 | [**getSettlementById**](PaymentApi.md#getSettlementById) | **GET** /payments/settlement_requests/{settlement_request_id} | Get settlement request information |
 | [**getSettlementInfoByIds**](PaymentApi.md#getSettlementInfoByIds) | **GET** /payments/settlement_info | Get withdrawable balances |
 | [**getSubscriptionActionById**](PaymentApi.md#getSubscriptionActionById) | **GET** /payments/subscription_actions/{action_id} | Get subscription action by id |
 | [**getSubscriptionById**](PaymentApi.md#getSubscriptionById) | **GET** /payments/subscriptions/{subscription_id} | Get subscription by id |
 | [**getSubscriptionPlanById**](PaymentApi.md#getSubscriptionPlanById) | **GET** /payments/subscription_plans/{plan_id} | Get subscription plan by id |
 | [**getTopUpAddress**](PaymentApi.md#getTopUpAddress) | **GET** /payments/topup/address | Get top-up address |
+| [**listAllocationItems**](PaymentApi.md#listAllocationItems) | **GET** /payments/allocation_items | List all allocation items |
+| [**listAllocations**](PaymentApi.md#listAllocations) | **GET** /payments/allocation_records | List all allocations |
 | [**listBankAccounts**](PaymentApi.md#listBankAccounts) | **GET** /payments/bank_accounts | List all bank accounts |
+| [**listBatchAllocations**](PaymentApi.md#listBatchAllocations) | **GET** /payments/batch_allocations | List all batch allocations |
+| [**listBulkSendItems**](PaymentApi.md#listBulkSendItems) | **GET** /payments/bulk_sends/{bulk_send_id}/items | List bulk send items |
 | [**listCounterparties**](PaymentApi.md#listCounterparties) | **GET** /payments/counterparty | List all counterparties |
+| [**listCounterpartyEntries**](PaymentApi.md#listCounterpartyEntries) | **GET** /payments/counterparty_entry | List counterparty entries |
+| [**listCounterpartyWalletAddress**](PaymentApi.md#listCounterpartyWalletAddress) | **GET** /payments/counterparty/wallet_address | List counterparty wallet addresses |
 | [**listCryptoAddresses**](PaymentApi.md#listCryptoAddresses) | **GET** /payments/crypto_addresses | List crypto addresses |
+| [**listDestinationBankAccounts**](PaymentApi.md#listDestinationBankAccounts) | **GET** /payments/destination/bank_account | List destination bank accounts |
+| [**listDestinationEntries**](PaymentApi.md#listDestinationEntries) | **GET** /payments/destination_entry | List destination entries |
+| [**listDestinationWalletAddresses**](PaymentApi.md#listDestinationWalletAddresses) | **GET** /payments/destination/wallet_address | List destination wallet addresses |
 | [**listDestinations**](PaymentApi.md#listDestinations) | **GET** /payments/destination | List all destinations |
 | [**listForcedSweepRequests**](PaymentApi.md#listForcedSweepRequests) | **GET** /payments/force_sweep_requests | List force sweep requests |
 | [**listMerchantBalances**](PaymentApi.md#listMerchantBalances) | **GET** /payments/balance/merchants | List merchant balances |
@@ -53,6 +82,8 @@ All URIs are relative to *https://api.dev.cobo.com/v2*
 | [**listPaymentOrders**](PaymentApi.md#listPaymentOrders) | **GET** /payments/orders | List all pay-in orders |
 | [**listPaymentSupportedTokens**](PaymentApi.md#listPaymentSupportedTokens) | **GET** /payments/supported_tokens | List all supported tokens |
 | [**listPaymentWalletBalances**](PaymentApi.md#listPaymentWalletBalances) | **GET** /payments/balance/payment_wallets | List payment wallet balances |
+| [**listPayoutItems**](PaymentApi.md#listPayoutItems) | **GET** /payments/payout_items | List all payout items |
+| [**listPayouts**](PaymentApi.md#listPayouts) | **GET** /payments/payouts | List all payouts |
 | [**listSettlementDetails**](PaymentApi.md#listSettlementDetails) | **GET** /payments/settlement_details | List all settlement details |
 | [**listSettlementRequests**](PaymentApi.md#listSettlementRequests) | **GET** /payments/settlement_requests | List all settlement requests |
 | [**listSubscriptionActions**](PaymentApi.md#listSubscriptionActions) | **GET** /payments/subscription_actions | List subscription actions |
@@ -63,14 +94,87 @@ All URIs are relative to *https://api.dev.cobo.com/v2*
 | [**paymentEstimateFee**](PaymentApi.md#paymentEstimateFee) | **POST** /payments/estimate_fee | Payment estimate fee |
 | [**queryDestinationWhitelistEnabled**](PaymentApi.md#queryDestinationWhitelistEnabled) | **GET** /payments/destination/enable_whitelist | Query destination whitelist enabled status |
 | [**updateBankAccountById**](PaymentApi.md#updateBankAccountById) | **PUT** /payments/bank_accounts/{bank_account_id} | Update bank account |
+| [**updateCounterparty**](PaymentApi.md#updateCounterparty) | **PUT** /payments/counterparty/{counterparty_id} | Update counterparty |
 | [**updateCounterpartyById**](PaymentApi.md#updateCounterpartyById) | **PUT** /payments/counterparty/{counterparty_id}/update | Update counterparty |
+| [**updateDestination**](PaymentApi.md#updateDestination) | **PUT** /payments/destination/{destination_id} | Update destination information |
 | [**updateDestinationBankAccountById**](PaymentApi.md#updateDestinationBankAccountById) | **PUT** /payments/destination/bank_account/{bank_account_id}/update | Update destination bank account |
 | [**updateDestinationById**](PaymentApi.md#updateDestinationById) | **PUT** /payments/destination/{destination_id}/update | Update destination |
+| [**updateDestinationEntry**](PaymentApi.md#updateDestinationEntry) | **PUT** /payments/destination_entry/{destination_entry_id} | Update destination entry |
 | [**updateMerchantById**](PaymentApi.md#updateMerchantById) | **PUT** /payments/merchants/{merchant_id} | Update merchant |
 | [**updatePaymentOrder**](PaymentApi.md#updatePaymentOrder) | **PUT** /payments/orders/{order_id} | Update pay-in order |
 | [**updateRefundById**](PaymentApi.md#updateRefundById) | **PUT** /payments/refunds/{refund_id} | Update refund order information |
 | [**updateTopUpAddress**](PaymentApi.md#updateTopUpAddress) | **PUT** /payments/topup/address | Update top-up address |
 
+
+<a id="batchGetExchangeRates"></a>
+# **batchGetExchangeRates**
+> List&lt;ExchangeRate&gt; batchGetExchangeRates(tokenIds, currencies)
+
+Batch get exchange rates
+
+This operation retrieves the current exchange rates between a specified currency and a list of token IDs. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.PaymentApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    PaymentApi apiInstance = new PaymentApi();
+    String tokenIds = "ETH_USDT,ETH_USDC,BTC_USDT";
+    String currencies = "USD";
+    try {
+      List<ExchangeRate> result = apiInstance.batchGetExchangeRates(tokenIds, currencies);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PaymentApi#batchGetExchangeRates");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **tokenIds** | **String**| A list of token IDs, separated by comma. The token ID is the unique identifier of a token. You can retrieve the IDs of all the tokens you can use by calling [List enabled tokens](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-tokens).  | |
+| **currencies** | **String**| List of the fiat currencies, separated by comma. Currently, only &#x60;USD&#x60; is supported.  | |
+
+### Return type
+
+[**List&lt;ExchangeRate&gt;**](ExchangeRate.md)
+
+### Authorization
+
+[CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The request was successful. |  -  |
+| **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **5XX** | Internal server error. |  -  |
 
 <a id="cancelRefundById"></a>
 # **cancelRefundById**
@@ -208,6 +312,142 @@ public class Example {
 | **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
 | **5XX** | Internal server error. |  -  |
 
+<a id="createBatchAllocation"></a>
+# **createBatchAllocation**
+> BatchAllocation createBatchAllocation(createBatchAllocationRequest)
+
+Create batch allocation
+
+This operation creates a batch allocation to withdraw available balances.   You can include multiple merchants and cryptocurrencies in a single batch allocation. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.PaymentApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    PaymentApi apiInstance = new PaymentApi();
+    CreateBatchAllocationRequest createBatchAllocationRequest = new CreateBatchAllocationRequest();
+    try {
+      BatchAllocation result = apiInstance.createBatchAllocation(createBatchAllocationRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PaymentApi#createBatchAllocation");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **createBatchAllocationRequest** | [**CreateBatchAllocationRequest**](CreateBatchAllocationRequest.md)| The request body to create a settlement request. | [optional] |
+
+### Return type
+
+[**BatchAllocation**](BatchAllocation.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | The allocation request was successfully created. |  -  |
+| **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **5XX** | Internal server error. |  -  |
+
+<a id="createBulkSend"></a>
+# **createBulkSend**
+> PaymentBulkSend createBulkSend(createBulkSendRequest)
+
+Create bulk send
+
+This operation creates a bulk send to transfer funds to multiple recipients in a single request. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.PaymentApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    PaymentApi apiInstance = new PaymentApi();
+    CreateBulkSendRequest createBulkSendRequest = new CreateBulkSendRequest();
+    try {
+      PaymentBulkSend result = apiInstance.createBulkSend(createBulkSendRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PaymentApi#createBulkSend");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **createBulkSendRequest** | [**CreateBulkSendRequest**](CreateBulkSendRequest.md)| The request body to create a bulk send. | [optional] |
+
+### Return type
+
+[**PaymentBulkSend**](PaymentBulkSend.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | The bulk send was successfully created. |  -  |
+| **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **5XX** | Internal server error. |  -  |
+
 <a id="createCounterparty"></a>
 # **createCounterparty**
 > CounterpartyDetail createCounterparty(createCounterpartyRequest)
@@ -259,6 +499,74 @@ public class Example {
 ### Return type
 
 [**CounterpartyDetail**](CounterpartyDetail.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | The request was successful. |  -  |
+| **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **5XX** | Internal server error. |  -  |
+
+<a id="createCounterpartyEntry"></a>
+# **createCounterpartyEntry**
+> CreateCounterpartyEntry201Response createCounterpartyEntry(createCounterpartyEntryRequest)
+
+Create counterparty entry
+
+This operation creates a counterparty entry. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.PaymentApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    PaymentApi apiInstance = new PaymentApi();
+    CreateCounterpartyEntryRequest createCounterpartyEntryRequest = new CreateCounterpartyEntryRequest();
+    try {
+      CreateCounterpartyEntry201Response result = apiInstance.createCounterpartyEntry(createCounterpartyEntryRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PaymentApi#createCounterpartyEntry");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **createCounterpartyEntryRequest** | [**CreateCounterpartyEntryRequest**](CreateCounterpartyEntryRequest.md)| The request body to create counterparty entries. | [optional] |
+
+### Return type
+
+[**CreateCounterpartyEntry201Response**](CreateCounterpartyEntry201Response.md)
 
 ### Authorization
 
@@ -548,6 +856,74 @@ public class Example {
 | **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
 | **5XX** | Internal server error. |  -  |
 
+<a id="createDestinationEntry"></a>
+# **createDestinationEntry**
+> CreateDestinationEntry201Response createDestinationEntry(createDestinationEntryRequest)
+
+Create destination entry
+
+This operation creates a destination entry, either an address or a bank account. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.PaymentApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    PaymentApi apiInstance = new PaymentApi();
+    CreateDestinationEntryRequest createDestinationEntryRequest = new CreateDestinationEntryRequest();
+    try {
+      CreateDestinationEntry201Response result = apiInstance.createDestinationEntry(createDestinationEntryRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PaymentApi#createDestinationEntry");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **createDestinationEntryRequest** | [**CreateDestinationEntryRequest**](CreateDestinationEntryRequest.md)| The request body to create destination entries. | [optional] |
+
+### Return type
+
+[**CreateDestinationEntry201Response**](CreateDestinationEntry201Response.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | The request was successful. |  -  |
+| **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **5XX** | Internal server error. |  -  |
+
 <a id="createDestinationWalletAddress"></a>
 # **createDestinationWalletAddress**
 > WalletAddress createDestinationWalletAddress(createDestinationWalletAddressRequest)
@@ -816,7 +1192,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Infos of a newly initiated payment link. |  -  |
+| **201** | Infos of a newly initiated payment link. |  -  |
 | **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
 | **5XX** | Internal server error. |  -  |
 
@@ -885,6 +1261,74 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | The request was successful. |  -  |
+| **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **5XX** | Internal server error. |  -  |
+
+<a id="createPayout"></a>
+# **createPayout**
+> PaymentPayout createPayout(createPayoutRequest)
+
+Create payout
+
+This operation creates a payout to withdraw available balances. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.PaymentApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    PaymentApi apiInstance = new PaymentApi();
+    CreatePayoutRequest createPayoutRequest = new CreatePayoutRequest();
+    try {
+      PaymentPayout result = apiInstance.createPayout(createPayoutRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PaymentApi#createPayout");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **createPayoutRequest** | [**CreatePayoutRequest**](CreatePayoutRequest.md)| The request body to create a payout. | [optional] |
+
+### Return type
+
+[**PaymentPayout**](PaymentPayout.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | The create payout was successfully created. |  -  |
 | **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
 | **5XX** | Internal server error. |  -  |
 
@@ -1021,6 +1465,74 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Infos of a newly initiated payment link. |  -  |
+| **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **5XX** | Internal server error. |  -  |
+
+<a id="createReport"></a>
+# **createReport**
+> Report createReport(createReportRequest)
+
+Create report
+
+This operation creates reports. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.PaymentApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    PaymentApi apiInstance = new PaymentApi();
+    CreateReportRequest createReportRequest = new CreateReportRequest();
+    try {
+      Report result = apiInstance.createReport(createReportRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PaymentApi#createReport");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **createReportRequest** | [**CreateReportRequest**](CreateReportRequest.md)| The request body to create payment reports. | [optional] |
+
+### Return type
+
+[**Report**](Report.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Payment report created successfully. |  -  |
 | **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
 | **5XX** | Internal server error. |  -  |
 
@@ -1228,6 +1740,74 @@ public class Example {
 | **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
 | **5XX** | Internal server error. |  -  |
 
+<a id="createTopUpAddresses"></a>
+# **createTopUpAddresses**
+> CreateTopUpAddresses201Response createTopUpAddresses(createTopUpAddresses)
+
+Batch create top-up addresses
+
+Batch create the top-up address for payer list under a specific merchant and token. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.PaymentApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    PaymentApi apiInstance = new PaymentApi();
+    CreateTopUpAddresses createTopUpAddresses = new CreateTopUpAddresses();
+    try {
+      CreateTopUpAddresses201Response result = apiInstance.createTopUpAddresses(createTopUpAddresses);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PaymentApi#createTopUpAddresses");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **createTopUpAddresses** | [**CreateTopUpAddresses**](CreateTopUpAddresses.md)| The request body of the create top-up addresses operation. | [optional] |
+
+### Return type
+
+[**CreateTopUpAddresses201Response**](CreateTopUpAddresses201Response.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | The information about created top-up addresses. |  -  |
+| **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **5XX** | Internal server error. |  -  |
+
 <a id="deleteCounterparty"></a>
 # **deleteCounterparty**
 > DeleteCounterparty200Response deleteCounterparty(counterpartyId)
@@ -1279,6 +1859,148 @@ public class Example {
 ### Return type
 
 [**DeleteCounterparty200Response**](DeleteCounterparty200Response.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The request was successful. |  -  |
+| **400** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **401** | Unauthorized. Please provide valid credentials. |  -  |
+| **403** | Forbidden. You do not have the permission to access the requested resource. |  -  |
+
+<a id="deleteCounterpartyById"></a>
+# **deleteCounterpartyById**
+> DeleteCounterpartyById200Response deleteCounterpartyById(counterpartyId)
+
+Delete counterparty
+
+This operation deletes a counterparty. Note that this operation will delete all the items under the counterparty. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.PaymentApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    PaymentApi apiInstance = new PaymentApi();
+    String counterpartyId = "5b0ed293-f728-40b4-b1f6-86b88cd51384";
+    try {
+      DeleteCounterpartyById200Response result = apiInstance.deleteCounterpartyById(counterpartyId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PaymentApi#deleteCounterpartyById");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **counterpartyId** | **String**| The counterparty ID. | |
+
+### Return type
+
+[**DeleteCounterpartyById200Response**](DeleteCounterpartyById200Response.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The request was successful. |  -  |
+| **400** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **401** | Unauthorized. Please provide valid credentials. |  -  |
+| **403** | Forbidden. You do not have the permission to access the requested resource. |  -  |
+
+<a id="deleteCounterpartyEntry"></a>
+# **deleteCounterpartyEntry**
+> DeleteCounterpartyEntry200Response deleteCounterpartyEntry(counterpartyEntryId, counterpartyId, entryType)
+
+Delete counterparty entry
+
+This operation deletes a counterparty entry. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.PaymentApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    PaymentApi apiInstance = new PaymentApi();
+    String counterpartyEntryId = "123e4567-e89b-12d3-a456-426614174003";
+    String counterpartyId = "5b0ed293-f728-40b4-b1f6-86b88cd51384";
+    EntryType entryType = EntryType.fromValue("Address");
+    try {
+      DeleteCounterpartyEntry200Response result = apiInstance.deleteCounterpartyEntry(counterpartyEntryId, counterpartyId, entryType);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PaymentApi#deleteCounterpartyEntry");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **counterpartyEntryId** | **String**| The counterparty entry id, eg, counterparty_wallet_address_id. | |
+| **counterpartyId** | **String**| The counterparty ID. | |
+| **entryType** | [**EntryType**](.md)| EntryType defines the type of the counterparty entry: - &#x60;Address&#x60;: The counterparty entry is an address. - &#x60;BankAccount&#x60;: The counterparty entry is a bank account.  | [optional] [enum: Address, BankAccount] |
+
+### Return type
+
+[**DeleteCounterpartyEntry200Response**](DeleteCounterpartyEntry200Response.md)
 
 ### Authorization
 
@@ -1573,6 +2295,148 @@ public class Example {
 | **401** | Unauthorized. Please provide valid credentials. |  -  |
 | **403** | Forbidden. You do not have the permission to access the requested resource. |  -  |
 
+<a id="deleteDestinationById"></a>
+# **deleteDestinationById**
+> DeleteDestinationById200Response deleteDestinationById(destinationId)
+
+Delete destination
+
+This operation deletes a destination. Note that this operation will delete all the items under the destination, including bank accounts and addresses. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.PaymentApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    PaymentApi apiInstance = new PaymentApi();
+    String destinationId = "46beeab4-6a8e-476e-bc69-99b89aacbc6f";
+    try {
+      DeleteDestinationById200Response result = apiInstance.deleteDestinationById(destinationId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PaymentApi#deleteDestinationById");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **destinationId** | **String**| The destination ID. | |
+
+### Return type
+
+[**DeleteDestinationById200Response**](DeleteDestinationById200Response.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The request was successful. |  -  |
+| **400** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **401** | Unauthorized. Please provide valid credentials. |  -  |
+| **403** | Forbidden. You do not have the permission to access the requested resource. |  -  |
+
+<a id="deleteDestinationEntry"></a>
+# **deleteDestinationEntry**
+> DeleteDestinationEntry200Response deleteDestinationEntry(destinationEntryId, destinationId, entryType)
+
+Delete destination entry
+
+This operation deletes a destination entry. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.PaymentApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    PaymentApi apiInstance = new PaymentApi();
+    String destinationEntryId = "123e4567-e89b-12d3-a456-426614174003";
+    String destinationId = "46beeab4-6a8e-476e-bc69-99b89aacbc6f";
+    EntryType entryType = EntryType.fromValue("Address");
+    try {
+      DeleteDestinationEntry200Response result = apiInstance.deleteDestinationEntry(destinationEntryId, destinationId, entryType);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PaymentApi#deleteDestinationEntry");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **destinationEntryId** | **String**| The destination entry id, eg, destination_wallet_address_id or destination_bank_account_id. | |
+| **destinationId** | **String**| The destination ID. | |
+| **entryType** | [**EntryType**](.md)| EntryType defines the type of the counterparty entry: - &#x60;Address&#x60;: The counterparty entry is an address. - &#x60;BankAccount&#x60;: The counterparty entry is a bank account.  | [enum: Address, BankAccount] |
+
+### Return type
+
+[**DeleteDestinationEntry200Response**](DeleteDestinationEntry200Response.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The request was successful. |  -  |
+| **400** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **401** | Unauthorized. Please provide valid credentials. |  -  |
+| **403** | Forbidden. You do not have the permission to access the requested resource. |  -  |
+
 <a id="deleteDestinationWalletAddress"></a>
 # **deleteDestinationWalletAddress**
 > DeleteDestinationWalletAddress200Response deleteDestinationWalletAddress(walletAddressId)
@@ -1710,6 +2574,282 @@ public class Example {
 | **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
 | **5XX** | Internal server error. |  -  |
 
+<a id="getAvailableAllocationAmount"></a>
+# **getAvailableAllocationAmount**
+> PaymentAllocationAmount getAvailableAllocationAmount(tokenId, sourceAccount, destinationAccount)
+
+Get available allocation amount
+
+This operation retrieves the information of available allocation amount. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.PaymentApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    PaymentApi apiInstance = new PaymentApi();
+    String tokenId = "ETH_USDT";
+    String sourceAccount = "sourceAccount_example";
+    String destinationAccount = "destinationAccount_example";
+    try {
+      PaymentAllocationAmount result = apiInstance.getAvailableAllocationAmount(tokenId, sourceAccount, destinationAccount);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PaymentApi#getAvailableAllocationAmount");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **tokenId** | **String**| The token ID, which identifies the cryptocurrency. Supported values:    - USDC: &#x60;ETH_USDC&#x60;, &#x60;ARBITRUM_USDC&#x60;, &#x60;SOL_USDC&#x60;, &#x60;BASE_USDC&#x60;, &#x60;MATIC_USDC&#x60;, &#x60;BSC_USDC&#x60;   - USDT: &#x60;TRON_USDT&#x60;, &#x60;ETH_USDT&#x60;, &#x60;ARBITRUM_USDT&#x60;, &#x60;SOL_USDT&#x60;, &#x60;BASE_USDT&#x60;, &#x60;MATIC_USDT&#x60;, &#x60;BSC_USDT&#x60;  | |
+| **sourceAccount** | **String**|  | |
+| **destinationAccount** | **String**|  | |
+
+### Return type
+
+[**PaymentAllocationAmount**](PaymentAllocationAmount.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The request was successful. |  -  |
+| **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **5XX** | Internal server error. |  -  |
+
+<a id="getBatchAllocationById"></a>
+# **getBatchAllocationById**
+> BatchAllocationDetail getBatchAllocationById(batchAllocationId)
+
+Get batch allocation by id
+
+This operation retrieves the information of a batch allocation. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.PaymentApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    PaymentApi apiInstance = new PaymentApi();
+    String batchAllocationId = "5b0ed293-f728-40b4-b1f6-86b88cd51384";
+    try {
+      BatchAllocationDetail result = apiInstance.getBatchAllocationById(batchAllocationId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PaymentApi#getBatchAllocationById");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **batchAllocationId** | **String**| The batch allocation ID. | |
+
+### Return type
+
+[**BatchAllocationDetail**](BatchAllocationDetail.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The details of a batch allocation detail. |  -  |
+| **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **5XX** | Internal server error. |  -  |
+
+<a id="getBulkSendById"></a>
+# **getBulkSendById**
+> PaymentBulkSend getBulkSendById(bulkSendId)
+
+Get bulk send information
+
+This operation retrieves the information of a specific bulk send. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.PaymentApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    PaymentApi apiInstance = new PaymentApi();
+    String bulkSendId = "123e4567-e89b-12d3-a456-426614174003";
+    try {
+      PaymentBulkSend result = apiInstance.getBulkSendById(bulkSendId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PaymentApi#getBulkSendById");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **bulkSendId** | **String**| The bulk send ID. | |
+
+### Return type
+
+[**PaymentBulkSend**](PaymentBulkSend.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The request was successful. |  -  |
+| **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **5XX** | Internal server error. |  -  |
+
+<a id="getCounterparty"></a>
+# **getCounterparty**
+> CounterpartyDetail getCounterparty(counterpartyId)
+
+Get counterparty information
+
+This operation retrieves the detailed information about a specified counterparty. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.PaymentApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    PaymentApi apiInstance = new PaymentApi();
+    String counterpartyId = "5b0ed293-f728-40b4-b1f6-86b88cd51384";
+    try {
+      CounterpartyDetail result = apiInstance.getCounterparty(counterpartyId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PaymentApi#getCounterparty");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **counterpartyId** | **String**| The counterparty ID. | |
+
+### Return type
+
+[**CounterpartyDetail**](CounterpartyDetail.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The request was successful. |  -  |
+| **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **5XX** | Internal server error. |  -  |
+
 <a id="getCounterpartyDetailById"></a>
 # **getCounterpartyDetailById**
 > CounterpartyDetail getCounterpartyDetailById(counterpartyId)
@@ -1778,9 +2918,148 @@ public class Example {
 | **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
 | **5XX** | Internal server error. |  -  |
 
+<a id="getCounterpartyEntry"></a>
+# **getCounterpartyEntry**
+> GetCounterpartyEntry200Response getCounterpartyEntry(counterpartyEntryId, entryType)
+
+Get counterparty entry information
+
+This operation retrieves the detailed information about a specified counterparty entry. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.PaymentApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    PaymentApi apiInstance = new PaymentApi();
+    String counterpartyEntryId = "123e4567-e89b-12d3-a456-426614174003";
+    EntryType entryType = EntryType.fromValue("Address");
+    try {
+      GetCounterpartyEntry200Response result = apiInstance.getCounterpartyEntry(counterpartyEntryId, entryType);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PaymentApi#getCounterpartyEntry");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **counterpartyEntryId** | **String**| The counterparty entry id, eg, counterparty_wallet_address_id. | |
+| **entryType** | [**EntryType**](.md)| EntryType defines the type of the counterparty entry: - &#x60;Address&#x60;: The counterparty entry is an address. - &#x60;BankAccount&#x60;: The counterparty entry is a bank account.  | [optional] [enum: Address, BankAccount] |
+
+### Return type
+
+[**GetCounterpartyEntry200Response**](GetCounterpartyEntry200Response.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The request was successful. |  -  |
+| **400** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **401** | Unauthorized. Please provide valid credentials. |  -  |
+| **403** | Forbidden. You do not have the permission to access the requested resource. |  -  |
+
+<a id="getDestination"></a>
+# **getDestination**
+> DestinationDetail getDestination(destinationId)
+
+Get destination information
+
+This operation retrieves the detailed information about a specified destination. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.PaymentApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    PaymentApi apiInstance = new PaymentApi();
+    String destinationId = "46beeab4-6a8e-476e-bc69-99b89aacbc6f";
+    try {
+      DestinationDetail result = apiInstance.getDestination(destinationId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PaymentApi#getDestination");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **destinationId** | **String**| The destination ID. | |
+
+### Return type
+
+[**DestinationDetail**](DestinationDetail.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The request was successful. |  -  |
+| **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **5XX** | Internal server error. |  -  |
+
 <a id="getDestinationBankAccountDetailById"></a>
 # **getDestinationBankAccountDetailById**
-> DestinationBankAccount getDestinationBankAccountDetailById(bankAccountId)
+> DestinationBankAccountDetail getDestinationBankAccountDetailById(bankAccountId)
 
 Get destination bank account information
 
@@ -1807,7 +3086,7 @@ public class Example {
     PaymentApi apiInstance = new PaymentApi();
     UUID bankAccountId = UUID.fromString("f47ac10b-58cc-4372-a567-0e02b2c3d479");
     try {
-      DestinationBankAccount result = apiInstance.getDestinationBankAccountDetailById(bankAccountId);
+      DestinationBankAccountDetail result = apiInstance.getDestinationBankAccountDetailById(bankAccountId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PaymentApi#getDestinationBankAccountDetailById");
@@ -1828,7 +3107,7 @@ public class Example {
 
 ### Return type
 
-[**DestinationBankAccount**](DestinationBankAccount.md)
+[**DestinationBankAccountDetail**](DestinationBankAccountDetail.md)
 
 ### Authorization
 
@@ -1914,6 +3193,77 @@ public class Example {
 | **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
 | **5XX** | Internal server error. |  -  |
 
+<a id="getDestinationEntry"></a>
+# **getDestinationEntry**
+> GetDestinationEntry200Response getDestinationEntry(destinationEntryId, entryType)
+
+Get destination entry information
+
+This operation retrieves the detailed information about a specified destination entry. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.PaymentApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    PaymentApi apiInstance = new PaymentApi();
+    String destinationEntryId = "123e4567-e89b-12d3-a456-426614174003";
+    EntryType entryType = EntryType.fromValue("Address");
+    try {
+      GetDestinationEntry200Response result = apiInstance.getDestinationEntry(destinationEntryId, entryType);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PaymentApi#getDestinationEntry");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **destinationEntryId** | **String**| The destination entry id, eg, destination_wallet_address_id or destination_bank_account_id. | |
+| **entryType** | [**EntryType**](.md)| EntryType defines the type of the counterparty entry: - &#x60;Address&#x60;: The counterparty entry is an address. - &#x60;BankAccount&#x60;: The counterparty entry is a bank account.  | [enum: Address, BankAccount] |
+
+### Return type
+
+[**GetDestinationEntry200Response**](GetDestinationEntry200Response.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The request was successful. |  -  |
+| **400** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **401** | Unauthorized. Please provide valid credentials. |  -  |
+| **403** | Forbidden. You do not have the permission to access the requested resource. |  -  |
+
 <a id="getExchangeRate"></a>
 # **getExchangeRate**
 > GetExchangeRate200Response getExchangeRate(tokenId, currency)
@@ -1984,78 +3334,6 @@ public class Example {
 | **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
 | **5XX** | Internal server error. |  -  |
 
-<a id="getPayerBalanceByAddress"></a>
-# **getPayerBalanceByAddress**
-> List&lt;ReceivedAmountPerAddress&gt; getPayerBalanceByAddress(payerId, tokenId, merchantId)
-
-Get payer balance by address
-
-This operation retrieves aggregated balance details for a specific token and payer, with amounts grouped by address. 
-
-### Example
-```java
-// Import classes:
-import com.cobo.waas2.ApiClient;
-import com.cobo.waas2.ApiException;
-import com.cobo.waas2.Configuration;
-import com.cobo.waas2.model.*;
-import com.cobo.waas2.Env;
-import com.cobo.waas2.api.PaymentApi;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
-    defaultClient.setEnv(Env.DEV);
-
-    // Replace `<YOUR_PRIVATE_KEY>` with your private key
-    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
-    PaymentApi apiInstance = new PaymentApi();
-    String payerId = "P20250619T0310056d7aa";
-    String tokenId = "ETH_USDT";
-    String merchantId = "M1001";
-    try {
-      List<ReceivedAmountPerAddress> result = apiInstance.getPayerBalanceByAddress(payerId, tokenId, merchantId);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling PaymentApi#getPayerBalanceByAddress");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **payerId** | **String**| Unique payer identifier on the Cobo side, auto-generated by the system. | |
-| **tokenId** | **String**| The token ID, which identifies the cryptocurrency. Supported values:    - USDC: &#x60;ETH_USDC&#x60;, &#x60;ARBITRUM_USDC&#x60;, &#x60;SOL_USDC&#x60;, &#x60;BASE_USDC&#x60;, &#x60;MATIC_USDC&#x60;, &#x60;BSC_USDC&#x60;   - USDT: &#x60;TRON_USDT&#x60;, &#x60;ETH_USDT&#x60;, &#x60;ARBITRUM_USDT&#x60;, &#x60;SOL_USDT&#x60;, &#x60;BASE_USDT&#x60;, &#x60;MATIC_USDT&#x60;, &#x60;BSC_USDT&#x60;  | |
-| **merchantId** | **String**| The merchant ID. | [optional] |
-
-### Return type
-
-[**List&lt;ReceivedAmountPerAddress&gt;**](ReceivedAmountPerAddress.md)
-
-### Authorization
-
-[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | The request was successful. |  -  |
-| **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
-| **5XX** | Internal server error. |  -  |
-
 <a id="getPaymentOrderDetailById"></a>
 # **getPaymentOrderDetailById**
 > Order getPaymentOrderDetailById(orderId)
@@ -2107,6 +3385,74 @@ public class Example {
 ### Return type
 
 [**Order**](Order.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The request was successful. |  -  |
+| **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **5XX** | Internal server error. |  -  |
+
+<a id="getPayoutById"></a>
+# **getPayoutById**
+> PaymentPayoutDetail getPayoutById(payoutId)
+
+Get payout information
+
+This operation retrieves the information of a specific payout. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.PaymentApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    PaymentApi apiInstance = new PaymentApi();
+    String payoutId = "aff0e1cb-15b2-4e1f-9b9d-a9133715986f";
+    try {
+      PaymentPayoutDetail result = apiInstance.getPayoutById(payoutId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PaymentApi#getPayoutById");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **payoutId** | **String**| The payout ID. | |
+
+### Return type
+
+[**PaymentPayoutDetail**](PaymentPayoutDetail.md)
 
 ### Authorization
 
@@ -2335,6 +3681,82 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The request was successful. |  -  |
+| **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **5XX** | Internal server error. |  -  |
+
+<a id="getReports"></a>
+# **getReports**
+> GetReports200Response getReports(limit, before, after, reportType, reportStatus)
+
+List all reports
+
+This operation retrieves the information of all reports. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.PaymentApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    PaymentApi apiInstance = new PaymentApi();
+    Integer limit = 10;
+    String before = "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1";
+    String after = "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk";
+    ReportType reportType = ReportType.fromValue("Order");
+    ReportStatus reportStatus = ReportStatus.fromValue("Completed");
+    try {
+      GetReports200Response result = apiInstance.getReports(limit, before, after, reportType, reportStatus);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PaymentApi#getReports");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **limit** | **Integer**| The maximum number of objects to return. For most operations, the value range is [1, 50]. | [optional] [default to 10] |
+| **before** | **String**| This parameter specifies an object ID as a starting point for pagination, retrieving data before the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C.  If you set &#x60;before&#x60; to the ID of Object C (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object A.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned. - If you set it to &#x60;infinity&#x60;, the last page of data is returned.  | [optional] |
+| **after** | **String**| This parameter specifies an object ID as a starting point for pagination, retrieving data after the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C. If you set &#x60;after&#x60; to the ID of Object A (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object C.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned.  | [optional] |
+| **reportType** | [**ReportType**](.md)| ReportType defines the type of the report: - &#x60;Order&#x60;: Summary of all merchants&#39; order. - &#x60;OrderTransaction&#x60;: Transaction summary of all merchants&#39; orders. - &#x60;TopUpTransaction&#x60;: Transaction summary of all top ups. - &#x60;PayinWeeklyStatement&#x60;: Weekly report of all payins (including order-in and top up). - &#x60;PayinDailyStatement&#x60;: Daily report of all payins (including order-in and top up). - &#x60;CryptoPayout&#x60;: Transaction summary of all crypto settlements. - &#x60;OffRamp&#x60;: Transaction summary of all off ramp settlements. - &#x60;Refund&#x60;: Transaction summary of all refunds. - &#x60;PayoutWeeklyStatement&#x60;: Weekly report of all payouts (including crypto settlements, off ramp settlements and refund). - &#x60;PayoutDailyStatement&#x60;: Daily report of all payouts (including crypto settlements, off ramp settlements and refund). - &#x60;PayinCommissionFee&#x60;: Commission fee summary of all payins. - &#x60;PayoutCommissionFee&#x60;: Commission fee summary of all payouts. - &#x60;BalanceChange&#x60;: Balance change summary of all merchants. - &#x60;Summary&#x60;: Summary of all payins, payouts and commission fees.  | [optional] [enum: Order, OrderTransaction, TopUpTransaction, PayinWeeklyStatement, PayinDailyStatement, CryptoPayout, OffRamp, Refund, PayoutWeeklyStatement, PayoutDailyStatement, PayinCommissionFee, PayoutCommissionFee, BalanceChange, Summary] |
+| **reportStatus** | [**ReportStatus**](.md)| ReportStatus defines the status of the report: - &#x60;Completed&#x60;: The report has been completed. - &#x60;Failed&#x60;: The report has failed. - &#x60;Expired&#x60;: The report is expired.  | [optional] [enum: Completed, Failed] |
+
+### Return type
+
+[**GetReports200Response**](GetReports200Response.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | List of payment reports. |  -  |
 | **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
 | **5XX** | Internal server error. |  -  |
 
@@ -2756,6 +4178,166 @@ public class Example {
 | **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
 | **5XX** | Internal server error. |  -  |
 
+<a id="listAllocationItems"></a>
+# **listAllocationItems**
+> ListAllocationItems200Response listAllocationItems(limit, before, after, sourceAccount, destinationAccount, tokenId, batchAllocationId)
+
+List all allocation items
+
+This operation retrieves the information of all allocations. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.PaymentApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    PaymentApi apiInstance = new PaymentApi();
+    Integer limit = 10;
+    String before = "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1";
+    String after = "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk";
+    String sourceAccount = "sourceAccount_example";
+    String destinationAccount = "destinationAccount_example";
+    String tokenId = "ETH_USDT";
+    String batchAllocationId = "5b0ed293-f728-40b4-b1f6-86b88cd51384";
+    try {
+      ListAllocationItems200Response result = apiInstance.listAllocationItems(limit, before, after, sourceAccount, destinationAccount, tokenId, batchAllocationId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PaymentApi#listAllocationItems");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **limit** | **Integer**| The maximum number of objects to return. For most operations, the value range is [1, 50]. | [optional] [default to 10] |
+| **before** | **String**| This parameter specifies an object ID as a starting point for pagination, retrieving data before the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C.  If you set &#x60;before&#x60; to the ID of Object C (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object A.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned. - If you set it to &#x60;infinity&#x60;, the last page of data is returned.  | [optional] |
+| **after** | **String**| This parameter specifies an object ID as a starting point for pagination, retrieving data after the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C. If you set &#x60;after&#x60; to the ID of Object A (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object C.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned.  | [optional] |
+| **sourceAccount** | **String**|  | [optional] |
+| **destinationAccount** | **String**|  | [optional] |
+| **tokenId** | **String**| The token ID, which identifies the cryptocurrency. Supported values:    - USDC: &#x60;ETH_USDC&#x60;, &#x60;ARBITRUM_USDC&#x60;, &#x60;SOL_USDC&#x60;, &#x60;BASE_USDC&#x60;, &#x60;MATIC_USDC&#x60;, &#x60;BSC_USDC&#x60;   - USDT: &#x60;TRON_USDT&#x60;, &#x60;ETH_USDT&#x60;, &#x60;ARBITRUM_USDT&#x60;, &#x60;SOL_USDT&#x60;, &#x60;BASE_USDT&#x60;, &#x60;MATIC_USDT&#x60;, &#x60;BSC_USDT&#x60;  | [optional] |
+| **batchAllocationId** | **String**| The batch allocation ID. | [optional] |
+
+### Return type
+
+[**ListAllocationItems200Response**](ListAllocationItems200Response.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The request was successful. |  -  |
+| **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **5XX** | Internal server error. |  -  |
+
+<a id="listAllocations"></a>
+# **listAllocations**
+> ListAllocations200Response listAllocations(limit, before, after, sourceAccount, destinationAccount, tokenId, batchAllocationId)
+
+List all allocations
+
+This operation retrieves the information of all allocations. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.PaymentApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    PaymentApi apiInstance = new PaymentApi();
+    Integer limit = 10;
+    String before = "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1";
+    String after = "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk";
+    String sourceAccount = "sourceAccount_example";
+    String destinationAccount = "destinationAccount_example";
+    String tokenId = "ETH_USDT";
+    String batchAllocationId = "5b0ed293-f728-40b4-b1f6-86b88cd51384";
+    try {
+      ListAllocations200Response result = apiInstance.listAllocations(limit, before, after, sourceAccount, destinationAccount, tokenId, batchAllocationId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PaymentApi#listAllocations");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **limit** | **Integer**| The maximum number of objects to return. For most operations, the value range is [1, 50]. | [optional] [default to 10] |
+| **before** | **String**| This parameter specifies an object ID as a starting point for pagination, retrieving data before the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C.  If you set &#x60;before&#x60; to the ID of Object C (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object A.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned. - If you set it to &#x60;infinity&#x60;, the last page of data is returned.  | [optional] |
+| **after** | **String**| This parameter specifies an object ID as a starting point for pagination, retrieving data after the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C. If you set &#x60;after&#x60; to the ID of Object A (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object C.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned.  | [optional] |
+| **sourceAccount** | **String**|  | [optional] |
+| **destinationAccount** | **String**|  | [optional] |
+| **tokenId** | **String**| The token ID, which identifies the cryptocurrency. Supported values:    - USDC: &#x60;ETH_USDC&#x60;, &#x60;ARBITRUM_USDC&#x60;, &#x60;SOL_USDC&#x60;, &#x60;BASE_USDC&#x60;, &#x60;MATIC_USDC&#x60;, &#x60;BSC_USDC&#x60;   - USDT: &#x60;TRON_USDT&#x60;, &#x60;ETH_USDT&#x60;, &#x60;ARBITRUM_USDT&#x60;, &#x60;SOL_USDT&#x60;, &#x60;BASE_USDT&#x60;, &#x60;MATIC_USDT&#x60;, &#x60;BSC_USDT&#x60;  | [optional] |
+| **batchAllocationId** | **String**| The batch allocation ID. | [optional] |
+
+### Return type
+
+[**ListAllocations200Response**](ListAllocations200Response.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The request was successful. |  -  |
+| **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **5XX** | Internal server error. |  -  |
+
 <a id="listBankAccounts"></a>
 # **listBankAccounts**
 > List&lt;BankAccount&gt; listBankAccounts()
@@ -2820,9 +4402,157 @@ This endpoint does not need any parameter.
 | **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
 | **5XX** | Internal server error. |  -  |
 
+<a id="listBatchAllocations"></a>
+# **listBatchAllocations**
+> ListBatchAllocations200Response listBatchAllocations(limit, before, after, requestId)
+
+List all batch allocations
+
+This operation retrieves the information of all batch allocations. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.PaymentApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    PaymentApi apiInstance = new PaymentApi();
+    Integer limit = 10;
+    String before = "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1";
+    String after = "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk";
+    String requestId = "random_request_id";
+    try {
+      ListBatchAllocations200Response result = apiInstance.listBatchAllocations(limit, before, after, requestId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PaymentApi#listBatchAllocations");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **limit** | **Integer**| The maximum number of objects to return. For most operations, the value range is [1, 50]. | [optional] [default to 10] |
+| **before** | **String**| This parameter specifies an object ID as a starting point for pagination, retrieving data before the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C.  If you set &#x60;before&#x60; to the ID of Object C (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object A.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned. - If you set it to &#x60;infinity&#x60;, the last page of data is returned.  | [optional] |
+| **after** | **String**| This parameter specifies an object ID as a starting point for pagination, retrieving data after the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C. If you set &#x60;after&#x60; to the ID of Object A (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object C.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned.  | [optional] |
+| **requestId** | **String**| The request ID. | [optional] |
+
+### Return type
+
+[**ListBatchAllocations200Response**](ListBatchAllocations200Response.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The request was successful. |  -  |
+| **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **5XX** | Internal server error. |  -  |
+
+<a id="listBulkSendItems"></a>
+# **listBulkSendItems**
+> ListBulkSendItems200Response listBulkSendItems(bulkSendId, limit, before, after)
+
+List bulk send items
+
+This operation retrieves the list of items for a specific bulk send. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.PaymentApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    PaymentApi apiInstance = new PaymentApi();
+    String bulkSendId = "123e4567-e89b-12d3-a456-426614174003";
+    Integer limit = 10;
+    String before = "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1";
+    String after = "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk";
+    try {
+      ListBulkSendItems200Response result = apiInstance.listBulkSendItems(bulkSendId, limit, before, after);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PaymentApi#listBulkSendItems");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **bulkSendId** | **String**| The bulk send ID. | |
+| **limit** | **Integer**| The maximum number of objects to return. For most operations, the value range is [1, 50]. | [optional] [default to 10] |
+| **before** | **String**| This parameter specifies an object ID as a starting point for pagination, retrieving data before the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C.  If you set &#x60;before&#x60; to the ID of Object C (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object A.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned. - If you set it to &#x60;infinity&#x60;, the last page of data is returned.  | [optional] |
+| **after** | **String**| This parameter specifies an object ID as a starting point for pagination, retrieving data after the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C. If you set &#x60;after&#x60; to the ID of Object A (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object C.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned.  | [optional] |
+
+### Return type
+
+[**ListBulkSendItems200Response**](ListBulkSendItems200Response.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The request was successful. |  -  |
+| **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **5XX** | Internal server error. |  -  |
+
 <a id="listCounterparties"></a>
 # **listCounterparties**
-> ListCounterparties200Response listCounterparties(limit, before, after, keyword)
+> ListCounterparties200Response listCounterparties(limit, before, after, keyword, counterpartyType, country)
 
 List all counterparties
 
@@ -2851,8 +4581,10 @@ public class Example {
     String before = "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1";
     String after = "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk";
     String keyword = "keyword";
+    CounterpartyType counterpartyType = CounterpartyType.fromValue("Individual");
+    String country = "USA";
     try {
-      ListCounterparties200Response result = apiInstance.listCounterparties(limit, before, after, keyword);
+      ListCounterparties200Response result = apiInstance.listCounterparties(limit, before, after, keyword, counterpartyType, country);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PaymentApi#listCounterparties");
@@ -2873,10 +4605,170 @@ public class Example {
 | **before** | **String**| This parameter specifies an object ID as a starting point for pagination, retrieving data before the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C.  If you set &#x60;before&#x60; to the ID of Object C (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object A.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned. - If you set it to &#x60;infinity&#x60;, the last page of data is returned.  | [optional] |
 | **after** | **String**| This parameter specifies an object ID as a starting point for pagination, retrieving data after the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C. If you set &#x60;after&#x60; to the ID of Object A (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object C.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned.  | [optional] |
 | **keyword** | **String**| A search term used for fuzzy matching of merchant names. | [optional] |
+| **counterpartyType** | [**CounterpartyType**](.md)| CounterpartyType defines the type of the counterparty: - &#x60;Individual&#x60;: The counterparty is an individual. - &#x60;Organization&#x60;: The counterparty is an organization.  | [optional] [enum: Individual, Organization] |
+| **country** | **String**| The country of the destination, in ISO 3166-1 alpha-3 format. | [optional] |
 
 ### Return type
 
 [**ListCounterparties200Response**](ListCounterparties200Response.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The request was successful. |  -  |
+| **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **5XX** | Internal server error. |  -  |
+
+<a id="listCounterpartyEntries"></a>
+# **listCounterpartyEntries**
+> ListCounterpartyEntries200Response listCounterpartyEntries(limit, before, after, entryType, counterpartyId, chainIds, walletAddress)
+
+List counterparty entries
+
+This operation retrieves the information of counterparty entries. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.PaymentApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    PaymentApi apiInstance = new PaymentApi();
+    Integer limit = 10;
+    String before = "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1";
+    String after = "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk";
+    EntryType entryType = EntryType.fromValue("Address");
+    String counterpartyId = "5b0ed293-f728-40b4-b1f6-86b88cd51384";
+    String chainIds = "BTC,ETH";
+    String walletAddress = "0x1234567890abcdef...";
+    try {
+      ListCounterpartyEntries200Response result = apiInstance.listCounterpartyEntries(limit, before, after, entryType, counterpartyId, chainIds, walletAddress);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PaymentApi#listCounterpartyEntries");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **limit** | **Integer**| The maximum number of objects to return. For most operations, the value range is [1, 50]. | [optional] [default to 10] |
+| **before** | **String**| This parameter specifies an object ID as a starting point for pagination, retrieving data before the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C.  If you set &#x60;before&#x60; to the ID of Object C (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object A.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned. - If you set it to &#x60;infinity&#x60;, the last page of data is returned.  | [optional] |
+| **after** | **String**| This parameter specifies an object ID as a starting point for pagination, retrieving data after the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C. If you set &#x60;after&#x60; to the ID of Object A (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object C.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned.  | [optional] |
+| **entryType** | [**EntryType**](.md)| EntryType defines the type of the counterparty entry: - &#x60;Address&#x60;: The counterparty entry is an address. - &#x60;BankAccount&#x60;: The counterparty entry is a bank account.  | [optional] [enum: Address, BankAccount] |
+| **counterpartyId** | **String**| The counterparty ID. | [optional] |
+| **chainIds** | **String**| The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-chains). | [optional] |
+| **walletAddress** | **String**| The wallet address. | [optional] |
+
+### Return type
+
+[**ListCounterpartyEntries200Response**](ListCounterpartyEntries200Response.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The request was successful. |  -  |
+| **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **5XX** | Internal server error. |  -  |
+
+<a id="listCounterpartyWalletAddress"></a>
+# **listCounterpartyWalletAddress**
+> ListCounterpartyWalletAddress200Response listCounterpartyWalletAddress(limit, before, after, counterpartyId, chainIds, walletAddress)
+
+List counterparty wallet addresses
+
+This operation retrieves the information of counterparty wallet addresses. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.PaymentApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    PaymentApi apiInstance = new PaymentApi();
+    Integer limit = 10;
+    String before = "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1";
+    String after = "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk";
+    String counterpartyId = "5b0ed293-f728-40b4-b1f6-86b88cd51384";
+    String chainIds = "BTC,ETH";
+    String walletAddress = "0x1234567890abcdef...";
+    try {
+      ListCounterpartyWalletAddress200Response result = apiInstance.listCounterpartyWalletAddress(limit, before, after, counterpartyId, chainIds, walletAddress);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PaymentApi#listCounterpartyWalletAddress");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **limit** | **Integer**| The maximum number of objects to return. For most operations, the value range is [1, 50]. | [optional] [default to 10] |
+| **before** | **String**| This parameter specifies an object ID as a starting point for pagination, retrieving data before the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C.  If you set &#x60;before&#x60; to the ID of Object C (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object A.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned. - If you set it to &#x60;infinity&#x60;, the last page of data is returned.  | [optional] |
+| **after** | **String**| This parameter specifies an object ID as a starting point for pagination, retrieving data after the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C. If you set &#x60;after&#x60; to the ID of Object A (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object C.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned.  | [optional] |
+| **counterpartyId** | **String**| The counterparty ID. | [optional] |
+| **chainIds** | **String**| The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-chains). | [optional] |
+| **walletAddress** | **String**| The wallet address. | [optional] |
+
+### Return type
+
+[**ListCounterpartyWalletAddress200Response**](ListCounterpartyWalletAddress200Response.md)
 
 ### Authorization
 
@@ -2962,9 +4854,249 @@ public class Example {
 | **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
 | **5XX** | Internal server error. |  -  |
 
+<a id="listDestinationBankAccounts"></a>
+# **listDestinationBankAccounts**
+> ListDestinationBankAccounts200Response listDestinationBankAccounts(limit, before, after, keyword, destinationId, bankAccountStatus)
+
+List destination bank accounts
+
+This operation retrieves the information of destination bank accounts. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.PaymentApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    PaymentApi apiInstance = new PaymentApi();
+    Integer limit = 10;
+    String before = "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1";
+    String after = "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk";
+    String keyword = "keyword";
+    String destinationId = "46beeab4-6a8e-476e-bc69-99b89aacbc6f";
+    BankAccountStatus bankAccountStatus = BankAccountStatus.fromValue("Pending");
+    try {
+      ListDestinationBankAccounts200Response result = apiInstance.listDestinationBankAccounts(limit, before, after, keyword, destinationId, bankAccountStatus);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PaymentApi#listDestinationBankAccounts");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **limit** | **Integer**| The maximum number of objects to return. For most operations, the value range is [1, 50]. | [optional] [default to 10] |
+| **before** | **String**| This parameter specifies an object ID as a starting point for pagination, retrieving data before the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C.  If you set &#x60;before&#x60; to the ID of Object C (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object A.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned. - If you set it to &#x60;infinity&#x60;, the last page of data is returned.  | [optional] |
+| **after** | **String**| This parameter specifies an object ID as a starting point for pagination, retrieving data after the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C. If you set &#x60;after&#x60; to the ID of Object A (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object C.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned.  | [optional] |
+| **keyword** | **String**| A search term used for fuzzy matching of merchant names. | [optional] |
+| **destinationId** | **String**| The destination ID. | [optional] |
+| **bankAccountStatus** | [**BankAccountStatus**](.md)| BankAccountStatus defines the status of the bank account: - &#x60;Pending&#x60;: The bank account is pending verification by Cobo. - &#x60;Approved&#x60;: The bank account has been approved by Cobo. - &#x60;Rejected&#x60;: The bank account has been rejected by Cobo.  | [optional] [enum: Pending, Approved, Rejected] |
+
+### Return type
+
+[**ListDestinationBankAccounts200Response**](ListDestinationBankAccounts200Response.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The request was successful. |  -  |
+| **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **5XX** | Internal server error. |  -  |
+
+<a id="listDestinationEntries"></a>
+# **listDestinationEntries**
+> ListDestinationEntries200Response listDestinationEntries(entryType, limit, before, after, destinationId, chainIds, walletAddress, keyword, bankAccountStatus)
+
+List destination entries
+
+This operation retrieves the information of destination entries. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.PaymentApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    PaymentApi apiInstance = new PaymentApi();
+    EntryType entryType = EntryType.fromValue("Address");
+    Integer limit = 10;
+    String before = "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1";
+    String after = "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk";
+    String destinationId = "46beeab4-6a8e-476e-bc69-99b89aacbc6f";
+    String chainIds = "BTC,ETH";
+    String walletAddress = "0x1234567890abcdef...";
+    String keyword = "keyword";
+    BankAccountStatus bankAccountStatus = BankAccountStatus.fromValue("Pending");
+    try {
+      ListDestinationEntries200Response result = apiInstance.listDestinationEntries(entryType, limit, before, after, destinationId, chainIds, walletAddress, keyword, bankAccountStatus);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PaymentApi#listDestinationEntries");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **entryType** | [**EntryType**](.md)| EntryType defines the type of the counterparty entry: - &#x60;Address&#x60;: The counterparty entry is an address. - &#x60;BankAccount&#x60;: The counterparty entry is a bank account.  | [enum: Address, BankAccount] |
+| **limit** | **Integer**| The maximum number of objects to return. For most operations, the value range is [1, 50]. | [optional] [default to 10] |
+| **before** | **String**| This parameter specifies an object ID as a starting point for pagination, retrieving data before the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C.  If you set &#x60;before&#x60; to the ID of Object C (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object A.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned. - If you set it to &#x60;infinity&#x60;, the last page of data is returned.  | [optional] |
+| **after** | **String**| This parameter specifies an object ID as a starting point for pagination, retrieving data after the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C. If you set &#x60;after&#x60; to the ID of Object A (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object C.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned.  | [optional] |
+| **destinationId** | **String**| The destination ID. | [optional] |
+| **chainIds** | **String**| The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-chains). | [optional] |
+| **walletAddress** | **String**| The wallet address. | [optional] |
+| **keyword** | **String**| A search term used for fuzzy matching of merchant names. | [optional] |
+| **bankAccountStatus** | [**BankAccountStatus**](.md)| BankAccountStatus defines the status of the bank account: - &#x60;Pending&#x60;: The bank account is pending verification by Cobo. - &#x60;Approved&#x60;: The bank account has been approved by Cobo. - &#x60;Rejected&#x60;: The bank account has been rejected by Cobo.  | [optional] [enum: Pending, Approved, Rejected] |
+
+### Return type
+
+[**ListDestinationEntries200Response**](ListDestinationEntries200Response.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The request was successful. |  -  |
+| **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **5XX** | Internal server error. |  -  |
+
+<a id="listDestinationWalletAddresses"></a>
+# **listDestinationWalletAddresses**
+> ListDestinationWalletAddresses200Response listDestinationWalletAddresses(limit, before, after, destinationId, chainIds, walletAddress)
+
+List destination wallet addresses
+
+This operation retrieves the information of destination wallet addresses. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.PaymentApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    PaymentApi apiInstance = new PaymentApi();
+    Integer limit = 10;
+    String before = "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1";
+    String after = "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk";
+    String destinationId = "46beeab4-6a8e-476e-bc69-99b89aacbc6f";
+    String chainIds = "BTC,ETH";
+    String walletAddress = "0x1234567890abcdef...";
+    try {
+      ListDestinationWalletAddresses200Response result = apiInstance.listDestinationWalletAddresses(limit, before, after, destinationId, chainIds, walletAddress);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PaymentApi#listDestinationWalletAddresses");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **limit** | **Integer**| The maximum number of objects to return. For most operations, the value range is [1, 50]. | [optional] [default to 10] |
+| **before** | **String**| This parameter specifies an object ID as a starting point for pagination, retrieving data before the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C.  If you set &#x60;before&#x60; to the ID of Object C (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object A.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned. - If you set it to &#x60;infinity&#x60;, the last page of data is returned.  | [optional] |
+| **after** | **String**| This parameter specifies an object ID as a starting point for pagination, retrieving data after the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C. If you set &#x60;after&#x60; to the ID of Object A (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object C.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned.  | [optional] |
+| **destinationId** | **String**| The destination ID. | [optional] |
+| **chainIds** | **String**| The chain ID, which is the unique identifier of a blockchain. You can retrieve the IDs of all the chains you can use by calling [List enabled chains](https://www.cobo.com/developers/v2/api-references/wallets/list-enabled-chains). | [optional] |
+| **walletAddress** | **String**| The wallet address. | [optional] |
+
+### Return type
+
+[**ListDestinationWalletAddresses200Response**](ListDestinationWalletAddresses200Response.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The request was successful. |  -  |
+| **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **5XX** | Internal server error. |  -  |
+
 <a id="listDestinations"></a>
 # **listDestinations**
-> ListDestinations200Response listDestinations(limit, before, after, keyword)
+> ListDestinations200Response listDestinations(limit, before, after, keyword, destinationType, country, merchantIds)
 
 List all destinations
 
@@ -2993,8 +5125,11 @@ public class Example {
     String before = "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1";
     String after = "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk";
     String keyword = "keyword";
+    DestinationType destinationType = DestinationType.fromValue("Individual");
+    String country = "USA";
+    String merchantIds = "M1001,M1002,M1003";
     try {
-      ListDestinations200Response result = apiInstance.listDestinations(limit, before, after, keyword);
+      ListDestinations200Response result = apiInstance.listDestinations(limit, before, after, keyword, destinationType, country, merchantIds);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PaymentApi#listDestinations");
@@ -3015,6 +5150,9 @@ public class Example {
 | **before** | **String**| This parameter specifies an object ID as a starting point for pagination, retrieving data before the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C.  If you set &#x60;before&#x60; to the ID of Object C (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object A.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned. - If you set it to &#x60;infinity&#x60;, the last page of data is returned.  | [optional] |
 | **after** | **String**| This parameter specifies an object ID as a starting point for pagination, retrieving data after the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C. If you set &#x60;after&#x60; to the ID of Object A (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object C.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned.  | [optional] |
 | **keyword** | **String**| A search term used for fuzzy matching of merchant names. | [optional] |
+| **destinationType** | [**DestinationType**](.md)| DestinationType defines the type of the destination: - &#x60;Individual&#x60;: The destination is an individual. - &#x60;Organization&#x60;: The destination is an organization.  | [optional] [enum: Individual, Organization] |
+| **country** | **String**| The country of the destination, in ISO 3166-1 alpha-3 format. | [optional] |
+| **merchantIds** | **String**| A list of merchant IDs to query. | [optional] |
 
 ### Return type
 
@@ -3112,7 +5250,7 @@ public class Example {
 
 <a id="listMerchantBalances"></a>
 # **listMerchantBalances**
-> ListMerchantBalances200Response listMerchantBalances(tokenId, acquiringType, merchantIds)
+> ListMerchantBalances200Response listMerchantBalances(tokenId, merchantIds, acquiringType)
 
 List merchant balances
 
@@ -3138,10 +5276,10 @@ public class Example {
     defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
     PaymentApi apiInstance = new PaymentApi();
     String tokenId = "ETH_USDT";
-    AcquiringType acquiringType = AcquiringType.fromValue("Order");
     String merchantIds = "M1001,M1002,M1003";
+    AcquiringType acquiringType = AcquiringType.fromValue("Order");
     try {
-      ListMerchantBalances200Response result = apiInstance.listMerchantBalances(tokenId, acquiringType, merchantIds);
+      ListMerchantBalances200Response result = apiInstance.listMerchantBalances(tokenId, merchantIds, acquiringType);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PaymentApi#listMerchantBalances");
@@ -3159,8 +5297,8 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **tokenId** | **String**| The token ID, which identifies the cryptocurrency. Supported values:    - USDC: &#x60;ETH_USDC&#x60;, &#x60;ARBITRUM_USDC&#x60;, &#x60;SOL_USDC&#x60;, &#x60;BASE_USDC&#x60;, &#x60;MATIC_USDC&#x60;, &#x60;BSC_USDC&#x60;   - USDT: &#x60;TRON_USDT&#x60;, &#x60;ETH_USDT&#x60;, &#x60;ARBITRUM_USDT&#x60;, &#x60;SOL_USDT&#x60;, &#x60;BASE_USDT&#x60;, &#x60;MATIC_USDT&#x60;, &#x60;BSC_USDT&#x60;  | |
-| **acquiringType** | [**AcquiringType**](.md)| AcquiringType defines the acquisition logic used in the payment flow: - &#x60;Order&#x60;: Each order is created with a specific amount and associated payment request. Funds are settled on a per-order basis. - &#x60;TopUp&#x60;: Recharge-style flow where funds are topped up to a payer balance or account. Useful for flexible or usage-based payment models.  | [enum: Order, TopUp, Subscription] |
 | **merchantIds** | **String**| A list of merchant IDs to query. | [optional] |
+| **acquiringType** | [**AcquiringType**](.md)| AcquiringType defines the acquisition logic used in the payment flow: - &#x60;Order&#x60;: Each order is created with a specific amount and associated payment request. Funds are settled on a per-order basis. - &#x60;TopUp&#x60;: Recharge-style flow where funds are topped up to a payer balance or account. Useful for flexible or usage-based payment models.  | [optional] [enum: Order, TopUp, Subscription] |
 
 ### Return type
 
@@ -3455,6 +5593,156 @@ public class Example {
 ### Return type
 
 [**ListPaymentWalletBalances200Response**](ListPaymentWalletBalances200Response.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The request was successful. |  -  |
+| **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **5XX** | Internal server error. |  -  |
+
+<a id="listPayoutItems"></a>
+# **listPayoutItems**
+> ListPayoutItems200Response listPayoutItems(limit, before, after, sourceAccount, statuses)
+
+List all payout items
+
+This operation retrieves the information of all payout items. You can filter the result by merchant ID or status. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.PaymentApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    PaymentApi apiInstance = new PaymentApi();
+    Integer limit = 10;
+    String before = "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1";
+    String after = "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk";
+    String sourceAccount = "sourceAccount_example";
+    String statuses = "Pending,Processing";
+    try {
+      ListPayoutItems200Response result = apiInstance.listPayoutItems(limit, before, after, sourceAccount, statuses);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PaymentApi#listPayoutItems");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **limit** | **Integer**| The maximum number of objects to return. For most operations, the value range is [1, 50]. | [optional] [default to 10] |
+| **before** | **String**| This parameter specifies an object ID as a starting point for pagination, retrieving data before the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C.  If you set &#x60;before&#x60; to the ID of Object C (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object A.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned. - If you set it to &#x60;infinity&#x60;, the last page of data is returned.  | [optional] |
+| **after** | **String**| This parameter specifies an object ID as a starting point for pagination, retrieving data after the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C. If you set &#x60;after&#x60; to the ID of Object A (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object C.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned.  | [optional] |
+| **sourceAccount** | **String**|  | [optional] |
+| **statuses** | **String**| A list of  statuses of order, refund or settle request. | [optional] |
+
+### Return type
+
+[**ListPayoutItems200Response**](ListPayoutItems200Response.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The request was successful. |  -  |
+| **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **5XX** | Internal server error. |  -  |
+
+<a id="listPayouts"></a>
+# **listPayouts**
+> ListPayouts200Response listPayouts(limit, before, after, requestId)
+
+List all payouts
+
+This operation retrieves the information of all payouts. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.PaymentApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    PaymentApi apiInstance = new PaymentApi();
+    Integer limit = 10;
+    String before = "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGmk1";
+    String after = "RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk";
+    String requestId = "random_request_id";
+    try {
+      ListPayouts200Response result = apiInstance.listPayouts(limit, before, after, requestId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PaymentApi#listPayouts");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **limit** | **Integer**| The maximum number of objects to return. For most operations, the value range is [1, 50]. | [optional] [default to 10] |
+| **before** | **String**| This parameter specifies an object ID as a starting point for pagination, retrieving data before the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C.  If you set &#x60;before&#x60; to the ID of Object C (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object A.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned. - If you set it to &#x60;infinity&#x60;, the last page of data is returned.  | [optional] |
+| **after** | **String**| This parameter specifies an object ID as a starting point for pagination, retrieving data after the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C. If you set &#x60;after&#x60; to the ID of Object A (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object C.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned.  | [optional] |
+| **requestId** | **String**| The request ID. | [optional] |
+
+### Return type
+
+[**ListPayouts200Response**](ListPayouts200Response.md)
 
 ### Authorization
 
@@ -4210,6 +6498,76 @@ public class Example {
 | **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
 | **5XX** | Internal server error. |  -  |
 
+<a id="updateCounterparty"></a>
+# **updateCounterparty**
+> Counterparty updateCounterparty(counterpartyId, updateCounterpartyRequest)
+
+Update counterparty
+
+This operation updates the information of a specified counterparty. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.PaymentApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    PaymentApi apiInstance = new PaymentApi();
+    String counterpartyId = "5b0ed293-f728-40b4-b1f6-86b88cd51384";
+    UpdateCounterpartyRequest updateCounterpartyRequest = new UpdateCounterpartyRequest();
+    try {
+      Counterparty result = apiInstance.updateCounterparty(counterpartyId, updateCounterpartyRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PaymentApi#updateCounterparty");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **counterpartyId** | **String**| The counterparty ID. | |
+| **updateCounterpartyRequest** | [**UpdateCounterpartyRequest**](UpdateCounterpartyRequest.md)| The request body to update a counterparty. | [optional] |
+
+### Return type
+
+[**Counterparty**](Counterparty.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The request was successful. |  -  |
+| **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **5XX** | Internal server error. |  -  |
+
 <a id="updateCounterpartyById"></a>
 # **updateCounterpartyById**
 > Counterparty updateCounterpartyById(counterpartyId, updateCounterpartyByIdRequest)
@@ -4263,6 +6621,76 @@ public class Example {
 ### Return type
 
 [**Counterparty**](Counterparty.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The request was successful. |  -  |
+| **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **5XX** | Internal server error. |  -  |
+
+<a id="updateDestination"></a>
+# **updateDestination**
+> Destination updateDestination(destinationId, updateDestinationRequest)
+
+Update destination information
+
+This operation updates the information of a specified destination. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.PaymentApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    PaymentApi apiInstance = new PaymentApi();
+    String destinationId = "46beeab4-6a8e-476e-bc69-99b89aacbc6f";
+    UpdateDestinationRequest updateDestinationRequest = new UpdateDestinationRequest();
+    try {
+      Destination result = apiInstance.updateDestination(destinationId, updateDestinationRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PaymentApi#updateDestination");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **destinationId** | **String**| The destination ID. | |
+| **updateDestinationRequest** | [**UpdateDestinationRequest**](UpdateDestinationRequest.md)| The request body to update a destination. | [optional] |
+
+### Return type
+
+[**Destination**](Destination.md)
 
 ### Authorization
 
@@ -4398,11 +6826,81 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **destinationId** | **String**| The destination ID. | |
-| **updateDestinationByIdRequest** | [**UpdateDestinationByIdRequest**](UpdateDestinationByIdRequest.md)| The request body to create a destination. | [optional] |
+| **updateDestinationByIdRequest** | [**UpdateDestinationByIdRequest**](UpdateDestinationByIdRequest.md)| The request body to update a destination. | [optional] |
 
 ### Return type
 
 [**Destination**](Destination.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2), [CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The request was successful. |  -  |
+| **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **5XX** | Internal server error. |  -  |
+
+<a id="updateDestinationEntry"></a>
+# **updateDestinationEntry**
+> UpdateDestinationEntry200Response updateDestinationEntry(destinationEntryId, updateDestinationEntryRequest)
+
+Update destination entry
+
+This operation updates the information of a specified destination entry. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.PaymentApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    PaymentApi apiInstance = new PaymentApi();
+    String destinationEntryId = "123e4567-e89b-12d3-a456-426614174003";
+    UpdateDestinationEntryRequest updateDestinationEntryRequest = new UpdateDestinationEntryRequest();
+    try {
+      UpdateDestinationEntry200Response result = apiInstance.updateDestinationEntry(destinationEntryId, updateDestinationEntryRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PaymentApi#updateDestinationEntry");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **destinationEntryId** | **String**| The destination entry id, eg, destination_wallet_address_id or destination_bank_account_id. | |
+| **updateDestinationEntryRequest** | [**UpdateDestinationEntryRequest**](UpdateDestinationEntryRequest.md)| The request body to update a destination entry. | [optional] |
+
+### Return type
+
+[**UpdateDestinationEntry200Response**](UpdateDestinationEntry200Response.md)
 
 ### Authorization
 

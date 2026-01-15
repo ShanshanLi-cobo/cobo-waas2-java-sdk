@@ -88,6 +88,14 @@ public class UTXO {
   @SerializedName(SERIALIZED_NAME_IS_FROZEN)
   private Boolean isFrozen;
 
+  public static final String SERIALIZED_NAME_OBJECT_ID = "object_id";
+  @SerializedName(SERIALIZED_NAME_OBJECT_ID)
+  private String objectId;
+
+  public static final String SERIALIZED_NAME_VERSION = "version";
+  @SerializedName(SERIALIZED_NAME_VERSION)
+  private String version;
+
   public UTXO() {
   }
 
@@ -261,6 +269,44 @@ public class UTXO {
     this.isFrozen = isFrozen;
   }
 
+
+  public UTXO objectId(String objectId) {
+    this.objectId = objectId;
+    return this;
+  }
+
+   /**
+   * The ID of the blockchain object to spend (e.g., SUI Coin object).
+   * @return objectId
+  **/
+  @javax.annotation.Nullable
+  public String getObjectId() {
+    return objectId;
+  }
+
+  public void setObjectId(String objectId) {
+    this.objectId = objectId;
+  }
+
+
+  public UTXO version(String version) {
+    this.version = version;
+    return this;
+  }
+
+   /**
+   * Object version number.
+   * @return version
+  **/
+  @javax.annotation.Nullable
+  public String getVersion() {
+    return version;
+  }
+
+  public void setVersion(String version) {
+    this.version = version;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -324,13 +370,15 @@ public class UTXO {
         Objects.equals(this.isCoinbase, UTXO.isCoinbase) &&
         Objects.equals(this.isLocked, UTXO.isLocked) &&
         Objects.equals(this.confirmedNumber, UTXO.confirmedNumber) &&
-        Objects.equals(this.isFrozen, UTXO.isFrozen)&&
+        Objects.equals(this.isFrozen, UTXO.isFrozen) &&
+        Objects.equals(this.objectId, UTXO.objectId) &&
+        Objects.equals(this.version, UTXO.version)&&
         Objects.equals(this.additionalProperties, UTXO.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(txHash, voutN, address, tokenId, value, isCoinbase, isLocked, confirmedNumber, isFrozen, additionalProperties);
+    return Objects.hash(txHash, voutN, address, tokenId, value, isCoinbase, isLocked, confirmedNumber, isFrozen, objectId, version, additionalProperties);
   }
 
   @Override
@@ -346,6 +394,8 @@ public class UTXO {
     sb.append("    isLocked: ").append(toIndentedString(isLocked)).append("\n");
     sb.append("    confirmedNumber: ").append(toIndentedString(confirmedNumber)).append("\n");
     sb.append("    isFrozen: ").append(toIndentedString(isFrozen)).append("\n");
+    sb.append("    objectId: ").append(toIndentedString(objectId)).append("\n");
+    sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -378,6 +428,8 @@ public class UTXO {
     openapiFields.add("is_locked");
     openapiFields.add("confirmed_number");
     openapiFields.add("is_frozen");
+    openapiFields.add("object_id");
+    openapiFields.add("version");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -407,6 +459,12 @@ public class UTXO {
       }
       if ((jsonObj.get("value") != null && !jsonObj.get("value").isJsonNull()) && !jsonObj.get("value").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `value` to be a primitive type in the JSON string but got `%s`", jsonObj.get("value").toString()));
+      }
+      if ((jsonObj.get("object_id") != null && !jsonObj.get("object_id").isJsonNull()) && !jsonObj.get("object_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `object_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object_id").toString()));
+      }
+      if ((jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) && !jsonObj.get("version").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `version` to be a primitive type in the JSON string but got `%s`", jsonObj.get("version").toString()));
       }
   }
 

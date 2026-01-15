@@ -21,20 +21,27 @@ import com.cobo.waas2.model.ChainInfo;
 import com.cobo.waas2.model.ChainsEventData;
 import com.cobo.waas2.model.CommissionFee;
 import com.cobo.waas2.model.ComplianceDispositionUpdateEventData;
+import com.cobo.waas2.model.ComplianceKyaScreeningsUpdateEventData;
 import com.cobo.waas2.model.ComplianceKytScreeningsUpdateEventData;
 import com.cobo.waas2.model.DispositionStatus;
 import com.cobo.waas2.model.DispositionType;
 import com.cobo.waas2.model.FundsStatusType;
+import com.cobo.waas2.model.KyaScreeningStatus;
 import com.cobo.waas2.model.KytScreeningsTransactionType;
 import com.cobo.waas2.model.MPCVaultEventData;
 import com.cobo.waas2.model.PaymentAddressUpdateEventData;
+import com.cobo.waas2.model.PaymentBulkSendEvent;
+import com.cobo.waas2.model.PaymentBulkSendExecutionMode;
 import com.cobo.waas2.model.PaymentChargeUpdateEventData;
 import com.cobo.waas2.model.PaymentOrderEventData;
+import com.cobo.waas2.model.PaymentPayoutEvent;
+import com.cobo.waas2.model.PaymentPayoutItem;
+import com.cobo.waas2.model.PaymentPayoutItemDetail;
+import com.cobo.waas2.model.PaymentPayoutRecipientInfo;
 import com.cobo.waas2.model.PaymentRefundEventData;
 import com.cobo.waas2.model.PaymentSettlementEvent;
 import com.cobo.waas2.model.PaymentSubscriptionActionData;
 import com.cobo.waas2.model.PaymentSubscriptionPeriodType;
-import com.cobo.waas2.model.PaymentSubscriptionStatus;
 import com.cobo.waas2.model.PaymentSubscriptionUpdateEventData;
 import com.cobo.waas2.model.PaymentTransaction;
 import com.cobo.waas2.model.PaymentTransactionEventData;
@@ -544,6 +551,54 @@ public class WebhookEventDataTest {
     }
 
     /**
+     * Test the property 'merchantOrderCode'
+     */
+    @Test
+    public void merchantOrderCodeTest() {
+        // TODO: test merchantOrderCode
+    }
+
+    /**
+     * Test the property 'pspOrderCode'
+     */
+    @Test
+    public void pspOrderCodeTest() {
+        // TODO: test pspOrderCode
+    }
+
+    /**
+     * Test the property 'pricingCurrency'
+     */
+    @Test
+    public void pricingCurrencyTest() {
+        // TODO: test pricingCurrency
+    }
+
+    /**
+     * Test the property 'pricingAmount'
+     */
+    @Test
+    public void pricingAmountTest() {
+        // TODO: test pricingAmount
+    }
+
+    /**
+     * Test the property 'feeAmount'
+     */
+    @Test
+    public void feeAmountTest() {
+        // TODO: test feeAmount
+    }
+
+    /**
+     * Test the property 'payableCurrency'
+     */
+    @Test
+    public void payableCurrencyTest() {
+        // TODO: test payableCurrency
+    }
+
+    /**
      * Test the property 'payableAmount'
      */
     @Test
@@ -552,11 +607,51 @@ public class WebhookEventDataTest {
     }
 
     /**
+     * Test the property 'exchangeRate'
+     */
+    @Test
+    public void exchangeRateTest() {
+        // TODO: test exchangeRate
+    }
+
+    /**
+     * Test the property 'amountTolerance'
+     */
+    @Test
+    public void amountToleranceTest() {
+        // TODO: test amountTolerance
+    }
+
+    /**
      * Test the property 'receiveAddress'
      */
     @Test
     public void receiveAddressTest() {
         // TODO: test receiveAddress
+    }
+
+    /**
+     * Test the property 'receivedTokenAmount'
+     */
+    @Test
+    public void receivedTokenAmountTest() {
+        // TODO: test receivedTokenAmount
+    }
+
+    /**
+     * Test the property 'expiredAt'
+     */
+    @Test
+    public void expiredAtTest() {
+        // TODO: test expiredAt
+    }
+
+    /**
+     * Test the property 'transactions'
+     */
+    @Test
+    public void transactionsTest() {
+        // TODO: test transactions
     }
 
     /**
@@ -576,75 +671,11 @@ public class WebhookEventDataTest {
     }
 
     /**
-     * Test the property 'feeAmount'
-     */
-    @Test
-    public void feeAmountTest() {
-        // TODO: test feeAmount
-    }
-
-    /**
-     * Test the property 'exchangeRate'
-     */
-    @Test
-    public void exchangeRateTest() {
-        // TODO: test exchangeRate
-    }
-
-    /**
-     * Test the property 'expiredAt'
-     */
-    @Test
-    public void expiredAtTest() {
-        // TODO: test expiredAt
-    }
-
-    /**
-     * Test the property 'merchantOrderCode'
-     */
-    @Test
-    public void merchantOrderCodeTest() {
-        // TODO: test merchantOrderCode
-    }
-
-    /**
-     * Test the property 'pspOrderCode'
-     */
-    @Test
-    public void pspOrderCodeTest() {
-        // TODO: test pspOrderCode
-    }
-
-    /**
-     * Test the property 'receivedTokenAmount'
-     */
-    @Test
-    public void receivedTokenAmountTest() {
-        // TODO: test receivedTokenAmount
-    }
-
-    /**
-     * Test the property 'transactions'
-     */
-    @Test
-    public void transactionsTest() {
-        // TODO: test transactions
-    }
-
-    /**
      * Test the property 'settlementStatus'
      */
     @Test
     public void settlementStatusTest() {
         // TODO: test settlementStatus
-    }
-
-    /**
-     * Test the property 'amountTolerance'
-     */
-    @Test
-    public void amountToleranceTest() {
-        // TODO: test amountTolerance
     }
 
     /**
@@ -920,6 +951,86 @@ public class WebhookEventDataTest {
     }
 
     /**
+     * Test the property 'payoutId'
+     */
+    @Test
+    public void payoutIdTest() {
+        // TODO: test payoutId
+    }
+
+    /**
+     * Test the property 'sourceAccount'
+     */
+    @Test
+    public void sourceAccountTest() {
+        // TODO: test sourceAccount
+    }
+
+    /**
+     * Test the property 'payoutItems'
+     */
+    @Test
+    public void payoutItemsTest() {
+        // TODO: test payoutItems
+    }
+
+    /**
+     * Test the property 'recipientInfo'
+     */
+    @Test
+    public void recipientInfoTest() {
+        // TODO: test recipientInfo
+    }
+
+    /**
+     * Test the property 'actualPayoutAmount'
+     */
+    @Test
+    public void actualPayoutAmountTest() {
+        // TODO: test actualPayoutAmount
+    }
+
+    /**
+     * Test the property 'commissionFees'
+     */
+    @Test
+    public void commissionFeesTest() {
+        // TODO: test commissionFees
+    }
+
+    /**
+     * Test the property 'remark'
+     */
+    @Test
+    public void remarkTest() {
+        // TODO: test remark
+    }
+
+    /**
+     * Test the property 'payoutItemDetails'
+     */
+    @Test
+    public void payoutItemDetailsTest() {
+        // TODO: test payoutItemDetails
+    }
+
+    /**
+     * Test the property 'bulkSendId'
+     */
+    @Test
+    public void bulkSendIdTest() {
+        // TODO: test bulkSendId
+    }
+
+    /**
+     * Test the property 'executionMode'
+     */
+    @Test
+    public void executionModeTest() {
+        // TODO: test executionMode
+    }
+
+    /**
      * Test the property 'dispositionType'
      */
     @Test
@@ -973,6 +1084,14 @@ public class WebhookEventDataTest {
     @Test
     public void fundsStatusTest() {
         // TODO: test fundsStatus
+    }
+
+    /**
+     * Test the property 'screeningId'
+     */
+    @Test
+    public void screeningIdTest() {
+        // TODO: test screeningId
     }
 
 }

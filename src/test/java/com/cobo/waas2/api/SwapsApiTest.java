@@ -22,9 +22,11 @@ import com.cobo.waas2.model.ListSwapEnabledTokens200Response;
 import com.cobo.waas2.model.SwapActivityDetail;
 import com.cobo.waas2.model.SwapActivityStatus;
 import com.cobo.waas2.model.SwapEstimateFee;
+import com.cobo.waas2.model.SwapLimitsAndLiquidity;
 import com.cobo.waas2.model.SwapQuote;
 import com.cobo.waas2.model.SwapType;
 import java.util.UUID;
+import com.cobo.waas2.model.WalletSubtype;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -89,6 +91,23 @@ public class SwapsApiTest {
     }
 
     /**
+     * Get Swap Limits and Liquidity
+     *
+     * This operation retrieves the trading limits and available liquidity for a specific swap trading pair. The limits include minimum and maximum amounts for both pay and receive tokens, as well as the available liquidity in both pay token and USD. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getSwapLimitsAndLiquidityTest() throws ApiException {
+        String payTokenId = null;
+        String receiveTokenId = null;
+        WalletSubtype walletSubtype = null;
+        SwapType type = null;
+        SwapLimitsAndLiquidity response = api.getSwapLimitsAndLiquidity(payTokenId, receiveTokenId, walletSubtype, type);
+        // TODO: test validations
+    }
+
+    /**
      * Get Current Swap Rate
      *
      * This operation retrieves the current market exchange rate and estimated amount for swapping between two tokens. Either pay_amount or receive_amount must be provided. 
@@ -115,6 +134,7 @@ public class SwapsApiTest {
      */
     @Test
     public void listSwapActivitiesTest() throws ApiException {
+        String requestId = null;
         SwapType type = null;
         SwapActivityStatus status = null;
         Long minUpdatedTimestamp = null;
@@ -125,7 +145,7 @@ public class SwapsApiTest {
         String after = null;
         String sortBy = null;
         String direction = null;
-        ListSwapActivities200Response response = api.listSwapActivities(type, status, minUpdatedTimestamp, maxUpdatedTimestamp, initiator, limit, before, after, sortBy, direction);
+        ListSwapActivities200Response response = api.listSwapActivities(requestId, type, status, minUpdatedTimestamp, maxUpdatedTimestamp, initiator, limit, before, after, sortBy, direction);
         // TODO: test validations
     }
 

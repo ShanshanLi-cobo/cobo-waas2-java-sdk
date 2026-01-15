@@ -51,4 +51,12 @@ public class TransactionUtxoChangeTest {
         // TODO: test value
     }
 
+    /**
+     * Test the property 'tokenId'
+     */
+    @Test
+    public void tokenIdTest() {
+        // TODO: test tokenId
+    }
+
 }

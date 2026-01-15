@@ -17,6 +17,8 @@ The UTXO information.
 |**isLocked** | **Boolean** | Whether the UTXO is locked. |  [optional] |
 |**confirmedNumber** | **Integer** | The number of confirmations for the UTXO. |  [optional] |
 |**isFrozen** | **Boolean** | Whether the UTXO is frozen. |  [optional] |
+|**objectId** | **String** | The ID of the blockchain object to spend (e.g., SUI Coin object). |  [optional] |
+|**version** | **String** | Object version number. |  [optional] |
 
 
 

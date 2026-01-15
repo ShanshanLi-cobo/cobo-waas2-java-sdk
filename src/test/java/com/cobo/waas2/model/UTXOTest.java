@@ -107,4 +107,20 @@ public class UTXOTest {
         // TODO: test isFrozen
     }
 
+    /**
+     * Test the property 'objectId'
+     */
+    @Test
+    public void objectIdTest() {
+        // TODO: test objectId
+    }
+
+    /**
+     * Test the property 'version'
+     */
+    @Test
+    public void versionTest() {
+        // TODO: test version
+    }
+
 }

@@ -10,6 +10,7 @@ The UTXO change output information.
 |------------ | ------------- | ------------- | -------------|
 |**address** | **String** | The receiving address of the UTXO change output. |  [optional] |
 |**value** | **String** | The amount of the UTXO change output. |  [optional] |
+|**tokenId** | **String** | The token ID of the UTXO change output. |  [optional] |
 
 
 

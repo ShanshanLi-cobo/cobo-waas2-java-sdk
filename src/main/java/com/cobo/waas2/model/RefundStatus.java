@@ -22,11 +22,15 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * The current status of the refund order. For information about transaction status, see [Transaction statuses and sub-statuses](https://www.cobo.com/developers/v2/guides/transactions/status).  - &#x60;Pending&#x60;: The refund order has been created but the transaction has not been initiated. - &#x60;Processing&#x60;: The refund order is currently being processed, with at least one refund transaction in progress. - &#x60;Completed&#x60;: All refund transactions have been completed successfully. - &#x60;PartiallyCompleted&#x60;: Some refund transactions have been completed successfully, while others have failed. - &#x60;Failed&#x60;: All refund transactions have failed. - &#x60;PendingConfirmation&#x60;: The refund order has been completed but the address to send is pending confirmation. 
+ * The current status of the refund order. For information about transaction status, see [Transaction statuses and sub-statuses](https://www.cobo.com/developers/v2/guides/transactions/status).  - &#x60;AddressPending&#x60;: The refund link has been created and opened but the address is not yet submitted. - &#x60;AddressSubmitted&#x60;: The address of the refund link has been submitted. - &#x60;Pending&#x60;: The refund order has been created but the transaction has not been initiated. - &#x60;Processing&#x60;: The refund order is currently being processed, with at least one refund transaction in progress. - &#x60;Completed&#x60;: All refund transactions have been completed successfully. - &#x60;PartiallyCompleted&#x60;: Some refund transactions have been completed successfully, while others have failed. - &#x60;Failed&#x60;: All refund transactions have failed. - &#x60;PendingConfirmation&#x60;: The refund order has been completed but the address to send is pending confirmation. 
  */
 @JsonAdapter(RefundStatus.Adapter.class)
 public enum RefundStatus {
   UNKNOWN(null),
+  
+  ADDRESSPENDING("AddressPending"),
+  
+  ADDRESSSUBMITTED("AddressSubmitted"),
   
   PENDING("Pending"),
   

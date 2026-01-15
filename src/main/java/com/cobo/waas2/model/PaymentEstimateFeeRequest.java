@@ -64,6 +64,10 @@ public class PaymentEstimateFeeRequest {
   @SerializedName(SERIALIZED_NAME_ESTIMATE_FEES)
   private List<PaymentEstimateFee> estimateFees = new ArrayList<>();
 
+  public static final String SERIALIZED_NAME_RECIPIENT_TOKEN_ID = "recipient_token_id";
+  @SerializedName(SERIALIZED_NAME_RECIPIENT_TOKEN_ID)
+  private String recipientTokenId;
+
   public PaymentEstimateFeeRequest() {
   }
 
@@ -110,6 +114,25 @@ public class PaymentEstimateFeeRequest {
 
   public void setEstimateFees(List<PaymentEstimateFee> estimateFees) {
     this.estimateFees = estimateFees;
+  }
+
+
+  public PaymentEstimateFeeRequest recipientTokenId(String recipientTokenId) {
+    this.recipientTokenId = recipientTokenId;
+    return this;
+  }
+
+   /**
+   * only need fee_type is CryptoPayoutBridge
+   * @return recipientTokenId
+  **/
+  @javax.annotation.Nullable
+  public String getRecipientTokenId() {
+    return recipientTokenId;
+  }
+
+  public void setRecipientTokenId(String recipientTokenId) {
+    this.recipientTokenId = recipientTokenId;
   }
 
   /**
@@ -168,13 +191,14 @@ public class PaymentEstimateFeeRequest {
     }
     PaymentEstimateFeeRequest paymentEstimateFeeRequest = (PaymentEstimateFeeRequest) o;
     return Objects.equals(this.feeType, paymentEstimateFeeRequest.feeType) &&
-        Objects.equals(this.estimateFees, paymentEstimateFeeRequest.estimateFees)&&
+        Objects.equals(this.estimateFees, paymentEstimateFeeRequest.estimateFees) &&
+        Objects.equals(this.recipientTokenId, paymentEstimateFeeRequest.recipientTokenId)&&
         Objects.equals(this.additionalProperties, paymentEstimateFeeRequest.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(feeType, estimateFees, additionalProperties);
+    return Objects.hash(feeType, estimateFees, recipientTokenId, additionalProperties);
   }
 
   @Override
@@ -183,6 +207,7 @@ public class PaymentEstimateFeeRequest {
     sb.append("class PaymentEstimateFeeRequest {\n");
     sb.append("    feeType: ").append(toIndentedString(feeType)).append("\n");
     sb.append("    estimateFees: ").append(toIndentedString(estimateFees)).append("\n");
+    sb.append("    recipientTokenId: ").append(toIndentedString(recipientTokenId)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -208,6 +233,7 @@ public class PaymentEstimateFeeRequest {
     openapiFields = new HashSet<String>();
     openapiFields.add("fee_type");
     openapiFields.add("estimate_fees");
+    openapiFields.add("recipient_token_id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -248,6 +274,9 @@ public class PaymentEstimateFeeRequest {
       for (int i = 0; i < jsonArrayestimateFees.size(); i++) {
         PaymentEstimateFee.validateJsonElement(jsonArrayestimateFees.get(i));
       };
+      if ((jsonObj.get("recipient_token_id") != null && !jsonObj.get("recipient_token_id").isJsonNull()) && !jsonObj.get("recipient_token_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `recipient_token_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("recipient_token_id").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

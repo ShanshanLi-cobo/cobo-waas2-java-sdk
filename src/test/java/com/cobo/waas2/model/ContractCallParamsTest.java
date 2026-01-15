@@ -14,6 +14,7 @@ package com.cobo.waas2.model;
 import com.cobo.waas2.model.AutoFuelType;
 import com.cobo.waas2.model.ContractCallDestination;
 import com.cobo.waas2.model.ContractCallSource;
+import com.cobo.waas2.model.PreCheck;
 import com.cobo.waas2.model.TransactionProcessType;
 import com.cobo.waas2.model.TransactionRequestFee;
 import com.google.gson.TypeAdapter;
@@ -112,6 +113,14 @@ public class ContractCallParamsTest {
     @Test
     public void autoFuelTest() {
         // TODO: test autoFuel
+    }
+
+    /**
+     * Test the property 'preCheck'
+     */
+    @Test
+    public void preCheckTest() {
+        // TODO: test preCheck
     }
 
 }

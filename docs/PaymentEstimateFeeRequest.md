@@ -9,6 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**feeType** | **PaymentFeeType** |  |  [optional] |
 |**estimateFees** | [**List&lt;PaymentEstimateFee&gt;**](PaymentEstimateFee.md) |  |  |
+|**recipientTokenId** | **String** | only need fee_type is CryptoPayoutBridge |  [optional] |
 
 
 

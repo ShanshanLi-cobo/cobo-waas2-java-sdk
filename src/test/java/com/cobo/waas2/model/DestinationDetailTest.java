@@ -11,8 +11,8 @@
 
 package com.cobo.waas2.model;
 
-import com.cobo.waas2.model.CounterpartyType;
 import com.cobo.waas2.model.DestinationBankAccount;
+import com.cobo.waas2.model.DestinationType;
 import com.cobo.waas2.model.WalletAddress;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;

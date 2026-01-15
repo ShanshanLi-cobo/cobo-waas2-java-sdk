@@ -60,6 +60,10 @@ public class TransactionSelectedUtxo {
   @SerializedName(SERIALIZED_NAME_VOUT_N)
   private Integer voutN;
 
+  public static final String SERIALIZED_NAME_TOKEN_ID = "token_id";
+  @SerializedName(SERIALIZED_NAME_TOKEN_ID)
+  private String tokenId;
+
   public static final String SERIALIZED_NAME_ADDRESS = "address";
   @SerializedName(SERIALIZED_NAME_ADDRESS)
   private String address;
@@ -75,6 +79,14 @@ public class TransactionSelectedUtxo {
   public static final String SERIALIZED_NAME_REVEALED_SCRIPT = "revealed_script";
   @SerializedName(SERIALIZED_NAME_REVEALED_SCRIPT)
   private String revealedScript;
+
+  public static final String SERIALIZED_NAME_OBJECT_ID = "object_id";
+  @SerializedName(SERIALIZED_NAME_OBJECT_ID)
+  private String objectId;
+
+  public static final String SERIALIZED_NAME_VERSION = "version";
+  @SerializedName(SERIALIZED_NAME_VERSION)
+  private String version;
 
   public TransactionSelectedUtxo() {
   }
@@ -114,6 +126,25 @@ public class TransactionSelectedUtxo {
 
   public void setVoutN(Integer voutN) {
     this.voutN = voutN;
+  }
+
+
+  public TransactionSelectedUtxo tokenId(String tokenId) {
+    this.tokenId = tokenId;
+    return this;
+  }
+
+   /**
+   * The token ID of the UTXO.
+   * @return tokenId
+  **/
+  @javax.annotation.Nullable
+  public String getTokenId() {
+    return tokenId;
+  }
+
+  public void setTokenId(String tokenId) {
+    this.tokenId = tokenId;
   }
 
 
@@ -192,6 +223,44 @@ public class TransactionSelectedUtxo {
     this.revealedScript = revealedScript;
   }
 
+
+  public TransactionSelectedUtxo objectId(String objectId) {
+    this.objectId = objectId;
+    return this;
+  }
+
+   /**
+   * The ID of the blockchain object to spend (e.g., SUI Coin object).
+   * @return objectId
+  **/
+  @javax.annotation.Nullable
+  public String getObjectId() {
+    return objectId;
+  }
+
+  public void setObjectId(String objectId) {
+    this.objectId = objectId;
+  }
+
+
+  public TransactionSelectedUtxo version(String version) {
+    this.version = version;
+    return this;
+  }
+
+   /**
+   * Object version number.
+   * @return version
+  **/
+  @javax.annotation.Nullable
+  public String getVersion() {
+    return version;
+  }
+
+  public void setVersion(String version) {
+    this.version = version;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -249,16 +318,19 @@ public class TransactionSelectedUtxo {
     TransactionSelectedUtxo transactionSelectedUtxo = (TransactionSelectedUtxo) o;
     return Objects.equals(this.txHash, transactionSelectedUtxo.txHash) &&
         Objects.equals(this.voutN, transactionSelectedUtxo.voutN) &&
+        Objects.equals(this.tokenId, transactionSelectedUtxo.tokenId) &&
         Objects.equals(this.address, transactionSelectedUtxo.address) &&
         Objects.equals(this.value, transactionSelectedUtxo.value) &&
         Objects.equals(this.redeemScript, transactionSelectedUtxo.redeemScript) &&
-        Objects.equals(this.revealedScript, transactionSelectedUtxo.revealedScript)&&
+        Objects.equals(this.revealedScript, transactionSelectedUtxo.revealedScript) &&
+        Objects.equals(this.objectId, transactionSelectedUtxo.objectId) &&
+        Objects.equals(this.version, transactionSelectedUtxo.version)&&
         Objects.equals(this.additionalProperties, transactionSelectedUtxo.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(txHash, voutN, address, value, redeemScript, revealedScript, additionalProperties);
+    return Objects.hash(txHash, voutN, tokenId, address, value, redeemScript, revealedScript, objectId, version, additionalProperties);
   }
 
   @Override
@@ -267,10 +339,13 @@ public class TransactionSelectedUtxo {
     sb.append("class TransactionSelectedUtxo {\n");
     sb.append("    txHash: ").append(toIndentedString(txHash)).append("\n");
     sb.append("    voutN: ").append(toIndentedString(voutN)).append("\n");
+    sb.append("    tokenId: ").append(toIndentedString(tokenId)).append("\n");
     sb.append("    address: ").append(toIndentedString(address)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    redeemScript: ").append(toIndentedString(redeemScript)).append("\n");
     sb.append("    revealedScript: ").append(toIndentedString(revealedScript)).append("\n");
+    sb.append("    objectId: ").append(toIndentedString(objectId)).append("\n");
+    sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -296,10 +371,13 @@ public class TransactionSelectedUtxo {
     openapiFields = new HashSet<String>();
     openapiFields.add("tx_hash");
     openapiFields.add("vout_n");
+    openapiFields.add("token_id");
     openapiFields.add("address");
     openapiFields.add("value");
     openapiFields.add("redeem_script");
     openapiFields.add("revealed_script");
+    openapiFields.add("object_id");
+    openapiFields.add("version");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -321,6 +399,9 @@ public class TransactionSelectedUtxo {
       if ((jsonObj.get("tx_hash") != null && !jsonObj.get("tx_hash").isJsonNull()) && !jsonObj.get("tx_hash").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `tx_hash` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tx_hash").toString()));
       }
+      if ((jsonObj.get("token_id") != null && !jsonObj.get("token_id").isJsonNull()) && !jsonObj.get("token_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `token_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("token_id").toString()));
+      }
       if ((jsonObj.get("address") != null && !jsonObj.get("address").isJsonNull()) && !jsonObj.get("address").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `address` to be a primitive type in the JSON string but got `%s`", jsonObj.get("address").toString()));
       }
@@ -332,6 +413,12 @@ public class TransactionSelectedUtxo {
       }
       if ((jsonObj.get("revealed_script") != null && !jsonObj.get("revealed_script").isJsonNull()) && !jsonObj.get("revealed_script").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `revealed_script` to be a primitive type in the JSON string but got `%s`", jsonObj.get("revealed_script").toString()));
+      }
+      if ((jsonObj.get("object_id") != null && !jsonObj.get("object_id").isJsonNull()) && !jsonObj.get("object_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `object_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object_id").toString()));
+      }
+      if ((jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) && !jsonObj.get("version").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `version` to be a primitive type in the JSON string but got `%s`", jsonObj.get("version").toString()));
       }
   }
 

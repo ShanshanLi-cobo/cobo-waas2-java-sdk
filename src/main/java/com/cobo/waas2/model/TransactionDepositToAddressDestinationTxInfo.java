@@ -56,6 +56,14 @@ public class TransactionDepositToAddressDestinationTxInfo {
   @SerializedName(SERIALIZED_NAME_VOUT_N)
   private Integer voutN;
 
+  public static final String SERIALIZED_NAME_OBJECT_ID = "object_id";
+  @SerializedName(SERIALIZED_NAME_OBJECT_ID)
+  private String objectId;
+
+  public static final String SERIALIZED_NAME_VERSION = "version";
+  @SerializedName(SERIALIZED_NAME_VERSION)
+  private String version;
+
   public TransactionDepositToAddressDestinationTxInfo() {
   }
 
@@ -75,6 +83,44 @@ public class TransactionDepositToAddressDestinationTxInfo {
 
   public void setVoutN(Integer voutN) {
     this.voutN = voutN;
+  }
+
+
+  public TransactionDepositToAddressDestinationTxInfo objectId(String objectId) {
+    this.objectId = objectId;
+    return this;
+  }
+
+   /**
+   * The ID of the blockchain object to spend (e.g., SUI Coin object).
+   * @return objectId
+  **/
+  @javax.annotation.Nullable
+  public String getObjectId() {
+    return objectId;
+  }
+
+  public void setObjectId(String objectId) {
+    this.objectId = objectId;
+  }
+
+
+  public TransactionDepositToAddressDestinationTxInfo version(String version) {
+    this.version = version;
+    return this;
+  }
+
+   /**
+   * Object version number.
+   * @return version
+  **/
+  @javax.annotation.Nullable
+  public String getVersion() {
+    return version;
+  }
+
+  public void setVersion(String version) {
+    this.version = version;
   }
 
   /**
@@ -132,13 +178,15 @@ public class TransactionDepositToAddressDestinationTxInfo {
       return false;
     }
     TransactionDepositToAddressDestinationTxInfo transactionDepositToAddressDestinationTxInfo = (TransactionDepositToAddressDestinationTxInfo) o;
-    return Objects.equals(this.voutN, transactionDepositToAddressDestinationTxInfo.voutN)&&
+    return Objects.equals(this.voutN, transactionDepositToAddressDestinationTxInfo.voutN) &&
+        Objects.equals(this.objectId, transactionDepositToAddressDestinationTxInfo.objectId) &&
+        Objects.equals(this.version, transactionDepositToAddressDestinationTxInfo.version)&&
         Objects.equals(this.additionalProperties, transactionDepositToAddressDestinationTxInfo.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(voutN, additionalProperties);
+    return Objects.hash(voutN, objectId, version, additionalProperties);
   }
 
   @Override
@@ -146,6 +194,8 @@ public class TransactionDepositToAddressDestinationTxInfo {
     StringBuilder sb = new StringBuilder();
     sb.append("class TransactionDepositToAddressDestinationTxInfo {\n");
     sb.append("    voutN: ").append(toIndentedString(voutN)).append("\n");
+    sb.append("    objectId: ").append(toIndentedString(objectId)).append("\n");
+    sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -170,6 +220,8 @@ public class TransactionDepositToAddressDestinationTxInfo {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("vout_n");
+    openapiFields.add("object_id");
+    openapiFields.add("version");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -188,6 +240,12 @@ public class TransactionDepositToAddressDestinationTxInfo {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("object_id") != null && !jsonObj.get("object_id").isJsonNull()) && !jsonObj.get("object_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `object_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object_id").toString()));
+      }
+      if ((jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) && !jsonObj.get("version").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `version` to be a primitive type in the JSON string but got `%s`", jsonObj.get("version").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

@@ -60,6 +60,10 @@ public class TransactionUtxoChange {
   @SerializedName(SERIALIZED_NAME_VALUE)
   private String value;
 
+  public static final String SERIALIZED_NAME_TOKEN_ID = "token_id";
+  @SerializedName(SERIALIZED_NAME_TOKEN_ID)
+  private String tokenId;
+
   public TransactionUtxoChange() {
   }
 
@@ -98,6 +102,25 @@ public class TransactionUtxoChange {
 
   public void setValue(String value) {
     this.value = value;
+  }
+
+
+  public TransactionUtxoChange tokenId(String tokenId) {
+    this.tokenId = tokenId;
+    return this;
+  }
+
+   /**
+   * The token ID of the UTXO change output.
+   * @return tokenId
+  **/
+  @javax.annotation.Nullable
+  public String getTokenId() {
+    return tokenId;
+  }
+
+  public void setTokenId(String tokenId) {
+    this.tokenId = tokenId;
   }
 
   /**
@@ -156,13 +179,14 @@ public class TransactionUtxoChange {
     }
     TransactionUtxoChange transactionUtxoChange = (TransactionUtxoChange) o;
     return Objects.equals(this.address, transactionUtxoChange.address) &&
-        Objects.equals(this.value, transactionUtxoChange.value)&&
+        Objects.equals(this.value, transactionUtxoChange.value) &&
+        Objects.equals(this.tokenId, transactionUtxoChange.tokenId)&&
         Objects.equals(this.additionalProperties, transactionUtxoChange.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(address, value, additionalProperties);
+    return Objects.hash(address, value, tokenId, additionalProperties);
   }
 
   @Override
@@ -171,6 +195,7 @@ public class TransactionUtxoChange {
     sb.append("class TransactionUtxoChange {\n");
     sb.append("    address: ").append(toIndentedString(address)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("    tokenId: ").append(toIndentedString(tokenId)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -196,6 +221,7 @@ public class TransactionUtxoChange {
     openapiFields = new HashSet<String>();
     openapiFields.add("address");
     openapiFields.add("value");
+    openapiFields.add("token_id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -219,6 +245,9 @@ public class TransactionUtxoChange {
       }
       if ((jsonObj.get("value") != null && !jsonObj.get("value").isJsonNull()) && !jsonObj.get("value").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `value` to be a primitive type in the JSON string but got `%s`", jsonObj.get("value").toString()));
+      }
+      if ((jsonObj.get("token_id") != null && !jsonObj.get("token_id").isJsonNull()) && !jsonObj.get("token_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `token_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("token_id").toString()));
       }
   }
 

@@ -12,7 +12,7 @@
 package com.cobo.waas2.model;
 
 import java.util.Objects;
-import com.cobo.waas2.model.CounterpartyType;
+import com.cobo.waas2.model.DestinationType;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -59,7 +59,7 @@ public class UpdateDestinationByIdRequest {
 
   public static final String SERIALIZED_NAME_DESTINATION_TYPE = "destination_type";
   @SerializedName(SERIALIZED_NAME_DESTINATION_TYPE)
-  private CounterpartyType destinationType;
+  private DestinationType destinationType;
 
   public static final String SERIALIZED_NAME_MERCHANT_ID = "merchant_id";
   @SerializedName(SERIALIZED_NAME_MERCHANT_ID)
@@ -99,7 +99,7 @@ public class UpdateDestinationByIdRequest {
   }
 
 
-  public UpdateDestinationByIdRequest destinationType(CounterpartyType destinationType) {
+  public UpdateDestinationByIdRequest destinationType(DestinationType destinationType) {
     this.destinationType = destinationType;
     return this;
   }
@@ -109,11 +109,11 @@ public class UpdateDestinationByIdRequest {
    * @return destinationType
   **/
   @javax.annotation.Nonnull
-  public CounterpartyType getDestinationType() {
+  public DestinationType getDestinationType() {
     return destinationType;
   }
 
-  public void setDestinationType(CounterpartyType destinationType) {
+  public void setDestinationType(DestinationType destinationType) {
     this.destinationType = destinationType;
   }
 
@@ -143,7 +143,7 @@ public class UpdateDestinationByIdRequest {
   }
 
    /**
-   * The country of the counterparty, in ISO 3166-1 alpha-3 format.
+   * The country of the destination, in ISO 3166-1 alpha-3 format.
    * @return country
   **/
   @javax.annotation.Nullable
@@ -162,7 +162,7 @@ public class UpdateDestinationByIdRequest {
   }
 
    /**
-   * The email of the counterparty.
+   * The email of the destination.
    * @return email
   **/
   @javax.annotation.Nullable
@@ -181,7 +181,7 @@ public class UpdateDestinationByIdRequest {
   }
 
    /**
-   * The contact address of the counterparty.
+   * The contact address of the destination.
    * @return contactAddress
   **/
   @javax.annotation.Nullable
@@ -332,7 +332,7 @@ public class UpdateDestinationByIdRequest {
         throw new IllegalArgumentException(String.format("Expected the field `destination_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("destination_name").toString()));
       }
       // validate the required field `destination_type`
-      CounterpartyType.validateJsonElement(jsonObj.get("destination_type"));
+      DestinationType.validateJsonElement(jsonObj.get("destination_type"));
       if ((jsonObj.get("merchant_id") != null && !jsonObj.get("merchant_id").isJsonNull()) && !jsonObj.get("merchant_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `merchant_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("merchant_id").toString()));
       }
