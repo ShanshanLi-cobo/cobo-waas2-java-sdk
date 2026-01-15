@@ -79,5 +79,11 @@
 
 * `FEEPAYERSIGN` (value: `"FeePayerSign"`)
 
+* `GASFEESPONSOR` (value: `"GasFeeSponsor"`)
+
+* `GASFEESPONSORREFUND` (value: `"GasFeeSponsorRefund"`)
+
+* `WALLETCONNECT` (value: `"WalletConnect"`)
+
 
 

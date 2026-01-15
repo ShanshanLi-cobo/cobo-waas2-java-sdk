@@ -11,9 +11,7 @@
 
 package com.cobo.waas2.model;
 
-import com.cobo.waas2.model.TokenizationPermissionAction;
 import com.cobo.waas2.model.TokenizationTokenOperationSource;
-import com.cobo.waas2.model.TokenizationTokenPermissionType;
 import com.cobo.waas2.model.TokenizationUpdateAddressPermissions;
 import com.cobo.waas2.model.TransactionRequestFee;
 import com.google.gson.TypeAdapter;
@@ -48,30 +46,6 @@ public class TokenizationUpdatePermissionsRequestTest {
     @Test
     public void sourceTest() {
         // TODO: test source
-    }
-
-    /**
-     * Test the property 'action'
-     */
-    @Test
-    public void actionTest() {
-        // TODO: test action
-    }
-
-    /**
-     * Test the property 'address'
-     */
-    @Test
-    public void addressTest() {
-        // TODO: test address
-    }
-
-    /**
-     * Test the property 'permissions'
-     */
-    @Test
-    public void permissionsTest() {
-        // TODO: test permissions
     }
 
     /**

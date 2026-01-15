@@ -15,6 +15,7 @@ import java.util.Objects;
 import com.cobo.waas2.model.AutoFuelType;
 import com.cobo.waas2.model.ContractCallDestination;
 import com.cobo.waas2.model.ContractCallSource;
+import com.cobo.waas2.model.PreCheck;
 import com.cobo.waas2.model.TransactionProcessType;
 import com.cobo.waas2.model.TransactionRequestFee;
 import com.google.gson.TypeAdapter;
@@ -94,6 +95,10 @@ public class ContractCallParams {
   public static final String SERIALIZED_NAME_AUTO_FUEL = "auto_fuel";
   @SerializedName(SERIALIZED_NAME_AUTO_FUEL)
   private AutoFuelType autoFuel;
+
+  public static final String SERIALIZED_NAME_PRE_CHECK = "pre_check";
+  @SerializedName(SERIALIZED_NAME_PRE_CHECK)
+  private PreCheck preCheck;
 
   public ContractCallParams() {
   }
@@ -276,6 +281,25 @@ public class ContractCallParams {
     this.autoFuel = autoFuel;
   }
 
+
+  public ContractCallParams preCheck(PreCheck preCheck) {
+    this.preCheck = preCheck;
+    return this;
+  }
+
+   /**
+   * Get preCheck
+   * @return preCheck
+  **/
+  @javax.annotation.Nullable
+  public PreCheck getPreCheck() {
+    return preCheck;
+  }
+
+  public void setPreCheck(PreCheck preCheck) {
+    this.preCheck = preCheck;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -339,13 +363,14 @@ public class ContractCallParams {
         Objects.equals(this.categoryNames, contractCallParams.categoryNames) &&
         Objects.equals(this.fee, contractCallParams.fee) &&
         Objects.equals(this.transactionProcessType, contractCallParams.transactionProcessType) &&
-        Objects.equals(this.autoFuel, contractCallParams.autoFuel)&&
+        Objects.equals(this.autoFuel, contractCallParams.autoFuel) &&
+        Objects.equals(this.preCheck, contractCallParams.preCheck)&&
         Objects.equals(this.additionalProperties, contractCallParams.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(requestId, chainId, source, destination, description, categoryNames, fee, transactionProcessType, autoFuel, additionalProperties);
+    return Objects.hash(requestId, chainId, source, destination, description, categoryNames, fee, transactionProcessType, autoFuel, preCheck, additionalProperties);
   }
 
   @Override
@@ -361,6 +386,7 @@ public class ContractCallParams {
     sb.append("    fee: ").append(toIndentedString(fee)).append("\n");
     sb.append("    transactionProcessType: ").append(toIndentedString(transactionProcessType)).append("\n");
     sb.append("    autoFuel: ").append(toIndentedString(autoFuel)).append("\n");
+    sb.append("    preCheck: ").append(toIndentedString(preCheck)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -393,6 +419,7 @@ public class ContractCallParams {
     openapiFields.add("fee");
     openapiFields.add("transaction_process_type");
     openapiFields.add("auto_fuel");
+    openapiFields.add("pre_check");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -450,6 +477,10 @@ public class ContractCallParams {
       // validate the optional field `auto_fuel`
       if (jsonObj.get("auto_fuel") != null && !jsonObj.get("auto_fuel").isJsonNull()) {
         AutoFuelType.validateJsonElement(jsonObj.get("auto_fuel"));
+      }
+      // validate the optional field `pre_check`
+      if (jsonObj.get("pre_check") != null && !jsonObj.get("pre_check").isJsonNull()) {
+        PreCheck.validateJsonElement(jsonObj.get("pre_check"));
       }
   }
 

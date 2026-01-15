@@ -22,7 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * The transaction extra information type. Possible values include:   - &#x60;BabylonBusinessInfo&#x60;: The extra information of Babylon business.   - &#x60;BabylonTxParameters&#x60;: The extra information of Babylon transaction parameters.   - &#x60;CoreStakeInfo&#x60;: The extra information of core stake. 
+ * The transaction extra information type. Possible values include:   - &#x60;BabylonBusinessInfo&#x60;: The extra information of Babylon business.   - &#x60;BabylonTxParameters&#x60;: The extra information of Babylon transaction parameters.   - &#x60;CoreStakeInfo&#x60;: The extra information of core stake.   - &#x60;WalletConnectInfo&#x60;: The extra information of transaction initiated by walletconnect. 
  */
 @JsonAdapter(TransactionExtraType.Adapter.class)
 public enum TransactionExtraType {
@@ -32,7 +32,9 @@ public enum TransactionExtraType {
   
   BABYLONTXPARAMETERS("BabylonTxParameters"),
   
-  CORESTAKEINFO("CoreStakeInfo");
+  CORESTAKEINFO("CoreStakeInfo"),
+  
+  WALLETCONNECTINFO("WalletConnectInfo");
 
   private String value;
 

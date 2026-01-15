@@ -17,6 +17,7 @@ The information about a transaction that interacts with a smart contract
 |**fee** | [**TransactionRequestFee**](TransactionRequestFee.md) |  |  [optional] |
 |**transactionProcessType** | **TransactionProcessType** |  |  [optional] |
 |**autoFuel** | **AutoFuelType** |  |  [optional] |
+|**preCheck** | [**PreCheck**](PreCheck.md) |  |  [optional] |
 
 
 

@@ -69,7 +69,7 @@ public class PaymentEstimateFee {
   }
 
    /**
-   * The ID of the cryptocurrency you want to OffRamp settle.
+   * The ID of the cryptocurrency you want to refund.
    * @return tokenId
   **/
   @javax.annotation.Nonnull

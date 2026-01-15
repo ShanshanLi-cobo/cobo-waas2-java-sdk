@@ -58,7 +58,7 @@ import com.cobo.waas2.JSON;
 public class TransactionRawTxInfo {
   public static final String SERIALIZED_NAME_USED_NONCE = "used_nonce";
   @SerializedName(SERIALIZED_NAME_USED_NONCE)
-  private Integer usedNonce;
+  private Long usedNonce;
 
   public static final String SERIALIZED_NAME_SELECTED_UTXOS = "selected_utxos";
   @SerializedName(SERIALIZED_NAME_SELECTED_UTXOS)
@@ -73,13 +73,18 @@ public class TransactionRawTxInfo {
   private String unsignedRawTx;
 
   public static final String SERIALIZED_NAME_UTXO_CHANGE = "utxo_change";
+  @Deprecated
   @SerializedName(SERIALIZED_NAME_UTXO_CHANGE)
   private TransactionUtxoChange utxoChange;
+
+  public static final String SERIALIZED_NAME_UTXO_CHANGES = "utxo_changes";
+  @SerializedName(SERIALIZED_NAME_UTXO_CHANGES)
+  private List<TransactionUtxoChange> utxoChanges = new ArrayList<>();
 
   public TransactionRawTxInfo() {
   }
 
-  public TransactionRawTxInfo usedNonce(Integer usedNonce) {
+  public TransactionRawTxInfo usedNonce(Long usedNonce) {
     this.usedNonce = usedNonce;
     return this;
   }
@@ -89,11 +94,11 @@ public class TransactionRawTxInfo {
    * @return usedNonce
   **/
   @javax.annotation.Nullable
-  public Integer getUsedNonce() {
+  public Long getUsedNonce() {
     return usedNonce;
   }
 
-  public void setUsedNonce(Integer usedNonce) {
+  public void setUsedNonce(Long usedNonce) {
     this.usedNonce = usedNonce;
   }
 
@@ -163,22 +168,53 @@ public class TransactionRawTxInfo {
   }
 
 
+  @Deprecated
   public TransactionRawTxInfo utxoChange(TransactionUtxoChange utxoChange) {
     this.utxoChange = utxoChange;
     return this;
   }
 
    /**
-   * Get utxoChange
+   * Deprecated. Use &#x60;utxo_changes&#x60; instead.
    * @return utxoChange
+   * @deprecated
   **/
+  @Deprecated
   @javax.annotation.Nullable
   public TransactionUtxoChange getUtxoChange() {
     return utxoChange;
   }
 
+  @Deprecated
   public void setUtxoChange(TransactionUtxoChange utxoChange) {
     this.utxoChange = utxoChange;
+  }
+
+
+  public TransactionRawTxInfo utxoChanges(List<TransactionUtxoChange> utxoChanges) {
+    this.utxoChanges = utxoChanges;
+    return this;
+  }
+
+  public TransactionRawTxInfo addUtxoChangesItem(TransactionUtxoChange utxoChangesItem) {
+    if (this.utxoChanges == null) {
+      this.utxoChanges = new ArrayList<>();
+    }
+    this.utxoChanges.add(utxoChangesItem);
+    return this;
+  }
+
+   /**
+   * The UTXO change outputs in the transaction.
+   * @return utxoChanges
+  **/
+  @javax.annotation.Nullable
+  public List<TransactionUtxoChange> getUtxoChanges() {
+    return utxoChanges;
+  }
+
+  public void setUtxoChanges(List<TransactionUtxoChange> utxoChanges) {
+    this.utxoChanges = utxoChanges;
   }
 
   /**
@@ -240,13 +276,14 @@ public class TransactionRawTxInfo {
         Objects.equals(this.selectedUtxos, transactionRawTxInfo.selectedUtxos) &&
         Objects.equals(this.rawTx, transactionRawTxInfo.rawTx) &&
         Objects.equals(this.unsignedRawTx, transactionRawTxInfo.unsignedRawTx) &&
-        Objects.equals(this.utxoChange, transactionRawTxInfo.utxoChange)&&
+        Objects.equals(this.utxoChange, transactionRawTxInfo.utxoChange) &&
+        Objects.equals(this.utxoChanges, transactionRawTxInfo.utxoChanges)&&
         Objects.equals(this.additionalProperties, transactionRawTxInfo.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(usedNonce, selectedUtxos, rawTx, unsignedRawTx, utxoChange, additionalProperties);
+    return Objects.hash(usedNonce, selectedUtxos, rawTx, unsignedRawTx, utxoChange, utxoChanges, additionalProperties);
   }
 
   @Override
@@ -258,6 +295,7 @@ public class TransactionRawTxInfo {
     sb.append("    rawTx: ").append(toIndentedString(rawTx)).append("\n");
     sb.append("    unsignedRawTx: ").append(toIndentedString(unsignedRawTx)).append("\n");
     sb.append("    utxoChange: ").append(toIndentedString(utxoChange)).append("\n");
+    sb.append("    utxoChanges: ").append(toIndentedString(utxoChanges)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -286,6 +324,7 @@ public class TransactionRawTxInfo {
     openapiFields.add("raw_tx");
     openapiFields.add("unsigned_raw_tx");
     openapiFields.add("utxo_change");
+    openapiFields.add("utxo_changes");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -327,6 +366,20 @@ public class TransactionRawTxInfo {
       // validate the optional field `utxo_change`
       if (jsonObj.get("utxo_change") != null && !jsonObj.get("utxo_change").isJsonNull()) {
         TransactionUtxoChange.validateJsonElement(jsonObj.get("utxo_change"));
+      }
+      if (jsonObj.get("utxo_changes") != null && !jsonObj.get("utxo_changes").isJsonNull()) {
+        JsonArray jsonArrayutxoChanges = jsonObj.getAsJsonArray("utxo_changes");
+        if (jsonArrayutxoChanges != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("utxo_changes").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `utxo_changes` to be an array in the JSON string but got `%s`", jsonObj.get("utxo_changes").toString()));
+          }
+
+          // validate the optional field `utxo_changes` (array)
+          for (int i = 0; i < jsonArrayutxoChanges.size(); i++) {
+            TransactionUtxoChange.validateJsonElement(jsonArrayutxoChanges.get(i));
+          };
+        }
       }
   }
 

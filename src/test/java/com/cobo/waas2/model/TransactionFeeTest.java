@@ -139,6 +139,14 @@ public class TransactionFeeTest {
     }
 
     /**
+     * Test the property 'fallback'
+     */
+    @Test
+    public void fallbackTest() {
+        // TODO: test fallback
+    }
+
+    /**
      * Test the property 'baseFee'
      */
     @Test

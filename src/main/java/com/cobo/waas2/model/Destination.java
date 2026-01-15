@@ -12,7 +12,7 @@
 package com.cobo.waas2.model;
 
 import java.util.Objects;
-import com.cobo.waas2.model.CounterpartyType;
+import com.cobo.waas2.model.DestinationType;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -60,7 +60,7 @@ public class Destination {
 
   public static final String SERIALIZED_NAME_DESTINATION_TYPE = "destination_type";
   @SerializedName(SERIALIZED_NAME_DESTINATION_TYPE)
-  private CounterpartyType destinationType;
+  private DestinationType destinationType;
 
   public static final String SERIALIZED_NAME_DESTINATION_NAME = "destination_name";
   @SerializedName(SERIALIZED_NAME_DESTINATION_NAME)
@@ -112,7 +112,7 @@ public class Destination {
   }
 
 
-  public Destination destinationType(CounterpartyType destinationType) {
+  public Destination destinationType(DestinationType destinationType) {
     this.destinationType = destinationType;
     return this;
   }
@@ -122,11 +122,11 @@ public class Destination {
    * @return destinationType
   **/
   @javax.annotation.Nonnull
-  public CounterpartyType getDestinationType() {
+  public DestinationType getDestinationType() {
     return destinationType;
   }
 
-  public void setDestinationType(CounterpartyType destinationType) {
+  public void setDestinationType(DestinationType destinationType) {
     this.destinationType = destinationType;
   }
 
@@ -413,7 +413,7 @@ public class Destination {
         throw new IllegalArgumentException(String.format("Expected the field `destination_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("destination_id").toString()));
       }
       // validate the required field `destination_type`
-      CounterpartyType.validateJsonElement(jsonObj.get("destination_type"));
+      DestinationType.validateJsonElement(jsonObj.get("destination_type"));
       if (!jsonObj.get("destination_name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `destination_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("destination_name").toString()));
       }

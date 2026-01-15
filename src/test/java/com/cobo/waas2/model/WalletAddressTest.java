@@ -11,6 +11,7 @@
 
 package com.cobo.waas2.model;
 
+import com.cobo.waas2.model.AddressRiskLevel;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -58,6 +59,22 @@ public class WalletAddressTest {
     @Test
     public void chainIdTest() {
         // TODO: test chainId
+    }
+
+    /**
+     * Test the property 'riskLevel'
+     */
+    @Test
+    public void riskLevelTest() {
+        // TODO: test riskLevel
+    }
+
+    /**
+     * Test the property 'screeningTimestamp'
+     */
+    @Test
+    public void screeningTimestampTest() {
+        // TODO: test screeningTimestamp
     }
 
     /**

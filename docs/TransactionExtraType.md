@@ -11,5 +11,7 @@
 
 * `CORESTAKEINFO` (value: `"CoreStakeInfo"`)
 
+* `WALLETCONNECTINFO` (value: `"WalletConnectInfo"`)
+
 
 

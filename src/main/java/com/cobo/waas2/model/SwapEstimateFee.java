@@ -20,7 +20,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.UUID;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -64,7 +63,7 @@ public class SwapEstimateFee {
 
   public static final String SERIALIZED_NAME_QUOTE_ID = "quote_id";
   @SerializedName(SERIALIZED_NAME_QUOTE_ID)
-  private UUID quoteId;
+  private String quoteId;
 
   public static final String SERIALIZED_NAME_FEE_TYPE = "fee_type";
   @SerializedName(SERIALIZED_NAME_FEE_TYPE)
@@ -111,7 +110,7 @@ public class SwapEstimateFee {
   }
 
 
-  public SwapEstimateFee quoteId(UUID quoteId) {
+  public SwapEstimateFee quoteId(String quoteId) {
     this.quoteId = quoteId;
     return this;
   }
@@ -121,11 +120,11 @@ public class SwapEstimateFee {
    * @return quoteId
   **/
   @javax.annotation.Nonnull
-  public UUID getQuoteId() {
+  public String getQuoteId() {
     return quoteId;
   }
 
-  public void setQuoteId(UUID quoteId) {
+  public void setQuoteId(String quoteId) {
     this.quoteId = quoteId;
   }
 

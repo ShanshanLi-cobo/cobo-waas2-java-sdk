@@ -8,7 +8,7 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**destinationId** | **UUID** | The destination ID. |  |
-|**destinationType** | **CounterpartyType** |  |  |
+|**destinationType** | **DestinationType** |  |  |
 |**destinationName** | **String** | The destination name. |  |
 |**country** | **String** | The country of the destination, in ISO 3166-1 alpha-3 format. |  [optional] |
 |**email** | **String** | The email of the destination. |  [optional] |
