@@ -30,9 +30,12 @@ import com.cobo.waas2.model.KyaScreeningStatus;
 import com.cobo.waas2.model.KytScreeningsTransactionType;
 import com.cobo.waas2.model.MPCVaultEventData;
 import com.cobo.waas2.model.PaymentAddressUpdateEventData;
+import com.cobo.waas2.model.PaymentBulkSendEvent;
+import com.cobo.waas2.model.PaymentBulkSendExecutionMode;
 import com.cobo.waas2.model.PaymentOrderEventData;
 import com.cobo.waas2.model.PaymentPayoutEvent;
-import com.cobo.waas2.model.PaymentPayoutItemDetail;
+import com.cobo.waas2.model.PaymentPayoutItem;
+import com.cobo.waas2.model.PaymentPayoutRecipientInfo;
 import com.cobo.waas2.model.PaymentRefundEventData;
 import com.cobo.waas2.model.PaymentSettlementEvent;
 import com.cobo.waas2.model.PaymentTransaction;
@@ -839,11 +842,27 @@ public class WebhookEventDataTest {
     }
 
     /**
-     * Test the property 'payoutItemDetails'
+     * Test the property 'sourceAccount'
      */
     @Test
-    public void payoutItemDetailsTest() {
-        // TODO: test payoutItemDetails
+    public void sourceAccountTest() {
+        // TODO: test sourceAccount
+    }
+
+    /**
+     * Test the property 'payoutItems'
+     */
+    @Test
+    public void payoutItemsTest() {
+        // TODO: test payoutItems
+    }
+
+    /**
+     * Test the property 'recipientInfo'
+     */
+    @Test
+    public void recipientInfoTest() {
+        // TODO: test recipientInfo
     }
 
     /**
@@ -852,6 +871,30 @@ public class WebhookEventDataTest {
     @Test
     public void actualPayoutAmountTest() {
         // TODO: test actualPayoutAmount
+    }
+
+    /**
+     * Test the property 'remark'
+     */
+    @Test
+    public void remarkTest() {
+        // TODO: test remark
+    }
+
+    /**
+     * Test the property 'bulkSendId'
+     */
+    @Test
+    public void bulkSendIdTest() {
+        // TODO: test bulkSendId
+    }
+
+    /**
+     * Test the property 'executionMode'
+     */
+    @Test
+    public void executionModeTest() {
+        // TODO: test executionMode
     }
 
     /**

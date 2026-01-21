@@ -178,7 +178,7 @@ public class CreatePaymentOrderRequest {
   }
 
    /**
-   * The pricing currency that denominates &#x60;pricing_amount&#x60; and &#x60;fee_amount&#x60;. If left empty, both values will be denominated in &#x60;payable_currency&#x60;. Currently, only &#x60;USD&#x60; is supported.
+   * The pricing currency that denominates &#x60;pricing_amount&#x60; and &#x60;fee_amount&#x60;. If left empty, both values will be denominated in &#x60;payable_currency&#x60;.  Currently, For a complete list of supported currencies, see [Supported chains and tokens](https://www.cobo.com/developers/v2/guides/overview/supported-chains-and-tokens). 
    * @return pricingCurrency
   **/
   @javax.annotation.Nullable
@@ -238,7 +238,7 @@ public class CreatePaymentOrderRequest {
    * The ID of the cryptocurrency used for payment. Supported values:   - USDC: &#x60;ETH_USDC&#x60;, &#x60;ARBITRUM_USDC&#x60;, &#x60;SOL_USDC&#x60;, &#x60;BASE_USDC&#x60;, &#x60;MATIC_USDC&#x60;, &#x60;BSC_USDC&#x60;   - USDT: &#x60;TRON_USDT&#x60;, &#x60;ETH_USDT&#x60;, &#x60;ARBITRUM_USDT&#x60;, &#x60;SOL_USDT&#x60;, &#x60;BASE_USDT&#x60;, &#x60;MATIC_USDT&#x60;, &#x60;BSC_USDT&#x60; 
    * @return payableCurrency
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getPayableCurrency() {
     return payableCurrency;
   }
@@ -540,6 +540,7 @@ public class CreatePaymentOrderRequest {
     openapiRequiredFields.add("merchant_id");
     openapiRequiredFields.add("psp_order_code");
     openapiRequiredFields.add("fee_amount");
+    openapiRequiredFields.add("payable_currency");
   }
 
  /**
@@ -580,7 +581,7 @@ public class CreatePaymentOrderRequest {
       if (!jsonObj.get("fee_amount").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `fee_amount` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fee_amount").toString()));
       }
-      if ((jsonObj.get("payable_currency") != null && !jsonObj.get("payable_currency").isJsonNull()) && !jsonObj.get("payable_currency").isJsonPrimitive()) {
+      if (!jsonObj.get("payable_currency").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `payable_currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("payable_currency").toString()));
       }
       if ((jsonObj.get("payable_amount") != null && !jsonObj.get("payable_amount").isJsonNull()) && !jsonObj.get("payable_amount").isJsonPrimitive()) {

@@ -294,7 +294,7 @@ public class Example {
 
 <a id="listSwapActivities"></a>
 # **listSwapActivities**
-> ListSwapActivities200Response listSwapActivities(type, status, minUpdatedTimestamp, maxUpdatedTimestamp, initiator, limit, before, after, sortBy, direction)
+> ListSwapActivities200Response listSwapActivities(requestId, type, status, minUpdatedTimestamp, maxUpdatedTimestamp, initiator, limit, before, after, sortBy, direction)
 
 List swap activities
 
@@ -319,6 +319,7 @@ public class Example {
     // Replace `<YOUR_PRIVATE_KEY>` with your private key
     defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
     SwapsApi apiInstance = new SwapsApi();
+    String requestId = "web_send_by_user_327_1610444045047";
     SwapType type = SwapType.fromValue("Bridge");
     SwapActivityStatus status = SwapActivityStatus.fromValue("Success");
     Long minUpdatedTimestamp = 1635744000000L;
@@ -330,7 +331,7 @@ public class Example {
     String sortBy = "created_timestamp";
     String direction = "ASC";
     try {
-      ListSwapActivities200Response result = apiInstance.listSwapActivities(type, status, minUpdatedTimestamp, maxUpdatedTimestamp, initiator, limit, before, after, sortBy, direction);
+      ListSwapActivities200Response result = apiInstance.listSwapActivities(requestId, type, status, minUpdatedTimestamp, maxUpdatedTimestamp, initiator, limit, before, after, sortBy, direction);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SwapsApi#listSwapActivities");
@@ -347,6 +348,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
+| **requestId** | **String**| The request ID that is used to track a transaction request. The request ID is provided by you and must be unique within your organization. | [optional] |
 | **type** | [**SwapType**](.md)|  | [optional] [enum: Bridge, Exchange] |
 | **status** | [**SwapActivityStatus**](.md)|  | [optional] [enum: Success, Processing, Failed] |
 | **minUpdatedTimestamp** | **Long**| The start time of the query. All swap activities updated after the specified time will be retrieved. The time is in Unix timestamp format, measured in milliseconds. | [optional] |

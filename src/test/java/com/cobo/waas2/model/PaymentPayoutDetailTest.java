@@ -11,9 +11,10 @@
 
 package com.cobo.waas2.model;
 
-import com.cobo.waas2.model.BankAccount;
-import com.cobo.waas2.model.PaymentPayoutItemDetail;
+import com.cobo.waas2.model.PaymentPayoutItem;
+import com.cobo.waas2.model.PaymentPayoutRecipientInfo;
 import com.cobo.waas2.model.PaymentPayoutStatus;
+import com.cobo.waas2.model.PaymentTransaction;
 import com.cobo.waas2.model.PayoutChannel;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -58,6 +59,54 @@ public class PaymentPayoutDetailTest {
     }
 
     /**
+     * Test the property 'payoutChannel'
+     */
+    @Test
+    public void payoutChannelTest() {
+        // TODO: test payoutChannel
+    }
+
+    /**
+     * Test the property 'sourceAccount'
+     */
+    @Test
+    public void sourceAccountTest() {
+        // TODO: test sourceAccount
+    }
+
+    /**
+     * Test the property 'payoutItems'
+     */
+    @Test
+    public void payoutItemsTest() {
+        // TODO: test payoutItems
+    }
+
+    /**
+     * Test the property 'recipientInfo'
+     */
+    @Test
+    public void recipientInfoTest() {
+        // TODO: test recipientInfo
+    }
+
+    /**
+     * Test the property 'initiator'
+     */
+    @Test
+    public void initiatorTest() {
+        // TODO: test initiator
+    }
+
+    /**
+     * Test the property 'actualPayoutAmount'
+     */
+    @Test
+    public void actualPayoutAmountTest() {
+        // TODO: test actualPayoutAmount
+    }
+
+    /**
      * Test the property 'status'
      */
     @Test
@@ -66,11 +115,11 @@ public class PaymentPayoutDetailTest {
     }
 
     /**
-     * Test the property 'payoutItemDetails'
+     * Test the property 'remark'
      */
     @Test
-    public void payoutItemDetailsTest() {
-        // TODO: test payoutItemDetails
+    public void remarkTest() {
+        // TODO: test remark
     }
 
     /**
@@ -90,43 +139,11 @@ public class PaymentPayoutDetailTest {
     }
 
     /**
-     * Test the property 'initiator'
+     * Test the property 'transactions'
      */
     @Test
-    public void initiatorTest() {
-        // TODO: test initiator
-    }
-
-    /**
-     * Test the property 'payoutChannel'
-     */
-    @Test
-    public void payoutChannelTest() {
-        // TODO: test payoutChannel
-    }
-
-    /**
-     * Test the property 'currency'
-     */
-    @Test
-    public void currencyTest() {
-        // TODO: test currency
-    }
-
-    /**
-     * Test the property 'actualPayoutAmount'
-     */
-    @Test
-    public void actualPayoutAmountTest() {
-        // TODO: test actualPayoutAmount
-    }
-
-    /**
-     * Test the property 'bankAccount'
-     */
-    @Test
-    public void bankAccountTest() {
-        // TODO: test bankAccount
+    public void transactionsTest() {
+        // TODO: test transactions
     }
 
 }

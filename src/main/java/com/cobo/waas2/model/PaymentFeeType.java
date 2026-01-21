@@ -22,7 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * The type of fee to estimate: - &#x60;Order&#x60;: Fee for accepting a payment. - &#x60;Refund&#x60;: Fee for processing a refund. - &#x60;CryptoSettlement&#x60;: Fee for crypto payouts. - &#x60;OffRampSettlement&#x60;: Fee for fiat off-ramp. 
+ * The fee type. Possible values include: - &#x60;Order&#x60;: Fees for order processing. - &#x60;Refund&#x60;: Fees for refund processing. - &#x60;CryptoSettlement&#x60;: This fee type is deprecated. Please use &#x60;CryptoPayout&#x60; instead. - &#x60;OffRampSettlement&#x60;: This fee type is deprecated. Please use &#x60;OffRampPayout&#x60; instead. - &#x60;CryptoPayout&#x60;: Fees for crypto payouts. - &#x60;CryptoPayoutBridge&#x60;: Fees for crypto payouts with cross-chain bridging. - &#x60;OffRampPayout&#x60;: Fees for fiat off-ramp payouts. 
  */
 @JsonAdapter(PaymentFeeType.Adapter.class)
 public enum PaymentFeeType {
@@ -34,7 +34,13 @@ public enum PaymentFeeType {
   
   CRYPTOSETTLEMENT("CryptoSettlement"),
   
-  OFFRAMPSETTLEMENT("OffRampSettlement");
+  OFFRAMPSETTLEMENT("OffRampSettlement"),
+  
+  CRYPTOPAYOUT("CryptoPayout"),
+  
+  CRYPTOPAYOUTBRIDGE("CryptoPayoutBridge"),
+  
+  OFFRAMPPAYOUT("OffRampPayout");
 
   private String value;
 

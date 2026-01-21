@@ -22,25 +22,21 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * The current status of the payout item: - &#x60;Pending&#x60;: The payout item has been created and is awaiting processing. - &#x60;Processing&#x60;: The payout item is being processed. - &#x60;Completed&#x60;: The funds have been successfully deposited into the bank account. - &#x60;PartiallyCompleted&#x60;: Some payout item transactions have been completed successfully, while others have failed. - &#x60;Failed&#x60;: The payout item could not be completed due to an error. 
+ * The current validation status of the bulk send item. Possible values include: - &#x60;Pending&#x60;: The bulk send item has not yet been validated. - &#x60;Validated&#x60;: The bulk send item has passed validation and is ready to be processed. - &#x60;ValidationFailed&#x60;: The bulk send item has failed validation and cannot be processed. 
  */
-@JsonAdapter(PaymentPayoutItemStatus.Adapter.class)
-public enum PaymentPayoutItemStatus {
+@JsonAdapter(PaymentBulkSendItemValidationStatus.Adapter.class)
+public enum PaymentBulkSendItemValidationStatus {
   UNKNOWN(null),
   
   PENDING("Pending"),
   
-  PROCESSING("Processing"),
+  VALIDATED("Validated"),
   
-  COMPLETED("Completed"),
-  
-  PARTIALLYCOMPLETED("PartiallyCompleted"),
-  
-  FAILED("Failed");
+  VALIDATIONFAILED("ValidationFailed");
 
   private String value;
 
-  PaymentPayoutItemStatus(String value) {
+  PaymentBulkSendItemValidationStatus(String value) {
     this.value = value;
   }
 
@@ -53,8 +49,8 @@ public enum PaymentPayoutItemStatus {
     return String.valueOf(value);
   }
 
-  public static PaymentPayoutItemStatus fromValue(String value) {
-    for (PaymentPayoutItemStatus b : PaymentPayoutItemStatus.values()) {
+  public static PaymentBulkSendItemValidationStatus fromValue(String value) {
+    for (PaymentBulkSendItemValidationStatus b : PaymentBulkSendItemValidationStatus.values()) {
       if (b == UNKNOWN) continue;
       if (b.value.equals(value)) {
         return b;
@@ -64,22 +60,22 @@ public enum PaymentPayoutItemStatus {
     // throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 
-  public static class Adapter extends TypeAdapter<PaymentPayoutItemStatus> {
+  public static class Adapter extends TypeAdapter<PaymentBulkSendItemValidationStatus> {
     @Override
-    public void write(final JsonWriter jsonWriter, final PaymentPayoutItemStatus enumeration) throws IOException {
+    public void write(final JsonWriter jsonWriter, final PaymentBulkSendItemValidationStatus enumeration) throws IOException {
       jsonWriter.value(enumeration.getValue());
     }
 
     @Override
-    public PaymentPayoutItemStatus read(final JsonReader jsonReader) throws IOException {
+    public PaymentBulkSendItemValidationStatus read(final JsonReader jsonReader) throws IOException {
       String value = jsonReader.nextString();
-      return PaymentPayoutItemStatus.fromValue(value);
+      return PaymentBulkSendItemValidationStatus.fromValue(value);
     }
   }
 
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
     String value = jsonElement.getAsString();
-    PaymentPayoutItemStatus.fromValue(value);
+    PaymentBulkSendItemValidationStatus.fromValue(value);
   }
 }
 

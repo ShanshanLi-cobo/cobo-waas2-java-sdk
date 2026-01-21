@@ -11,44 +11,32 @@
 
 package com.cobo.waas2.model;
 
+import com.cobo.waas2.model.CreateBulkSendRequestPayoutParamsInner;
+import com.cobo.waas2.model.PaymentBulkSendExecutionMode;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
- * Model tests for AllocationRequest
+ * Model tests for CreateBulkSendRequest
  */
-public class AllocationRequestTest {
-    private final AllocationRequest model = new AllocationRequest();
+public class CreateBulkSendRequestTest {
+    private final CreateBulkSendRequest model = new CreateBulkSendRequest();
 
     /**
-     * Model tests for AllocationRequest
+     * Model tests for CreateBulkSendRequest
      */
     @Test
-    public void testAllocationRequest() {
-        // TODO: test AllocationRequest
-    }
-
-    /**
-     * Test the property 'tokenId'
-     */
-    @Test
-    public void tokenIdTest() {
-        // TODO: test tokenId
-    }
-
-    /**
-     * Test the property 'amount'
-     */
-    @Test
-    public void amountTest() {
-        // TODO: test amount
+    public void testCreateBulkSendRequest() {
+        // TODO: test CreateBulkSendRequest
     }
 
     /**
@@ -60,11 +48,11 @@ public class AllocationRequestTest {
     }
 
     /**
-     * Test the property 'destinationAccount'
+     * Test the property 'executionMode'
      */
     @Test
-    public void destinationAccountTest() {
-        // TODO: test destinationAccount
+    public void executionModeTest() {
+        // TODO: test executionMode
     }
 
     /**
@@ -73,6 +61,14 @@ public class AllocationRequestTest {
     @Test
     public void descriptionTest() {
         // TODO: test description
+    }
+
+    /**
+     * Test the property 'payoutParams'
+     */
+    @Test
+    public void payoutParamsTest() {
+        // TODO: test payoutParams
     }
 
 }

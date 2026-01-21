@@ -36,14 +36,6 @@ public class PaymentPayoutParamTest {
     }
 
     /**
-     * Test the property 'sourceAccount'
-     */
-    @Test
-    public void sourceAccountTest() {
-        // TODO: test sourceAccount
-    }
-
-    /**
      * Test the property 'tokenId'
      */
     @Test
@@ -57,22 +49,6 @@ public class PaymentPayoutParamTest {
     @Test
     public void amountTest() {
         // TODO: test amount
-    }
-
-    /**
-     * Test the property 'cryptoAddressId'
-     */
-    @Test
-    public void cryptoAddressIdTest() {
-        // TODO: test cryptoAddressId
-    }
-
-    /**
-     * Test the property 'cryptoAddress'
-     */
-    @Test
-    public void cryptoAddressTest() {
-        // TODO: test cryptoAddress
     }
 
 }

@@ -12,18 +12,13 @@
 package com.cobo.waas2.model;
 
 import com.cobo.waas2.model.BridgingFee;
-import com.cobo.waas2.model.CommissionFee;
-import com.cobo.waas2.model.PaymentPayoutItemStatus;
-import com.cobo.waas2.model.PaymentTransaction;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -42,22 +37,6 @@ public class PaymentPayoutItemTest {
     }
 
     /**
-     * Test the property 'payoutItemId'
-     */
-    @Test
-    public void payoutItemIdTest() {
-        // TODO: test payoutItemId
-    }
-
-    /**
-     * Test the property 'payoutId'
-     */
-    @Test
-    public void payoutIdTest() {
-        // TODO: test payoutId
-    }
-
-    /**
      * Test the property 'tokenId'
      */
     @Test
@@ -66,83 +45,11 @@ public class PaymentPayoutItemTest {
     }
 
     /**
-     * Test the property 'chainId'
-     */
-    @Test
-    public void chainIdTest() {
-        // TODO: test chainId
-    }
-
-    /**
      * Test the property 'amount'
      */
     @Test
     public void amountTest() {
         // TODO: test amount
-    }
-
-    /**
-     * Test the property 'status'
-     */
-    @Test
-    public void statusTest() {
-        // TODO: test status
-    }
-
-    /**
-     * Test the property 'sourceAccount'
-     */
-    @Test
-    public void sourceAccountTest() {
-        // TODO: test sourceAccount
-    }
-
-    /**
-     * Test the property 'transactions'
-     */
-    @Test
-    public void transactionsTest() {
-        // TODO: test transactions
-    }
-
-    /**
-     * Test the property 'createdTimestamp'
-     */
-    @Test
-    public void createdTimestampTest() {
-        // TODO: test createdTimestamp
-    }
-
-    /**
-     * Test the property 'updatedTimestamp'
-     */
-    @Test
-    public void updatedTimestampTest() {
-        // TODO: test updatedTimestamp
-    }
-
-    /**
-     * Test the property 'cryptoAddressId'
-     */
-    @Test
-    public void cryptoAddressIdTest() {
-        // TODO: test cryptoAddressId
-    }
-
-    /**
-     * Test the property 'cryptoAddress'
-     */
-    @Test
-    public void cryptoAddressTest() {
-        // TODO: test cryptoAddress
-    }
-
-    /**
-     * Test the property 'commissionFee'
-     */
-    @Test
-    public void commissionFeeTest() {
-        // TODO: test commissionFee
     }
 
     /**

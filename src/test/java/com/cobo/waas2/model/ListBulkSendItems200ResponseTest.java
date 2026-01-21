@@ -12,7 +12,7 @@
 package com.cobo.waas2.model;
 
 import com.cobo.waas2.model.Pagination;
-import com.cobo.waas2.model.PaymentPayoutItem;
+import com.cobo.waas2.model.PaymentBulkSendItem;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -26,17 +26,17 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
- * Model tests for ListPayoutItems200Response
+ * Model tests for ListBulkSendItems200Response
  */
-public class ListPayoutItems200ResponseTest {
-    private final ListPayoutItems200Response model = new ListPayoutItems200Response();
+public class ListBulkSendItems200ResponseTest {
+    private final ListBulkSendItems200Response model = new ListBulkSendItems200Response();
 
     /**
-     * Model tests for ListPayoutItems200Response
+     * Model tests for ListBulkSendItems200Response
      */
     @Test
-    public void testListPayoutItems200Response() {
-        // TODO: test ListPayoutItems200Response
+    public void testListBulkSendItems200Response() {
+        // TODO: test ListBulkSendItems200Response
     }
 
     /**

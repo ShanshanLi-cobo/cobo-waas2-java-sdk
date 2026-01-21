@@ -23,6 +23,7 @@ import com.cobo.waas2.model.Counterparty;
 import com.cobo.waas2.model.CounterpartyDetail;
 import com.cobo.waas2.model.CounterpartyType;
 import com.cobo.waas2.model.CreateBatchAllocationRequest;
+import com.cobo.waas2.model.CreateBulkSendRequest;
 import com.cobo.waas2.model.CreateCounterpartyEntry201Response;
 import com.cobo.waas2.model.CreateCounterpartyEntryRequest;
 import com.cobo.waas2.model.CreateCounterpartyRequest;
@@ -41,6 +42,8 @@ import com.cobo.waas2.model.CreateRefundLinkRequest;
 import com.cobo.waas2.model.CreateRefundRequest;
 import com.cobo.waas2.model.CreateReportRequest;
 import com.cobo.waas2.model.CreateSettlementRequestRequest;
+import com.cobo.waas2.model.CreateTopUpAddresses;
+import com.cobo.waas2.model.CreateTopUpAddresses201Response;
 import com.cobo.waas2.model.CryptoAddress;
 import com.cobo.waas2.model.DeleteCounterparty200Response;
 import com.cobo.waas2.model.DeleteCounterpartyById200Response;
@@ -70,8 +73,9 @@ import com.cobo.waas2.model.GetRefunds200Response;
 import com.cobo.waas2.model.GetReports200Response;
 import com.cobo.waas2.model.GetSettlementInfoByIds200Response;
 import com.cobo.waas2.model.Link;
-import com.cobo.waas2.model.ListAllocations200Response;
+import com.cobo.waas2.model.ListAllocationItems200Response;
 import com.cobo.waas2.model.ListBatchAllocations200Response;
+import com.cobo.waas2.model.ListBulkSendItems200Response;
 import com.cobo.waas2.model.ListCounterparties200Response;
 import com.cobo.waas2.model.ListCounterpartyEntries200Response;
 import com.cobo.waas2.model.ListCounterpartyWalletAddress200Response;
@@ -84,7 +88,6 @@ import com.cobo.waas2.model.ListMerchantBalances200Response;
 import com.cobo.waas2.model.ListMerchants200Response;
 import com.cobo.waas2.model.ListPaymentOrders200Response;
 import com.cobo.waas2.model.ListPaymentWalletBalances200Response;
-import com.cobo.waas2.model.ListPayoutItems200Response;
 import com.cobo.waas2.model.ListPayouts200Response;
 import com.cobo.waas2.model.ListSettlementDetails200Response;
 import com.cobo.waas2.model.ListSettlementRequests200Response;
@@ -93,6 +96,7 @@ import com.cobo.waas2.model.ListTopUpPayers200Response;
 import com.cobo.waas2.model.Merchant;
 import com.cobo.waas2.model.Order;
 import com.cobo.waas2.model.PaymentAllocationAmount;
+import com.cobo.waas2.model.PaymentBulkSend;
 import com.cobo.waas2.model.PaymentEstimateFee201Response;
 import com.cobo.waas2.model.PaymentEstimateFeeRequest;
 import com.cobo.waas2.model.PaymentPayout;
@@ -182,6 +186,20 @@ public class PaymentApiTest {
     public void createBatchAllocationTest() throws ApiException {
         CreateBatchAllocationRequest createBatchAllocationRequest = null;
         BatchAllocation response = api.createBatchAllocation(createBatchAllocationRequest);
+        // TODO: test validations
+    }
+
+    /**
+     * Create bulk send
+     *
+     * This operation creates a bulk send to transfer funds to multiple recipients in a single request. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void createBulkSendTest() throws ApiException {
+        CreateBulkSendRequest createBulkSendRequest = null;
+        PaymentBulkSend response = api.createBulkSend(createBulkSendRequest);
         // TODO: test validations
     }
 
@@ -356,7 +374,7 @@ public class PaymentApiTest {
     /**
      * Create payout
      *
-     * This operation initiates a payout, distributing funds either to cryptocurrency addresses or to bank accounts as fiat currency. 
+     * This operation creates a payout to withdraw available balances. 
      *
      * @throws ApiException if the Api call fails
      */
@@ -412,7 +430,7 @@ public class PaymentApiTest {
     /**
      * Create settlement request
      *
-     * This operation creates a settlement request to withdraw available balances. 
+     * &lt;Note&gt;This operation has been deprecated. Please use [Create payout](https://www.cobo.com/payments/en/api-references/payment/create-payout) instead.&lt;/Note&gt;  You can include multiple merchants and cryptocurrencies in a single settlement request. 
      *
      * @throws ApiException if the Api call fails
      */
@@ -420,6 +438,20 @@ public class PaymentApiTest {
     public void createSettlementRequestTest() throws ApiException {
         CreateSettlementRequestRequest createSettlementRequestRequest = null;
         Settlement response = api.createSettlementRequest(createSettlementRequestRequest);
+        // TODO: test validations
+    }
+
+    /**
+     * Batch create top-up addresses
+     *
+     * This operation creates top-up addresses for multiple payers under a specific merchant and token in a single request.  &lt;Note&gt;This operation supports batch processing of up to 50 payers per request.&lt;/Note&gt; 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void createTopUpAddressesTest() throws ApiException {
+        CreateTopUpAddresses createTopUpAddresses = null;
+        CreateTopUpAddresses201Response response = api.createTopUpAddresses(createTopUpAddresses);
         // TODO: test validations
     }
 
@@ -608,6 +640,20 @@ public class PaymentApiTest {
     public void getBatchAllocationByIdTest() throws ApiException {
         String batchAllocationId = null;
         BatchAllocationDetail response = api.getBatchAllocationById(batchAllocationId);
+        // TODO: test validations
+    }
+
+    /**
+     * Get bulk send information
+     *
+     * This operation retrieves the information of a specific bulk send. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getBulkSendByIdTest() throws ApiException {
+        String bulkSendId = null;
+        PaymentBulkSend response = api.getBulkSendById(bulkSendId);
         // TODO: test validations
     }
 
@@ -822,7 +868,7 @@ public class PaymentApiTest {
     /**
      * Get settlement request information
      *
-     * This operation retrieves the information of a specific settlement request. 
+     * &lt;Note&gt;This operation has been deprecated. Please use [Get payout information](https://www.cobo.com/payments/en/api-references/payment/get-payout-information) instead.&lt;/Note&gt;  This operation retrieves the information of a specific settlement request. 
      *
      * @throws ApiException if the Api call fails
      */
@@ -866,14 +912,14 @@ public class PaymentApiTest {
     }
 
     /**
-     * List all allocation records
+     * List all allocation items
      *
-     * This operation retrieves the information of all allocation records.   One allocation record corresponds to one allocation request in a batch allocation. 
+     * This operation retrieves the information of all allocations. 
      *
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void listAllocationsTest() throws ApiException {
+    public void listAllocationItemsTest() throws ApiException {
         Integer limit = null;
         String before = null;
         String after = null;
@@ -881,14 +927,14 @@ public class PaymentApiTest {
         String destinationAccount = null;
         String tokenId = null;
         String batchAllocationId = null;
-        ListAllocations200Response response = api.listAllocations(limit, before, after, sourceAccount, destinationAccount, tokenId, batchAllocationId);
+        ListAllocationItems200Response response = api.listAllocationItems(limit, before, after, sourceAccount, destinationAccount, tokenId, batchAllocationId);
         // TODO: test validations
     }
 
     /**
      * List all bank accounts
      *
-     *  &lt;Note&gt;This operation has been deprecated.&lt;/Note&gt; This operation retrieves the information of all bank accounts you have registered for payment settlement. Contact our support team at [help@cobo.com](mailto:help@cobo.com) to register a new bank account. 
+     * &lt;Note&gt;This operation has been deprecated. Please use [List counterparty entries](https://www.cobo.com/payments/en/api-references/payment/list-counterparty-entries) instead.&lt;/Note&gt; This operation retrieves the information of all bank accounts registered. 
      *
      * @throws ApiException if the Api call fails
      */
@@ -912,6 +958,23 @@ public class PaymentApiTest {
         String after = null;
         String requestId = null;
         ListBatchAllocations200Response response = api.listBatchAllocations(limit, before, after, requestId);
+        // TODO: test validations
+    }
+
+    /**
+     * List bulk send items
+     *
+     * This operation retrieves the list of items for a specific bulk send. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void listBulkSendItemsTest() throws ApiException {
+        String bulkSendId = null;
+        Integer limit = null;
+        String before = null;
+        String after = null;
+        ListBulkSendItems200Response response = api.listBulkSendItems(bulkSendId, limit, before, after);
         // TODO: test validations
     }
 
@@ -1167,24 +1230,6 @@ public class PaymentApiTest {
     }
 
     /**
-     * List all payout items
-     *
-     * This operation retrieves the information of all payout items. You can filter the result by source account or status. 
-     *
-     * @throws ApiException if the Api call fails
-     */
-    @Test
-    public void listPayoutItemsTest() throws ApiException {
-        Integer limit = null;
-        String before = null;
-        String after = null;
-        String sourceAccount = null;
-        String statuses = null;
-        ListPayoutItems200Response response = api.listPayoutItems(limit, before, after, sourceAccount, statuses);
-        // TODO: test validations
-    }
-
-    /**
      * List all payouts
      *
      * This operation retrieves the information of all payouts. 
@@ -1204,7 +1249,7 @@ public class PaymentApiTest {
     /**
      * List all settlement details
      *
-     * This operation retrieves the information of all settlement details. You can filter the result by merchant ID or status. 
+     * &lt;Note&gt;This operation has been deprecated.&lt;/Note&gt;  This operation retrieves the information of all settlement details. You can filter the result by merchant ID or status. 
      *
      * @throws ApiException if the Api call fails
      */
@@ -1222,7 +1267,7 @@ public class PaymentApiTest {
     /**
      * List all settlement requests
      *
-     * This operation retrieves the information of all settlement requests. 
+     * &lt;Note&gt;This operation has been deprecated. Please use [List all payouts](https://www.cobo.com/payments/en/api-references/payment/list-all-payouts) instead.&lt;/Note&gt;  This operation retrieves the information of all settlement requests. 
      *
      * @throws ApiException if the Api call fails
      */

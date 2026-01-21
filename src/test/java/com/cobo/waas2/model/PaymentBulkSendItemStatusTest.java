@@ -16,15 +16,15 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
- * Model tests for PaymentPayoutItemStatus
+ * Model tests for PaymentBulkSendItemStatus
  */
-public class PaymentPayoutItemStatusTest {
+public class PaymentBulkSendItemStatusTest {
     /**
-     * Model tests for PaymentPayoutItemStatus
+     * Model tests for PaymentBulkSendItemStatus
      */
     @Test
-    public void testPaymentPayoutItemStatus() {
-        // TODO: test PaymentPayoutItemStatus
+    public void testPaymentBulkSendItemStatus() {
+        // TODO: test PaymentBulkSendItemStatus
     }
 
 }

@@ -51,7 +51,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.cobo.waas2</groupId>
   <artifactId>cobo-waas2</artifactId>
-  <version>1.29.0</version>
+  <version>1.30.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -67,7 +67,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "com.cobo.waas2:cobo-waas2:1.29.0"
+     implementation "com.cobo.waas2:cobo-waas2:1.30.0"
   }
 ```
 
@@ -95,7 +95,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/cobo-waas2-1.29.0.jar`
+* `target/cobo-waas2-1.30.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -244,6 +244,7 @@ Class | Method | HTTP request | Description
 *FeeStationApi* | [**listFeeStationAddresses**](docs/FeeStationApi.md#listFeeStationAddresses) | **GET** /fee_station/addresses | List Fee Station addresses
 *FeeStationApi* | [**listFeeStationTransactions**](docs/FeeStationApi.md#listFeeStationTransactions) | **GET** /fee_station/transactions | List all Fee Station transactions
 *FeeStationApi* | [**listTokenBalancesForFeeStation**](docs/FeeStationApi.md#listTokenBalancesForFeeStation) | **GET** /fee_station/tokens | List Fee Station token balances
+*GraphQlApi* | [**executeGraphql**](docs/GraphQlApi.md#executeGraphql) | **POST** /graphql | Execute a GraphQL query or mutation
 *OAuthApi* | [**exchangePermissionToken**](docs/OAuthApi.md#exchangePermissionToken) | **POST** /oauth/permission_token/exchange | Get Access Token
 *OAuthApi* | [**getToken**](docs/OAuthApi.md#getToken) | **GET** /oauth/token | Get Org Access Token
 *OAuthApi* | [**refreshPermissionToken**](docs/OAuthApi.md#refreshPermissionToken) | **POST** /oauth/permission_token/refresh | Refresh Access Token
@@ -252,6 +253,7 @@ Class | Method | HTTP request | Description
 *PaymentApi* | [**batchGetExchangeRates**](docs/PaymentApi.md#batchGetExchangeRates) | **GET** /payments/exchange_rates | Batch get exchange rates
 *PaymentApi* | [**cancelRefundById**](docs/PaymentApi.md#cancelRefundById) | **PUT** /payments/refunds/{refund_id}/cancel | Cancel refund order
 *PaymentApi* | [**createBatchAllocation**](docs/PaymentApi.md#createBatchAllocation) | **POST** /payments/batch_allocations | Create batch allocation
+*PaymentApi* | [**createBulkSend**](docs/PaymentApi.md#createBulkSend) | **POST** /payments/bulk_sends | Create bulk send
 *PaymentApi* | [**createCounterparty**](docs/PaymentApi.md#createCounterparty) | **POST** /payments/counterparty | Create counterparty
 *PaymentApi* | [**createCounterpartyEntry**](docs/PaymentApi.md#createCounterpartyEntry) | **POST** /payments/counterparty_entry | Create counterparty entry
 *PaymentApi* | [**createCounterpartyWalletAddress**](docs/PaymentApi.md#createCounterpartyWalletAddress) | **POST** /payments/counterparty/wallet_address | Create counterparty wallet address
@@ -269,6 +271,7 @@ Class | Method | HTTP request | Description
 *PaymentApi* | [**createRefundLink**](docs/PaymentApi.md#createRefundLink) | **POST** /payments/links/refunds | Create refund link
 *PaymentApi* | [**createReport**](docs/PaymentApi.md#createReport) | **POST** /payments/reports | Generate reports
 *PaymentApi* | [**createSettlementRequest**](docs/PaymentApi.md#createSettlementRequest) | **POST** /payments/settlement_requests | Create settlement request
+*PaymentApi* | [**createTopUpAddresses**](docs/PaymentApi.md#createTopUpAddresses) | **POST** /payments/topup/address | Batch create top-up addresses
 *PaymentApi* | [**deleteCounterparty**](docs/PaymentApi.md#deleteCounterparty) | **PUT** /payments/counterparty/{counterparty_id}/delete | Delete counterparty (Deprecated)
 *PaymentApi* | [**deleteCounterpartyById**](docs/PaymentApi.md#deleteCounterpartyById) | **DELETE** /payments/counterparty/{counterparty_id} | Delete counterparty
 *PaymentApi* | [**deleteCounterpartyEntry**](docs/PaymentApi.md#deleteCounterpartyEntry) | **DELETE** /payments/counterparty_entry/{counterparty_entry_id} | Delete counterparty entry
@@ -282,6 +285,7 @@ Class | Method | HTTP request | Description
 *PaymentApi* | [**enableDestinationWhitelist**](docs/PaymentApi.md#enableDestinationWhitelist) | **POST** /payments/destination/enable_whitelist | Enable or disable destination whitelist
 *PaymentApi* | [**getAvailableAllocationAmount**](docs/PaymentApi.md#getAvailableAllocationAmount) | **GET** /payments/allocation_amount | Get available allocation amount
 *PaymentApi* | [**getBatchAllocationById**](docs/PaymentApi.md#getBatchAllocationById) | **GET** /payments/batch_allocations/{batch_allocation_id} | Get batch allocation information
+*PaymentApi* | [**getBulkSendById**](docs/PaymentApi.md#getBulkSendById) | **GET** /payments/bulk_sends/{bulk_send_id} | Get bulk send information
 *PaymentApi* | [**getCounterparty**](docs/PaymentApi.md#getCounterparty) | **GET** /payments/counterparty/{counterparty_id} | Get counterparty information
 *PaymentApi* | [**getCounterpartyDetailById**](docs/PaymentApi.md#getCounterpartyDetailById) | **GET** /payments/counterparty/{counterparty_id}/detail | Get counterparty information (Deprecated)
 *PaymentApi* | [**getCounterpartyEntry**](docs/PaymentApi.md#getCounterpartyEntry) | **GET** /payments/counterparty_entry/{counterparty_entry_id} | Get counterparty entry information
@@ -299,9 +303,10 @@ Class | Method | HTTP request | Description
 *PaymentApi* | [**getSettlementById**](docs/PaymentApi.md#getSettlementById) | **GET** /payments/settlement_requests/{settlement_request_id} | Get settlement request information
 *PaymentApi* | [**getSettlementInfoByIds**](docs/PaymentApi.md#getSettlementInfoByIds) | **GET** /payments/settlement_info | Get withdrawable balances
 *PaymentApi* | [**getTopUpAddress**](docs/PaymentApi.md#getTopUpAddress) | **GET** /payments/topup/address | Create/Get top-up address
-*PaymentApi* | [**listAllocations**](docs/PaymentApi.md#listAllocations) | **GET** /payments/allocation_records | List all allocation records
+*PaymentApi* | [**listAllocationItems**](docs/PaymentApi.md#listAllocationItems) | **GET** /payments/allocation_items | List all allocation items
 *PaymentApi* | [**listBankAccounts**](docs/PaymentApi.md#listBankAccounts) | **GET** /payments/bank_accounts | List all bank accounts
 *PaymentApi* | [**listBatchAllocations**](docs/PaymentApi.md#listBatchAllocations) | **GET** /payments/batch_allocations | List all batch allocations
+*PaymentApi* | [**listBulkSendItems**](docs/PaymentApi.md#listBulkSendItems) | **GET** /payments/bulk_sends/{bulk_send_id}/items | List bulk send items
 *PaymentApi* | [**listCounterparties**](docs/PaymentApi.md#listCounterparties) | **GET** /payments/counterparty | List all counterparties
 *PaymentApi* | [**listCounterpartyEntries**](docs/PaymentApi.md#listCounterpartyEntries) | **GET** /payments/counterparty_entry | List counterparty entries
 *PaymentApi* | [**listCounterpartyWalletAddress**](docs/PaymentApi.md#listCounterpartyWalletAddress) | **GET** /payments/counterparty/wallet_address | List counterparty wallet addresses
@@ -316,7 +321,6 @@ Class | Method | HTTP request | Description
 *PaymentApi* | [**listPaymentOrders**](docs/PaymentApi.md#listPaymentOrders) | **GET** /payments/orders | List all pay-in orders
 *PaymentApi* | [**listPaymentSupportedTokens**](docs/PaymentApi.md#listPaymentSupportedTokens) | **GET** /payments/supported_tokens | List all supported tokens
 *PaymentApi* | [**listPaymentWalletBalances**](docs/PaymentApi.md#listPaymentWalletBalances) | **GET** /payments/balance/payment_wallets | List payment wallet balances
-*PaymentApi* | [**listPayoutItems**](docs/PaymentApi.md#listPayoutItems) | **GET** /payments/payout_items | List all payout items
 *PaymentApi* | [**listPayouts**](docs/PaymentApi.md#listPayouts) | **GET** /payments/payouts | List all payouts
 *PaymentApi* | [**listSettlementDetails**](docs/PaymentApi.md#listSettlementDetails) | **GET** /payments/settlement_details | List all settlement details
 *PaymentApi* | [**listSettlementRequests**](docs/PaymentApi.md#listSettlementRequests) | **GET** /payments/settlement_requests | List all settlement requests
@@ -487,8 +491,8 @@ Class | Method | HTTP request | Description
  - [AddressTransferDestinationUtxoOutputsInner](docs/AddressTransferDestinationUtxoOutputsInner.md)
  - [AddressesEventData](docs/AddressesEventData.md)
  - [AddressesEventDataAllOfAddresses](docs/AddressesEventDataAllOfAddresses.md)
- - [AllocationRecord](docs/AllocationRecord.md)
- - [AllocationRequest](docs/AllocationRequest.md)
+ - [AllocationItem](docs/AllocationItem.md)
+ - [AllocationParam](docs/AllocationParam.md)
  - [AmountDetailsInner](docs/AmountDetailsInner.md)
  - [AmountStatus](docs/AmountStatus.md)
  - [ApiLogDetails](docs/ApiLogDetails.md)
@@ -583,6 +587,8 @@ Class | Method | HTTP request | Description
  - [CreateBabylonStakingRegistration201Response](docs/CreateBabylonStakingRegistration201Response.md)
  - [CreateBabylonStakingRegistrationRequest](docs/CreateBabylonStakingRegistrationRequest.md)
  - [CreateBatchAllocationRequest](docs/CreateBatchAllocationRequest.md)
+ - [CreateBulkSendRequest](docs/CreateBulkSendRequest.md)
+ - [CreateBulkSendRequestPayoutParamsInner](docs/CreateBulkSendRequestPayoutParamsInner.md)
  - [CreateClaimActivity](docs/CreateClaimActivity.md)
  - [CreateClaimActivityRequest](docs/CreateClaimActivityRequest.md)
  - [CreateCounterpartyEntry201Response](docs/CreateCounterpartyEntry201Response.md)
@@ -625,6 +631,8 @@ Class | Method | HTTP request | Description
  - [CreateSweepToAddress](docs/CreateSweepToAddress.md)
  - [CreateTokenListingRequest201Response](docs/CreateTokenListingRequest201Response.md)
  - [CreateTokenListingRequestRequest](docs/CreateTokenListingRequestRequest.md)
+ - [CreateTopUpAddresses](docs/CreateTopUpAddresses.md)
+ - [CreateTopUpAddresses201Response](docs/CreateTopUpAddresses201Response.md)
  - [CreateTransferTransaction201Response](docs/CreateTransferTransaction201Response.md)
  - [CreateTssRequestRequest](docs/CreateTssRequestRequest.md)
  - [CreateUnstakeActivity](docs/CreateUnstakeActivity.md)
@@ -781,7 +789,7 @@ Class | Method | HTTP request | Description
  - [ListAddressBalancesByToken200Response](docs/ListAddressBalancesByToken200Response.md)
  - [ListAddressBooks200Response](docs/ListAddressBooks200Response.md)
  - [ListAddresses200Response](docs/ListAddresses200Response.md)
- - [ListAllocations200Response](docs/ListAllocations200Response.md)
+ - [ListAllocationItems200Response](docs/ListAllocationItems200Response.md)
  - [ListApprovalRequests200Response](docs/ListApprovalRequests200Response.md)
  - [ListAssetBalancesForExchangeWallet200Response](docs/ListAssetBalancesForExchangeWallet200Response.md)
  - [ListAutoSweepTask200Response](docs/ListAutoSweepTask200Response.md)
@@ -791,6 +799,7 @@ Class | Method | HTTP request | Description
  - [ListBabylonEligibleStakings200ResponseDataInner](docs/ListBabylonEligibleStakings200ResponseDataInner.md)
  - [ListBabylonStakingRegistrations200Response](docs/ListBabylonStakingRegistrations200Response.md)
  - [ListBatchAllocations200Response](docs/ListBatchAllocations200Response.md)
+ - [ListBulkSendItems200Response](docs/ListBulkSendItems200Response.md)
  - [ListCallbackMessages200Response](docs/ListCallbackMessages200Response.md)
  - [ListCounterparties200Response](docs/ListCounterparties200Response.md)
  - [ListCounterpartyEntries200Response](docs/ListCounterpartyEntries200Response.md)
@@ -810,7 +819,6 @@ Class | Method | HTTP request | Description
  - [ListMpcVaults200Response](docs/ListMpcVaults200Response.md)
  - [ListPaymentOrders200Response](docs/ListPaymentOrders200Response.md)
  - [ListPaymentWalletBalances200Response](docs/ListPaymentWalletBalances200Response.md)
- - [ListPayoutItems200Response](docs/ListPayoutItems200Response.md)
  - [ListPayouts200Response](docs/ListPayouts200Response.md)
  - [ListSettlementDetails200Response](docs/ListSettlementDetails200Response.md)
  - [ListSettlementRequests200Response](docs/ListSettlementRequests200Response.md)
@@ -875,6 +883,13 @@ Class | Method | HTTP request | Description
  - [PayerAccount](docs/PayerAccount.md)
  - [PaymentAddressUpdateEventData](docs/PaymentAddressUpdateEventData.md)
  - [PaymentAllocationAmount](docs/PaymentAllocationAmount.md)
+ - [PaymentBulkSend](docs/PaymentBulkSend.md)
+ - [PaymentBulkSendEvent](docs/PaymentBulkSendEvent.md)
+ - [PaymentBulkSendExecutionMode](docs/PaymentBulkSendExecutionMode.md)
+ - [PaymentBulkSendItem](docs/PaymentBulkSendItem.md)
+ - [PaymentBulkSendItemStatus](docs/PaymentBulkSendItemStatus.md)
+ - [PaymentBulkSendItemValidationStatus](docs/PaymentBulkSendItemValidationStatus.md)
+ - [PaymentBulkSendStatus](docs/PaymentBulkSendStatus.md)
  - [PaymentEstimateFee](docs/PaymentEstimateFee.md)
  - [PaymentEstimateFee201Response](docs/PaymentEstimateFee201Response.md)
  - [PaymentEstimateFeeRequest](docs/PaymentEstimateFeeRequest.md)
@@ -885,9 +900,8 @@ Class | Method | HTTP request | Description
  - [PaymentPayoutDetail](docs/PaymentPayoutDetail.md)
  - [PaymentPayoutEvent](docs/PaymentPayoutEvent.md)
  - [PaymentPayoutItem](docs/PaymentPayoutItem.md)
- - [PaymentPayoutItemDetail](docs/PaymentPayoutItemDetail.md)
- - [PaymentPayoutItemStatus](docs/PaymentPayoutItemStatus.md)
  - [PaymentPayoutParam](docs/PaymentPayoutParam.md)
+ - [PaymentPayoutRecipientInfo](docs/PaymentPayoutRecipientInfo.md)
  - [PaymentPayoutStatus](docs/PaymentPayoutStatus.md)
  - [PaymentRefundEventData](docs/PaymentRefundEventData.md)
  - [PaymentSettlementEvent](docs/PaymentSettlementEvent.md)
@@ -1216,6 +1230,7 @@ Class | Method | HTTP request | Description
  - [TransactionUtxo](docs/TransactionUtxo.md)
  - [TransactionUtxoChange](docs/TransactionUtxoChange.md)
  - [TransactionUtxoFee](docs/TransactionUtxoFee.md)
+ - [TransactionWalletConnectInfo](docs/TransactionWalletConnectInfo.md)
  - [TransactionWebhookEventData](docs/TransactionWebhookEventData.md)
  - [TransferDestination](docs/TransferDestination.md)
  - [TransferDestinationType](docs/TransferDestinationType.md)

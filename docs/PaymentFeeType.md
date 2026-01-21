@@ -13,5 +13,11 @@
 
 * `OFFRAMPSETTLEMENT` (value: `"OffRampSettlement"`)
 
+* `CRYPTOPAYOUT` (value: `"CryptoPayout"`)
+
+* `CRYPTOPAYOUTBRIDGE` (value: `"CryptoPayoutBridge"`)
+
+* `OFFRAMPPAYOUT` (value: `"OffRampPayout"`)
+
 
 

@@ -12,6 +12,7 @@
 package com.cobo.waas2.model;
 
 import com.cobo.waas2.model.PaymentPayoutParam;
+import com.cobo.waas2.model.PaymentPayoutRecipientInfo;
 import com.cobo.waas2.model.PayoutChannel;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -22,7 +23,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -49,6 +49,14 @@ public class CreatePayoutRequestTest {
     }
 
     /**
+     * Test the property 'sourceAccount'
+     */
+    @Test
+    public void sourceAccountTest() {
+        // TODO: test sourceAccount
+    }
+
+    /**
      * Test the property 'payoutChannel'
      */
     @Test
@@ -65,19 +73,11 @@ public class CreatePayoutRequestTest {
     }
 
     /**
-     * Test the property 'bankAccountId'
+     * Test the property 'recipientInfo'
      */
     @Test
-    public void bankAccountIdTest() {
-        // TODO: test bankAccountId
-    }
-
-    /**
-     * Test the property 'currency'
-     */
-    @Test
-    public void currencyTest() {
-        // TODO: test currency
+    public void recipientInfoTest() {
+        // TODO: test recipientInfo
     }
 
     /**

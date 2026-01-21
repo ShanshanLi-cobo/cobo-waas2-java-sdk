@@ -12,7 +12,7 @@
 package com.cobo.waas2.model;
 
 import java.util.Objects;
-import com.cobo.waas2.model.AllocationRequest;
+import com.cobo.waas2.model.AllocationParam;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -59,9 +59,9 @@ public class CreateBatchAllocationRequest {
   @SerializedName(SERIALIZED_NAME_REQUEST_ID)
   private String requestId;
 
-  public static final String SERIALIZED_NAME_ALLOCATION_REQUESTS = "allocation_requests";
-  @SerializedName(SERIALIZED_NAME_ALLOCATION_REQUESTS)
-  private List<AllocationRequest> allocationRequests = new ArrayList<>();
+  public static final String SERIALIZED_NAME_ALLOCATION_PARAMS = "allocation_params";
+  @SerializedName(SERIALIZED_NAME_ALLOCATION_PARAMS)
+  private List<AllocationParam> allocationParams = new ArrayList<>();
 
   public CreateBatchAllocationRequest() {
   }
@@ -85,30 +85,30 @@ public class CreateBatchAllocationRequest {
   }
 
 
-  public CreateBatchAllocationRequest allocationRequests(List<AllocationRequest> allocationRequests) {
-    this.allocationRequests = allocationRequests;
+  public CreateBatchAllocationRequest allocationParams(List<AllocationParam> allocationParams) {
+    this.allocationParams = allocationParams;
     return this;
   }
 
-  public CreateBatchAllocationRequest addAllocationRequestsItem(AllocationRequest allocationRequestsItem) {
-    if (this.allocationRequests == null) {
-      this.allocationRequests = new ArrayList<>();
+  public CreateBatchAllocationRequest addAllocationParamsItem(AllocationParam allocationParamsItem) {
+    if (this.allocationParams == null) {
+      this.allocationParams = new ArrayList<>();
     }
-    this.allocationRequests.add(allocationRequestsItem);
+    this.allocationParams.add(allocationParamsItem);
     return this;
   }
 
    /**
-   * Get allocationRequests
-   * @return allocationRequests
+   * Get allocationParams
+   * @return allocationParams
   **/
   @javax.annotation.Nonnull
-  public List<AllocationRequest> getAllocationRequests() {
-    return allocationRequests;
+  public List<AllocationParam> getAllocationParams() {
+    return allocationParams;
   }
 
-  public void setAllocationRequests(List<AllocationRequest> allocationRequests) {
-    this.allocationRequests = allocationRequests;
+  public void setAllocationParams(List<AllocationParam> allocationParams) {
+    this.allocationParams = allocationParams;
   }
 
   /**
@@ -167,13 +167,13 @@ public class CreateBatchAllocationRequest {
     }
     CreateBatchAllocationRequest createBatchAllocationRequest = (CreateBatchAllocationRequest) o;
     return Objects.equals(this.requestId, createBatchAllocationRequest.requestId) &&
-        Objects.equals(this.allocationRequests, createBatchAllocationRequest.allocationRequests)&&
+        Objects.equals(this.allocationParams, createBatchAllocationRequest.allocationParams)&&
         Objects.equals(this.additionalProperties, createBatchAllocationRequest.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(requestId, allocationRequests, additionalProperties);
+    return Objects.hash(requestId, allocationParams, additionalProperties);
   }
 
   @Override
@@ -181,7 +181,7 @@ public class CreateBatchAllocationRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateBatchAllocationRequest {\n");
     sb.append("    requestId: ").append(toIndentedString(requestId)).append("\n");
-    sb.append("    allocationRequests: ").append(toIndentedString(allocationRequests)).append("\n");
+    sb.append("    allocationParams: ").append(toIndentedString(allocationParams)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -206,12 +206,12 @@ public class CreateBatchAllocationRequest {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("request_id");
-    openapiFields.add("allocation_requests");
+    openapiFields.add("allocation_params");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("request_id");
-    openapiRequiredFields.add("allocation_requests");
+    openapiRequiredFields.add("allocation_params");
   }
 
  /**
@@ -238,14 +238,14 @@ public class CreateBatchAllocationRequest {
         throw new IllegalArgumentException(String.format("Expected the field `request_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("request_id").toString()));
       }
       // ensure the json data is an array
-      if (!jsonObj.get("allocation_requests").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `allocation_requests` to be an array in the JSON string but got `%s`", jsonObj.get("allocation_requests").toString()));
+      if (!jsonObj.get("allocation_params").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `allocation_params` to be an array in the JSON string but got `%s`", jsonObj.get("allocation_params").toString()));
       }
 
-      JsonArray jsonArrayallocationRequests = jsonObj.getAsJsonArray("allocation_requests");
-      // validate the required field `allocation_requests` (array)
-      for (int i = 0; i < jsonArrayallocationRequests.size(); i++) {
-        AllocationRequest.validateJsonElement(jsonArrayallocationRequests.get(i));
+      JsonArray jsonArrayallocationParams = jsonObj.getAsJsonArray("allocation_params");
+      // validate the required field `allocation_params` (array)
+      for (int i = 0; i < jsonArrayallocationParams.size(); i++) {
+        AllocationParam.validateJsonElement(jsonArrayallocationParams.get(i));
       };
   }
 
