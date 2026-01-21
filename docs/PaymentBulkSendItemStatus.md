@@ -1,6 +1,6 @@
 
 
-# PaymentPayoutItemStatus
+# PaymentBulkSendItemStatus
 
 ## Enum
 
@@ -11,9 +11,9 @@
 
 * `COMPLETED` (value: `"Completed"`)
 
-* `PARTIALLYCOMPLETED` (value: `"PartiallyCompleted"`)
-
 * `FAILED` (value: `"Failed"`)
+
+* `NOTEXECUTED` (value: `"NotExecuted"`)
 
 
 

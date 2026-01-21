@@ -11,8 +11,7 @@
 
 package com.cobo.waas2.model;
 
-import com.cobo.waas2.model.AllocationRecord;
-import com.cobo.waas2.model.Pagination;
+import com.cobo.waas2.model.TopUpAddress;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -26,17 +25,17 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
- * Model tests for ListAllocations200Response
+ * Model tests for CreateTopUpAddresses201Response
  */
-public class ListAllocations200ResponseTest {
-    private final ListAllocations200Response model = new ListAllocations200Response();
+public class CreateTopUpAddresses201ResponseTest {
+    private final CreateTopUpAddresses201Response model = new CreateTopUpAddresses201Response();
 
     /**
-     * Model tests for ListAllocations200Response
+     * Model tests for CreateTopUpAddresses201Response
      */
     @Test
-    public void testListAllocations200Response() {
-        // TODO: test ListAllocations200Response
+    public void testCreateTopUpAddresses201Response() {
+        // TODO: test CreateTopUpAddresses201Response
     }
 
     /**
@@ -45,14 +44,6 @@ public class ListAllocations200ResponseTest {
     @Test
     public void dataTest() {
         // TODO: test data
-    }
-
-    /**
-     * Test the property 'pagination'
-     */
-    @Test
-    public void paginationTest() {
-        // TODO: test pagination
     }
 
 }

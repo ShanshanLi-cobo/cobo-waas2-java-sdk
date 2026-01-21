@@ -581,6 +581,7 @@ public class SwapsApi {
     }
     /**
      * Build call for listSwapActivities
+     * @param requestId The request ID that is used to track a transaction request. The request ID is provided by you and must be unique within your organization. (optional)
      * @param type  (optional)
      * @param status  (optional)
      * @param minUpdatedTimestamp The start time of the query. All swap activities updated after the specified time will be retrieved. The time is in Unix timestamp format, measured in milliseconds. (optional)
@@ -602,7 +603,7 @@ public class SwapsApi {
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listSwapActivitiesCall(SwapType type, SwapActivityStatus status, Long minUpdatedTimestamp, Long maxUpdatedTimestamp, String initiator, Integer limit, String before, String after, String sortBy, String direction, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listSwapActivitiesCall(String requestId, SwapType type, SwapActivityStatus status, Long minUpdatedTimestamp, Long maxUpdatedTimestamp, String initiator, Integer limit, String before, String after, String sortBy, String direction, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -613,6 +614,10 @@ public class SwapsApi {
         Map<String, String> localVarHeaderParams = new HashMap<>();
         Map<String, String> localVarCookieParams = new HashMap<>();
         Map<String, Object> localVarFormParams = new HashMap<>();
+
+        if (requestId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("request_id", requestId));
+        }
 
         if (type != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("type", type));
@@ -674,14 +679,15 @@ public class SwapsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listSwapActivitiesValidateBeforeCall(SwapType type, SwapActivityStatus status, Long minUpdatedTimestamp, Long maxUpdatedTimestamp, String initiator, Integer limit, String before, String after, String sortBy, String direction, final ApiCallback _callback) throws ApiException {
-        return listSwapActivitiesCall(type, status, minUpdatedTimestamp, maxUpdatedTimestamp, initiator, limit, before, after, sortBy, direction, _callback);
+    private okhttp3.Call listSwapActivitiesValidateBeforeCall(String requestId, SwapType type, SwapActivityStatus status, Long minUpdatedTimestamp, Long maxUpdatedTimestamp, String initiator, Integer limit, String before, String after, String sortBy, String direction, final ApiCallback _callback) throws ApiException {
+        return listSwapActivitiesCall(requestId, type, status, minUpdatedTimestamp, maxUpdatedTimestamp, initiator, limit, before, after, sortBy, direction, _callback);
 
     }
 
     /**
      * List swap activities
      * This operation retrieves a list of swap activities. You can filter the results by swap type, status, initiator, and time range. 
+     * @param requestId The request ID that is used to track a transaction request. The request ID is provided by you and must be unique within your organization. (optional)
      * @param type  (optional)
      * @param status  (optional)
      * @param minUpdatedTimestamp The start time of the query. All swap activities updated after the specified time will be retrieved. The time is in Unix timestamp format, measured in milliseconds. (optional)
@@ -702,14 +708,15 @@ public class SwapsApi {
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public ListSwapActivities200Response listSwapActivities(SwapType type, SwapActivityStatus status, Long minUpdatedTimestamp, Long maxUpdatedTimestamp, String initiator, Integer limit, String before, String after, String sortBy, String direction) throws ApiException {
-        ApiResponse<ListSwapActivities200Response> localVarResp = listSwapActivitiesWithHttpInfo(type, status, minUpdatedTimestamp, maxUpdatedTimestamp, initiator, limit, before, after, sortBy, direction);
+    public ListSwapActivities200Response listSwapActivities(String requestId, SwapType type, SwapActivityStatus status, Long minUpdatedTimestamp, Long maxUpdatedTimestamp, String initiator, Integer limit, String before, String after, String sortBy, String direction) throws ApiException {
+        ApiResponse<ListSwapActivities200Response> localVarResp = listSwapActivitiesWithHttpInfo(requestId, type, status, minUpdatedTimestamp, maxUpdatedTimestamp, initiator, limit, before, after, sortBy, direction);
         return localVarResp.getData();
     }
 
     /**
      * List swap activities
      * This operation retrieves a list of swap activities. You can filter the results by swap type, status, initiator, and time range. 
+     * @param requestId The request ID that is used to track a transaction request. The request ID is provided by you and must be unique within your organization. (optional)
      * @param type  (optional)
      * @param status  (optional)
      * @param minUpdatedTimestamp The start time of the query. All swap activities updated after the specified time will be retrieved. The time is in Unix timestamp format, measured in milliseconds. (optional)
@@ -730,8 +737,8 @@ public class SwapsApi {
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ListSwapActivities200Response> listSwapActivitiesWithHttpInfo(SwapType type, SwapActivityStatus status, Long minUpdatedTimestamp, Long maxUpdatedTimestamp, String initiator, Integer limit, String before, String after, String sortBy, String direction) throws ApiException {
-        okhttp3.Call localVarCall = listSwapActivitiesValidateBeforeCall(type, status, minUpdatedTimestamp, maxUpdatedTimestamp, initiator, limit, before, after, sortBy, direction, null);
+    public ApiResponse<ListSwapActivities200Response> listSwapActivitiesWithHttpInfo(String requestId, SwapType type, SwapActivityStatus status, Long minUpdatedTimestamp, Long maxUpdatedTimestamp, String initiator, Integer limit, String before, String after, String sortBy, String direction) throws ApiException {
+        okhttp3.Call localVarCall = listSwapActivitiesValidateBeforeCall(requestId, type, status, minUpdatedTimestamp, maxUpdatedTimestamp, initiator, limit, before, after, sortBy, direction, null);
         Type localVarReturnType = new TypeToken<ListSwapActivities200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -739,6 +746,7 @@ public class SwapsApi {
     /**
      * List swap activities (asynchronously)
      * This operation retrieves a list of swap activities. You can filter the results by swap type, status, initiator, and time range. 
+     * @param requestId The request ID that is used to track a transaction request. The request ID is provided by you and must be unique within your organization. (optional)
      * @param type  (optional)
      * @param status  (optional)
      * @param minUpdatedTimestamp The start time of the query. All swap activities updated after the specified time will be retrieved. The time is in Unix timestamp format, measured in milliseconds. (optional)
@@ -760,9 +768,9 @@ public class SwapsApi {
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listSwapActivitiesAsync(SwapType type, SwapActivityStatus status, Long minUpdatedTimestamp, Long maxUpdatedTimestamp, String initiator, Integer limit, String before, String after, String sortBy, String direction, final ApiCallback<ListSwapActivities200Response> _callback) throws ApiException {
+    public okhttp3.Call listSwapActivitiesAsync(String requestId, SwapType type, SwapActivityStatus status, Long minUpdatedTimestamp, Long maxUpdatedTimestamp, String initiator, Integer limit, String before, String after, String sortBy, String direction, final ApiCallback<ListSwapActivities200Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listSwapActivitiesValidateBeforeCall(type, status, minUpdatedTimestamp, maxUpdatedTimestamp, initiator, limit, before, after, sortBy, direction, _callback);
+        okhttp3.Call localVarCall = listSwapActivitiesValidateBeforeCall(requestId, type, status, minUpdatedTimestamp, maxUpdatedTimestamp, initiator, limit, before, after, sortBy, direction, _callback);
         Type localVarReturnType = new TypeToken<ListSwapActivities200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

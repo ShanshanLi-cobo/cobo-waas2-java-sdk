@@ -115,6 +115,7 @@ public class SwapsApiTest {
      */
     @Test
     public void listSwapActivitiesTest() throws ApiException {
+        String requestId = null;
         SwapType type = null;
         SwapActivityStatus status = null;
         Long minUpdatedTimestamp = null;
@@ -125,7 +126,7 @@ public class SwapsApiTest {
         String after = null;
         String sortBy = null;
         String direction = null;
-        ListSwapActivities200Response response = api.listSwapActivities(type, status, minUpdatedTimestamp, maxUpdatedTimestamp, initiator, limit, before, after, sortBy, direction);
+        ListSwapActivities200Response response = api.listSwapActivities(requestId, type, status, minUpdatedTimestamp, maxUpdatedTimestamp, initiator, limit, before, after, sortBy, direction);
         // TODO: test validations
     }
 

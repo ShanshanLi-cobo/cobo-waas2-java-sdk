@@ -22,7 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * The current status of the payout: - &#x60;Pending&#x60;: The payout has been created and is awaiting processing. - &#x60;Processing&#x60;: The payout is currently being processed, with at least one payout item in progress. - &#x60;Completed&#x60;: All requested payout items have been completed. - &#x60;PartiallyCompleted&#x60;: Some requested payout items have been completed successfully, while others have failed. - &#x60;Failed&#x60;: All requested payout items have failed. 
+ * The current status of the payout. Possible values include: - &#x60;Pending&#x60;: The payout has been created and is awaiting processing. - &#x60;Preparing&#x60;: The payout is being prepared for transfer. - &#x60;Transferring&#x60;: The payout is currently being transferred to the recipient&#39;s destination. - &#x60;Completed&#x60;: The payout has been successfully completed and all transactions have been processed. - &#x60;PartiallyCompleted&#x60;: The payout has been partially completed, with some transactions succeeding and others failing. - &#x60;Failed&#x60;: The payout has failed and no transactions were completed successfully. - &#x60;RejectedByBank&#x60;: The payout was rejected by the recipient&#39;s bank (applicable to OffRamp payouts only). 
  */
 @JsonAdapter(PaymentPayoutStatus.Adapter.class)
 public enum PaymentPayoutStatus {
@@ -30,7 +30,9 @@ public enum PaymentPayoutStatus {
   
   PENDING("Pending"),
   
-  PROCESSING("Processing"),
+  PREPARING("Preparing"),
+  
+  TRANSFERRING("Transferring"),
   
   COMPLETED("Completed"),
   
@@ -38,7 +40,7 @@ public enum PaymentPayoutStatus {
   
   FAILED("Failed"),
   
-  CANCELED("Canceled");
+  REJECTEDBYBANK("RejectedByBank");
 
   private String value;
 

@@ -100,6 +100,10 @@ public enum WebhookEventType {
   
   PAYMENT_SUBSCRIPTION_STATUS_UPDATED("payment.subscription.status.updated"),
   
+  PAYMENT_CHARGE_STATUS_UPDATED("payment.charge.status.updated"),
+  
+  PAYMENT_BULK_SEND_STATUS_UPDATED("payment.bulk_send.status.updated"),
+  
   COMPLIANCE_DISPOSITION_STATUS_UPDATED("compliance.disposition.status.updated"),
   
   COMPLIANCE_KYT_SCREENINGS_STATUS_UPDATED("compliance.kyt.screenings.status.updated"),

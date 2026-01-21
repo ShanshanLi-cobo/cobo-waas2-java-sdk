@@ -119,7 +119,7 @@ public class ComplianceApi {
 
     /**
      * Create KYA address screening requests
-     * This operation submits up to 50 address screening requests in one request to assess address compliance and risk levels.  &lt;Note&gt;This endpoint supports cross-chain address screening with independent idempotency for each address, enabling flexible error handling and partial retries.&lt;/Note&gt; 
+     * This operation submits up to 50 address screening requests in one call to assess address compliance and risk levels.  &lt;Note&gt;This endpoint supports cross-chain address screening with independent idempotency for each address, enabling flexible error handling and partial retries.&lt;/Note&gt; 
      * @param createKyaScreeningsBody The request body to create KYA address screening requests. (optional)
      * @return List&lt;KyaScreeningResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -138,7 +138,7 @@ public class ComplianceApi {
 
     /**
      * Create KYA address screening requests
-     * This operation submits up to 50 address screening requests in one request to assess address compliance and risk levels.  &lt;Note&gt;This endpoint supports cross-chain address screening with independent idempotency for each address, enabling flexible error handling and partial retries.&lt;/Note&gt; 
+     * This operation submits up to 50 address screening requests in one call to assess address compliance and risk levels.  &lt;Note&gt;This endpoint supports cross-chain address screening with independent idempotency for each address, enabling flexible error handling and partial retries.&lt;/Note&gt; 
      * @param createKyaScreeningsBody The request body to create KYA address screening requests. (optional)
      * @return ApiResponse&lt;List&lt;KyaScreeningResult&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -158,7 +158,7 @@ public class ComplianceApi {
 
     /**
      * Create KYA address screening requests (asynchronously)
-     * This operation submits up to 50 address screening requests in one request to assess address compliance and risk levels.  &lt;Note&gt;This endpoint supports cross-chain address screening with independent idempotency for each address, enabling flexible error handling and partial retries.&lt;/Note&gt; 
+     * This operation submits up to 50 address screening requests in one call to assess address compliance and risk levels.  &lt;Note&gt;This endpoint supports cross-chain address screening with independent idempotency for each address, enabling flexible error handling and partial retries.&lt;/Note&gt; 
      * @param createKyaScreeningsBody The request body to create KYA address screening requests. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

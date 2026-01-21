@@ -12,17 +12,14 @@
 package com.cobo.waas2.model;
 
 import java.util.Objects;
-import com.cobo.waas2.model.AllocationRecord;
-import com.cobo.waas2.model.Pagination;
+import com.cobo.waas2.model.TransactionExtraType;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -49,67 +46,105 @@ import java.util.Set;
 import com.cobo.waas2.JSON;
 
 /**
- * ListAllocations200Response
+ * The extra information of transaction initiated by walletconnect.
  */
 @javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
-public class ListAllocations200Response {
-  public static final String SERIALIZED_NAME_DATA = "data";
-  @SerializedName(SERIALIZED_NAME_DATA)
-  private List<AllocationRecord> data = new ArrayList<>();
+public class TransactionWalletConnectInfo {
+  public static final String SERIALIZED_NAME_EXTRA_TYPE = "extra_type";
+  @SerializedName(SERIALIZED_NAME_EXTRA_TYPE)
+  private TransactionExtraType extraType;
 
-  public static final String SERIALIZED_NAME_PAGINATION = "pagination";
-  @SerializedName(SERIALIZED_NAME_PAGINATION)
-  private Pagination pagination;
+  public static final String SERIALIZED_NAME_DAPP_NAME = "dapp_name";
+  @SerializedName(SERIALIZED_NAME_DAPP_NAME)
+  private String dappName;
 
-  public ListAllocations200Response() {
+  public static final String SERIALIZED_NAME_DAPP_DOMAIN = "dapp_domain";
+  @SerializedName(SERIALIZED_NAME_DAPP_DOMAIN)
+  private String dappDomain;
+
+  public static final String SERIALIZED_NAME_SESSION_ID = "session_id";
+  @SerializedName(SERIALIZED_NAME_SESSION_ID)
+  private String sessionId;
+
+  public TransactionWalletConnectInfo() {
   }
 
-  public ListAllocations200Response data(List<AllocationRecord> data) {
-    this.data = data;
-    return this;
-  }
-
-  public ListAllocations200Response addDataItem(AllocationRecord dataItem) {
-    if (this.data == null) {
-      this.data = new ArrayList<>();
-    }
-    this.data.add(dataItem);
-    return this;
-  }
-
-   /**
-   * Get data
-   * @return data
-  **/
-  @javax.annotation.Nullable
-  public List<AllocationRecord> getData() {
-    return data;
-  }
-
-  public void setData(List<AllocationRecord> data) {
-    this.data = data;
-  }
-
-
-  public ListAllocations200Response pagination(Pagination pagination) {
-    this.pagination = pagination;
+  public TransactionWalletConnectInfo extraType(TransactionExtraType extraType) {
+    this.extraType = extraType;
     return this;
   }
 
    /**
-   * Get pagination
-   * @return pagination
+   * Get extraType
+   * @return extraType
   **/
-  @javax.annotation.Nullable
-  public Pagination getPagination() {
-    return pagination;
+  @javax.annotation.Nonnull
+  public TransactionExtraType getExtraType() {
+    return extraType;
   }
 
-  public void setPagination(Pagination pagination) {
-    this.pagination = pagination;
+  public void setExtraType(TransactionExtraType extraType) {
+    this.extraType = extraType;
+  }
+
+
+  public TransactionWalletConnectInfo dappName(String dappName) {
+    this.dappName = dappName;
+    return this;
+  }
+
+   /**
+   * The dapp name that initiated this transaction.
+   * @return dappName
+  **/
+  @javax.annotation.Nullable
+  public String getDappName() {
+    return dappName;
+  }
+
+  public void setDappName(String dappName) {
+    this.dappName = dappName;
+  }
+
+
+  public TransactionWalletConnectInfo dappDomain(String dappDomain) {
+    this.dappDomain = dappDomain;
+    return this;
+  }
+
+   /**
+   * The dapp domain that initiated this transaction
+   * @return dappDomain
+  **/
+  @javax.annotation.Nullable
+  public String getDappDomain() {
+    return dappDomain;
+  }
+
+  public void setDappDomain(String dappDomain) {
+    this.dappDomain = dappDomain;
+  }
+
+
+  public TransactionWalletConnectInfo sessionId(String sessionId) {
+    this.sessionId = sessionId;
+    return this;
+  }
+
+   /**
+   * The session id that initiated this transaction
+   * @return sessionId
+  **/
+  @javax.annotation.Nullable
+  public String getSessionId() {
+    return sessionId;
+  }
+
+  public void setSessionId(String sessionId) {
+    this.sessionId = sessionId;
   }
 
   /**
@@ -125,9 +160,9 @@ public class ListAllocations200Response {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the ListAllocations200Response instance itself
+   * @return the TransactionWalletConnectInfo instance itself
    */
-  public ListAllocations200Response putAdditionalProperty(String key, Object value) {
+  public TransactionWalletConnectInfo putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -166,23 +201,27 @@ public class ListAllocations200Response {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ListAllocations200Response listAllocations200Response = (ListAllocations200Response) o;
-    return Objects.equals(this.data, listAllocations200Response.data) &&
-        Objects.equals(this.pagination, listAllocations200Response.pagination)&&
-        Objects.equals(this.additionalProperties, listAllocations200Response.additionalProperties);
+    TransactionWalletConnectInfo transactionWalletConnectInfo = (TransactionWalletConnectInfo) o;
+    return Objects.equals(this.extraType, transactionWalletConnectInfo.extraType) &&
+        Objects.equals(this.dappName, transactionWalletConnectInfo.dappName) &&
+        Objects.equals(this.dappDomain, transactionWalletConnectInfo.dappDomain) &&
+        Objects.equals(this.sessionId, transactionWalletConnectInfo.sessionId)&&
+        Objects.equals(this.additionalProperties, transactionWalletConnectInfo.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, pagination, additionalProperties);
+    return Objects.hash(extraType, dappName, dappDomain, sessionId, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ListAllocations200Response {\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    pagination: ").append(toIndentedString(pagination)).append("\n");
+    sb.append("class TransactionWalletConnectInfo {\n");
+    sb.append("    extraType: ").append(toIndentedString(extraType)).append("\n");
+    sb.append("    dappName: ").append(toIndentedString(dappName)).append("\n");
+    sb.append("    dappDomain: ").append(toIndentedString(dappDomain)).append("\n");
+    sb.append("    sessionId: ").append(toIndentedString(sessionId)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -206,43 +245,46 @@ public class ListAllocations200Response {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("data");
-    openapiFields.add("pagination");
+    openapiFields.add("extra_type");
+    openapiFields.add("dapp_name");
+    openapiFields.add("dapp_domain");
+    openapiFields.add("session_id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("extra_type");
   }
 
  /**
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to ListAllocations200Response
+  * @throws IOException if the JSON Element is invalid with respect to TransactionWalletConnectInfo
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!ListAllocations200Response.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ListAllocations200Response is not found in the empty JSON string", ListAllocations200Response.openapiRequiredFields.toString()));
+        if (!TransactionWalletConnectInfo.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in TransactionWalletConnectInfo is not found in the empty JSON string", TransactionWalletConnectInfo.openapiRequiredFields.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : TransactionWalletConnectInfo.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
-        JsonArray jsonArraydata = jsonObj.getAsJsonArray("data");
-        if (jsonArraydata != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("data").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `data` to be an array in the JSON string but got `%s`", jsonObj.get("data").toString()));
-          }
-
-          // validate the optional field `data` (array)
-          for (int i = 0; i < jsonArraydata.size(); i++) {
-            AllocationRecord.validateJsonElement(jsonArraydata.get(i));
-          };
-        }
+      // validate the required field `extra_type`
+      TransactionExtraType.validateJsonElement(jsonObj.get("extra_type"));
+      if ((jsonObj.get("dapp_name") != null && !jsonObj.get("dapp_name").isJsonNull()) && !jsonObj.get("dapp_name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `dapp_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("dapp_name").toString()));
       }
-      // validate the optional field `pagination`
-      if (jsonObj.get("pagination") != null && !jsonObj.get("pagination").isJsonNull()) {
-        Pagination.validateJsonElement(jsonObj.get("pagination"));
+      if ((jsonObj.get("dapp_domain") != null && !jsonObj.get("dapp_domain").isJsonNull()) && !jsonObj.get("dapp_domain").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `dapp_domain` to be a primitive type in the JSON string but got `%s`", jsonObj.get("dapp_domain").toString()));
+      }
+      if ((jsonObj.get("session_id") != null && !jsonObj.get("session_id").isJsonNull()) && !jsonObj.get("session_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `session_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("session_id").toString()));
       }
   }
 
@@ -250,16 +292,16 @@ public class ListAllocations200Response {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ListAllocations200Response.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ListAllocations200Response' and its subtypes
+       if (!TransactionWalletConnectInfo.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'TransactionWalletConnectInfo' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ListAllocations200Response> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ListAllocations200Response.class));
+       final TypeAdapter<TransactionWalletConnectInfo> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(TransactionWalletConnectInfo.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ListAllocations200Response>() {
+       return (TypeAdapter<T>) new TypeAdapter<TransactionWalletConnectInfo>() {
            @Override
-           public void write(JsonWriter out, ListAllocations200Response value) throws IOException {
+           public void write(JsonWriter out, TransactionWalletConnectInfo value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -289,12 +331,12 @@ public class ListAllocations200Response {
            }
 
            @Override
-           public ListAllocations200Response read(JsonReader in) throws IOException {
+           public TransactionWalletConnectInfo read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             ListAllocations200Response instance = thisAdapter.fromJsonTree(jsonObj);
+             TransactionWalletConnectInfo instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -321,18 +363,18 @@ public class ListAllocations200Response {
   }
 
  /**
-  * Create an instance of ListAllocations200Response given an JSON string
+  * Create an instance of TransactionWalletConnectInfo given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of ListAllocations200Response
-  * @throws IOException if the JSON string is invalid with respect to ListAllocations200Response
+  * @return An instance of TransactionWalletConnectInfo
+  * @throws IOException if the JSON string is invalid with respect to TransactionWalletConnectInfo
   */
-  public static ListAllocations200Response fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ListAllocations200Response.class);
+  public static TransactionWalletConnectInfo fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, TransactionWalletConnectInfo.class);
   }
 
  /**
-  * Convert an instance of ListAllocations200Response to an JSON string
+  * Convert an instance of TransactionWalletConnectInfo to an JSON string
   *
   * @return JSON string
   */

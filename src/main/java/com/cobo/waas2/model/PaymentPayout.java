@@ -12,8 +12,8 @@
 package com.cobo.waas2.model;
 
 import java.util.Objects;
-import com.cobo.waas2.model.BankAccount;
 import com.cobo.waas2.model.PaymentPayoutItem;
+import com.cobo.waas2.model.PaymentPayoutRecipientInfo;
 import com.cobo.waas2.model.PaymentPayoutStatus;
 import com.cobo.waas2.model.PayoutChannel;
 import com.google.gson.TypeAdapter;
@@ -70,13 +70,33 @@ public class PaymentPayout {
   @SerializedName(SERIALIZED_NAME_PAYOUT_CHANNEL)
   private PayoutChannel payoutChannel;
 
+  public static final String SERIALIZED_NAME_SOURCE_ACCOUNT = "source_account";
+  @SerializedName(SERIALIZED_NAME_SOURCE_ACCOUNT)
+  private String sourceAccount;
+
   public static final String SERIALIZED_NAME_PAYOUT_ITEMS = "payout_items";
   @SerializedName(SERIALIZED_NAME_PAYOUT_ITEMS)
   private List<PaymentPayoutItem> payoutItems = new ArrayList<>();
 
+  public static final String SERIALIZED_NAME_RECIPIENT_INFO = "recipient_info";
+  @SerializedName(SERIALIZED_NAME_RECIPIENT_INFO)
+  private PaymentPayoutRecipientInfo recipientInfo;
+
+  public static final String SERIALIZED_NAME_INITIATOR = "initiator";
+  @SerializedName(SERIALIZED_NAME_INITIATOR)
+  private String initiator;
+
+  public static final String SERIALIZED_NAME_ACTUAL_PAYOUT_AMOUNT = "actual_payout_amount";
+  @SerializedName(SERIALIZED_NAME_ACTUAL_PAYOUT_AMOUNT)
+  private String actualPayoutAmount;
+
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
   private PaymentPayoutStatus status;
+
+  public static final String SERIALIZED_NAME_REMARK = "remark";
+  @SerializedName(SERIALIZED_NAME_REMARK)
+  private String remark;
 
   public static final String SERIALIZED_NAME_CREATED_TIMESTAMP = "created_timestamp";
   @SerializedName(SERIALIZED_NAME_CREATED_TIMESTAMP)
@@ -85,22 +105,6 @@ public class PaymentPayout {
   public static final String SERIALIZED_NAME_UPDATED_TIMESTAMP = "updated_timestamp";
   @SerializedName(SERIALIZED_NAME_UPDATED_TIMESTAMP)
   private Integer updatedTimestamp;
-
-  public static final String SERIALIZED_NAME_INITIATOR = "initiator";
-  @SerializedName(SERIALIZED_NAME_INITIATOR)
-  private String initiator;
-
-  public static final String SERIALIZED_NAME_CURRENCY = "currency";
-  @SerializedName(SERIALIZED_NAME_CURRENCY)
-  private String currency;
-
-  public static final String SERIALIZED_NAME_ACTUAL_PAYOUT_AMOUNT = "actual_payout_amount";
-  @SerializedName(SERIALIZED_NAME_ACTUAL_PAYOUT_AMOUNT)
-  private String actualPayoutAmount;
-
-  public static final String SERIALIZED_NAME_BANK_ACCOUNT = "bank_account";
-  @SerializedName(SERIALIZED_NAME_BANK_ACCOUNT)
-  private BankAccount bankAccount;
 
   public PaymentPayout() {
   }
@@ -162,6 +166,25 @@ public class PaymentPayout {
   }
 
 
+  public PaymentPayout sourceAccount(String sourceAccount) {
+    this.sourceAccount = sourceAccount;
+    return this;
+  }
+
+   /**
+   * The source account from which the payout will be made. - If the source account is a merchant account, provide the merchant&#39;s ID (e.g., \&quot;M1001\&quot;). - If the source account is the developer account, use the string &#x60;\&quot;developer\&quot;&#x60;. 
+   * @return sourceAccount
+  **/
+  @javax.annotation.Nullable
+  public String getSourceAccount() {
+    return sourceAccount;
+  }
+
+  public void setSourceAccount(String sourceAccount) {
+    this.sourceAccount = sourceAccount;
+  }
+
+
   public PaymentPayout payoutItems(List<PaymentPayoutItem> payoutItems) {
     this.payoutItems = payoutItems;
     return this;
@@ -176,7 +199,7 @@ public class PaymentPayout {
   }
 
    /**
-   * Get payoutItems
+   * required
    * @return payoutItems
   **/
   @javax.annotation.Nullable
@@ -186,6 +209,63 @@ public class PaymentPayout {
 
   public void setPayoutItems(List<PaymentPayoutItem> payoutItems) {
     this.payoutItems = payoutItems;
+  }
+
+
+  public PaymentPayout recipientInfo(PaymentPayoutRecipientInfo recipientInfo) {
+    this.recipientInfo = recipientInfo;
+    return this;
+  }
+
+   /**
+   * Get recipientInfo
+   * @return recipientInfo
+  **/
+  @javax.annotation.Nullable
+  public PaymentPayoutRecipientInfo getRecipientInfo() {
+    return recipientInfo;
+  }
+
+  public void setRecipientInfo(PaymentPayoutRecipientInfo recipientInfo) {
+    this.recipientInfo = recipientInfo;
+  }
+
+
+  public PaymentPayout initiator(String initiator) {
+    this.initiator = initiator;
+    return this;
+  }
+
+   /**
+   * The initiator of this payout, usually the user&#39;s API key.
+   * @return initiator
+  **/
+  @javax.annotation.Nullable
+  public String getInitiator() {
+    return initiator;
+  }
+
+  public void setInitiator(String initiator) {
+    this.initiator = initiator;
+  }
+
+
+  public PaymentPayout actualPayoutAmount(String actualPayoutAmount) {
+    this.actualPayoutAmount = actualPayoutAmount;
+    return this;
+  }
+
+   /**
+   * - For &#x60;Crypto&#x60; payouts: The amount of cryptocurrency sent to the recipient&#39;s address, denominated in the token specified in &#x60;recipient_info.token_id&#x60;. - For &#x60;OffRamp&#x60; payouts: The amount of fiat currency sent to the recipient&#39;s bank account, denominated in the currency specified in &#x60;recipient_info.currency&#x60;. (Note: The actual amount received may be lower due to additional bank transfer fees.) 
+   * @return actualPayoutAmount
+  **/
+  @javax.annotation.Nullable
+  public String getActualPayoutAmount() {
+    return actualPayoutAmount;
+  }
+
+  public void setActualPayoutAmount(String actualPayoutAmount) {
+    this.actualPayoutAmount = actualPayoutAmount;
   }
 
 
@@ -208,6 +288,25 @@ public class PaymentPayout {
   }
 
 
+  public PaymentPayout remark(String remark) {
+    this.remark = remark;
+    return this;
+  }
+
+   /**
+   * A note or comment about the payout.
+   * @return remark
+  **/
+  @javax.annotation.Nullable
+  public String getRemark() {
+    return remark;
+  }
+
+  public void setRemark(String remark) {
+    this.remark = remark;
+  }
+
+
   public PaymentPayout createdTimestamp(Integer createdTimestamp) {
     this.createdTimestamp = createdTimestamp;
     return this;
@@ -217,7 +316,7 @@ public class PaymentPayout {
    * The created time of the payout, represented as a UNIX timestamp in seconds.
    * @return createdTimestamp
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public Integer getCreatedTimestamp() {
     return createdTimestamp;
   }
@@ -236,89 +335,13 @@ public class PaymentPayout {
    * The updated time of the payout, represented as a UNIX timestamp in seconds.
    * @return updatedTimestamp
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public Integer getUpdatedTimestamp() {
     return updatedTimestamp;
   }
 
   public void setUpdatedTimestamp(Integer updatedTimestamp) {
     this.updatedTimestamp = updatedTimestamp;
-  }
-
-
-  public PaymentPayout initiator(String initiator) {
-    this.initiator = initiator;
-    return this;
-  }
-
-   /**
-   * The initiator of this payout, usually the API key used to create the payout.
-   * @return initiator
-  **/
-  @javax.annotation.Nullable
-  public String getInitiator() {
-    return initiator;
-  }
-
-  public void setInitiator(String initiator) {
-    this.initiator = initiator;
-  }
-
-
-  public PaymentPayout currency(String currency) {
-    this.currency = currency;
-    return this;
-  }
-
-   /**
-   * The fiat currency you will receive from the payout.
-   * @return currency
-  **/
-  @javax.annotation.Nullable
-  public String getCurrency() {
-    return currency;
-  }
-
-  public void setCurrency(String currency) {
-    this.currency = currency;
-  }
-
-
-  public PaymentPayout actualPayoutAmount(String actualPayoutAmount) {
-    this.actualPayoutAmount = actualPayoutAmount;
-    return this;
-  }
-
-   /**
-   * The total amount of cryptocurrency actually paid out for this payout. 
-   * @return actualPayoutAmount
-  **/
-  @javax.annotation.Nullable
-  public String getActualPayoutAmount() {
-    return actualPayoutAmount;
-  }
-
-  public void setActualPayoutAmount(String actualPayoutAmount) {
-    this.actualPayoutAmount = actualPayoutAmount;
-  }
-
-
-  public PaymentPayout bankAccount(BankAccount bankAccount) {
-    this.bankAccount = bankAccount;
-    return this;
-  }
-
-   /**
-   * Get bankAccount
-   * @return bankAccount
-  **/
-  @javax.annotation.Nullable
-  public BankAccount getBankAccount() {
-    return bankAccount;
-  }
-
-  public void setBankAccount(BankAccount bankAccount) {
-    this.bankAccount = bankAccount;
   }
 
   /**
@@ -379,20 +402,21 @@ public class PaymentPayout {
     return Objects.equals(this.payoutId, paymentPayout.payoutId) &&
         Objects.equals(this.requestId, paymentPayout.requestId) &&
         Objects.equals(this.payoutChannel, paymentPayout.payoutChannel) &&
+        Objects.equals(this.sourceAccount, paymentPayout.sourceAccount) &&
         Objects.equals(this.payoutItems, paymentPayout.payoutItems) &&
-        Objects.equals(this.status, paymentPayout.status) &&
-        Objects.equals(this.createdTimestamp, paymentPayout.createdTimestamp) &&
-        Objects.equals(this.updatedTimestamp, paymentPayout.updatedTimestamp) &&
+        Objects.equals(this.recipientInfo, paymentPayout.recipientInfo) &&
         Objects.equals(this.initiator, paymentPayout.initiator) &&
-        Objects.equals(this.currency, paymentPayout.currency) &&
         Objects.equals(this.actualPayoutAmount, paymentPayout.actualPayoutAmount) &&
-        Objects.equals(this.bankAccount, paymentPayout.bankAccount)&&
+        Objects.equals(this.status, paymentPayout.status) &&
+        Objects.equals(this.remark, paymentPayout.remark) &&
+        Objects.equals(this.createdTimestamp, paymentPayout.createdTimestamp) &&
+        Objects.equals(this.updatedTimestamp, paymentPayout.updatedTimestamp)&&
         Objects.equals(this.additionalProperties, paymentPayout.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(payoutId, requestId, payoutChannel, payoutItems, status, createdTimestamp, updatedTimestamp, initiator, currency, actualPayoutAmount, bankAccount, additionalProperties);
+    return Objects.hash(payoutId, requestId, payoutChannel, sourceAccount, payoutItems, recipientInfo, initiator, actualPayoutAmount, status, remark, createdTimestamp, updatedTimestamp, additionalProperties);
   }
 
   @Override
@@ -402,14 +426,15 @@ public class PaymentPayout {
     sb.append("    payoutId: ").append(toIndentedString(payoutId)).append("\n");
     sb.append("    requestId: ").append(toIndentedString(requestId)).append("\n");
     sb.append("    payoutChannel: ").append(toIndentedString(payoutChannel)).append("\n");
+    sb.append("    sourceAccount: ").append(toIndentedString(sourceAccount)).append("\n");
     sb.append("    payoutItems: ").append(toIndentedString(payoutItems)).append("\n");
+    sb.append("    recipientInfo: ").append(toIndentedString(recipientInfo)).append("\n");
+    sb.append("    initiator: ").append(toIndentedString(initiator)).append("\n");
+    sb.append("    actualPayoutAmount: ").append(toIndentedString(actualPayoutAmount)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    remark: ").append(toIndentedString(remark)).append("\n");
     sb.append("    createdTimestamp: ").append(toIndentedString(createdTimestamp)).append("\n");
     sb.append("    updatedTimestamp: ").append(toIndentedString(updatedTimestamp)).append("\n");
-    sb.append("    initiator: ").append(toIndentedString(initiator)).append("\n");
-    sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
-    sb.append("    actualPayoutAmount: ").append(toIndentedString(actualPayoutAmount)).append("\n");
-    sb.append("    bankAccount: ").append(toIndentedString(bankAccount)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -436,14 +461,15 @@ public class PaymentPayout {
     openapiFields.add("payout_id");
     openapiFields.add("request_id");
     openapiFields.add("payout_channel");
+    openapiFields.add("source_account");
     openapiFields.add("payout_items");
+    openapiFields.add("recipient_info");
+    openapiFields.add("initiator");
+    openapiFields.add("actual_payout_amount");
     openapiFields.add("status");
+    openapiFields.add("remark");
     openapiFields.add("created_timestamp");
     openapiFields.add("updated_timestamp");
-    openapiFields.add("initiator");
-    openapiFields.add("currency");
-    openapiFields.add("actual_payout_amount");
-    openapiFields.add("bank_account");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -451,6 +477,8 @@ public class PaymentPayout {
     openapiRequiredFields.add("request_id");
     openapiRequiredFields.add("payout_channel");
     openapiRequiredFields.add("status");
+    openapiRequiredFields.add("created_timestamp");
+    openapiRequiredFields.add("updated_timestamp");
   }
 
  /**
@@ -481,6 +509,9 @@ public class PaymentPayout {
       }
       // validate the required field `payout_channel`
       PayoutChannel.validateJsonElement(jsonObj.get("payout_channel"));
+      if ((jsonObj.get("source_account") != null && !jsonObj.get("source_account").isJsonNull()) && !jsonObj.get("source_account").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `source_account` to be a primitive type in the JSON string but got `%s`", jsonObj.get("source_account").toString()));
+      }
       if (jsonObj.get("payout_items") != null && !jsonObj.get("payout_items").isJsonNull()) {
         JsonArray jsonArraypayoutItems = jsonObj.getAsJsonArray("payout_items");
         if (jsonArraypayoutItems != null) {
@@ -495,20 +526,20 @@ public class PaymentPayout {
           };
         }
       }
-      // validate the required field `status`
-      PaymentPayoutStatus.validateJsonElement(jsonObj.get("status"));
+      // validate the optional field `recipient_info`
+      if (jsonObj.get("recipient_info") != null && !jsonObj.get("recipient_info").isJsonNull()) {
+        PaymentPayoutRecipientInfo.validateJsonElement(jsonObj.get("recipient_info"));
+      }
       if ((jsonObj.get("initiator") != null && !jsonObj.get("initiator").isJsonNull()) && !jsonObj.get("initiator").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `initiator` to be a primitive type in the JSON string but got `%s`", jsonObj.get("initiator").toString()));
-      }
-      if ((jsonObj.get("currency") != null && !jsonObj.get("currency").isJsonNull()) && !jsonObj.get("currency").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currency").toString()));
       }
       if ((jsonObj.get("actual_payout_amount") != null && !jsonObj.get("actual_payout_amount").isJsonNull()) && !jsonObj.get("actual_payout_amount").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `actual_payout_amount` to be a primitive type in the JSON string but got `%s`", jsonObj.get("actual_payout_amount").toString()));
       }
-      // validate the optional field `bank_account`
-      if (jsonObj.get("bank_account") != null && !jsonObj.get("bank_account").isJsonNull()) {
-        BankAccount.validateJsonElement(jsonObj.get("bank_account"));
+      // validate the required field `status`
+      PaymentPayoutStatus.validateJsonElement(jsonObj.get("status"));
+      if ((jsonObj.get("remark") != null && !jsonObj.get("remark").isJsonNull()) && !jsonObj.get("remark").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `remark` to be a primitive type in the JSON string but got `%s`", jsonObj.get("remark").toString()));
       }
   }
 

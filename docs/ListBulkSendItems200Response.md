@@ -1,13 +1,13 @@
 
 
-# ListAllocations200Response
+# ListBulkSendItems200Response
 
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**data** | [**List&lt;AllocationRecord&gt;**](AllocationRecord.md) |  |  [optional] |
+|**data** | [**List&lt;PaymentBulkSendItem&gt;**](PaymentBulkSendItem.md) |  |  [optional] |
 |**pagination** | [**Pagination**](Pagination.md) |  |  [optional] |
 
 

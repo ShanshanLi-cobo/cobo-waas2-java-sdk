@@ -185,7 +185,7 @@ public class OrderLinkBusinessInfo {
    * The pricing currency that denominates &#x60;pricing_amount&#x60; and &#x60;fee_amount&#x60;. Currently, only &#x60;USD&#x60;/&#x60;USDT&#x60;/&#x60;USDC&#x60; are supported. This field is required. 
    * @return pricingCurrency
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getPricingCurrency() {
     return pricingCurrency;
   }
@@ -204,7 +204,7 @@ public class OrderLinkBusinessInfo {
    * The base amount of the order, excluding the developer fee (specified in &#x60;fee_amount&#x60;). Values must be greater than &#x60;0&#x60; and contain two decimal places. 
    * @return pricingAmount
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getPricingAmount() {
     return pricingAmount;
   }
@@ -250,7 +250,7 @@ public class OrderLinkBusinessInfo {
    * The IDs of the cryptocurrencies used for payment. Supported values:  - USDC: &#x60;ETH_USDC&#x60;, &#x60;ARBITRUM_USDC&#x60;, &#x60;SOL_USDC&#x60;, &#x60;BASE_USDC&#x60;, &#x60;MATIC_USDC&#x60;, &#x60;BSC_USDC&#x60;  - USDT: &#x60;TRON_USDT&#x60;, &#x60;ETH_USDT&#x60;, &#x60;ARBITRUM_USDT&#x60;, &#x60;SOL_USDT&#x60;, &#x60;BASE_USDT&#x60;, &#x60;MATIC_USDT&#x60;, &#x60;BSC_USDT&#x60; 
    * @return payableCurrencies
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public List<String> getPayableCurrencies() {
     return payableCurrencies;
   }
@@ -575,7 +575,10 @@ public class OrderLinkBusinessInfo {
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("merchant_id");
     openapiRequiredFields.add("psp_order_code");
+    openapiRequiredFields.add("pricing_currency");
+    openapiRequiredFields.add("pricing_amount");
     openapiRequiredFields.add("fee_amount");
+    openapiRequiredFields.add("payable_currencies");
   }
 
  /**
@@ -607,17 +610,19 @@ public class OrderLinkBusinessInfo {
       if (!jsonObj.get("psp_order_code").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `psp_order_code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("psp_order_code").toString()));
       }
-      if ((jsonObj.get("pricing_currency") != null && !jsonObj.get("pricing_currency").isJsonNull()) && !jsonObj.get("pricing_currency").isJsonPrimitive()) {
+      if (!jsonObj.get("pricing_currency").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `pricing_currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("pricing_currency").toString()));
       }
-      if ((jsonObj.get("pricing_amount") != null && !jsonObj.get("pricing_amount").isJsonNull()) && !jsonObj.get("pricing_amount").isJsonPrimitive()) {
+      if (!jsonObj.get("pricing_amount").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `pricing_amount` to be a primitive type in the JSON string but got `%s`", jsonObj.get("pricing_amount").toString()));
       }
       if (!jsonObj.get("fee_amount").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `fee_amount` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fee_amount").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("payable_currencies") != null && !jsonObj.get("payable_currencies").isJsonNull() && !jsonObj.get("payable_currencies").isJsonArray()) {
+      // ensure the required json array is present
+      if (jsonObj.get("payable_currencies") == null) {
+        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+      } else if (!jsonObj.get("payable_currencies").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `payable_currencies` to be an array in the JSON string but got `%s`", jsonObj.get("payable_currencies").toString()));
       }
       if (jsonObj.get("payable_amounts") != null && !jsonObj.get("payable_amounts").isJsonNull()) {

@@ -83,5 +83,7 @@
 
 * `GASFEESPONSORREFUND` (value: `"GasFeeSponsorRefund"`)
 
+* `WALLETCONNECT` (value: `"WalletConnect"`)
+
 
 

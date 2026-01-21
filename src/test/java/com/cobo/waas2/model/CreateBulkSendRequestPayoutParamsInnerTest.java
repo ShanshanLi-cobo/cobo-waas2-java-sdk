@@ -22,33 +22,17 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
- * Model tests for AllocationRecord
+ * Model tests for CreateBulkSendRequestPayoutParamsInner
  */
-public class AllocationRecordTest {
-    private final AllocationRecord model = new AllocationRecord();
+public class CreateBulkSendRequestPayoutParamsInnerTest {
+    private final CreateBulkSendRequestPayoutParamsInner model = new CreateBulkSendRequestPayoutParamsInner();
 
     /**
-     * Model tests for AllocationRecord
+     * Model tests for CreateBulkSendRequestPayoutParamsInner
      */
     @Test
-    public void testAllocationRecord() {
-        // TODO: test AllocationRecord
-    }
-
-    /**
-     * Test the property 'allocationRecordId'
-     */
-    @Test
-    public void allocationRecordIdTest() {
-        // TODO: test allocationRecordId
-    }
-
-    /**
-     * Test the property 'batchAllocationId'
-     */
-    @Test
-    public void batchAllocationIdTest() {
-        // TODO: test batchAllocationId
+    public void testCreateBulkSendRequestPayoutParamsInner() {
+        // TODO: test CreateBulkSendRequestPayoutParamsInner
     }
 
     /**
@@ -60,27 +44,19 @@ public class AllocationRecordTest {
     }
 
     /**
+     * Test the property 'receivingAddress'
+     */
+    @Test
+    public void receivingAddressTest() {
+        // TODO: test receivingAddress
+    }
+
+    /**
      * Test the property 'amount'
      */
     @Test
     public void amountTest() {
         // TODO: test amount
-    }
-
-    /**
-     * Test the property 'sourceAccount'
-     */
-    @Test
-    public void sourceAccountTest() {
-        // TODO: test sourceAccount
-    }
-
-    /**
-     * Test the property 'destinationAccount'
-     */
-    @Test
-    public void destinationAccountTest() {
-        // TODO: test destinationAccount
     }
 
     /**

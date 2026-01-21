@@ -55,4 +55,12 @@ public class PaymentEstimateFeeRequestTest {
         // TODO: test estimateFees
     }
 
+    /**
+     * Test the property 'recipientTokenId'
+     */
+    @Test
+    public void recipientTokenIdTest() {
+        // TODO: test recipientTokenId
+    }
+
 }

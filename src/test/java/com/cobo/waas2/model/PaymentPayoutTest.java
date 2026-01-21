@@ -11,8 +11,8 @@
 
 package com.cobo.waas2.model;
 
-import com.cobo.waas2.model.BankAccount;
 import com.cobo.waas2.model.PaymentPayoutItem;
+import com.cobo.waas2.model.PaymentPayoutRecipientInfo;
 import com.cobo.waas2.model.PaymentPayoutStatus;
 import com.cobo.waas2.model.PayoutChannel;
 import com.google.gson.TypeAdapter;
@@ -66,6 +66,14 @@ public class PaymentPayoutTest {
     }
 
     /**
+     * Test the property 'sourceAccount'
+     */
+    @Test
+    public void sourceAccountTest() {
+        // TODO: test sourceAccount
+    }
+
+    /**
      * Test the property 'payoutItems'
      */
     @Test
@@ -74,11 +82,43 @@ public class PaymentPayoutTest {
     }
 
     /**
+     * Test the property 'recipientInfo'
+     */
+    @Test
+    public void recipientInfoTest() {
+        // TODO: test recipientInfo
+    }
+
+    /**
+     * Test the property 'initiator'
+     */
+    @Test
+    public void initiatorTest() {
+        // TODO: test initiator
+    }
+
+    /**
+     * Test the property 'actualPayoutAmount'
+     */
+    @Test
+    public void actualPayoutAmountTest() {
+        // TODO: test actualPayoutAmount
+    }
+
+    /**
      * Test the property 'status'
      */
     @Test
     public void statusTest() {
         // TODO: test status
+    }
+
+    /**
+     * Test the property 'remark'
+     */
+    @Test
+    public void remarkTest() {
+        // TODO: test remark
     }
 
     /**
@@ -95,38 +135,6 @@ public class PaymentPayoutTest {
     @Test
     public void updatedTimestampTest() {
         // TODO: test updatedTimestamp
-    }
-
-    /**
-     * Test the property 'initiator'
-     */
-    @Test
-    public void initiatorTest() {
-        // TODO: test initiator
-    }
-
-    /**
-     * Test the property 'currency'
-     */
-    @Test
-    public void currencyTest() {
-        // TODO: test currency
-    }
-
-    /**
-     * Test the property 'actualPayoutAmount'
-     */
-    @Test
-    public void actualPayoutAmountTest() {
-        // TODO: test actualPayoutAmount
-    }
-
-    /**
-     * Test the property 'bankAccount'
-     */
-    @Test
-    public void bankAccountTest() {
-        // TODO: test bankAccount
     }
 
 }

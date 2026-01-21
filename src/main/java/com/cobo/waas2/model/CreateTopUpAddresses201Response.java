@@ -12,8 +12,7 @@
 package com.cobo.waas2.model;
 
 import java.util.Objects;
-import com.cobo.waas2.model.Pagination;
-import com.cobo.waas2.model.PaymentPayoutItem;
+import com.cobo.waas2.model.TopUpAddress;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -49,30 +48,26 @@ import java.util.Set;
 import com.cobo.waas2.JSON;
 
 /**
- * ListPayoutItems200Response
+ * CreateTopUpAddresses201Response
  */
 @javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
-public class ListPayoutItems200Response {
+public class CreateTopUpAddresses201Response {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<PaymentPayoutItem> data = new ArrayList<>();
+  private List<TopUpAddress> data = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_PAGINATION = "pagination";
-  @SerializedName(SERIALIZED_NAME_PAGINATION)
-  private Pagination pagination;
-
-  public ListPayoutItems200Response() {
+  public CreateTopUpAddresses201Response() {
   }
 
-  public ListPayoutItems200Response data(List<PaymentPayoutItem> data) {
+  public CreateTopUpAddresses201Response data(List<TopUpAddress> data) {
     this.data = data;
     return this;
   }
 
-  public ListPayoutItems200Response addDataItem(PaymentPayoutItem dataItem) {
+  public CreateTopUpAddresses201Response addDataItem(TopUpAddress dataItem) {
     if (this.data == null) {
       this.data = new ArrayList<>();
     }
@@ -85,31 +80,12 @@ public class ListPayoutItems200Response {
    * @return data
   **/
   @javax.annotation.Nullable
-  public List<PaymentPayoutItem> getData() {
+  public List<TopUpAddress> getData() {
     return data;
   }
 
-  public void setData(List<PaymentPayoutItem> data) {
+  public void setData(List<TopUpAddress> data) {
     this.data = data;
-  }
-
-
-  public ListPayoutItems200Response pagination(Pagination pagination) {
-    this.pagination = pagination;
-    return this;
-  }
-
-   /**
-   * Get pagination
-   * @return pagination
-  **/
-  @javax.annotation.Nullable
-  public Pagination getPagination() {
-    return pagination;
-  }
-
-  public void setPagination(Pagination pagination) {
-    this.pagination = pagination;
   }
 
   /**
@@ -125,9 +101,9 @@ public class ListPayoutItems200Response {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the ListPayoutItems200Response instance itself
+   * @return the CreateTopUpAddresses201Response instance itself
    */
-  public ListPayoutItems200Response putAdditionalProperty(String key, Object value) {
+  public CreateTopUpAddresses201Response putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -166,23 +142,21 @@ public class ListPayoutItems200Response {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ListPayoutItems200Response listPayoutItems200Response = (ListPayoutItems200Response) o;
-    return Objects.equals(this.data, listPayoutItems200Response.data) &&
-        Objects.equals(this.pagination, listPayoutItems200Response.pagination)&&
-        Objects.equals(this.additionalProperties, listPayoutItems200Response.additionalProperties);
+    CreateTopUpAddresses201Response createTopUpAddresses201Response = (CreateTopUpAddresses201Response) o;
+    return Objects.equals(this.data, createTopUpAddresses201Response.data)&&
+        Objects.equals(this.additionalProperties, createTopUpAddresses201Response.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, pagination, additionalProperties);
+    return Objects.hash(data, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ListPayoutItems200Response {\n");
+    sb.append("class CreateTopUpAddresses201Response {\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    pagination: ").append(toIndentedString(pagination)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -207,7 +181,6 @@ public class ListPayoutItems200Response {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("data");
-    openapiFields.add("pagination");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -217,12 +190,12 @@ public class ListPayoutItems200Response {
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to ListPayoutItems200Response
+  * @throws IOException if the JSON Element is invalid with respect to CreateTopUpAddresses201Response
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!ListPayoutItems200Response.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ListPayoutItems200Response is not found in the empty JSON string", ListPayoutItems200Response.openapiRequiredFields.toString()));
+        if (!CreateTopUpAddresses201Response.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in CreateTopUpAddresses201Response is not found in the empty JSON string", CreateTopUpAddresses201Response.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -236,13 +209,9 @@ public class ListPayoutItems200Response {
 
           // validate the optional field `data` (array)
           for (int i = 0; i < jsonArraydata.size(); i++) {
-            PaymentPayoutItem.validateJsonElement(jsonArraydata.get(i));
+            TopUpAddress.validateJsonElement(jsonArraydata.get(i));
           };
         }
-      }
-      // validate the optional field `pagination`
-      if (jsonObj.get("pagination") != null && !jsonObj.get("pagination").isJsonNull()) {
-        Pagination.validateJsonElement(jsonObj.get("pagination"));
       }
   }
 
@@ -250,16 +219,16 @@ public class ListPayoutItems200Response {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ListPayoutItems200Response.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ListPayoutItems200Response' and its subtypes
+       if (!CreateTopUpAddresses201Response.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CreateTopUpAddresses201Response' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ListPayoutItems200Response> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ListPayoutItems200Response.class));
+       final TypeAdapter<CreateTopUpAddresses201Response> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CreateTopUpAddresses201Response.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ListPayoutItems200Response>() {
+       return (TypeAdapter<T>) new TypeAdapter<CreateTopUpAddresses201Response>() {
            @Override
-           public void write(JsonWriter out, ListPayoutItems200Response value) throws IOException {
+           public void write(JsonWriter out, CreateTopUpAddresses201Response value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -289,12 +258,12 @@ public class ListPayoutItems200Response {
            }
 
            @Override
-           public ListPayoutItems200Response read(JsonReader in) throws IOException {
+           public CreateTopUpAddresses201Response read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             ListPayoutItems200Response instance = thisAdapter.fromJsonTree(jsonObj);
+             CreateTopUpAddresses201Response instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -321,18 +290,18 @@ public class ListPayoutItems200Response {
   }
 
  /**
-  * Create an instance of ListPayoutItems200Response given an JSON string
+  * Create an instance of CreateTopUpAddresses201Response given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of ListPayoutItems200Response
-  * @throws IOException if the JSON string is invalid with respect to ListPayoutItems200Response
+  * @return An instance of CreateTopUpAddresses201Response
+  * @throws IOException if the JSON string is invalid with respect to CreateTopUpAddresses201Response
   */
-  public static ListPayoutItems200Response fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ListPayoutItems200Response.class);
+  public static CreateTopUpAddresses201Response fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, CreateTopUpAddresses201Response.class);
   }
 
  /**
-  * Convert an instance of ListPayoutItems200Response to an JSON string
+  * Convert an instance of CreateTopUpAddresses201Response to an JSON string
   *
   * @return JSON string
   */

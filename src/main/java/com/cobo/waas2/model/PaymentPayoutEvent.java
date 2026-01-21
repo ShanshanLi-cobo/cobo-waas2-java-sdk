@@ -12,9 +12,10 @@
 package com.cobo.waas2.model;
 
 import java.util.Objects;
-import com.cobo.waas2.model.BankAccount;
-import com.cobo.waas2.model.PaymentPayoutItemDetail;
+import com.cobo.waas2.model.PaymentPayoutItem;
+import com.cobo.waas2.model.PaymentPayoutRecipientInfo;
 import com.cobo.waas2.model.PaymentPayoutStatus;
+import com.cobo.waas2.model.PaymentTransaction;
 import com.cobo.waas2.model.PayoutChannel;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -59,7 +60,7 @@ import com.cobo.waas2.JSON;
 )
 public class PaymentPayoutEvent {
   /**
-   *  The data type of the event. - &#x60;Transaction&#x60;: The transaction event data. - &#x60;TSSRequest&#x60;: The TSS request event data. - &#x60;Addresses&#x60;: The addresses event data. - &#x60;WalletInfo&#x60;: The wallet information event data. - &#x60;MPCVault&#x60;: The MPC vault event data. - &#x60;Chains&#x60;: The enabled chain event data. - &#x60;Tokens&#x60;: The enabled token event data. - &#x60;TokenListing&#x60;: The token listing event data.        - &#x60;PaymentOrder&#x60;: The payment order event data. - &#x60;PaymentRefund&#x60;: The payment refund event data. - &#x60;PaymentSettlement&#x60;: The payment settlement event data. - &#x60;PaymentTransaction&#x60;: The payment transaction event data. - &#x60;PaymentAddressUpdate&#x60;: The top-up address update event data. - &#x60;PaymentPayout&#x60;: The payment payout event data. - &#x60;BalanceUpdateInfo&#x60;: The balance update event data. - &#x60;SuspendedToken&#x60;: The token suspension event data. - &#x60;ComplianceDisposition&#x60;: The compliance disposition event data. - &#x60;ComplianceKytScreenings&#x60;: The compliance KYT screenings event data. - &#x60;ComplianceKyaScreenings&#x60;: The compliance KYA screenings event data.
+   *  The data type of the event. - &#x60;Transaction&#x60;: The transaction event data. - &#x60;TSSRequest&#x60;: The TSS request event data. - &#x60;Addresses&#x60;: The addresses event data. - &#x60;WalletInfo&#x60;: The wallet information event data. - &#x60;MPCVault&#x60;: The MPC vault event data. - &#x60;Chains&#x60;: The enabled chain event data. - &#x60;Tokens&#x60;: The enabled token event data. - &#x60;TokenListing&#x60;: The token listing event data.        - &#x60;PaymentOrder&#x60;: The payment order event data. - &#x60;PaymentRefund&#x60;: The payment refund event data. - &#x60;PaymentSettlement&#x60;: The payment settlement event data. - &#x60;PaymentTransaction&#x60;: The payment transaction event data. - &#x60;PaymentAddressUpdate&#x60;: The top-up address update event data. - &#x60;PaymentPayout&#x60;: The payment payout event data. - &#x60;PaymentBulkSend&#x60;: The payment bulk send event data. - &#x60;BalanceUpdateInfo&#x60;: The balance update event data. - &#x60;SuspendedToken&#x60;: The token suspension event data. - &#x60;ComplianceDisposition&#x60;: The compliance disposition event data. - &#x60;ComplianceKytScreenings&#x60;: The compliance KYT screenings event data. - &#x60;ComplianceKyaScreenings&#x60;: The compliance KYA screenings event data.
    */
   @JsonAdapter(DataTypeEnum.Adapter.class)
   public enum DataTypeEnum {
@@ -90,6 +91,8 @@ public class PaymentPayoutEvent {
     PAYMENTADDRESSUPDATE("PaymentAddressUpdate"),
     
     PAYMENTPAYOUT("PaymentPayout"),
+    
+    PAYMENTBULKSEND("PaymentBulkSend"),
     
     BALANCEUPDATEINFO("BalanceUpdateInfo"),
     
@@ -156,13 +159,37 @@ public class PaymentPayoutEvent {
   @SerializedName(SERIALIZED_NAME_REQUEST_ID)
   private String requestId;
 
+  public static final String SERIALIZED_NAME_PAYOUT_CHANNEL = "payout_channel";
+  @SerializedName(SERIALIZED_NAME_PAYOUT_CHANNEL)
+  private PayoutChannel payoutChannel;
+
+  public static final String SERIALIZED_NAME_SOURCE_ACCOUNT = "source_account";
+  @SerializedName(SERIALIZED_NAME_SOURCE_ACCOUNT)
+  private String sourceAccount;
+
+  public static final String SERIALIZED_NAME_PAYOUT_ITEMS = "payout_items";
+  @SerializedName(SERIALIZED_NAME_PAYOUT_ITEMS)
+  private List<PaymentPayoutItem> payoutItems = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_RECIPIENT_INFO = "recipient_info";
+  @SerializedName(SERIALIZED_NAME_RECIPIENT_INFO)
+  private PaymentPayoutRecipientInfo recipientInfo;
+
+  public static final String SERIALIZED_NAME_INITIATOR = "initiator";
+  @SerializedName(SERIALIZED_NAME_INITIATOR)
+  private String initiator;
+
+  public static final String SERIALIZED_NAME_ACTUAL_PAYOUT_AMOUNT = "actual_payout_amount";
+  @SerializedName(SERIALIZED_NAME_ACTUAL_PAYOUT_AMOUNT)
+  private String actualPayoutAmount;
+
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
   private PaymentPayoutStatus status;
 
-  public static final String SERIALIZED_NAME_PAYOUT_ITEM_DETAILS = "payout_item_details";
-  @SerializedName(SERIALIZED_NAME_PAYOUT_ITEM_DETAILS)
-  private List<PaymentPayoutItemDetail> payoutItemDetails = new ArrayList<>();
+  public static final String SERIALIZED_NAME_REMARK = "remark";
+  @SerializedName(SERIALIZED_NAME_REMARK)
+  private String remark;
 
   public static final String SERIALIZED_NAME_CREATED_TIMESTAMP = "created_timestamp";
   @SerializedName(SERIALIZED_NAME_CREATED_TIMESTAMP)
@@ -172,25 +199,9 @@ public class PaymentPayoutEvent {
   @SerializedName(SERIALIZED_NAME_UPDATED_TIMESTAMP)
   private Integer updatedTimestamp;
 
-  public static final String SERIALIZED_NAME_INITIATOR = "initiator";
-  @SerializedName(SERIALIZED_NAME_INITIATOR)
-  private String initiator;
-
-  public static final String SERIALIZED_NAME_PAYOUT_CHANNEL = "payout_channel";
-  @SerializedName(SERIALIZED_NAME_PAYOUT_CHANNEL)
-  private PayoutChannel payoutChannel;
-
-  public static final String SERIALIZED_NAME_CURRENCY = "currency";
-  @SerializedName(SERIALIZED_NAME_CURRENCY)
-  private String currency;
-
-  public static final String SERIALIZED_NAME_ACTUAL_PAYOUT_AMOUNT = "actual_payout_amount";
-  @SerializedName(SERIALIZED_NAME_ACTUAL_PAYOUT_AMOUNT)
-  private String actualPayoutAmount;
-
-  public static final String SERIALIZED_NAME_BANK_ACCOUNT = "bank_account";
-  @SerializedName(SERIALIZED_NAME_BANK_ACCOUNT)
-  private BankAccount bankAccount;
+  public static final String SERIALIZED_NAME_TRANSACTIONS = "transactions";
+  @SerializedName(SERIALIZED_NAME_TRANSACTIONS)
+  private List<PaymentTransaction> transactions = new ArrayList<>();
 
   public PaymentPayoutEvent() {
   }
@@ -201,7 +212,7 @@ public class PaymentPayoutEvent {
   }
 
    /**
-   *  The data type of the event. - &#x60;Transaction&#x60;: The transaction event data. - &#x60;TSSRequest&#x60;: The TSS request event data. - &#x60;Addresses&#x60;: The addresses event data. - &#x60;WalletInfo&#x60;: The wallet information event data. - &#x60;MPCVault&#x60;: The MPC vault event data. - &#x60;Chains&#x60;: The enabled chain event data. - &#x60;Tokens&#x60;: The enabled token event data. - &#x60;TokenListing&#x60;: The token listing event data.        - &#x60;PaymentOrder&#x60;: The payment order event data. - &#x60;PaymentRefund&#x60;: The payment refund event data. - &#x60;PaymentSettlement&#x60;: The payment settlement event data. - &#x60;PaymentTransaction&#x60;: The payment transaction event data. - &#x60;PaymentAddressUpdate&#x60;: The top-up address update event data. - &#x60;PaymentPayout&#x60;: The payment payout event data. - &#x60;BalanceUpdateInfo&#x60;: The balance update event data. - &#x60;SuspendedToken&#x60;: The token suspension event data. - &#x60;ComplianceDisposition&#x60;: The compliance disposition event data. - &#x60;ComplianceKytScreenings&#x60;: The compliance KYT screenings event data. - &#x60;ComplianceKyaScreenings&#x60;: The compliance KYA screenings event data.
+   *  The data type of the event. - &#x60;Transaction&#x60;: The transaction event data. - &#x60;TSSRequest&#x60;: The TSS request event data. - &#x60;Addresses&#x60;: The addresses event data. - &#x60;WalletInfo&#x60;: The wallet information event data. - &#x60;MPCVault&#x60;: The MPC vault event data. - &#x60;Chains&#x60;: The enabled chain event data. - &#x60;Tokens&#x60;: The enabled token event data. - &#x60;TokenListing&#x60;: The token listing event data.        - &#x60;PaymentOrder&#x60;: The payment order event data. - &#x60;PaymentRefund&#x60;: The payment refund event data. - &#x60;PaymentSettlement&#x60;: The payment settlement event data. - &#x60;PaymentTransaction&#x60;: The payment transaction event data. - &#x60;PaymentAddressUpdate&#x60;: The top-up address update event data. - &#x60;PaymentPayout&#x60;: The payment payout event data. - &#x60;PaymentBulkSend&#x60;: The payment bulk send event data. - &#x60;BalanceUpdateInfo&#x60;: The balance update event data. - &#x60;SuspendedToken&#x60;: The token suspension event data. - &#x60;ComplianceDisposition&#x60;: The compliance disposition event data. - &#x60;ComplianceKytScreenings&#x60;: The compliance KYT screenings event data. - &#x60;ComplianceKyaScreenings&#x60;: The compliance KYA screenings event data.
    * @return dataType
   **/
   @javax.annotation.Nonnull
@@ -252,6 +263,128 @@ public class PaymentPayoutEvent {
   }
 
 
+  public PaymentPayoutEvent payoutChannel(PayoutChannel payoutChannel) {
+    this.payoutChannel = payoutChannel;
+    return this;
+  }
+
+   /**
+   * Get payoutChannel
+   * @return payoutChannel
+  **/
+  @javax.annotation.Nonnull
+  public PayoutChannel getPayoutChannel() {
+    return payoutChannel;
+  }
+
+  public void setPayoutChannel(PayoutChannel payoutChannel) {
+    this.payoutChannel = payoutChannel;
+  }
+
+
+  public PaymentPayoutEvent sourceAccount(String sourceAccount) {
+    this.sourceAccount = sourceAccount;
+    return this;
+  }
+
+   /**
+   * The source account from which the payout will be made. - If the source account is a merchant account, provide the merchant&#39;s ID (e.g., \&quot;M1001\&quot;). - If the source account is the developer account, use the string &#x60;\&quot;developer\&quot;&#x60;. 
+   * @return sourceAccount
+  **/
+  @javax.annotation.Nullable
+  public String getSourceAccount() {
+    return sourceAccount;
+  }
+
+  public void setSourceAccount(String sourceAccount) {
+    this.sourceAccount = sourceAccount;
+  }
+
+
+  public PaymentPayoutEvent payoutItems(List<PaymentPayoutItem> payoutItems) {
+    this.payoutItems = payoutItems;
+    return this;
+  }
+
+  public PaymentPayoutEvent addPayoutItemsItem(PaymentPayoutItem payoutItemsItem) {
+    if (this.payoutItems == null) {
+      this.payoutItems = new ArrayList<>();
+    }
+    this.payoutItems.add(payoutItemsItem);
+    return this;
+  }
+
+   /**
+   * required
+   * @return payoutItems
+  **/
+  @javax.annotation.Nullable
+  public List<PaymentPayoutItem> getPayoutItems() {
+    return payoutItems;
+  }
+
+  public void setPayoutItems(List<PaymentPayoutItem> payoutItems) {
+    this.payoutItems = payoutItems;
+  }
+
+
+  public PaymentPayoutEvent recipientInfo(PaymentPayoutRecipientInfo recipientInfo) {
+    this.recipientInfo = recipientInfo;
+    return this;
+  }
+
+   /**
+   * Get recipientInfo
+   * @return recipientInfo
+  **/
+  @javax.annotation.Nullable
+  public PaymentPayoutRecipientInfo getRecipientInfo() {
+    return recipientInfo;
+  }
+
+  public void setRecipientInfo(PaymentPayoutRecipientInfo recipientInfo) {
+    this.recipientInfo = recipientInfo;
+  }
+
+
+  public PaymentPayoutEvent initiator(String initiator) {
+    this.initiator = initiator;
+    return this;
+  }
+
+   /**
+   * The initiator of this payout, usually the user&#39;s API key.
+   * @return initiator
+  **/
+  @javax.annotation.Nullable
+  public String getInitiator() {
+    return initiator;
+  }
+
+  public void setInitiator(String initiator) {
+    this.initiator = initiator;
+  }
+
+
+  public PaymentPayoutEvent actualPayoutAmount(String actualPayoutAmount) {
+    this.actualPayoutAmount = actualPayoutAmount;
+    return this;
+  }
+
+   /**
+   * - For &#x60;Crypto&#x60; payouts: The amount of cryptocurrency sent to the recipient&#39;s address, denominated in the token specified in &#x60;recipient_info.token_id&#x60;. - For &#x60;OffRamp&#x60; payouts: The amount of fiat currency sent to the recipient&#39;s bank account, denominated in the currency specified in &#x60;recipient_info.currency&#x60;. (Note: The actual amount received may be lower due to additional bank transfer fees.) 
+   * @return actualPayoutAmount
+  **/
+  @javax.annotation.Nullable
+  public String getActualPayoutAmount() {
+    return actualPayoutAmount;
+  }
+
+  public void setActualPayoutAmount(String actualPayoutAmount) {
+    this.actualPayoutAmount = actualPayoutAmount;
+  }
+
+
   public PaymentPayoutEvent status(PaymentPayoutStatus status) {
     this.status = status;
     return this;
@@ -271,30 +404,22 @@ public class PaymentPayoutEvent {
   }
 
 
-  public PaymentPayoutEvent payoutItemDetails(List<PaymentPayoutItemDetail> payoutItemDetails) {
-    this.payoutItemDetails = payoutItemDetails;
-    return this;
-  }
-
-  public PaymentPayoutEvent addPayoutItemDetailsItem(PaymentPayoutItemDetail payoutItemDetailsItem) {
-    if (this.payoutItemDetails == null) {
-      this.payoutItemDetails = new ArrayList<>();
-    }
-    this.payoutItemDetails.add(payoutItemDetailsItem);
+  public PaymentPayoutEvent remark(String remark) {
+    this.remark = remark;
     return this;
   }
 
    /**
-   * Get payoutItemDetails
-   * @return payoutItemDetails
+   * A note or comment about the payout.
+   * @return remark
   **/
   @javax.annotation.Nullable
-  public List<PaymentPayoutItemDetail> getPayoutItemDetails() {
-    return payoutItemDetails;
+  public String getRemark() {
+    return remark;
   }
 
-  public void setPayoutItemDetails(List<PaymentPayoutItemDetail> payoutItemDetails) {
-    this.payoutItemDetails = payoutItemDetails;
+  public void setRemark(String remark) {
+    this.remark = remark;
   }
 
 
@@ -307,7 +432,7 @@ public class PaymentPayoutEvent {
    * The created time of the payout, represented as a UNIX timestamp in seconds.
    * @return createdTimestamp
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public Integer getCreatedTimestamp() {
     return createdTimestamp;
   }
@@ -326,7 +451,7 @@ public class PaymentPayoutEvent {
    * The updated time of the payout, represented as a UNIX timestamp in seconds.
    * @return updatedTimestamp
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public Integer getUpdatedTimestamp() {
     return updatedTimestamp;
   }
@@ -336,98 +461,30 @@ public class PaymentPayoutEvent {
   }
 
 
-  public PaymentPayoutEvent initiator(String initiator) {
-    this.initiator = initiator;
+  public PaymentPayoutEvent transactions(List<PaymentTransaction> transactions) {
+    this.transactions = transactions;
+    return this;
+  }
+
+  public PaymentPayoutEvent addTransactionsItem(PaymentTransaction transactionsItem) {
+    if (this.transactions == null) {
+      this.transactions = new ArrayList<>();
+    }
+    this.transactions.add(transactionsItem);
     return this;
   }
 
    /**
-   * The initiator of this payout, usually the API key used to create the payout.
-   * @return initiator
+   * An array of payout transactions.
+   * @return transactions
   **/
   @javax.annotation.Nullable
-  public String getInitiator() {
-    return initiator;
+  public List<PaymentTransaction> getTransactions() {
+    return transactions;
   }
 
-  public void setInitiator(String initiator) {
-    this.initiator = initiator;
-  }
-
-
-  public PaymentPayoutEvent payoutChannel(PayoutChannel payoutChannel) {
-    this.payoutChannel = payoutChannel;
-    return this;
-  }
-
-   /**
-   * Get payoutChannel
-   * @return payoutChannel
-  **/
-  @javax.annotation.Nullable
-  public PayoutChannel getPayoutChannel() {
-    return payoutChannel;
-  }
-
-  public void setPayoutChannel(PayoutChannel payoutChannel) {
-    this.payoutChannel = payoutChannel;
-  }
-
-
-  public PaymentPayoutEvent currency(String currency) {
-    this.currency = currency;
-    return this;
-  }
-
-   /**
-   * The fiat currency you will receive from the payout.
-   * @return currency
-  **/
-  @javax.annotation.Nullable
-  public String getCurrency() {
-    return currency;
-  }
-
-  public void setCurrency(String currency) {
-    this.currency = currency;
-  }
-
-
-  public PaymentPayoutEvent actualPayoutAmount(String actualPayoutAmount) {
-    this.actualPayoutAmount = actualPayoutAmount;
-    return this;
-  }
-
-   /**
-   * The total amount of cryptocurrency actually paid out for this payout. 
-   * @return actualPayoutAmount
-  **/
-  @javax.annotation.Nullable
-  public String getActualPayoutAmount() {
-    return actualPayoutAmount;
-  }
-
-  public void setActualPayoutAmount(String actualPayoutAmount) {
-    this.actualPayoutAmount = actualPayoutAmount;
-  }
-
-
-  public PaymentPayoutEvent bankAccount(BankAccount bankAccount) {
-    this.bankAccount = bankAccount;
-    return this;
-  }
-
-   /**
-   * Get bankAccount
-   * @return bankAccount
-  **/
-  @javax.annotation.Nullable
-  public BankAccount getBankAccount() {
-    return bankAccount;
-  }
-
-  public void setBankAccount(BankAccount bankAccount) {
-    this.bankAccount = bankAccount;
+  public void setTransactions(List<PaymentTransaction> transactions) {
+    this.transactions = transactions;
   }
 
   /**
@@ -488,21 +545,23 @@ public class PaymentPayoutEvent {
     return Objects.equals(this.dataType, paymentPayoutEvent.dataType) &&
         Objects.equals(this.payoutId, paymentPayoutEvent.payoutId) &&
         Objects.equals(this.requestId, paymentPayoutEvent.requestId) &&
+        Objects.equals(this.payoutChannel, paymentPayoutEvent.payoutChannel) &&
+        Objects.equals(this.sourceAccount, paymentPayoutEvent.sourceAccount) &&
+        Objects.equals(this.payoutItems, paymentPayoutEvent.payoutItems) &&
+        Objects.equals(this.recipientInfo, paymentPayoutEvent.recipientInfo) &&
+        Objects.equals(this.initiator, paymentPayoutEvent.initiator) &&
+        Objects.equals(this.actualPayoutAmount, paymentPayoutEvent.actualPayoutAmount) &&
         Objects.equals(this.status, paymentPayoutEvent.status) &&
-        Objects.equals(this.payoutItemDetails, paymentPayoutEvent.payoutItemDetails) &&
+        Objects.equals(this.remark, paymentPayoutEvent.remark) &&
         Objects.equals(this.createdTimestamp, paymentPayoutEvent.createdTimestamp) &&
         Objects.equals(this.updatedTimestamp, paymentPayoutEvent.updatedTimestamp) &&
-        Objects.equals(this.initiator, paymentPayoutEvent.initiator) &&
-        Objects.equals(this.payoutChannel, paymentPayoutEvent.payoutChannel) &&
-        Objects.equals(this.currency, paymentPayoutEvent.currency) &&
-        Objects.equals(this.actualPayoutAmount, paymentPayoutEvent.actualPayoutAmount) &&
-        Objects.equals(this.bankAccount, paymentPayoutEvent.bankAccount)&&
+        Objects.equals(this.transactions, paymentPayoutEvent.transactions)&&
         Objects.equals(this.additionalProperties, paymentPayoutEvent.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(dataType, payoutId, requestId, status, payoutItemDetails, createdTimestamp, updatedTimestamp, initiator, payoutChannel, currency, actualPayoutAmount, bankAccount, additionalProperties);
+    return Objects.hash(dataType, payoutId, requestId, payoutChannel, sourceAccount, payoutItems, recipientInfo, initiator, actualPayoutAmount, status, remark, createdTimestamp, updatedTimestamp, transactions, additionalProperties);
   }
 
   @Override
@@ -512,15 +571,17 @@ public class PaymentPayoutEvent {
     sb.append("    dataType: ").append(toIndentedString(dataType)).append("\n");
     sb.append("    payoutId: ").append(toIndentedString(payoutId)).append("\n");
     sb.append("    requestId: ").append(toIndentedString(requestId)).append("\n");
+    sb.append("    payoutChannel: ").append(toIndentedString(payoutChannel)).append("\n");
+    sb.append("    sourceAccount: ").append(toIndentedString(sourceAccount)).append("\n");
+    sb.append("    payoutItems: ").append(toIndentedString(payoutItems)).append("\n");
+    sb.append("    recipientInfo: ").append(toIndentedString(recipientInfo)).append("\n");
+    sb.append("    initiator: ").append(toIndentedString(initiator)).append("\n");
+    sb.append("    actualPayoutAmount: ").append(toIndentedString(actualPayoutAmount)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    payoutItemDetails: ").append(toIndentedString(payoutItemDetails)).append("\n");
+    sb.append("    remark: ").append(toIndentedString(remark)).append("\n");
     sb.append("    createdTimestamp: ").append(toIndentedString(createdTimestamp)).append("\n");
     sb.append("    updatedTimestamp: ").append(toIndentedString(updatedTimestamp)).append("\n");
-    sb.append("    initiator: ").append(toIndentedString(initiator)).append("\n");
-    sb.append("    payoutChannel: ").append(toIndentedString(payoutChannel)).append("\n");
-    sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
-    sb.append("    actualPayoutAmount: ").append(toIndentedString(actualPayoutAmount)).append("\n");
-    sb.append("    bankAccount: ").append(toIndentedString(bankAccount)).append("\n");
+    sb.append("    transactions: ").append(toIndentedString(transactions)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -547,22 +608,27 @@ public class PaymentPayoutEvent {
     openapiFields.add("data_type");
     openapiFields.add("payout_id");
     openapiFields.add("request_id");
+    openapiFields.add("payout_channel");
+    openapiFields.add("source_account");
+    openapiFields.add("payout_items");
+    openapiFields.add("recipient_info");
+    openapiFields.add("initiator");
+    openapiFields.add("actual_payout_amount");
     openapiFields.add("status");
-    openapiFields.add("payout_item_details");
+    openapiFields.add("remark");
     openapiFields.add("created_timestamp");
     openapiFields.add("updated_timestamp");
-    openapiFields.add("initiator");
-    openapiFields.add("payout_channel");
-    openapiFields.add("currency");
-    openapiFields.add("actual_payout_amount");
-    openapiFields.add("bank_account");
+    openapiFields.add("transactions");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("data_type");
     openapiRequiredFields.add("payout_id");
     openapiRequiredFields.add("request_id");
+    openapiRequiredFields.add("payout_channel");
     openapiRequiredFields.add("status");
+    openapiRequiredFields.add("created_timestamp");
+    openapiRequiredFields.add("updated_timestamp");
   }
 
  /**
@@ -596,38 +662,53 @@ public class PaymentPayoutEvent {
       if (!jsonObj.get("request_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `request_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("request_id").toString()));
       }
-      // validate the required field `status`
-      PaymentPayoutStatus.validateJsonElement(jsonObj.get("status"));
-      if (jsonObj.get("payout_item_details") != null && !jsonObj.get("payout_item_details").isJsonNull()) {
-        JsonArray jsonArraypayoutItemDetails = jsonObj.getAsJsonArray("payout_item_details");
-        if (jsonArraypayoutItemDetails != null) {
+      // validate the required field `payout_channel`
+      PayoutChannel.validateJsonElement(jsonObj.get("payout_channel"));
+      if ((jsonObj.get("source_account") != null && !jsonObj.get("source_account").isJsonNull()) && !jsonObj.get("source_account").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `source_account` to be a primitive type in the JSON string but got `%s`", jsonObj.get("source_account").toString()));
+      }
+      if (jsonObj.get("payout_items") != null && !jsonObj.get("payout_items").isJsonNull()) {
+        JsonArray jsonArraypayoutItems = jsonObj.getAsJsonArray("payout_items");
+        if (jsonArraypayoutItems != null) {
           // ensure the json data is an array
-          if (!jsonObj.get("payout_item_details").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `payout_item_details` to be an array in the JSON string but got `%s`", jsonObj.get("payout_item_details").toString()));
+          if (!jsonObj.get("payout_items").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `payout_items` to be an array in the JSON string but got `%s`", jsonObj.get("payout_items").toString()));
           }
 
-          // validate the optional field `payout_item_details` (array)
-          for (int i = 0; i < jsonArraypayoutItemDetails.size(); i++) {
-            PaymentPayoutItemDetail.validateJsonElement(jsonArraypayoutItemDetails.get(i));
+          // validate the optional field `payout_items` (array)
+          for (int i = 0; i < jsonArraypayoutItems.size(); i++) {
+            PaymentPayoutItem.validateJsonElement(jsonArraypayoutItems.get(i));
           };
         }
+      }
+      // validate the optional field `recipient_info`
+      if (jsonObj.get("recipient_info") != null && !jsonObj.get("recipient_info").isJsonNull()) {
+        PaymentPayoutRecipientInfo.validateJsonElement(jsonObj.get("recipient_info"));
       }
       if ((jsonObj.get("initiator") != null && !jsonObj.get("initiator").isJsonNull()) && !jsonObj.get("initiator").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `initiator` to be a primitive type in the JSON string but got `%s`", jsonObj.get("initiator").toString()));
       }
-      // validate the optional field `payout_channel`
-      if (jsonObj.get("payout_channel") != null && !jsonObj.get("payout_channel").isJsonNull()) {
-        PayoutChannel.validateJsonElement(jsonObj.get("payout_channel"));
-      }
-      if ((jsonObj.get("currency") != null && !jsonObj.get("currency").isJsonNull()) && !jsonObj.get("currency").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currency").toString()));
-      }
       if ((jsonObj.get("actual_payout_amount") != null && !jsonObj.get("actual_payout_amount").isJsonNull()) && !jsonObj.get("actual_payout_amount").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `actual_payout_amount` to be a primitive type in the JSON string but got `%s`", jsonObj.get("actual_payout_amount").toString()));
       }
-      // validate the optional field `bank_account`
-      if (jsonObj.get("bank_account") != null && !jsonObj.get("bank_account").isJsonNull()) {
-        BankAccount.validateJsonElement(jsonObj.get("bank_account"));
+      // validate the required field `status`
+      PaymentPayoutStatus.validateJsonElement(jsonObj.get("status"));
+      if ((jsonObj.get("remark") != null && !jsonObj.get("remark").isJsonNull()) && !jsonObj.get("remark").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `remark` to be a primitive type in the JSON string but got `%s`", jsonObj.get("remark").toString()));
+      }
+      if (jsonObj.get("transactions") != null && !jsonObj.get("transactions").isJsonNull()) {
+        JsonArray jsonArraytransactions = jsonObj.getAsJsonArray("transactions");
+        if (jsonArraytransactions != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("transactions").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `transactions` to be an array in the JSON string but got `%s`", jsonObj.get("transactions").toString()));
+          }
+
+          // validate the optional field `transactions` (array)
+          for (int i = 0; i < jsonArraytransactions.size(); i++) {
+            PaymentTransaction.validateJsonElement(jsonArraytransactions.get(i));
+          };
+        }
       }
   }
 
