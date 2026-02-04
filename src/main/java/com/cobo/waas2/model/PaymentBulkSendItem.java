@@ -91,7 +91,7 @@ public class PaymentBulkSendItem {
   }
 
    /**
-   * The payout item ID.
+   * The bulk send item ID.
    * @return bulkSendItemId
   **/
   @javax.annotation.Nonnull
@@ -110,7 +110,7 @@ public class PaymentBulkSendItem {
   }
 
    /**
-   * The token ID of the payout item.
+   * The token ID of the cryptocurrency to be sent to the recipient.
    * @return tokenId
   **/
   @javax.annotation.Nonnull
@@ -129,7 +129,7 @@ public class PaymentBulkSendItem {
   }
 
    /**
-   * The receiving address of the payout item.
+   * The receiving address.
    * @return receivingAddress
   **/
   @javax.annotation.Nonnull
@@ -148,7 +148,7 @@ public class PaymentBulkSendItem {
   }
 
    /**
-   * The amount of the payout item.
+   * The amount of the cryptocurrency to be sent to the recipient.
    * @return amount
   **/
   @javax.annotation.Nonnull
@@ -167,7 +167,7 @@ public class PaymentBulkSendItem {
   }
 
    /**
-   * The note of the payout item.
+   * A note or comment about the bulk send item.
    * @return description
   **/
   @javax.annotation.Nullable

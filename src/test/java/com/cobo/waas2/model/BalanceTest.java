@@ -67,4 +67,12 @@ public class BalanceTest {
         // TODO: test locked
     }
 
+    /**
+     * Test the property 'frozen'
+     */
+    @Test
+    public void frozenTest() {
+        // TODO: test frozen
+    }
+
 }

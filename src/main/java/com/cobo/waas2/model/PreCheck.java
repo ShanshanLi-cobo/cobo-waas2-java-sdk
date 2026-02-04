@@ -12,13 +12,16 @@
 package com.cobo.waas2.model;
 
 import java.util.Objects;
+import com.cobo.waas2.model.SkipCheckType;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -45,36 +48,44 @@ import java.util.Set;
 import com.cobo.waas2.JSON;
 
 /**
- * DeleteDestinationWalletAddress200Response
+ * Some validation settings for creating a transaction.
  */
 @javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
-public class DeleteDestinationWalletAddress200Response {
-  public static final String SERIALIZED_NAME_WALLET_ADDRESS_ID = "wallet_address_id";
-  @SerializedName(SERIALIZED_NAME_WALLET_ADDRESS_ID)
-  private String walletAddressId;
+public class PreCheck {
+  public static final String SERIALIZED_NAME_SKIP_CHECKS = "skip_checks";
+  @SerializedName(SERIALIZED_NAME_SKIP_CHECKS)
+  private List<SkipCheckType> skipChecks = new ArrayList<>();
 
-  public DeleteDestinationWalletAddress200Response() {
+  public PreCheck() {
   }
 
-  public DeleteDestinationWalletAddress200Response walletAddressId(String walletAddressId) {
-    this.walletAddressId = walletAddressId;
+  public PreCheck skipChecks(List<SkipCheckType> skipChecks) {
+    this.skipChecks = skipChecks;
+    return this;
+  }
+
+  public PreCheck addSkipChecksItem(SkipCheckType skipChecksItem) {
+    if (this.skipChecks == null) {
+      this.skipChecks = new ArrayList<>();
+    }
+    this.skipChecks.add(skipChecksItem);
     return this;
   }
 
    /**
-   * The wallet address ID under the destination.
-   * @return walletAddressId
+   * Selection to skip verification.
+   * @return skipChecks
   **/
-  @javax.annotation.Nonnull
-  public String getWalletAddressId() {
-    return walletAddressId;
+  @javax.annotation.Nullable
+  public List<SkipCheckType> getSkipChecks() {
+    return skipChecks;
   }
 
-  public void setWalletAddressId(String walletAddressId) {
-    this.walletAddressId = walletAddressId;
+  public void setSkipChecks(List<SkipCheckType> skipChecks) {
+    this.skipChecks = skipChecks;
   }
 
   /**
@@ -90,9 +101,9 @@ public class DeleteDestinationWalletAddress200Response {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the DeleteDestinationWalletAddress200Response instance itself
+   * @return the PreCheck instance itself
    */
-  public DeleteDestinationWalletAddress200Response putAdditionalProperty(String key, Object value) {
+  public PreCheck putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -131,21 +142,21 @@ public class DeleteDestinationWalletAddress200Response {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    DeleteDestinationWalletAddress200Response deleteDestinationWalletAddress200Response = (DeleteDestinationWalletAddress200Response) o;
-    return Objects.equals(this.walletAddressId, deleteDestinationWalletAddress200Response.walletAddressId)&&
-        Objects.equals(this.additionalProperties, deleteDestinationWalletAddress200Response.additionalProperties);
+    PreCheck preCheck = (PreCheck) o;
+    return Objects.equals(this.skipChecks, preCheck.skipChecks)&&
+        Objects.equals(this.additionalProperties, preCheck.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(walletAddressId, additionalProperties);
+    return Objects.hash(skipChecks, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class DeleteDestinationWalletAddress200Response {\n");
-    sb.append("    walletAddressId: ").append(toIndentedString(walletAddressId)).append("\n");
+    sb.append("class PreCheck {\n");
+    sb.append("    skipChecks: ").append(toIndentedString(skipChecks)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -169,35 +180,28 @@ public class DeleteDestinationWalletAddress200Response {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("wallet_address_id");
+    openapiFields.add("skip_checks");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("wallet_address_id");
   }
 
  /**
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to DeleteDestinationWalletAddress200Response
+  * @throws IOException if the JSON Element is invalid with respect to PreCheck
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!DeleteDestinationWalletAddress200Response.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in DeleteDestinationWalletAddress200Response is not found in the empty JSON string", DeleteDestinationWalletAddress200Response.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : DeleteDestinationWalletAddress200Response.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        if (!PreCheck.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in PreCheck is not found in the empty JSON string", PreCheck.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("wallet_address_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `wallet_address_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("wallet_address_id").toString()));
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("skip_checks") != null && !jsonObj.get("skip_checks").isJsonNull() && !jsonObj.get("skip_checks").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `skip_checks` to be an array in the JSON string but got `%s`", jsonObj.get("skip_checks").toString()));
       }
   }
 
@@ -205,16 +209,16 @@ public class DeleteDestinationWalletAddress200Response {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!DeleteDestinationWalletAddress200Response.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'DeleteDestinationWalletAddress200Response' and its subtypes
+       if (!PreCheck.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'PreCheck' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<DeleteDestinationWalletAddress200Response> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(DeleteDestinationWalletAddress200Response.class));
+       final TypeAdapter<PreCheck> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(PreCheck.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<DeleteDestinationWalletAddress200Response>() {
+       return (TypeAdapter<T>) new TypeAdapter<PreCheck>() {
            @Override
-           public void write(JsonWriter out, DeleteDestinationWalletAddress200Response value) throws IOException {
+           public void write(JsonWriter out, PreCheck value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -244,12 +248,12 @@ public class DeleteDestinationWalletAddress200Response {
            }
 
            @Override
-           public DeleteDestinationWalletAddress200Response read(JsonReader in) throws IOException {
+           public PreCheck read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             DeleteDestinationWalletAddress200Response instance = thisAdapter.fromJsonTree(jsonObj);
+             PreCheck instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -276,18 +280,18 @@ public class DeleteDestinationWalletAddress200Response {
   }
 
  /**
-  * Create an instance of DeleteDestinationWalletAddress200Response given an JSON string
+  * Create an instance of PreCheck given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of DeleteDestinationWalletAddress200Response
-  * @throws IOException if the JSON string is invalid with respect to DeleteDestinationWalletAddress200Response
+  * @return An instance of PreCheck
+  * @throws IOException if the JSON string is invalid with respect to PreCheck
   */
-  public static DeleteDestinationWalletAddress200Response fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, DeleteDestinationWalletAddress200Response.class);
+  public static PreCheck fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, PreCheck.class);
   }
 
  /**
-  * Convert an instance of DeleteDestinationWalletAddress200Response to an JSON string
+  * Convert an instance of PreCheck to an JSON string
   *
   * @return JSON string
   */

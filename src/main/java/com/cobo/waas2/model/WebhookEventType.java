@@ -90,6 +90,8 @@ public enum WebhookEventType {
   
   PAYMENT_STATUS_UPDATED("payment.status.updated"),
   
+  PAYMENT_ORDER_STATUS_UPDATED("payment.order.status.updated"),
+  
   PAYMENT_REFUND_STATUS_UPDATED("payment.refund.status.updated"),
   
   PAYMENT_SETTLEMENT_STATUS_UPDATED("payment.settlement.status.updated"),
@@ -103,6 +105,10 @@ public enum WebhookEventType {
   PAYMENT_CHARGE_STATUS_UPDATED("payment.charge.status.updated"),
   
   PAYMENT_BULK_SEND_STATUS_UPDATED("payment.bulk_send.status.updated"),
+  
+  PAYMENT_TRANSACTION_EXTERNAL_CREATED("payment.transaction.external.created"),
+  
+  PAYMENT_TRANSACTION_EXTERNAL_COMPLETED("payment.transaction.external.completed"),
   
   COMPLIANCE_DISPOSITION_STATUS_UPDATED("compliance.disposition.status.updated"),
   

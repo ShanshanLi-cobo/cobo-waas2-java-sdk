@@ -11,6 +11,7 @@
 
 package com.cobo.waas2.model;
 
+import com.cobo.waas2.model.CommissionFee;
 import com.cobo.waas2.model.PaymentPayoutItem;
 import com.cobo.waas2.model.PaymentPayoutRecipientInfo;
 import com.cobo.waas2.model.PaymentPayoutStatus;
@@ -106,11 +107,11 @@ public class PaymentPayoutTest {
     }
 
     /**
-     * Test the property 'status'
+     * Test the property 'commissionFees'
      */
     @Test
-    public void statusTest() {
-        // TODO: test status
+    public void commissionFeesTest() {
+        // TODO: test commissionFees
     }
 
     /**
@@ -119,6 +120,14 @@ public class PaymentPayoutTest {
     @Test
     public void remarkTest() {
         // TODO: test remark
+    }
+
+    /**
+     * Test the property 'status'
+     */
+    @Test
+    public void statusTest() {
+        // TODO: test status
     }
 
     /**
