@@ -11,36 +11,39 @@
 
 package com.cobo.waas2.model;
 
+import com.cobo.waas2.model.SkipCheckType;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
- * Model tests for EnableDestinationWhitelistRequest
+ * Model tests for PreCheck
  */
-public class EnableDestinationWhitelistRequestTest {
-    private final EnableDestinationWhitelistRequest model = new EnableDestinationWhitelistRequest();
+public class PreCheckTest {
+    private final PreCheck model = new PreCheck();
 
     /**
-     * Model tests for EnableDestinationWhitelistRequest
+     * Model tests for PreCheck
      */
     @Test
-    public void testEnableDestinationWhitelistRequest() {
-        // TODO: test EnableDestinationWhitelistRequest
+    public void testPreCheck() {
+        // TODO: test PreCheck
     }
 
     /**
-     * Test the property 'enableDestinationWhitelist'
+     * Test the property 'skipChecks'
      */
     @Test
-    public void enableDestinationWhitelistTest() {
-        // TODO: test enableDestinationWhitelist
+    public void skipChecksTest() {
+        // TODO: test skipChecks
     }
 
 }

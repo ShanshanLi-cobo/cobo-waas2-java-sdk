@@ -874,6 +874,14 @@ public class WebhookEventDataTest {
     }
 
     /**
+     * Test the property 'commissionFees'
+     */
+    @Test
+    public void commissionFeesTest() {
+        // TODO: test commissionFees
+    }
+
+    /**
      * Test the property 'remark'
      */
     @Test

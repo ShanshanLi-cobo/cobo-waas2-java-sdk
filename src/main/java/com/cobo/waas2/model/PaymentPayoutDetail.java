@@ -12,6 +12,7 @@
 package com.cobo.waas2.model;
 
 import java.util.Objects;
+import com.cobo.waas2.model.CommissionFee;
 import com.cobo.waas2.model.PaymentPayoutItem;
 import com.cobo.waas2.model.PaymentPayoutRecipientInfo;
 import com.cobo.waas2.model.PaymentPayoutStatus;
@@ -91,13 +92,17 @@ public class PaymentPayoutDetail {
   @SerializedName(SERIALIZED_NAME_ACTUAL_PAYOUT_AMOUNT)
   private String actualPayoutAmount;
 
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  private PaymentPayoutStatus status;
+  public static final String SERIALIZED_NAME_COMMISSION_FEES = "commission_fees";
+  @SerializedName(SERIALIZED_NAME_COMMISSION_FEES)
+  private List<CommissionFee> commissionFees = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_REMARK = "remark";
   @SerializedName(SERIALIZED_NAME_REMARK)
   private String remark;
+
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  private PaymentPayoutStatus status;
 
   public static final String SERIALIZED_NAME_CREATED_TIMESTAMP = "created_timestamp";
   @SerializedName(SERIALIZED_NAME_CREATED_TIMESTAMP)
@@ -274,22 +279,30 @@ public class PaymentPayoutDetail {
   }
 
 
-  public PaymentPayoutDetail status(PaymentPayoutStatus status) {
-    this.status = status;
+  public PaymentPayoutDetail commissionFees(List<CommissionFee> commissionFees) {
+    this.commissionFees = commissionFees;
+    return this;
+  }
+
+  public PaymentPayoutDetail addCommissionFeesItem(CommissionFee commissionFeesItem) {
+    if (this.commissionFees == null) {
+      this.commissionFees = new ArrayList<>();
+    }
+    this.commissionFees.add(commissionFeesItem);
     return this;
   }
 
    /**
-   * Get status
-   * @return status
+   * The commission fees of the payout.
+   * @return commissionFees
   **/
-  @javax.annotation.Nonnull
-  public PaymentPayoutStatus getStatus() {
-    return status;
+  @javax.annotation.Nullable
+  public List<CommissionFee> getCommissionFees() {
+    return commissionFees;
   }
 
-  public void setStatus(PaymentPayoutStatus status) {
-    this.status = status;
+  public void setCommissionFees(List<CommissionFee> commissionFees) {
+    this.commissionFees = commissionFees;
   }
 
 
@@ -309,6 +322,25 @@ public class PaymentPayoutDetail {
 
   public void setRemark(String remark) {
     this.remark = remark;
+  }
+
+
+  public PaymentPayoutDetail status(PaymentPayoutStatus status) {
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Get status
+   * @return status
+  **/
+  @javax.annotation.Nonnull
+  public PaymentPayoutStatus getStatus() {
+    return status;
+  }
+
+  public void setStatus(PaymentPayoutStatus status) {
+    this.status = status;
   }
 
 
@@ -439,8 +471,9 @@ public class PaymentPayoutDetail {
         Objects.equals(this.recipientInfo, paymentPayoutDetail.recipientInfo) &&
         Objects.equals(this.initiator, paymentPayoutDetail.initiator) &&
         Objects.equals(this.actualPayoutAmount, paymentPayoutDetail.actualPayoutAmount) &&
-        Objects.equals(this.status, paymentPayoutDetail.status) &&
+        Objects.equals(this.commissionFees, paymentPayoutDetail.commissionFees) &&
         Objects.equals(this.remark, paymentPayoutDetail.remark) &&
+        Objects.equals(this.status, paymentPayoutDetail.status) &&
         Objects.equals(this.createdTimestamp, paymentPayoutDetail.createdTimestamp) &&
         Objects.equals(this.updatedTimestamp, paymentPayoutDetail.updatedTimestamp) &&
         Objects.equals(this.transactions, paymentPayoutDetail.transactions)&&
@@ -449,7 +482,7 @@ public class PaymentPayoutDetail {
 
   @Override
   public int hashCode() {
-    return Objects.hash(payoutId, requestId, payoutChannel, sourceAccount, payoutItems, recipientInfo, initiator, actualPayoutAmount, status, remark, createdTimestamp, updatedTimestamp, transactions, additionalProperties);
+    return Objects.hash(payoutId, requestId, payoutChannel, sourceAccount, payoutItems, recipientInfo, initiator, actualPayoutAmount, commissionFees, remark, status, createdTimestamp, updatedTimestamp, transactions, additionalProperties);
   }
 
   @Override
@@ -464,8 +497,9 @@ public class PaymentPayoutDetail {
     sb.append("    recipientInfo: ").append(toIndentedString(recipientInfo)).append("\n");
     sb.append("    initiator: ").append(toIndentedString(initiator)).append("\n");
     sb.append("    actualPayoutAmount: ").append(toIndentedString(actualPayoutAmount)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    commissionFees: ").append(toIndentedString(commissionFees)).append("\n");
     sb.append("    remark: ").append(toIndentedString(remark)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    createdTimestamp: ").append(toIndentedString(createdTimestamp)).append("\n");
     sb.append("    updatedTimestamp: ").append(toIndentedString(updatedTimestamp)).append("\n");
     sb.append("    transactions: ").append(toIndentedString(transactions)).append("\n");
@@ -500,8 +534,9 @@ public class PaymentPayoutDetail {
     openapiFields.add("recipient_info");
     openapiFields.add("initiator");
     openapiFields.add("actual_payout_amount");
-    openapiFields.add("status");
+    openapiFields.add("commission_fees");
     openapiFields.add("remark");
+    openapiFields.add("status");
     openapiFields.add("created_timestamp");
     openapiFields.add("updated_timestamp");
     openapiFields.add("transactions");
@@ -571,11 +606,25 @@ public class PaymentPayoutDetail {
       if ((jsonObj.get("actual_payout_amount") != null && !jsonObj.get("actual_payout_amount").isJsonNull()) && !jsonObj.get("actual_payout_amount").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `actual_payout_amount` to be a primitive type in the JSON string but got `%s`", jsonObj.get("actual_payout_amount").toString()));
       }
-      // validate the required field `status`
-      PaymentPayoutStatus.validateJsonElement(jsonObj.get("status"));
+      if (jsonObj.get("commission_fees") != null && !jsonObj.get("commission_fees").isJsonNull()) {
+        JsonArray jsonArraycommissionFees = jsonObj.getAsJsonArray("commission_fees");
+        if (jsonArraycommissionFees != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("commission_fees").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `commission_fees` to be an array in the JSON string but got `%s`", jsonObj.get("commission_fees").toString()));
+          }
+
+          // validate the optional field `commission_fees` (array)
+          for (int i = 0; i < jsonArraycommissionFees.size(); i++) {
+            CommissionFee.validateJsonElement(jsonArraycommissionFees.get(i));
+          };
+        }
+      }
       if ((jsonObj.get("remark") != null && !jsonObj.get("remark").isJsonNull()) && !jsonObj.get("remark").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `remark` to be a primitive type in the JSON string but got `%s`", jsonObj.get("remark").toString()));
       }
+      // validate the required field `status`
+      PaymentPayoutStatus.validateJsonElement(jsonObj.get("status"));
       if (jsonObj.get("transactions") != null && !jsonObj.get("transactions").isJsonNull()) {
         JsonArray jsonArraytransactions = jsonObj.getAsJsonArray("transactions");
         if (jsonArraytransactions != null) {

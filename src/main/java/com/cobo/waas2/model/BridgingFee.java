@@ -12,6 +12,7 @@
 package com.cobo.waas2.model;
 
 import java.util.Objects;
+import com.cobo.waas2.model.PaymentBridgeStatus;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -63,6 +64,10 @@ public class BridgingFee {
   public static final String SERIALIZED_NAME_RECEIVED_AMOUNT = "received_amount";
   @SerializedName(SERIALIZED_NAME_RECEIVED_AMOUNT)
   private String receivedAmount;
+
+  public static final String SERIALIZED_NAME_BRIDGE_STATUS = "bridge_status";
+  @SerializedName(SERIALIZED_NAME_BRIDGE_STATUS)
+  private PaymentBridgeStatus bridgeStatus;
 
   public BridgingFee() {
   }
@@ -123,6 +128,25 @@ public class BridgingFee {
     this.receivedAmount = receivedAmount;
   }
 
+
+  public BridgingFee bridgeStatus(PaymentBridgeStatus bridgeStatus) {
+    this.bridgeStatus = bridgeStatus;
+    return this;
+  }
+
+   /**
+   * Get bridgeStatus
+   * @return bridgeStatus
+  **/
+  @javax.annotation.Nullable
+  public PaymentBridgeStatus getBridgeStatus() {
+    return bridgeStatus;
+  }
+
+  public void setBridgeStatus(PaymentBridgeStatus bridgeStatus) {
+    this.bridgeStatus = bridgeStatus;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -180,13 +204,14 @@ public class BridgingFee {
     BridgingFee bridgingFee = (BridgingFee) o;
     return Objects.equals(this.feeAmount, bridgingFee.feeAmount) &&
         Objects.equals(this.receivedTokenId, bridgingFee.receivedTokenId) &&
-        Objects.equals(this.receivedAmount, bridgingFee.receivedAmount)&&
+        Objects.equals(this.receivedAmount, bridgingFee.receivedAmount) &&
+        Objects.equals(this.bridgeStatus, bridgingFee.bridgeStatus)&&
         Objects.equals(this.additionalProperties, bridgingFee.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(feeAmount, receivedTokenId, receivedAmount, additionalProperties);
+    return Objects.hash(feeAmount, receivedTokenId, receivedAmount, bridgeStatus, additionalProperties);
   }
 
   @Override
@@ -196,6 +221,7 @@ public class BridgingFee {
     sb.append("    feeAmount: ").append(toIndentedString(feeAmount)).append("\n");
     sb.append("    receivedTokenId: ").append(toIndentedString(receivedTokenId)).append("\n");
     sb.append("    receivedAmount: ").append(toIndentedString(receivedAmount)).append("\n");
+    sb.append("    bridgeStatus: ").append(toIndentedString(bridgeStatus)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -222,6 +248,7 @@ public class BridgingFee {
     openapiFields.add("fee_amount");
     openapiFields.add("received_token_id");
     openapiFields.add("received_amount");
+    openapiFields.add("bridge_status");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -256,6 +283,10 @@ public class BridgingFee {
       }
       if ((jsonObj.get("received_amount") != null && !jsonObj.get("received_amount").isJsonNull()) && !jsonObj.get("received_amount").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `received_amount` to be a primitive type in the JSON string but got `%s`", jsonObj.get("received_amount").toString()));
+      }
+      // validate the optional field `bridge_status`
+      if (jsonObj.get("bridge_status") != null && !jsonObj.get("bridge_status").isJsonNull()) {
+        PaymentBridgeStatus.validateJsonElement(jsonObj.get("bridge_status"));
       }
   }
 

@@ -121,7 +121,7 @@ public class CreateTopUpAddresses {
   }
 
    /**
-   * A list of unique custom payer IDs required to create top-up addresses. The maximum number of items is 50. 
+   * A list of unique custom payer IDs required to create top-up addresses. 
    * @return customPayerIds
   **/
   @javax.annotation.Nonnull
