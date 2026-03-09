@@ -13,7 +13,6 @@ package com.cobo.waas2.model;
 
 import java.util.Objects;
 import com.cobo.waas2.model.AllocationItem;
-import com.cobo.waas2.model.AllocationRecord;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -63,10 +62,6 @@ public class BatchAllocationDetail {
   public static final String SERIALIZED_NAME_REQUEST_ID = "request_id";
   @SerializedName(SERIALIZED_NAME_REQUEST_ID)
   private String requestId;
-
-  public static final String SERIALIZED_NAME_ALLOCATION_RECORDS = "allocation_records";
-  @SerializedName(SERIALIZED_NAME_ALLOCATION_RECORDS)
-  private List<AllocationRecord> allocationRecords = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_ALLOCATION_ITEMS = "allocation_items";
   @SerializedName(SERIALIZED_NAME_ALLOCATION_ITEMS)
@@ -122,33 +117,6 @@ public class BatchAllocationDetail {
 
   public void setRequestId(String requestId) {
     this.requestId = requestId;
-  }
-
-
-  public BatchAllocationDetail allocationRecords(List<AllocationRecord> allocationRecords) {
-    this.allocationRecords = allocationRecords;
-    return this;
-  }
-
-  public BatchAllocationDetail addAllocationRecordsItem(AllocationRecord allocationRecordsItem) {
-    if (this.allocationRecords == null) {
-      this.allocationRecords = new ArrayList<>();
-    }
-    this.allocationRecords.add(allocationRecordsItem);
-    return this;
-  }
-
-   /**
-   * deprecated
-   * @return allocationRecords
-  **/
-  @javax.annotation.Nullable
-  public List<AllocationRecord> getAllocationRecords() {
-    return allocationRecords;
-  }
-
-  public void setAllocationRecords(List<AllocationRecord> allocationRecords) {
-    this.allocationRecords = allocationRecords;
   }
 
 
@@ -292,7 +260,6 @@ public class BatchAllocationDetail {
     BatchAllocationDetail batchAllocationDetail = (BatchAllocationDetail) o;
     return Objects.equals(this.batchAllocationId, batchAllocationDetail.batchAllocationId) &&
         Objects.equals(this.requestId, batchAllocationDetail.requestId) &&
-        Objects.equals(this.allocationRecords, batchAllocationDetail.allocationRecords) &&
         Objects.equals(this.allocationItems, batchAllocationDetail.allocationItems) &&
         Objects.equals(this.initiator, batchAllocationDetail.initiator) &&
         Objects.equals(this.createdTimestamp, batchAllocationDetail.createdTimestamp) &&
@@ -302,7 +269,7 @@ public class BatchAllocationDetail {
 
   @Override
   public int hashCode() {
-    return Objects.hash(batchAllocationId, requestId, allocationRecords, allocationItems, initiator, createdTimestamp, updatedTimestamp, additionalProperties);
+    return Objects.hash(batchAllocationId, requestId, allocationItems, initiator, createdTimestamp, updatedTimestamp, additionalProperties);
   }
 
   @Override
@@ -311,7 +278,6 @@ public class BatchAllocationDetail {
     sb.append("class BatchAllocationDetail {\n");
     sb.append("    batchAllocationId: ").append(toIndentedString(batchAllocationId)).append("\n");
     sb.append("    requestId: ").append(toIndentedString(requestId)).append("\n");
-    sb.append("    allocationRecords: ").append(toIndentedString(allocationRecords)).append("\n");
     sb.append("    allocationItems: ").append(toIndentedString(allocationItems)).append("\n");
     sb.append("    initiator: ").append(toIndentedString(initiator)).append("\n");
     sb.append("    createdTimestamp: ").append(toIndentedString(createdTimestamp)).append("\n");
@@ -341,7 +307,6 @@ public class BatchAllocationDetail {
     openapiFields = new HashSet<String>();
     openapiFields.add("batch_allocation_id");
     openapiFields.add("request_id");
-    openapiFields.add("allocation_records");
     openapiFields.add("allocation_items");
     openapiFields.add("initiator");
     openapiFields.add("created_timestamp");
@@ -378,20 +343,6 @@ public class BatchAllocationDetail {
       }
       if (!jsonObj.get("request_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `request_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("request_id").toString()));
-      }
-      if (jsonObj.get("allocation_records") != null && !jsonObj.get("allocation_records").isJsonNull()) {
-        JsonArray jsonArrayallocationRecords = jsonObj.getAsJsonArray("allocation_records");
-        if (jsonArrayallocationRecords != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("allocation_records").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `allocation_records` to be an array in the JSON string but got `%s`", jsonObj.get("allocation_records").toString()));
-          }
-
-          // validate the optional field `allocation_records` (array)
-          for (int i = 0; i < jsonArrayallocationRecords.size(); i++) {
-            AllocationRecord.validateJsonElement(jsonArrayallocationRecords.get(i));
-          };
-        }
       }
       if (jsonObj.get("allocation_items") != null && !jsonObj.get("allocation_items").isJsonNull()) {
         JsonArray jsonArrayallocationItems = jsonObj.getAsJsonArray("allocation_items");

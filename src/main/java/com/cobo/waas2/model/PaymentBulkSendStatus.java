@@ -22,7 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * The current status of the bulk send. - &#x60;Pending&#x60;: The bulk send is pending. - &#x60;Validating&#x60;: The bulk send is validating. - &#x60;Transfering&#x60;: The bulk send is transferring. - &#x60;Completed&#x60;: The bulk send is completed. - &#x60;PartiallyCompleted&#x60;: The bulk send is partially completed. - &#x60;Failed&#x60;: The bulk send is failed. 
+ * The current status of the bulk send. - &#x60;Pending&#x60;: The bulk send is pending. - &#x60;Validating&#x60;: The bulk send is validating. - &#x60;Transferring&#x60;: The bulk send is transferring. - &#x60;Completed&#x60;: The bulk send is completed. - &#x60;PartiallyCompleted&#x60;: The bulk send is partially completed. - &#x60;Failed&#x60;: The bulk send is failed. 
  */
 @JsonAdapter(PaymentBulkSendStatus.Adapter.class)
 public enum PaymentBulkSendStatus {
@@ -32,7 +32,7 @@ public enum PaymentBulkSendStatus {
   
   VALIDATING("Validating"),
   
-  TRANSFERING("Transfering"),
+  TRANSFERRING("Transferring"),
   
   COMPLETED("Completed"),
   

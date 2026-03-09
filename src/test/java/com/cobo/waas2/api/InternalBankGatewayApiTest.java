@@ -14,17 +14,23 @@ package com.cobo.waas2.api;
 import com.cobo.waas2.ApiClient;
 import com.cobo.waas2.ApiException;
 import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.BankDeposit;
 import com.cobo.waas2.model.BankPayout;
 import com.cobo.waas2.model.BankPayoutStatus;
 import com.cobo.waas2.model.BankProvider;
 import com.cobo.waas2.model.BankTransferType;
+import com.cobo.waas2.model.BankVirtualAccount;
+import com.cobo.waas2.model.BankVirtualAccountStatus;
 import com.cobo.waas2.model.CreateBankPayout201Response;
 import com.cobo.waas2.model.CreateBankPayoutRequest;
+import com.cobo.waas2.model.CreateVirtualAccount201Response;
+import com.cobo.waas2.model.CreateVirtualAccountRequest;
 import com.cobo.waas2.model.ErrorResponse;
 import com.cobo.waas2.model.GetBankAccountBalance200ResponseInner;
 import com.cobo.waas2.model.ListBankAwaitingSignaturePayouts200ResponseInner;
 import com.cobo.waas2.model.ListBankReturnedPayouts200Response;
 import com.cobo.waas2.model.ListBankTransactions200Response;
+import com.cobo.waas2.model.ListDeposits200Response;
 import com.cobo.waas2.model.SubmitBankPayoutSignatureRequest;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -46,6 +52,20 @@ public class InternalBankGatewayApiTest {
         defaultClient.setPrivKey("<YOUR_API_PRIVATE_KEY_IN_HEX>");
     }
     private final InternalBankGatewayApi api = new InternalBankGatewayApi();
+
+    /**
+     * Cancel a payout
+     *
+     * This operation cancel a payout operation if possible. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void bankPayoutCancelTest() throws ApiException {
+        String payoutId = null;
+        BankPayout response = api.bankPayoutCancel(payoutId);
+        // TODO: test validations
+    }
 
     /**
      * Retry a payout
@@ -76,6 +96,20 @@ public class InternalBankGatewayApiTest {
     }
 
     /**
+     * Create a virtual account
+     *
+     * This operation creates a virtual account. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void createVirtualAccountTest() throws ApiException {
+        CreateVirtualAccountRequest createVirtualAccountRequest = null;
+        CreateVirtualAccount201Response response = api.createVirtualAccount(createVirtualAccountRequest);
+        // TODO: test validations
+    }
+
+    /**
      * Get bank account balance
      *
      * This operation retrieves the balance of a specified bank account. 
@@ -101,6 +135,38 @@ public class InternalBankGatewayApiTest {
     public void getBankPayoutDetailTest() throws ApiException {
         String payoutId = null;
         BankPayout response = api.getBankPayoutDetail(payoutId);
+        // TODO: test validations
+    }
+
+    /**
+     * Get deposit detail
+     *
+     * This operation retrieves detailed information about a specified deposit. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getDepositDetailTest() throws ApiException {
+        BankProvider bankProvider = null;
+        String accountNo = null;
+        String transactionId = null;
+        BankDeposit response = api.getDepositDetail(bankProvider, accountNo, transactionId);
+        // TODO: test validations
+    }
+
+    /**
+     * Get virtual account detail
+     *
+     * This operation retrieves detailed information about a specified virtual account. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getVirtualAccountDetailTest() throws ApiException {
+        BankProvider bankProvider = null;
+        String masterAccountNo = null;
+        String accountNo = null;
+        BankVirtualAccount response = api.getVirtualAccountDetail(bankProvider, masterAccountNo, accountNo);
         // TODO: test validations
     }
 
@@ -139,6 +205,7 @@ public class InternalBankGatewayApiTest {
      */
     @Test
     public void listBankTransactionsTest() throws ApiException {
+        BankProvider bankProvider = null;
         String accountNo = null;
         Integer limit = null;
         String before = null;
@@ -148,7 +215,46 @@ public class InternalBankGatewayApiTest {
         String endTime = null;
         BankPayoutStatus status = null;
         BankTransferType transferType = null;
-        ListBankTransactions200Response response = api.listBankTransactions(accountNo, limit, before, after, currency, startTime, endTime, status, transferType);
+        ListBankTransactions200Response response = api.listBankTransactions(bankProvider, accountNo, limit, before, after, currency, startTime, endTime, status, transferType);
+        // TODO: test validations
+    }
+
+    /**
+     * List deposit
+     *
+     * This operation retrieves the list of deposits. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void listDepositsTest() throws ApiException {
+        BankProvider bankProvider = null;
+        String accountNo = null;
+        Integer limit = null;
+        String before = null;
+        String after = null;
+        String currency = null;
+        String startTime = null;
+        String endTime = null;
+        ListDeposits200Response response = api.listDeposits(bankProvider, accountNo, limit, before, after, currency, startTime, endTime);
+        // TODO: test validations
+    }
+
+    /**
+     * List virtual accounts
+     *
+     * This operation retrieves the list of virtual accounts. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void listVirtualAccountsTest() throws ApiException {
+        BankProvider bankProvider = null;
+        String masterAccountNo = null;
+        String currency = null;
+        BankVirtualAccountStatus vaStatus = null;
+        String accountNos = null;
+        List<BankVirtualAccount> response = api.listVirtualAccounts(bankProvider, masterAccountNo, currency, vaStatus, accountNos);
         // TODO: test validations
     }
 

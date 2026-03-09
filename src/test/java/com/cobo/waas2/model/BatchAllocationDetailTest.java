@@ -12,7 +12,6 @@
 package com.cobo.waas2.model;
 
 import com.cobo.waas2.model.AllocationItem;
-import com.cobo.waas2.model.AllocationRecord;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -53,14 +52,6 @@ public class BatchAllocationDetailTest {
     @Test
     public void requestIdTest() {
         // TODO: test requestId
-    }
-
-    /**
-     * Test the property 'allocationRecords'
-     */
-    @Test
-    public void allocationRecordsTest() {
-        // TODO: test allocationRecords
     }
 
     /**

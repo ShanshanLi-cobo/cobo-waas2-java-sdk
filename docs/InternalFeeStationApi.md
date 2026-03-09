@@ -6,6 +6,7 @@ All URIs are relative to *https://api.dev.cobo.com/v2*
 |------------- | ------------- | -------------|
 | [**chargeCommissionFee**](InternalFeeStationApi.md#chargeCommissionFee) | **POST** /internal/fee_station/charge_commission_fee | Charge commission fee |
 | [**getFeeStationDetail**](InternalFeeStationApi.md#getFeeStationDetail) | **GET** /internal/fee_station | Get FeeStation Detail |
+| [**getFeeStationSystemConf**](InternalFeeStationApi.md#getFeeStationSystemConf) | **GET** /internal/fee_station/system_conf | Get FeeStation System Config |
 | [**refundCommissionFee**](InternalFeeStationApi.md#refundCommissionFee) | **POST** /internal/fee_station/refund_commission_fee | Refund commission fee |
 | [**updateFeeStationConfig**](InternalFeeStationApi.md#updateFeeStationConfig) | **POST** /internal/fee_station/update_conf | Update FeeStation |
 
@@ -125,6 +126,70 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**FeeStationDetail**](FeeStationDetail.md)
+
+### Authorization
+
+[CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The request was successful. |  -  |
+| **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **5XX** | Internal server error. |  -  |
+
+<a id="getFeeStationSystemConf"></a>
+# **getFeeStationSystemConf**
+> FeeStationSystemConf getFeeStationSystemConf()
+
+Get FeeStation System Config
+
+This operation get fee station detail. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.InternalFeeStationApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    InternalFeeStationApi apiInstance = new InternalFeeStationApi();
+    try {
+      FeeStationSystemConf result = apiInstance.getFeeStationSystemConf();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling InternalFeeStationApi#getFeeStationSystemConf");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**FeeStationSystemConf**](FeeStationSystemConf.md)
 
 ### Authorization
 

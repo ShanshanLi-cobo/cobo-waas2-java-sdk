@@ -136,6 +136,14 @@ public class DestinationBankAccountDetail {
   @SerializedName(SERIALIZED_NAME_BANK_ACCOUNT_STATUS)
   private BankAccountStatus bankAccountStatus;
 
+  public static final String SERIALIZED_NAME_COUNTRY = "country";
+  @SerializedName(SERIALIZED_NAME_COUNTRY)
+  private String country;
+
+  public static final String SERIALIZED_NAME_CITY = "city";
+  @SerializedName(SERIALIZED_NAME_CITY)
+  private String city;
+
   public static final String SERIALIZED_NAME_CREATED_TIMESTAMP = "created_timestamp";
   @SerializedName(SERIALIZED_NAME_CREATED_TIMESTAMP)
   private Integer createdTimestamp;
@@ -527,6 +535,44 @@ public class DestinationBankAccountDetail {
   }
 
 
+  public DestinationBankAccountDetail country(String country) {
+    this.country = country;
+    return this;
+  }
+
+   /**
+   * Beneficiary&#39;s country, in ISO 3166-1 alpha-3 format.
+   * @return country
+  **/
+  @javax.annotation.Nullable
+  public String getCountry() {
+    return country;
+  }
+
+  public void setCountry(String country) {
+    this.country = country;
+  }
+
+
+  public DestinationBankAccountDetail city(String city) {
+    this.city = city;
+    return this;
+  }
+
+   /**
+   * Beneficiary&#39;s city.
+   * @return city
+  **/
+  @javax.annotation.Nullable
+  public String getCity() {
+    return city;
+  }
+
+  public void setCity(String city) {
+    this.city = city;
+  }
+
+
   public DestinationBankAccountDetail createdTimestamp(Integer createdTimestamp) {
     this.createdTimestamp = createdTimestamp;
     return this;
@@ -639,6 +685,8 @@ public class DestinationBankAccountDetail {
         Objects.equals(this.furtherCredit, destinationBankAccountDetail.furtherCredit) &&
         Objects.equals(this.intermediaryBankInfo, destinationBankAccountDetail.intermediaryBankInfo) &&
         Objects.equals(this.bankAccountStatus, destinationBankAccountDetail.bankAccountStatus) &&
+        Objects.equals(this.country, destinationBankAccountDetail.country) &&
+        Objects.equals(this.city, destinationBankAccountDetail.city) &&
         Objects.equals(this.createdTimestamp, destinationBankAccountDetail.createdTimestamp) &&
         Objects.equals(this.updatedTimestamp, destinationBankAccountDetail.updatedTimestamp)&&
         Objects.equals(this.additionalProperties, destinationBankAccountDetail.additionalProperties);
@@ -646,7 +694,7 @@ public class DestinationBankAccountDetail {
 
   @Override
   public int hashCode() {
-    return Objects.hash(destinationId, destinationName, destinationType, destinationEmail, destinationCountry, destinationContactAddress, destinationMerchantId, bankAccountId, accountAlias, accountNumber, swiftCode, currency, beneficiaryName, beneficiaryAddress, bankName, bankAddress, ibanCode, furtherCredit, intermediaryBankInfo, bankAccountStatus, createdTimestamp, updatedTimestamp, additionalProperties);
+    return Objects.hash(destinationId, destinationName, destinationType, destinationEmail, destinationCountry, destinationContactAddress, destinationMerchantId, bankAccountId, accountAlias, accountNumber, swiftCode, currency, beneficiaryName, beneficiaryAddress, bankName, bankAddress, ibanCode, furtherCredit, intermediaryBankInfo, bankAccountStatus, country, city, createdTimestamp, updatedTimestamp, additionalProperties);
   }
 
   @Override
@@ -673,6 +721,8 @@ public class DestinationBankAccountDetail {
     sb.append("    furtherCredit: ").append(toIndentedString(furtherCredit)).append("\n");
     sb.append("    intermediaryBankInfo: ").append(toIndentedString(intermediaryBankInfo)).append("\n");
     sb.append("    bankAccountStatus: ").append(toIndentedString(bankAccountStatus)).append("\n");
+    sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    city: ").append(toIndentedString(city)).append("\n");
     sb.append("    createdTimestamp: ").append(toIndentedString(createdTimestamp)).append("\n");
     sb.append("    updatedTimestamp: ").append(toIndentedString(updatedTimestamp)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -718,6 +768,8 @@ public class DestinationBankAccountDetail {
     openapiFields.add("further_credit");
     openapiFields.add("intermediary_bank_info");
     openapiFields.add("bank_account_status");
+    openapiFields.add("country");
+    openapiFields.add("city");
     openapiFields.add("created_timestamp");
     openapiFields.add("updated_timestamp");
 
@@ -817,6 +869,12 @@ public class DestinationBankAccountDetail {
       }
       // validate the required field `bank_account_status`
       BankAccountStatus.validateJsonElement(jsonObj.get("bank_account_status"));
+      if ((jsonObj.get("country") != null && !jsonObj.get("country").isJsonNull()) && !jsonObj.get("country").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `country` to be a primitive type in the JSON string but got `%s`", jsonObj.get("country").toString()));
+      }
+      if ((jsonObj.get("city") != null && !jsonObj.get("city").isJsonNull()) && !jsonObj.get("city").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `city` to be a primitive type in the JSON string but got `%s`", jsonObj.get("city").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

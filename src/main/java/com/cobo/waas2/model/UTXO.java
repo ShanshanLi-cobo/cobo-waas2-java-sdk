@@ -88,6 +88,14 @@ public class UTXO {
   @SerializedName(SERIALIZED_NAME_IS_FROZEN)
   private Boolean isFrozen;
 
+  public static final String SERIALIZED_NAME_IS_CHANGE = "is_change";
+  @SerializedName(SERIALIZED_NAME_IS_CHANGE)
+  private Boolean isChange;
+
+  public static final String SERIALIZED_NAME_CHAIN_ID = "chain_id";
+  @SerializedName(SERIALIZED_NAME_CHAIN_ID)
+  private String chainId;
+
   public static final String SERIALIZED_NAME_OBJECT_ID = "object_id";
   @SerializedName(SERIALIZED_NAME_OBJECT_ID)
   private String objectId;
@@ -270,6 +278,44 @@ public class UTXO {
   }
 
 
+  public UTXO isChange(Boolean isChange) {
+    this.isChange = isChange;
+    return this;
+  }
+
+   /**
+   * Whether the UTXO is a change output of a transaction.
+   * @return isChange
+  **/
+  @javax.annotation.Nullable
+  public Boolean getIsChange() {
+    return isChange;
+  }
+
+  public void setIsChange(Boolean isChange) {
+    this.isChange = isChange;
+  }
+
+
+  public UTXO chainId(String chainId) {
+    this.chainId = chainId;
+    return this;
+  }
+
+   /**
+   * The chain ID, which is the unique identifier of a blockchain.
+   * @return chainId
+  **/
+  @javax.annotation.Nullable
+  public String getChainId() {
+    return chainId;
+  }
+
+  public void setChainId(String chainId) {
+    this.chainId = chainId;
+  }
+
+
   public UTXO objectId(String objectId) {
     this.objectId = objectId;
     return this;
@@ -371,6 +417,8 @@ public class UTXO {
         Objects.equals(this.isLocked, UTXO.isLocked) &&
         Objects.equals(this.confirmedNumber, UTXO.confirmedNumber) &&
         Objects.equals(this.isFrozen, UTXO.isFrozen) &&
+        Objects.equals(this.isChange, UTXO.isChange) &&
+        Objects.equals(this.chainId, UTXO.chainId) &&
         Objects.equals(this.objectId, UTXO.objectId) &&
         Objects.equals(this.version, UTXO.version)&&
         Objects.equals(this.additionalProperties, UTXO.additionalProperties);
@@ -378,7 +426,7 @@ public class UTXO {
 
   @Override
   public int hashCode() {
-    return Objects.hash(txHash, voutN, address, tokenId, value, isCoinbase, isLocked, confirmedNumber, isFrozen, objectId, version, additionalProperties);
+    return Objects.hash(txHash, voutN, address, tokenId, value, isCoinbase, isLocked, confirmedNumber, isFrozen, isChange, chainId, objectId, version, additionalProperties);
   }
 
   @Override
@@ -394,6 +442,8 @@ public class UTXO {
     sb.append("    isLocked: ").append(toIndentedString(isLocked)).append("\n");
     sb.append("    confirmedNumber: ").append(toIndentedString(confirmedNumber)).append("\n");
     sb.append("    isFrozen: ").append(toIndentedString(isFrozen)).append("\n");
+    sb.append("    isChange: ").append(toIndentedString(isChange)).append("\n");
+    sb.append("    chainId: ").append(toIndentedString(chainId)).append("\n");
     sb.append("    objectId: ").append(toIndentedString(objectId)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -428,6 +478,8 @@ public class UTXO {
     openapiFields.add("is_locked");
     openapiFields.add("confirmed_number");
     openapiFields.add("is_frozen");
+    openapiFields.add("is_change");
+    openapiFields.add("chain_id");
     openapiFields.add("object_id");
     openapiFields.add("version");
 
@@ -459,6 +511,9 @@ public class UTXO {
       }
       if ((jsonObj.get("value") != null && !jsonObj.get("value").isJsonNull()) && !jsonObj.get("value").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `value` to be a primitive type in the JSON string but got `%s`", jsonObj.get("value").toString()));
+      }
+      if ((jsonObj.get("chain_id") != null && !jsonObj.get("chain_id").isJsonNull()) && !jsonObj.get("chain_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `chain_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("chain_id").toString()));
       }
       if ((jsonObj.get("object_id") != null && !jsonObj.get("object_id").isJsonNull()) && !jsonObj.get("object_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object_id").toString()));

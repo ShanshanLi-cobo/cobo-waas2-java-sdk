@@ -16,6 +16,8 @@ import com.cobo.waas2.ApiException;
 import com.cobo.waas2.Configuration;
 import com.cobo.waas2.model.CommissionFeeDetail;
 import com.cobo.waas2.model.ErrorResponse;
+import com.cobo.waas2.model.FeeEngineDetail;
+import com.cobo.waas2.model.FeeEngineUpdate;
 import com.cobo.waas2.model.TransactionRequestTypeParams;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -57,6 +59,34 @@ public class InternalFeeEngineApiTest {
         TransactionRequestTypeParams requestType = null;
         Integer txCount = null;
         List<CommissionFeeDetail> response = api.getCommissionFee(requestId, businessTypeId, amount, chainId, tokenId, walletId, walletType, requestType, txCount);
+        // TODO: test validations
+    }
+
+    /**
+     * Get FeeEngine
+     *
+     * Get fee engine configuration by org_id and business_type. org_id and business_type uniquely identify a fee engine. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getFeeEngineTest() throws ApiException {
+        Integer businessType = null;
+        FeeEngineDetail response = api.getFeeEngine(businessType);
+        // TODO: test validations
+    }
+
+    /**
+     * Update FeeEngine
+     *
+     * Update fee engine configuration. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void updateFeeEngineTest() throws ApiException {
+        FeeEngineUpdate feeEngineUpdate = null;
+        FeeEngineDetail response = api.updateFeeEngine(feeEngineUpdate);
         // TODO: test validations
     }
 

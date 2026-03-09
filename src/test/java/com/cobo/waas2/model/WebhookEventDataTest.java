@@ -36,7 +36,6 @@ import com.cobo.waas2.model.PaymentChargeUpdateEventData;
 import com.cobo.waas2.model.PaymentOrderEventData;
 import com.cobo.waas2.model.PaymentPayoutEvent;
 import com.cobo.waas2.model.PaymentPayoutItem;
-import com.cobo.waas2.model.PaymentPayoutItemDetail;
 import com.cobo.waas2.model.PaymentPayoutRecipientInfo;
 import com.cobo.waas2.model.PaymentRefundEventData;
 import com.cobo.waas2.model.PaymentSettlementEvent;
@@ -1004,14 +1003,6 @@ public class WebhookEventDataTest {
     @Test
     public void remarkTest() {
         // TODO: test remark
-    }
-
-    /**
-     * Test the property 'payoutItemDetails'
-     */
-    @Test
-    public void payoutItemDetailsTest() {
-        // TODO: test payoutItemDetails
     }
 
     /**

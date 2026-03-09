@@ -22,7 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * The payout status. - &#x60;None&#x60;: The payout is none. - &#x60;Initialized&#x60;: The payout is initialized. - &#x60;Pending&#x60;: The payout is pending. - &#x60;PartiallyCompleted&#x60;: The payout is partially completed. - &#x60;Failed&#x60;: The payout is failed. - &#x60;Completed&#x60;: The payout is completed. - &#x60;PendingApproval&#x60;: The payout is pending approval. - &#x60;ApprovalFailed&#x60;: The payout is approval failed. - &#x60;ApprovalRevoked&#x60;: The payout is approval revoked. - &#x60;ApprovalRevoking&#x60;: The payout is pending revoke. - &#x60;PendingRecipientConfirmation&#x60;: The payout is pending recipient confirm. - &#x60;PartiallyCompletedFinal&#x60;: The payout is partially completed finish. - &#x60;PendingTokenApproval&#x60;: The payout is pending token approval. 
+ * The payout status. - &#x60;None&#x60;: The payout is none. - &#x60;Initialized&#x60;: The payout is initialized. - &#x60;Pending&#x60;: The payout is pending. - &#x60;PartiallyCompleted&#x60;: The payout is partially completed. - &#x60;Failed&#x60;: The payout is failed. - &#x60;Completed&#x60;: The payout is completed. - &#x60;PendingApproval&#x60;: The payout is pending approval. - &#x60;ApprovalFailed&#x60;: The payout is approval failed. - &#x60;ApprovalRevoked&#x60;: The payout is approval revoked. - &#x60;ApprovalRevoking&#x60;: The payout is pending revoke. - &#x60;PendingRecipientConfirmation&#x60;: The payout is pending recipient confirm. - &#x60;PartiallyCompletedFinal&#x60;: The payout is partially completed finish. - &#x60;PendingTokenApproval&#x60;: The payout is pending token approval. - &#x60;PendingTronContractValidation&#x60;: The payout is pending TRON contract validation. - &#x60;PendingTronAddressActivation&#x60;: The payout is pending TRON address activation. - &#x60;PendingTronEnergyBandwidthRecharge&#x60;: The payout is pending TRON energy/bandwidth recharge. 
  */
 @JsonAdapter(PayoutStatus.Adapter.class)
 public enum PayoutStatus {
@@ -52,7 +52,13 @@ public enum PayoutStatus {
   
   PARTIALLYCOMPLETEDFINAL("PartiallyCompletedFinal"),
   
-  PENDINGTOKENAPPROVAL("PendingTokenApproval");
+  PENDINGTOKENAPPROVAL("PendingTokenApproval"),
+  
+  PENDINGTRONCONTRACTVALIDATION("PendingTronContractValidation"),
+  
+  PENDINGTRONADDRESSACTIVATION("PendingTronAddressActivation"),
+  
+  PENDINGTRONENERGYBANDWIDTHRECHARGE("PendingTronEnergyBandwidthRecharge");
 
   private String value;
 

@@ -240,7 +240,7 @@ public class CreateBankPayoutRequest {
    * The amount of the cryptocurrency.
    * @return cryptoAmount
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getCryptoAmount() {
     return cryptoAmount;
   }
@@ -414,7 +414,6 @@ public class CreateBankPayoutRequest {
     openapiRequiredFields.add("bank_provider");
     openapiRequiredFields.add("transaction_currency");
     openapiRequiredFields.add("transaction_amount");
-    openapiRequiredFields.add("crypto_amount");
     openapiRequiredFields.add("sender");
     openapiRequiredFields.add("beneficiary");
   }
@@ -456,7 +455,7 @@ public class CreateBankPayoutRequest {
       if ((jsonObj.get("remarks") != null && !jsonObj.get("remarks").isJsonNull()) && !jsonObj.get("remarks").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `remarks` to be a primitive type in the JSON string but got `%s`", jsonObj.get("remarks").toString()));
       }
-      if (!jsonObj.get("crypto_amount").isJsonPrimitive()) {
+      if ((jsonObj.get("crypto_amount") != null && !jsonObj.get("crypto_amount").isJsonNull()) && !jsonObj.get("crypto_amount").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `crypto_amount` to be a primitive type in the JSON string but got `%s`", jsonObj.get("crypto_amount").toString()));
       }
       // validate the required field `sender`

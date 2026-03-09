@@ -11,10 +11,8 @@
 
 package com.cobo.waas2.model;
 
-import com.cobo.waas2.model.BankAccount;
 import com.cobo.waas2.model.CommissionFee;
 import com.cobo.waas2.model.PaymentPayoutItem;
-import com.cobo.waas2.model.PaymentPayoutItemDetail;
 import com.cobo.waas2.model.PaymentPayoutRecipientInfo;
 import com.cobo.waas2.model.PaymentPayoutStatus;
 import com.cobo.waas2.model.PaymentTransaction;
@@ -158,35 +156,11 @@ public class PaymentPayoutEventTest {
     }
 
     /**
-     * Test the property 'currency'
-     */
-    @Test
-    public void currencyTest() {
-        // TODO: test currency
-    }
-
-    /**
-     * Test the property 'bankAccount'
-     */
-    @Test
-    public void bankAccountTest() {
-        // TODO: test bankAccount
-    }
-
-    /**
      * Test the property 'transactions'
      */
     @Test
     public void transactionsTest() {
         // TODO: test transactions
-    }
-
-    /**
-     * Test the property 'payoutItemDetails'
-     */
-    @Test
-    public void payoutItemDetailsTest() {
-        // TODO: test payoutItemDetails
     }
 
 }

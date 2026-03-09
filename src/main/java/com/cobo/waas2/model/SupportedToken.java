@@ -102,7 +102,7 @@ public class SupportedToken {
   }
 
    /**
-   * Unique identifier of the token
+   * The unique identifier of the token, in the format of &#x60;{chain_id}_{token_symbol}&#x60;.
    * @return tokenId
   **/
   @javax.annotation.Nonnull
@@ -121,7 +121,7 @@ public class SupportedToken {
   }
 
    /**
-   * Full name of the token
+   * The full name of the token.
    * @return name
   **/
   @javax.annotation.Nonnull
@@ -140,7 +140,7 @@ public class SupportedToken {
   }
 
    /**
-   * Symbol representation of the token
+   * The symbol of the token.
    * @return symbol
   **/
   @javax.annotation.Nonnull
@@ -159,7 +159,7 @@ public class SupportedToken {
   }
 
    /**
-   * Number of decimal places for the token
+   * The number of decimal places for the token. This value is used to convert  between the token&#39;s smallest unit and its display value. 
    * @return decimal
   **/
   @javax.annotation.Nonnull
@@ -178,7 +178,7 @@ public class SupportedToken {
   }
 
    /**
-   * Contract address of the token (may be null for native coins)
+   * The contract address of the token. This is &#x60;null&#x60; for native coins (e.g., ETH on Ethereum). 
    * @return tokenAddress
   **/
   @javax.annotation.Nullable
@@ -197,7 +197,7 @@ public class SupportedToken {
   }
 
    /**
-   * Identifier of the blockchain where the token exists
+   * The ID of the chain on which the token exists.
    * @return chainId
   **/
   @javax.annotation.Nonnull
@@ -216,7 +216,7 @@ public class SupportedToken {
   }
 
    /**
-   * Symbol of the underlying blockchain
+   * The symbol of the chain on which the token exists.
    * @return chainSymbol
   **/
   @javax.annotation.Nullable
@@ -235,7 +235,7 @@ public class SupportedToken {
   }
 
    /**
-   * URL to the blockchain&#39;s icon image
+   * The URL of the chain icon image.
    * @return chainIconUrl
   **/
   @javax.annotation.Nullable
@@ -254,7 +254,7 @@ public class SupportedToken {
   }
 
    /**
-   * URL to the token&#39;s icon image
+   * The URL of the token icon image.
    * @return tokenIconUrl
   **/
   @javax.annotation.Nullable
@@ -273,7 +273,7 @@ public class SupportedToken {
   }
 
    /**
-   * Whether the token can by off ramp settlement
+   * Whether the token supports fiat off-ramp. - &#x60;true&#x60;: The token can be used for fiat off-ramp. - &#x60;false&#x60;: The token cannot be used for fiat off-ramp. 
    * @return canOffRamp
   **/
   @javax.annotation.Nullable

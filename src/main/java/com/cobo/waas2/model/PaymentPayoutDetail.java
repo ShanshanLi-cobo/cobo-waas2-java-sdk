@@ -12,10 +12,8 @@
 package com.cobo.waas2.model;
 
 import java.util.Objects;
-import com.cobo.waas2.model.BankAccount;
 import com.cobo.waas2.model.CommissionFee;
 import com.cobo.waas2.model.PaymentPayoutItem;
-import com.cobo.waas2.model.PaymentPayoutItemDetail;
 import com.cobo.waas2.model.PaymentPayoutRecipientInfo;
 import com.cobo.waas2.model.PaymentPayoutStatus;
 import com.cobo.waas2.model.PaymentTransaction;
@@ -114,21 +112,9 @@ public class PaymentPayoutDetail {
   @SerializedName(SERIALIZED_NAME_UPDATED_TIMESTAMP)
   private Integer updatedTimestamp;
 
-  public static final String SERIALIZED_NAME_CURRENCY = "currency";
-  @SerializedName(SERIALIZED_NAME_CURRENCY)
-  private String currency;
-
-  public static final String SERIALIZED_NAME_BANK_ACCOUNT = "bank_account";
-  @SerializedName(SERIALIZED_NAME_BANK_ACCOUNT)
-  private BankAccount bankAccount;
-
   public static final String SERIALIZED_NAME_TRANSACTIONS = "transactions";
   @SerializedName(SERIALIZED_NAME_TRANSACTIONS)
   private List<PaymentTransaction> transactions = new ArrayList<>();
-
-  public static final String SERIALIZED_NAME_PAYOUT_ITEM_DETAILS = "payout_item_details";
-  @SerializedName(SERIALIZED_NAME_PAYOUT_ITEM_DETAILS)
-  private List<PaymentPayoutItemDetail> payoutItemDetails = new ArrayList<>();
 
   public PaymentPayoutDetail() {
   }
@@ -396,44 +382,6 @@ public class PaymentPayoutDetail {
   }
 
 
-  public PaymentPayoutDetail currency(String currency) {
-    this.currency = currency;
-    return this;
-  }
-
-   /**
-   * The fiat currency for the payout. deprecated
-   * @return currency
-  **/
-  @javax.annotation.Nullable
-  public String getCurrency() {
-    return currency;
-  }
-
-  public void setCurrency(String currency) {
-    this.currency = currency;
-  }
-
-
-  public PaymentPayoutDetail bankAccount(BankAccount bankAccount) {
-    this.bankAccount = bankAccount;
-    return this;
-  }
-
-   /**
-   * Get bankAccount
-   * @return bankAccount
-  **/
-  @javax.annotation.Nullable
-  public BankAccount getBankAccount() {
-    return bankAccount;
-  }
-
-  public void setBankAccount(BankAccount bankAccount) {
-    this.bankAccount = bankAccount;
-  }
-
-
   public PaymentPayoutDetail transactions(List<PaymentTransaction> transactions) {
     this.transactions = transactions;
     return this;
@@ -458,33 +406,6 @@ public class PaymentPayoutDetail {
 
   public void setTransactions(List<PaymentTransaction> transactions) {
     this.transactions = transactions;
-  }
-
-
-  public PaymentPayoutDetail payoutItemDetails(List<PaymentPayoutItemDetail> payoutItemDetails) {
-    this.payoutItemDetails = payoutItemDetails;
-    return this;
-  }
-
-  public PaymentPayoutDetail addPayoutItemDetailsItem(PaymentPayoutItemDetail payoutItemDetailsItem) {
-    if (this.payoutItemDetails == null) {
-      this.payoutItemDetails = new ArrayList<>();
-    }
-    this.payoutItemDetails.add(payoutItemDetailsItem);
-    return this;
-  }
-
-   /**
-   * deprecated
-   * @return payoutItemDetails
-  **/
-  @javax.annotation.Nullable
-  public List<PaymentPayoutItemDetail> getPayoutItemDetails() {
-    return payoutItemDetails;
-  }
-
-  public void setPayoutItemDetails(List<PaymentPayoutItemDetail> payoutItemDetails) {
-    this.payoutItemDetails = payoutItemDetails;
   }
 
   /**
@@ -555,16 +476,13 @@ public class PaymentPayoutDetail {
         Objects.equals(this.status, paymentPayoutDetail.status) &&
         Objects.equals(this.createdTimestamp, paymentPayoutDetail.createdTimestamp) &&
         Objects.equals(this.updatedTimestamp, paymentPayoutDetail.updatedTimestamp) &&
-        Objects.equals(this.currency, paymentPayoutDetail.currency) &&
-        Objects.equals(this.bankAccount, paymentPayoutDetail.bankAccount) &&
-        Objects.equals(this.transactions, paymentPayoutDetail.transactions) &&
-        Objects.equals(this.payoutItemDetails, paymentPayoutDetail.payoutItemDetails)&&
+        Objects.equals(this.transactions, paymentPayoutDetail.transactions)&&
         Objects.equals(this.additionalProperties, paymentPayoutDetail.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(payoutId, requestId, payoutChannel, sourceAccount, payoutItems, recipientInfo, initiator, actualPayoutAmount, commissionFees, remark, status, createdTimestamp, updatedTimestamp, currency, bankAccount, transactions, payoutItemDetails, additionalProperties);
+    return Objects.hash(payoutId, requestId, payoutChannel, sourceAccount, payoutItems, recipientInfo, initiator, actualPayoutAmount, commissionFees, remark, status, createdTimestamp, updatedTimestamp, transactions, additionalProperties);
   }
 
   @Override
@@ -584,10 +502,7 @@ public class PaymentPayoutDetail {
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    createdTimestamp: ").append(toIndentedString(createdTimestamp)).append("\n");
     sb.append("    updatedTimestamp: ").append(toIndentedString(updatedTimestamp)).append("\n");
-    sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
-    sb.append("    bankAccount: ").append(toIndentedString(bankAccount)).append("\n");
     sb.append("    transactions: ").append(toIndentedString(transactions)).append("\n");
-    sb.append("    payoutItemDetails: ").append(toIndentedString(payoutItemDetails)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -624,10 +539,7 @@ public class PaymentPayoutDetail {
     openapiFields.add("status");
     openapiFields.add("created_timestamp");
     openapiFields.add("updated_timestamp");
-    openapiFields.add("currency");
-    openapiFields.add("bank_account");
     openapiFields.add("transactions");
-    openapiFields.add("payout_item_details");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -713,13 +625,6 @@ public class PaymentPayoutDetail {
       }
       // validate the required field `status`
       PaymentPayoutStatus.validateJsonElement(jsonObj.get("status"));
-      if ((jsonObj.get("currency") != null && !jsonObj.get("currency").isJsonNull()) && !jsonObj.get("currency").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currency").toString()));
-      }
-      // validate the optional field `bank_account`
-      if (jsonObj.get("bank_account") != null && !jsonObj.get("bank_account").isJsonNull()) {
-        BankAccount.validateJsonElement(jsonObj.get("bank_account"));
-      }
       if (jsonObj.get("transactions") != null && !jsonObj.get("transactions").isJsonNull()) {
         JsonArray jsonArraytransactions = jsonObj.getAsJsonArray("transactions");
         if (jsonArraytransactions != null) {
@@ -731,20 +636,6 @@ public class PaymentPayoutDetail {
           // validate the optional field `transactions` (array)
           for (int i = 0; i < jsonArraytransactions.size(); i++) {
             PaymentTransaction.validateJsonElement(jsonArraytransactions.get(i));
-          };
-        }
-      }
-      if (jsonObj.get("payout_item_details") != null && !jsonObj.get("payout_item_details").isJsonNull()) {
-        JsonArray jsonArraypayoutItemDetails = jsonObj.getAsJsonArray("payout_item_details");
-        if (jsonArraypayoutItemDetails != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("payout_item_details").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `payout_item_details` to be an array in the JSON string but got `%s`", jsonObj.get("payout_item_details").toString()));
-          }
-
-          // validate the optional field `payout_item_details` (array)
-          for (int i = 0; i < jsonArraypayoutItemDetails.size(); i++) {
-            PaymentPayoutItemDetail.validateJsonElement(jsonArraypayoutItemDetails.get(i));
           };
         }
       }

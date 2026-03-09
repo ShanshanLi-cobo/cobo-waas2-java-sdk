@@ -22,15 +22,13 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * The current status of the payout: - &#x60;Pending&#x60;: The payout has been created and is awaiting sweep. - &#x60;Processing&#x60;: deprecated. - &#x60;Preparing&#x60;: The payout is currently being processed. - &#x60;Transferring&#x60;: Offramp payment is made by the finance department to a bank account. - &#x60;Completed&#x60;: The payouts have been completed. - &#x60;PartiallyCompleted&#x60;: Some payout transactions have been completed successfully, while others have failed. - &#x60;Failed&#x60;: All payout transactions have failed or bridge failed or sweep failed. - &#x60;Canceled&#x60;: Offramp the bank transfer was rejected by the bank. deprecated - &#x60;RejectedByBank&#x60;: Offramp the bank transfer was rejected by the bank. 
+ * The current status of the payout: - &#x60;Pending&#x60;: The payout has been created and is awaiting sweep. - &#x60;Preparing&#x60;: The payout is being prepared and processed for transfer. - &#x60;Transferring&#x60;: The finance team is making an offramp payment to a bank account, or a crypto payout is being sent to a crypto address. - &#x60;Completed&#x60;: All payout transactions have been completed successfully. - &#x60;PartiallyCompleted&#x60;: Some payout transactions succeeded while others failed. - &#x60;Failed&#x60;: All payout transactions failed, or the bridge failed, or the sweep failed. - &#x60;RejectedByBank&#x60;: The bank rejected the offramp transfer. 
  */
 @JsonAdapter(PaymentPayoutStatus.Adapter.class)
 public enum PaymentPayoutStatus {
   UNKNOWN(null),
   
   PENDING("Pending"),
-  
-  PROCESSING("Processing"),
   
   PREPARING("Preparing"),
   
@@ -41,8 +39,6 @@ public enum PaymentPayoutStatus {
   PARTIALLYCOMPLETED("PartiallyCompleted"),
   
   FAILED("Failed"),
-  
-  CANCELED("Canceled"),
   
   REJECTEDBYBANK("RejectedByBank");
 

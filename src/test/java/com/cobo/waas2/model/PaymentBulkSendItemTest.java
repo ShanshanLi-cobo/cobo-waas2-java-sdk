@@ -38,11 +38,11 @@ public class PaymentBulkSendItemTest {
     }
 
     /**
-     * Test the property 'payoutItemId'
+     * Test the property 'bulkSendItemId'
      */
     @Test
-    public void payoutItemIdTest() {
-        // TODO: test payoutItemId
+    public void bulkSendItemIdTest() {
+        // TODO: test bulkSendItemId
     }
 
     /**

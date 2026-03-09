@@ -31,5 +31,11 @@
 
 * `PENDINGTOKENAPPROVAL` (value: `"PendingTokenApproval"`)
 
+* `PENDINGTRONCONTRACTVALIDATION` (value: `"PendingTronContractValidation"`)
+
+* `PENDINGTRONADDRESSACTIVATION` (value: `"PendingTronAddressActivation"`)
+
+* `PENDINGTRONENERGYBANDWIDTHRECHARGE` (value: `"PendingTronEnergyBandwidthRecharge"`)
+
 
 

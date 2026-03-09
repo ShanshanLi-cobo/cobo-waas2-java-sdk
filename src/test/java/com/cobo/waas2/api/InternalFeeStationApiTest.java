@@ -18,6 +18,7 @@ import com.cobo.waas2.model.ChargeCommissionFee201Response;
 import com.cobo.waas2.model.ChargeCommissionFeeRequest;
 import com.cobo.waas2.model.ErrorResponse;
 import com.cobo.waas2.model.FeeStationDetail;
+import com.cobo.waas2.model.FeeStationSystemConf;
 import com.cobo.waas2.model.RefundCommissionFee201Response;
 import com.cobo.waas2.model.RefundCommissionFeeRequest;
 import com.cobo.waas2.model.UpdateFeeStationConfigRequest;
@@ -66,6 +67,19 @@ public class InternalFeeStationApiTest {
     @Test
     public void getFeeStationDetailTest() throws ApiException {
         FeeStationDetail response = api.getFeeStationDetail();
+        // TODO: test validations
+    }
+
+    /**
+     * Get FeeStation System Config
+     *
+     * This operation get fee station detail. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getFeeStationSystemConfTest() throws ApiException {
+        FeeStationSystemConf response = api.getFeeStationSystemConf();
         // TODO: test validations
     }
 

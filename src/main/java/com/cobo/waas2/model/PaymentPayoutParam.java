@@ -60,18 +60,6 @@ public class PaymentPayoutParam {
   @SerializedName(SERIALIZED_NAME_AMOUNT)
   private String amount;
 
-  public static final String SERIALIZED_NAME_SOURCE_ACCOUNT = "source_account";
-  @SerializedName(SERIALIZED_NAME_SOURCE_ACCOUNT)
-  private String sourceAccount;
-
-  public static final String SERIALIZED_NAME_CRYPTO_ADDRESS_ID = "crypto_address_id";
-  @SerializedName(SERIALIZED_NAME_CRYPTO_ADDRESS_ID)
-  private String cryptoAddressId;
-
-  public static final String SERIALIZED_NAME_CRYPTO_ADDRESS = "crypto_address";
-  @SerializedName(SERIALIZED_NAME_CRYPTO_ADDRESS)
-  private String cryptoAddress;
-
   public PaymentPayoutParam() {
   }
 
@@ -110,63 +98,6 @@ public class PaymentPayoutParam {
 
   public void setAmount(String amount) {
     this.amount = amount;
-  }
-
-
-  public PaymentPayoutParam sourceAccount(String sourceAccount) {
-    this.sourceAccount = sourceAccount;
-    return this;
-  }
-
-   /**
-   * deprecated
-   * @return sourceAccount
-  **/
-  @javax.annotation.Nullable
-  public String getSourceAccount() {
-    return sourceAccount;
-  }
-
-  public void setSourceAccount(String sourceAccount) {
-    this.sourceAccount = sourceAccount;
-  }
-
-
-  public PaymentPayoutParam cryptoAddressId(String cryptoAddressId) {
-    this.cryptoAddressId = cryptoAddressId;
-    return this;
-  }
-
-   /**
-   * Only used in Crypto payout channel. The ID of the pre-approved crypto address used for Crypto settlements. - The value must refer to a valid address that has been pre-configured and approved for the given token. deprecated 
-   * @return cryptoAddressId
-  **/
-  @javax.annotation.Nullable
-  public String getCryptoAddressId() {
-    return cryptoAddressId;
-  }
-
-  public void setCryptoAddressId(String cryptoAddressId) {
-    this.cryptoAddressId = cryptoAddressId;
-  }
-
-
-  public PaymentPayoutParam cryptoAddress(String cryptoAddress) {
-    this.cryptoAddress = cryptoAddress;
-    return this;
-  }
-
-   /**
-   * Only used in Crypto payout channel. The actual blockchain address to which funds will be transferred. If enable destination whitelist, this address must be associated with a destination. deprecated 
-   * @return cryptoAddress
-  **/
-  @javax.annotation.Nullable
-  public String getCryptoAddress() {
-    return cryptoAddress;
-  }
-
-  public void setCryptoAddress(String cryptoAddress) {
-    this.cryptoAddress = cryptoAddress;
   }
 
   /**
@@ -225,16 +156,13 @@ public class PaymentPayoutParam {
     }
     PaymentPayoutParam paymentPayoutParam = (PaymentPayoutParam) o;
     return Objects.equals(this.tokenId, paymentPayoutParam.tokenId) &&
-        Objects.equals(this.amount, paymentPayoutParam.amount) &&
-        Objects.equals(this.sourceAccount, paymentPayoutParam.sourceAccount) &&
-        Objects.equals(this.cryptoAddressId, paymentPayoutParam.cryptoAddressId) &&
-        Objects.equals(this.cryptoAddress, paymentPayoutParam.cryptoAddress)&&
+        Objects.equals(this.amount, paymentPayoutParam.amount)&&
         Objects.equals(this.additionalProperties, paymentPayoutParam.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(tokenId, amount, sourceAccount, cryptoAddressId, cryptoAddress, additionalProperties);
+    return Objects.hash(tokenId, amount, additionalProperties);
   }
 
   @Override
@@ -243,9 +171,6 @@ public class PaymentPayoutParam {
     sb.append("class PaymentPayoutParam {\n");
     sb.append("    tokenId: ").append(toIndentedString(tokenId)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
-    sb.append("    sourceAccount: ").append(toIndentedString(sourceAccount)).append("\n");
-    sb.append("    cryptoAddressId: ").append(toIndentedString(cryptoAddressId)).append("\n");
-    sb.append("    cryptoAddress: ").append(toIndentedString(cryptoAddress)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -271,9 +196,6 @@ public class PaymentPayoutParam {
     openapiFields = new HashSet<String>();
     openapiFields.add("token_id");
     openapiFields.add("amount");
-    openapiFields.add("source_account");
-    openapiFields.add("crypto_address_id");
-    openapiFields.add("crypto_address");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -306,15 +228,6 @@ public class PaymentPayoutParam {
       }
       if (!jsonObj.get("amount").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `amount` to be a primitive type in the JSON string but got `%s`", jsonObj.get("amount").toString()));
-      }
-      if ((jsonObj.get("source_account") != null && !jsonObj.get("source_account").isJsonNull()) && !jsonObj.get("source_account").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `source_account` to be a primitive type in the JSON string but got `%s`", jsonObj.get("source_account").toString()));
-      }
-      if ((jsonObj.get("crypto_address_id") != null && !jsonObj.get("crypto_address_id").isJsonNull()) && !jsonObj.get("crypto_address_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `crypto_address_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("crypto_address_id").toString()));
-      }
-      if ((jsonObj.get("crypto_address") != null && !jsonObj.get("crypto_address").isJsonNull()) && !jsonObj.get("crypto_address").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `crypto_address` to be a primitive type in the JSON string but got `%s`", jsonObj.get("crypto_address").toString()));
       }
   }
 

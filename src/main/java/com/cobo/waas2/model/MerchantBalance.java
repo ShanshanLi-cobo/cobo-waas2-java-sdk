@@ -143,7 +143,7 @@ public class MerchantBalance {
    * Get acquiringType
    * @return acquiringType
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public AcquiringType getAcquiringType() {
     return acquiringType;
   }
@@ -410,7 +410,6 @@ public class MerchantBalance {
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("merchant_id");
     openapiRequiredFields.add("token_id");
-    openapiRequiredFields.add("acquiring_type");
   }
 
  /**
@@ -439,8 +438,10 @@ public class MerchantBalance {
       if (!jsonObj.get("token_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `token_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("token_id").toString()));
       }
-      // validate the required field `acquiring_type`
-      AcquiringType.validateJsonElement(jsonObj.get("acquiring_type"));
+      // validate the optional field `acquiring_type`
+      if (jsonObj.get("acquiring_type") != null && !jsonObj.get("acquiring_type").isJsonNull()) {
+        AcquiringType.validateJsonElement(jsonObj.get("acquiring_type"));
+      }
       if ((jsonObj.get("total_received_amount") != null && !jsonObj.get("total_received_amount").isJsonNull()) && !jsonObj.get("total_received_amount").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `total_received_amount` to be a primitive type in the JSON string but got `%s`", jsonObj.get("total_received_amount").toString()));
       }
