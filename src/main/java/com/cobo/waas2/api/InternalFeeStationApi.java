@@ -29,6 +29,7 @@ import com.cobo.waas2.model.ChargeCommissionFee201Response;
 import com.cobo.waas2.model.ChargeCommissionFeeRequest;
 import com.cobo.waas2.model.ErrorResponse;
 import com.cobo.waas2.model.FeeStationDetail;
+import com.cobo.waas2.model.FeeStationSystemConf;
 import com.cobo.waas2.model.RefundCommissionFee201Response;
 import com.cobo.waas2.model.RefundCommissionFeeRequest;
 import com.cobo.waas2.model.UpdateFeeStationConfigRequest;
@@ -276,6 +277,114 @@ public class InternalFeeStationApi {
 
         okhttp3.Call localVarCall = getFeeStationDetailValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<FeeStationDetail>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getFeeStationSystemConf
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getFeeStationSystemConfCall(final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/internal/fee_station/system_conf";
+
+        List<Pair> localVarQueryParams = new ArrayList<>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<>();
+        Map<String, String> localVarHeaderParams = new HashMap<>();
+        Map<String, String> localVarCookieParams = new HashMap<>();
+        Map<String, Object> localVarFormParams = new HashMap<>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(null, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getFeeStationSystemConfValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getFeeStationSystemConfCall(_callback);
+
+    }
+
+    /**
+     * Get FeeStation System Config
+     * This operation get fee station detail. 
+     * @return FeeStationSystemConf
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public FeeStationSystemConf getFeeStationSystemConf() throws ApiException {
+        ApiResponse<FeeStationSystemConf> localVarResp = getFeeStationSystemConfWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get FeeStation System Config
+     * This operation get fee station detail. 
+     * @return ApiResponse&lt;FeeStationSystemConf&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<FeeStationSystemConf> getFeeStationSystemConfWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getFeeStationSystemConfValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<FeeStationSystemConf>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get FeeStation System Config (asynchronously)
+     * This operation get fee station detail. 
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getFeeStationSystemConfAsync(final ApiCallback<FeeStationSystemConf> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getFeeStationSystemConfValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<FeeStationSystemConf>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

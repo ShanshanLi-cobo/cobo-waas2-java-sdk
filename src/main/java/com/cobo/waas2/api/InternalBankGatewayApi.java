@@ -25,17 +25,23 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.cobo.waas2.model.BankDeposit;
 import com.cobo.waas2.model.BankPayout;
 import com.cobo.waas2.model.BankPayoutStatus;
 import com.cobo.waas2.model.BankProvider;
 import com.cobo.waas2.model.BankTransferType;
+import com.cobo.waas2.model.BankVirtualAccount;
+import com.cobo.waas2.model.BankVirtualAccountStatus;
 import com.cobo.waas2.model.CreateBankPayout201Response;
 import com.cobo.waas2.model.CreateBankPayoutRequest;
+import com.cobo.waas2.model.CreateVirtualAccount201Response;
+import com.cobo.waas2.model.CreateVirtualAccountRequest;
 import com.cobo.waas2.model.ErrorResponse;
 import com.cobo.waas2.model.GetBankAccountBalance200ResponseInner;
 import com.cobo.waas2.model.ListBankAwaitingSignaturePayouts200ResponseInner;
 import com.cobo.waas2.model.ListBankReturnedPayouts200Response;
 import com.cobo.waas2.model.ListBankTransactions200Response;
+import com.cobo.waas2.model.ListDeposits200Response;
 import com.cobo.waas2.model.SubmitBankPayoutSignatureRequest;
 
 import java.lang.reflect.Type;
@@ -63,6 +69,124 @@ public class InternalBankGatewayApi {
         this.localVarApiClient = apiClient;
     }
 
+    /**
+     * Build call for bankPayoutCancel
+     * @param payoutId The payout ID. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Successfully retrieved the payout details </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call bankPayoutCancelCall(String payoutId, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/internal/bank_gateway/payouts/{payout_id}/cancel"
+            .replace("{" + "payout_id" + "}", localVarApiClient.escapeString(payoutId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<>();
+        Map<String, String> localVarHeaderParams = new HashMap<>();
+        Map<String, String> localVarCookieParams = new HashMap<>();
+        Map<String, Object> localVarFormParams = new HashMap<>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(null, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call bankPayoutCancelValidateBeforeCall(String payoutId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'payoutId' is set
+        if (payoutId == null) {
+            throw new ApiException("Missing the required parameter 'payoutId' when calling bankPayoutCancel(Async)");
+        }
+
+        return bankPayoutCancelCall(payoutId, _callback);
+
+    }
+
+    /**
+     * Cancel a payout
+     * This operation cancel a payout operation if possible. 
+     * @param payoutId The payout ID. (required)
+     * @return BankPayout
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Successfully retrieved the payout details </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public BankPayout bankPayoutCancel(String payoutId) throws ApiException {
+        ApiResponse<BankPayout> localVarResp = bankPayoutCancelWithHttpInfo(payoutId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Cancel a payout
+     * This operation cancel a payout operation if possible. 
+     * @param payoutId The payout ID. (required)
+     * @return ApiResponse&lt;BankPayout&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Successfully retrieved the payout details </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<BankPayout> bankPayoutCancelWithHttpInfo(String payoutId) throws ApiException {
+        okhttp3.Call localVarCall = bankPayoutCancelValidateBeforeCall(payoutId, null);
+        Type localVarReturnType = new TypeToken<BankPayout>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Cancel a payout (asynchronously)
+     * This operation cancel a payout operation if possible. 
+     * @param payoutId The payout ID. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Successfully retrieved the payout details </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call bankPayoutCancelAsync(String payoutId, final ApiCallback<BankPayout> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = bankPayoutCancelValidateBeforeCall(payoutId, _callback);
+        Type localVarReturnType = new TypeToken<BankPayout>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
     /**
      * Build call for bankPayoutRetry
      * @param payoutId The payout ID. (required)
@@ -291,6 +415,119 @@ public class InternalBankGatewayApi {
 
         okhttp3.Call localVarCall = createBankPayoutValidateBeforeCall(createBankPayoutRequest, _callback);
         Type localVarReturnType = new TypeToken<CreateBankPayout201Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createVirtualAccount
+     * @param createVirtualAccountRequest The request body to create a virtual account (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Create virtual account result </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createVirtualAccountCall(CreateVirtualAccountRequest createVirtualAccountRequest, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = createVirtualAccountRequest;
+
+        // create path and map variables
+        String localVarPath = "/internal/bank_gateway/va";
+
+        List<Pair> localVarQueryParams = new ArrayList<>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<>();
+        Map<String, String> localVarHeaderParams = new HashMap<>();
+        Map<String, String> localVarCookieParams = new HashMap<>();
+        Map<String, Object> localVarFormParams = new HashMap<>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(null, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createVirtualAccountValidateBeforeCall(CreateVirtualAccountRequest createVirtualAccountRequest, final ApiCallback _callback) throws ApiException {
+        return createVirtualAccountCall(createVirtualAccountRequest, _callback);
+
+    }
+
+    /**
+     * Create a virtual account
+     * This operation creates a virtual account. 
+     * @param createVirtualAccountRequest The request body to create a virtual account (optional)
+     * @return CreateVirtualAccount201Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Create virtual account result </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateVirtualAccount201Response createVirtualAccount(CreateVirtualAccountRequest createVirtualAccountRequest) throws ApiException {
+        ApiResponse<CreateVirtualAccount201Response> localVarResp = createVirtualAccountWithHttpInfo(createVirtualAccountRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Create a virtual account
+     * This operation creates a virtual account. 
+     * @param createVirtualAccountRequest The request body to create a virtual account (optional)
+     * @return ApiResponse&lt;CreateVirtualAccount201Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Create virtual account result </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateVirtualAccount201Response> createVirtualAccountWithHttpInfo(CreateVirtualAccountRequest createVirtualAccountRequest) throws ApiException {
+        okhttp3.Call localVarCall = createVirtualAccountValidateBeforeCall(createVirtualAccountRequest, null);
+        Type localVarReturnType = new TypeToken<CreateVirtualAccount201Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Create a virtual account (asynchronously)
+     * This operation creates a virtual account. 
+     * @param createVirtualAccountRequest The request body to create a virtual account (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Create virtual account result </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createVirtualAccountAsync(CreateVirtualAccountRequest createVirtualAccountRequest, final ApiCallback<CreateVirtualAccount201Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createVirtualAccountValidateBeforeCall(createVirtualAccountRequest, _callback);
+        Type localVarReturnType = new TypeToken<CreateVirtualAccount201Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -547,6 +784,300 @@ public class InternalBankGatewayApi {
         return localVarCall;
     }
     /**
+     * Build call for getDepositDetail
+     * @param bankProvider The bank provider. (required)
+     * @param accountNo The account number. (required)
+     * @param transactionId The transaction id. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successfully retrieved the deposit details </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getDepositDetailCall(BankProvider bankProvider, String accountNo, String transactionId, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/internal/bank_gateway/deposits/detail";
+
+        List<Pair> localVarQueryParams = new ArrayList<>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<>();
+        Map<String, String> localVarHeaderParams = new HashMap<>();
+        Map<String, String> localVarCookieParams = new HashMap<>();
+        Map<String, Object> localVarFormParams = new HashMap<>();
+
+        if (bankProvider != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("bank_provider", bankProvider));
+        }
+
+        if (accountNo != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("account_no", accountNo));
+        }
+
+        if (transactionId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("transaction_id", transactionId));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(null, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getDepositDetailValidateBeforeCall(BankProvider bankProvider, String accountNo, String transactionId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'bankProvider' is set
+        if (bankProvider == null) {
+            throw new ApiException("Missing the required parameter 'bankProvider' when calling getDepositDetail(Async)");
+        }
+
+        // verify the required parameter 'accountNo' is set
+        if (accountNo == null) {
+            throw new ApiException("Missing the required parameter 'accountNo' when calling getDepositDetail(Async)");
+        }
+
+        // verify the required parameter 'transactionId' is set
+        if (transactionId == null) {
+            throw new ApiException("Missing the required parameter 'transactionId' when calling getDepositDetail(Async)");
+        }
+
+        return getDepositDetailCall(bankProvider, accountNo, transactionId, _callback);
+
+    }
+
+    /**
+     * Get deposit detail
+     * This operation retrieves detailed information about a specified deposit. 
+     * @param bankProvider The bank provider. (required)
+     * @param accountNo The account number. (required)
+     * @param transactionId The transaction id. (required)
+     * @return BankDeposit
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successfully retrieved the deposit details </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public BankDeposit getDepositDetail(BankProvider bankProvider, String accountNo, String transactionId) throws ApiException {
+        ApiResponse<BankDeposit> localVarResp = getDepositDetailWithHttpInfo(bankProvider, accountNo, transactionId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get deposit detail
+     * This operation retrieves detailed information about a specified deposit. 
+     * @param bankProvider The bank provider. (required)
+     * @param accountNo The account number. (required)
+     * @param transactionId The transaction id. (required)
+     * @return ApiResponse&lt;BankDeposit&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successfully retrieved the deposit details </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<BankDeposit> getDepositDetailWithHttpInfo(BankProvider bankProvider, String accountNo, String transactionId) throws ApiException {
+        okhttp3.Call localVarCall = getDepositDetailValidateBeforeCall(bankProvider, accountNo, transactionId, null);
+        Type localVarReturnType = new TypeToken<BankDeposit>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get deposit detail (asynchronously)
+     * This operation retrieves detailed information about a specified deposit. 
+     * @param bankProvider The bank provider. (required)
+     * @param accountNo The account number. (required)
+     * @param transactionId The transaction id. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successfully retrieved the deposit details </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getDepositDetailAsync(BankProvider bankProvider, String accountNo, String transactionId, final ApiCallback<BankDeposit> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getDepositDetailValidateBeforeCall(bankProvider, accountNo, transactionId, _callback);
+        Type localVarReturnType = new TypeToken<BankDeposit>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getVirtualAccountDetail
+     * @param bankProvider The bank provider. (required)
+     * @param masterAccountNo The account number. (required)
+     * @param accountNo The account number. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successfully retrieved the virtual account details </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getVirtualAccountDetailCall(BankProvider bankProvider, String masterAccountNo, String accountNo, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/internal/bank_gateway/va/detail";
+
+        List<Pair> localVarQueryParams = new ArrayList<>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<>();
+        Map<String, String> localVarHeaderParams = new HashMap<>();
+        Map<String, String> localVarCookieParams = new HashMap<>();
+        Map<String, Object> localVarFormParams = new HashMap<>();
+
+        if (bankProvider != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("bank_provider", bankProvider));
+        }
+
+        if (masterAccountNo != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("master_account_no", masterAccountNo));
+        }
+
+        if (accountNo != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("account_no", accountNo));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(null, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getVirtualAccountDetailValidateBeforeCall(BankProvider bankProvider, String masterAccountNo, String accountNo, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'bankProvider' is set
+        if (bankProvider == null) {
+            throw new ApiException("Missing the required parameter 'bankProvider' when calling getVirtualAccountDetail(Async)");
+        }
+
+        // verify the required parameter 'masterAccountNo' is set
+        if (masterAccountNo == null) {
+            throw new ApiException("Missing the required parameter 'masterAccountNo' when calling getVirtualAccountDetail(Async)");
+        }
+
+        // verify the required parameter 'accountNo' is set
+        if (accountNo == null) {
+            throw new ApiException("Missing the required parameter 'accountNo' when calling getVirtualAccountDetail(Async)");
+        }
+
+        return getVirtualAccountDetailCall(bankProvider, masterAccountNo, accountNo, _callback);
+
+    }
+
+    /**
+     * Get virtual account detail
+     * This operation retrieves detailed information about a specified virtual account. 
+     * @param bankProvider The bank provider. (required)
+     * @param masterAccountNo The account number. (required)
+     * @param accountNo The account number. (required)
+     * @return BankVirtualAccount
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successfully retrieved the virtual account details </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public BankVirtualAccount getVirtualAccountDetail(BankProvider bankProvider, String masterAccountNo, String accountNo) throws ApiException {
+        ApiResponse<BankVirtualAccount> localVarResp = getVirtualAccountDetailWithHttpInfo(bankProvider, masterAccountNo, accountNo);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get virtual account detail
+     * This operation retrieves detailed information about a specified virtual account. 
+     * @param bankProvider The bank provider. (required)
+     * @param masterAccountNo The account number. (required)
+     * @param accountNo The account number. (required)
+     * @return ApiResponse&lt;BankVirtualAccount&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successfully retrieved the virtual account details </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<BankVirtualAccount> getVirtualAccountDetailWithHttpInfo(BankProvider bankProvider, String masterAccountNo, String accountNo) throws ApiException {
+        okhttp3.Call localVarCall = getVirtualAccountDetailValidateBeforeCall(bankProvider, masterAccountNo, accountNo, null);
+        Type localVarReturnType = new TypeToken<BankVirtualAccount>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get virtual account detail (asynchronously)
+     * This operation retrieves detailed information about a specified virtual account. 
+     * @param bankProvider The bank provider. (required)
+     * @param masterAccountNo The account number. (required)
+     * @param accountNo The account number. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successfully retrieved the virtual account details </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getVirtualAccountDetailAsync(BankProvider bankProvider, String masterAccountNo, String accountNo, final ApiCallback<BankVirtualAccount> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getVirtualAccountDetailValidateBeforeCall(bankProvider, masterAccountNo, accountNo, _callback);
+        Type localVarReturnType = new TypeToken<BankVirtualAccount>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for listBankAwaitingSignaturePayouts
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -764,6 +1295,7 @@ public class InternalBankGatewayApi {
     }
     /**
      * Build call for listBankTransactions
+     * @param bankProvider The bank provider. (required)
      * @param accountNo The account number. (required)
      * @param limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (optional, default to 10)
      * @param before This parameter specifies an object ID as a starting point for pagination, retrieving data before the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C.  If you set &#x60;before&#x60; to the ID of Object C (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object A.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned. - If you set it to &#x60;infinity&#x60;, the last page of data is returned.  (optional)
@@ -784,7 +1316,7 @@ public class InternalBankGatewayApi {
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listBankTransactionsCall(String accountNo, Integer limit, String before, String after, String currency, String startTime, String endTime, BankPayoutStatus status, BankTransferType transferType, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listBankTransactionsCall(BankProvider bankProvider, String accountNo, Integer limit, String before, String after, String currency, String startTime, String endTime, BankPayoutStatus status, BankTransferType transferType, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -806,6 +1338,10 @@ public class InternalBankGatewayApi {
 
         if (after != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("after", after));
+        }
+
+        if (bankProvider != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("bank_provider", bankProvider));
         }
 
         if (accountNo != null) {
@@ -852,19 +1388,25 @@ public class InternalBankGatewayApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listBankTransactionsValidateBeforeCall(String accountNo, Integer limit, String before, String after, String currency, String startTime, String endTime, BankPayoutStatus status, BankTransferType transferType, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listBankTransactionsValidateBeforeCall(BankProvider bankProvider, String accountNo, Integer limit, String before, String after, String currency, String startTime, String endTime, BankPayoutStatus status, BankTransferType transferType, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'bankProvider' is set
+        if (bankProvider == null) {
+            throw new ApiException("Missing the required parameter 'bankProvider' when calling listBankTransactions(Async)");
+        }
+
         // verify the required parameter 'accountNo' is set
         if (accountNo == null) {
             throw new ApiException("Missing the required parameter 'accountNo' when calling listBankTransactions(Async)");
         }
 
-        return listBankTransactionsCall(accountNo, limit, before, after, currency, startTime, endTime, status, transferType, _callback);
+        return listBankTransactionsCall(bankProvider, accountNo, limit, before, after, currency, startTime, endTime, status, transferType, _callback);
 
     }
 
     /**
      * Get payouts list
      * This operation retrieves the list of transactions. 
+     * @param bankProvider The bank provider. (required)
      * @param accountNo The account number. (required)
      * @param limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (optional, default to 10)
      * @param before This parameter specifies an object ID as a starting point for pagination, retrieving data before the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C.  If you set &#x60;before&#x60; to the ID of Object C (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object A.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned. - If you set it to &#x60;infinity&#x60;, the last page of data is returned.  (optional)
@@ -884,14 +1426,15 @@ public class InternalBankGatewayApi {
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public ListBankTransactions200Response listBankTransactions(String accountNo, Integer limit, String before, String after, String currency, String startTime, String endTime, BankPayoutStatus status, BankTransferType transferType) throws ApiException {
-        ApiResponse<ListBankTransactions200Response> localVarResp = listBankTransactionsWithHttpInfo(accountNo, limit, before, after, currency, startTime, endTime, status, transferType);
+    public ListBankTransactions200Response listBankTransactions(BankProvider bankProvider, String accountNo, Integer limit, String before, String after, String currency, String startTime, String endTime, BankPayoutStatus status, BankTransferType transferType) throws ApiException {
+        ApiResponse<ListBankTransactions200Response> localVarResp = listBankTransactionsWithHttpInfo(bankProvider, accountNo, limit, before, after, currency, startTime, endTime, status, transferType);
         return localVarResp.getData();
     }
 
     /**
      * Get payouts list
      * This operation retrieves the list of transactions. 
+     * @param bankProvider The bank provider. (required)
      * @param accountNo The account number. (required)
      * @param limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (optional, default to 10)
      * @param before This parameter specifies an object ID as a starting point for pagination, retrieving data before the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C.  If you set &#x60;before&#x60; to the ID of Object C (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object A.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned. - If you set it to &#x60;infinity&#x60;, the last page of data is returned.  (optional)
@@ -911,8 +1454,8 @@ public class InternalBankGatewayApi {
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ListBankTransactions200Response> listBankTransactionsWithHttpInfo(String accountNo, Integer limit, String before, String after, String currency, String startTime, String endTime, BankPayoutStatus status, BankTransferType transferType) throws ApiException {
-        okhttp3.Call localVarCall = listBankTransactionsValidateBeforeCall(accountNo, limit, before, after, currency, startTime, endTime, status, transferType, null);
+    public ApiResponse<ListBankTransactions200Response> listBankTransactionsWithHttpInfo(BankProvider bankProvider, String accountNo, Integer limit, String before, String after, String currency, String startTime, String endTime, BankPayoutStatus status, BankTransferType transferType) throws ApiException {
+        okhttp3.Call localVarCall = listBankTransactionsValidateBeforeCall(bankProvider, accountNo, limit, before, after, currency, startTime, endTime, status, transferType, null);
         Type localVarReturnType = new TypeToken<ListBankTransactions200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -920,6 +1463,7 @@ public class InternalBankGatewayApi {
     /**
      * Get payouts list (asynchronously)
      * This operation retrieves the list of transactions. 
+     * @param bankProvider The bank provider. (required)
      * @param accountNo The account number. (required)
      * @param limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (optional, default to 10)
      * @param before This parameter specifies an object ID as a starting point for pagination, retrieving data before the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C.  If you set &#x60;before&#x60; to the ID of Object C (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object A.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned. - If you set it to &#x60;infinity&#x60;, the last page of data is returned.  (optional)
@@ -940,10 +1484,350 @@ public class InternalBankGatewayApi {
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listBankTransactionsAsync(String accountNo, Integer limit, String before, String after, String currency, String startTime, String endTime, BankPayoutStatus status, BankTransferType transferType, final ApiCallback<ListBankTransactions200Response> _callback) throws ApiException {
+    public okhttp3.Call listBankTransactionsAsync(BankProvider bankProvider, String accountNo, Integer limit, String before, String after, String currency, String startTime, String endTime, BankPayoutStatus status, BankTransferType transferType, final ApiCallback<ListBankTransactions200Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listBankTransactionsValidateBeforeCall(accountNo, limit, before, after, currency, startTime, endTime, status, transferType, _callback);
+        okhttp3.Call localVarCall = listBankTransactionsValidateBeforeCall(bankProvider, accountNo, limit, before, after, currency, startTime, endTime, status, transferType, _callback);
         Type localVarReturnType = new TypeToken<ListBankTransactions200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for listDeposits
+     * @param bankProvider The bank provider. (required)
+     * @param accountNo The account number. (required)
+     * @param limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (optional, default to 10)
+     * @param before This parameter specifies an object ID as a starting point for pagination, retrieving data before the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C.  If you set &#x60;before&#x60; to the ID of Object C (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object A.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned. - If you set it to &#x60;infinity&#x60;, the last page of data is returned.  (optional)
+     * @param after This parameter specifies an object ID as a starting point for pagination, retrieving data after the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C. If you set &#x60;after&#x60; to the ID of Object A (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object C.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned.  (optional)
+     * @param currency The currency. (optional)
+     * @param startTime The start time. (optional)
+     * @param endTime The end time. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successfully retrieved the list of deposits </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listDepositsCall(BankProvider bankProvider, String accountNo, Integer limit, String before, String after, String currency, String startTime, String endTime, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/internal/bank_gateway/deposits";
+
+        List<Pair> localVarQueryParams = new ArrayList<>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<>();
+        Map<String, String> localVarHeaderParams = new HashMap<>();
+        Map<String, String> localVarCookieParams = new HashMap<>();
+        Map<String, Object> localVarFormParams = new HashMap<>();
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (before != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("before", before));
+        }
+
+        if (after != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("after", after));
+        }
+
+        if (bankProvider != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("bank_provider", bankProvider));
+        }
+
+        if (accountNo != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("account_no", accountNo));
+        }
+
+        if (currency != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("currency", currency));
+        }
+
+        if (startTime != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("start_time", startTime));
+        }
+
+        if (endTime != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("end_time", endTime));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(null, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listDepositsValidateBeforeCall(BankProvider bankProvider, String accountNo, Integer limit, String before, String after, String currency, String startTime, String endTime, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'bankProvider' is set
+        if (bankProvider == null) {
+            throw new ApiException("Missing the required parameter 'bankProvider' when calling listDeposits(Async)");
+        }
+
+        // verify the required parameter 'accountNo' is set
+        if (accountNo == null) {
+            throw new ApiException("Missing the required parameter 'accountNo' when calling listDeposits(Async)");
+        }
+
+        return listDepositsCall(bankProvider, accountNo, limit, before, after, currency, startTime, endTime, _callback);
+
+    }
+
+    /**
+     * List deposit
+     * This operation retrieves the list of deposits. 
+     * @param bankProvider The bank provider. (required)
+     * @param accountNo The account number. (required)
+     * @param limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (optional, default to 10)
+     * @param before This parameter specifies an object ID as a starting point for pagination, retrieving data before the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C.  If you set &#x60;before&#x60; to the ID of Object C (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object A.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned. - If you set it to &#x60;infinity&#x60;, the last page of data is returned.  (optional)
+     * @param after This parameter specifies an object ID as a starting point for pagination, retrieving data after the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C. If you set &#x60;after&#x60; to the ID of Object A (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object C.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned.  (optional)
+     * @param currency The currency. (optional)
+     * @param startTime The start time. (optional)
+     * @param endTime The end time. (optional)
+     * @return ListDeposits200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successfully retrieved the list of deposits </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ListDeposits200Response listDeposits(BankProvider bankProvider, String accountNo, Integer limit, String before, String after, String currency, String startTime, String endTime) throws ApiException {
+        ApiResponse<ListDeposits200Response> localVarResp = listDepositsWithHttpInfo(bankProvider, accountNo, limit, before, after, currency, startTime, endTime);
+        return localVarResp.getData();
+    }
+
+    /**
+     * List deposit
+     * This operation retrieves the list of deposits. 
+     * @param bankProvider The bank provider. (required)
+     * @param accountNo The account number. (required)
+     * @param limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (optional, default to 10)
+     * @param before This parameter specifies an object ID as a starting point for pagination, retrieving data before the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C.  If you set &#x60;before&#x60; to the ID of Object C (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object A.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned. - If you set it to &#x60;infinity&#x60;, the last page of data is returned.  (optional)
+     * @param after This parameter specifies an object ID as a starting point for pagination, retrieving data after the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C. If you set &#x60;after&#x60; to the ID of Object A (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object C.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned.  (optional)
+     * @param currency The currency. (optional)
+     * @param startTime The start time. (optional)
+     * @param endTime The end time. (optional)
+     * @return ApiResponse&lt;ListDeposits200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successfully retrieved the list of deposits </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ListDeposits200Response> listDepositsWithHttpInfo(BankProvider bankProvider, String accountNo, Integer limit, String before, String after, String currency, String startTime, String endTime) throws ApiException {
+        okhttp3.Call localVarCall = listDepositsValidateBeforeCall(bankProvider, accountNo, limit, before, after, currency, startTime, endTime, null);
+        Type localVarReturnType = new TypeToken<ListDeposits200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * List deposit (asynchronously)
+     * This operation retrieves the list of deposits. 
+     * @param bankProvider The bank provider. (required)
+     * @param accountNo The account number. (required)
+     * @param limit The maximum number of objects to return. For most operations, the value range is [1, 50]. (optional, default to 10)
+     * @param before This parameter specifies an object ID as a starting point for pagination, retrieving data before the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C.  If you set &#x60;before&#x60; to the ID of Object C (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object A.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned. - If you set it to &#x60;infinity&#x60;, the last page of data is returned.  (optional)
+     * @param after This parameter specifies an object ID as a starting point for pagination, retrieving data after the specified object relative to the current dataset.    Suppose the current data is ordered as Object A, Object B, and Object C. If you set &#x60;after&#x60; to the ID of Object A (&#x60;RqeEoTkgKG5rpzqYzg2Hd3szmPoj2cE7w5jWwShz3C1vyGSAk&#x60;), the response will include Object B and Object C.    **Notes**:   - If you set both &#x60;after&#x60; and &#x60;before&#x60;, an error will occur. - If you leave both &#x60;before&#x60; and &#x60;after&#x60; empty, the first page of data is returned.  (optional)
+     * @param currency The currency. (optional)
+     * @param startTime The start time. (optional)
+     * @param endTime The end time. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successfully retrieved the list of deposits </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listDepositsAsync(BankProvider bankProvider, String accountNo, Integer limit, String before, String after, String currency, String startTime, String endTime, final ApiCallback<ListDeposits200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listDepositsValidateBeforeCall(bankProvider, accountNo, limit, before, after, currency, startTime, endTime, _callback);
+        Type localVarReturnType = new TypeToken<ListDeposits200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for listVirtualAccounts
+     * @param bankProvider The bank provider. (required)
+     * @param masterAccountNo The account number. (required)
+     * @param currency The currency. (optional)
+     * @param vaStatus The status of the virtual account. (optional)
+     * @param accountNos A list of account numbers, separated by comma. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successfully retrieved the list of virtual account </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listVirtualAccountsCall(BankProvider bankProvider, String masterAccountNo, String currency, BankVirtualAccountStatus vaStatus, String accountNos, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/internal/bank_gateway/va";
+
+        List<Pair> localVarQueryParams = new ArrayList<>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<>();
+        Map<String, String> localVarHeaderParams = new HashMap<>();
+        Map<String, String> localVarCookieParams = new HashMap<>();
+        Map<String, Object> localVarFormParams = new HashMap<>();
+
+        if (bankProvider != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("bank_provider", bankProvider));
+        }
+
+        if (masterAccountNo != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("master_account_no", masterAccountNo));
+        }
+
+        if (currency != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("currency", currency));
+        }
+
+        if (vaStatus != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("va_status", vaStatus));
+        }
+
+        if (accountNos != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("account_nos", accountNos));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(null, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listVirtualAccountsValidateBeforeCall(BankProvider bankProvider, String masterAccountNo, String currency, BankVirtualAccountStatus vaStatus, String accountNos, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'bankProvider' is set
+        if (bankProvider == null) {
+            throw new ApiException("Missing the required parameter 'bankProvider' when calling listVirtualAccounts(Async)");
+        }
+
+        // verify the required parameter 'masterAccountNo' is set
+        if (masterAccountNo == null) {
+            throw new ApiException("Missing the required parameter 'masterAccountNo' when calling listVirtualAccounts(Async)");
+        }
+
+        return listVirtualAccountsCall(bankProvider, masterAccountNo, currency, vaStatus, accountNos, _callback);
+
+    }
+
+    /**
+     * List virtual accounts
+     * This operation retrieves the list of virtual accounts. 
+     * @param bankProvider The bank provider. (required)
+     * @param masterAccountNo The account number. (required)
+     * @param currency The currency. (optional)
+     * @param vaStatus The status of the virtual account. (optional)
+     * @param accountNos A list of account numbers, separated by comma. (optional)
+     * @return List&lt;BankVirtualAccount&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successfully retrieved the list of virtual account </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public List<BankVirtualAccount> listVirtualAccounts(BankProvider bankProvider, String masterAccountNo, String currency, BankVirtualAccountStatus vaStatus, String accountNos) throws ApiException {
+        ApiResponse<List<BankVirtualAccount>> localVarResp = listVirtualAccountsWithHttpInfo(bankProvider, masterAccountNo, currency, vaStatus, accountNos);
+        return localVarResp.getData();
+    }
+
+    /**
+     * List virtual accounts
+     * This operation retrieves the list of virtual accounts. 
+     * @param bankProvider The bank provider. (required)
+     * @param masterAccountNo The account number. (required)
+     * @param currency The currency. (optional)
+     * @param vaStatus The status of the virtual account. (optional)
+     * @param accountNos A list of account numbers, separated by comma. (optional)
+     * @return ApiResponse&lt;List&lt;BankVirtualAccount&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successfully retrieved the list of virtual account </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<List<BankVirtualAccount>> listVirtualAccountsWithHttpInfo(BankProvider bankProvider, String masterAccountNo, String currency, BankVirtualAccountStatus vaStatus, String accountNos) throws ApiException {
+        okhttp3.Call localVarCall = listVirtualAccountsValidateBeforeCall(bankProvider, masterAccountNo, currency, vaStatus, accountNos, null);
+        Type localVarReturnType = new TypeToken<List<BankVirtualAccount>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * List virtual accounts (asynchronously)
+     * This operation retrieves the list of virtual accounts. 
+     * @param bankProvider The bank provider. (required)
+     * @param masterAccountNo The account number. (required)
+     * @param currency The currency. (optional)
+     * @param vaStatus The status of the virtual account. (optional)
+     * @param accountNos A list of account numbers, separated by comma. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successfully retrieved the list of virtual account </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listVirtualAccountsAsync(BankProvider bankProvider, String masterAccountNo, String currency, BankVirtualAccountStatus vaStatus, String accountNos, final ApiCallback<List<BankVirtualAccount>> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listVirtualAccountsValidateBeforeCall(bankProvider, masterAccountNo, currency, vaStatus, accountNos, _callback);
+        Type localVarReturnType = new TypeToken<List<BankVirtualAccount>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

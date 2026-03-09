@@ -24,7 +24,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -82,14 +81,6 @@ public class CreatePayoutRequest {
   @SerializedName(SERIALIZED_NAME_REMARK)
   private String remark;
 
-  public static final String SERIALIZED_NAME_BANK_ACCOUNT_ID = "bank_account_id";
-  @SerializedName(SERIALIZED_NAME_BANK_ACCOUNT_ID)
-  private UUID bankAccountId;
-
-  public static final String SERIALIZED_NAME_CURRENCY = "currency";
-  @SerializedName(SERIALIZED_NAME_CURRENCY)
-  private String currency;
-
   public CreatePayoutRequest() {
   }
 
@@ -121,7 +112,7 @@ public class CreatePayoutRequest {
    * required
    * @return sourceAccount
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getSourceAccount() {
     return sourceAccount;
   }
@@ -186,7 +177,7 @@ public class CreatePayoutRequest {
    * Get recipientInfo
    * @return recipientInfo
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public PaymentPayoutRecipientInfo getRecipientInfo() {
     return recipientInfo;
   }
@@ -212,44 +203,6 @@ public class CreatePayoutRequest {
 
   public void setRemark(String remark) {
     this.remark = remark;
-  }
-
-
-  public CreatePayoutRequest bankAccountId(UUID bankAccountId) {
-    this.bankAccountId = bankAccountId;
-    return this;
-  }
-
-   /**
-   * ｜ Only used in OffRamp payout channel. The ID of the bank account where the settled funds will be deposited. deprecated
-   * @return bankAccountId
-  **/
-  @javax.annotation.Nullable
-  public UUID getBankAccountId() {
-    return bankAccountId;
-  }
-
-  public void setBankAccountId(UUID bankAccountId) {
-    this.bankAccountId = bankAccountId;
-  }
-
-
-  public CreatePayoutRequest currency(String currency) {
-    this.currency = currency;
-    return this;
-  }
-
-   /**
-   * The fiat currency for the create payouts. deprecated
-   * @return currency
-  **/
-  @javax.annotation.Nullable
-  public String getCurrency() {
-    return currency;
-  }
-
-  public void setCurrency(String currency) {
-    this.currency = currency;
   }
 
   /**
@@ -312,15 +265,13 @@ public class CreatePayoutRequest {
         Objects.equals(this.payoutChannel, createPayoutRequest.payoutChannel) &&
         Objects.equals(this.payoutParams, createPayoutRequest.payoutParams) &&
         Objects.equals(this.recipientInfo, createPayoutRequest.recipientInfo) &&
-        Objects.equals(this.remark, createPayoutRequest.remark) &&
-        Objects.equals(this.bankAccountId, createPayoutRequest.bankAccountId) &&
-        Objects.equals(this.currency, createPayoutRequest.currency)&&
+        Objects.equals(this.remark, createPayoutRequest.remark)&&
         Objects.equals(this.additionalProperties, createPayoutRequest.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(requestId, sourceAccount, payoutChannel, payoutParams, recipientInfo, remark, bankAccountId, currency, additionalProperties);
+    return Objects.hash(requestId, sourceAccount, payoutChannel, payoutParams, recipientInfo, remark, additionalProperties);
   }
 
   @Override
@@ -333,8 +284,6 @@ public class CreatePayoutRequest {
     sb.append("    payoutParams: ").append(toIndentedString(payoutParams)).append("\n");
     sb.append("    recipientInfo: ").append(toIndentedString(recipientInfo)).append("\n");
     sb.append("    remark: ").append(toIndentedString(remark)).append("\n");
-    sb.append("    bankAccountId: ").append(toIndentedString(bankAccountId)).append("\n");
-    sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -364,14 +313,14 @@ public class CreatePayoutRequest {
     openapiFields.add("payout_params");
     openapiFields.add("recipient_info");
     openapiFields.add("remark");
-    openapiFields.add("bank_account_id");
-    openapiFields.add("currency");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("request_id");
+    openapiRequiredFields.add("source_account");
     openapiRequiredFields.add("payout_channel");
     openapiRequiredFields.add("payout_params");
+    openapiRequiredFields.add("recipient_info");
   }
 
  /**
@@ -397,7 +346,7 @@ public class CreatePayoutRequest {
       if (!jsonObj.get("request_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `request_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("request_id").toString()));
       }
-      if ((jsonObj.get("source_account") != null && !jsonObj.get("source_account").isJsonNull()) && !jsonObj.get("source_account").isJsonPrimitive()) {
+      if (!jsonObj.get("source_account").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `source_account` to be a primitive type in the JSON string but got `%s`", jsonObj.get("source_account").toString()));
       }
       // validate the required field `payout_channel`
@@ -412,18 +361,10 @@ public class CreatePayoutRequest {
       for (int i = 0; i < jsonArraypayoutParams.size(); i++) {
         PaymentPayoutParam.validateJsonElement(jsonArraypayoutParams.get(i));
       };
-      // validate the optional field `recipient_info`
-      if (jsonObj.get("recipient_info") != null && !jsonObj.get("recipient_info").isJsonNull()) {
-        PaymentPayoutRecipientInfo.validateJsonElement(jsonObj.get("recipient_info"));
-      }
+      // validate the required field `recipient_info`
+      PaymentPayoutRecipientInfo.validateJsonElement(jsonObj.get("recipient_info"));
       if ((jsonObj.get("remark") != null && !jsonObj.get("remark").isJsonNull()) && !jsonObj.get("remark").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `remark` to be a primitive type in the JSON string but got `%s`", jsonObj.get("remark").toString()));
-      }
-      if ((jsonObj.get("bank_account_id") != null && !jsonObj.get("bank_account_id").isJsonNull()) && !jsonObj.get("bank_account_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `bank_account_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("bank_account_id").toString()));
-      }
-      if ((jsonObj.get("currency") != null && !jsonObj.get("currency").isJsonNull()) && !jsonObj.get("currency").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currency").toString()));
       }
   }
 

@@ -95,7 +95,7 @@ public class IntermediaryBankInfo {
    * The address of the intermediary bank.
    * @return bankAddress
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getBankAddress() {
     return bankAddress;
   }
@@ -226,7 +226,6 @@ public class IntermediaryBankInfo {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("bank_name");
-    openapiRequiredFields.add("bank_address");
     openapiRequiredFields.add("bank_swift_code");
   }
 
@@ -253,7 +252,7 @@ public class IntermediaryBankInfo {
       if (!jsonObj.get("bank_name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `bank_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("bank_name").toString()));
       }
-      if (!jsonObj.get("bank_address").isJsonPrimitive()) {
+      if ((jsonObj.get("bank_address") != null && !jsonObj.get("bank_address").isJsonNull()) && !jsonObj.get("bank_address").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `bank_address` to be a primitive type in the JSON string but got `%s`", jsonObj.get("bank_address").toString()));
       }
       if (!jsonObj.get("bank_swift_code").isJsonPrimitive()) {

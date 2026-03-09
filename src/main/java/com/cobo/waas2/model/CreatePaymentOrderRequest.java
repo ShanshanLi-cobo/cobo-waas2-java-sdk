@@ -86,7 +86,7 @@ public class CreatePaymentOrderRequest {
 
   public static final String SERIALIZED_NAME_EXPIRED_IN = "expired_in";
   @SerializedName(SERIALIZED_NAME_EXPIRED_IN)
-  private Integer expiredIn;
+  private Integer expiredIn = 1800;
 
   public static final String SERIALIZED_NAME_AMOUNT_TOLERANCE = "amount_tolerance";
   @SerializedName(SERIALIZED_NAME_AMOUNT_TOLERANCE)
@@ -273,7 +273,7 @@ public class CreatePaymentOrderRequest {
   }
 
    /**
-   * The pay-in order will expire after approximately a certain number of seconds: - The order status becomes final and cannot be changed - The &#x60;received_token_amount&#x60; field will no longer be updated - Funds received after expiration will be categorized as late payments and can only be settled from the developer balance. - A late payment will trigger a &#x60;transactionLate&#x60; webhook event. 
+   * The number of seconds until the pay-in order expires, counted from when the request is sent. For example, if set to &#x60;1800&#x60;, the order will expire in 30 minutes. Must be greater than zero and cannot exceed 3 hours (10800 seconds). After expiration:  - The order status becomes final and cannot be changed - The &#x60;received_token_amount&#x60; field will no longer be updated - Funds received after expiration will be categorized as late payments and can only be settled from the developer balance. - A late payment will trigger a &#x60;transactionLate&#x60; webhook event. 
    * @return expiredIn
   **/
   @javax.annotation.Nullable

@@ -22,6 +22,8 @@
 |**bankAccountStatus** | **BankAccountStatus** |  |  |
 |**createdTimestamp** | **Integer** | The created time of the bank account, represented as a UNIX timestamp in seconds. |  [optional] |
 |**updatedTimestamp** | **Integer** | The updated time of the bank account, represented as a UNIX timestamp in seconds. |  [optional] |
+|**country** | **String** | Beneficiary&#39;s country, in ISO 3166-1 alpha-3 format. |  [optional] |
+|**city** | **String** | Beneficiary&#39;s city. |  [optional] |
 
 
 

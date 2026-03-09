@@ -9,7 +9,7 @@
 
 * `VALIDATING` (value: `"Validating"`)
 
-* `TRANSFERING` (value: `"Transfering"`)
+* `TRANSFERRING` (value: `"Transferring"`)
 
 * `COMPLETED` (value: `"Completed"`)
 

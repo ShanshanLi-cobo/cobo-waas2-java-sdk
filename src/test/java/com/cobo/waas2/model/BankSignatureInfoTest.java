@@ -101,4 +101,12 @@ public class BankSignatureInfoTest {
         // TODO: test cryptoAmount
     }
 
+    /**
+     * Test the property 'isVaTransfer'
+     */
+    @Test
+    public void isVaTransferTest() {
+        // TODO: test isVaTransfer
+    }
+
 }

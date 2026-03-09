@@ -124,4 +124,20 @@ public class CreateDestinationBankAccountTest {
         // TODO: test intermediaryBankInfo
     }
 
+    /**
+     * Test the property 'country'
+     */
+    @Test
+    public void countryTest() {
+        // TODO: test country
+    }
+
+    /**
+     * Test the property 'city'
+     */
+    @Test
+    public void cityTest() {
+        // TODO: test city
+    }
+
 }

@@ -73,6 +73,14 @@ public class BankPayoutTest {
     }
 
     /**
+     * Test the property 'transactionId'
+     */
+    @Test
+    public void transactionIdTest() {
+        // TODO: test transactionId
+    }
+
+    /**
      * Test the property 'transactionCurrency'
      */
     @Test

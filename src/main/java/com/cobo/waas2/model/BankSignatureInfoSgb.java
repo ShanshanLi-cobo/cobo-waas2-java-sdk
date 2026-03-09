@@ -85,6 +85,10 @@ public class BankSignatureInfoSgb {
   @SerializedName(SERIALIZED_NAME_CRYPTO_AMOUNT)
   private String cryptoAmount;
 
+  public static final String SERIALIZED_NAME_IS_VA_TRANSFER = "is_va_transfer";
+  @SerializedName(SERIALIZED_NAME_IS_VA_TRANSFER)
+  private Boolean isVaTransfer;
+
   public BankSignatureInfoSgb() {
   }
 
@@ -230,13 +234,32 @@ public class BankSignatureInfoSgb {
    * The amount of the cryptocurrency.
    * @return cryptoAmount
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getCryptoAmount() {
     return cryptoAmount;
   }
 
   public void setCryptoAmount(String cryptoAmount) {
     this.cryptoAmount = cryptoAmount;
+  }
+
+
+  public BankSignatureInfoSgb isVaTransfer(Boolean isVaTransfer) {
+    this.isVaTransfer = isVaTransfer;
+    return this;
+  }
+
+   /**
+   * Whether the payout is transfer between virtual accounts
+   * @return isVaTransfer
+  **/
+  @javax.annotation.Nullable
+  public Boolean getIsVaTransfer() {
+    return isVaTransfer;
+  }
+
+  public void setIsVaTransfer(Boolean isVaTransfer) {
+    this.isVaTransfer = isVaTransfer;
   }
 
   /**
@@ -301,13 +324,14 @@ public class BankSignatureInfoSgb {
         Objects.equals(this.bodyString, bankSignatureInfoSgb.bodyString) &&
         Objects.equals(this.orgId, bankSignatureInfoSgb.orgId) &&
         Objects.equals(this.orgName, bankSignatureInfoSgb.orgName) &&
-        Objects.equals(this.cryptoAmount, bankSignatureInfoSgb.cryptoAmount)&&
+        Objects.equals(this.cryptoAmount, bankSignatureInfoSgb.cryptoAmount) &&
+        Objects.equals(this.isVaTransfer, bankSignatureInfoSgb.isVaTransfer)&&
         Objects.equals(this.additionalProperties, bankSignatureInfoSgb.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(bankProvider, method, urlPath, queryString, bodyString, orgId, orgName, cryptoAmount, additionalProperties);
+    return Objects.hash(bankProvider, method, urlPath, queryString, bodyString, orgId, orgName, cryptoAmount, isVaTransfer, additionalProperties);
   }
 
   @Override
@@ -322,6 +346,7 @@ public class BankSignatureInfoSgb {
     sb.append("    orgId: ").append(toIndentedString(orgId)).append("\n");
     sb.append("    orgName: ").append(toIndentedString(orgName)).append("\n");
     sb.append("    cryptoAmount: ").append(toIndentedString(cryptoAmount)).append("\n");
+    sb.append("    isVaTransfer: ").append(toIndentedString(isVaTransfer)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -353,6 +378,7 @@ public class BankSignatureInfoSgb {
     openapiFields.add("org_id");
     openapiFields.add("org_name");
     openapiFields.add("crypto_amount");
+    openapiFields.add("is_va_transfer");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -361,7 +387,6 @@ public class BankSignatureInfoSgb {
     openapiRequiredFields.add("url_path");
     openapiRequiredFields.add("org_id");
     openapiRequiredFields.add("org_name");
-    openapiRequiredFields.add("crypto_amount");
   }
 
  /**
@@ -401,7 +426,7 @@ public class BankSignatureInfoSgb {
       if (!jsonObj.get("org_name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `org_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("org_name").toString()));
       }
-      if (!jsonObj.get("crypto_amount").isJsonPrimitive()) {
+      if ((jsonObj.get("crypto_amount") != null && !jsonObj.get("crypto_amount").isJsonNull()) && !jsonObj.get("crypto_amount").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `crypto_amount` to be a primitive type in the JSON string but got `%s`", jsonObj.get("crypto_amount").toString()));
       }
   }

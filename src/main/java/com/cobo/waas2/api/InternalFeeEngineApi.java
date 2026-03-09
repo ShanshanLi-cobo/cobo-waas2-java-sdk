@@ -27,6 +27,8 @@ import java.io.IOException;
 
 import com.cobo.waas2.model.CommissionFeeDetail;
 import com.cobo.waas2.model.ErrorResponse;
+import com.cobo.waas2.model.FeeEngineDetail;
+import com.cobo.waas2.model.FeeEngineUpdate;
 import com.cobo.waas2.model.TransactionRequestTypeParams;
 
 import java.lang.reflect.Type;
@@ -236,6 +238,249 @@ public class InternalFeeEngineApi {
 
         okhttp3.Call localVarCall = getCommissionFeeValidateBeforeCall(requestId, businessTypeId, amount, chainId, tokenId, walletId, walletType, requestType, txCount, _callback);
         Type localVarReturnType = new TypeToken<List<CommissionFeeDetail>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getFeeEngine
+     * @param businessType Fee engine business type (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful retrieval of fee engine </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Requested resources not found. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getFeeEngineCall(Integer businessType, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/internal/fee_engine";
+
+        List<Pair> localVarQueryParams = new ArrayList<>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<>();
+        Map<String, String> localVarHeaderParams = new HashMap<>();
+        Map<String, String> localVarCookieParams = new HashMap<>();
+        Map<String, Object> localVarFormParams = new HashMap<>();
+
+        if (businessType != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("business_type", businessType));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(null, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getFeeEngineValidateBeforeCall(Integer businessType, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'businessType' is set
+        if (businessType == null) {
+            throw new ApiException("Missing the required parameter 'businessType' when calling getFeeEngine(Async)");
+        }
+
+        return getFeeEngineCall(businessType, _callback);
+
+    }
+
+    /**
+     * Get FeeEngine
+     * Get fee engine configuration by org_id and business_type. org_id and business_type uniquely identify a fee engine. 
+     * @param businessType Fee engine business type (required)
+     * @return FeeEngineDetail
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful retrieval of fee engine </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Requested resources not found. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public FeeEngineDetail getFeeEngine(Integer businessType) throws ApiException {
+        ApiResponse<FeeEngineDetail> localVarResp = getFeeEngineWithHttpInfo(businessType);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get FeeEngine
+     * Get fee engine configuration by org_id and business_type. org_id and business_type uniquely identify a fee engine. 
+     * @param businessType Fee engine business type (required)
+     * @return ApiResponse&lt;FeeEngineDetail&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful retrieval of fee engine </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Requested resources not found. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<FeeEngineDetail> getFeeEngineWithHttpInfo(Integer businessType) throws ApiException {
+        okhttp3.Call localVarCall = getFeeEngineValidateBeforeCall(businessType, null);
+        Type localVarReturnType = new TypeToken<FeeEngineDetail>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get FeeEngine (asynchronously)
+     * Get fee engine configuration by org_id and business_type. org_id and business_type uniquely identify a fee engine. 
+     * @param businessType Fee engine business type (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful retrieval of fee engine </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Requested resources not found. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getFeeEngineAsync(Integer businessType, final ApiCallback<FeeEngineDetail> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getFeeEngineValidateBeforeCall(businessType, _callback);
+        Type localVarReturnType = new TypeToken<FeeEngineDetail>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updateFeeEngine
+     * @param feeEngineUpdate Request body to update a fee engine (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Successful retrieval of fee engine </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateFeeEngineCall(FeeEngineUpdate feeEngineUpdate, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = feeEngineUpdate;
+
+        // create path and map variables
+        String localVarPath = "/internal/fee_engine/update";
+
+        List<Pair> localVarQueryParams = new ArrayList<>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<>();
+        Map<String, String> localVarHeaderParams = new HashMap<>();
+        Map<String, String> localVarCookieParams = new HashMap<>();
+        Map<String, Object> localVarFormParams = new HashMap<>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(null, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateFeeEngineValidateBeforeCall(FeeEngineUpdate feeEngineUpdate, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'feeEngineUpdate' is set
+        if (feeEngineUpdate == null) {
+            throw new ApiException("Missing the required parameter 'feeEngineUpdate' when calling updateFeeEngine(Async)");
+        }
+
+        return updateFeeEngineCall(feeEngineUpdate, _callback);
+
+    }
+
+    /**
+     * Update FeeEngine
+     * Update fee engine configuration. 
+     * @param feeEngineUpdate Request body to update a fee engine (required)
+     * @return FeeEngineDetail
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Successful retrieval of fee engine </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public FeeEngineDetail updateFeeEngine(FeeEngineUpdate feeEngineUpdate) throws ApiException {
+        ApiResponse<FeeEngineDetail> localVarResp = updateFeeEngineWithHttpInfo(feeEngineUpdate);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Update FeeEngine
+     * Update fee engine configuration. 
+     * @param feeEngineUpdate Request body to update a fee engine (required)
+     * @return ApiResponse&lt;FeeEngineDetail&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Successful retrieval of fee engine </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<FeeEngineDetail> updateFeeEngineWithHttpInfo(FeeEngineUpdate feeEngineUpdate) throws ApiException {
+        okhttp3.Call localVarCall = updateFeeEngineValidateBeforeCall(feeEngineUpdate, null);
+        Type localVarReturnType = new TypeToken<FeeEngineDetail>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Update FeeEngine (asynchronously)
+     * Update fee engine configuration. 
+     * @param feeEngineUpdate Request body to update a fee engine (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Successful retrieval of fee engine </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateFeeEngineAsync(FeeEngineUpdate feeEngineUpdate, final ApiCallback<FeeEngineDetail> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateFeeEngineValidateBeforeCall(feeEngineUpdate, _callback);
+        Type localVarReturnType = new TypeToken<FeeEngineDetail>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

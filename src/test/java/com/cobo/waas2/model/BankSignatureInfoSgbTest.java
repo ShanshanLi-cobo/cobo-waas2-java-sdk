@@ -100,4 +100,12 @@ public class BankSignatureInfoSgbTest {
         // TODO: test cryptoAmount
     }
 
+    /**
+     * Test the property 'isVaTransfer'
+     */
+    @Test
+    public void isVaTransferTest() {
+        // TODO: test isVaTransfer
+    }
+
 }

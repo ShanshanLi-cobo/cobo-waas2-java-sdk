@@ -9,7 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**merchantId** | **String** | The merchant ID. |  |
 |**tokenId** | **String** | The ID of the cryptocurrency. |  |
-|**acquiringType** | **AcquiringType** |  |  |
+|**acquiringType** | **AcquiringType** |  |  [optional] |
 |**totalReceivedAmount** | **String** | The merchant total received amount. |  [optional] |
 |**settledAmount** | **String** | The merchant settled amount. |  [optional] |
 |**payoutAmount** | **String** | The merchant payout amount. |  [optional] |

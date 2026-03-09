@@ -11,6 +11,7 @@
 |**status** | **BankPayoutStatus** |  |  |
 |**requestId** | **String** | The request ID of the payout. |  |
 |**bankProvider** | **BankProvider** |  |  |
+|**transactionId** | **String** | The transaction reference id at bank side. |  [optional] |
 |**transactionCurrency** | **String** | The currency of the transaction. |  |
 |**transactionAmount** | **String** | The amount of the transaction. |  |
 |**feeCurrency** | **String** | The currency of the fee. |  [optional] |

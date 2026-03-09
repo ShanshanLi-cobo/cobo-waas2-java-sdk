@@ -76,7 +76,7 @@
 |**receivedTokenAmount** | **String** | The total cryptocurrency amount received for this order. Updates until the expiration time. Precision matches the token standard (e.g., 6 decimals for USDT). |  |
 |**expiredAt** | **Integer** | The expiration time of the pay-in order, represented as a UNIX timestamp in seconds. |  [optional] |
 |**transactions** | [**List&lt;PaymentTransaction&gt;**](PaymentTransaction.md) | An array of payout transactions. |  [optional] |
-|**currency** | **String** | The fiat currency for the payout. deprecated |  [optional] |
+|**currency** | **String** | The fiat currency for the settlement request. |  [optional] |
 |**orderAmount** | **String** | The base amount of the order in fiat currency, excluding the developer fee (specified in &#x60;fee_amount&#x60;). |  [optional] |
 |**settlementStatus** | **SettleStatus** |  |  [optional] |
 |**refundId** | **String** | The refund order ID. |  |
@@ -120,7 +120,6 @@
 |**actualPayoutAmount** | **String** | In crypto bridge, the actual amount of the recipient_info token in the payout. In offramp, the actual amount of the recipient_info currency in the payout.  |  [optional] |
 |**commissionFees** | [**List&lt;CommissionFee&gt;**](CommissionFee.md) | commission fees |  [optional] |
 |**remark** | **String** | The remark for the create payouts. |  [optional] |
-|**payoutItemDetails** | [**List&lt;PaymentPayoutItemDetail&gt;**](PaymentPayoutItemDetail.md) | deprecated |  [optional] |
 |**bulkSendId** | **String** | The bulk send ID. |  |
 |**executionMode** | **PaymentBulkSendExecutionMode** |  |  |
 |**dispositionType** | **DispositionType** |  |  |

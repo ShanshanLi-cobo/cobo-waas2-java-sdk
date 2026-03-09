@@ -68,6 +68,10 @@ public class Balance {
   @SerializedName(SERIALIZED_NAME_LOCKED)
   private String locked = "0";
 
+  public static final String SERIALIZED_NAME_FROZEN = "frozen";
+  @SerializedName(SERIALIZED_NAME_FROZEN)
+  private String frozen = "0";
+
   public Balance() {
   }
 
@@ -146,6 +150,25 @@ public class Balance {
     this.locked = locked;
   }
 
+
+  public Balance frozen(String frozen) {
+    this.frozen = frozen;
+    return this;
+  }
+
+   /**
+   * Amount frozen due to compliance inspection. To learn more, see [Balances and transaction amounts for MPC Wallets](https://www.cobo.com/developers/v2/guides/mpc-wallets/balance-amounts) for more details.
+   * @return frozen
+  **/
+  @javax.annotation.Nullable
+  public String getFrozen() {
+    return frozen;
+  }
+
+  public void setFrozen(String frozen) {
+    this.frozen = frozen;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -204,13 +227,14 @@ public class Balance {
     return Objects.equals(this.total, balance.total) &&
         Objects.equals(this.available, balance.available) &&
         Objects.equals(this.pending, balance.pending) &&
-        Objects.equals(this.locked, balance.locked)&&
+        Objects.equals(this.locked, balance.locked) &&
+        Objects.equals(this.frozen, balance.frozen)&&
         Objects.equals(this.additionalProperties, balance.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(total, available, pending, locked, additionalProperties);
+    return Objects.hash(total, available, pending, locked, frozen, additionalProperties);
   }
 
   @Override
@@ -221,6 +245,7 @@ public class Balance {
     sb.append("    available: ").append(toIndentedString(available)).append("\n");
     sb.append("    pending: ").append(toIndentedString(pending)).append("\n");
     sb.append("    locked: ").append(toIndentedString(locked)).append("\n");
+    sb.append("    frozen: ").append(toIndentedString(frozen)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -248,6 +273,7 @@ public class Balance {
     openapiFields.add("available");
     openapiFields.add("pending");
     openapiFields.add("locked");
+    openapiFields.add("frozen");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -286,6 +312,9 @@ public class Balance {
       }
       if ((jsonObj.get("locked") != null && !jsonObj.get("locked").isJsonNull()) && !jsonObj.get("locked").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `locked` to be a primitive type in the JSON string but got `%s`", jsonObj.get("locked").toString()));
+      }
+      if ((jsonObj.get("frozen") != null && !jsonObj.get("frozen").isJsonNull()) && !jsonObj.get("frozen").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `frozen` to be a primitive type in the JSON string but got `%s`", jsonObj.get("frozen").toString()));
       }
   }
 

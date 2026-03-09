@@ -5,6 +5,8 @@ All URIs are relative to *https://api.dev.cobo.com/v2*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**getCommissionFee**](InternalFeeEngineApi.md#getCommissionFee) | **GET** /internal/fee_engine/commission_fee | Get commission fee |
+| [**getFeeEngine**](InternalFeeEngineApi.md#getFeeEngine) | **GET** /internal/fee_engine | Get FeeEngine |
+| [**updateFeeEngine**](InternalFeeEngineApi.md#updateFeeEngine) | **POST** /internal/fee_engine/update | Update FeeEngine |
 
 
 <a id="getCommissionFee"></a>
@@ -88,6 +90,143 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The request was successful. |  -  |
+| **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **5XX** | Internal server error. |  -  |
+
+<a id="getFeeEngine"></a>
+# **getFeeEngine**
+> FeeEngineDetail getFeeEngine(businessType)
+
+Get FeeEngine
+
+Get fee engine configuration by org_id and business_type. org_id and business_type uniquely identify a fee engine. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.InternalFeeEngineApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    InternalFeeEngineApi apiInstance = new InternalFeeEngineApi();
+    Integer businessType = 56;
+    try {
+      FeeEngineDetail result = apiInstance.getFeeEngine(businessType);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling InternalFeeEngineApi#getFeeEngine");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **businessType** | **Integer**| Fee engine business type | |
+
+### Return type
+
+[**FeeEngineDetail**](FeeEngineDetail.md)
+
+### Authorization
+
+[CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successful retrieval of fee engine |  -  |
+| **404** | Requested resources not found. |  -  |
+| **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
+| **5XX** | Internal server error. |  -  |
+
+<a id="updateFeeEngine"></a>
+# **updateFeeEngine**
+> FeeEngineDetail updateFeeEngine(feeEngineUpdate)
+
+Update FeeEngine
+
+Update fee engine configuration. 
+
+### Example
+```java
+// Import classes:
+import com.cobo.waas2.ApiClient;
+import com.cobo.waas2.ApiException;
+import com.cobo.waas2.Configuration;
+import com.cobo.waas2.model.*;
+import com.cobo.waas2.Env;
+import com.cobo.waas2.api.InternalFeeEngineApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // Select the development environment. To use the production environment, replace `Env.DEV` with `Env.PROD
+    defaultClient.setEnv(Env.DEV);
+
+    // Replace `<YOUR_PRIVATE_KEY>` with your private key
+    defaultClient.setPrivKey("<YOUR_PRIVATE_KEY>");
+    InternalFeeEngineApi apiInstance = new InternalFeeEngineApi();
+    FeeEngineUpdate feeEngineUpdate = new FeeEngineUpdate();
+    try {
+      FeeEngineDetail result = apiInstance.updateFeeEngine(feeEngineUpdate);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling InternalFeeEngineApi#updateFeeEngine");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **feeEngineUpdate** | [**FeeEngineUpdate**](FeeEngineUpdate.md)| Request body to update a fee engine | |
+
+### Return type
+
+[**FeeEngineDetail**](FeeEngineDetail.md)
+
+### Authorization
+
+[CoboAuth](../README.md#CoboAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Successful retrieval of fee engine |  -  |
 | **4XX** | Bad request. Your request contains malformed syntax or invalid parameters. |  -  |
 | **5XX** | Internal server error. |  -  |
 

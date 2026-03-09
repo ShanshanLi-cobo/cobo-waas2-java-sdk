@@ -54,9 +54,9 @@ import com.cobo.waas2.JSON;
     comments = "Generator version: 7.6.0"
 )
 public class PaymentBulkSendItem {
-  public static final String SERIALIZED_NAME_PAYOUT_ITEM_ID = "payout_item_id";
-  @SerializedName(SERIALIZED_NAME_PAYOUT_ITEM_ID)
-  private String payoutItemId;
+  public static final String SERIALIZED_NAME_BULK_SEND_ITEM_ID = "bulk_send_item_id";
+  @SerializedName(SERIALIZED_NAME_BULK_SEND_ITEM_ID)
+  private String bulkSendItemId;
 
   public static final String SERIALIZED_NAME_TOKEN_ID = "token_id";
   @SerializedName(SERIALIZED_NAME_TOKEN_ID)
@@ -85,22 +85,22 @@ public class PaymentBulkSendItem {
   public PaymentBulkSendItem() {
   }
 
-  public PaymentBulkSendItem payoutItemId(String payoutItemId) {
-    this.payoutItemId = payoutItemId;
+  public PaymentBulkSendItem bulkSendItemId(String bulkSendItemId) {
+    this.bulkSendItemId = bulkSendItemId;
     return this;
   }
 
    /**
    * The payout item ID.
-   * @return payoutItemId
+   * @return bulkSendItemId
   **/
   @javax.annotation.Nonnull
-  public String getPayoutItemId() {
-    return payoutItemId;
+  public String getBulkSendItemId() {
+    return bulkSendItemId;
   }
 
-  public void setPayoutItemId(String payoutItemId) {
-    this.payoutItemId = payoutItemId;
+  public void setBulkSendItemId(String bulkSendItemId) {
+    this.bulkSendItemId = bulkSendItemId;
   }
 
 
@@ -272,7 +272,7 @@ public class PaymentBulkSendItem {
       return false;
     }
     PaymentBulkSendItem paymentBulkSendItem = (PaymentBulkSendItem) o;
-    return Objects.equals(this.payoutItemId, paymentBulkSendItem.payoutItemId) &&
+    return Objects.equals(this.bulkSendItemId, paymentBulkSendItem.bulkSendItemId) &&
         Objects.equals(this.tokenId, paymentBulkSendItem.tokenId) &&
         Objects.equals(this.receivingAddress, paymentBulkSendItem.receivingAddress) &&
         Objects.equals(this.amount, paymentBulkSendItem.amount) &&
@@ -284,14 +284,14 @@ public class PaymentBulkSendItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(payoutItemId, tokenId, receivingAddress, amount, description, status, validationStatus, additionalProperties);
+    return Objects.hash(bulkSendItemId, tokenId, receivingAddress, amount, description, status, validationStatus, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PaymentBulkSendItem {\n");
-    sb.append("    payoutItemId: ").append(toIndentedString(payoutItemId)).append("\n");
+    sb.append("    bulkSendItemId: ").append(toIndentedString(bulkSendItemId)).append("\n");
     sb.append("    tokenId: ").append(toIndentedString(tokenId)).append("\n");
     sb.append("    receivingAddress: ").append(toIndentedString(receivingAddress)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
@@ -321,7 +321,7 @@ public class PaymentBulkSendItem {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("payout_item_id");
+    openapiFields.add("bulk_send_item_id");
     openapiFields.add("token_id");
     openapiFields.add("receiving_address");
     openapiFields.add("amount");
@@ -331,7 +331,7 @@ public class PaymentBulkSendItem {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("payout_item_id");
+    openapiRequiredFields.add("bulk_send_item_id");
     openapiRequiredFields.add("token_id");
     openapiRequiredFields.add("receiving_address");
     openapiRequiredFields.add("amount");
@@ -359,8 +359,8 @@ public class PaymentBulkSendItem {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("payout_item_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `payout_item_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("payout_item_id").toString()));
+      if (!jsonObj.get("bulk_send_item_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `bulk_send_item_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("bulk_send_item_id").toString()));
       }
       if (!jsonObj.get("token_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `token_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("token_id").toString()));

@@ -20,8 +20,6 @@
 |**status** | **PaymentPayoutStatus** |  |  |
 |**createdTimestamp** | **Integer** | The created time of the payout, represented as a UNIX timestamp in seconds. |  |
 |**updatedTimestamp** | **Integer** | The updated time of the payout, represented as a UNIX timestamp in seconds. |  |
-|**currency** | **String** | The fiat currency for the payout. deprecated |  [optional] |
-|**bankAccount** | [**BankAccount**](BankAccount.md) |  |  [optional] |
 
 
 

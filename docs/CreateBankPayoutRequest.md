@@ -14,7 +14,7 @@
 |**feeCurrency** | **String** | The currency of the fee. |  [optional] |
 |**remarks** | **String** | The remarks of the payout. |  [optional] |
 |**forceExternal** | **Boolean** | Whether to force the payout to be remittance between bank accounts. |  [optional] |
-|**cryptoAmount** | **String** | The amount of the cryptocurrency. |  |
+|**cryptoAmount** | **String** | The amount of the cryptocurrency. |  [optional] |
 |**sender** | [**BankPayoutSender**](BankPayoutSender.md) |  |  |
 |**beneficiary** | [**BankPayoutBeneficiary**](BankPayoutBeneficiary.md) |  |  |
 

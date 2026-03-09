@@ -73,6 +73,10 @@ public class BankPayout {
   @SerializedName(SERIALIZED_NAME_BANK_PROVIDER)
   private BankProvider bankProvider;
 
+  public static final String SERIALIZED_NAME_TRANSACTION_ID = "transaction_id";
+  @SerializedName(SERIALIZED_NAME_TRANSACTION_ID)
+  private String transactionId;
+
   public static final String SERIALIZED_NAME_TRANSACTION_CURRENCY = "transaction_currency";
   @SerializedName(SERIALIZED_NAME_TRANSACTION_CURRENCY)
   private String transactionCurrency;
@@ -189,6 +193,25 @@ public class BankPayout {
 
   public void setBankProvider(BankProvider bankProvider) {
     this.bankProvider = bankProvider;
+  }
+
+
+  public BankPayout transactionId(String transactionId) {
+    this.transactionId = transactionId;
+    return this;
+  }
+
+   /**
+   * The transaction reference id at bank side.
+   * @return transactionId
+  **/
+  @javax.annotation.Nullable
+  public String getTransactionId() {
+    return transactionId;
+  }
+
+  public void setTransactionId(String transactionId) {
+    this.transactionId = transactionId;
   }
 
 
@@ -440,6 +463,7 @@ public class BankPayout {
         Objects.equals(this.status, bankPayout.status) &&
         Objects.equals(this.requestId, bankPayout.requestId) &&
         Objects.equals(this.bankProvider, bankPayout.bankProvider) &&
+        Objects.equals(this.transactionId, bankPayout.transactionId) &&
         Objects.equals(this.transactionCurrency, bankPayout.transactionCurrency) &&
         Objects.equals(this.transactionAmount, bankPayout.transactionAmount) &&
         Objects.equals(this.feeCurrency, bankPayout.feeCurrency) &&
@@ -455,7 +479,7 @@ public class BankPayout {
 
   @Override
   public int hashCode() {
-    return Objects.hash(payoutId, status, requestId, bankProvider, transactionCurrency, transactionAmount, feeCurrency, feeAmount, remarks, payoutType, sender, beneficiary, createdTimestamp, updatedTimestamp, additionalProperties);
+    return Objects.hash(payoutId, status, requestId, bankProvider, transactionId, transactionCurrency, transactionAmount, feeCurrency, feeAmount, remarks, payoutType, sender, beneficiary, createdTimestamp, updatedTimestamp, additionalProperties);
   }
 
   @Override
@@ -466,6 +490,7 @@ public class BankPayout {
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    requestId: ").append(toIndentedString(requestId)).append("\n");
     sb.append("    bankProvider: ").append(toIndentedString(bankProvider)).append("\n");
+    sb.append("    transactionId: ").append(toIndentedString(transactionId)).append("\n");
     sb.append("    transactionCurrency: ").append(toIndentedString(transactionCurrency)).append("\n");
     sb.append("    transactionAmount: ").append(toIndentedString(transactionAmount)).append("\n");
     sb.append("    feeCurrency: ").append(toIndentedString(feeCurrency)).append("\n");
@@ -503,6 +528,7 @@ public class BankPayout {
     openapiFields.add("status");
     openapiFields.add("request_id");
     openapiFields.add("bank_provider");
+    openapiFields.add("transaction_id");
     openapiFields.add("transaction_currency");
     openapiFields.add("transaction_amount");
     openapiFields.add("fee_currency");
@@ -556,6 +582,9 @@ public class BankPayout {
       }
       // validate the required field `bank_provider`
       BankProvider.validateJsonElement(jsonObj.get("bank_provider"));
+      if ((jsonObj.get("transaction_id") != null && !jsonObj.get("transaction_id").isJsonNull()) && !jsonObj.get("transaction_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `transaction_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transaction_id").toString()));
+      }
       if (!jsonObj.get("transaction_currency").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `transaction_currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transaction_currency").toString()));
       }

@@ -12,7 +12,6 @@
 package com.cobo.waas2.model;
 
 import java.util.Objects;
-import com.cobo.waas2.model.BankAccount;
 import com.cobo.waas2.model.CommissionFee;
 import com.cobo.waas2.model.PaymentPayoutItem;
 import com.cobo.waas2.model.PaymentPayoutRecipientInfo;
@@ -111,14 +110,6 @@ public class PaymentPayout {
   public static final String SERIALIZED_NAME_UPDATED_TIMESTAMP = "updated_timestamp";
   @SerializedName(SERIALIZED_NAME_UPDATED_TIMESTAMP)
   private Integer updatedTimestamp;
-
-  public static final String SERIALIZED_NAME_CURRENCY = "currency";
-  @SerializedName(SERIALIZED_NAME_CURRENCY)
-  private String currency;
-
-  public static final String SERIALIZED_NAME_BANK_ACCOUNT = "bank_account";
-  @SerializedName(SERIALIZED_NAME_BANK_ACCOUNT)
-  private BankAccount bankAccount;
 
   public PaymentPayout() {
   }
@@ -385,44 +376,6 @@ public class PaymentPayout {
     this.updatedTimestamp = updatedTimestamp;
   }
 
-
-  public PaymentPayout currency(String currency) {
-    this.currency = currency;
-    return this;
-  }
-
-   /**
-   * The fiat currency for the payout. deprecated
-   * @return currency
-  **/
-  @javax.annotation.Nullable
-  public String getCurrency() {
-    return currency;
-  }
-
-  public void setCurrency(String currency) {
-    this.currency = currency;
-  }
-
-
-  public PaymentPayout bankAccount(BankAccount bankAccount) {
-    this.bankAccount = bankAccount;
-    return this;
-  }
-
-   /**
-   * Get bankAccount
-   * @return bankAccount
-  **/
-  @javax.annotation.Nullable
-  public BankAccount getBankAccount() {
-    return bankAccount;
-  }
-
-  public void setBankAccount(BankAccount bankAccount) {
-    this.bankAccount = bankAccount;
-  }
-
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -490,15 +443,13 @@ public class PaymentPayout {
         Objects.equals(this.remark, paymentPayout.remark) &&
         Objects.equals(this.status, paymentPayout.status) &&
         Objects.equals(this.createdTimestamp, paymentPayout.createdTimestamp) &&
-        Objects.equals(this.updatedTimestamp, paymentPayout.updatedTimestamp) &&
-        Objects.equals(this.currency, paymentPayout.currency) &&
-        Objects.equals(this.bankAccount, paymentPayout.bankAccount)&&
+        Objects.equals(this.updatedTimestamp, paymentPayout.updatedTimestamp)&&
         Objects.equals(this.additionalProperties, paymentPayout.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(payoutId, requestId, payoutChannel, sourceAccount, payoutItems, recipientInfo, initiator, actualPayoutAmount, commissionFees, remark, status, createdTimestamp, updatedTimestamp, currency, bankAccount, additionalProperties);
+    return Objects.hash(payoutId, requestId, payoutChannel, sourceAccount, payoutItems, recipientInfo, initiator, actualPayoutAmount, commissionFees, remark, status, createdTimestamp, updatedTimestamp, additionalProperties);
   }
 
   @Override
@@ -518,8 +469,6 @@ public class PaymentPayout {
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    createdTimestamp: ").append(toIndentedString(createdTimestamp)).append("\n");
     sb.append("    updatedTimestamp: ").append(toIndentedString(updatedTimestamp)).append("\n");
-    sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
-    sb.append("    bankAccount: ").append(toIndentedString(bankAccount)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -556,8 +505,6 @@ public class PaymentPayout {
     openapiFields.add("status");
     openapiFields.add("created_timestamp");
     openapiFields.add("updated_timestamp");
-    openapiFields.add("currency");
-    openapiFields.add("bank_account");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -643,13 +590,6 @@ public class PaymentPayout {
       }
       // validate the required field `status`
       PaymentPayoutStatus.validateJsonElement(jsonObj.get("status"));
-      if ((jsonObj.get("currency") != null && !jsonObj.get("currency").isJsonNull()) && !jsonObj.get("currency").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currency").toString()));
-      }
-      // validate the optional field `bank_account`
-      if (jsonObj.get("bank_account") != null && !jsonObj.get("bank_account").isJsonNull()) {
-        BankAccount.validateJsonElement(jsonObj.get("bank_account"));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

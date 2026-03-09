@@ -11,6 +11,7 @@
 
 package com.cobo.waas2.model;
 
+import com.cobo.waas2.model.PaymentBridgeStatus;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -57,6 +58,14 @@ public class BridgingFeeTest {
     @Test
     public void receivedAmountTest() {
         // TODO: test receivedAmount
+    }
+
+    /**
+     * Test the property 'bridgeStatus'
+     */
+    @Test
+    public void bridgeStatusTest() {
+        // TODO: test bridgeStatus
     }
 
 }
