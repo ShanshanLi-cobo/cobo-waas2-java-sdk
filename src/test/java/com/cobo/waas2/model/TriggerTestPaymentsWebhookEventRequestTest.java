@@ -11,6 +11,7 @@
 
 package com.cobo.waas2.model;
 
+import com.cobo.waas2.model.WebhookEventType;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -22,41 +23,33 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
- * Model tests for TransactionUtxoChange
+ * Model tests for TriggerTestPaymentsWebhookEventRequest
  */
-public class TransactionUtxoChangeTest {
-    private final TransactionUtxoChange model = new TransactionUtxoChange();
+public class TriggerTestPaymentsWebhookEventRequestTest {
+    private final TriggerTestPaymentsWebhookEventRequest model = new TriggerTestPaymentsWebhookEventRequest();
 
     /**
-     * Model tests for TransactionUtxoChange
+     * Model tests for TriggerTestPaymentsWebhookEventRequest
      */
     @Test
-    public void testTransactionUtxoChange() {
-        // TODO: test TransactionUtxoChange
+    public void testTriggerTestPaymentsWebhookEventRequest() {
+        // TODO: test TriggerTestPaymentsWebhookEventRequest
     }
 
     /**
-     * Test the property 'address'
+     * Test the property 'eventType'
      */
     @Test
-    public void addressTest() {
-        // TODO: test address
+    public void eventTypeTest() {
+        // TODO: test eventType
     }
 
     /**
-     * Test the property 'value'
+     * Test the property 'overrideData'
      */
     @Test
-    public void valueTest() {
-        // TODO: test value
-    }
-
-    /**
-     * Test the property 'tokenId'
-     */
-    @Test
-    public void tokenIdTest() {
-        // TODO: test tokenId
+    public void overrideDataTest() {
+        // TODO: test overrideData
     }
 
 }

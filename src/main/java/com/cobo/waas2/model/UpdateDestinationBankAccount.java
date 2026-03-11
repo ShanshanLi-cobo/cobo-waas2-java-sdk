@@ -97,6 +97,14 @@ public class UpdateDestinationBankAccount {
   @SerializedName(SERIALIZED_NAME_INTERMEDIARY_BANK_INFO)
   private IntermediaryBankInfo intermediaryBankInfo;
 
+  public static final String SERIALIZED_NAME_COUNTRY = "country";
+  @SerializedName(SERIALIZED_NAME_COUNTRY)
+  private String country;
+
+  public static final String SERIALIZED_NAME_CITY = "city";
+  @SerializedName(SERIALIZED_NAME_CITY)
+  private String city;
+
   public UpdateDestinationBankAccount() {
   }
 
@@ -308,6 +316,44 @@ public class UpdateDestinationBankAccount {
     this.intermediaryBankInfo = intermediaryBankInfo;
   }
 
+
+  public UpdateDestinationBankAccount country(String country) {
+    this.country = country;
+    return this;
+  }
+
+   /**
+   * Beneficiary&#39;s country, in ISO 3166-1 alpha-3 format.
+   * @return country
+  **/
+  @javax.annotation.Nullable
+  public String getCountry() {
+    return country;
+  }
+
+  public void setCountry(String country) {
+    this.country = country;
+  }
+
+
+  public UpdateDestinationBankAccount city(String city) {
+    this.city = city;
+    return this;
+  }
+
+   /**
+   * Beneficiary&#39;s city.
+   * @return city
+  **/
+  @javax.annotation.Nullable
+  public String getCity() {
+    return city;
+  }
+
+  public void setCity(String city) {
+    this.city = city;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -373,13 +419,15 @@ public class UpdateDestinationBankAccount {
         Objects.equals(this.bankAddress, updateDestinationBankAccount.bankAddress) &&
         Objects.equals(this.ibanCode, updateDestinationBankAccount.ibanCode) &&
         Objects.equals(this.furtherCredit, updateDestinationBankAccount.furtherCredit) &&
-        Objects.equals(this.intermediaryBankInfo, updateDestinationBankAccount.intermediaryBankInfo)&&
+        Objects.equals(this.intermediaryBankInfo, updateDestinationBankAccount.intermediaryBankInfo) &&
+        Objects.equals(this.country, updateDestinationBankAccount.country) &&
+        Objects.equals(this.city, updateDestinationBankAccount.city)&&
         Objects.equals(this.additionalProperties, updateDestinationBankAccount.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountAlias, accountNumber, swiftCode, currency, beneficiaryName, beneficiaryAddress, bankName, bankAddress, ibanCode, furtherCredit, intermediaryBankInfo, additionalProperties);
+    return Objects.hash(accountAlias, accountNumber, swiftCode, currency, beneficiaryName, beneficiaryAddress, bankName, bankAddress, ibanCode, furtherCredit, intermediaryBankInfo, country, city, additionalProperties);
   }
 
   @Override
@@ -397,6 +445,8 @@ public class UpdateDestinationBankAccount {
     sb.append("    ibanCode: ").append(toIndentedString(ibanCode)).append("\n");
     sb.append("    furtherCredit: ").append(toIndentedString(furtherCredit)).append("\n");
     sb.append("    intermediaryBankInfo: ").append(toIndentedString(intermediaryBankInfo)).append("\n");
+    sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    city: ").append(toIndentedString(city)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -431,6 +481,8 @@ public class UpdateDestinationBankAccount {
     openapiFields.add("iban_code");
     openapiFields.add("further_credit");
     openapiFields.add("intermediary_bank_info");
+    openapiFields.add("country");
+    openapiFields.add("city");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -497,6 +549,12 @@ public class UpdateDestinationBankAccount {
       // validate the optional field `intermediary_bank_info`
       if (jsonObj.get("intermediary_bank_info") != null && !jsonObj.get("intermediary_bank_info").isJsonNull()) {
         IntermediaryBankInfo.validateJsonElement(jsonObj.get("intermediary_bank_info"));
+      }
+      if ((jsonObj.get("country") != null && !jsonObj.get("country").isJsonNull()) && !jsonObj.get("country").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `country` to be a primitive type in the JSON string but got `%s`", jsonObj.get("country").toString()));
+      }
+      if ((jsonObj.get("city") != null && !jsonObj.get("city").isJsonNull()) && !jsonObj.get("city").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `city` to be a primitive type in the JSON string but got `%s`", jsonObj.get("city").toString()));
       }
   }
 

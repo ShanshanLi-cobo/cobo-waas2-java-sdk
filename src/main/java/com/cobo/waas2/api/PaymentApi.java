@@ -106,6 +106,8 @@ import com.cobo.waas2.model.ReportType;
 import com.cobo.waas2.model.Settlement;
 import com.cobo.waas2.model.SupportedToken;
 import com.cobo.waas2.model.TopUpAddress;
+import com.cobo.waas2.model.TriggerTestPaymentWebhookEventResponse;
+import com.cobo.waas2.model.TriggerTestPaymentsWebhookEventRequest;
 import java.util.UUID;
 import com.cobo.waas2.model.UpdateBankAccountByIdRequest;
 import com.cobo.waas2.model.UpdateCounterpartyRequest;
@@ -6637,8 +6639,8 @@ public class PaymentApi {
     }
     /**
      * Build call for listMerchantBalances
-     * @param tokenId The token ID, which is a unique identifier that specifies both the blockchain network and cryptocurrency token in the format &#x60;{CHAIN}_{TOKEN}&#x60;. Supported values include:   - USDC: &#x60;ETH_USDC&#x60;, &#x60;ARBITRUM_USDCOIN&#x60;, &#x60;SOL_USDC&#x60;, &#x60;BASE_USDC&#x60;, &#x60;MATIC_USDC2&#x60;, &#x60;BSC_USDC&#x60;   - USDT: &#x60;TRON_USDT&#x60;, &#x60;ETH_USDT&#x60;, &#x60;ARBITRUM_USDT&#x60;, &#x60;SOL_USDT&#x60;, &#x60;BASE_USDT&#x60;, &#x60;MATIC_USDT&#x60;, &#x60;BSC_USDT&#x60;  (required)
-     * @param merchantIds A list of merchant IDs to query. (optional)
+     * @param merchantIds The comma-separated list of merchant IDs to filter by.  At least one of &#x60;merchant_ids&#x60; or &#x60;token_id&#x60; must be provided.  For more information about merchants, refer to [Cobo Payments Guide](https://www.cobo.com/payments/en/guides/overview).  (optional)
+     * @param tokenId The token ID that identifies the cryptocurrency.  At least one of &#x60;merchant_ids&#x60; or &#x60;token_id&#x60; must be provided.  For a complete list of supported tokens, refer to [Cobo Payments Guide](https://www.cobo.com/payments/en/guides/overview).  (optional)
      * @param acquiringType This parameter has been deprecated (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -6651,7 +6653,7 @@ public class PaymentApi {
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listMerchantBalancesCall(String tokenId, String merchantIds, AcquiringType acquiringType, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listMerchantBalancesCall(String merchantIds, String tokenId, AcquiringType acquiringType, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -6695,21 +6697,16 @@ public class PaymentApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listMerchantBalancesValidateBeforeCall(String tokenId, String merchantIds, AcquiringType acquiringType, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'tokenId' is set
-        if (tokenId == null) {
-            throw new ApiException("Missing the required parameter 'tokenId' when calling listMerchantBalances(Async)");
-        }
-
-        return listMerchantBalancesCall(tokenId, merchantIds, acquiringType, _callback);
+    private okhttp3.Call listMerchantBalancesValidateBeforeCall(String merchantIds, String tokenId, AcquiringType acquiringType, final ApiCallback _callback) throws ApiException {
+        return listMerchantBalancesCall(merchantIds, tokenId, acquiringType, _callback);
 
     }
 
     /**
      * List merchant balances
-     *  This operation retrieves the balance information for specified merchants.   The balance information is grouped by token and acquiring type. If you do not specify the &#x60;merchant_ids&#x60; parameter, the balance information for all merchants will be returned.  For more information, please refer to [Accounts and fund allocation](https://www.cobo.com/payments/en/guides/amounts-and-balances). 
-     * @param tokenId The token ID, which is a unique identifier that specifies both the blockchain network and cryptocurrency token in the format &#x60;{CHAIN}_{TOKEN}&#x60;. Supported values include:   - USDC: &#x60;ETH_USDC&#x60;, &#x60;ARBITRUM_USDCOIN&#x60;, &#x60;SOL_USDC&#x60;, &#x60;BASE_USDC&#x60;, &#x60;MATIC_USDC2&#x60;, &#x60;BSC_USDC&#x60;   - USDT: &#x60;TRON_USDT&#x60;, &#x60;ETH_USDT&#x60;, &#x60;ARBITRUM_USDT&#x60;, &#x60;SOL_USDT&#x60;, &#x60;BASE_USDT&#x60;, &#x60;MATIC_USDT&#x60;, &#x60;BSC_USDT&#x60;  (required)
-     * @param merchantIds A list of merchant IDs to query. (optional)
+     * This operation retrieves merchant balance information.  You need to specify at least one of &#x60;merchant_ids&#x60; or &#x60;token_id&#x60; to filter the results.  &lt;Note&gt;Do not pass &#x60;acquiring_type&#x60; for this operation.&lt;/Note&gt;  For more information, refer to [Cobo Payments Guide](https://www.cobo.com/payments/en/guides/overview). 
+     * @param merchantIds The comma-separated list of merchant IDs to filter by.  At least one of &#x60;merchant_ids&#x60; or &#x60;token_id&#x60; must be provided.  For more information about merchants, refer to [Cobo Payments Guide](https://www.cobo.com/payments/en/guides/overview).  (optional)
+     * @param tokenId The token ID that identifies the cryptocurrency.  At least one of &#x60;merchant_ids&#x60; or &#x60;token_id&#x60; must be provided.  For a complete list of supported tokens, refer to [Cobo Payments Guide](https://www.cobo.com/payments/en/guides/overview).  (optional)
      * @param acquiringType This parameter has been deprecated (optional)
      * @return ListMerchantBalances200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -6721,16 +6718,16 @@ public class PaymentApi {
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public ListMerchantBalances200Response listMerchantBalances(String tokenId, String merchantIds, AcquiringType acquiringType) throws ApiException {
-        ApiResponse<ListMerchantBalances200Response> localVarResp = listMerchantBalancesWithHttpInfo(tokenId, merchantIds, acquiringType);
+    public ListMerchantBalances200Response listMerchantBalances(String merchantIds, String tokenId, AcquiringType acquiringType) throws ApiException {
+        ApiResponse<ListMerchantBalances200Response> localVarResp = listMerchantBalancesWithHttpInfo(merchantIds, tokenId, acquiringType);
         return localVarResp.getData();
     }
 
     /**
      * List merchant balances
-     *  This operation retrieves the balance information for specified merchants.   The balance information is grouped by token and acquiring type. If you do not specify the &#x60;merchant_ids&#x60; parameter, the balance information for all merchants will be returned.  For more information, please refer to [Accounts and fund allocation](https://www.cobo.com/payments/en/guides/amounts-and-balances). 
-     * @param tokenId The token ID, which is a unique identifier that specifies both the blockchain network and cryptocurrency token in the format &#x60;{CHAIN}_{TOKEN}&#x60;. Supported values include:   - USDC: &#x60;ETH_USDC&#x60;, &#x60;ARBITRUM_USDCOIN&#x60;, &#x60;SOL_USDC&#x60;, &#x60;BASE_USDC&#x60;, &#x60;MATIC_USDC2&#x60;, &#x60;BSC_USDC&#x60;   - USDT: &#x60;TRON_USDT&#x60;, &#x60;ETH_USDT&#x60;, &#x60;ARBITRUM_USDT&#x60;, &#x60;SOL_USDT&#x60;, &#x60;BASE_USDT&#x60;, &#x60;MATIC_USDT&#x60;, &#x60;BSC_USDT&#x60;  (required)
-     * @param merchantIds A list of merchant IDs to query. (optional)
+     * This operation retrieves merchant balance information.  You need to specify at least one of &#x60;merchant_ids&#x60; or &#x60;token_id&#x60; to filter the results.  &lt;Note&gt;Do not pass &#x60;acquiring_type&#x60; for this operation.&lt;/Note&gt;  For more information, refer to [Cobo Payments Guide](https://www.cobo.com/payments/en/guides/overview). 
+     * @param merchantIds The comma-separated list of merchant IDs to filter by.  At least one of &#x60;merchant_ids&#x60; or &#x60;token_id&#x60; must be provided.  For more information about merchants, refer to [Cobo Payments Guide](https://www.cobo.com/payments/en/guides/overview).  (optional)
+     * @param tokenId The token ID that identifies the cryptocurrency.  At least one of &#x60;merchant_ids&#x60; or &#x60;token_id&#x60; must be provided.  For a complete list of supported tokens, refer to [Cobo Payments Guide](https://www.cobo.com/payments/en/guides/overview).  (optional)
      * @param acquiringType This parameter has been deprecated (optional)
      * @return ApiResponse&lt;ListMerchantBalances200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -6742,17 +6739,17 @@ public class PaymentApi {
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ListMerchantBalances200Response> listMerchantBalancesWithHttpInfo(String tokenId, String merchantIds, AcquiringType acquiringType) throws ApiException {
-        okhttp3.Call localVarCall = listMerchantBalancesValidateBeforeCall(tokenId, merchantIds, acquiringType, null);
+    public ApiResponse<ListMerchantBalances200Response> listMerchantBalancesWithHttpInfo(String merchantIds, String tokenId, AcquiringType acquiringType) throws ApiException {
+        okhttp3.Call localVarCall = listMerchantBalancesValidateBeforeCall(merchantIds, tokenId, acquiringType, null);
         Type localVarReturnType = new TypeToken<ListMerchantBalances200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * List merchant balances (asynchronously)
-     *  This operation retrieves the balance information for specified merchants.   The balance information is grouped by token and acquiring type. If you do not specify the &#x60;merchant_ids&#x60; parameter, the balance information for all merchants will be returned.  For more information, please refer to [Accounts and fund allocation](https://www.cobo.com/payments/en/guides/amounts-and-balances). 
-     * @param tokenId The token ID, which is a unique identifier that specifies both the blockchain network and cryptocurrency token in the format &#x60;{CHAIN}_{TOKEN}&#x60;. Supported values include:   - USDC: &#x60;ETH_USDC&#x60;, &#x60;ARBITRUM_USDCOIN&#x60;, &#x60;SOL_USDC&#x60;, &#x60;BASE_USDC&#x60;, &#x60;MATIC_USDC2&#x60;, &#x60;BSC_USDC&#x60;   - USDT: &#x60;TRON_USDT&#x60;, &#x60;ETH_USDT&#x60;, &#x60;ARBITRUM_USDT&#x60;, &#x60;SOL_USDT&#x60;, &#x60;BASE_USDT&#x60;, &#x60;MATIC_USDT&#x60;, &#x60;BSC_USDT&#x60;  (required)
-     * @param merchantIds A list of merchant IDs to query. (optional)
+     * This operation retrieves merchant balance information.  You need to specify at least one of &#x60;merchant_ids&#x60; or &#x60;token_id&#x60; to filter the results.  &lt;Note&gt;Do not pass &#x60;acquiring_type&#x60; for this operation.&lt;/Note&gt;  For more information, refer to [Cobo Payments Guide](https://www.cobo.com/payments/en/guides/overview). 
+     * @param merchantIds The comma-separated list of merchant IDs to filter by.  At least one of &#x60;merchant_ids&#x60; or &#x60;token_id&#x60; must be provided.  For more information about merchants, refer to [Cobo Payments Guide](https://www.cobo.com/payments/en/guides/overview).  (optional)
+     * @param tokenId The token ID that identifies the cryptocurrency.  At least one of &#x60;merchant_ids&#x60; or &#x60;token_id&#x60; must be provided.  For a complete list of supported tokens, refer to [Cobo Payments Guide](https://www.cobo.com/payments/en/guides/overview).  (optional)
      * @param acquiringType This parameter has been deprecated (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -6765,9 +6762,9 @@ public class PaymentApi {
         <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listMerchantBalancesAsync(String tokenId, String merchantIds, AcquiringType acquiringType, final ApiCallback<ListMerchantBalances200Response> _callback) throws ApiException {
+    public okhttp3.Call listMerchantBalancesAsync(String merchantIds, String tokenId, AcquiringType acquiringType, final ApiCallback<ListMerchantBalances200Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listMerchantBalancesValidateBeforeCall(tokenId, merchantIds, acquiringType, _callback);
+        okhttp3.Call localVarCall = listMerchantBalancesValidateBeforeCall(merchantIds, tokenId, acquiringType, _callback);
         Type localVarReturnType = new TypeToken<ListMerchantBalances200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -8155,6 +8152,119 @@ public class PaymentApi {
 
         okhttp3.Call localVarCall = paymentEstimateFeeValidateBeforeCall(paymentEstimateFeeRequest, _callback);
         Type localVarReturnType = new TypeToken<PaymentEstimateFee201Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for triggerTestPaymentsWebhookEvent
+     * @param triggerTestPaymentsWebhookEventRequest The request body used to trigger a test Payments webhook event.  You need to specify the event type. You can optionally include the &#x60;override_data&#x60; property to customize the payload. The provided fields must match the webhook event data structure for the specified event type.  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call triggerTestPaymentsWebhookEventCall(TriggerTestPaymentsWebhookEventRequest triggerTestPaymentsWebhookEventRequest, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = triggerTestPaymentsWebhookEventRequest;
+
+        // create path and map variables
+        String localVarPath = "/payments/webhooks/trigger";
+
+        List<Pair> localVarQueryParams = new ArrayList<>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<>();
+        Map<String, String> localVarHeaderParams = new HashMap<>();
+        Map<String, String> localVarCookieParams = new HashMap<>();
+        Map<String, Object> localVarFormParams = new HashMap<>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(null, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call triggerTestPaymentsWebhookEventValidateBeforeCall(TriggerTestPaymentsWebhookEventRequest triggerTestPaymentsWebhookEventRequest, final ApiCallback _callback) throws ApiException {
+        return triggerTestPaymentsWebhookEventCall(triggerTestPaymentsWebhookEventRequest, _callback);
+
+    }
+
+    /**
+     * Trigger test webhook event
+     * This operation tests the functionality of your Payments webhook endpoint by triggering a test webhook event. The test event is sent to all endpoints you have registered on Cobo Portal.  You need to specify the event type. By default, the payload contains dummy data with no impact on your real business transactions or activities. You can optionally provide the &#x60;override_data&#x60; property to customize the payload.  For more information about Payments webhooks, see [Cobo Payments Guide](https://www.cobo.com/payments/en/guides/overview). For webhook event types and payload structure, refer to [List all webhook events](https://www.cobo.com/developers/v2/api-references/developers--webhooks/list-all-webhook-events). 
+     * @param triggerTestPaymentsWebhookEventRequest The request body used to trigger a test Payments webhook event.  You need to specify the event type. You can optionally include the &#x60;override_data&#x60; property to customize the payload. The provided fields must match the webhook event data structure for the specified event type.  (optional)
+     * @return TriggerTestPaymentWebhookEventResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public TriggerTestPaymentWebhookEventResponse triggerTestPaymentsWebhookEvent(TriggerTestPaymentsWebhookEventRequest triggerTestPaymentsWebhookEventRequest) throws ApiException {
+        ApiResponse<TriggerTestPaymentWebhookEventResponse> localVarResp = triggerTestPaymentsWebhookEventWithHttpInfo(triggerTestPaymentsWebhookEventRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Trigger test webhook event
+     * This operation tests the functionality of your Payments webhook endpoint by triggering a test webhook event. The test event is sent to all endpoints you have registered on Cobo Portal.  You need to specify the event type. By default, the payload contains dummy data with no impact on your real business transactions or activities. You can optionally provide the &#x60;override_data&#x60; property to customize the payload.  For more information about Payments webhooks, see [Cobo Payments Guide](https://www.cobo.com/payments/en/guides/overview). For webhook event types and payload structure, refer to [List all webhook events](https://www.cobo.com/developers/v2/api-references/developers--webhooks/list-all-webhook-events). 
+     * @param triggerTestPaymentsWebhookEventRequest The request body used to trigger a test Payments webhook event.  You need to specify the event type. You can optionally include the &#x60;override_data&#x60; property to customize the payload. The provided fields must match the webhook event data structure for the specified event type.  (optional)
+     * @return ApiResponse&lt;TriggerTestPaymentWebhookEventResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<TriggerTestPaymentWebhookEventResponse> triggerTestPaymentsWebhookEventWithHttpInfo(TriggerTestPaymentsWebhookEventRequest triggerTestPaymentsWebhookEventRequest) throws ApiException {
+        okhttp3.Call localVarCall = triggerTestPaymentsWebhookEventValidateBeforeCall(triggerTestPaymentsWebhookEventRequest, null);
+        Type localVarReturnType = new TypeToken<TriggerTestPaymentWebhookEventResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Trigger test webhook event (asynchronously)
+     * This operation tests the functionality of your Payments webhook endpoint by triggering a test webhook event. The test event is sent to all endpoints you have registered on Cobo Portal.  You need to specify the event type. By default, the payload contains dummy data with no impact on your real business transactions or activities. You can optionally provide the &#x60;override_data&#x60; property to customize the payload.  For more information about Payments webhooks, see [Cobo Payments Guide](https://www.cobo.com/payments/en/guides/overview). For webhook event types and payload structure, refer to [List all webhook events](https://www.cobo.com/developers/v2/api-references/developers--webhooks/list-all-webhook-events). 
+     * @param triggerTestPaymentsWebhookEventRequest The request body used to trigger a test Payments webhook event.  You need to specify the event type. You can optionally include the &#x60;override_data&#x60; property to customize the payload. The provided fields must match the webhook event data structure for the specified event type.  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The request was successful. </td><td>  -  </td></tr>
+        <tr><td> 4XX </td><td> Bad request. Your request contains malformed syntax or invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 5XX </td><td> Internal server error. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call triggerTestPaymentsWebhookEventAsync(TriggerTestPaymentsWebhookEventRequest triggerTestPaymentsWebhookEventRequest, final ApiCallback<TriggerTestPaymentWebhookEventResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = triggerTestPaymentsWebhookEventValidateBeforeCall(triggerTestPaymentsWebhookEventRequest, _callback);
+        Type localVarReturnType = new TypeToken<TriggerTestPaymentWebhookEventResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

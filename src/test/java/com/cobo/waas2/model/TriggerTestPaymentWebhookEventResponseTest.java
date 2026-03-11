@@ -22,41 +22,25 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
- * Model tests for TransactionUtxoChange
+ * Model tests for TriggerTestPaymentWebhookEventResponse
  */
-public class TransactionUtxoChangeTest {
-    private final TransactionUtxoChange model = new TransactionUtxoChange();
+public class TriggerTestPaymentWebhookEventResponseTest {
+    private final TriggerTestPaymentWebhookEventResponse model = new TriggerTestPaymentWebhookEventResponse();
 
     /**
-     * Model tests for TransactionUtxoChange
+     * Model tests for TriggerTestPaymentWebhookEventResponse
      */
     @Test
-    public void testTransactionUtxoChange() {
-        // TODO: test TransactionUtxoChange
+    public void testTriggerTestPaymentWebhookEventResponse() {
+        // TODO: test TriggerTestPaymentWebhookEventResponse
     }
 
     /**
-     * Test the property 'address'
+     * Test the property 'triggered'
      */
     @Test
-    public void addressTest() {
-        // TODO: test address
-    }
-
-    /**
-     * Test the property 'value'
-     */
-    @Test
-    public void valueTest() {
-        // TODO: test value
-    }
-
-    /**
-     * Test the property 'tokenId'
-     */
-    @Test
-    public void tokenIdTest() {
-        // TODO: test tokenId
+    public void triggeredTest() {
+        // TODO: test triggered
     }
 
 }

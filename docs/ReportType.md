@@ -33,5 +33,7 @@
 
 * `SUMMARY` (value: `"Summary"`)
 
+* `BULKSEND` (value: `"BulkSend"`)
+
 
 

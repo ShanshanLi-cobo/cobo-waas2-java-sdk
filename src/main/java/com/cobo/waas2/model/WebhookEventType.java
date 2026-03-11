@@ -110,6 +110,10 @@ public enum WebhookEventType {
   
   PAYMENT_TRANSACTION_EXTERNAL_COMPLETED("payment.transaction.external.completed"),
   
+  PAYMENT_TRANSACTION_SETTLEMENT_NETWORK_CREATED("payment.transaction.settlement_network.created"),
+  
+  PAYMENT_TRANSACTION_SETTLEMENT_NETWORK_COMPLETED("payment.transaction.settlement_network.completed"),
+  
   COMPLIANCE_DISPOSITION_STATUS_UPDATED("compliance.disposition.status.updated"),
   
   COMPLIANCE_KYT_SCREENINGS_STATUS_UPDATED("compliance.kyt.screenings.status.updated"),
