@@ -9,7 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**merchantId** | **String** | The merchant ID. |  |
 |**tokenId** | **String** | The token ID, which is a unique identifier that specifies both the blockchain network and cryptocurrency token in the format &#x60;{CHAIN}_{TOKEN}&#x60;. |  |
-|**acquiringType** | **AcquiringType** |  |  |
+|**acquiringType** | **AcquiringType** |  |  [optional] |
 |**totalReceivedAmount** | **String** | The total amount of the token that has been received by the merchant. |  [optional] |
 |**settledAmount** | **String** | The total amount of the token that has been paid out from the merchant&#39;s balance. |  [optional] |
 |**payoutAmount** | **String** | This field is reserved for future use. |  [optional] |

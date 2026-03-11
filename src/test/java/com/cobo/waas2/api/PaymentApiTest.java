@@ -95,6 +95,8 @@ import com.cobo.waas2.model.ReportType;
 import com.cobo.waas2.model.Settlement;
 import com.cobo.waas2.model.SupportedToken;
 import com.cobo.waas2.model.TopUpAddress;
+import com.cobo.waas2.model.TriggerTestPaymentWebhookEventResponse;
+import com.cobo.waas2.model.TriggerTestPaymentsWebhookEventRequest;
 import java.util.UUID;
 import com.cobo.waas2.model.UpdateBankAccountByIdRequest;
 import com.cobo.waas2.model.UpdateCounterpartyRequest;
@@ -906,16 +908,16 @@ public class PaymentApiTest {
     /**
      * List merchant balances
      *
-     *  This operation retrieves the balance information for specified merchants.   The balance information is grouped by token and acquiring type. If you do not specify the &#x60;merchant_ids&#x60; parameter, the balance information for all merchants will be returned.  For more information, please refer to [Accounts and fund allocation](https://www.cobo.com/payments/en/guides/amounts-and-balances). 
+     * This operation retrieves merchant balance information.  You need to specify at least one of &#x60;merchant_ids&#x60; or &#x60;token_id&#x60; to filter the results.  &lt;Note&gt;Do not pass &#x60;acquiring_type&#x60; for this operation.&lt;/Note&gt;  For more information, refer to [Cobo Payments Guide](https://www.cobo.com/payments/en/guides/overview). 
      *
      * @throws ApiException if the Api call fails
      */
     @Test
     public void listMerchantBalancesTest() throws ApiException {
-        String tokenId = null;
         String merchantIds = null;
+        String tokenId = null;
         AcquiringType acquiringType = null;
-        ListMerchantBalances200Response response = api.listMerchantBalances(tokenId, merchantIds, acquiringType);
+        ListMerchantBalances200Response response = api.listMerchantBalances(merchantIds, tokenId, acquiringType);
         // TODO: test validations
     }
 
@@ -1084,6 +1086,20 @@ public class PaymentApiTest {
     public void paymentEstimateFeeTest() throws ApiException {
         PaymentEstimateFeeRequest paymentEstimateFeeRequest = null;
         PaymentEstimateFee201Response response = api.paymentEstimateFee(paymentEstimateFeeRequest);
+        // TODO: test validations
+    }
+
+    /**
+     * Trigger test webhook event
+     *
+     * This operation tests the functionality of your Payments webhook endpoint by triggering a test webhook event. The test event is sent to all endpoints you have registered on Cobo Portal.  You need to specify the event type. By default, the payload contains dummy data with no impact on your real business transactions or activities. You can optionally provide the &#x60;override_data&#x60; property to customize the payload.  For more information about Payments webhooks, see [Cobo Payments Guide](https://www.cobo.com/payments/en/guides/overview). For webhook event types and payload structure, refer to [List all webhook events](https://www.cobo.com/developers/v2/api-references/developers--webhooks/list-all-webhook-events). 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void triggerTestPaymentsWebhookEventTest() throws ApiException {
+        TriggerTestPaymentsWebhookEventRequest triggerTestPaymentsWebhookEventRequest = null;
+        TriggerTestPaymentWebhookEventResponse response = api.triggerTestPaymentsWebhookEvent(triggerTestPaymentsWebhookEventRequest);
         // TODO: test validations
     }
 

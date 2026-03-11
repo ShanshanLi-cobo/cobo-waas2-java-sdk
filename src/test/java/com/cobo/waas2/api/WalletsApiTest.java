@@ -447,6 +447,29 @@ public class WalletsApiTest {
     }
 
     /**
+     * List transaction UTXOs
+     *
+     * The operation retrieves a list of UTXOs for a specified transaction of a wallet. You must specify the wallet, chain, and transaction hash.  &lt;Note&gt;This operation is applicable to MPC and Custodial Web3 Wallets.&lt;/Note&gt; 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void listTransactionUtxosTest() throws ApiException {
+        UUID walletId = null;
+        String chainId = null;
+        String txHash = null;
+        Boolean isChange = null;
+        Integer voutN = null;
+        String tokenId = null;
+        String address = null;
+        Integer limit = null;
+        String before = null;
+        String after = null;
+        ListUtxos200Response response = api.listTransactionUtxos(walletId, chainId, txHash, isChange, voutN, tokenId, address, limit, before, after);
+        // TODO: test validations
+    }
+
+    /**
      * List UTXOs
      *
      * The operation retrieves a list of **unspent** transaction outputs (UTXOs) for a specified wallet and token.  &lt;Note&gt;This operation returns only UTXOs that are not used by any transaction. It does not return all UTXOs.&lt;/Note&gt;  &lt;Info&gt;This operation is applicable to MPC Wallets and Custodial Wallets (Web3 Wallets) only.&lt;/Info&gt; 

@@ -115,6 +115,14 @@ public class DestinationBankAccount {
   @SerializedName(SERIALIZED_NAME_UPDATED_TIMESTAMP)
   private Integer updatedTimestamp;
 
+  public static final String SERIALIZED_NAME_COUNTRY = "country";
+  @SerializedName(SERIALIZED_NAME_COUNTRY)
+  private String country;
+
+  public static final String SERIALIZED_NAME_CITY = "city";
+  @SerializedName(SERIALIZED_NAME_CITY)
+  private String city;
+
   public DestinationBankAccount() {
   }
 
@@ -402,6 +410,44 @@ public class DestinationBankAccount {
     this.updatedTimestamp = updatedTimestamp;
   }
 
+
+  public DestinationBankAccount country(String country) {
+    this.country = country;
+    return this;
+  }
+
+   /**
+   * Beneficiary&#39;s country, in ISO 3166-1 alpha-3 format.
+   * @return country
+  **/
+  @javax.annotation.Nullable
+  public String getCountry() {
+    return country;
+  }
+
+  public void setCountry(String country) {
+    this.country = country;
+  }
+
+
+  public DestinationBankAccount city(String city) {
+    this.city = city;
+    return this;
+  }
+
+   /**
+   * Beneficiary&#39;s city.
+   * @return city
+  **/
+  @javax.annotation.Nullable
+  public String getCity() {
+    return city;
+  }
+
+  public void setCity(String city) {
+    this.city = city;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -471,13 +517,15 @@ public class DestinationBankAccount {
         Objects.equals(this.intermediaryBankInfo, destinationBankAccount.intermediaryBankInfo) &&
         Objects.equals(this.bankAccountStatus, destinationBankAccount.bankAccountStatus) &&
         Objects.equals(this.createdTimestamp, destinationBankAccount.createdTimestamp) &&
-        Objects.equals(this.updatedTimestamp, destinationBankAccount.updatedTimestamp)&&
+        Objects.equals(this.updatedTimestamp, destinationBankAccount.updatedTimestamp) &&
+        Objects.equals(this.country, destinationBankAccount.country) &&
+        Objects.equals(this.city, destinationBankAccount.city)&&
         Objects.equals(this.additionalProperties, destinationBankAccount.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(bankAccountId, accountAlias, accountNumber, swiftCode, currency, beneficiaryName, beneficiaryAddress, bankName, bankAddress, ibanCode, furtherCredit, intermediaryBankInfo, bankAccountStatus, createdTimestamp, updatedTimestamp, additionalProperties);
+    return Objects.hash(bankAccountId, accountAlias, accountNumber, swiftCode, currency, beneficiaryName, beneficiaryAddress, bankName, bankAddress, ibanCode, furtherCredit, intermediaryBankInfo, bankAccountStatus, createdTimestamp, updatedTimestamp, country, city, additionalProperties);
   }
 
   @Override
@@ -499,6 +547,8 @@ public class DestinationBankAccount {
     sb.append("    bankAccountStatus: ").append(toIndentedString(bankAccountStatus)).append("\n");
     sb.append("    createdTimestamp: ").append(toIndentedString(createdTimestamp)).append("\n");
     sb.append("    updatedTimestamp: ").append(toIndentedString(updatedTimestamp)).append("\n");
+    sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    city: ").append(toIndentedString(city)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -537,6 +587,8 @@ public class DestinationBankAccount {
     openapiFields.add("bank_account_status");
     openapiFields.add("created_timestamp");
     openapiFields.add("updated_timestamp");
+    openapiFields.add("country");
+    openapiFields.add("city");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -611,6 +663,12 @@ public class DestinationBankAccount {
       }
       // validate the required field `bank_account_status`
       BankAccountStatus.validateJsonElement(jsonObj.get("bank_account_status"));
+      if ((jsonObj.get("country") != null && !jsonObj.get("country").isJsonNull()) && !jsonObj.get("country").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `country` to be a primitive type in the JSON string but got `%s`", jsonObj.get("country").toString()));
+      }
+      if ((jsonObj.get("city") != null && !jsonObj.get("city").isJsonNull()) && !jsonObj.get("city").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `city` to be a primitive type in the JSON string but got `%s`", jsonObj.get("city").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

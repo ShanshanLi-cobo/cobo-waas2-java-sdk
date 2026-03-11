@@ -791,6 +791,8 @@ docs/TravelRuleWithdrawLegalEntity.md
 docs/TravelRuleWithdrawNaturalEntity.md
 docs/TravelRuleWithdrawRequest.md
 docs/TravelRuleWithdrawRequestTravelRuleInfo.md
+docs/TriggerTestPaymentWebhookEventResponse.md
+docs/TriggerTestPaymentsWebhookEventRequest.md
 docs/TriggerTestWebhookEvent201Response.md
 docs/TriggerTestWebhookEventRequest.md
 docs/TronContractCallDestination.md
@@ -1665,6 +1667,8 @@ src/main/java/com/cobo/waas2/model/TravelRuleWithdrawLegalEntity.java
 src/main/java/com/cobo/waas2/model/TravelRuleWithdrawNaturalEntity.java
 src/main/java/com/cobo/waas2/model/TravelRuleWithdrawRequest.java
 src/main/java/com/cobo/waas2/model/TravelRuleWithdrawRequestTravelRuleInfo.java
+src/main/java/com/cobo/waas2/model/TriggerTestPaymentWebhookEventResponse.java
+src/main/java/com/cobo/waas2/model/TriggerTestPaymentsWebhookEventRequest.java
 src/main/java/com/cobo/waas2/model/TriggerTestWebhookEvent201Response.java
 src/main/java/com/cobo/waas2/model/TriggerTestWebhookEventRequest.java
 src/main/java/com/cobo/waas2/model/TronContractCallDestination.java
@@ -2495,6 +2499,8 @@ src/test/java/com/cobo/waas2/model/TravelRuleWithdrawLegalEntityTest.java
 src/test/java/com/cobo/waas2/model/TravelRuleWithdrawNaturalEntityTest.java
 src/test/java/com/cobo/waas2/model/TravelRuleWithdrawRequestTest.java
 src/test/java/com/cobo/waas2/model/TravelRuleWithdrawRequestTravelRuleInfoTest.java
+src/test/java/com/cobo/waas2/model/TriggerTestPaymentWebhookEventResponseTest.java
+src/test/java/com/cobo/waas2/model/TriggerTestPaymentsWebhookEventRequestTest.java
 src/test/java/com/cobo/waas2/model/TriggerTestWebhookEvent201ResponseTest.java
 src/test/java/com/cobo/waas2/model/TriggerTestWebhookEventRequestTest.java
 src/test/java/com/cobo/waas2/model/TronContractCallDestinationTest.java

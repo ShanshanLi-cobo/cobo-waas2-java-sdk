@@ -27,6 +27,8 @@
 |**furtherCredit** | **String** | The further credit of the bank account. |  [optional] |
 |**intermediaryBankInfo** | [**IntermediaryBankInfo**](IntermediaryBankInfo.md) |  |  [optional] |
 |**bankAccountStatus** | **BankAccountStatus** |  |  |
+|**country** | **String** | Beneficiary&#39;s country, in ISO 3166-1 alpha-3 format. |  [optional] |
+|**city** | **String** | Beneficiary&#39;s city. |  [optional] |
 |**createdTimestamp** | **Integer** | The created time of the bank account, represented as a UNIX timestamp in seconds. |  [optional] |
 |**updatedTimestamp** | **Integer** | The updated time of the bank account, represented as a UNIX timestamp in seconds. |  [optional] |
 

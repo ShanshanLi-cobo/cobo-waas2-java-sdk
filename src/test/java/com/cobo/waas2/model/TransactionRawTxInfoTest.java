@@ -79,4 +79,12 @@ public class TransactionRawTxInfoTest {
         // TODO: test utxoChange
     }
 
+    /**
+     * Test the property 'utxoChanges'
+     */
+    @Test
+    public void utxoChangesTest() {
+        // TODO: test utxoChanges
+    }
+
 }

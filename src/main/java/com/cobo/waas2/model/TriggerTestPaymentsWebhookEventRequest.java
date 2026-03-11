@@ -12,6 +12,7 @@
 package com.cobo.waas2.model;
 
 import java.util.Objects;
+import com.cobo.waas2.model.WebhookEventType;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -45,82 +46,59 @@ import java.util.Set;
 import com.cobo.waas2.JSON;
 
 /**
- * IntermediaryBankInfo
+ * TriggerTestPaymentsWebhookEventRequest
  */
 @javax.annotation.Generated(
     value = "org.openapitools.codegen.languages.JavaClientCodegen", 
     comments = "Generator version: 7.6.0"
 )
-public class IntermediaryBankInfo {
-  public static final String SERIALIZED_NAME_BANK_NAME = "bank_name";
-  @SerializedName(SERIALIZED_NAME_BANK_NAME)
-  private String bankName;
+public class TriggerTestPaymentsWebhookEventRequest {
+  public static final String SERIALIZED_NAME_EVENT_TYPE = "event_type";
+  @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
+  private WebhookEventType eventType;
 
-  public static final String SERIALIZED_NAME_BANK_ADDRESS = "bank_address";
-  @SerializedName(SERIALIZED_NAME_BANK_ADDRESS)
-  private String bankAddress;
+  public static final String SERIALIZED_NAME_OVERRIDE_DATA = "override_data";
+  @SerializedName(SERIALIZED_NAME_OVERRIDE_DATA)
+  private Object overrideData;
 
-  public static final String SERIALIZED_NAME_BANK_SWIFT_CODE = "bank_swift_code";
-  @SerializedName(SERIALIZED_NAME_BANK_SWIFT_CODE)
-  private String bankSwiftCode;
-
-  public IntermediaryBankInfo() {
+  public TriggerTestPaymentsWebhookEventRequest() {
   }
 
-  public IntermediaryBankInfo bankName(String bankName) {
-    this.bankName = bankName;
+  public TriggerTestPaymentsWebhookEventRequest eventType(WebhookEventType eventType) {
+    this.eventType = eventType;
     return this;
   }
 
    /**
-   * The name of the intermediary bank.
-   * @return bankName
+   * Get eventType
+   * @return eventType
   **/
   @javax.annotation.Nonnull
-  public String getBankName() {
-    return bankName;
+  public WebhookEventType getEventType() {
+    return eventType;
   }
 
-  public void setBankName(String bankName) {
-    this.bankName = bankName;
+  public void setEventType(WebhookEventType eventType) {
+    this.eventType = eventType;
   }
 
 
-  public IntermediaryBankInfo bankAddress(String bankAddress) {
-    this.bankAddress = bankAddress;
+  public TriggerTestPaymentsWebhookEventRequest overrideData(Object overrideData) {
+    this.overrideData = overrideData;
     return this;
   }
 
    /**
-   * The address of the intermediary bank.
-   * @return bankAddress
+   * An optional object to customize the webhook event payload. Include only the fields you want to override.  The provided fields must match the webhook event data structure for the specified event type. For the full event data structure, refer to the &#x60;data.data&#x60; property in the response of [List all webhook events](https://www.cobo.com/developers/v2/api-references/developers--webhooks/list-all-webhook-events).  If this property is omitted, a default payload is returned. 
+   * @return overrideData
   **/
   @javax.annotation.Nullable
-  public String getBankAddress() {
-    return bankAddress;
+  public Object getOverrideData() {
+    return overrideData;
   }
 
-  public void setBankAddress(String bankAddress) {
-    this.bankAddress = bankAddress;
-  }
-
-
-  public IntermediaryBankInfo bankSwiftCode(String bankSwiftCode) {
-    this.bankSwiftCode = bankSwiftCode;
-    return this;
-  }
-
-   /**
-   * The SWIFT or BIC code of the intermediary bank.
-   * @return bankSwiftCode
-  **/
-  @javax.annotation.Nonnull
-  public String getBankSwiftCode() {
-    return bankSwiftCode;
-  }
-
-  public void setBankSwiftCode(String bankSwiftCode) {
-    this.bankSwiftCode = bankSwiftCode;
+  public void setOverrideData(Object overrideData) {
+    this.overrideData = overrideData;
   }
 
   /**
@@ -136,9 +114,9 @@ public class IntermediaryBankInfo {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the IntermediaryBankInfo instance itself
+   * @return the TriggerTestPaymentsWebhookEventRequest instance itself
    */
-  public IntermediaryBankInfo putAdditionalProperty(String key, Object value) {
+  public TriggerTestPaymentsWebhookEventRequest putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -177,25 +155,23 @@ public class IntermediaryBankInfo {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    IntermediaryBankInfo intermediaryBankInfo = (IntermediaryBankInfo) o;
-    return Objects.equals(this.bankName, intermediaryBankInfo.bankName) &&
-        Objects.equals(this.bankAddress, intermediaryBankInfo.bankAddress) &&
-        Objects.equals(this.bankSwiftCode, intermediaryBankInfo.bankSwiftCode)&&
-        Objects.equals(this.additionalProperties, intermediaryBankInfo.additionalProperties);
+    TriggerTestPaymentsWebhookEventRequest triggerTestPaymentsWebhookEventRequest = (TriggerTestPaymentsWebhookEventRequest) o;
+    return Objects.equals(this.eventType, triggerTestPaymentsWebhookEventRequest.eventType) &&
+        Objects.equals(this.overrideData, triggerTestPaymentsWebhookEventRequest.overrideData)&&
+        Objects.equals(this.additionalProperties, triggerTestPaymentsWebhookEventRequest.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(bankName, bankAddress, bankSwiftCode, additionalProperties);
+    return Objects.hash(eventType, overrideData, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class IntermediaryBankInfo {\n");
-    sb.append("    bankName: ").append(toIndentedString(bankName)).append("\n");
-    sb.append("    bankAddress: ").append(toIndentedString(bankAddress)).append("\n");
-    sb.append("    bankSwiftCode: ").append(toIndentedString(bankSwiftCode)).append("\n");
+    sb.append("class TriggerTestPaymentsWebhookEventRequest {\n");
+    sb.append("    eventType: ").append(toIndentedString(eventType)).append("\n");
+    sb.append("    overrideData: ").append(toIndentedString(overrideData)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -219,61 +195,52 @@ public class IntermediaryBankInfo {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("bank_name");
-    openapiFields.add("bank_address");
-    openapiFields.add("bank_swift_code");
+    openapiFields.add("event_type");
+    openapiFields.add("override_data");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("bank_name");
-    openapiRequiredFields.add("bank_swift_code");
+    openapiRequiredFields.add("event_type");
   }
 
  /**
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to IntermediaryBankInfo
+  * @throws IOException if the JSON Element is invalid with respect to TriggerTestPaymentsWebhookEventRequest
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!IntermediaryBankInfo.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in IntermediaryBankInfo is not found in the empty JSON string", IntermediaryBankInfo.openapiRequiredFields.toString()));
+        if (!TriggerTestPaymentsWebhookEventRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in TriggerTestPaymentsWebhookEventRequest is not found in the empty JSON string", TriggerTestPaymentsWebhookEventRequest.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : IntermediaryBankInfo.openapiRequiredFields) {
+      for (String requiredField : TriggerTestPaymentsWebhookEventRequest.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("bank_name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `bank_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("bank_name").toString()));
-      }
-      if ((jsonObj.get("bank_address") != null && !jsonObj.get("bank_address").isJsonNull()) && !jsonObj.get("bank_address").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `bank_address` to be a primitive type in the JSON string but got `%s`", jsonObj.get("bank_address").toString()));
-      }
-      if (!jsonObj.get("bank_swift_code").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `bank_swift_code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("bank_swift_code").toString()));
-      }
+      // validate the required field `event_type`
+      WebhookEventType.validateJsonElement(jsonObj.get("event_type"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!IntermediaryBankInfo.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'IntermediaryBankInfo' and its subtypes
+       if (!TriggerTestPaymentsWebhookEventRequest.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'TriggerTestPaymentsWebhookEventRequest' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<IntermediaryBankInfo> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(IntermediaryBankInfo.class));
+       final TypeAdapter<TriggerTestPaymentsWebhookEventRequest> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(TriggerTestPaymentsWebhookEventRequest.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<IntermediaryBankInfo>() {
+       return (TypeAdapter<T>) new TypeAdapter<TriggerTestPaymentsWebhookEventRequest>() {
            @Override
-           public void write(JsonWriter out, IntermediaryBankInfo value) throws IOException {
+           public void write(JsonWriter out, TriggerTestPaymentsWebhookEventRequest value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -303,12 +270,12 @@ public class IntermediaryBankInfo {
            }
 
            @Override
-           public IntermediaryBankInfo read(JsonReader in) throws IOException {
+           public TriggerTestPaymentsWebhookEventRequest read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             IntermediaryBankInfo instance = thisAdapter.fromJsonTree(jsonObj);
+             TriggerTestPaymentsWebhookEventRequest instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -335,18 +302,18 @@ public class IntermediaryBankInfo {
   }
 
  /**
-  * Create an instance of IntermediaryBankInfo given an JSON string
+  * Create an instance of TriggerTestPaymentsWebhookEventRequest given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of IntermediaryBankInfo
-  * @throws IOException if the JSON string is invalid with respect to IntermediaryBankInfo
+  * @return An instance of TriggerTestPaymentsWebhookEventRequest
+  * @throws IOException if the JSON string is invalid with respect to TriggerTestPaymentsWebhookEventRequest
   */
-  public static IntermediaryBankInfo fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, IntermediaryBankInfo.class);
+  public static TriggerTestPaymentsWebhookEventRequest fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, TriggerTestPaymentsWebhookEventRequest.class);
   }
 
  /**
-  * Convert an instance of IntermediaryBankInfo to an JSON string
+  * Convert an instance of TriggerTestPaymentsWebhookEventRequest to an JSON string
   *
   * @return JSON string
   */

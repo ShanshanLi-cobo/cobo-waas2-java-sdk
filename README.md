@@ -51,7 +51,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.cobo.waas2</groupId>
   <artifactId>cobo-waas2</artifactId>
-  <version>1.31.0</version>
+  <version>1.32.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -67,7 +67,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "com.cobo.waas2:cobo-waas2:1.31.0"
+     implementation "com.cobo.waas2:cobo-waas2:1.32.0"
   }
 ```
 
@@ -95,7 +95,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/cobo-waas2-1.31.0.jar`
+* `target/cobo-waas2-1.32.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -312,6 +312,7 @@ Class | Method | HTTP request | Description
 *PaymentApi* | [**listTopUpPayerAccounts**](docs/PaymentApi.md#listTopUpPayerAccounts) | **GET** /payments/topup/payer_accounts | List top-up payer accounts
 *PaymentApi* | [**listTopUpPayers**](docs/PaymentApi.md#listTopUpPayers) | **GET** /payments/topup/payers | List payers
 *PaymentApi* | [**paymentEstimateFee**](docs/PaymentApi.md#paymentEstimateFee) | **POST** /payments/estimate_fee | Estimate fees
+*PaymentApi* | [**triggerTestPaymentsWebhookEvent**](docs/PaymentApi.md#triggerTestPaymentsWebhookEvent) | **POST** /payments/webhooks/trigger | Trigger test webhook event
 *PaymentApi* | [**updateBankAccountById**](docs/PaymentApi.md#updateBankAccountById) | **PUT** /payments/bank_accounts/{bank_account_id} | Update bank account
 *PaymentApi* | [**updateCounterparty**](docs/PaymentApi.md#updateCounterparty) | **PUT** /payments/counterparty/{counterparty_id} | Update counterparty
 *PaymentApi* | [**updateDestination**](docs/PaymentApi.md#updateDestination) | **PUT** /payments/destination/{destination_id} | Update destination
@@ -418,6 +419,7 @@ Class | Method | HTTP request | Description
 *WalletsApi* | [**listTokenBalancesForAddress**](docs/WalletsApi.md#listTokenBalancesForAddress) | **GET** /wallets/{wallet_id}/addresses/{address}/tokens | List token balances by address
 *WalletsApi* | [**listTokenBalancesForWallet**](docs/WalletsApi.md#listTokenBalancesForWallet) | **GET** /wallets/{wallet_id}/tokens | List token balances by wallet
 *WalletsApi* | [**listTokenListingRequests**](docs/WalletsApi.md#listTokenListingRequests) | **GET** /wallets/tokens/listing_requests | List token listing requests
+*WalletsApi* | [**listTransactionUtxos**](docs/WalletsApi.md#listTransactionUtxos) | **GET** /wallets/{wallet_id}/transaction_utxos | List transaction UTXOs
 *WalletsApi* | [**listUtxos**](docs/WalletsApi.md#listUtxos) | **GET** /wallets/{wallet_id}/utxos | List UTXOs
 *WalletsApi* | [**listWallets**](docs/WalletsApi.md#listWallets) | **GET** /wallets | List all wallets
 *WalletsApi* | [**lockUtxos**](docs/WalletsApi.md#lockUtxos) | **POST** /wallets/{wallet_id}/utxos/lock | Lock UTXOs
@@ -1219,6 +1221,8 @@ Class | Method | HTTP request | Description
  - [TravelRuleWithdrawNaturalEntity](docs/TravelRuleWithdrawNaturalEntity.md)
  - [TravelRuleWithdrawRequest](docs/TravelRuleWithdrawRequest.md)
  - [TravelRuleWithdrawRequestTravelRuleInfo](docs/TravelRuleWithdrawRequestTravelRuleInfo.md)
+ - [TriggerTestPaymentWebhookEventResponse](docs/TriggerTestPaymentWebhookEventResponse.md)
+ - [TriggerTestPaymentsWebhookEventRequest](docs/TriggerTestPaymentsWebhookEventRequest.md)
  - [TriggerTestWebhookEvent201Response](docs/TriggerTestWebhookEvent201Response.md)
  - [TriggerTestWebhookEventRequest](docs/TriggerTestWebhookEventRequest.md)
  - [TronContractCallDestination](docs/TronContractCallDestination.md)
